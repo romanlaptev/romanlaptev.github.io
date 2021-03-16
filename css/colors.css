@@ -1,156 +1,150 @@
-/*
+.color-white, .text-white {color: #fff !important;}
+.color-aliceblue, .text-aliceblue {color: #f0f8ff;}
+.color-antiquewhite, .text-antiquewhite {color: #faebd7;}
+.color-aqua, .text-aqua {color: #00ffff;}
+.color-aquamarine, .text-aquamarine {color: #7fffd4;}
+.color-azure, .text-azure {color: #f0ffff;}
+.color-beige, .text-beige {color: #f5f5dc;}
+.color-bisque, .text-bisque {color: #ffe4c4;}
+.color-black, .text-black {color: #000000;}
+.color-blanchedalmond, .text-blanchedalmond {color: #ffebcd;}
+.color-blue, .text-blue {color: #0000ff;}
+.color-blueviolet, .text-blueviolet {color: #8a2be2;}
+.color-brown, .text-brown {color: #a52a2a;}
+.color-burlywood, .text-burlywood {color: #deb887;}
+.color-cadetblue, .text-cadetblue {color: #5f9ea0;}
+.color-chartreuse, .text-chartreuse {color: #7fff00;}
+.color-chocolate, .text-chocolate {color: #d2691e;}
+.color-coral, .text-coral {color: #ff7f50;}
+.color-cornflowerblue, .text-cornflowerblue {color: #6495ed;}
+.color-cornsilk, .text-cornsilk {color: #fff8dc;}
+.color-crimson, .text-crimson {color: #dc143c;}
+.color-cyan, .text-cyan {color: #00ffff;}
+.color-darkblue, .text-darkblue {color: #00008b;}
+.color-darkcyan, .text-darkcyan {color: #008b8b;}
+.color-darkgoldenrod, .text-darkgoldenrod {color: #b8860b;}
 
-#f1f1f1 - wp admin page, body bg
-#f7f7f7 - body bg
+.color-darkgray, .text-darkgray {color: #a9a9a9;}
+.color-grey-d5, .text-grey-d5{color: #D5D5D5;}
 
-*/
-.text-white {color: #fff !important;}
-.text-aliceblue {color: #f0f8ff;}
-.text-antiquewhite {color: #faebd7;}
-.text-aqua {color: #00ffff;}
-.text-aquamarine {color: #7fffd4;}
-.text-azure {color: #f0ffff;}
-.text-beige {color: #f5f5dc;}
-.text-bisque {color: #ffe4c4;}
-.text-black {color: #000000;}
-.text-blanchedalmond {color: #ffebcd;}
-.text-blue {color: #0000ff;}
-.text-blueviolet {color: #8a2be2;}
-.text-brown {color: #a52a2a;}
-.text-burlywood {color: #deb887;}
-.text-cadetblue {color: #5f9ea0;}
-.text-chartreuse {color: #7fff00;}
-.text-chocolate {color: #d2691e;}
-.text-coral {color: #ff7f50;}
-.text-cornflowerblue {color: #6495ed;}
-.text-cornsilk {color: #fff8dc;}
-.text-crimson {color: #dc143c;}
-.text-cyan {color: #00ffff;}
-.text-darkblue {color: #00008b;}
-.text-darkcyan {color: #008b8b;}
-.text-darkgoldenrod {color: #b8860b;}
-
-.text-darkgray {color: #a9a9a9;}
-.text-grey-d5{color: #D5D5D5;}
-
-.text-darkgreen {color: #006400;}
-.text-darkkhaki {color: #bdb76b;}
-.text-darkmagenta {color: #8b008b;}
-.text-darkolivegreen {color: #556b2f;}
-.text-darkorange {color: #ff8c00;}
-.text-darkorchid {color: #9932cc;}
-.text-darkred {color: #8b0000;}
-.text-darksalmon {color: #e9967a;}
-.text-darkseagreen {color: #8fbc8f;}
-.text-darkslateblue {color: #483d8b;}
-.text-darkslategray {color: #2f4f4f;}
-.text-darkturquoise {color: #00ced1;}
-.text-darkviolet {color: #9400d3;}
-.text-deeppink {color: #ff1493;}
-.text-deepskyblue {color: #00bfff;}
-.text-dimgray {color: #696969;}
-.text-dodgerblue {color: #1e90ff;}
-.text-feldspar {color: #d19275;}
-.text-firebrick {color: #b22222;}
-.text-floralwhite {color: #fffaf0;}
-.text-forestgreen {color: #228b22;}
-.text-fuchsia {color: #ff00ff;}
-.text-gainsboro {color: #dcdcdc;}
-.text-ghostwhite {color: #f8f8ff;}
-.text-gold {color: #ffd700;}
-.text-goldenrod {color: #daa520;}
-.text-gray {color: #808080;}
-.text-green {color: #008000;}
-.text-greenyellow {color: #adff2f;}
-.text-honeydew {color: #f0fff0;}
-.text-hotpink {color: #ff69b4;}
-.text-indianred {color: #cd5c5c;}
-.text-indigo {color: #4b0082;}
-.text-ivory {color: #fffff0;}
-.text-khaki {color: #f0e68c;}
-.text-lavender {color: #e6e6fa;}
-.text-lavenderblush {color: #fff0f5;}
-.text-lawngreen {color: #7cfc00;}
-.text-lemonchiffon {color: #fffacd;}
-.text-lightblue {color: #add8e6;}
-.text-lightcoral {color: #f08080;}
-.text-lightcyan {color: #e0ffff;}
-.text-lightgoldenrodyellow {color: #fafad2;}
-.text-lightgrey {color: #d3d3d3;}
-.text-lightgreen {color: #90ee90;}
-.text-lightpink {color: #ffb6c1;}
-.text-lightsalmon {color: #ffa07a;}
-.text-lightseagreen {color: #20b2aa;}
-.text-lightskyblue {color: #87cefa;}
-.text-lightslateblue {color: #8470ff;}
-.text-lightslategray {color: #778899;}
-.text-lightsteelblue {color: #b0c4de;}
-.text-lightyellow {color: #ffffe0;}
-.text-lime {color: #00ff00;}
-.text-limegreen {color: #32cd32;}
-.text-linen {color: #faf0e6;}
-.text-magenta {color: #ff00ff;}
-.text-maroon {color: #800000;}
-.text-mediumaquamarine {color: #66cdaa;}
-.text-mediumblue {color: #0000cd;}
-.text-mediumorchid {color: #ba55d3;}
-.text-mediumpurple {color: #9370d8;}
-.text-mediumseagreen {color: #3cb371;}
-.text-mediumslateblue {color: #7b68ee;}
-.text-mediumspringgreen {color: #00fa9a;}
-.text-mediumturquoise {color: #48d1cc;}
-.text-mediumvioletred {color: #c71585;}
-.text-midnightblue {color: #191970;}
-.text-mintcream {color: #f5fffa;}
-.text-mistyrose {color: #ffe4e1;}
-.text-moccasin {color: #ffe4b5;}
-.text-navajowhite {color: #ffdead;}
-.text-navy {color: #000080;}
-.text-oldlace {color: #fdf5e6;}
-.text-olive {color: #808000;}
-.text-olivedrab {color: #6b8e23;}
-.text-orange {color: #ffa500;}
-.text-orangered {color: #ff4500;}
-.text-orchid {color: #da70d6;}
-.text-palegoldenrod {color: #eee8aa;}
-.text-palegreen {color: #98fb98;}
-.text-paleturquoise {color: #afeeee;}
-.text-palevioletred {color: #d87093;}
-.text-papayawhip {color: #ffefd5;}
-.text-peachpuff {color: #ffdab9;}
-.text-peru {color: #cd853f;}
-.text-pink {color: #ffc0cb;}
-.text-plum {color: #dda0dd;}
-.text-powderblue {color: #b0e0e6;}
-.text-purple {color: #800080;}
-.text-red {color: #ff0000;}
-.text-rosybrown {color: #bc8f8f;}
-.text-royalblue {color: #4169e1;}
-.text-saddlebrown {color: #8b4513;}
-.text-salmon {color: #fa8072;}
-.text-sandybrown {color: #f4a460;}
-.text-seagreen {color: #2e8b57;}
-.text-seashell {color: #fff5ee;}
-.text-sienna {color: #a0522d;}
-.text-silver {color: #c0c0c0;}
-.text-skyblue {color: #87ceeb;}
-.text-slateblue {color: #6a5acd;}
-.text-slategray {color: #708090;}
-.text-snow {color: #fffafa;}
-.text-springgreen {color: #00ff7f;}
-.text-steelblue {color: #4682b4;}
-.text-tan {color: #d2b48c;}
-.text-teal {color: #008080;}
-.text-thistle {color: #d8bfd8;}
-.text-tomato {color: #ff6347;}
-.text-turquoise {color: #40e0d0;}
-.text-violet {color: #ee82ee;}
-.text-violetred {color: #d02090;}
-.text-wheat {color: #f5deb3;}
-.text-white {color: #ffffff;}
-.text-whitesmoke {color: #f5f5f5;}
-.text-yellow {color: #ffff00;}
-.text-yellowgreen {color: #9acd32;}
+.color-darkgreen, .text-darkgreen {color: #006400;}
+.color-darkkhaki, .text-darkkhaki {color: #bdb76b;}
+.color-darkmagenta, .text-darkmagenta {color: #8b008b;}
+.color-darkolivegreen, .text-darkolivegreen {color: #556b2f;}
+.color-darkorange, .text-darkorange {color: #ff8c00;}
+.color-darkorchid, .text-darkorchid {color: #9932cc;}
+.color-text-darkred, .text-darkred {color: #8b0000;}
+.color-text-darksalmon, .text-darksalmon {color: #e9967a;}
+.color-darkseagreen, .text-darkseagreen {color: #8fbc8f;}
+.color-darkslateblue, .text-darkslateblue {color: #483d8b;}
+.color-darkslategray, .text-darkslategray {color: #2f4f4f;}
+.color-darkturquoise, .text-darkturquoise {color: #00ced1;}
+.color-darkviolet, .text-darkviolet {color: #9400d3;}
+.color-deeppink, .text-deeppink {color: #ff1493;}
+.color-deepskyblue, .text-deepskyblue {color: #00bfff;}
+.color-dimgray, .text-dimgray {color: #696969;}
+.color-dodgerblue, .text-dodgerblue {color: #1e90ff;}
+.color-feldspar, .text-feldspar {color: #d19275;}
+.color-firebrick, .text-firebrick {color: #b22222;}
+.color-floralwhite, .text-floralwhite {color: #fffaf0;}
+.color-forestgreen, .text-forestgreen {color: #228b22;}
+.color-fuchsia, .text-fuchsia {color: #ff00ff;}
+.color-gainsboro, .text-gainsboro {color: #dcdcdc;}
+.color-ghostwhite, .text-ghostwhite {color: #f8f8ff;}
+.color-gold, .text-gold {color: #ffd700;}
+.color-goldenrod, .text-goldenrod {color: #daa520;}
+.color-gray, .text-gray {color: #808080;}
+.color-green, .text-green {color: #008000;}
+.color-greenyellow, .text-greenyellow {color: #adff2f;}
+.color-honeydew, .text-honeydew {color: #f0fff0;}
+.color-hotpink, .text-hotpink {color: #ff69b4;}
+.color-indianred, .text-indianred {color: #cd5c5c;}
+.color-indigo, .text-indigo {color: #4b0082;}
+.color-ivory, .text-ivory {color: #fffff0;}
+.color-khaki, .text-khaki {color: #f0e68c;}
+.color-lavender, .text-lavender {color: #e6e6fa;}
+.color-lavenderblush, .text-lavenderblush {color: #fff0f5;}
+.color-lawngreen, .text-lawngreen {color: #7cfc00;}
+.color-lemonchiffon, .text-lemonchiffon {color: #fffacd;}
+.color-lightblue, .text-lightblue {color: #add8e6;}
+.color-lightcoral, .text-lightcoral {color: #f08080;}
+.color-lightcyan, .text-lightcyan {color: #e0ffff;}
+.color-lightgoldenrodyellow, .text-lightgoldenrodyellow {color: #fafad2;}
+.color-lightgrey, .text-lightgrey {color: #d3d3d3;}
+.color-lightgreen, .text-lightgreen {color: #90ee90;}
+.color-lightpink, .text-lightpink {color: #ffb6c1;}
+.color-lightsalmon, .text-lightsalmon {color: #ffa07a;}
+.color-lightseagreen, .text-lightseagreen {color: #20b2aa;}
+.color-lightskyblue, .text-lightskyblue {color: #87cefa;}
+.color-lightslateblue, .text-lightslateblue {color: #8470ff;}
+.color-lightslategray, .text-lightslategray {color: #778899;}
+.color-lightsteelblue, .text-lightsteelblue {color: #b0c4de;}
+.color-lightyellow, .text-lightyellow {color: #ffffe0;}
+.color-lime, .text-lime {color: #00ff00;}
+.color-limegreen, .text-limegreen {color: #32cd32;}
+.color-linen, .text-linen {color: #faf0e6;}
+.color-magenta, .text-magenta {color: #ff00ff;}
+.color-maroon, .text-maroon {color: #800000;}
+.color-mediumaquamarine, .text-mediumaquamarine {color: #66cdaa;}
+.color-mediumblue, .text-mediumblue {color: #0000cd;}
+.color-mediumorchid, .text-mediumorchid {color: #ba55d3;}
+.color-mediumpurple, .text-mediumpurple {color: #9370d8;}
+.color-mediumseagreen, .text-mediumseagreen {color: #3cb371;}
+.color-mediumslateblue, .text-mediumslateblue {color: #7b68ee;}
+.color-mediumspringgreen, .text-mediumspringgreen {color: #00fa9a;}
+.color-mediumturquoise, .text-mediumturquoise {color: #48d1cc;}
+.color-mediumvioletred, .text-mediumvioletred {color: #c71585;}
+.color-midnightblue, .text-midnightblue {color: #191970;}
+.color-mintcream, .text-mintcream {color: #f5fffa;}
+.color-mistyrose, .text-mistyrose {color: #ffe4e1;}
+.color-moccasin, .text-moccasin {color: #ffe4b5;}
+.color-navajowhite, .text-navajowhite {color: #ffdead;}
+.color-navy, .text-navy {color: #000080;}
+.color-oldlace, .text-oldlace {color: #fdf5e6;}
+.color-olive, .text-olive {color: #808000;}
+.color-olivedrab, .text-olivedrab {color: #6b8e23;}
+.color-orange, .text-orange {color: #ffa500;}
+.color-orangered, .text-orangered {color: #ff4500;}
+.color-orchid, .text-orchid {color: #da70d6;}
+.color-palegoldenrod, .text-palegoldenrod {color: #eee8aa;}
+.color-palegreen, .text-palegreen {color: #98fb98;}
+.color-text-paleturquoise , .text-paleturquoise {color: #afeeee;}
+.color-palevioletred, .text-palevioletred {color: #d87093;}
+.color-papayawhip, .text-papayawhip {color: #ffefd5;}
+.color-peachpuff, .text-peachpuff {color: #ffdab9;}
+.color-peru, .text-peru {color: #cd853f;}
+.color-pink, .text-pink {color: #ffc0cb;}
+.color-plum, .text-plum {color: #dda0dd;}
+.color-powderblue, .text-powderblue {color: #b0e0e6;}
+.color-purple, .text-purple {color: #800080;}
+.color-red, .text-red {color: #ff0000;}
+.color-rosybrown, .text-rosybrown {color: #bc8f8f;}
+.color-royalblue, .text-royalblue {color: #4169e1;}
+.color-saddlebrown, .text-saddlebrown {color: #8b4513;}
+.color-salmon, .text-salmon {color: #fa8072;}
+.color-sandybrown, .text-sandybrown {color: #f4a460;}
+.color-seagreen, .text-seagreen {color: #2e8b57;}
+.color-seashell, .text-seashell {color: #fff5ee;}
+.color-sienna, .text-sienna {color: #a0522d;}
+.color-silver, .text-silver {color: #c0c0c0;}
+.color-skyblue, .text-skyblue {color: #87ceeb;}
+.color-slateblue, .text-slateblue {color: #6a5acd;}
+.color-slategray, .text-slategray {color: #708090;}
+.color-snow, .text-snow {color: #fffafa;}
+.color-springgreen, .text-springgreen {color: #00ff7f;}
+.color-steelblue, .text-steelblue {color: #4682b4;}
+.color-tan, .text-tan {color: #d2b48c;}
+.color-teal, .text-teal {color: #008080;}
+.color-thistle, .text-thistle {color: #d8bfd8;}
+.color-tomato, .text-tomato {color: #ff6347;}
+.color-turquoise, .text-turquoise {color: #40e0d0;}
+.color-violet, .text-violet {color: #ee82ee;}
+.color-violetred, .text-violetred {color: #d02090;}
+.color-wheat, .text-wheat {color: #f5deb3;}
+.color-white, .text-white {color: #ffffff;}
+.color-whitesmoke, .text-whitesmoke {color: #f5f5f5;}
+.color-yellow, .text-yellow {color: #ffff00;}
+.color-yellowgreen, .text-yellowgreen {color: #9acd32;}
 
 
 .lr-border-box{
@@ -786,6 +780,8 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 .bg-silver {background-color: #c0c0c0;}
 .bg-lightsilver {background-color: #e9e9e9;}
+.bg-silver-f1 {background-color: #f1f1f1;}
+.bg-silver-f7 {background-color: #f7f7f7;}
 
 
 .bg-skyblue {background-color: #87ceeb;}
@@ -806,6 +802,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-wheat {background-color: #f5deb3;}
 .bg-white {background-color: #ffffff;}
 .bg-whitesmoke {background-color: #f5f5f5;}
+
 
 
 /* YELLOW  */
