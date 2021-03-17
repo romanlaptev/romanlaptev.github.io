@@ -46,7 +46,7 @@ https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951e
 		
 		"DB" : {
 			//"dataUrl" : "data/2019-04-26.xml",
-			//"dataUrl" : "data/2019-04-26.json",
+			"dataUrl" : "v1/data/2019-04-26.json",
 /*
 			"dataUrl" : "https://cors-anywhere.herokuapp.com/\
 https://api.rasp.yandex.net/v3.0/search/?\
@@ -58,6 +58,7 @@ transport_types=suburban&\
 system=esr&\
 show_systems=esr",
 */
+/*
 			"dataUrl" : "https://romanlaptev-cors.herokuapp.com/\
 https://api.rasp.yandex.net/v3.0/search/?\
 from={{from_code}}&\
@@ -67,7 +68,7 @@ date={{date}}&\
 transport_types=suburban&\
 system=esr&\
 show_systems=esr",
-
+*/
 			"dbType" : "" //application/xml 
 		},
 
@@ -147,9 +148,11 @@ console.log("init webapp!");
 		_loadTemplates(function(){
 //console.log("Load templates end...", webApp.vars["templates"] );		
 			defineEvents();
+			
 			_runRequest({
 				callback : postFunc
 			});
+			
 		});
 		
 	}//end init()
@@ -178,7 +181,7 @@ function _runRequest( opt ){
 		"postFunc" : function(res){
 //console.log(arguments);
 //console.log(window.location);	
-			_loadCopyRightCode(function(){
+			//_loadCopyRightCode(function(){
 				
 				var parse_url = webApp.vars["init_url"];
 				webApp.vars["GET"] = func.parseGetParams( parse_url ); 
@@ -188,7 +191,7 @@ function _runRequest( opt ){
 					p.callback();
 				}
 				
-			});
+			//});
 			
 		}//end callback
 	});

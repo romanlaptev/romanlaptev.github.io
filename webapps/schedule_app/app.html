@@ -29,6 +29,8 @@
 	<link rel="apple-touch-icon" sizes="152x152" href="res/favicons/apple-touch-icon-152x152.png"/>
 	
 	<link type="text/css" rel="stylesheet" href="css/lr.css">
+	<link type="text/css" rel="stylesheet" href="css/custom.css">
+	
 	<script src="../../js/jquery.min.js"></script>
 	<script src="js/functions.js"></script>
 	<script src="js/schedule_app.js"></script>
@@ -49,37 +51,62 @@
 		<h1 class="color-white">расписание транспорта</h1>
 	</div>
 
-	<div class="lr-panel">
-		
-		<div class="lr-panel-body bg-lightsteelblue">
-			<i class="dashicons dashicons-paperclip"></i>
+	<div class="lr-panel bg-lightsteelblue ">
+		<div class="lr-panel-body lr-padding-20">
+			<ul class="lr-nav-tabs lr-list-inline">
+	<li>
+		<a class="lr-padding-20 lr-border-box w10" 
+	href="?q=switch-tab&target_id=tab-transport">Transport</a>
+	</li>
 
-			<div id="search-panel" class="lr-row">
-				<div class="float-left title">
-	<input id="from-title" class="" value=""/>
-				</div>
-				<div class="float-left s-btn">
-		<a id="btn-change-direction" class="lr-btn lr-btn-warning arrows" href="#" title="change direction">&nbsp;</a>
-				</div>
-				<div class="float-left title">
-	<input id="to-title" class="" value=""/>
-				</div>
-				<div class="float-left d-widget">
-	<input id="date-widget" type="date" name="date_widget" class="lr-btn lr-btn-info selectDate" value=""  max="" min="">			
-				</div>
-
-				<div class="float-left s-btn">
-				  <button id="btn-update" class="lr-btn lr-btn-danger">update</button>
-				</div>
-			</div>
-			
+	<li>
+		<a class="lr-padding-20 lr-border-box w10" 
+	href="?q=switch-tab&target_id=tab-weather">Weather</a>
+	</li>
+			</ul>
 		</div>
+		
+		<div class="lr-panel-body lr-padding-20 bg-grey-green">
 			
+			<div id="tab-transport" class="tab-pane tab-active lr-panel">
+				<div class="lr-panel-body">
+
+<div id="search-panel" class="lr-row">
+	<div class="float-left title">
+		<input id="from-title" class="" value=""/>
+	</div>
+	<div class="float-left s-btn">
+<a href="?q=change-direction" class="lr-btn lr-btn-warning arrows">change direction</a>
+	</div>
+	<div class="float-left title">
+			<input id="to-title" class="" value=""/>
+	</div>
+	<div class="float-left d-widget">
+<input id="date-widget" type="date" name="date_widget" class="lr-btn lr-btn-info selectDate" value=""  max="" min="">
+	</div>
+
+	<div class="float-left s-btn">
+	  <button id="btn-update" class="lr-btn lr-btn-danger">update</button>
+	</div>
+</div>
+				
+<div class="bg-white">
+	<span id="block-schedule"></span>
+</div>
+
+				</div>
+			</div><!-- end tab -->
+
+			<div id="tab-weather" class="tab-pane lr-panel bg-grey-green">
+				<div class="lr-panel-body">
+	tab-weather			
+				</div>
+			</div><!-- end tab -->
+			
+
+		</div><!-- end tab-content -->
 	</div><!-- end panel -->
 	
-	<div class="bg-white">
-		<span id="block-schedule"></span>
-	</div>
 
 </div><!-- end container -->
 

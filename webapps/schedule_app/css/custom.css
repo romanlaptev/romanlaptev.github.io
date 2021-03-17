@@ -1,0 +1,7 @@
+.lr-tab-pane, .tab-pane {
+display:none;
+}
+
+.lr-tab-active, .tab-active {
+display:block !important;
+}
