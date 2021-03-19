@@ -2,8 +2,7 @@ var func = sharedFunc();
 //console.log("func:", func);
 
 window.onload = function(){
-//console.log("onload");
-_message( navigator.userAgent, "info");
+func.logAlert( navigator.userAgent, "info");
 	
 	//Start webApp
 	if( typeof webApp === "object"){
@@ -21,30 +20,8 @@ console.log("end webApp initialize....");
 var webApp = {
 	
 	"vars" : {
-		"app_title" : "Расписание транспорта",
-		
-		"requestParams" : {
-			"from" : {
-				"title" : "Новосибирск-восточный",
-				"esr_code" : 851508
-			},
-			"to" : {
-				"title" : "Раздолье (3362 км)",
-				"esr_code" : 851635
-			},
-		},
-		"apikey" : "b07a64bc-f237-4e79-9efb-b951ec68eaf7",
-		"logMsg" : "",
-		
-		"copyRight": {
-			//"url": "https://cors-anywhere.herokuapp.com/\
-//https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&format=json",
-			"url": "https://romanlaptev-cors.herokuapp.com/\
-https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&format=json",
-			"data": ""
-		},
-		
-		"DB" : {
+		"transportAPI": {
+			"apiKey" : "b07a64bc-f237-4e79-9efb-b951ec68eaf7",
 			//"dataUrl" : "data/2019-04-26.xml",
 			"dataUrl" : "v1/data/2019-04-26.json",
 /*
@@ -69,47 +46,86 @@ transport_types=suburban&\
 system=esr&\
 show_systems=esr",
 */
-			"dbType" : "" //application/xml 
-		},
-
-		"blocks": [
-			{
-				"locationID" : "block-schedule",
-				"title" : "transport schedule", 
-				"templateID" : "tpl-schedule",
-				"content" : "",
-				//"visibility" : true,
-				"buildBlock" : function(){
-//console.log(this);
-					var html = _buldScheduleHtml();
-					if( html && html.length > 0 ){
-						this.content = html;
-						_draw_buildBlock( this );
+			"requestParams" : {
+				"from" : {
+					"title" : "Новосибирск-восточный",
+					"esr_code" : 851508
+				},
+				"to" : {
+					"title" : "Раздолье (3362 км)",
+					"esr_code" : 851635
+				},
+			},
+			"copyRight": {
+				//"url": "https://cors-anywhere.herokuapp.com/\
+	//https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&format=json",
+				"url": "https://romanlaptev-cors.herokuapp.com/\
+	https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&format=json",
+				"data": ""
+			},
+			"blocks": [
+				{
+					"locationID" : "block-schedule",
+					"title" : "transport schedule", 
+					"templateID" : "tpl-schedule",
+					"content" : "",
+					//"visibility" : true,
+					"buildBlock" : function(){
+	//console.log(this);
+						var html = _buldScheduleHtml();
+						if( html && html.length > 0 ){
+							this.content = html;
+							_draw_buildBlock( this );
+						}
 					}
-				}
-			}, //end block
+				}, //end block
 
-			{
-				"locationID" : "block-copyright",
-				"title" : "copy Right!", 
-				"templateID" : "tpl-copyright",
-				"content" :  "",
-				"buildBlock" : function(){
-//console.log(this);
-					var data = webApp.vars["copyRight"]["data"];
-					var html = _draw_wrapData({
-						"data": data,
-						"templateID": "tpl-copyright-content",
-					});
-//console.log(html);
-					if( html && html.length > 0 ){
-						this.content = html;
-						_draw_buildBlock( this );
+				{
+					"locationID" : "block-copyright",
+					"title" : "copy Right!", 
+					"templateID" : "tpl-copyright",
+					"content" :  "",
+					"buildBlock" : function(){
+	//console.log(this);
+						var data = webApp.vars["copyRight"]["data"];
+						var html = _draw_wrapData({
+							"data": data,
+							"templateID": "tpl-copyright-content",
+						});
+	//console.log(html);
+						if( html && html.length > 0 ){
+							this.content = html;
+							_draw_buildBlock( this );
+						}
 					}
-				}
-			}, //end block
+				}, //end block
 
-		],
+			],
+			
+		},//end transportAPI
+		
+		"weatherAPI": {
+			"apiKey" : "dab03f2c-c76d-4fb6-9445-faa84fa80973",
+			//"dataUrl" : "https://romanlaptev-cors.herokuapp.com/\
+//https://api.weather.yandex.ru/v2/informers?\
+//lat={{latitude}}&\
+//lon={{longitude}}&\
+//lang=ru_RU",
+			"dataUrl" : "files/test_ya_pogoda.json",
+
+			"requestParams" : {
+				//Moskow
+				//"latitude": 55.75396,
+				//"longitude": 37.620393,
+			
+//Новосибирск, Дзержинский район, Волочаевский жилмассив, 
+				"latitude": 55.038115899999994,
+				"longitude": 83.0094459,
+			},
+			
+		},//end weatherAPI
+		
+		"logMsg" : "",
 		
 		"templates_url" : "tpl/templates.xml",
 		"templates" : {},
@@ -123,35 +139,38 @@ show_systems=esr",
 	"init" : function( postFunc ){
 console.log("init webapp!");
 
-		// var appTitle = func.getById("app-title");
-		// if( appTitle){
-			// appTitle.innerHTML = this.vars["app_title"];
-		// }
-		
-		this["vars"]["log_btn"] = func.getById("log-btn");
+		this["vars"]["App"] = func.getById("App");
 		this["vars"]["log"] = func.getById("log");
-		this["vars"]["btnToggle"] = func.getById("btn-toggle-log");
+		
 		this["vars"]["loadProgressBar"] = func.getById("load-progress-bar");
 		this["vars"]["waitWindow"] = func.getById("win1");
 		this["vars"]["numTotalLoad"] = func.getById("num-total-load");
 		
 		var today = _timeStampToDateStr( new Date() );
 //console.log(today);
-		$("#date-widget").val(today);
-		//$("#date-widget").attr("max", today);
-		$("#from-title").val( webApp.vars["requestParams"]["from"]["title"] );
-		$("#to-title").val( webApp.vars["requestParams"]["to"]["title"] );
+		//$("#date-widget").val(today);
+		this["vars"]["dateWidget"] = webApp.vars.App.querySelector("#date-widget");
+		this["vars"]["dateWidget"].value = today;
 
-		$("#from-title").data("code", webApp.vars["requestParams"]["from"]["esr_code"]);
-		$("#to-title").data("code", webApp.vars["requestParams"]["to"]["esr_code"]);
+		this["vars"]["tab-transport"] = webApp.vars.App.querySelector("#tab-transport");
+		this["vars"]["tab-weather"] = webApp.vars.App.querySelector("#tab-weather");
+		this["vars"]["tab-buttons"] = webApp.vars.App.querySelectorAll("#tab-buttons .tab-btn");
 		
+		//$("#from-title").val( webApp.vars["requestParams"]["from"]["title"] );
+		this["vars"]["transportAPI"]["requestParams"]["from"]["title"] = webApp.vars.App.querySelectorAll("#from-title");
+		$("#from-title").data("code", webApp.vars["transportAPI"]["requestParams"]["from"]["esr_code"]);
+		
+		//$("#to-title").val( webApp.vars["requestParams"]["to"]["title"] );
+		$("#to-title").data("code", webApp.vars["transportAPI"]["requestParams"]["to"]["esr_code"]);
+		this["vars"]["transportAPI"]["requestParams"]["to"]["title"] = webApp.vars.App.querySelectorAll("#to-title");
+
 		_loadTemplates(function(){
-//console.log("Load templates end...", webApp.vars["templates"] );		
+//console.log("Load templates end...", webApp.vars["templates"] );
 			defineEvents();
 			
-			_runRequest({
-				callback : postFunc
-			});
+			//_runRequest({
+				//callback : postFunc
+			//});
 			
 		});
 		
@@ -200,15 +219,13 @@ function _runRequest( opt ){
 
 
 function defineEvents(){
-	webApp.vars["log_btn"].onclick = function(event){
-		event = event || window.event;
+	webApp.vars["App"].addEventListener("click", function(e){
+//console.log(e.type);
+		event = e || window.e;
 		var target = event.target || event.srcElement;
-//console.log( event );
-//console.log( this );//page-container
 //console.log( target);
 //console.log( event.eventPhase );
 //console.log( "preventDefault: " + event.preventDefault );
-
 		if( target.tagName === "A"){
 			if ( target.href.indexOf("?q=") !== -1){
 				
@@ -218,23 +235,22 @@ function defineEvents(){
 					event.returnValue = false;				
 				}
 
-					//var search = target.href.split("?"); 
-					//var parseStr = search[1]; 
-					var parseStr = target.href; 
-//console.log( search, parseStr );
+				var parseStr = target.href; 
+//console.log( parseStr );
 					if( parseStr.length > 0 ){
 						webApp.vars["GET"] = func.parseGetParams( parseStr ); 
 						_urlManager( target );
 					} else {
 console.log( "Warn! error parse url in " + target.href );
 					}
-	
 			}
 		}
 
-	}//end event
+	});//end event
+	
 //------------------------------------------------------------------
 
+/*
 	$("#date-widget").on("change", function(event) {
 console.log(event.type, $("#date-widget").val() );
 		_runRequest({
@@ -250,7 +266,12 @@ console.log(event.type, $("#date-widget").val() );
 		});
 		
 	});//end event
-	
+*/
+	webApp.vars["dateWidget"].addEventListener("change", function(e){
+console.log(e.type);
+	});//end event
+
+/*	
 	$("#btn-change-direction").on("click", function(event) {
 //console.log("event...", event.type );
 		event = event || window.event;
@@ -278,7 +299,7 @@ console.log(event.type, $("#date-widget").val() );
 		});
 		
 	});//end event
-
+*/
 //------------------------------------------------------------------	
 }//end defineEvents()
 
@@ -314,11 +335,86 @@ console.log("-- start build page --");
 //}, 1000*3);
 				webApp.vars["timers"]["request"]["end"] = new Date();
 				webApp.vars["logMsg"] = "request runtime: " + _getRunTime( webApp.vars["timers"]["request"] ) + "sec";
-				_message( webApp.vars["logMsg"],"info" );
+				func.logAlert( webApp.vars["logMsg"],"info" );
 
 console.log("-- end build page --");
 					}
 				});
+			break;
+			
+			case "switch-tab":
+				webApp.vars["tab-transport"].classList.remove("tab-active");
+				webApp.vars["tab-weather"].classList.remove("tab-active");
+				
+				var activePaneId = webApp.vars["GET"]["target_id"];
+				webApp.vars[activePaneId].classList.add("tab-active");
+				
+//console.log(target);
+				for(var n = 0; n < webApp.vars["tab-buttons"].length; n++){
+					var btn = webApp.vars["tab-buttons"][n];
+					btn.classList.remove("btn-active");
+				}//next
+				
+				target.classList.add("btn-active");
+			break;
+
+			case "send-request":
+				
+				if( !webApp.vars["GET"]["api"] || 
+					webApp.vars["GET"]["api"].length === 0
+				){
+webApp.logMsg = "error, empty or undefined API name";
+func.logAlert(webApp.logMsg, "error");
+					return false;
+				}
+				
+				var apiName = webApp.vars["GET"]["api"];
+				if( !webApp.vars[apiName] ){
+webApp.logMsg = "error, wrong API object "+apiName;
+func.logAlert(webApp.logMsg, "error");
+					return false;
+				}
+
+				if( !webApp.vars[apiName]["dataUrl"] || 
+					webApp.vars[apiName]["dataUrl"].length === 0
+				){
+webApp.logMsg = "error, empty or undefined API parameter 'dataUrl'";
+func.logAlert(webApp.logMsg, "error");
+					return false;
+				}
+				
+				var requestParams = webApp.vars[apiName]["requestParams"];
+				var url = webApp.vars[apiName]["dataUrl"];
+				for(var key in requestParams){
+					url = url.replace( new RegExp("{{"+key+"}}", "g"), requestParams[key] );
+				}//next
+
+				sendRequest({
+					"dataUrl": url,
+					"apiName" : apiName,
+					"apiKey" : webApp.vars[apiName]["apiKey"],
+					"callback" : function( response ){
+//console.log(arguments);
+
+						if(response){
+							_parseAjax({
+								"responseType": webApp.vars["responseType"],
+								"response": response,
+								"postFunc" : function( data ){
+//console.log(arguments);
+									if( data ){
+										//_drawResponse();
+										_buildWeatherHtml();
+									}
+								}
+							});
+var logMsg = "end parse ajax response";
+func.logAlert( logMsg, "info");
+						}
+
+					}//end callback
+				});
+
 			break;
 			
 			default:
@@ -327,6 +423,7 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 		}//end switch
 		
 }//end _urlManager()
+
 
 //============================== TEMPLATES
 	function _loadTemplates( callback ){
@@ -338,7 +435,7 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 			if( !webApp.vars["templates_url"] || 
 				webApp.vars["templates_url"].length === 0 ){
 webApp.vars["logMsg"] = "- error, not found 'templates_url'...";
-_message( webApp.vars["logMsg"], "error");
+func.logAlert( webApp.vars["logMsg"], "error");
 //console.log( webApp.vars["logMsg"] );
 				if( typeof callback === "function"){
 					callback(false);
@@ -354,7 +451,7 @@ _message( webApp.vars["logMsg"], "error");
 				"onError" : function( xhr ){
 //console.log( "onError ", arguments);
 webApp.vars["logMsg"] = "error ajax load " + webApp.vars["templates_url"];
-_message( webApp.vars["logMsg"], "error");
+func.logAlert( webApp.vars["logMsg"], "error");
 console.log( webApp.vars["logMsg"] );
 					if( typeof callback === "function"){
 						callback(false);
@@ -364,7 +461,7 @@ console.log( webApp.vars["logMsg"] );
 				
 				"callback": function( data ){
 webApp.vars["logMsg"] = "- read templates from <b>" + webApp.vars["templates_url"] +"</b>";
-_message( webApp.vars["logMsg"], "success");
+func.logAlert( webApp.vars["logMsg"], "success");
 //console.log( webApp.vars["logMsg"] );
 //console.log( data );
 
@@ -401,7 +498,7 @@ console.log("error, loadTemplates(), not find data templates'....");
 					} catch(e){
 console.log(e, typeof e);
 webApp.vars["logMsg"] = "TypeError: " + e;
-_message( webApp.vars["logMsg"], "error");
+func.logAlert( webApp.vars["logMsg"], "error");
 					}//end try
 
 					if( typeof callback === "function"){
@@ -512,7 +609,7 @@ console.log("$.ajax, Done...");
 	})
 	.fail(function (xhr, textStatus) {
 webApp.vars["logMsg"] = "$.ajax, Fail..." + webApp.vars["copyRight"]["url"];
-_message( webApp.vars["logMsg"], "error");
+func.logAlert( webApp.vars["logMsg"], "error");
 console.log( webApp.vars["logMsg"], arguments );
 		if( typeof postFunc === "function"){
 			postFunc();
@@ -530,7 +627,7 @@ console.log( webApp.vars["logMsg"], arguments );
 		"onError" : function( xhr ){
 //console.log( "onError ", arguments);
 webApp.vars["logMsg"] = "error, ajax load failed..." + webApp.vars["copyRight"]["url"];
-_message( webApp.vars["logMsg"], "error");
+func.logAlert( webApp.vars["logMsg"], "error");
 console.log( webApp.vars["logMsg"] );
 			if( typeof  postFunc === "function"){
 				postFunc();
@@ -561,13 +658,14 @@ console.log( webApp.vars["logMsg"] );
 		} catch(error) {
 webApp.vars["logMsg"] = "error, error JSON.parse server response data...." ;
 console.log( error );
-_message( webApp.vars["logMsg"], "error");
+func.logAlert( webApp.vars["logMsg"], "error");
 			return false;
 		}//end catch
 
 	}//end __parseJSON()
 
 }//end _loadCopyRightCode()
+
 
 function _loadData( opt ){
 //console.log("_loadData() ", arguments);
@@ -585,7 +683,7 @@ function _loadData( opt ){
 
 		if( !p.date ||  p.date.length === 0){
 webApp.vars["logMsg"] = "error, empty or wrong date...";
-_message( webApp.vars["logMsg"], "error");
+func.logAlert( webApp.vars["logMsg"], "error");
 console.log( webApp.vars["logMsg"] );
 			if( typeof p["postFunc"] === "function"){
 				p["postFunc"]();
@@ -595,7 +693,7 @@ console.log( webApp.vars["logMsg"] );
 /*
 		if( !p.from_code ||  p.from_code.length === 0){
 webApp.vars["logMsg"] = "error, empty or from_code...";
-_message( webApp.vars["logMsg"], "error");
+func.logAlert( webApp.vars["logMsg"], "error");
 console.log( webApp.vars["logMsg"] );
 			if( typeof p["postFunc"] === "function"){
 				p["postFunc"]();
@@ -605,7 +703,7 @@ console.log( webApp.vars["logMsg"] );
 		
 		if( !p.to_code ||  p.to_code.length === 0){
 webApp.vars["logMsg"] = "error, empty or to_code...";
-_message( webApp.vars["logMsg"], "error");
+func.logAlert( webApp.vars["logMsg"], "error");
 console.log( webApp.vars["logMsg"] );
 			if( typeof p["postFunc"] === "function"){
 				p["postFunc"]();
@@ -617,7 +715,7 @@ console.log( webApp.vars["logMsg"] );
 		var dataUrl = webApp.vars["DB"]["dataUrl"]
 		.replace("{{from_code}}", p["from_code"] )
 		.replace("{{to_code}}", p["to_code"] )
-		.replace("{{apikey}}", webApp.vars["apikey"] )
+		.replace("{{apikey}}", webApp.vars["apiKey"] )
 		.replace("{{date}}", p.date );
 console.log( dataUrl );		
 //return;
@@ -649,7 +747,7 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 			"onError" : function( xhr ){
 //console.log( "onError ", arguments);
 webApp.vars["logMsg"] = "error, ajax load failed..." + webApp.vars["DB"]["dataUrl"];
-_message( webApp.vars["logMsg"], "error");
+func.logAlert( webApp.vars["logMsg"], "error");
 console.log( webApp.vars["logMsg"] );
 				if( typeof p["postFunc"] === "function"){
 					p["postFunc"]();
@@ -663,8 +761,10 @@ console.log( webApp.vars["logMsg"] );
 //for( var key in data){
 //console.log(key +" : "+data[key]);
 //}
-				webApp.vars["DB"]["dbType"] = xhr.getResponseHeader('content-type');
-				_parseAjax( data );
+				_parseAjax({
+					"responseType": xhr.getResponseHeader('content-type'),
+					"response": data
+				});
 
 				if( typeof p["postFunc"] === "function"){
 					p["postFunc"]();
@@ -674,25 +774,118 @@ console.log( webApp.vars["logMsg"] );
 
 		//return false;
 		
-		function _parseAjax( data ){
-			if( webApp.vars["DB"]["dbType"].length === 0 ){
-webApp.vars["logMsg"] = "error, no found or incorrect " + webApp.vars["DB"]["dbType"];
-_message( webApp.vars["logMsg"], "error");
-console.log( webApp.vars["logMsg"] );
-				return false;
-			}
-			
-			if( webApp.vars["DB"]["dbType"].indexOf("application/xml") !== -1){
-				_parseXML( data );
-			}
-			
-			if( webApp.vars["DB"]["dbType"].indexOf("application/json") !== -1){
-				_parseJSON( data );
-			}
-			
-		}//_parseAjax()
-		
 	}//end _loadData()
+
+
+	function _parseAjax( opt ){
+		
+		var p = {
+			"responseType": null,
+			"response": false,
+			"postFunc": null
+		};
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(p);
+
+		if( !p.response ||  p.response.length === 0){
+webApp.vars["logMsg"] = "error, empty or wrong response data...";
+func.logAlert( webApp.vars["logMsg"], "error");
+console.log( webApp.vars["logMsg"] );
+			if( typeof p["postFunc"] === "function"){
+				p["postFunc"]();
+			}
+			return false;
+		}
+
+		var parseData = false;
+		if( p.responseType.indexOf("application/xml") !== -1){
+			parseData = _parseXML( p.response );
+		}
+		
+		if( p.responseType.indexOf("application/json") !== -1){
+			parseData = _parseJSON( p.response );
+		}
+
+		if( typeof p["postFunc"] === "function"){
+			p["postFunc"]( parseData );
+		}
+		
+	}//_parseAjax()
+
+
+
+	function sendRequest( opt ){
+		var p = {
+			"dataUrl" : false,
+			"apiKey" : false,
+			"apiName" : false,
+			"callback" : function(){
+	//console.log(arguments);
+			}//end callback
+		};
+	//console.log(opt);
+		//extend p object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(p);
+
+		var dataUrl = p["dataUrl"];
+		try{
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET", dataUrl, true);
+			if(p.apiName === "weatherAPI"){
+				xhr.setRequestHeader("X-Yandex-API-Key", p["apiKey"] );
+				//xhr.setRequestHeader("Access-Control-Allow-Credentials", "true");
+			}
+			xhr.onload = function(e) {
+	console.log(arguments);
+	// console.log("event type:" + e.type);
+	console.log("time: " + e.timeStamp);
+	console.log("total: " + e.total);
+	console.log("loaded: " + e.loaded);	
+	//console.log( this.responseText );
+	//func.log( this.responseText, "response");
+				
+				var _response = false;
+				if( this.responseText.length > 0 ){
+					_response = this.responseText;
+					webApp.vars["responseType"] = xhr.getResponseHeader('content-type');
+				}
+				
+				if( typeof p.callback === "function"){
+					p.callback(_response);
+				}
+			}//end onload
+			
+			xhr.onerror = function(e) {
+	console.log(arguments);		
+	console.log(e);		
+	//for(var key in xhr){
+	//console.log( key +" : "+xhr[key] );
+	//}
+
+	_vars["logMsg"] = "error, ajax load failed...";
+	//func.logAlert( _vars["logMsg"], "error");
+	func.logAlert( _vars["logMsg"], "danger");
+				p.callback(false);
+			}
+			
+			xhr.onloadend = function(e){
+	//console.log(xhr.getResponseHeader('X-Powered-By') );
+	console.log( xhr.getAllResponseHeaders() );
+			}//end onloadend
+			
+			xhr.send();
+			
+		} catch(e){
+	console.log(e);	
+		}	
+		
+	}//end sendRequest()
 
 
 	function _parseXML(xml){
@@ -712,16 +905,17 @@ delete xml;
 var timeEnd = new Date();
 var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
 webApp.vars["logMsg"] = "- convertXmlToObj(), runtime: <b>" + runTime  + "</b> sec";
-_message( webApp.vars["logMsg"], "info");
+func.logAlert( webApp.vars["logMsg"], "info");
 console.log( webApp.vars["logMsg"] );
 
 		} catch(error) {
 webApp.vars["logMsg"] = "convertXmlToObj(), error parse XML..." ;
-_message( webApp.vars["logMsg"], "error");
+func.logAlert( webApp.vars["logMsg"], "error");
 console.log( error );
 		}//end catch
 
 	}//end _parseXML()
+
 
 	function _data_formNodesObj(xmlObj){
 //console.log(xmlObj["xroot"]["children"]["database"][0]["name"]);
@@ -800,7 +994,7 @@ console.log( key, tagNode[key] );
 				return value;
 			});
 //console.log( jsonObj );
-
+/*
 			//correct departure, duration, arrival
 			for( var n = 0; n < jsonObj["segments"].length; n++){
 				var record = jsonObj["segments"][n];
@@ -826,13 +1020,14 @@ console.log( key, tagNode[key] );
 				record["arrival_time"] = _d.getHours() +":"+_min;
 				delete record["arrival"];
 			}//next
-			
-			webApp.vars["DB"]["data"] = jsonObj;
+*/			
+			webApp.vars["data"] = jsonObj;
+			return jsonObj;
 			
 		} catch(error) {
 webApp.vars["logMsg"] = "error, error JSON.parse server response data...." ;
 console.log( error );
-_log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+func.logAlert( webApp.vars["logMsg"], "error");
 			return;
 		}//end catch
 
@@ -842,7 +1037,7 @@ _log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 function _buldScheduleHtml(){
 	if( !webApp.vars["DB"]["data"] ){
 webApp.vars["logMsg"] = "error, not find data object..." ;
-_message( webApp.vars["logMsg"], "error");
+func.logAlert( webApp.vars["logMsg"], "error");
 return false;
 	}
 /*
@@ -913,6 +1108,78 @@ return false;
 	
 }//end _buildScheduleHtml()
 
+function _buildWeatherHtml(){
+	var html = document.querySelector("#response").innerHTML;
+	
+	html = html.replace("%now%", webApp.vars["data"]["now"])
+.replace("%now_dt%", webApp.vars["data"]["now_dt"]);	
+
+//info
+	html = html
+.replace("%lat%", webApp.vars["data"]["info"]["lat"])
+.replace("%lon%", webApp.vars["data"]["info"]["lon"])
+.replace("%url%", webApp.vars["data"]["info"]["url"]);	
+
+//fact
+	html = html
+.replace("%temp%", webApp.vars["data"]["fact"]["temp"])
+.replace("%feels_like%", webApp.vars["data"]["fact"]["feels_like"])
+.replace("%temp_water%", webApp.vars["data"]["fact"]["temp_water"])
+.replace("%icon%", webApp.vars["data"]["fact"]["icon"])
+.replace("%condition%", webApp.vars["data"]["fact"]["condition"])
+.replace("%wind_speed%", webApp.vars["data"]["fact"]["wind_speed"])
+.replace("%wind_gust%", webApp.vars["data"]["fact"]["wind_gust"])
+.replace("%wind_dir%", webApp.vars["data"]["fact"]["wind_dir"])
+.replace("%pressure_mm%", webApp.vars["data"]["fact"]["pressure_mm"])
+.replace("%pressure_pa%", webApp.vars["data"]["fact"]["pressure_pa"])
+.replace("%humidity%", webApp.vars["data"]["fact"]["humidity"])
+.replace("%daytime%", webApp.vars["data"]["fact"]["daytime"])
+.replace("%polar%", webApp.vars["data"]["fact"]["polar"])
+.replace("%season%", webApp.vars["data"]["fact"]["season"])
+.replace("%obs_time%", webApp.vars["data"]["fact"]["obs_time"]);
+
+//forecast
+	html = html
+.replace("%date%", webApp.vars["data"]["forecast"]["date"])
+.replace("%date_ts%", webApp.vars["data"]["forecast"]["date_ts"])
+.replace("%week%", webApp.vars["data"]["forecast"]["week"])
+.replace("%sunrise%", webApp.vars["data"]["forecast"]["sunrise"])
+.replace("%week%", webApp.vars["data"]["forecast"]["week"])
+.replace("%moon_code%", webApp.vars["data"]["forecast"]["moon_code"])
+.replace("%moon_text%", webApp.vars["data"]["forecast"]["moon_text"]);
+
+//forecast parts
+	var html_parts=document.querySelector("#forecast-parts-0").innerHTML;
+	
+	var eveningObj = webApp.vars["data"]["forecast"]["parts"][0];
+	html_parts = html_parts
+.replace("%part_name%", eveningObj["part_name"])
+.replace("%temp_min%", eveningObj["temp_min"])
+.replace("%temp_max%", eveningObj["temp_max"])
+.replace("%temp_avg%", eveningObj["temp_avg"])
+.replace("%feels_like%", eveningObj["feels_like"])
+.replace("%icon%", eveningObj["icon"])
+.replace("%condition%", eveningObj["condition"])
+.replace("%daytime%", eveningObj["daytime"])
+.replace("%polar%", eveningObj["polar"])
+.replace("%wind_speed%", eveningObj["wind_speed"])
+.replace("%wind_gust%", eveningObj["wind_gust"])
+.replace("%wind_dir%", eveningObj["wind_dir"])
+.replace("%pressure_mm%", eveningObj["pressure_mm"])
+.replace("%pressure_pa%", eveningObj["pressure_pa"])
+.replace("%humidity%", eveningObj["humidity"])
+.replace("%prec_mm%", eveningObj["prec_mm"])
+.replace("%prec_period%", eveningObj["prec_period"])
+.replace("%prec_prob%", eveningObj["prec_prob"]);
+
+	html = html.replace("%forecast_part0%", html_parts);
+
+
+	document.querySelector("#response").innerHTML = html;
+}//end _buildWeatherHtml()
+
+
+
 //============================================== DRAW
 	function _draw_wrapData( opt ){
 		var p = {
@@ -939,7 +1206,7 @@ console.log("-- _draw_wrapData(), error, templateID was not defined...");
 		
 		if( !webApp.vars["templates"][p.templateID] ){
 webApp.vars["logMsg"] = "-- _draw_wrapData(),  error, not find template, id: " + p.templateID;
-_message( webApp.vars["logMsg"], "warning");
+func.logAlert( webApp.vars["logMsg"], "warning");
 console.log(webApp.vars["logMsg"]);
 			return false;
 		}
@@ -1185,7 +1452,7 @@ console.log(msg);
 		var templateID = p["templateID"];
 		if( !webApp.vars["templates"][templateID] ){
 webApp.vars["logMsg"] = "_draw_insertBlock(), error, not found template, id:" + templateID;
-//_message( webApp.vars["logMsg"], "error");
+//func.logAlert( webApp.vars["logMsg"], "error");
 console.log( "-- " + webApp.vars["logMsg"] );
 			if( typeof p["callback"] === "function"){
 				p["callback"]();
@@ -1195,7 +1462,7 @@ console.log( "-- " + webApp.vars["logMsg"] );
 		
 		if( !p["content"] || p["content"].length === 0){
 webApp.vars["logMsg"] = "_draw_insertBlock(), warning, not found or empty content block " + p["locationID"];
-//_message( webApp.vars["logMsg"], "warning");
+//func.logAlert( webApp.vars["logMsg"], "warning");
 console.log( "-- "+webApp.vars["logMsg"] );
 			//if( typeof p["callback"] === "function"){
 				//p["callback"]();
@@ -1212,7 +1479,7 @@ console.log( "-- "+webApp.vars["logMsg"] );
 			locationBlock.innerHTML = html;
 		} else {
 webApp.vars["logMsg"] = "error, not found block location id: " + p["locationID"];
-_message( webApp.vars["logMsg"], "error");
+func.logAlert( webApp.vars["logMsg"], "error");
 console.log( webApp.vars["logMsg"] );
 		}		
 		
@@ -1247,32 +1514,3 @@ console.log( webApp.vars["logMsg"] );
 	}//end _getRunTime()
 
 
-	function _message( message, level ){
-		switch (level) {
-			case "info":
-				message = "<p class='alert alert-info'>" + message + "</p>";
-				func.log(message);
-			break;
-			
-			case "warning":
-				message = "<p class='alert alert-warning'>" + message + "</p>";
-				func.log(message);
-			break;
-			
-			case "danger":
-			case "error":
-				message = "<p class='alert alert-danger'>" + message + "</p>";
-				func.log(message);
-			break;
-			
-			case "success":
-				message = "<p class='alert alert-success'>" + message + "</p>";
-				func.log(message);
-			break;
-			
-			default:
-				func.log(message);
-			break;
-		}//end switch
-		
-	}//end _message()

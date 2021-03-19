@@ -548,7 +548,7 @@ console.log( logMsg, xhr );
 				}
 			}
 
-console.log(xhr.upload);
+//console.log(xhr.upload);
 			if( xhr.upload ){
 /*				
 				xhr.upload.onerror = function(e){
