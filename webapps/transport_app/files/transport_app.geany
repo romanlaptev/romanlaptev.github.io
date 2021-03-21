@@ -22,7 +22,7 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=3
+current_page=10
 FILE_NAME_0=5523;HTML;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fwebapps%2Ftransport_app%2Fapp.html;0;4
 FILE_NAME_1=0;None;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fwebapps%2Ftransport_app%2Fnb.txt;0;4
 FILE_NAME_2=21774;Javascript;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fwebapps%2Ftransport_app%2Fjs%2Ffunctions.js;0;4
@@ -33,7 +33,7 @@ FILE_NAME_6=1;CSS;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.
 FILE_NAME_7=0;CSS;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fwebapps%2Ftransport_app%2Fcss%2Flr.css;0;4
 FILE_NAME_8=365;XML;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fwebapps%2Ftransport_app%2Ftpl%2Ftemplates.xml;0;4
 FILE_NAME_9=385742;HTML;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fwebapps%2Ftransport_app%2Ffiles_ignore%2Fya_pogoda.html;0;4
-FILE_NAME_10=2947;Javascript;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fwebapps%2Ftransport_app%2Fjs%2Fapp.js;0;4
+FILE_NAME_10=2641;Javascript;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fwebapps%2Ftransport_app%2Fjs%2Fapp.js;0;4
 
 [VTE]
 last_dir=/mnt/d2/www/sites/romanlaptev.github.io

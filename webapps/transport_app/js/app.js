@@ -106,6 +106,7 @@ show_systems=esr",
 		
 		"weatherAPI": {
 			"apiKey" : "dab03f2c-c76d-4fb6-9445-faa84fa80973",
+			"key2": "7440bb4eee1e2d8d92bd8ca4a926ddd6",
 /*			
 			"dataUrl" : "https://romanlaptev-cors.herokuapp.com/\
 https://api.weather.yandex.ru/v2/informers?\
@@ -117,7 +118,7 @@ lang=ru_RU",
 lat={{latitude}}\
 &lon={{longitude}}\
 &units=metric\
-&appid=7440bb4eee1e2d8d92bd8ca4a926ddd6\
+&appid={{key2}}\
 &callback=jsonp_callback",
 
 			//"dataUrl" : "files/test_ya_pogoda.json",
