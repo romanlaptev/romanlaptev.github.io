@@ -123,6 +123,98 @@ show_systems=esr",
 				"longitude": 83.0094459,
 			},
 			
+			dataTpl : {
+//Объект фактической информации о погоде			
+				"fact": {
+//"Код расшифровки погодного описания"					
+"condition": function(selectedOption){
+	var options = {
+"clear": "ясно",
+"partly-cloudy": "малооблачно",
+"cloudy": "облачно с прояснениями",
+"overcast": "пасмурно",
+"drizzle": "морось",
+"light-rain": "небольшой дождь",
+"rain": "дождь",
+"moderate-rain": "умеренно сильный дождь",
+"heavy-rain": "сильный дождь",
+"continuous-heavy-rain": "длительный сильный дождь",
+"showers": "ливень",
+"wet-snow": "дождь со снегом",
+"light-snow": "небольшой снег",
+"snow": "снег",
+"snow-showers": "снегопад",
+"hail": "град",
+"thunderstorm": "гроза",
+"thunderstorm-with-rain": "дождь с грозой",
+"thunderstorm-with-hail": "гроза с градом"	
+	};
+	return options[selectedOption];
+},
+//Направление ветра
+"wind_dir": function(selectedOption){
+	var options = {
+"nw": "северо-западное",
+"n": "северное",
+"ne": "северо-восточное",
+"e": "восточное",
+"se": "юго-восточное",
+"s": "южное",
+"sw": "юго-западное",
+"w": "западное",
+"с": "штиль"
+	};
+	return options[selectedOption];
+},
+
+"daytime": function(selectedOption){
+	var options = {
+"d": "светлое время суток",
+"n": "темное время суток"
+	};
+	return options[selectedOption];
+},
+
+"season": function(selectedOption){
+	var options = {
+"summer": "лето",
+"autumn": "осень",
+"winter": "зима",
+"spring": "весна"
+	};
+	return options[selectedOption];
+},
+
+				},//end object fact
+				
+//forecast, Объект прогнозной информации о погоде
+				"forecast": {
+//Текстовый код для фазы Луны					
+"moon_text": function(selectedOption){
+	var options = {
+"moon-code-0": "полнолуние",
+"moon-code-1": "убывающая луна",
+"moon-code-2": "убывающая луна",
+"moon-code-3": "убывающая луна",
+"moon-code-4": "последняя четверть",
+"moon-code-5": "убывающая луна",
+"moon-code-6": "убывающая луна",
+"moon-code-7": "убывающая луна",
+"moon-code-8": "новолуние",
+"moon-code-9": "растущая луна",
+"moon-code-10": "растущая луна",
+"moon-code-11": "растущая луна",
+"moon-code-12": "первая четверть",
+"moon-code-13": "растущая луна",
+"moon-code-14": "растущая луна",
+"moon-code-15": "растущая луна"
+	};
+	return options[selectedOption];
+},
+					
+				},
+			}
+			
 		},//end weatherAPI
 		
 		"logMsg" : "",
@@ -403,8 +495,10 @@ func.logAlert(webApp.logMsg, "error");
 								"postFunc" : function( data ){
 //console.log(arguments);
 									if( data ){
-										//_drawResponse();
-										_buildWeatherHtml();
+										webApp.vars[apiName]["data"] = data;
+										_buildWeatherHtml({
+											"data": data
+										});
 									}
 								}
 							});
@@ -1021,7 +1115,6 @@ console.log( key, tagNode[key] );
 				delete record["arrival"];
 			}//next
 */			
-			webApp.vars["data"] = jsonObj;
 			return jsonObj;
 			
 		} catch(error) {
@@ -1034,8 +1127,19 @@ func.logAlert( webApp.vars["logMsg"], "error");
 	}//end _parseJSON()
 	
 //==============================================
-function _buldScheduleHtml(){
-	if( !webApp.vars["DB"]["data"] ){
+function _buldScheduleHtml(opt){
+//console.log(opt);
+	var p = {
+		data: false
+	}
+	
+	//extend p object
+	for(var key in opt ){
+		p[key] = opt[key];
+	}
+//console.log(p);
+	
+	if( !p.data ){
 webApp.vars["logMsg"] = "error, not find data object..." ;
 func.logAlert( webApp.vars["logMsg"], "error");
 return false;
@@ -1058,7 +1162,7 @@ return false;
 		webApp.vars["tplNameList"] = "tpl-schedule-mobile--record";
 	}
 
-	var data = webApp.vars["DB"]["data"]["segments"];
+	var data = p.data["segments"];
 	var htmlTableList = "";
 	for(var n = 0; n < data.length; n++){
 		htmlTableList += __buildTableList( data[n] );
@@ -1070,6 +1174,7 @@ return false;
 //console.log( html);
 
 	return html;
+	
 	
 	function __buildTableList( data ){
 		//var htmlList = webApp.vars["templates"]["tpl-schedule-table--tr"];
@@ -1108,50 +1213,93 @@ return false;
 	
 }//end _buildScheduleHtml()
 
-function _buildWeatherHtml(){
+
+function _buildWeatherHtml(opt){
+//console.log(opt);
+	var p = {
+		data: false
+	}
+	
+	//extend p object
+	for(var key in opt ){
+		p[key] = opt[key];
+	}
+//console.log(p);
+	
+	if( !p.data ){
+webApp.vars["logMsg"] = "error, not find data object..." ;
+func.logAlert( webApp.vars["logMsg"], "error");
+return false;
+	}
+
 	var html = document.querySelector("#response").innerHTML;
 	
-	html = html.replace("%now%", webApp.vars["data"]["now"])
-.replace("%now_dt%", webApp.vars["data"]["now_dt"]);	
+	var serverTime = func.timeStampToDateStr({
+		"timestamp": p.data["now"],
+		"format": "yyyy-mm-dd hh:min:sec"
+	});
+	html = html.replace("%now%", serverTime)
+.replace("%now_dt%", p.data["now_dt"]);	
 
 //info
 	html = html
-.replace("%lat%", webApp.vars["data"]["info"]["lat"])
-.replace("%lon%", webApp.vars["data"]["info"]["lon"])
-.replace("%url%", webApp.vars["data"]["info"]["url"]);	
+.replace("%lat%", p.data["info"]["lat"])
+.replace("%lon%", p.data["info"]["lon"])
+.replace("%url%", p.data["info"]["url"]);	
 
 //fact
+	var selectedCondition = webApp.vars.weatherAPI.dataTpl.fact.condition(
+		p.data["fact"]["condition"]
+	);
+	var selectedWind = webApp.vars.weatherAPI.dataTpl.fact.wind_dir(
+		p.data["fact"]["wind_dir"]
+	);
+	var selectedDayTime = webApp.vars.weatherAPI.dataTpl.fact.daytime(
+		p.data["fact"]["daytime"]
+	);
+	var selectedSeason = webApp.vars.weatherAPI.dataTpl.fact.season(
+		p.data["fact"]["season"]
+	);
+	var obsTime = func.timeStampToDateStr({
+		"timestamp": p.data["fact"]["obs_time"],
+		"format": "yyyy-mm-dd hh:min"
+	});
+
 	html = html
-.replace("%temp%", webApp.vars["data"]["fact"]["temp"])
-.replace("%feels_like%", webApp.vars["data"]["fact"]["feels_like"])
-.replace("%temp_water%", webApp.vars["data"]["fact"]["temp_water"])
-.replace("%icon%", webApp.vars["data"]["fact"]["icon"])
-.replace("%condition%", webApp.vars["data"]["fact"]["condition"])
-.replace("%wind_speed%", webApp.vars["data"]["fact"]["wind_speed"])
-.replace("%wind_gust%", webApp.vars["data"]["fact"]["wind_gust"])
-.replace("%wind_dir%", webApp.vars["data"]["fact"]["wind_dir"])
-.replace("%pressure_mm%", webApp.vars["data"]["fact"]["pressure_mm"])
-.replace("%pressure_pa%", webApp.vars["data"]["fact"]["pressure_pa"])
-.replace("%humidity%", webApp.vars["data"]["fact"]["humidity"])
-.replace("%daytime%", webApp.vars["data"]["fact"]["daytime"])
-.replace("%polar%", webApp.vars["data"]["fact"]["polar"])
-.replace("%season%", webApp.vars["data"]["fact"]["season"])
-.replace("%obs_time%", webApp.vars["data"]["fact"]["obs_time"]);
+.replace("%temp%", p.data["fact"]["temp"])
+.replace("%feels_like%", p.data["fact"]["feels_like"])
+.replace("%temp_water%", p.data["fact"]["temp_water"])
+.replace("%icon%", p.data["fact"]["icon"])
+.replace("%condition%", selectedCondition )
+.replace("%wind_speed%", p.data["fact"]["wind_speed"])
+.replace("%wind_gust%", p.data["fact"]["wind_gust"])
+.replace("%wind_dir%", selectedWind)
+.replace("%pressure_mm%", p.data["fact"]["pressure_mm"])
+.replace("%pressure_pa%", p.data["fact"]["pressure_pa"])
+.replace("%humidity%", p.data["fact"]["humidity"])
+.replace("%daytime%", selectedDayTime)
+.replace("%polar%", p.data["fact"]["polar"])
+.replace("%season%", selectedSeason)
+.replace("%obs_time%", obsTime);
 
 //forecast
+	var selectedMoonText = webApp.vars.weatherAPI.dataTpl.forecast.moon_text(
+		p.data["forecast"]["moon_text"]
+	);
 	html = html
-.replace("%date%", webApp.vars["data"]["forecast"]["date"])
-.replace("%date_ts%", webApp.vars["data"]["forecast"]["date_ts"])
-.replace("%week%", webApp.vars["data"]["forecast"]["week"])
-.replace("%sunrise%", webApp.vars["data"]["forecast"]["sunrise"])
-.replace("%week%", webApp.vars["data"]["forecast"]["week"])
-.replace("%moon_code%", webApp.vars["data"]["forecast"]["moon_code"])
-.replace("%moon_text%", webApp.vars["data"]["forecast"]["moon_text"]);
+.replace("%date%", p.data["forecast"]["date"])
+.replace("%date_ts%", p.data["forecast"]["date_ts"])
+.replace("%week%", p.data["forecast"]["week"])
+.replace("%sunrise%", p.data["forecast"]["sunrise"])
+.replace("%sunset%", p.data["forecast"]["sunset"])
+.replace("%week%", p.data["forecast"]["week"])
+//.replace("%moon_code%", p.data["forecast"]["moon_code"])
+.replace("%moon_text%", selectedMoonText);
 
 //forecast parts
 	var html_parts=document.querySelector("#forecast-parts-0").innerHTML;
 	
-	var eveningObj = webApp.vars["data"]["forecast"]["parts"][0];
+	var eveningObj = p.data["forecast"]["parts"][0];
 	html_parts = html_parts
 .replace("%part_name%", eveningObj["part_name"])
 .replace("%temp_min%", eveningObj["temp_min"])

@@ -793,6 +793,12 @@ console.log( "xhr.onerror,", e);
 //timestamp : ....timestamp string....,
 //format : "yyyy-mm-dd hh:min" 
 //});
+//1331352390 --> 10-Mar-2012 12:06:30
+
+//https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript
+// Create a new JavaScript Date object based on the timestamp
+// multiplied by 1000 so that the argument is in milliseconds, not seconds.
+//var date = new Date(unix_timestamp * 1000)
 //================================
 		function _timeStampToDateStr( opt ){
 			var p = {
@@ -808,7 +814,9 @@ console.log( "xhr.onerror,", e);
 			if( !p.timestamp || p.timestamp.length === 0){
 				var d = new Date();
 			} else {
-				var d = new Date( p.timestamp );
+				// multiplied by 1000 so that the argument is in milliseconds, not seconds.
+				timestamp = p.timestamp * 1000;
+				var d = new Date( timestamp );
 			}
 			
 			var sYear = d.getFullYear();
