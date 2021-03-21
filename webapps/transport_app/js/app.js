@@ -106,12 +106,24 @@ show_systems=esr",
 		
 		"weatherAPI": {
 			"apiKey" : "dab03f2c-c76d-4fb6-9445-faa84fa80973",
-			//"dataUrl" : "https://romanlaptev-cors.herokuapp.com/\
-//https://api.weather.yandex.ru/v2/informers?\
-//lat={{latitude}}&\
-//lon={{longitude}}&\
-//lang=ru_RU",
-			"dataUrl" : "files/test_ya_pogoda.json",
+/*			
+			"dataUrl" : "https://romanlaptev-cors.herokuapp.com/\
+https://api.weather.yandex.ru/v2/informers?\
+lat={{latitude}}&\
+lon={{longitude}}&\
+lang=ru_RU",
+*/
+			"dataUrl" : "http://api.openweathermap.org/data/2.5/weather?\
+lat={{latitude}}\
+&lon={{longitude}}\
+&units=metric\
+&appid=7440bb4eee1e2d8d92bd8ca4a926ddd6\
+&callback=jsonp_callback",
+
+			//"dataUrl" : "files/test_ya_pogoda.json",
+			//"dataUrl" : "files/openweathermap_Mochishche.json,
+			//"dataUrl" : "files/openweathermap_Novosibirsk.json
+			//"dataUrl" : "files/openweathermap_Novosibirsk_forecast.json
 
 			"requestParams" : {
 				//Moskow
@@ -121,6 +133,11 @@ show_systems=esr",
 //Новосибирск, Дзержинский район, Волочаевский жилмассив, 
 				"latitude": 55.038115899999994,
 				"longitude": 83.0094459,
+
+//Дачная улица, 38
+//посёлок Октябрьский, Мошковский район, Новосибирская область, Россия
+				//"latitude": 55.169005, 
+				//"longitude": 83.160846
 			},
 			
 			dataTpl : {
@@ -211,9 +228,22 @@ show_systems=esr",
 	};
 	return options[selectedOption];
 },
+
+//Название времени суток
+"part_name": function(selectedOption){
+	var options = {
+"night": "ночь",
+"morning": "утро",
+"day": "день",
+"evening": "вечер"
+	};
+	return options[selectedOption];
+},
+
+
 					
 				},
-			}
+			}//end forecast object
 			
 		},//end weatherAPI
 		
@@ -270,6 +300,7 @@ console.log("init webapp!");
 	
 };//end webApp()
 console.log(webApp);
+
 
 
 function _runRequest( opt ){
@@ -480,14 +511,21 @@ func.logAlert(webApp.logMsg, "error");
 				for(var key in requestParams){
 					url = url.replace( new RegExp("{{"+key+"}}", "g"), requestParams[key] );
 				}//next
-
+				
+//jsonp
+//#https://stackoverflow.com/questions/22780430/javascript-xmlhttprequest-using-jsonp				
+ var script = document.createElement('script');
+ script.src = url;
+ document.body.appendChild(script);
+return;				
+    
 				sendRequest({
 					"dataUrl": url,
 					"apiName" : apiName,
 					"apiKey" : webApp.vars[apiName]["apiKey"],
 					"callback" : function( response ){
-//console.log(arguments);
-
+console.log(arguments);
+/*
 						if(response){
 							_parseAjax({
 								"responseType": webApp.vars["responseType"],
@@ -505,7 +543,7 @@ func.logAlert(webApp.logMsg, "error");
 var logMsg = "end parse ajax response";
 func.logAlert( logMsg, "info");
 						}
-
+*/
 					}//end callback
 				});
 
@@ -962,9 +1000,9 @@ console.log( webApp.vars["logMsg"] );
 	//console.log( key +" : "+xhr[key] );
 	//}
 
-	_vars["logMsg"] = "error, ajax load failed...";
+	webApp.vars["logMsg"] = "error, ajax load failed...";
 	//func.logAlert( _vars["logMsg"], "error");
-	func.logAlert( _vars["logMsg"], "danger");
+	func.logAlert( webApp.vars["logMsg"], "danger");
 				p.callback(false);
 			}
 			
@@ -1286,6 +1324,7 @@ return false;
 	var selectedMoonText = webApp.vars.weatherAPI.dataTpl.forecast.moon_text(
 		p.data["forecast"]["moon_text"]
 	);
+	
 	html = html
 .replace("%date%", p.data["forecast"]["date"])
 .replace("%date_ts%", p.data["forecast"]["date_ts"])
@@ -1299,29 +1338,79 @@ return false;
 //forecast parts
 	var html_parts=document.querySelector("#forecast-parts-0").innerHTML;
 	
-	var eveningObj = p.data["forecast"]["parts"][0];
-	html_parts = html_parts
-.replace("%part_name%", eveningObj["part_name"])
-.replace("%temp_min%", eveningObj["temp_min"])
-.replace("%temp_max%", eveningObj["temp_max"])
-.replace("%temp_avg%", eveningObj["temp_avg"])
-.replace("%feels_like%", eveningObj["feels_like"])
-.replace("%icon%", eveningObj["icon"])
-.replace("%condition%", eveningObj["condition"])
-.replace("%daytime%", eveningObj["daytime"])
-.replace("%polar%", eveningObj["polar"])
-.replace("%wind_speed%", eveningObj["wind_speed"])
-.replace("%wind_gust%", eveningObj["wind_gust"])
-.replace("%wind_dir%", eveningObj["wind_dir"])
-.replace("%pressure_mm%", eveningObj["pressure_mm"])
-.replace("%pressure_pa%", eveningObj["pressure_pa"])
-.replace("%humidity%", eveningObj["humidity"])
-.replace("%prec_mm%", eveningObj["prec_mm"])
-.replace("%prec_period%", eveningObj["prec_period"])
-.replace("%prec_prob%", eveningObj["prec_prob"]);
+	var partObj = p.data["forecast"]["parts"][0];
+	var selectedPartName = webApp.vars.weatherAPI.dataTpl.forecast.part_name(
+		partObj["part_name"]
+	);
+	var selectedCondition2 = webApp.vars.weatherAPI.dataTpl.fact.condition(
+		partObj["condition"]
+	);
+	var selectedWind2 = webApp.vars.weatherAPI.dataTpl.fact.wind_dir(
+		partObj["wind_dir"]
+	);
+	var selectedDayTime2 = webApp.vars.weatherAPI.dataTpl.fact.daytime(
+		partObj["daytime"]
+	);
 
+	html_parts = html_parts
+.replace("%part_name%", selectedPartName)
+.replace("%temp_min%", partObj["temp_min"])
+.replace("%temp_max%", partObj["temp_max"])
+.replace("%temp_avg%", partObj["temp_avg"])
+.replace("%feels_like%", partObj["feels_like"])
+.replace("%icon%", partObj["icon"])
+.replace("%condition%", selectedCondition2)
+.replace("%daytime%", selectedDayTime2)
+.replace("%polar%", partObj["polar"])
+.replace("%wind_speed%", partObj["wind_speed"])
+.replace("%wind_gust%", partObj["wind_gust"])
+.replace("%wind_dir%", selectedWind2)
+.replace("%pressure_mm%", partObj["pressure_mm"])
+.replace("%pressure_pa%", partObj["pressure_pa"])
+.replace("%humidity%", partObj["humidity"])
+.replace("%prec_mm%", partObj["prec_mm"])
+.replace("%prec_period%", partObj["prec_period"])
+.replace("%prec_prob%", partObj["prec_prob"]);
 	html = html.replace("%forecast_part0%", html_parts);
 
+
+//---------------
+	var html_parts=document.querySelector("#forecast-parts-0").innerHTML;
+	
+	var partObj = p.data["forecast"]["parts"][1];
+	var selectedPartName = webApp.vars.weatherAPI.dataTpl.forecast.part_name(
+		partObj["part_name"]
+	);
+	var selectedCondition2 = webApp.vars.weatherAPI.dataTpl.fact.condition(
+		partObj["condition"]
+	);
+	var selectedWind2 = webApp.vars.weatherAPI.dataTpl.fact.wind_dir(
+		partObj["wind_dir"]
+	);
+	var selectedDayTime2 = webApp.vars.weatherAPI.dataTpl.fact.daytime(
+		partObj["daytime"]
+	);
+
+	html_parts = html_parts
+.replace("%part_name%", selectedPartName)
+.replace("%temp_min%", partObj["temp_min"])
+.replace("%temp_max%", partObj["temp_max"])
+.replace("%temp_avg%", partObj["temp_avg"])
+.replace("%feels_like%", partObj["feels_like"])
+.replace("%icon%", partObj["icon"])
+.replace("%condition%", selectedCondition2)
+.replace("%daytime%", selectedDayTime2)
+.replace("%polar%", partObj["polar"])
+.replace("%wind_speed%", partObj["wind_speed"])
+.replace("%wind_gust%", partObj["wind_gust"])
+.replace("%wind_dir%", selectedWind2)
+.replace("%pressure_mm%", partObj["pressure_mm"])
+.replace("%pressure_pa%", partObj["pressure_pa"])
+.replace("%humidity%", partObj["humidity"])
+.replace("%prec_mm%", partObj["prec_mm"])
+.replace("%prec_period%", partObj["prec_period"])
+.replace("%prec_prob%", partObj["prec_prob"]);
+	html = html.replace("%forecast_part1%", html_parts);
 
 	document.querySelector("#response").innerHTML = html;
 }//end _buildWeatherHtml()
@@ -1662,3 +1751,6 @@ console.log( webApp.vars["logMsg"] );
 	}//end _getRunTime()
 
 
+function jsonp_callback(response){
+console.log("test jsonp", response);
+}

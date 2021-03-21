@@ -152,113 +152,61 @@ href="?q=switch-tab&target_id=tab-weather">Погода</a>
 
 
 
-<div class="bg-lavenderblush lr-padding-20">
-	<h3>данные прогноза погоды</h3>
+<div class="bg-lightgreen lr-padding-20">
+	<h3>данные прогноза погоды на %date%</h3>
 	
 	<div class="lr-panel">
+
 		<p>
-Дата прогноза: <b>%date%</b>, <!-- <b>%date_ts%</b> -->
-порядковый номер недели: <b>%week%</b> 
-		</p>
-<p>
-	Время восхода Солнца: <b>%sunrise%</b>,  
-	время заката Солнца: <b>%sunset%</b>, 
-	<b>%moon_text%</b>
-<p>
+Время восхода Солнца: <b>%sunrise%</b>,  
+время заката Солнца: <b>%sunset%</b>,
+<b>%moon_text%</b>
+		<p>
+
+		<div class="lr-row">		
+			<div class="w50 float-left bg-darkblue-gray color-white lr-padding-20">
+		%forecast_part0%
+			</div>
+			<div class="w50 float-left bg-aliceblue color-black lr-padding-20">
+		%forecast_part1%
+			</div>
+		</div>
+
 	</div>
 </div>
-
-	<ul class="lr-list-unstyled color-black">
-		
-		<li>
-			<div class="lr-padding-20 bg-palegreen2">
-%forecast_part0%
-			</div>			
-		</li><!-- end parts info -->
-	</ul>
-</div><!-- end forecast info -->
+	
 			</div><!-- end response block -->
 			
 
-<div id="forecast-parts-0">
-	<ul  class="lr-list-group bg-lightgreen2 color-black">
-<h4>parts 	Прогнозы по времени суток.</h4>
-<p>Все прогнозы погоды на время суток имеют одинаковый набор полей.
-Ответ содержит прогноз на 2 ближайших периода.</p>
-
-		<li>part_name: <b>%part_name%</b>	
-			<small>Название времени суток. Возможные значения:</small>
-<pre>
-night — ночь.
-morning — утро.
-day — день.
-evening — вечер.
-</pre>
-		</li>
-		<li>temp_min: <b>%temp_min%</b>	<small>Минимальная температура для времени суток (°C). 	Число</small></li>
-		<li>temp_max: <b>%temp_max%</b>	<small>Максимальная температура для времени суток (°C). 	Число</small></li>
-		<li>temp_avg: <b>%temp_avg%</b>	<small>Средняя температура для времени суток (°C). 	Число</small></li>
-		<li>feels_like: <b>%feels_like%</b>	<small>Ощущаемая температура (°C). 	Число</small></li>
-
-		<li>icon: <img src="https://yastatic.net/weather/i/icons/blueye/color/svg/%icon%.svg"></li>
-		
-		<li>condition: <b>%condition%</b>	
-<small>Код расшифровки погодного описания. Возможные значения:</small>
-<pre>
-clear — ясно.
-partly-cloudy — малооблачно.
-cloudy — облачно с прояснениями.
-overcast — пасмурно.
-drizzle — морось.
-light-rain — небольшой дождь.
-rain — дождь.
-moderate-rain — умеренно сильный дождь.
-heavy-rain — сильный дождь.
-continuous-heavy-rain — длительный сильный дождь.
-showers — ливень.
-wet-snow — дождь со снегом.
-light-snow — небольшой снег.
-snow — снег.
-snow-showers — снегопад.
-hail — град.
-thunderstorm — гроза.
-thunderstorm-with-rain — дождь с грозой.
-thunderstorm-with-hail — гроза с градом.
-</pre>
-		</li>
-		<li>daytime: <b>%daytime%</b>	
-<small>Светлое или темное время суток. Возможные значения:</small>
-<pre>
-    «d» — светлое время суток.
-    «n» — темное время суток.
-</pre>
-</li>
-		<li>polar: <b>%polar%</b>	<small>Признак того, что время суток, указанное в поле daytime, является полярным. 	Логический</small></li>
-
-		<li>wind_speed: <b>%wind_speed%</b>	<small>Скорость ветра (в м/с). 	Число</small></li>
-		<li>wind_gust: <b>%wind_gust%</b>	<small>Скорость порывов ветра (в м/с). 	Число</small></li>
-		<li>wind_dir: <b>%wind_dir%</b>	
-<small>Направление ветра. Возможные значения:</small>
-<pre>
-«nw» — северо-западное.
-«n» — северное.
-«ne» — северо-восточное.
-«e» — восточное.
-«se» — юго-восточное.
-«s» — южное.
-«sw» — юго-западное.
-«w» — западное.
-«с» — штиль.
-</pre>
-</li>
-		<li>pressure_mm: <b>%pressure_mm%</b>	<small>Давление (в мм рт. ст.). 	Число</small></li>
-		<li>pressure_pa: <b>%pressure_pa%</b>	<small>Давление (в гектопаскалях). 	Число</small></li>
-		<li>humidity: <b>%humidity%</b>	<small>Влажность воздуха (в процентах). 	Число</small></li>
-		<li>prec_mm: <b>%prec_mm%</b>	<small>Прогнозируемое количество осадков (в мм). 	Число</small></li>
-		<li>prec_period: <b>%prec_period%</b>	<small>Прогнозируемый период осадков (в минутах). 	Число</small></li>
-		<li>prec_prob: <b>%prec_prob%</b>	<small>Вероятность выпадения осадков. 	Число</small></li>
-	</ul>
-
+<div id="forecast-parts-0" class="hidden">
+	<h4>%part_name%</h4>
+	<div>
+		<img class="w5" src="https://yastatic.net/weather/i/icons/blueye/color/svg/%icon%.svg">
+		<div><b>%condition%</b></div>
+	</div>
+<p>
+Мин. т.: <b>%temp_min% °C</b>,
+Макс. т.: <b>%temp_max% °C</b>,
+Средняя т.: <b>%temp_avg% °C</b>,
+Ощущаемая т.: <b>%feels_like% °C</b>
+<p>
+<b>%daytime%</b>
+<p>
+	Направление ветра <b>%wind_dir%</b>, 
+	скорость: <b>%wind_speed%</b> м/с, 
+	скорость порывов ветра: <b>%wind_gust%</b> м/с
+</p>
+<p>
+	Влажность воздуха: <b>%humidity%</b>, 
+	давление: <b>%pressure_mm%</b> мм рт. ст.
+</p>
+<p>
+	Прогноз осадков: <b>%prec_mm%</b> (мм), 
+<!--
+	<li>prec_period: <b>%prec_period%</b>	<small>Прогнозируемый период осадков (в минутах). 	Число</small></li>
+-->
+	Вероятность выпадения осадков: <b>%prec_prob%</b>
+</p>
 	</div><!-- end forecast-parts-0 -->
 			
 				</div>
