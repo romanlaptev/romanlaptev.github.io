@@ -134,24 +134,33 @@ href="?q=switch-tab&target_id=tab-weather">Погода</a>
 </div>
 
 <div class="bg-grey-green lr-padding-20">
+<!--
 	<h3>info, Объект информации о населенном пункте.</h3>
+-->
 	<ul class="lr-list-unstyled lr-padding-small">
-		<li>lat: <b>%lat%</b>	<small>Широта (в градусах). 	Число</small></li>
-		<li>lon: <b>%lon%</b>	<small>Долгота (в градусах). 	Число</small></li>
-		<li>url: <b>%url%</b>	<small>Страница населенного пункта на сайте Яндекс.Погода. 	Строка</small></li>
+		<li>Широта: <b>%lat%</b></li>
+		<li>Долгота: <b>%lon%</b></li>
+		<li><a href="%url%"><small>Страница населенного пункта на сайте Яндекс.Погода.</small></a></li>
 	</ul>
 </div>
 
 <div class="bg-lavender lr-padding-20">
+	
+<!--
 	<h3>fact, Объект фактической информации о погоде.</h3>
 	<p>Объект содержит информацию о погоде на данный момент.</p>
+-->
 	
 <ul class="lr-list-group ">
-	<li>temp: <b>%temp%</b>	<small>Температура (°C). 	Число</small></li>
-	<li>feels_like: <b>%feels_like%</b>	<small>Ощущаемая температура (°C). 	Число</small></li>
-	<li>temp_water: <b>%temp_water%</b>	<small>Температура воды (°C). Параметр возвращается для населенных пунктов, где данная информация актуальна. 	Число</small></li>
+	<li>Температура (°C): <b>%temp%</b></li>
+	<li>Ощущаемая температура (°C): <b>%feels_like%</b></li>
+	<li>Температура воды (°C): <b>%temp_water%</b></li>
 
-	<li>icon: <b>%icon%</b>	<small>Код иконки погоды. Иконка доступна по адресу https://yastatic.net/weather/i/icons/blueye/color/svg/значение из поля icon.svg. 	Строка</small></li>
+
+
+	<div class="w5">
+		<img src="https://yastatic.net/weather/i/icons/blueye/color/svg/%icon%.svg">
+	</div>
 	<li>condition: <b>%condition%</b>	
 <small>Код расшифровки погодного описания. Возможные значения:</small>
 <pre>
@@ -177,10 +186,10 @@ href="?q=switch-tab&target_id=tab-weather">Погода</a>
 </pre>
 	</li>
 
-	<li>wind_speed: <b>%wind_speed%</b>	<small>Скорость ветра (в м/с). 	Число</small></li>
-	<li>wind_gust: <b>%wind_gust%</b>	<small>Скорость порывов ветра (в м/с). 	Число</small></li>
-	<li>wind_dir: <b>%wind_dir%</b>	
-<small>Направление ветра. Возможные значения:</small>
+	<li>Скорость ветра (в м/с): <b>%wind_speed%</b></li>
+	<li>Скорость порывов ветра (в м/с): <b>%wind_gust%</b></li>
+	<li>Направление ветра: <b>%wind_dir%</b>	
+<small>Возможные значения:</small>
 <pre>
     «nw» — северо-западное.
     «n» — северное.
@@ -194,21 +203,24 @@ href="?q=switch-tab&target_id=tab-weather">Погода</a>
 </pre>
 	</li>
 	
-	<li>pressure_mm: <b>%pressure_mm%</b>	<small>Давление (в мм рт. ст.). 	Число</small></li>
+	<li>Давление: <b>%pressure_mm%</b>мм рт. ст.</li>
+<!--
 	<li>pressure_pa: <b>%pressure_pa%</b>	<small>Давление (в гектопаскалях). 	Число</small></li>
-	<li>humidity: <b>%humidity%</b>	<small>Влажность воздуха (в процентах). 	Число</small></li>
+-->
+	<li>Влажность воздуха: <b>%humidity%</b>%</li>
 
-	<li>daytime: <b>%daytime%</b>	
-<small>Светлое или темное время суток. Возможные значения:</small>
+	<li>время суток: <b>%daytime%</b><small> Возможные значения:</small>
 <pre>
     «d» — светлое время суток.
     «n» — темное время суток.
 </pre>
 	</li>
 	
+<!--
 	<li>polar: <b>%polar%</b>	<small>Признак того, что время суток, указанное в поле daytime, является полярным. 	Логический</small></li>
-	<li>season: <b>%season%</b>	
-<small>Время года в данном населенном пункте. Возможные значения:</small>
+-->
+	<li>Время года: <b>%season%</b>	
+<small>Возможные значения:</small>
 <pre>
     «summer» — лето.
     «autumn» — осень.
@@ -217,7 +229,7 @@ href="?q=switch-tab&target_id=tab-weather">Погода</a>
 </pre>
 	</li>
 	
-	<li>obs_time: <b>%obs_time%</b>	<small>Время замера погодных данных в формате Unixtime. 	Число</small></li>
+	<li>Время замера погодных данных: <b>%obs_time%</b>	<small></small></li>
 	
 </ul>
 </div>
@@ -300,7 +312,8 @@ evening — вечер.
 		<li>temp_avg: <b>%temp_avg%</b>	<small>Средняя температура для времени суток (°C). 	Число</small></li>
 		<li>feels_like: <b>%feels_like%</b>	<small>Ощущаемая температура (°C). 	Число</small></li>
 
-		<li>icon: <b>%icon%</b>	<small>Код иконки погоды. Иконка доступна по адресу https://yastatic.net/weather/i/icons/blueye/color/svg/<значение из поля icon>.svg. 	Строка</small></li>
+		<li>icon: <img src="https://yastatic.net/weather/i/icons/blueye/color/svg/%icon%.svg"></li>
+		
 		<li>condition: <b>%condition%</b>	
 <small>Код расшифровки погодного описания. Возможные значения:</small>
 <pre>
