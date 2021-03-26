@@ -107,20 +107,20 @@ show_systems=esr",
 		"weatherAPI": {
 			"apiKey" : "dab03f2c-c76d-4fb6-9445-faa84fa80973",
 			"key2": "7440bb4eee1e2d8d92bd8ca4a926ddd6",
-/*			
+
 			"dataUrl" : "https://romanlaptev-cors.herokuapp.com/\
 https://api.weather.yandex.ru/v2/informers?\
 lat={{latitude}}&\
 lon={{longitude}}&\
 lang=ru_RU",
-*/
+/*
 			"dataUrl" : "http://api.openweathermap.org/data/2.5/weather?\
 lat={{latitude}}\
 &lon={{longitude}}\
 &units=metric\
 &appid={{key2}}\
 &callback=jsonp_callback",
-
+*/
 			//"dataUrl" : "files/test_ya_pogoda.json",
 			//"dataUrl" : "files/openweathermap_Mochishche.json,
 			//"dataUrl" : "files/openweathermap_Novosibirsk.json
@@ -515,18 +515,18 @@ func.logAlert(webApp.logMsg, "error");
 				
 //jsonp
 //#https://stackoverflow.com/questions/22780430/javascript-xmlhttprequest-using-jsonp				
- var script = document.createElement('script');
- script.src = url;
- document.body.appendChild(script);
-return;				
+ //var script = document.createElement('script');
+ //script.src = url;
+ //document.body.appendChild(script);
+//return;				
     
 				sendRequest({
 					"dataUrl": url,
 					"apiName" : apiName,
 					"apiKey" : webApp.vars[apiName]["apiKey"],
 					"callback" : function( response ){
-console.log(arguments);
-/*
+//console.log(arguments);
+
 						if(response){
 							_parseAjax({
 								"responseType": webApp.vars["responseType"],
@@ -544,7 +544,7 @@ console.log(arguments);
 var logMsg = "end parse ajax response";
 func.logAlert( logMsg, "info");
 						}
-*/
+
 					}//end callback
 				});
 
