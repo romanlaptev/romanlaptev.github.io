@@ -6,19 +6,17 @@ html {
 	box-sizing:inherit;
 }
 
-
-.lr-container {
-	width: 90%;
-	margin: auto;
-	padding: 20px;
-}
-
 a {
 	/*color: #8a29e3;*/
 	/*color: #ff5151;*/
 	text-decoration:none;
 }
 a:active, a:focus { outline: none; }
+
+pre {
+	overflow: auto;
+}
+
 
 /* GRID */
 .w1{width:1%;}
@@ -41,6 +39,13 @@ a:active, a:focus { outline: none; }
 .w90{width:90%;}
 .w100{width:100%;}
 
+
+.lr-container {
+	width: 90%;
+	margin: auto;
+	padding: 20px;
+}
+
 .lr-row {
 	/* float: none; */
 	clear: both;
@@ -49,7 +54,6 @@ a:active, a:focus { outline: none; }
 .clearfix {
 	clear: both;
 }
-
 .lr-float-left, .float-left, .pull-left {
 	float: left;
 }
@@ -58,35 +62,27 @@ a:active, a:focus { outline: none; }
 }
 
 
-.lr-page-header, 
-.page-header {
+.lr-page-header, .page-header {
 	border-bottom: 1px solid #000;
 }
-.lr-head3 {
-	font-size: 18px;
-	font-weight: bold;
-}
+.lr-head3 {font-size: 18px;font-weight: bold;}
 .lr-head2 {font-size: 24px;font-weight: bold;}
 
-
-.text-left{text-align:left;}
-.text-right{text-align:right;}
-.text-center{text-align:center;}
-.text-underline{text-decoration:underline;}
-.text-bold{font-weight:bold;}
+.lr-text-left, .text-left{text-align:left;}
+.lr-text-right, .text-right{text-align:right;}
+.lr-text-center, .text-center{text-align:center;}
+.lr-text-underline, .text-underline{text-decoration:underline;}
+.lr-text-bold, .text-bold{font-weight:bold;}
 
 .lr-margin-small, .margin-small{margin:5px;}
 .lr-margin-small-top{margin-top:5px;}
-
 .lr-margin-auto, .margin-auto{margin:auto;}
-
 .lr-margin-10, .lr-margin10 {margin:10px;}
 .lr-margin-20, .lr-margin20 {margin:20px;}
 .lr-margin-10-top, .lr-margin10-top {margin-top:10px;}
 .lr-margin-20-top, .lr-margin20-top {margin-top:20px;}
 
 .lr-padding-small, .padding-small{padding:5px;}
-
 .lr-padding-10, .padding-10{padding:10px;}
 .lr-padding-20, .lr-padding20, .padding-20, .padding20 {padding:20px;}
 .lr-padding-10-top, .lr-padding10-top {padding-top: 10px;}
@@ -95,16 +91,13 @@ a:active, a:focus { outline: none; }
 .lr-padding-50-top, .lr-padding50-top {padding-top: 50px;}
 .lr-padding-60-top, .lr-padding60-top {padding-top: 60px;}
 
-
 .colorbox { padding:20px; }
 
 .lr-font-bold{	font-weight:bold;}
 .lr-font-italic{ font-style:italic;}
-.lr-text-small{
-	font-size: 12px;
-}
+.lr-text-small{	font-size: 12px;}
 
-.hidden {display:none;}
+.lr-hidden, .hidden {display:none;}
 
 /*
 input, textarea {outline:none;}
@@ -118,18 +111,12 @@ textarea {resize:horizontal;}
 /* PANELS */
 .lr-panel {
 /*
-	margin: 10px;
-	padding: 10px;
-*/
-	/*background-color: #fff;*/
-	/*background-color: #b6cfed;*/
-/*
 	border: 1px solid transparent;
 	border-radius: 4px;
 	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
 	box-shadow: 0 1px 1px rgba(0,0,0,.05);
 */
-	/*word-wrap: break-word;*/
+	word-wrap: break-word;
 	/*word-break: break-all;*/
 }
 
@@ -148,6 +135,8 @@ textarea {resize:horizontal;}
 	display: inline-block;
 	vertical-align: top;
 }
+
+
 /*================================*/
 
 
@@ -1776,10 +1765,12 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-color-test1gb7766 { background:rgb(77,66,90); }
 .bg-color-test1gb7792 { background:rgb(77,92,106); }
 .bg-color-test14D425A { background:#4D425A; }
-.bg-color-test1580C61 { background:#580C61;}
 .bg-color-test14b0082 { background:#4b0082;}
-.bg-color-test12E1441 { background:#2E1441;}
-.bg-color-test141013D { background:#41013D;}
+
+.bg-dark-purple1 { background:#2E1441;}
+.bg-dark-purple2 { background:#41013D;}
+.bg-dark-purple3 { background:#580C61;}
+
 .bg-color-test14f5a6e { background:#4f5a6e;}
 .bg-color-test1D5DBE1 { background:#D5DBE1;}
 .bg-color-test1a7adbc { background:#a7adbc;}
@@ -2332,7 +2323,11 @@ inset -2px -1px 40px rgba(0, 0, 0, 0.1),
 @media screen and (max-width:1600px){}
 @media screen and (max-width:1439px){}
 @media screen and (max-width:1300px){}
-@media screen and (max-width:1280px){}
+@media screen and (max-width:1280px){
+	.lr-panel-inline {
+		width: 45%;
+	}
+}
 @media screen and (max-width:1090px){}
 @media screen and (max-width:1023px){}
 
@@ -2351,13 +2346,12 @@ inset -2px -1px 40px rgba(0, 0, 0, 0.1),
   }  
 }
 
-@media screen and (max-width:870px){}
-
-@media(max-width: 800px){
+@media screen and (max-width:870px){
 	.lr-panel-inline {
-		width: auto;
+		width: auto !important;
 	}
 }
+@media(max-width: 800px){}
 
 @media screen and (max-width:790px){}
 

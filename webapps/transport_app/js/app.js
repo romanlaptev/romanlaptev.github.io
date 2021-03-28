@@ -761,7 +761,13 @@ console.log( webApp.vars["logMsg"], arguments );
 //console.log( "onError ", arguments);
 webApp.vars["logMsg"] = "error, ajax load failed..." + webApp.vars["copyRight"]["url"];
 func.logAlert( webApp.vars["logMsg"], "error");
-console.log( webApp.vars["logMsg"] );
+
+				for( var key in e){
+					webApp.vars["logMsg"] = "<b>"+key +"</b> : "+ e[key];
+					func.logAlert( webApp.vars["logMsg"], "error");
+//console.log( webApp.vars["logMsg"] );
+				}//next
+				
 			if( typeof  postFunc === "function"){
 				postFunc();
 			}
@@ -881,7 +887,11 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 //console.log( "onError ", arguments);
 webApp.vars["logMsg"] = "error, ajax load failed..." + webApp.vars["DB"]["dataUrl"];
 func.logAlert( webApp.vars["logMsg"], "error");
-console.log( webApp.vars["logMsg"] );
+				for( var key in e){
+					webApp.vars["logMsg"] = "<b>"+key +"</b> : "+ e[key];
+					func.logAlert( webApp.vars["logMsg"], "error");
+//console.log( webApp.vars["logMsg"] );
+				}//next
 				if( typeof p["postFunc"] === "function"){
 					p["postFunc"]();
 				}
@@ -995,17 +1005,21 @@ console.log( webApp.vars["logMsg"] );
 			}//end onload
 			
 			xhr.onerror = function(e) {
-	console.log(arguments);		
-	console.log(e);		
-	//for(var key in xhr){
-	//console.log( key +" : "+xhr[key] );
-	//}
+//console.log(arguments);		
+console.log(e);		
 
 	webApp.vars["logMsg"] = "error, ajax load failed...";
 	//func.logAlert( _vars["logMsg"], "error");
 	func.logAlert( webApp.vars["logMsg"], "danger");
+	
+				for( var key in e){
+//console.log( key +" : "+e[key] );
+					webApp.vars["logMsg"] = "<b>"+key +"</b> : "+ e[key];
+					func.logAlert( webApp.vars["logMsg"], "error");
+				}//next
+					
 				p.callback(false);
-			}
+			}//end error callback
 			
 			xhr.onloadend = function(e){
 	//console.log(xhr.getResponseHeader('X-Powered-By') );
