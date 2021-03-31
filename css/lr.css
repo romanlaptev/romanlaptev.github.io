@@ -868,26 +868,13 @@ padding: 10px;
 }
 
 
-.lr-flex-wrap {
-	flex-wrap: wrap;
-}
-
-.lr-flex-hcenter. .lr-flex-h-center{
-	justify-content:center;
-}
-.lr-flex-hbetween{
-	justify-content:space-between;
-}
-
-.lr-flex-vcenter, .lr-flex-v-center,{
-	align-items:center;
-}
-.lr-flex-v-top{
-	align-items: start;
-}
-.lr-flex-v-end{
-	align-items: end;
-}
+.lr-flex-wrap {	flex-wrap: wrap;}
+.lr-flex-hcenter. .lr-flex-h-center{	justify-content:center;}
+.lr-flex-hbetween{	justify-content:space-between;}
+.lr-flex-h-end{	justify-content:end;}
+.lr-flex-vcenter, .lr-flex-v-center,{	align-items:center;}
+.lr-flex-v-top{	align-items: start;}
+.lr-flex-v-end{	align-items: end;}
 
 
 /*====== GRID =======*/
@@ -2316,6 +2303,31 @@ inset -2px -1px 40px rgba(0, 0, 0, 0.1),
 .panel-deepskyblue > .panel-heading {
   background-color: #00bfff;
   border-color: #00bfff;
+}
+
+
+/*====== page color schemes =======*/
+body.page-blue {
+	background-color: #082844;/* bg-darkblue-project */
+}
+.page-blue .lr-container {
+	background-color: #b6cfed; /*bg-lightsteelblue4*/
+}
+.page-blue .lr-panel-inline {
+	width: 30%;
+	border-radius: 5px;
+	margin: 0;
+	background-color: #fffafa;/*bg-snow*/
+}
+.page-blue .lr-btn { /*lr-btn-darkblue*/
+	background-color: #004586;
+	-webkit-box-shadow: inset 0 36px 38px -38px #fff;
+	-moz-box-shadow: inset 0 36px 38px -38px #fff;
+	box-shadow: inset 0 36px 38px -38px #fff;
+	border-color: #3f9cca;
+	color: #fff;
+	font-size: 14px;
+	font-weight: 400;
 }
 
 
