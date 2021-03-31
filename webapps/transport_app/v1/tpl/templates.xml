@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+
+<!--
+	<tpl name="tpl-list">
+		<html_code><![CDATA[
+<ul class="list-unstyled">{{list}}</ul>
+		]]></html_code>
+	</tpl>
+
+	<tpl name="tpl-list-item">
+		<html_code><![CDATA[
+<li>{{published}}</li>
+		]]></html_code>
+	</tpl>
+
+-->
+
+	<tpl name="tpl-copyright">
+		<html_code><![CDATA[
+{{content}}
+		]]></html_code>
+	</tpl>
+
+	<tpl name="tpl-copyright-content">
+		<html_code><![CDATA[
+{{logo_hy}}
+<!--
+<p>{{text}}</p>
+<p>​​​​​{{url}}</p>
+-->
+		]]></html_code>
+	</tpl>
+
+
+<!--
+	<tpl name="tpl-schedule-search">
+		<html_code><![CDATA[
+		<div class="panel-body row">
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+				<input class="form-control" value="{{from_title}}"/>
+			</div>
+			<div class="pull-left">
+				<button class="btn btn-warning arrows"></button>
+			</div>
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+				<input class="form-control" value="{{to_title}}"/>
+			</div>
+			<div class="col-xs-3 col-sm-3 col-md-2 col-lg-2">
+<input id="date-widget" type="date" name="date_widget" class="form-control selectDate" value="{{date}}"  max="2019-12-30" min="2019-01-01">			
+			</div>
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+			  <button id="btn-update" class="btn btn-danger">update</button>
+			</div>
+		 </div>
+		]]></html_code>
+	</tpl>
+-->
+
+	<tpl name="tpl-schedule">
+		<html_code><![CDATA[
+<div class="block panel">
+	<div class="panel-body">
+		<div class="content">{{content}}</div>
+	</div>
+</div>
+		]]></html_code>
+	</tpl>
+
+	<tpl name="tpl-schedule-table">
+		<html_code><![CDATA[
+<table class="table table-bordered">
+
+	<thead>
+<!--
+		<tr class="list-header success">
+			<th>​</th>
+			<th>​​​​​thread.number, thread.title, thread.carrier.title</th>
+			<th>​​​departure, stops, from.title</th>
+			<th>duration (sec.)</th>
+			<th>arrival, to.title</th>
+			<th>tickets_info.places.price.whole, tickets_info.places.currency</th>
+		</tr>
+-->
+		<tr class="list-header success">
+			<th>​</th>
+			<th class="text-center">​​​​​номер и название транспорта</th>
+			<th class="text-center">отправление</th>
+			<th class="text-center">время в пути</th>
+			<th class="text-center">прибытие</th>
+			<th class="text-center">стоимость билета</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+<!--
+		<tr>
+			<td>{6404, "Новосибирск-главный — Болотная", "Экспресс-пригород"}</td>
+			<td>{"2019-04-26T07:17:00+07:00", "везде", "Новосибирск-восточный"}</td>
+			<td>{1200.0}</td>
+			<td>{"2019-04-26T07:37:00+07:00", "Раздолье (3362 км)"}</td>
+			<td>{"26", "RUB"}</td>
+		</tr>
+-->
+{{list}}		
+	</tbody>
+</table>
+		]]></html_code>
+	</tpl>
+	
+	<tpl name="tpl-schedule-table--tr">
+		<html_code>
+<![CDATA[
+		<tr>
+			<td class="">
+<figure class="TransportIcon_type_suburban" aria-label="электричка">
+	<svg class="TransportIcon__icon">
+	<!-- <use xlink:href="#icon-suburban"></use> -->
+		<path fill-rule="evenodd" clip-rule="evenodd" 
+d="M10.7 3.2L11.8 1H13V.5c0-.3-.2-.5-.5-.5h-9c-.3 0-.5.2-.5.5V1h1.2l1.1 2.2C2.2 3.6 0 4.7 0 6v11c0 .6.4 1 1 1h14c.6 0 1-.4 1-1V6c0-1.3-2.2-2.4-5.3-2.8zM10.5 1l-1 2.1C9 3 8.5 3 8 3s-1 0-1.5.1L5.5 1h5zM9 6c0 .6-.4 1-1 1s-1-.4-1-1 .4-1 1-1 1 .4 1 1zM5 16H2v-2h3v2zm9 0h-3v-2h3v2zm0-4H2V8h12v4zM3 21h.8l-1.5 3h1.9l1.5-3h4.6l1.5 3h2l-1.5-3h.7c1.1 0 2-.9 2-2H1c0 1.1.9 2 2 2z">
+		</path>
+	</svg>
+</figure>
+			</td>
+		
+			<td class="">
+<div class="SegmentTitle">
+	<span class="SegmentTitle__number">{{thread_number}}</span>
+	<span class="SegmentTitle__title">{{thread_title}}</span>
+	<p class="SegmentTransport">{{carrier_title}}</p>
+</div>
+			</td>
+			
+			<td>
+<div class="Segment__dateTime Time_important">
+	<div class="Segment__date">{{departure_day}}</div>
+	<span class="Segment__time">{{departure_time}}</span>
+</div>
+<span class="Segment__stations">{{from_title}}</span>
+<div class="Segment__stops">остановки: {{stops}}</div>
+			</td>
+			
+			<td>{{duration}} мин.</td>
+			
+			<td>
+<div class="Segment__dateTime Time_important">
+	<div class="Segment__date">{{arrival_day}}</div>
+	<span class="Segment__time">{{arrival_time}}</span>
+</div>
+<span class="Segment__stations">{{to_title}}</span>
+			</td>
+			
+			<td>{{price_whole}} {{0_currency}}</td>
+		</tr>
+]]>
+		</html_code>
+	</tpl>
+
+
+	<tpl name="tpl-schedule-mobile">
+		<html_code><![CDATA[
+<div class="schedule-block-mobile">
+	{{list}}		
+</div>
+		]]></html_code>
+	</tpl>
+	<tpl name="tpl-schedule-mobile--record">
+		<html_code>
+<![CDATA[
+		<div class="panel panel-primary">
+			<div class="panel-body">
+		
+				<div class="SegmentTitle">
+					<span class="SegmentTitle__number">{{thread_number}}</span>
+					<span class="SegmentTitle__title">{{thread_title}}</span>
+					<p class="SegmentTransport">{{carrier_title}}</p>
+				</div>
+
+				<div><i>отправление</i>:
+					<span class="Segment__dateTime Time_important">
+						<span class="Segment__date">{{departure_day}}, </span>
+						<span class="Segment__time">{{departure_time}} </span>
+					</span>
+					<span class="Segment__stations">{{from_title}}</span>
+				</div>
+							
+				<div><i>остановки</i>:<span class="Segment__stops">{{stops}}</span></div>
+				<div><i>время в пути</i>: <span class="Segment__duration">{{duration}} мин.</span></div>
+
+				<div><i>прибытие</i>:
+					<span class="Segment__dateTime Time_important">
+						<span class="Segment__date">{{arrival_day}}, </span>
+						<span class="Segment__time">{{arrival_time}} </span>
+					</span>
+					<span class="Segment__stations">{{to_title}}</span>
+				</div>			
+							
+				<div><i>билет</i>: {{price_whole}} {{0_currency}}</div>
+			
+			</div>
+		</div>
+]]>
+		</html_code>
+	</tpl>
+		
+</templates>

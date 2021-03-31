@@ -1,0 +1,31 @@
+.lr-flex-hstart{
+	justify-content:start;
+}
+
+.lr-tab-pane, .tab-pane {
+display:none;
+}
+
+.lr-tab-active, .tab-active {
+display:block !important;
+}
+
+.lr-btn-active, .btn-active {
+background-color: #1e90ff !important;
+/*color:#000 !important;*/
+}
+
+#tab-buttons ul {margin:0;}
+
+.arrows {
+	background-image: url("../img/icon_black_change_direction.svg");
+/*
+	width: 40px;
+	height: 40px;
+*/
+	background-repeat: no-repeat;
+	background-position: center;
+	/* background-size: contain; */
+	background-size: 100%;
+	padding: 20px 30px;
+}

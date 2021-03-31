@@ -1,36 +1,171 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>preview fonts</title>
 	<meta charset="utf-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<link rel="stylesheet" href="../css/shared.css" type="text/css"> 
-	<link rel="stylesheet" href="../css/colors.css" type="text/css"> 
+	<link rel="stylesheet" href="../css/lr.css" type="text/css"> 
 	<link rel="stylesheet" href="dashicons/dashicons.css" type="text/css"> 
-	<link rel="stylesheet" href="glyphicons/glyphicon.css	" type="text/css"> 
-
+	<link rel="stylesheet" href="ratchicons/ratchicons.css" type="text/css">
+	
 <style>
 .fontbox { padding:20px; display:inline-block}
+.fontbox::after {
+	content: attr(class);
+	font-size: 12px;
+	display: none;
+}
 </style>
+<script>
+window.onload = function(){
+/*
+	var btn1 = document.querySelector("#view-classname");
+	btn1.onclick = function(){
+		var fontboxes = document.querySelectorAll(".fontbox");
+//console.log(fontboxes[1].outerHTML);
+			for( var n = 0; n < fontboxes.length; n++){
+				fontboxes[n].innerHTML = "<div>"+fontboxes[n].classList+"</div>";
+			}//next
+	}//end event
+*/	
+}
+</script>
+
 </head>
 
-<body class="bg-whitesmoke">
+<body class="page-blue">
 
 <div class="lr-container">
-	<h1>preview fonts</h1>
+	<a href="../">up</a>		
+	<div class="lr-page-header">
+		<h1 class="text-right">preview fonts</h1>
+	</div>
+</div>
+
+<div class="lr-container">
+	<ul class="lr-list-inline">
+		<li><a class="lr-btn" href="material-icons/preview_fonts.html">material-icons</a></li>		
+		<li><a class="lr-btn" href="fontawesome/preview_fonts.html">fontawesome icons</a></li>		
+		<li><a class="lr-btn" href="glyphicons/preview_fonts.html">glyphicons icons</a></li>		
+		<li><a class="lr-btn" href="http://localhost/fonts/">local fonts</a></li>		
+	</ul>
+	<!-- <button id="view-classname">view classname</button> -->
 </div>
 
 <pre class="lr-container lr-padding-small bg-snow">
 https://github.com/WordPress/dashicons
+
+https://getuikit.com/v2/docs/icon.html
+https://getuikit.com/docs/icon
 </pre>
+
+<div class="lr-container">
+<pre>
+https://ru.wikipedia.org/wiki/%D0%9C%D0%BD%D0%B5%D0%BC%D0%BE%D0%BD%D0%B8%D0%BA%D0%B8_%D0%B2_HTML
+Мнемоники_в_HTML
+
+http://konstantinbulgakov.com/tools/icons#other
+Пиктограммы HTML
+</pre>
+	
+	<div class="lr-panel lr-border-box lr-border-red bg-white lr-padding-small">
+		<div class="fontbox">&sect;</div>
+		<div class="fontbox">&laquo;</div>
+		<div class="fontbox">&raquo;</div>
+		<div class="fontbox">&times;</div>
+		<div class="fontbox">&szlig;</div>
+		<div class="fontbox">&OElig;</div>
+		<div class="fontbox">&Tstrok;</div>
+		<div class="fontbox">&circ;</div>
+		<div class="fontbox">&caron;</div>
+		<div class="fontbox">&lsaquo;</div>
+		<div class="fontbox">&rsaquo;</div>
+		<div class="fontbox">&weierp;</div>
+		<div class="fontbox">&alefsym;</div>
+		<div class="fontbox">&larr;</div>
+		<div class="fontbox">&uarr;</div>
+		<div class="fontbox">&rarr;</div>
+		<div class="fontbox">&darr;</div>
+		<div class="fontbox">&harr;</div>
+		<div class="fontbox">&crarr;</div>
+		<div class="fontbox">&lArr;</div>
+		<div class="fontbox">&uArr;</div>
+		<div class="fontbox">&rArr;</div>
+		<div class="fontbox">&dArr;</div>
+		<div class="fontbox">&hArr;</div>
+		<div class="fontbox">&#9668;</div>
+		<div class="fontbox">&#9650;</div>
+		<div class="fontbox">&#9658;</div>
+		<div class="fontbox">&#9660;</div>
+		<div class="fontbox">&lowast;</div>
+		<div class="fontbox">&ang;</div>
+		<div class="fontbox">&equiv;</div>
+		<div class="fontbox">&oplus;</div>
+		<div class="fontbox">&otimes;</div>
+		<div class="fontbox">&perp;</div>
+		<div class="fontbox">&loz;</div>
+		<div class="fontbox">&spades;</div>
+		<div class="fontbox">&clubs;</div>
+		<div class="fontbox">&hearts;</div>
+		<div class="fontbox">&diams;</div>
+		<div class="fontbox">&#128222;</div>
+		<div class="fontbox">&#9742;</div>	
+		<div class="fontbox">&#9743;</div>
+		<div class="fontbox">&#128241;</div>
+		<div class="fontbox">&#128190;</div>
+		<div class="fontbox">&#128269;</div>
+		<div class="fontbox">&#128270;</div>
+		<div class="fontbox">&#128188;</div>
+		<div class="fontbox">&#9989;</div>
+		<div class="fontbox">&#10005;</div>
+		<div class="fontbox">&#10006;</div>
+		<div class="fontbox">&#10007;</div>
+		<div class="fontbox">&#10008;</div>
+		<div class="fontbox">&#9200;</div>
+		<div class="fontbox">&#10053;</div>
+		<div class="fontbox">&#10052;</div>
+		<div class="fontbox">&#10054;</div>
+		<div class="fontbox">&#9730;</div>
+		<div class="fontbox">&#10048;</div>
+		<div class="fontbox">&#10016;</div>
+		<div class="fontbox">&#10020;</div>
+		<div class="fontbox">&#128521;</div>
+		<div class="fontbox">&#128276;</div>
+		<div class="fontbox">&#128265;</div>
+		<div class="fontbox">&#128266;</div>
+		<div class="fontbox">&#128062;</div>
+		<div class="fontbox">&#8634;</div>
+		<div class="fontbox">&#8635;</div>
+
+		<div class="fontbox">&#8544;</div>
+		<div class="fontbox">&#8545;</div>
+		<div class="fontbox">&#8546;</div>
+		<div class="fontbox">&#8547;</div>
+		<div class="fontbox">&#8548;</div>
+		<div class="fontbox">&#8549;</div>
+		<div class="fontbox">&#8550;</div>
+		<div class="fontbox">&#8551;</div>
+		<div class="fontbox">&#8552;</div>
+		<div class="fontbox">&#8553;</div>
+		<div class="fontbox">&#8554;</div>
+		<div class="fontbox">&#8555;</div>
+		<div class="fontbox">&#8556;</div>
+		<div class="fontbox">&#8557;</div>
+		<div class="fontbox">&#8558;</div>
+		<div class="fontbox">&#8559;</div>
+		<div class="fontbox">&#8984;</div>				
+	</div>
+</div>
 
 <div class="main lr-container lr-border-box lr-border-cyan bg-white">
 	<div>
 		<h3>font dashicons</h3>
 	&lt;link rel="stylesheet" href="dashicons/dashicons.css" type="text/css"&gt;
+<a href="dashicons/dashicons.css" class="lr-btn" target="_blank">open new tab</a>
+(base64 code in css)
 	</div>
 	<div class="fontbox dashicons dashicons-calendar"></div>
 	<div class="fontbox dashicons dashicons-admin-appearance"></div>
@@ -387,274 +522,60 @@ https://github.com/WordPress/dashicons
 
 </div><!-- end lr-container -->
 
+
 <div class="lr-container lr-border-box lr-border-cyan bg-white lr-margin-10-top">
 	<div>
-		<h3>font-family: 'Glyphicons Halflings'</h3>
-		&lt;link rel="stylesheet" href="glyphicons/glyphicon.css	" type="text/css"&gt;
+		<h3>Ratchet css framework, font-family: 'Ratchicons'</h3>
+&lt;link rel="stylesheet" href="ratchicons/ratchicons.css" type="text/css"&gt;
+
+<pre>
+http://goratchet.com/getting-started/
+http://goratchet.com/components/
+</pre>
+
+<a href="ratchicons/ratchicons.css" class="lr-btn" target="_blank">open new tab</a>
 	</div>
-	<div class="fontbox glyphicon glyphicon-asterisk"></div>
-	<div class="fontbox glyphicon glyphicon-plus"></div>
-	<div class="fontbox glyphicon glyphicon-euro:before, 
-	<div class="fontbox glyphicon glyphicon-eur"></div>
-	<div class="fontbox glyphicon glyphicon-minus"></div>
-	<div class="fontbox glyphicon glyphicon-cloud"></div>
-	<div class="fontbox glyphicon glyphicon-envelope"></div>
-	<div class="fontbox glyphicon glyphicon-pencil"></div>
-	<div class="fontbox glyphicon glyphicon-glass"></div>
-	<div class="fontbox glyphicon glyphicon-music"></div>
-	<div class="fontbox glyphicon glyphicon-search"></div>
-	<div class="fontbox glyphicon glyphicon-heart"></div>
-	<div class="fontbox glyphicon glyphicon-star"></div>
-	<div class="fontbox glyphicon glyphicon-star-empty"></div>
-	<div class="fontbox glyphicon glyphicon-user"></div>
-	<div class="fontbox glyphicon glyphicon-film"></div>
-	<div class="fontbox glyphicon glyphicon-th-large"></div>
-	<div class="fontbox glyphicon glyphicon-th"></div>
-	<div class="fontbox glyphicon glyphicon-th-list"></div>
-	<div class="fontbox glyphicon glyphicon-ok"></div>
-	<div class="fontbox glyphicon glyphicon-remove"></div>
-	<div class="fontbox glyphicon glyphicon-zoom-in"></div>
-	<div class="fontbox glyphicon glyphicon-zoom-out"></div>
-	<div class="fontbox glyphicon glyphicon-off"></div>
-	<div class="fontbox glyphicon glyphicon-signal"></div>
-	<div class="fontbox glyphicon glyphicon-cog"></div>
-	<div class="fontbox glyphicon glyphicon-trash"></div>
-	<div class="fontbox glyphicon glyphicon-home"></div>
-	<div class="fontbox glyphicon glyphicon-file"></div>
-	<div class="fontbox glyphicon glyphicon-time"></div>
-	<div class="fontbox glyphicon glyphicon-road"></div>
-	<div class="fontbox glyphicon glyphicon-download-alt"></div>
-	<div class="fontbox glyphicon glyphicon-download"></div>
-	<div class="fontbox glyphicon glyphicon-upload"></div>
-	<div class="fontbox glyphicon glyphicon-inbox"></div>
-	<div class="fontbox glyphicon glyphicon-play-circle"></div>
-	<div class="fontbox glyphicon glyphicon-repeat"></div>
-	<div class="fontbox glyphicon glyphicon-refresh"></div>
-	<div class="fontbox glyphicon glyphicon-list-alt"></div>
-	<div class="fontbox glyphicon glyphicon-lock"></div>
-	<div class="fontbox glyphicon glyphicon-flag"></div>
-	<div class="fontbox glyphicon glyphicon-headphones"></div>
-	<div class="fontbox glyphicon glyphicon-volume-off"></div>
-	<div class="fontbox glyphicon glyphicon-volume-down"></div>
-	<div class="fontbox glyphicon glyphicon-volume-up"></div>
-	<div class="fontbox glyphicon glyphicon-qrcode"></div>
-	<div class="fontbox glyphicon glyphicon-barcode"></div>
-	<div class="fontbox glyphicon glyphicon-tag"></div>
-	<div class="fontbox glyphicon glyphicon-tags"></div>
-	<div class="fontbox glyphicon glyphicon-book"></div>
-	<div class="fontbox glyphicon glyphicon-bookmark"></div>
-	<div class="fontbox glyphicon glyphicon-print"></div>
-	<div class="fontbox glyphicon glyphicon-camera"></div>
-	<div class="fontbox glyphicon glyphicon-font"></div>
-	<div class="fontbox glyphicon glyphicon-bold"></div>
-	<div class="fontbox glyphicon glyphicon-italic"></div>
-	<div class="fontbox glyphicon glyphicon-text-height"></div>
-	<div class="fontbox glyphicon glyphicon-text-width"></div>
-	<div class="fontbox glyphicon glyphicon-align-left"></div>
-	<div class="fontbox glyphicon glyphicon-align-center"></div>
-	<div class="fontbox glyphicon glyphicon-align-right"></div>
-	<div class="fontbox glyphicon glyphicon-align-justify"></div>
-	<div class="fontbox glyphicon glyphicon-list"></div>
-	<div class="fontbox glyphicon glyphicon-indent-left"></div>
-	<div class="fontbox glyphicon glyphicon-indent-right"></div>
-	<div class="fontbox glyphicon glyphicon-facetime-video"></div>
-	<div class="fontbox glyphicon glyphicon-picture"></div>
-	<div class="fontbox glyphicon glyphicon-map-marker"></div>
-	<div class="fontbox glyphicon glyphicon-adjust"></div>
-	<div class="fontbox glyphicon glyphicon-tint"></div>
-	<div class="fontbox glyphicon glyphicon-edit"></div>
-	<div class="fontbox glyphicon glyphicon-share"></div>
-	<div class="fontbox glyphicon glyphicon-check"></div>
-	<div class="fontbox glyphicon glyphicon-move"></div>
-	<div class="fontbox glyphicon glyphicon-step-backward"></div>
-	<div class="fontbox glyphicon glyphicon-fast-backward"></div>
-	<div class="fontbox glyphicon glyphicon-backward"></div>
-	<div class="fontbox glyphicon glyphicon-play"></div>
-	<div class="fontbox glyphicon glyphicon-pause"></div>
-	<div class="fontbox glyphicon glyphicon-stop"></div>
-	<div class="fontbox glyphicon glyphicon-forward"></div>
-	<div class="fontbox glyphicon glyphicon-fast-forward"></div>
-	<div class="fontbox glyphicon glyphicon-step-forward"></div>
-	<div class="fontbox glyphicon glyphicon-eject"></div>
-	<div class="fontbox glyphicon glyphicon-chevron-left"></div>
-	<div class="fontbox glyphicon glyphicon-chevron-right"></div>
-	<div class="fontbox glyphicon glyphicon-plus-sign"></div>
-	<div class="fontbox glyphicon glyphicon-minus-sign"></div>
-	<div class="fontbox glyphicon glyphicon-remove-sign"></div>
-	<div class="fontbox glyphicon glyphicon-ok-sign"></div>
-	<div class="fontbox glyphicon glyphicon-question-sign"></div>
-	<div class="fontbox glyphicon glyphicon-info-sign"></div>
-	<div class="fontbox glyphicon glyphicon-screenshot"></div>
-	<div class="fontbox glyphicon glyphicon-remove-circle"></div>
-	<div class="fontbox glyphicon glyphicon-ok-circle"></div>
-	<div class="fontbox glyphicon glyphicon-ban-circle"></div>
-	<div class="fontbox glyphicon glyphicon-arrow-left"></div>
-	<div class="fontbox glyphicon glyphicon-arrow-right"></div>
-	<div class="fontbox glyphicon glyphicon-arrow-up"></div>
-	<div class="fontbox glyphicon glyphicon-arrow-down"></div>
-	<div class="fontbox glyphicon glyphicon-share-alt"></div>
-	<div class="fontbox glyphicon glyphicon-resize-full"></div>
-	<div class="fontbox glyphicon glyphicon-resize-small"></div>
-	<div class="fontbox glyphicon glyphicon-exclamation-sign"></div>
-	<div class="fontbox glyphicon glyphicon-gift"></div>
-	<div class="fontbox glyphicon glyphicon-leaf"></div>
-	<div class="fontbox glyphicon glyphicon-fire"></div>
-	<div class="fontbox glyphicon glyphicon-eye-open"></div>
-	<div class="fontbox glyphicon glyphicon-eye-close"></div>
-	<div class="fontbox glyphicon glyphicon-warning-sign"></div>
-	<div class="fontbox glyphicon glyphicon-plane"></div>
-	<div class="fontbox glyphicon glyphicon-calendar"></div>
-	<div class="fontbox glyphicon glyphicon-random"></div>
-	<div class="fontbox glyphicon glyphicon-comment"></div>
-	<div class="fontbox glyphicon glyphicon-magnet"></div>
-	<div class="fontbox glyphicon glyphicon-chevron-up"></div>
-	<div class="fontbox glyphicon glyphicon-chevron-down"></div>
-	<div class="fontbox glyphicon glyphicon-retweet"></div>
-	<div class="fontbox glyphicon glyphicon-shopping-cart"></div>
-	<div class="fontbox glyphicon glyphicon-folder-close"></div>
-	<div class="fontbox glyphicon glyphicon-folder-open"></div>
-	<div class="fontbox glyphicon glyphicon-resize-vertical"></div>
-	<div class="fontbox glyphicon glyphicon-resize-horizontal"></div>
-	<div class="fontbox glyphicon glyphicon-hdd"></div>
-	<div class="fontbox glyphicon glyphicon-bullhorn"></div>
-	<div class="fontbox glyphicon glyphicon-bell"></div>
-	<div class="fontbox glyphicon glyphicon-certificate"></div>
-	<div class="fontbox glyphicon glyphicon-thumbs-up"></div>
-	<div class="fontbox glyphicon glyphicon-thumbs-down"></div>
-	<div class="fontbox glyphicon glyphicon-hand-right"></div>
-	<div class="fontbox glyphicon glyphicon-hand-left"></div>
-	<div class="fontbox glyphicon glyphicon-hand-up"></div>
-	<div class="fontbox glyphicon glyphicon-hand-down"></div>
-	<div class="fontbox glyphicon glyphicon-circle-arrow-right"></div>
-	<div class="fontbox glyphicon glyphicon-circle-arrow-left"></div>
-	<div class="fontbox glyphicon glyphicon-circle-arrow-up"></div>
-	<div class="fontbox glyphicon glyphicon-circle-arrow-down"></div>
-	<div class="fontbox glyphicon glyphicon-globe"></div>
-	<div class="fontbox glyphicon glyphicon-wrench"></div>
-	<div class="fontbox glyphicon glyphicon-tasks"></div>
-	<div class="fontbox glyphicon glyphicon-filter"></div>
-	<div class="fontbox glyphicon glyphicon-briefcase"></div>
-	<div class="fontbox glyphicon glyphicon-fullscreen"></div>
-	<div class="fontbox glyphicon glyphicon-dashboard"></div>
-	<div class="fontbox glyphicon glyphicon-paperclip"></div>
-	<div class="fontbox glyphicon glyphicon-heart-empty"></div>
-	<div class="fontbox glyphicon glyphicon-link"></div>
-	<div class="fontbox glyphicon glyphicon-phone"></div>
-	<div class="fontbox glyphicon glyphicon-pushpin"></div>
-	<div class="fontbox glyphicon glyphicon-usd"></div>
-	<div class="fontbox glyphicon glyphicon-gbp"></div>
-	<div class="fontbox glyphicon glyphicon-sort"></div>
-	<div class="fontbox glyphicon glyphicon-sort-by-alphabet"></div>
-	<div class="fontbox glyphicon glyphicon-sort-by-alphabet-alt"></div>
-	<div class="fontbox glyphicon glyphicon-sort-by-order"></div>
-	<div class="fontbox glyphicon glyphicon-sort-by-order-alt"></div>
-	<div class="fontbox glyphicon glyphicon-sort-by-attributes"></div>
-	<div class="fontbox glyphicon glyphicon-sort-by-attributes-alt"></div>
-	<div class="fontbox glyphicon glyphicon-unchecked"></div>
-	<div class="fontbox glyphicon glyphicon-expand"></div>
-	<div class="fontbox glyphicon glyphicon-collapse-down"></div>
-	<div class="fontbox glyphicon glyphicon-collapse-up"></div>
-	<div class="fontbox glyphicon glyphicon-log-in"></div>
-	<div class="fontbox glyphicon glyphicon-flash"></div>
-	<div class="fontbox glyphicon glyphicon-log-out"></div>
-	<div class="fontbox glyphicon glyphicon-new-window"></div>
-	<div class="fontbox glyphicon glyphicon-record"></div>
-	<div class="fontbox glyphicon glyphicon-save"></div>
-	<div class="fontbox glyphicon glyphicon-open"></div>
-	<div class="fontbox glyphicon glyphicon-saved"></div>
-	<div class="fontbox glyphicon glyphicon-import"></div>
-	<div class="fontbox glyphicon glyphicon-export"></div>
-	<div class="fontbox glyphicon glyphicon-send"></div>
-	<div class="fontbox glyphicon glyphicon-floppy-disk"></div>
-	<div class="fontbox glyphicon glyphicon-floppy-saved"></div>
-	<div class="fontbox glyphicon glyphicon-floppy-remove"></div>
-	<div class="fontbox glyphicon glyphicon-floppy-save"></div>
-	<div class="fontbox glyphicon glyphicon-floppy-open"></div>
-	<div class="fontbox glyphicon glyphicon-credit-card"></div>
-	<div class="fontbox glyphicon glyphicon-transfer"></div>
-	<div class="fontbox glyphicon glyphicon-cutlery"></div>
-	<div class="fontbox glyphicon glyphicon-header"></div>
-	<div class="fontbox glyphicon glyphicon-compressed"></div>
-	<div class="fontbox glyphicon glyphicon-earphone"></div>
-	<div class="fontbox glyphicon glyphicon-phone-alt"></div>
-	<div class="fontbox glyphicon glyphicon-tower"></div>
-	<div class="fontbox glyphicon glyphicon-stats"></div>
-	<div class="fontbox glyphicon glyphicon-sd-video"></div>
-	<div class="fontbox glyphicon glyphicon-hd-video"></div>
-	<div class="fontbox glyphicon glyphicon-subtitles"></div>
-	<div class="fontbox glyphicon glyphicon-sound-stereo"></div>
-	<div class="fontbox glyphicon glyphicon-sound-dolby"></div>
-	<div class="fontbox glyphicon glyphicon-sound-5-1"></div>
-	<div class="fontbox glyphicon glyphicon-sound-6-1"></div>
-	<div class="fontbox glyphicon glyphicon-sound-7-1"></div>
-	<div class="fontbox glyphicon glyphicon-copyright-mark"></div>
-	<div class="fontbox glyphicon glyphicon-registration-mark"></div>
-	<div class="fontbox glyphicon glyphicon-cloud-download"></div>
-	<div class="fontbox glyphicon glyphicon-cloud-upload"></div>
-	<div class="fontbox glyphicon glyphicon-tree-conifer"></div>
-	<div class="fontbox glyphicon glyphicon-tree-deciduous"></div>
-	<div class="fontbox glyphicon glyphicon-cd"></div>
-	<div class="fontbox glyphicon glyphicon-save-file"></div>
-	<div class="fontbox glyphicon glyphicon-open-file"></div>
-	<div class="fontbox glyphicon glyphicon-level-up"></div>
-	<div class="fontbox glyphicon glyphicon-copy"></div>
-	<div class="fontbox glyphicon glyphicon-paste"></div>
-	<div class="fontbox glyphicon glyphicon-alert"></div>
-	<div class="fontbox glyphicon glyphicon-equalizer"></div>
-	<div class="fontbox glyphicon glyphicon-king"></div>
-	<div class="fontbox glyphicon glyphicon-queen"></div>
-	<div class="fontbox glyphicon glyphicon-pawn"></div>
-	<div class="fontbox glyphicon glyphicon-bishop"></div>
-	<div class="fontbox glyphicon glyphicon-knight"></div>
-	<div class="fontbox glyphicon glyphicon-baby-formula"></div>
-	<div class="fontbox glyphicon glyphicon-tent"></div>
-	<div class="fontbox glyphicon glyphicon-blackboard"></div>
-	<div class="fontbox glyphicon glyphicon-bed"></div>
-	<div class="fontbox glyphicon glyphicon-apple"></div>
-	<div class="fontbox glyphicon glyphicon-erase"></div>
-	<div class="fontbox glyphicon glyphicon-hourglass"></div>
-	<div class="fontbox glyphicon glyphicon-lamp"></div>
-	<div class="fontbox glyphicon glyphicon-duplicate"></div>
-	<div class="fontbox glyphicon glyphicon-piggy-bank"></div>
-	<div class="fontbox glyphicon glyphicon-scissors"></div>
-	<div class="fontbox glyphicon glyphicon-bitcoin"></div>
-	<div class="fontbox glyphicon glyphicon-btc"></div>
-	<div class="fontbox glyphicon glyphicon-xbt"></div>
-	<div class="fontbox glyphicon glyphicon-yen"></div>
-	<div class="fontbox glyphicon glyphicon-jpy"></div>
-	<div class="fontbox glyphicon glyphicon-ruble"></div>
-	<div class="fontbox glyphicon glyphicon-rub"></div>
-	<div class="fontbox glyphicon glyphicon-scale"></div>
-	<div class="fontbox glyphicon glyphicon-ice-lolly"></div>
-	<div class="fontbox glyphicon glyphicon-ice-lolly-tasted"></div>
-	<div class="fontbox glyphicon glyphicon-education"></div>
-	<div class="fontbox glyphicon glyphicon-option-horizontal"></div>
-	<div class="fontbox glyphicon glyphicon-option-vertical"></div>
-	<div class="fontbox glyphicon glyphicon-menu-hamburger"></div>
-	<div class="fontbox glyphicon glyphicon-modal-window"></div>
-	<div class="fontbox glyphicon glyphicon-oil"></div>
-	<div class="fontbox glyphicon glyphicon-grain"></div>
-	<div class="fontbox glyphicon glyphicon-sunglasses"></div>
-	<div class="fontbox glyphicon glyphicon-text-size"></div>
-	<div class="fontbox glyphicon glyphicon-text-color"></div>
-	<div class="fontbox glyphicon glyphicon-text-background"></div>
-	<div class="fontbox glyphicon glyphicon-object-align-top"></div>
-	<div class="fontbox glyphicon glyphicon-object-align-bottom"></div>
-	<div class="fontbox glyphicon glyphicon-object-align-horizontal"></div>
-	<div class="fontbox glyphicon glyphicon-object-align-left"></div>
-	<div class="fontbox glyphicon glyphicon-object-align-vertical"></div>
-	<div class="fontbox glyphicon glyphicon-object-align-right"></div>
-	<div class="fontbox glyphicon glyphicon-triangle-right"></div>
-	<div class="fontbox glyphicon glyphicon-triangle-left"></div>
-	<div class="fontbox glyphicon glyphicon-triangle-bottom"></div>
-	<div class="fontbox glyphicon glyphicon-triangle-top"></div>
-	<div class="fontbox glyphicon glyphicon-console"></div>
-	<div class="fontbox glyphicon glyphicon-superscript"></div>
-	<div class="fontbox glyphicon glyphicon-subscript"></div>
-	<div class="fontbox glyphicon glyphicon-menu-left"></div>
-	<div class="fontbox glyphicon glyphicon-menu-right"></div>
-	<div class="fontbox glyphicon glyphicon-menu-down"></div>
-	<div class="fontbox glyphicon glyphicon-menu-up"></div>
+	
+	<div class="fontbox ra-icon ra-icon-back"></div>
+	<div class="fontbox ra-icon ra-icon-bars"></div>
+	<div class="fontbox ra-icon ra-icon-caret"></div>
+	<div class="fontbox ra-icon ra-icon-check"></div>
+	<div class="fontbox ra-icon ra-icon-close"></div>
+	<div class="fontbox ra-icon ra-icon-code"></div>
+	<div class="fontbox ra-icon ra-icon-compose"></div>
+	<div class="fontbox ra-icon ra-icon-download"></div>
+	<div class="fontbox ra-icon ra-icon-edit"></div>
+	<div class="fontbox ra-icon ra-icon-forward"></div>
+	<div class="fontbox ra-icon ra-icon-gear"></div>
+	<div class="fontbox ra-icon ra-icon-home"></div>
+	<div class="fontbox ra-icon ra-icon-info"></div>
+	<div class="fontbox ra-icon ra-icon-list"></div>
+	<div class="fontbox ra-icon ra-icon-more-vertical"></div>
+	<div class="fontbox ra-icon ra-icon-more"></div>
+	<div class="fontbox ra-icon ra-icon-pages"></div>
+	<div class="fontbox ra-icon ra-icon-pause"></div>
+	<div class="fontbox ra-icon ra-icon-person"></div>
+	<div class="fontbox ra-icon ra-icon-play"></div>
+	<div class="fontbox ra-icon ra-icon-plus"></div>
+	<div class="fontbox ra-icon ra-icon-refresh"></div>
+	<div class="fontbox ra-icon ra-icon-search"></div>
+	<div class="fontbox ra-icon ra-icon-share"></div>
+	<div class="fontbox ra-icon ra-icon-sound"></div>
+	<div class="fontbox ra-icon ra-icon-sound2"></div>
+	<div class="fontbox ra-icon ra-icon-sound3"></div>
+	<div class="fontbox ra-icon ra-icon-sound4"></div>
+	<div class="fontbox ra-icon ra-icon-star-filled"></div>
+	<div class="fontbox ra-icon ra-icon-star"></div>
+	<div class="fontbox ra-icon ra-icon-stop"></div>
+	<div class="fontbox ra-icon ra-icon-trash"></div>
+	<div class="fontbox ra-icon ra-icon-up-nav"></div>
+	<div class="fontbox ra-icon ra-icon-up"></div>
+	<div class="fontbox ra-icon ra-icon-right-nav"></div>
+	<div class="fontbox ra-icon ra-icon-right"></div>
+	<div class="fontbox ra-icon ra-icon-down-nav"></div>
+	<div class="fontbox ra-icon ra-icon-down"></div>
+	<div class="fontbox ra-icon ra-icon-left-nav"></div>
+	<div class="fontbox ra-icon ra-icon-left"></div>
 	
 </div><!-- end lr-container -->
 

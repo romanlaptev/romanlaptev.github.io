@@ -1681,5 +1681,60 @@ https://en.wikipedia.org/wiki/Katzenjammer_Kabarett</description>
 	<published format="d-M-Y H:i:s">06-Mar-2021 20:38:27</published>
 	<updated format="d-M-Y H:i:s">07-Mar-2021 08:19:48</updated>
 </node>
+
+<node type="playlist">
+	<title>
+		<item>The Adicts</item>
+	</title>
+	<images>
+		<img src="https://avatars.yandex.net/get-music-user-playlist/38125/9941293.1042.92189/200x200?1616324398110"/>
+	</images>
+
+	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/The_Adicts.json">The_Adicts.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1042">music.yandex.ru</a></li>
+		<li><a data-type="external-link" href="https://ru.wikipedia.org/wiki/The_Adicts">wiki</a></li>
+	</related_links>
+
+	<node_tags>
+		<item vid="5" tid="83" group_name="alphabetical_voc">A</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="45" group_name="music_styles">punk</item>
+		<item vid="4" tid="132" group_name="country">Великобритания</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</node_tags>
+
+	<published format="d-M-Y H:i:s">21-Mar-2021 18:03:58</published>
+	<updated format="d-M-Y H:i:s">21-Mar-2021 18:03:58</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>The Accüsed</item>
+	</title>
+	<images>
+		<img src="https://avatars.yandex.net/get-music-user-playlist/28719/9941293.1043.93186/200x200?1616325055498"/>
+	</images>
+
+	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/Accused.json">Accused.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1043">music.yandex.ru</a></li>
+		<li><a data-type="external-link" href="https://en.wikipedia.org/wiki/The_Acc%C3%BCsed">wiki</a></li>
+	</related_links>
+
+	<node_tags>
+		<item vid="5" tid="83" group_name="alphabetical_voc">A</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="45" group_name="music_styles">punk</item>
+		<item vid="2" tid="17" group_name="music_styles">thrash metal</item>
+		<item vid="4" tid="116" group_name="country">США</item>
+		<item vid="3" tid="120" group_name="music_formats">studio album</item>
+	</node_tags>
+
+	<published format="d-M-Y H:i:s">21-Mar-2021 18:15:55</published>
+	<updated format="d-M-Y H:i:s">21-Mar-2021 18:15:55</updated>
+</node>
 	</database>
 </xroot>
