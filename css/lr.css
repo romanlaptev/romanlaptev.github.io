@@ -30,15 +30,20 @@ pre {
 .w40{width:40%;}
 .w45{width:45%;}
 .w50{width:50%;}
-
 .w60,.w60-large,.w60-lg{width:60%;}
-
 .w65{width:65%;}
 .w70{width:70%;}
 .w80{width:80%;}
 .w90{width:90%;}
 .w100{width:100%;}
 
+.lr-h50{	height:50px;}
+.lr-h100{	height:100px;}
+.lr-h200{	height:200px;}
+.lr-h300{	height:300px;}
+.lr-h400{	height:400px;}
+.lr-h500{	height:500px;}
+.lr-h600{	height:600px;}
 
 .lr-container {
 	width: 90%;
@@ -90,6 +95,7 @@ pre {
 .lr-padding-30-top, .lr-padding30-top {padding-top: 30px;}
 .lr-padding-50-top, .lr-padding50-top {padding-top: 50px;}
 .lr-padding-60-top, .lr-padding60-top {padding-top: 60px;}
+.lr-padding-right-small {	padding-right: 10px;}
 
 .colorbox { padding:20px; }
 
@@ -128,12 +134,14 @@ textarea {resize:horizontal;}
 }
 .lr-panel-body {
 	padding: 15px;
+	word-wrap: break-word;
 }
 
 .lr-panel-inline {
 	margin:5px;
 	display: inline-block;
 	vertical-align: top;
+	word-wrap: break-word;
 }
 
 
@@ -1424,7 +1432,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-lightgreen-d{  background-color: #bbee77;}/* Drupal info alert */
 .bg-lightgreen-t{  background-color: #94db8a;}/* landing */
 .bg-lightgreen-w{  background-color: #d1e4dd}/* wordpress, dmin */
-.bg-lightgreen-b{  background-color: #dde7e9}/* bitrix, admin */
+.bg-lightgreen-b{  background-color: #dde7e9 !important}/* bitrix, admin */
 
 
 .bg-honeydew {background-color: #f0fff0;border:1px solid #009900;}
@@ -2328,6 +2336,13 @@ body.page-blue {
 	color: #fff;
 	font-size: 14px;
 	font-weight: 400;
+}
+.page-blue .lr-panel-heading {
+	background-color: #018fbc;/* bg-teal-b */
+	color: #ffffff;
+}
+.page-blue .lr-panel {
+	background-color: #ffffff;
 }
 
 
