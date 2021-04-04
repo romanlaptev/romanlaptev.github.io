@@ -31,7 +31,124 @@ window.onload = function(){
 			}//next
 	}//end event
 */	
-}
+/*
+	var _test = document.querySelector("#test");
+	_test.innerHTML = "";
+	//for(var n = 0; n < 20000; n++){
+	for(var n = 61696; n < 62617; n++){
+		var html = "<span title='dec code: "+n+", hex code: "+n.toString(16)+"'>";
+		html += String.fromCharCode(n);
+		html += "</span>";
+		_test.innerHTML += html;
+	}//next
+*/
+
+	var htmlSpecChars = document.querySelector("#html-spec-chars");
+	var btnSpecChars = document.querySelector("#btn-print-chars");
+	btnSpecChars.onclick = function(){
+
+		htmlSpecChars.innerHTML = "";
+		for(var n = 4960; n < 4968; n++){
+			var html = "<span title='dec code: "+n+", hex code: "+n.toString(16)+"'>";
+			//var html = "<span>";
+			html += String.fromCharCode(n);
+			html += "</span>";
+			htmlSpecChars.innerHTML += html;
+		}//next
+
+		for(var n = 9186; n < 9203; n++){
+			var html = "<span title='dec code: "+n+", hex code: "+n.toString(16)+"'>";
+			html += String.fromCharCode(n);
+			html += "</span>";
+			htmlSpecChars.innerHTML += html;
+		}//next
+		
+		for(var n = 9208; n < 9210; n++){
+			var html = "<span title='dec code: "+n+", hex code: "+n.toString(16)+"'>";
+			html += String.fromCharCode(n);
+			html += "</span>";
+			htmlSpecChars.innerHTML += html;
+		}//next
+		
+		for(var n = 9398; n < 11093; n++){
+			var html = "<span title='dec code: "+n+", hex code: "+n.toString(16)+"'>";
+			html += String.fromCharCode(n);
+			html += "</span>";
+			htmlSpecChars.innerHTML += html;
+		}//next
+
+		var n = 42605;
+		var html = "<span title='dec code: "+n+", hex code: "+n.toString(16)+"'>";
+		html += String.fromCharCode(n);
+		html += "</span>";
+		htmlSpecChars.innerHTML += html;
+		
+		var n = 42606;
+		var html = "<span title='dec code: "+n+", hex code: "+n.toString(16)+"'>";
+		html += String.fromCharCode(n);
+		html += "</span>";
+		htmlSpecChars.innerHTML += html;
+		
+		for(var n = 65076; n < 65092; n++){
+			var html = "<span title='dec code: "+n+", hex code: "+n.toString(16)+"'>";
+			html += String.fromCharCode(n);
+			html += "</span>";
+			htmlSpecChars.innerHTML += html;
+		}//next
+
+		var n = 70657;
+		var html = "<span title='dec code: "+n+", hex code: "+n.toString(16)+"'>";
+		html += String.fromCharCode(n);
+		html += "</span>";
+		htmlSpecChars.innerHTML += html;
+		
+		var n = 70659;
+		var html = "<span title='dec code: "+n+", hex code: "+n.toString(16)+"'>";
+		html += String.fromCharCode(n);
+		html += "</span>";
+		htmlSpecChars.innerHTML += html;
+
+		for(var n = 65076; n < 65092; n++){
+			var html = "<span title='dec code: "+n+", hex code: "+n.toString(16)+"'>";
+			html += String.fromCharCode(n);
+			html += "</span>";
+			htmlSpecChars.innerHTML += html;
+		}//next
+		
+		for(var n = 71132; n < 71143; n++){
+			var html = "<span title='dec code: "+n+", hex code: "+n.toString(16)+"'>";
+			html += String.fromCharCode(n);
+			html += "</span>";
+			htmlSpecChars.innerHTML += html;
+		}//next
+		
+		for(var n = 74128; n < 74739; n++){
+			var html = "<span title='dec code: "+n+", hex code: "+n.toString(16)+"'>";
+			html += String.fromCharCode(n);
+			html += "</span>";
+			htmlSpecChars.innerHTML += html;
+		}//next
+		
+		
+		for(var n = 75008; n < 76629; n++){
+			var html = "<span title='dec code: "+n+", hex code: "+n.toString(16)+"'>";
+			html += String.fromCharCode(n);
+			html += "</span>";
+			htmlSpecChars.innerHTML += html;
+		}//next
+		
+		/*
+		for(var n = 80000; n < 85000; n++){
+			var html = "<span title='dec code: "+n+", hex code: "+n.toString(16)+"'>";
+			html += String.fromCharCode(n);
+			html += "</span>";
+			htmlSpecChars.innerHTML += html;
+		}//next
+		*/
+		
+	}//end event
+	
+}//end load
 </script>
 
 </head>
@@ -53,6 +170,17 @@ window.onload = function(){
 		<li><a class="lr-btn" href="http://localhost/fonts/">local fonts</a></li>		
 	</ul>
 	<!-- <button id="view-classname">view classname</button> -->
+	
+	<div class="lr-panel lr-padding-small">
+<style>
+#test {
+	font-family: dashicons;
+	width: 100%;
+}
+</style>
+<div id="test" class="fontbox bg-silver-f7"></div>
+	</div><!-- end panel -->
+	
 </div>
 
 <pre class="lr-container lr-padding-small bg-snow">
@@ -60,104 +188,119 @@ https://github.com/WordPress/dashicons
 
 https://getuikit.com/v2/docs/icon.html
 https://getuikit.com/docs/icon
+
+https://www.w3schools.com/html/html_symbols.asp
 </pre>
 
 <div class="lr-container">
+
+	
+	<div class="lr-panel lr-border-box lr-border-cyan">
+		<div class="lr-panel-heading">
+			<h2>HTML special chars...&#9784; &#9812; &#9760; &#x2694;</h2>
+		</div>
+		
+		<button id="btn-print-chars">print special chars, String.fromCodePoint() </button>
+		<div id="html-spec-chars" class="lr-panel-body"></div>
+		
+		<div class="lr-panel-body">
 <pre>
 https://ru.wikipedia.org/wiki/%D0%9C%D0%BD%D0%B5%D0%BC%D0%BE%D0%BD%D0%B8%D0%BA%D0%B8_%D0%B2_HTML
 Мнемоники_в_HTML
 
+&#x2b08
+
 http://konstantinbulgakov.com/tools/icons#other
 Пиктограммы HTML
 </pre>
-	
-	<div class="lr-panel lr-border-box lr-border-red bg-white lr-padding-small">
-		<div class="fontbox">&sect;</div>
-		<div class="fontbox">&laquo;</div>
-		<div class="fontbox">&raquo;</div>
-		<div class="fontbox">&times;</div>
-		<div class="fontbox">&szlig;</div>
-		<div class="fontbox">&OElig;</div>
-		<div class="fontbox">&Tstrok;</div>
-		<div class="fontbox">&circ;</div>
-		<div class="fontbox">&caron;</div>
-		<div class="fontbox">&lsaquo;</div>
-		<div class="fontbox">&rsaquo;</div>
-		<div class="fontbox">&weierp;</div>
-		<div class="fontbox">&alefsym;</div>
-		<div class="fontbox">&larr;</div>
-		<div class="fontbox">&uarr;</div>
-		<div class="fontbox">&rarr;</div>
-		<div class="fontbox">&darr;</div>
-		<div class="fontbox">&harr;</div>
-		<div class="fontbox">&crarr;</div>
-		<div class="fontbox">&lArr;</div>
-		<div class="fontbox">&uArr;</div>
-		<div class="fontbox">&rArr;</div>
-		<div class="fontbox">&dArr;</div>
-		<div class="fontbox">&hArr;</div>
-		<div class="fontbox">&#9668;</div>
-		<div class="fontbox">&#9650;</div>
-		<div class="fontbox">&#9658;</div>
-		<div class="fontbox">&#9660;</div>
-		<div class="fontbox">&lowast;</div>
-		<div class="fontbox">&ang;</div>
-		<div class="fontbox">&equiv;</div>
-		<div class="fontbox">&oplus;</div>
-		<div class="fontbox">&otimes;</div>
-		<div class="fontbox">&perp;</div>
-		<div class="fontbox">&loz;</div>
-		<div class="fontbox">&spades;</div>
-		<div class="fontbox">&clubs;</div>
-		<div class="fontbox">&hearts;</div>
-		<div class="fontbox">&diams;</div>
-		<div class="fontbox">&#128222;</div>
-		<div class="fontbox">&#9742;</div>	
-		<div class="fontbox">&#9743;</div>
-		<div class="fontbox">&#128241;</div>
-		<div class="fontbox">&#128190;</div>
-		<div class="fontbox">&#128269;</div>
-		<div class="fontbox">&#128270;</div>
-		<div class="fontbox">&#128188;</div>
-		<div class="fontbox">&#9989;</div>
-		<div class="fontbox">&#10005;</div>
-		<div class="fontbox">&#10006;</div>
-		<div class="fontbox">&#10007;</div>
-		<div class="fontbox">&#10008;</div>
-		<div class="fontbox">&#9200;</div>
-		<div class="fontbox">&#10053;</div>
-		<div class="fontbox">&#10052;</div>
-		<div class="fontbox">&#10054;</div>
-		<div class="fontbox">&#9730;</div>
-		<div class="fontbox">&#10048;</div>
-		<div class="fontbox">&#10016;</div>
-		<div class="fontbox">&#10020;</div>
-		<div class="fontbox">&#128521;</div>
-		<div class="fontbox">&#128276;</div>
-		<div class="fontbox">&#128265;</div>
-		<div class="fontbox">&#128266;</div>
-		<div class="fontbox">&#128062;</div>
-		<div class="fontbox">&#8634;</div>
-		<div class="fontbox">&#8635;</div>
+		
+			<div class="fontbox">&sect;</div>
+			<div class="fontbox">&laquo;</div>
+			<div class="fontbox">&raquo;</div>
+			<div class="fontbox">&times;</div>
+			<div class="fontbox">&szlig;</div>
+			<div class="fontbox">&OElig;</div>
+			<div class="fontbox">&Tstrok;</div>
+			<div class="fontbox">&circ;</div>
+			<div class="fontbox">&caron;</div>
+			<div class="fontbox">&lsaquo;</div>
+			<div class="fontbox">&rsaquo;</div>
+			<div class="fontbox">&weierp;</div>
+			<div class="fontbox">&alefsym;</div>
+			<div class="fontbox">&larr;</div>
+			<div class="fontbox">&uarr;</div>
+			<div class="fontbox">&rarr;</div>
+			<div class="fontbox">&darr;</div>
+			<div class="fontbox">&harr;</div>
+			<div class="fontbox">&crarr;</div>
+			<div class="fontbox">&lArr;</div>
+			<div class="fontbox">&uArr;</div>
+			<div class="fontbox">&rArr;</div>
+			<div class="fontbox">&dArr;</div>
+			<div class="fontbox">&hArr;</div>
+			<div class="fontbox">&#9668;</div>
+			<div class="fontbox">&#9650;</div>
+			<div class="fontbox">&#9658;</div>
+			<div class="fontbox">&#9660;</div>
+			<div class="fontbox">&lowast;</div>
+			<div class="fontbox">&ang;</div>
+			<div class="fontbox">&equiv;</div>
+			<div class="fontbox">&oplus;</div>
+			<div class="fontbox">&otimes;</div>
+			<div class="fontbox">&perp;</div>
+			<div class="fontbox">&loz;</div>
+			<div class="fontbox">&spades;</div>
+			<div class="fontbox">&clubs;</div>
+			<div class="fontbox">&hearts;</div>
+			<div class="fontbox">&diams;</div>
+			<div class="fontbox">&#128222;</div>
+			<div class="fontbox">&#9742;</div>	
+			<div class="fontbox">&#9743;</div>
+			<div class="fontbox">&#128241;</div>
+			<div class="fontbox">&#128190;</div>
+			<div class="fontbox">&#128269;</div>
+			<div class="fontbox">&#128270;</div>
+			<div class="fontbox">&#128188;</div>
+			<div class="fontbox">&#9989;</div>
+			<div class="fontbox">&#10005;</div>
+			<div class="fontbox">&#10006;</div>
+			<div class="fontbox">&#10007;</div>
+			<div class="fontbox">&#10008;</div>
+			<div class="fontbox">&#9200;</div>
+			<div class="fontbox">&#10053;</div>
+			<div class="fontbox">&#10052;</div>
+			<div class="fontbox">&#10054;</div>
+			<div class="fontbox">&#9730;</div>
+			<div class="fontbox">&#10048;</div>
+			<div class="fontbox">&#10016;</div>
+			<div class="fontbox">&#10020;</div>
+			<div class="fontbox">&#128521;</div>
+			<div class="fontbox">&#128276;</div>
+			<div class="fontbox">&#128265;</div>
+			<div class="fontbox">&#128266;</div>
+			<div class="fontbox">&#128062;</div>
+			<div class="fontbox">&#8634;</div>
+			<div class="fontbox">&#8635;</div>
 
-		<div class="fontbox">&#8544;</div>
-		<div class="fontbox">&#8545;</div>
-		<div class="fontbox">&#8546;</div>
-		<div class="fontbox">&#8547;</div>
-		<div class="fontbox">&#8548;</div>
-		<div class="fontbox">&#8549;</div>
-		<div class="fontbox">&#8550;</div>
-		<div class="fontbox">&#8551;</div>
-		<div class="fontbox">&#8552;</div>
-		<div class="fontbox">&#8553;</div>
-		<div class="fontbox">&#8554;</div>
-		<div class="fontbox">&#8555;</div>
-		<div class="fontbox">&#8556;</div>
-		<div class="fontbox">&#8557;</div>
-		<div class="fontbox">&#8558;</div>
-		<div class="fontbox">&#8559;</div>
-		<div class="fontbox">&#8984;</div>				
-	</div>
+			<div class="fontbox">&#8544;</div>
+			<div class="fontbox">&#8545;</div>
+			<div class="fontbox">&#8546;</div>
+			<div class="fontbox">&#8547;</div>
+			<div class="fontbox">&#8548;</div>
+			<div class="fontbox">&#8549;</div>
+			<div class="fontbox">&#8550;</div>
+			<div class="fontbox">&#8551;</div>
+			<div class="fontbox">&#8552;</div>
+			<div class="fontbox">&#8553;</div>
+			<div class="fontbox">&#8554;</div>
+			<div class="fontbox">&#8555;</div>
+			<div class="fontbox">&#8556;</div>
+			<div class="fontbox">&#8557;</div>
+			<div class="fontbox">&#8558;</div>
+			<div class="fontbox">&#8559;</div>
+			<div class="fontbox">&#8984;</div>				
+		</div>
+	</div><!-- end panel -->
 </div>
 
 <div class="main lr-container lr-border-box lr-border-cyan bg-white">
