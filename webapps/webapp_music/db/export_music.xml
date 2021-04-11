@@ -57,6 +57,7 @@
 	<tag tid="99" vid="5" group_name="alphabetical_voc">S</tag>
 	<tag tid="100" vid="5" group_name="alphabetical_voc">T</tag>
 	<tag tid="101" vid="5" group_name="alphabetical_voc">V</tag>
+	<tag tid="102" vid="5" group_name="alphabetical_voc">W</tag>
 	<tag tid="105" vid="2" group_name="music_styles">black metal</tag>
 	<tag tid="106" vid="2" group_name="music_styles">post-punk</tag>
 	<tag tid="107" vid="2" group_name="music_styles">rock</tag>
@@ -1735,6 +1736,35 @@ https://en.wikipedia.org/wiki/Katzenjammer_Kabarett</description>
 
 	<published format="d-M-Y H:i:s">21-Mar-2021 18:15:55</published>
 	<updated format="d-M-Y H:i:s">21-Mar-2021 18:15:55</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>The Who</item>
+	</title>
+	<images>
+		<img src="https://avatars.yandex.net/get-music-user-playlist/59900/9941293.1044.73481/400x400?1617281814343"/>
+	</images>
+
+	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/TheWho.json">TheWho.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1044">music.yandex.ru</a></li>
+		<li><a data-type="external-link" href="https://ru.wikipedia.org/wiki/The_Who">wiki</a></li>
+	</related_links>
+
+	<node_tags>
+		<item vid="5" tid="102" group_name="alphabetical_voc">W</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="109" group_name="music_styles">hard-rock</item>
+		<item vid="2" tid="108" group_name="music_styles">art-rock</item>
+		<item vid="2" tid="107" group_name="music_styles">rock</item>
+		<item vid="4" tid="132" group_name="country">Великобритания</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</node_tags>
+
+	<published format="d-M-Y H:i:s">01-Apr-2021 19:57:18</published>
+	<updated format="d-M-Y H:i:s">01-Apr-2021 19:57:18</updated>
 </node>
 	</database>
 </xroot>

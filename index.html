@@ -24,11 +24,11 @@ https://web.dev/codelab-preload-web-fonts/
 	<link rel="preload" href="css/bootstrap335.min.css" as="style">
 -->
 
-	<link rel="preload" href="fonts/glyphicons-halflings-regular.eot" as="font" type="application/vnd.ms-fontobject" crossorigin="anonymous">
-	<link rel="preload" href="fonts/glyphicons-halflings-regular.svg" as="font" type="image/svg+xml" crossorigin="anonymous">
-	<link rel="preload" href="fonts/glyphicons-halflings-regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-	<link rel="preload" href="fonts/glyphicons-halflings-regular.woff" as="font" type="font/woff" crossorigin="anonymous"> 
-	<link rel="preload" href="fonts/glyphicons-halflings-regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"> 
+	<link rel="preload" href="fonts/glyphicons/glyphicons-halflings-regular.eot" as="font" type="application/vnd.ms-fontobject" crossorigin="anonymous">
+	<link rel="preload" href="fonts/glyphicons/glyphicons-halflings-regular.svg" as="font" type="image/svg+xml" crossorigin="anonymous">
+	<link rel="preload" href="fonts/glyphicons/glyphicons-halflings-regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+	<link rel="preload" href="fonts/glyphicons/glyphicons-halflings-regular.woff" as="font" type="font/woff" crossorigin="anonymous"> 
+	<link rel="preload" href="fonts/glyphicons/glyphicons-halflings-regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"> 
 
 	<link rel="preload" href="fonts/Ticker_Tape/ticker_tape-webfont.woff2" as="font" type="font/woff2" crossorigin="anonymous"> 
 	<link rel="preload" href="fonts/Ticker_Tape/ticker_tape-webfont.woff" as="font" type="font/woff" crossorigin="anonymous"> 
@@ -42,21 +42,11 @@ https://web.dev/codelab-preload-web-fonts/
 	<link rel="preload" href="fonts/AVANTGAR/AVANTGAR.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 	<link rel="preload" href="fonts/AVANTGAR/AVANTGAR.svg" as="font" type="image/svg+xml" crossorigin="anonymous">
 
-
-	<link rel="preload" href="fonts/fonts.css" as="style">
-	<link rel="preload" href="css/colors.css" as="style">
-	<link rel="preload" href="css/style.css" as="style">
-	<link rel="preload" href="js/main.js" as="script">
-
-<!--
-	<link rel="stylesheet" type="text/css" href="css/bootstrap335.min.css">
--->
 	<link rel="stylesheet" href="css/lr.css">
-	<link rel="stylesheet" href="fonts/glyphicons/glyphicon.css" type="text/css" />
 	<link rel="stylesheet" href="fonts/fonts.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="fonts/glyphicons/glyphicon.css" type="text/css" />
 	<link rel="stylesheet" href="css/style.css">
 
-<!--	<script src="js/jquery321.min.js"></script> -->
 	<script src="js/main.js"></script>
 </head>
 
@@ -68,7 +58,7 @@ https://web.dev/codelab-preload-web-fonts/
 			<h1 class="text-right">Roman Laptev personal site...</h1>
 		</div>
 		
-<div class="text-center lr-flex lr-flex-wrap lr-flex-hcenter lr-flex-vtop">
+<div class="text-center">
 
 		<div class="lr-panel-inline text-left bg-whitesmoke lr-margin-small">
 			<div class="lr-panel-heading bg-darkblue  text-white">
@@ -79,45 +69,59 @@ https://web.dev/codelab-preload-web-fonts/
 <a  href="webapps/transport_app/app.html" class="lr-btn lr-btn-green-shadow" target="_blank">
 Расписание транспорта</a>
 <a href="https://github.com/romanlaptev/romanlaptev.github.io/tree/dev/webapps/transport_app" 
-class="lr-btn bg-gradient-orange" title="GitHub repository" target="_blank">GitHub, dev</a>
+class="lr-btn lr-btn-default" title="GitHub repository" target="_blank">
+	<img src="img/icons/github.svg" onerror="this.onerror=null; this.src='img/icons/github.png'">GitHub
+</a>
 			</div>
 
 			<div class="lr-panel-body">
 <a href="https://romanlaptev.herokuapp.com/projects/schedule_app/" 
 class="lr-btn lr-btn-blue" target="_blank">Transport schedule</a>
+
 <a href="https://github.com/romanlaptev/romanlaptev.heroku.com/tree/master/projects/schedule_app" 
-class="lr-btn bg-gradient-orange" title="GitHub repository" target="_blank">GitHub</a>
+class="lr-btn lr-btn-default" title="GitHub repository" target="_blank">
+	<img src="img/icons/github.svg" onerror="this.onerror=null; this.src='img/icons/github.png'">GitHub
+</a>
 <br>
 <small>ver2 (JS, Yandex API, PHP redirect proxy)</small>
+
 			</div>
 
 			<div class="lr-panel-body">
 <a  href="webapps/bookmarks/app.html" target="_blank" class="lr-btn lr-btn-blue">Bookmarks application</a>
 <a href="https://github.com/romanlaptev/bookmarks" target="_blank"
-class="lr-btn bg-gradient-orange" title="GitHub repository">GitHub</a>
+class="lr-btn lr-btn-default" title="GitHub repository">
+	<img src="img/icons/github.svg" onerror="this.onerror=null; this.src='img/icons/github.png'">
+</a>
 <a class="lr-btn lr-btn-default" title="dev version, glitch.me" target="_blank" href="https://romanlaptev-bookmarks.glitch.me">
-	<i class="glyphicon glyphicon-cog"></i>
+	<i class="glyphicon glyphicon-cog">glitch.me </i>
 </a>
 			</div>
 
 			<div class="lr-panel-body">
 <a href="webapps/webapp_video/app.html" target="_blank" class="lr-btn lr-btn-blue">webapp_video</a>
 <a href="https://github.com/romanlaptev/romanlaptev.github.io/tree/master/webapps/webapp_video" 
-class="lr-btn bg-gradient-orange" title="GitHub repository" target="_blank">GitHub</a>
-	<a href="/projects/webapp_video/" 
+class="lr-btn lr-btn-default" title="GitHub repository" target="_blank">
+	<img src="img/icons/github.svg" onerror="this.onerror=null; this.src='img/icons/github.png'">GitHub
+</a>
+	<a href="/projects/webapp_videocenter/" 
 class="lr-btn lr-btn-default" target="_blank">localhost</a>
 			</div>
 
 			<div class="lr-panel-body">
 <a href="webapps/webapp_lib/" target="_blank" class="lr-btn lr-btn-blue">webapp_lib</a>
 <a href="https://github.com/romanlaptev/romanlaptev.github.io/tree/master/webapps/webapp_lib" 
-class="lr-btn bg-gradient-orange" title="GitHub repository" target="_blank">GitHub</a>
+class="lr-btn lr-btn-default" title="GitHub repository" target="_blank">
+	<img src="img/icons/github.svg" onerror="this.onerror=null; this.src='img/icons/github.png'">GitHub
+</a>
 			</div>
 
 			<div class="lr-panel-body">
 <a href="webapps/webapp_music/" target="_blank" class="lr-btn lr-btn-blue">webapp_music</a>
 <a href="https://github.com/romanlaptev/romanlaptev.github.io/tree/master/webapps/webapp_music" 
-class="lr-btn bg-gradient-orange" title="GitHub repository" target="_blank">GitHub</a>
+class="lr-btn lr-btn-default" title="GitHub repository" target="_blank">
+	<img src="img/icons/github.svg" onerror="this.onerror=null; this.src='img/icons/github.png'">GitHub
+</a>
 			</div>
 
 			<div class="lr-panel-body text-right">
@@ -129,7 +133,7 @@ class="lr-btn bg-gradient-orange" title="GitHub repository" target="_blank">GitH
 			
 				
 
-		<div class="lr-panel-inline text-left bg-snow lr-margin-small">
+		<div class="lr-panel-inline text-left bg-floralwhite lr-margin-small">
 			<div class="lr-panel-heading bg-blue-c3 text-white">
 				<h3>code</h3>
 			</div>
@@ -164,14 +168,14 @@ class="lr-btn lr-btn-default" target="_blank">localhost</a>
 	<a target="_blank" href="fonts/preview_fonts.html">preview_fonts</a>
 </li>
 <li class="">
-<a href="projects/notes/app.html" target="_blank" class="lr-btn lr-btn-darkblue lr-hover-blue">
+<a href="webapps/notes/app.html" target="_blank" class="lr-btn lr-btn-darkblue lr-hover-blue">
 <!--	<i class="glyphicon glyphicon-star">-->
 	</i>Notes
 </a>
 <a href="https://github.com/romanlaptev/romanlaptev.github.io/tree/master/projects/notes" 
 class="" title="GitHub repository" target="_blank">GitHub</a> |
 <a target="_blank" class="" href="/projects/romanlaptev.heroku/projects/db_admin/">Db admin</a> |
-<a target="_blank" href="projects/notes/files/test_API.html">test DB API</a>
+<a target="_blank" href="webapps/notes/files/test_API.html">test DB API</a>
 </li>
 <li class="">
 <a class="lr-btn lr-btn-darkblue lr-hover-blue" target="_blank" href="webapps/geolocation/app.html">test map API</a>
@@ -230,7 +234,7 @@ class="lr-btn bg-gradient-orange" title="GitHub repository" target="_blank">GitH
 <a href="http://wl500gp:880" class="lr-btn bg-gradient-default" target="_blank">wl500gp</a>
 	</li>
 	<li class="">
-<a href="http://i5/webdisk/config.git/virtualbox_settings/virtualweb.html" class="lr-btn bg-gradient-default" target="_blank">virtualweb</a>
+<a href="http://wl500gp:880/virtualweb.html" class="lr-btn bg-gradient-default" target="_blank">virtualweb</a>
 	</li>	
 </ul>
 
@@ -243,12 +247,13 @@ class="lr-btn bg-gradient-orange" title="GitHub repository" target="_blank">GitH
 
 	<footer class="lr-container padding-10 bg-lightsteelblue4 lr-margin10-top">
 		<div class="bg-darkblue lr-padding-10">
-
+<!--
 <div class="lr-padding-small">
 	<div id="user-agent" class="bg-whitesmoke lr-padding-10"></div>
 	<span id="supportFlex" class="test-support-flex text-white lr-padding-small">support-flex</span>
 	<span id="supportGrid" class="test-support-grid text-white lr-padding-small">support-grid</span>
 </div>
+-->
 			
 <p class="text-white text-right">
 <b>Start: </b>28.05.2016 - <span id="current_date"></span>, 

@@ -17,32 +17,103 @@
 	font-size: 12px;
 	display: none;
 }
+
+@font-face {
+  font-family: 'symbol';
+  font-style: normal;
+  font-weight: 400;
+  src: url('http://i5/fonts/S/symbol.ttf') format('truetype');
+}
+
+#html-spec-chars {
+	font-family: 'Material Icons';
+	/*font-family: 'symbol';*/
+	width: 100%;
+}
 </style>
+<script>
+window.onload = function(){
+/*
+	var btn1 = document.querySelector("#view-classname");
+	btn1.onclick = function(){
+		var fontboxes = document.querySelectorAll(".fontbox");
+//console.log(fontboxes[1].outerHTML);
+			for( var n = 0; n < fontboxes.length; n++){
+				fontboxes[n].innerHTML = "<div>"+fontboxes[n].classList+"</div>";
+			}//next
+	}//end event
+*/	
+	var htmlSpecChars = document.querySelector("#html-spec-chars");
+	var btnSpecChars = document.querySelector("#btn-print-chars");
+	btnSpecChars.onclick = function(){
+		htmlSpecChars.innerHTML = "";
 
+		for(var n = 57344; n < 60239; n++){
+			var html = "<span title='dec code: "+n+", hex code: "+n.toString(16)+"'>";
+			html += String.fromCharCode(n);
+			html += "</span>";
+			htmlSpecChars.innerHTML += html;
+		}//next
+/*
+		//for(var n = 57344; n < 60239; n++){
+		for(var n = 10000; n < 11096; n++){
+			var html = "<span title='dec code: "+n+", hex code: "+n.toString(16)+"'>";
+			html += String.fromCharCode(n);
+			html += "</span>";
+			htmlSpecChars.innerHTML += html;
+		}//next
 
+		for(var n = 11264; n < 11309; n++){
+			var html = "<span title='dec code: "+n+", hex code: "+n.toString(16)+"'>";
+			html += String.fromCharCode(n);
+			html += "</span>";
+			htmlSpecChars.innerHTML += html;
+		}//next
+
+		for(var n = 40000; n < 45000; n++){
+			var html = "<span title='dec code: "+n+", hex code: "+n.toString(16)+"'>";
+			html += String.fromCharCode(n);
+			html += "</span>";
+			htmlSpecChars.innerHTML += html;
+		}//next
+*/
+	}//end event
+	
+}//end load
+</script>
 </head>
 
-<body class="bg-blue">
+<body class="page-green">
 
 <div class="lr-container">
 
 	<a href="../preview_fonts.html"><i class="material-icons">published_with_changes</i></a>
-	<div class="lr-page-header color-white">
+	<div class="lr-page-header">
 		<h1 class="text-right">preview fonts</h1>
-		<h2>MaterialIcons-Regular</h2>
 <pre>
 https://google.github.io/material-design-icons/
 http://localhost/fonts/M/material-icons/
 </pre>
 		<div>
 	&lt;link rel="stylesheet" href="material-icons.css" type="text/css"&gt;
-	<a href="material-icons.css" class="lr-btn bg-darkblue text-white" target="_blank">open new tab</a>
+	<a href="material-icons.css" class="lr-btn" target="_blank">open new tab</a>
 		</div>
 
 	</div>
 	
-	<div class="lr-panel bg-white lr-padding-small">
-	
+	<div class="lr-panel lr-padding-small">
+		<div class="lr-panel-heading">
+			<h2>MaterialIcons-Regular</h2>
+		</div>
+		
+	<div class="lr-panel">
+		<div class="lr-panel-body">
+<button id="btn-print-chars" class="">print special chars, String.fromCodePoint() </button>
+<div id="html-spec-chars" class="lr-panel-body"></div>
+		</div>
+	</div>
+
+	<div class="lr-panel-body">
 		<div class="fontbox">
 			<span class="material-icons">face</span>
 		</div>
@@ -4736,7 +4807,8 @@ http://localhost/fonts/M/material-icons/
 		<div class="fontbox">
 			<span class="material-icons">zoom_out_map</span>
 		</div>
-	
+		
+	</div>
 	</div><!-- end panel --> 
 </div><!-- end lr-container -->
 

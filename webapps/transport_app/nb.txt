@@ -87,3 +87,12 @@ https://wikimapia.org/151145/ru/%D0%9E%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BE
 	*- добавить копирайт яндекса https://tech.yandex.ru/rasp/doc/reference/query-copyright-docpage/
 	
 	
+
+==================
+символ снежинка
+
+#block-product-property ul li::before {
+	content: '\2042';
+	color: #faba61;
+	padding-right: 10px;
+}

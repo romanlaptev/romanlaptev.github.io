@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<title>Расписание транспорта</title>
+	<title>Transport App</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 	
 	<meta charset="utf-8"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<!--
-	<meta http-equiv="Pragma" content="no-cache">
-	<meta http-equiv="Expires" content="-1">	
--->
 	<meta name="referrer" content="no-referrer" />
 
 	<link rel="shortcut icon" type="image/x-icon" href="res/favicons/favicon.ico"/>
@@ -47,12 +43,6 @@
 	
 <div id="App" class="lr-container">
 	
-<!--
-	<div class="lr-lr-page-header text-right">
-		<h1 class="color-white">расписание транспорта</h1>
-	</div>
--->
-
 	<div class="lr-panel">
 		<div id="tab-buttons" class="lr-padding-10">
 			<ul class="lr-list-inline">
@@ -106,110 +96,87 @@ href="?q=switch-tab&target_id=tab-weather">Погода</a>
 			</div><!-- end tab -->
 
 			<div id="tab-weather" class="tab-pane lr-panel bg-snow">
-				<div class="lr-lr-page-heading lr-padding-20 bg-darkblue-green">
+				
+				<div class="tab-header lr-lr-page-heading lr-padding-20 bg-darkblue-green">
 <h1 class="color-white text-right">данные погоды и прогноз</h1>
-<div>
-	<a href="?q=send-request&api=weatherAPI" class="send-request lr-btn bg-darkblue text-white">получить данные</a>
-</div>
-
-				</div>
-				<div class="lr-panel-body">
-					
-			<div id="response">
-
-<div class="bg-lavender lr-padding-20">
-	<div class="lr-panel">
-		<p>
-Широта: <input name="latitude" type="text" class="lr-padding-small" value="%lat%"/>
-долгота: <input name="longitude" type="text" class="lr-padding-small" value="%lon%"/> 
-		</p>
-		<p><b>Волочаевский жилмассив, Новосибирск</b>, <a href="%url%"><small>Яндекс.Погода</small></a></p>
-<p>
-	<b>%temp% °C</b> 
-	<img class="w5" src="https://yastatic.net/weather/i/icons/blueye/color/svg/%icon%.svg">
-	<b>%condition%</b>
-<p>
-<p>
-	Ощущаемая температура: <b>%feels_like% °C</b>, 
-	температура воды: <b>%temp_water%</b> °C
-</p>
-<p>
-	Направление ветра <b>%wind_dir%</b>, 
-	скорость: <b>%wind_speed%</b> м/с, 
-	скорость порывов ветра: <b>%wind_gust%</b> м/с
-</p>
-<p>
-	Влажность воздуха: <b>%humidity%</b>, 
-	давление: <b>%pressure_mm%</b> мм рт. ст.
-</p>
-<p>
-	<b>%season%</b>, <b>%daytime%</b>
-</p>
-<p><small>Время замера погодных данных: <b>%obs_time%</b></small></p>
-<p><small>Время сервера: <b>%now%</b>, UTC: <b>%now_dt%</b></small></p>
-	</div>
-</div>
-
-
-
-<div class="bg-lightgreen lr-padding-20">
-	<h3>данные прогноза погоды на %date%</h3>
-	
-	<div class="lr-panel">
-
-		<p>
-Время восхода Солнца: <b>%sunrise%</b>,  
-время заката Солнца: <b>%sunset%</b>,
-<b>%moon_text%</b>
-		<p>
-
-		<div class="lr-row">		
-			<div class="w50 float-left bg-darkblue-gray color-white lr-padding-20">
-		%forecast_part0%
-			</div>
-			<div class="w50 float-left bg-aliceblue color-black lr-padding-20">
-		%forecast_part1%
-			</div>
-		</div>
-
-	</div>
-</div>
-	
-			</div><!-- end response block -->
-			
-
-<div id="forecast-parts-0" class="hidden">
-	<h4>%part_name%</h4>
-	<div>
-		<img class="w5" src="https://yastatic.net/weather/i/icons/blueye/color/svg/%icon%.svg">
-		<div><b>%condition%</b></div>
-	</div>
-<p>
-Мин. т.: <b>%temp_min% °C</b>,
-Макс. т.: <b>%temp_max% °C</b>,
-Средняя т.: <b>%temp_avg% °C</b>,
-Ощущаемая т.: <b>%feels_like% °C</b>
-<p>
-<b>%daytime%</b>
-<p>
-	Направление ветра <b>%wind_dir%</b>, 
-	скорость: <b>%wind_speed%</b> м/с, 
-	скорость порывов ветра: <b>%wind_gust%</b> м/с
-</p>
-<p>
-	Влажность воздуха: <b>%humidity%</b>, 
-	давление: <b>%pressure_mm%</b> мм рт. ст.
-</p>
-<p>
-	Прогноз осадков: <b>%prec_mm%</b> (мм), 
+		<div class="lr-panel-inline lr-border-box lr-border-cyan text-left">
+<form name="form_request_params">
+			<div class="lr-panel-body">
 <!--
-	<li>prec_period: <b>%prec_period%</b>	<small>Прогнозируемый период осадков (в минутах). 	Число</small></li>
+<input type="text" size="80" 
+id="inp-url" class=""  autocomplete="off" 
+value="http://api.openweathermap.org/data/2.5/weather"/>
 -->
-	Вероятность выпадения осадков: <b>%prec_prob%</b>
-</p>
-	</div><!-- end forecast-parts-0 -->
-			
+<a href="?q=send-request&req-type=weather-api&api-name=yandex" 
+class="send-request lr-btn bg-darkblue text-white">получить данные (yandex)</a>
+
+<a href="?q=send-request&req-type=weather-api&api-name=openweathermap" 
+class="lr-btn bg-darkblue text-white">get weather (openweathermap)</a>
+
+<a href="?q=send-request&req-type=forecast-api&api-name=openweathermap" 
+class="lr-btn bg-blue text-white">get weather forecast (openweathermap)</a>
+
+<a href="?q=test&func=testWrapDate" class="lr-btn bg-orange text-black">testBtn</a>
+			</div>
+
+			<div class="lr-panel-body">
+				<div class="row panel">
+					
+					<div class="lr-margin-small">
+<small>Latitude <mark class="bg-lavender lr-padding-small">(широта), 90...-90 deg./град.</mark>:</small> 
+					</div>
+					<div class="">
+<input id="latitude-input" type="text"
+name="coord_lat" 
+value="0" autocomplete="off" placeholder="">
+<input id="latitude-range" type="range" 
+class="range" min="-90" max="90" step="0.05" value="" autocomplete="off">
+					</div>
+					
 				</div>
+					
+				<div class="">
+					
+					<div class="lr-margin-small">
+<small>Longitude <mark class="bg-lavender lr-padding-small">(долгота), -180...180 deg./град.</mark>:</small> 
+					</div>
+					<div class="">
+<input id="longitude-input" 
+name="coord_long" 
+type="text" value="-60" autocomplete="off" placeholder="">
+<input id="longitude-range" 
+type="range" class="range" min="-180" max="180" step="0.05" value="" autocomplete="off">
+					</div>
+					
+				</div>
+				
+			</div>
+			
+			<div class="">
+select address for get coordinates:
+<select name="address">
+	<option value="addr1">address1</option>
+	<option value="addr2">address2</option>
+	<option value="addr3">address3</option>
+</select>
+			</div>
+			
+			<div>
+API address:
+<select name="api-addr">
+	<option value="yandex.ru/pogoda/novosibirsk">Яндекс.Погода</option>
+	<option value="openweathermap.org">openweathermap.org</option>
+</select>
+			</div>
+			
+</form><!-- end form_request_params -->
+
+				</div><!-- end tab-header -->
+				
+				<div class="lr-panel-body">
+					<div id="response"></div>
+				</div>
+				
 			</div><!-- end tab -->
 			
 
@@ -274,6 +241,298 @@ prepare data:
 
     </div>
 </div>
+
+
+<!-- ********************** TEMPLATES ************************** -->	
+<div id="forecast-parts-0" class="hidden">
+	<h4>%part_name%</h4>
+	<div>
+		<img class="w5" src="https://yastatic.net/weather/i/icons/blueye/color/svg/%icon%.svg">
+		<div><b>%condition%</b></div>
+	</div>
+<p>
+Мин. т.: <b>%temp_min% °C</b>,
+Макс. т.: <b>%temp_max% °C</b>,
+Средняя т.: <b>%temp_avg% °C</b>,
+Ощущаемая т.: <b>%feels_like% °C</b>
+<p>
+<b>%daytime%</b>
+<p>
+	Направление ветра <b>%wind_dir%</b>, 
+	скорость: <b>%wind_speed%</b> м/с, 
+	скорость порывов ветра: <b>%wind_gust%</b> м/с
+</p>
+<p>
+	Влажность воздуха: <b>%humidity%</b>, 
+	давление: <b>%pressure_mm%</b> мм рт. ст.
+</p>
+<p>
+	Прогноз осадков: <b>%prec_mm%</b> (мм), 
+<!--
+	<li>prec_period: <b>%prec_period%</b>	<small>Прогнозируемый период осадков (в минутах). 	Число</small></li>
+-->
+	Вероятность выпадения осадков: <b>%prec_prob%</b>
+</p>
+</div><!-- end forecast-parts-0 -->
+
+
+<div class="bg-lavender lr-padding-20">
+	<div class="lr-panel">
+		<p>
+Широта: <input name="latitude" type="text" class="lr-padding-small" value="%lat%"/>
+долгота: <input name="longitude" type="text" class="lr-padding-small" value="%lon%"/> 
+		</p>
+		<p><b>Волочаевский жилмассив, Новосибирск</b>, <a href="%url%"><small>Яндекс.Погода</small></a></p>
+<p>
+	<b>%temp% °C</b> 
+	<img class="w5" src="https://yastatic.net/weather/i/icons/blueye/color/svg/%icon%.svg">
+	<b>%condition%</b>
+<p>
+<p>
+	Ощущаемая температура: <b>%feels_like% °C</b>, 
+	температура воды: <b>%temp_water%</b> °C
+</p>
+<p>
+	Направление ветра <b>%wind_dir%</b>, 
+	скорость: <b>%wind_speed%</b> м/с, 
+	скорость порывов ветра: <b>%wind_gust%</b> м/с
+</p>
+<p>
+	Влажность воздуха: <b>%humidity%</b>, 
+	давление: <b>%pressure_mm%</b> мм рт. ст.
+</p>
+<p>
+	<b>%season%</b>, <b>%daytime%</b>
+</p>
+<p><small>Время замера погодных данных: <b>%obs_time%</b></small></p>
+<p><small>Время сервера: <b>%now%</b>, UTC: <b>%now_dt%</b></small></p>
+	</div>
+</div>
+
+
+
+<div class="bg-lightgreen lr-padding-20">
+	<h3>данные прогноза погоды на %date%</h3>
+	
+	<div class="lr-panel">
+
+		<p>
+Время восхода Солнца: <b>%sunrise%</b>,  
+время заката Солнца: <b>%sunset%</b>,
+<b>%moon_text%</b>
+		<p>
+
+		<div class="lr-row">		
+			<div class="w50 float-left bg-darkblue-gray color-white lr-padding-20">
+		%forecast_part0%
+			</div>
+			<div class="w50 float-left bg-aliceblue color-black lr-padding-20">
+		%forecast_part1%
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+	<div id="template-main">
+		
+		<h2>Weather</h2>
+		<ul>		
+			<li>id: <b>%id%</b></li>
+			<li>name: <b>%name%</b></li>
+			<li>cod: <b>%cod%</b></li>
+			<li>base: <b>%base%</b></li>
+			<li>dt: <b>%dt%</b></li>
+			<li>timezone: <b>%timezone%</b></li>
+			<li>visibility: <b>%visibility%</b></li>
+		</ul>
+			
+		<ul>		
+			<li>Облачность, clouds.all: <b>%clouds.all%</b>%</li>
+		</ul>
+
+		<ul>		
+			<li>coord.lat: <b>%coord.lat%</b></li>
+			<li>coord.lon: <b>%coord.lon%</b></li>
+		</ul>
+
+		<ul>		
+			<li>main.temp: <b>%main.temp%</b>&deg;</li>
+			<li>main.feels_like: <b>%main.feels_like%</b>&deg;</li>
+			<li>main.temp_max: <b>%main.temp_max%</b>&deg;</li>
+			<li>main.temp_min: <b>%main.temp_min%</b>&deg;</li>
+			<li>main.pressure: <b>%main.pressure%</b> hPa</li>
+			<li>влажность (main.humidity): <b>%main.humidity%</b>%</li>
+		</ul>
+
+		<ul>		
+			<li>sys.country: <b>%sys.country%</b></li>
+			<li>sys.sunrise: <b>%sys.sunrise%</b></li>
+			<li>sys.sunset: <b>%sys.sunset%</b></li>
+		</ul>
+
+		<div>print array
+		%weather%
+		</div>
+		
+	</div>
+
+	<div id="weather-list-tpl">
+		<ul>
+			<li>weather.main: <b>%weather.main%</b></li>
+			<li>weather.description: <b>%weather.description%</b></li>
+			<li>weather.icon: <b>%weather.icon%</b></li>
+		</ul>
+	</div>
+
+
+	<div id="template-forecast">
+		<h2>Forecast</h2>
+		<ul>		
+			<li>cod: <b>%cod%</b></li>
+			<li>message: <b>%message%</b></li>
+		</ul>
+		
+		<ul>
+					
+			<li>city.coord:
+				<ul>		
+					<li>lat: <b>%city.coord.lat%</b></li>
+					<li>lon: <b>%city.coord.lon%</b></li>
+				</ul>
+			</li>
+			
+			<li>city.country: <b>%city.country%</b></li>
+			<li>city.name: <b>%city.name%</b></li>
+			<li>city.population: <b>%city.population%</b></li>
+			<li>city.timezone: <b>%city.timezone%</b></li>
+			<li>city.sunrise: <b>%city.sunrise%</b></li>
+			<li>city.sunset: <b>%city.sunset%</b></li>
+		</ul>
+		
+		<div>
+%list%
+		</div>
+
+	</div>
+	
+	<span id="template-forecast-list-tpl" class="">
+		<ul class="bg-lavender lr-padding-20">
+<li class="">dt_txt: 
+	<small>Time of data forecasted, ISO, UTC</small>
+	<b>%list.dt_txt%</b>
+</li>
+
+<li class="">visibility: 
+	<small>Average visibility</small>
+	<b>%list.visibility%</b> metres
+</li>
+
+<li class="">clouds.all: 
+	<small>Cloudiness</small>
+	<b>%list.clouds.all%</b>%
+</li>
+
+			
+			<ul class="bg-floralwhite">
+				<li class="">temp: <b>%list.main.temp%</b>&#8451;</li>
+				<li class="">feels_like: <b>%list.main.feels_like%</b>&#8451;</li>
+				<li class="">min: <b>%list.main.temp_min%</b>&#8451;</li>
+				<li class="">max: <b>%list.main.temp_max%</b>&#8451;</li>
+<li class="">pressure:
+	<small>Atmospheric pressure on the sea level by default</small>
+	<b>%list.main.pressure%</b> hPa
+</li>
+<li class="">sea_level:
+	<small>Atmospheric pressure on the sea level</small>
+	<b>%list.main.sea_level%</b> hPa
+</li>
+
+<li class="">grnd_level:
+	<small>Atmospheric pressure on the ground level</small>
+	<b>%list.main.grnd_level%</b> hPa
+</li>
+
+<li class="">humidity:
+	<small>Humidity</small>
+	<b>%list.main.humidity%</b>%
+</li>
+			</ul>
+
+<li class="">pop: 
+	<small>Probability of precipitation (возможность осадков)</small>
+	<b>%list.pop%</b>
+</li>
+<!--
+<li class="">rain: 
+	<small>Rain volume for last 3 hours (Объем дождя за последние 3 часа )</small>
+	<b>%list.rain.3h%</b>mm
+</li>
+-->
+<li class="">pod: 
+	<small>Part of the day (n - night, d - day)</small>
+	<b>%list.sys.pod%</b>
+</li>
+
+		</ul>
+		
+<div class="bg-darkblue-gray color-white lr-padding-20">array
+	%weather%
+</div>
+
+		<ul class="bg-lightgreen lr-padding-20">
+<li class="">list.wind.deg: 
+	<small>Wind direction, degrees (meteorological)</small>
+	<b>%list.wind.deg%</b>&deg;
+</li>
+<li class="">list.wind.speed: 
+	<small>Wind speed:</small>
+	<b>%list.wind.speed%</b> meter/sec
+</li>
+
+		</ul>
+		
+	</span>
+
+
+	<span id="template-forecast-list-weather-tpl" class="">
+		<ul class="bg-powderblue lr-margin-small lr-padding-20">list.weather:
+			<li class="">main: 
+				<small>Group of weather parameters (Rain, Snow, Extreme etc.)</small>
+				<b>%list.weather.main%</b>
+			</li>
+			<li class="">description: 
+				<small>Weather condition within the group.</small>
+				<b>%list.weather.description%</b>
+			</li>
+			<li class="">icon: 
+				<small>Weather icon id</small>
+				<b>%list.weather.icon%</b>
+			</li>
+		</ul>
+	</span>
+
+	<div id="template-test">
+		<p>key1: %key1%</p>
+		<p>key2: %key2%</p>
+		
+		<div>object:
+			<p>title: %obj1.title%</p>
+			<p>key1: %obj1.key1%</p>
+		</div>
+		
+		<div class="lr-flex">
+print array: %node%
+		</div>
+	</div>
+	
+<span id="template-test-list-tpl" class="hidden">
+	<ul class="lr-margin-20 lr-list-unstyled">
+		<li class="lr-padding-20 bg-cornsilk">node.id: <b>%node.id%</b></li>
+		<li class="lr-padding-20 bg-cornsilk">node.title: <b>%node.title%</b></li>
+	</ul>
+</span>
 
 
 </body>

@@ -267,6 +267,7 @@ https://www.kinopoisk.ru/name/8434/</tag>
 https://www.kinopoisk.ru/name/25873/</tag>
 	<tag tid="338" vid="1" name="1985"></tag>
 	<tag tid="339" vid="2" name="Роман Мадянов"></tag>
+	<tag tid="340" vid="1" name="VTT subtitles"></tag>
 </taglist>
 
 
@@ -11177,7 +11178,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="/video/films/T/Ten Canoes.avi">Ten Canoes.avi</a></li>
+		<li><a data-type="local-file" href="/video2/films/T/Ten Canoes.avi">Ten Canoes.avi</a></li>
 	</ul>
 
 	<tags>
@@ -11190,7 +11191,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</tags>
 
 	<published>23-May-2013 20:17:25</published>
-	<updated>21-Jul-2019 18:10:13</updated>
+	<updated>23-Feb-2021 10:44:39</updated>
 </video>
 
 <video type="video">
@@ -13162,7 +13163,11 @@ https://ru.wikipedia.org/wiki/%D0%94%D1%83%D1%85less_%28%D1%84%D0%B8%D0%BB%D1%8C
 		<img src="/video/0_covers/d9cac5f974374211c68d15f81b6ac89f.jpg"/>
 	</pictures>
 
-	
+	<ul>
+		<li><a data-type="local-file" href="/video2/films/S/startap.2014.WEB-DLRip.1400MB.avi">startap.2014.WEB-DLRip.1400MB.avi</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/oxUgzgAiCe8">youtube.com/embed</a></li>
+		<li><a data-type="external-link" href="https://www.kinopoisk.ru/film/696464/">kinopoisk.ru/film/696464</a></li>
+	</ul>
 
 	<tags>
 		<item tid="33">биография</item>
@@ -13170,10 +13175,11 @@ https://ru.wikipedia.org/wiki/%D0%94%D1%83%D1%85less_%28%D1%84%D0%B8%D0%BB%D1%8C
 		<item tid="68">Россия</item>
 		<item tid="22">avi</item>
 		<item tid="245">С</item>
+		<item tid="307">2014</item>
 	</tags>
 
 	<published>01-Aug-2015 20:46:38</published>
-	<updated>01-Aug-2015 20:47:18</updated>
+	<updated>06-Apr-2021 19:08:38</updated>
 </video>
 
 <video type="video">
@@ -13677,6 +13683,7 @@ http://rutracker.org/forum/viewtopic.php?t=4396360</description>
 	<ul>
 		<li><a data-type="embed-video" href="https://ok.ru/videoembed/319116806870">OK.ru</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/Jc27AJLtgdQ">youtube.com</a></li>
+		<li><a data-type="embed-video" href="https://yandex.ru/efir?stream_id=4a94e588e4e7482e9505f52460cdd742">Яндекс.Эфир</a></li>
 	</ul>
 
 	<tags>
@@ -13689,7 +13696,7 @@ http://rutracker.org/forum/viewtopic.php?t=4396360</description>
 	</tags>
 
 	<published>24-Jun-2016 20:19:31</published>
-	<updated>14-Apr-2019 20:17:37</updated>
+	<updated>06-Apr-2021 18:59:49</updated>
 </video>
 
 <video type="video">
@@ -14336,12 +14343,14 @@ https://yandex.ru/video/search?text=%D1%80%D0%BE%D0%B4%D0%B8%D0%BD%D0%B0%20%D1%8
 https://www.stormo.tv/videos/122480/homeland-s01e01-hd-rus-lostfilm-tv/</description>
 	<pictures>
 		<img src="/video/0_covers/homeland.jpg"/>
-		<img src="https://st.kp.yandex.net/images/film_big/574688.jpg"/>
 	</pictures>
 
 	<ul>
 		<li><a data-type="local-file" href="/video/films/H/Homeland/Homeland (Season 06) 1080/Homeland.S06E09.Sock.Puppets.1080p.(qqss44).mkv">Homeland.S06E09.Sock.Puppets.1080p.(qqss44).mkv</a></li>
 		<li><a data-type="local-file" href="/video/films/H/Homeland/Homeland (Season 06) 1080/Homeland.S06E10.The.Flag.House.1080p.(qqss44).mkv">Homeland.S06E10.The.Flag.House.1080p.(qqss44).mkv</a></li>
+		<li><a data-type="external-link" href="?q=load-playlist&amp;url=files/homeland_pls.xml&amp;format=xml">XML playlist, load URL</a></li>
+		<li><a data-type="external-link" href="?q=load-playlist&amp;filepath=files/homeland_pls.xml&amp;format=xml">XML playlist,load local file</a></li>
+		<li><a data-type="load-playlist" href="?url=/video2/0_playlists/homeland_pls.xml&amp;format=xml">XML playlist, load server URL</a></li>
 	</ul>
 
 	<tags>
@@ -14352,12 +14361,18 @@ https://www.stormo.tv/videos/122480/homeland-s01e01-hd-rus-lostfilm-tv/</descrip
 		<item tid="66">США</item>
 		<item tid="214">H</item>
 		<item tid="244">Р</item>
-		<item tid="272">youtube</item>
+		<item tid="320">sub_en</item>
+		<item tid="340">VTT subtitles</item>
+		<item tid="326">2016</item>
+		<item tid="302">2015</item>
+		<item tid="307">2014</item>
+		<item tid="275">2013</item>
+		<item tid="276">2012</item>
 		<item tid="277">2011</item>
 	</tags>
 
 	<published>06-Nov-2017 13:49:10</published>
-	<updated>20-Jul-2019 21:24:19</updated>
+	<updated>19-Feb-2021 07:13:48</updated>
 </video>
 
 <video type="video">
@@ -14385,19 +14400,26 @@ https://yandex.ru/video/favorites?ncrnd=6685</description>
 
 	<ul>
 		<li><a data-type="embed-video" href="http://ok.ru/videoembed/91456211607">OK.ru</a> </li>
+		<li><a data-type="local-file" href="file:///mnt/terra/video/films/I/Idiocracy/Idiocracy.mp4">Idiocracy.mp4, local file</a></li>
+		<li><a data-type="local-file" href="/video2/films/I/Idiocracy/Idiocracy.mp4">Idiocracy.mp4, localhost url</a></li>
+		<li><a data-type="sub-track" data-srclang="en" href="/video2/films/I/Idiocracy/Idiocracy.ENG.vtt">Idiocracy.ENG.vtt</a></li>
+		<li><a data-type="sub-track" data-srclang="ru" href="/video2/films/I/Idiocracy/Idiocracy.RUS.vtt">Idiocracy.RUS.vtt</a></li>
 	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
 		<item tid="14">приключения</item>
 		<item tid="43">фантастика</item>
+		<item tid="148">субтитры</item>
+		<item tid="150">srt</item>
+		<item tid="22">avi</item>
 		<item tid="215">I</item>
 		<item tid="237">И</item>
 		<item tid="283">2005</item>
 	</tags>
 
 	<published>02-Jan-2018 14:54:43</published>
-	<updated>12-Apr-2019 13:00:28</updated>
+	<updated>23-Feb-2021 08:04:23</updated>
 </video>
 
 <video type="video">
@@ -15523,7 +15545,8 @@ http://vse-subtitri.ru/tv-shows/game-of-thrones-1492.html</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="/video/films/G/Game_of_Thrones/s01/s01e01_Winter is Coming.avi">s01e01_Winter is Coming.avi</a></li>
+		<li><a data-type="local-file" href="/video2/films/G/Game_of_Thrones/s01/s01e01_Winter_is_Coming.mp4">s01e01_Winter_is_Coming.mp4</a></li>
+		<li><a data-type="external-link" href="?q=load-playlist&amp;url=/video2/0_playlists/Game_of_Thrones.xspf&amp;format=xml">XML playlist, load server URL</a></li>
 	</ul>
 
 	<tags>
@@ -15548,7 +15571,7 @@ http://vse-subtitri.ru/tv-shows/game-of-thrones-1492.html</description>
 	</tags>
 
 	<published>19-Jun-2020 13:33:39</published>
-	<updated>19-Jun-2020 13:35:20</updated>
+	<updated>23-Feb-2021 10:07:36</updated>
 </video>
 
 <video type="video">
@@ -16335,8 +16358,9 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 	
 
 	<ul>
-		<li><a data-type="local-file" href="/video/videoclips/A/The Adicts - Steamroller.flv">The Adicts - Steamroller.flv</a></li>
+		<li><a data-type="local-file" href="/video2/videoclips/A/The-Adicts-Steamroller.mp4">The-Adicts-Steamroller.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/U45AOIOQHmI">Youtube, 1</a></li>
+		<li><a data-type="external-link" href="?q=add-track-pls&amp;url=/video2/videoclips/A/The-Adicts-Steamroller.mp4">add to playlist</a></li>
 	</ul>
 
 	<tags>
@@ -16349,7 +16373,7 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 	</tags>
 
 	<published>08-Dec-2012 15:31:42</published>
-	<updated>20-Jul-2019 21:28:54</updated>
+	<updated>18-Feb-2021 20:18:22</updated>
 </video>
 
 <video type="videoclip">
@@ -16905,7 +16929,7 @@ https://ru.wikipedia.org/wiki/Carmina_Burana</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="/video/videoclips/T/Tempus est Iocundum Codex Buranus, 179.mp4">Tempus est Iocundum Codex Buranus, 179.mp4</a></li>
+		<li><a data-type="local-file" href="/video2/videoclips/T/Tempus est Iocundum Codex Buranus, 179.mp4">Tempus est Iocundum Codex Buranus, 179.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/NPDCsi1mbhE">youtube.com</a></li>
 	</ul>
 
@@ -16915,7 +16939,7 @@ https://ru.wikipedia.org/wiki/Carmina_Burana</description>
 	</tags>
 
 	<published>16-Jun-2013 15:57:29</published>
-	<updated>21-Apr-2019 16:42:40</updated>
+	<updated>23-Feb-2021 08:54:36</updated>
 </video>
 
 <video type="videoclip">
@@ -17747,19 +17771,13 @@ https://rutube.ru/video/d623bf4322e98718ce8f7a8b46bc2a4a/?ref=search</descriptio
 	<creators>LITTLE BIG</creators>
 	
 	
-	<description>&amp;lt;iframe width=&amp;quot;1024&amp;quot; height=&amp;quot;768&amp;quot; src=&amp;quot;http://youtube.com/embed/-QHha1zko1A&amp;quot; frameborder=&amp;quot;0&amp;quot; allowfullscreen&amp;gt;&amp;lt;/iframe&amp;gt;
-https://www.youtube.com/watch?v=-QHha1zko1A&amp;amp;list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR&amp;amp;index=24&amp;amp;t=0s
-
-&amp;lt;iframe width=&amp;quot;1024&amp;quot; height=&amp;quot;768&amp;quot; src=&amp;quot;//ok.ru/videoembed/1147112392106&amp;quot; frameborder=&amp;quot;0&amp;quot; allowfullscreen&amp;gt;&amp;lt;/iframe&amp;gt;
-https://ok.ru/video/1147112392106
-
-&amp;lt;iframe width=&amp;quot;1024&amp;quot; height=&amp;quot;768&amp;quot; src=&amp;quot;http://rutube.ru/play/embed/af8e35708f2f28c3e4a65c616f51003c&amp;quot; frameborder=&amp;quot;0&amp;quot; allowfullscreen&amp;gt;&amp;lt;/iframe&amp;gt;</description>
+	<description></description>
 	<pictures>
 		<img src="https://i.ytimg.com/vi/-QHha1zko1A/sddefault.jpg"/>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="/video/videoclips/L/Little Big/LITTLE BIG - AK-47 (music video).mp4">LITTLE BIG - AK-47 (music video).mp4</a></li>
+		<li><a data-type="local-file" href="/video2/videoclips/L/Little Big/LITTLE BIG - AK-47.mp4">LITTLE BIG - AK-47.mp4</a></li>
 		<li><a data-type="embed-video" href="http://youtube.com/embed/-QHha1zko1A">youtube embed video</a></li>
 		<li><a data-type="embed-video" href="http://rutube.ru/play/embed/af8e35708f2f28c3e4a65c616f51003c">Rutube embed video</a></li>
 		<li><a data-type="embed-video" href="//ok.ru/videoembed/1147112392106">Ok.ru, embed video</a></li>
@@ -17773,7 +17791,7 @@ https://ok.ru/video/1147112392106
 	</tags>
 
 	<published>03-Mar-2019 15:13:24</published>
-	<updated>19-Jul-2019 19:07:35</updated>
+	<updated>16-Feb-2021 19:11:51</updated>
 </video>
 
 <video type="videoclip">
@@ -18359,7 +18377,7 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="/video/videoclips/A/Anda Jaleo Jaleo.mp4">Anda Jaleo Jaleo.mp4</a></li>
+		<li><a data-type="local-file" href="/video2/videoclips/A/Anda Jaleo Jaleo.mp4">Anda Jaleo Jaleo.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/Td6lN_U7Ecs" target="_blank">embed video on youtube.com</a></li>
 	</ul>
 
@@ -18371,7 +18389,7 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 	</tags>
 
 	<published>29-Mar-2019 21:39:14</published>
-	<updated>20-Jul-2019 22:01:59</updated>
+	<updated>23-Feb-2021 09:42:38</updated>
 </video>
 
 <video type="videoclip">
