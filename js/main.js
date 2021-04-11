@@ -5,18 +5,20 @@
 	}
 
 
+/*
 if( document.querySelector ){
 	var ua_header = document.querySelector("#user-agent");
-	var flex_info = document.querySelector("#supportFlex");
-	var grid_info = document.querySelector("#supportGrid");
+	//var flex_info = document.querySelector("#supportFlex");
+	//var grid_info = document.querySelector("#supportGrid");
 } else {
 	var ua_header = document.getElementById("ua");
-	var flex_info = document.getElementById("supportFlex");
-	var grid_info = document.getElementById("supportGrid");
+	//var flex_info = document.getElementById("supportFlex");
+	//var grid_info = document.getElementById("supportGrid");
 }
 
 	ua_header.innerHTML = navigator.userAgent;
-
+	
+if( flex_info && grid_info){
 	if( typeof CSS !== "undefined" ){
 		if( typeof CSS.supports === "function" ){
 
@@ -39,6 +41,8 @@ if( document.querySelector ){
 			grid_info.innerHTML += " false";
 			document.body.classList.add("CSS-support-fail");
 	}
+}
+*/
 
 }//end load
 
