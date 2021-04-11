@@ -17,9 +17,70 @@
 	font-size: 12px;
 	display: none;
 }
+
+@font-face {
+  font-family: 'symbol';
+  font-style: normal;
+  font-weight: 400;
+  src: url('http://i5/fonts/S/symbol.ttf') format('truetype');
+}
+
+#html-spec-chars {
+	font-family: 'Material Icons';
+	/*font-family: 'symbol';*/
+	width: 100%;
+}
 </style>
+<script>
+window.onload = function(){
+/*
+	var btn1 = document.querySelector("#view-classname");
+	btn1.onclick = function(){
+		var fontboxes = document.querySelectorAll(".fontbox");
+//console.log(fontboxes[1].outerHTML);
+			for( var n = 0; n < fontboxes.length; n++){
+				fontboxes[n].innerHTML = "<div>"+fontboxes[n].classList+"</div>";
+			}//next
+	}//end event
+*/	
+	var htmlSpecChars = document.querySelector("#html-spec-chars");
+	var btnSpecChars = document.querySelector("#btn-print-chars");
+	btnSpecChars.onclick = function(){
+		htmlSpecChars.innerHTML = "";
 
+		for(var n = 57344; n < 60239; n++){
+			var html = "<span title='dec code: "+n+", hex code: "+n.toString(16)+"'>";
+			html += String.fromCharCode(n);
+			html += "</span>";
+			htmlSpecChars.innerHTML += html;
+		}//next
+/*
+		//for(var n = 57344; n < 60239; n++){
+		for(var n = 10000; n < 11096; n++){
+			var html = "<span title='dec code: "+n+", hex code: "+n.toString(16)+"'>";
+			html += String.fromCharCode(n);
+			html += "</span>";
+			htmlSpecChars.innerHTML += html;
+		}//next
 
+		for(var n = 11264; n < 11309; n++){
+			var html = "<span title='dec code: "+n+", hex code: "+n.toString(16)+"'>";
+			html += String.fromCharCode(n);
+			html += "</span>";
+			htmlSpecChars.innerHTML += html;
+		}//next
+
+		for(var n = 40000; n < 45000; n++){
+			var html = "<span title='dec code: "+n+", hex code: "+n.toString(16)+"'>";
+			html += String.fromCharCode(n);
+			html += "</span>";
+			htmlSpecChars.innerHTML += html;
+		}//next
+*/
+	}//end event
+	
+}//end load
+</script>
 </head>
 
 <body class="page-green">
@@ -41,10 +102,17 @@ http://localhost/fonts/M/material-icons/
 	</div>
 	
 	<div class="lr-panel lr-padding-small">
-		<div class="lr-panel-heading orange">
+		<div class="lr-panel-heading">
 			<h2>MaterialIcons-Regular</h2>
 		</div>
 		
+	<div class="lr-panel">
+		<div class="lr-panel-body">
+<button id="btn-print-chars" class="">print special chars, String.fromCodePoint() </button>
+<div id="html-spec-chars" class="lr-panel-body"></div>
+		</div>
+	</div>
+
 	<div class="lr-panel-body">
 		<div class="fontbox">
 			<span class="material-icons">face</span>

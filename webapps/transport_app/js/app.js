@@ -6,14 +6,10 @@ func.logAlert( navigator.userAgent, "info");
 	
 	//Start webApp
 	if( typeof webApp === "object"){
-		_runApp();
-	}
-
-	function _runApp(){
 		webApp.init(function(){
 console.log("end webApp initialize....");
 		});
-	}//end _runApp()
+	}
 	
 };//end onload
 
@@ -108,23 +104,36 @@ show_systems=esr",
 			"apiKey" : "dab03f2c-c76d-4fb6-9445-faa84fa80973",
 			"key2": "7440bb4eee1e2d8d92bd8ca4a926ddd6",
 
-			"dataUrl" : "https://romanlaptev-cors.herokuapp.com/\
+			"dataUrl" : "",
+			
+			"weatherUrl" : "https://romanlaptev-cors.herokuapp.com/\
 https://api.weather.yandex.ru/v2/informers?\
 lat={{latitude}}&\
 lon={{longitude}}&\
 lang=ru_RU",
 /*
-			"dataUrl" : "http://api.openweathermap.org/data/2.5/weather?\
+			"weatherUrl" : "http://api.openweathermap.org/data/2.5/weather?\
 lat={{latitude}}\
 &lon={{longitude}}\
 &units=metric\
-&appid={{key2}}\
+&appid={{apiKey}}\
 &callback=jsonp_callback",
 */
-			//"dataUrl" : "files/test_ya_pogoda.json",
-			//"dataUrl" : "files/openweathermap_Mochishche.json,
-			//"dataUrl" : "files/openweathermap_Novosibirsk.json
-			//"dataUrl" : "files/openweathermap_Novosibirsk_forecast.json
+			//"weatherUrl" : "files/test_ya_pogoda.json",
+			//"weatherUrl" : "files/openweathermap_Mochishche.json,
+			//"weatherUrl" : "files/openweathermap_Novosibirsk.json
+			
+
+/*
+			//https://openweathermap.org/forecast5
+			"forecastUrl" : "http://api.openweathermap.org/data/2.5/forecast?\
+lat={{latitude}}\
+&lon={{longitude}}\
+&units=metric\
+&appid={{apiKey}}\
+&callback=jsonp_callback",
+*/
+			"forecastUrl" : "files/openweathermap_Novosibirsk_forecast.json",
 
 			"requestParams" : {
 				//Moskow
@@ -252,6 +261,7 @@ lat={{latitude}}\
 		
 		"templates_url" : "tpl/templates.xml",
 		"templates" : {},
+		
 		"init_url" : "?q=list-nodes",
 		"timers": {
 			"request":{}
@@ -279,6 +289,7 @@ console.log("init webapp!");
 		this["vars"]["tab-weather"] = webApp.vars.App.querySelector("#tab-weather");
 		this["vars"]["tab-buttons"] = webApp.vars.App.querySelectorAll("#tab-buttons .tab-btn");
 		
+		
 		//$("#from-title").val( webApp.vars["requestParams"]["from"]["title"] );
 		this["vars"]["transportAPI"]["requestParams"]["from"]["title"] = webApp.vars.App.querySelectorAll("#from-title");
 		$("#from-title").data("code", webApp.vars["transportAPI"]["requestParams"]["from"]["esr_code"]);
@@ -287,15 +298,31 @@ console.log("init webapp!");
 		$("#to-title").data("code", webApp.vars["transportAPI"]["requestParams"]["to"]["esr_code"]);
 		this["vars"]["transportAPI"]["requestParams"]["to"]["title"] = webApp.vars.App.querySelectorAll("#to-title");
 
-		_loadTemplates(function(){
-//console.log("Load templates end...", webApp.vars["templates"] );
-			defineEvents();
-			
+		//template keys description
+		this["vars"]["templates"] = {
+			"tplKeys" : {
+				"weather": {
+					"listTpl": func.getById("weather-list-tpl").innerHTML
+				},
+				
+				"list": {
+					"listTpl": func.getById("template-forecast-list-tpl").innerHTML
+				},
+				
+				"list.weather": {
+					"listTpl": func.getById("template-forecast-list-weather-tpl").innerHTML
+				},
+				"node": {
+					"listTpl": func.getById("template-test-list-tpl").innerHTML
+				}
+			}
+		};
+
+		defineEvents();
 			//_runRequest({
 				//callback : postFunc
 			//});
 			
-		});
 		
 	}//end init()
 	
@@ -446,6 +473,11 @@ function _urlManager( target ){
 				webApp.vars["log"].innerHTML="";
 			break;
 
+			case "test":
+				var funcName = _vars["GET"]["func"];
+				window[funcName]();
+			break;
+
 			case "list-nodes":
 console.log("-- start build page --");
 
@@ -483,9 +515,17 @@ console.log("-- end build page --");
 			break;
 
 			case "send-request":
+
+				if( !_vars["GET"]["req-type"] || 
+					_vars["GET"]["req-type"].length === 0
+				){
+logMsg = "error, empty or undefined API req-type";
+func.logAlert(logMsg, "error");
+					return false;
+				}
 				
-				if( !webApp.vars["GET"]["api"] || 
-					webApp.vars["GET"]["api"].length === 0
+				if( !webApp.vars["GET"]["api-name"] || 
+					webApp.vars["GET"]["api-name"].length === 0
 				){
 webApp.logMsg = "error, empty or undefined API name";
 func.logAlert(webApp.logMsg, "error");
@@ -556,93 +596,6 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 		}//end switch
 		
 }//end _urlManager()
-
-
-//============================== TEMPLATES
-	function _loadTemplates( callback ){
-		
-		_loadTemplatesFromFile();
-		
-		function _loadTemplatesFromFile(){
-			
-			if( !webApp.vars["templates_url"] || 
-				webApp.vars["templates_url"].length === 0 ){
-webApp.vars["logMsg"] = "- error, not found 'templates_url'...";
-func.logAlert( webApp.vars["logMsg"], "error");
-//console.log( webApp.vars["logMsg"] );
-				if( typeof callback === "function"){
-					callback(false);
-				}
-				return false;
-			}
-			
-			func.runAjax({
-				"requestMethod" : "GET", 
-				"url" : webApp.vars["templates_url"], 
-				//"onProgress" : function( e ){},
-				//"onLoadEnd" : function( headers ){},
-				"onError" : function( xhr ){
-//console.log( "onError ", arguments);
-webApp.vars["logMsg"] = "error ajax load " + webApp.vars["templates_url"];
-func.logAlert( webApp.vars["logMsg"], "error");
-console.log( webApp.vars["logMsg"] );
-					if( typeof callback === "function"){
-						callback(false);
-					}
-					return false;
-				},
-				
-				"callback": function( data ){
-webApp.vars["logMsg"] = "- read templates from <b>" + webApp.vars["templates_url"] +"</b>";
-func.logAlert( webApp.vars["logMsg"], "success");
-//console.log( webApp.vars["logMsg"] );
-//console.log( data );
-
-					if( !data ){
-console.log("error, loadTemplates(), not find data templates'....");
-						if( typeof callback === "function"){
-							callback(false);
-						}
-						return false;
-					}
-				
-					try{
-						//xmlNodes = func.convertXmlToObj( data );
-						xmlNodes = func.parseXmlToObj( func, data );
-//console.log(xmlNodes);
-						if( xmlNodes.length > 0 ){
-							for( var n= 0; n < xmlNodes.length; n++){
-								var key = xmlNodes[n]["name"];
-
-								var value = xmlNodes[n]["html_code"]
-								.replace(/<!--([\s\S]*?)-->/mig,"")//remove comments
-								.replace(/\t/g,"")
-								.replace(/\n/g,"");
-								
-								webApp.vars["templates"][key] = value;
-							}//next
-							delete xmlNodes;
-							
-							//webApp.db.saveTemplates( webApp.draw.vars["templates"] );
-						} else {
-	console.log("error, loadTemplates(), cannot parse templates data.....");
-						}
-						
-					} catch(e){
-console.log(e, typeof e);
-webApp.vars["logMsg"] = "TypeError: " + e;
-func.logAlert( webApp.vars["logMsg"], "error");
-					}//end try
-
-					if( typeof callback === "function"){
-						callback();
-					}
-				}//end
-			});
-			
-		}//end _loadTemplatesFromFile()
-		
-	}//end _loadTemplates()
 
 
 

@@ -864,7 +864,8 @@ padding: 10px;
 	background-color : #ff7f50 !important;
 }
 
-.lr-flex{
+
+.lr-flex, .df{
 	display:flex;
 	display:inline-block;
 	display: -webkit-box;
@@ -899,6 +900,8 @@ padding: 10px;
 .CSS-support-fail .test-support-grid{
 	background-color : #ff7f50 !important;
 }
+.lr-grid, .dg {  display: grid;}
+
 
 /*====== COLORS ======= */
 .color-white, .text-white {color: #fff !important;}
@@ -1629,6 +1632,8 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-plum {background-color: #dda0dd;}
 .bg-powderblue {background-color: #b0e0e6;}
 .bg-purple {background-color: #800080;}
+.bg-rebeccapurple{background-color: #639;}
+
 
 
 
@@ -1705,7 +1710,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-violet {background-color: #ee82ee;}
 .bg-violetred {background-color: #d02090;}
 .bg-wheat {background-color: #f5deb3;}
-.bg-white {background-color: #ffffff;}
+.bg-white {background-color: #ffffff !important;}
 .bg-whitesmoke {background-color: #f5f5f5;}
 
 
