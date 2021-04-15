@@ -82,18 +82,142 @@ href="?q=switch-tab&target_id=tab-weather">Погода</a>
 <!--
 	  <button id="btn-update" class="lr-btn lr-btn-danger">update</button>
 -->
-<a href="?q=send-request&api=transportAPI" class="send-request lr-btn bg-darkblue text-white">send ajax request</a>
+<a href="?q=send-request&api-type=transport" class="send-request lr-btn bg-darkblue text-white">send ajax request</a>
 	</div>
 </div>
 				</div>
 				
 				<div class="lr-margin-10-top">
 <div class="bg-snow lr-border-box lr-border-cyan">
-	<div class="lr-panel-body" id="block-schedule"></div>
+	<div class="lr-panel-body" id="response-transport-api"></div>
+	
+<!-- transport templates -->
+	<span id="tpl-copyright">{{content}}</span>
+	<span id="tpl-copyright-content">
+{{logo_hy}}
+<!--
+<p>{{text}}</p>
+<p>​​​​​{{url}}</p>
+-->
+	</span>
+
+	<span id="tpl-schedule">
+<div class="block lr-panel">
+	<div class="lr-panel-body">
+		<div class="content">{{content}}</div>
+	</div>
+</div>
+	</span>
+
+	<span id="tpl-schedule-table">
+<table class="table table-bordered">
+
+	<thead>
+		<tr class="list-header success">
+			<th>​</th>
+			<th class="text-center">​​​​​номер и название транспорта</th>
+			<th class="text-center">отправление</th>
+			<th class="text-center">время в пути</th>
+			<th class="text-center">прибытие</th>
+			<th class="text-center">стоимость билета</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+{{list}}		
+	</tbody>
+</table>
+	</span>
+	
+	<span id="tpl-schedule-table--tr">
+		<tr>
+			<td class="">
+<figure class="TransportIcon_type_suburban" aria-label="электричка">
+	<svg class="TransportIcon__icon">
+	<!-- <use xlink:href="#icon-suburban"></use> -->
+		<path fill-rule="evenodd" clip-rule="evenodd" 
+d="M10.7 3.2L11.8 1H13V.5c0-.3-.2-.5-.5-.5h-9c-.3 0-.5.2-.5.5V1h1.2l1.1 2.2C2.2 3.6 0 4.7 0 6v11c0 .6.4 1 1 1h14c.6 0 1-.4 1-1V6c0-1.3-2.2-2.4-5.3-2.8zM10.5 1l-1 2.1C9 3 8.5 3 8 3s-1 0-1.5.1L5.5 1h5zM9 6c0 .6-.4 1-1 1s-1-.4-1-1 .4-1 1-1 1 .4 1 1zM5 16H2v-2h3v2zm9 0h-3v-2h3v2zm0-4H2V8h12v4zM3 21h.8l-1.5 3h1.9l1.5-3h4.6l1.5 3h2l-1.5-3h.7c1.1 0 2-.9 2-2H1c0 1.1.9 2 2 2z">
+		</path>
+	</svg>
+</figure>
+			</td>
+		
+			<td class="">
+<div class="SegmentTitle">
+	<span class="SegmentTitle__number">{{thread_number}}</span>
+	<span class="SegmentTitle__title">{{thread_title}}</span>
+	<p class="SegmentTransport">{{carrier_title}}</p>
+</div>
+			</td>
+			
+			<td>
+<div class="Segment__dateTime Time_important">
+	<div class="Segment__date">{{departure_day}}</div>
+	<span class="Segment__time">{{departure_time}}</span>
+</div>
+<span class="Segment__stations">{{from_title}}</span>
+<div class="Segment__stops">остановки: {{stops}}</div>
+			</td>
+			
+			<td>{{duration}} мин.</td>
+			
+			<td>
+<div class="Segment__dateTime Time_important">
+	<div class="Segment__date">{{arrival_day}}</div>
+	<span class="Segment__time">{{arrival_time}}</span>
+</div>
+<span class="Segment__stations">{{to_title}}</span>
+			</td>
+			
+			<td>{{price_whole}} {{0_currency}}</td>
+		</tr>
+	</span>
+
+	<span id="tpl-schedule-mobile">
+<div class="schedule-block-mobile">{{list}}</div>
+	</span>
+	
+	<span id="tpl-schedule-mobile--record">
+		<div class="panel panel-primary">
+			<div class="panel-body">
+		
+				<div class="SegmentTitle">
+					<span class="SegmentTitle__number">{{thread_number}}</span>
+					<span class="SegmentTitle__title">{{thread_title}}</span>
+					<p class="SegmentTransport">{{carrier_title}}</p>
+				</div>
+
+				<div><i>отправление</i>:
+					<span class="Segment__dateTime Time_important">
+						<span class="Segment__date">{{departure_day}}, </span>
+						<span class="Segment__time">{{departure_time}} </span>
+					</span>
+					<span class="Segment__stations">{{from_title}}</span>
+				</div>
+							
+				<div><i>остановки</i>:<span class="Segment__stops">{{stops}}</span></div>
+				<div><i>время в пути</i>: <span class="Segment__duration">{{duration}} мин.</span></div>
+
+				<div><i>прибытие</i>:
+					<span class="Segment__dateTime Time_important">
+						<span class="Segment__date">{{arrival_day}}, </span>
+						<span class="Segment__time">{{arrival_time}} </span>
+					</span>
+					<span class="Segment__stations">{{to_title}}</span>
+				</div>			
+							
+				<div><i>билет</i>: {{price_whole}} {{0_currency}}</div>
+			
+			</div>
+		</div>
+	</span>
+	
 </div>
 
 				</div>
-			</div><!-- end tab -->
+			</div><!-- end tab-transport -->
+
+
 
 			<div id="tab-weather" class="tab-pane lr-panel bg-snow">
 				
@@ -107,13 +231,13 @@ href="?q=switch-tab&target_id=tab-weather">Погода</a>
 id="inp-url" class=""  autocomplete="off" 
 value="http://api.openweathermap.org/data/2.5/weather"/>
 -->
-<a href="?q=send-request&req-type=weather-api&api-name=yandex" 
+<a href="?q=send-request&api-type=weather&api-name=yandex" 
 class="send-request lr-btn bg-darkblue text-white">получить данные (yandex)</a>
 
-<a href="?q=send-request&req-type=weather-api&api-name=openweathermap" 
+<a href="?q=send-request&api-type=weather&api-name=openweathermap" 
 class="lr-btn bg-darkblue text-white">get weather (openweathermap)</a>
 
-<a href="?q=send-request&req-type=forecast-api&api-name=openweathermap" 
+<a href="?q=send-request&api-type=forecast&api-name=openweathermap" 
 class="lr-btn bg-blue text-white">get weather forecast (openweathermap)</a>
 
 <a href="?q=test&func=testWrapDate" class="lr-btn bg-orange text-black">testBtn</a>
@@ -174,10 +298,10 @@ API address:
 				</div><!-- end tab-header -->
 				
 				<div class="lr-panel-body">
-					<div id="response"></div>
+					<div id="response-weather-api"></div>
 				</div>
 				
-			</div><!-- end tab -->
+			</div><!-- end tab-weather -->
 			
 
 		</div><!-- end tab-content -->
@@ -244,7 +368,7 @@ prepare data:
 
 
 <!-- ********************** TEMPLATES ************************** -->	
-<div id="forecast-parts-0" class="hidden">
+<span id="forecast-parts-0--yandex" class="_hidden">
 	<h4>%part_name%</h4>
 	<div>
 		<img class="w5" src="https://yastatic.net/weather/i/icons/blueye/color/svg/%icon%.svg">
@@ -273,16 +397,18 @@ prepare data:
 -->
 	Вероятность выпадения осадков: <b>%prec_prob%</b>
 </p>
-</div><!-- end forecast-parts-0 -->
+</span><!-- end forecast-parts-0 -->
 
 
+<span id="template-weather--yandex">
 <div class="bg-lavender lr-padding-20">
 	<div class="lr-panel">
 		<p>
 Широта: <input name="latitude" type="text" class="lr-padding-small" value="%lat%"/>
 долгота: <input name="longitude" type="text" class="lr-padding-small" value="%lon%"/> 
 		</p>
-		<p><b>Волочаевский жилмассив, Новосибирск</b>, <a href="%url%"><small>Яндекс.Погода</small></a></p>
+		<p><b>Волочаевский жилмассив, Новосибирск</b>, 
+		<a href="%url%"><small>Яндекс.Погода</small></a></p>
 <p>
 	<b>%temp% °C</b> 
 	<img class="w5" src="https://yastatic.net/weather/i/icons/blueye/color/svg/%icon%.svg">
@@ -333,9 +459,11 @@ prepare data:
 
 	</div>
 </div>
+</span>
 
 
-	<div id="template-main">
+<!-- templates  openweathermap (weather) -->
+	<span id="template-weather--openweathermap">
 		
 		<h2>Weather</h2>
 		<ul>		
@@ -376,18 +504,19 @@ prepare data:
 		%weather%
 		</div>
 		
-	</div>
+	</span>
 
-	<div id="weather-list-tpl">
+	<span id="weather-list-tpl--openweathermap">
 		<ul>
 			<li>weather.main: <b>%weather.main%</b></li>
 			<li>weather.description: <b>%weather.description%</b></li>
 			<li>weather.icon: <b>%weather.icon%</b></li>
 		</ul>
-	</div>
+	</span>
 
 
-	<div id="template-forecast">
+<!-- templates  openweathermap (forecast) -->
+	<span id="template-forecast--openweathermap">
 		<h2>Forecast</h2>
 		<ul>		
 			<li>cod: <b>%cod%</b></li>
@@ -415,9 +544,9 @@ prepare data:
 %list%
 		</div>
 
-	</div>
+	</span>
 	
-	<span id="template-forecast-list-tpl" class="">
+	<span id="template-forecast-list-tpl--openweathermap" class="">
 		<ul class="bg-lavender lr-padding-20">
 <li class="">dt_txt: 
 	<small>Time of data forecasted, ISO, UTC</small>
@@ -496,7 +625,7 @@ prepare data:
 	</span>
 
 
-	<span id="template-forecast-list-weather-tpl" class="">
+	<span id="template-forecast-list-weather-tpl--openweathermap" class="">
 		<ul class="bg-powderblue lr-margin-small lr-padding-20">list.weather:
 			<li class="">main: 
 				<small>Group of weather parameters (Rain, Snow, Extreme etc.)</small>
@@ -513,26 +642,7 @@ prepare data:
 		</ul>
 	</span>
 
-	<div id="template-test">
-		<p>key1: %key1%</p>
-		<p>key2: %key2%</p>
-		
-		<div>object:
-			<p>title: %obj1.title%</p>
-			<p>key1: %obj1.key1%</p>
-		</div>
-		
-		<div class="lr-flex">
-print array: %node%
-		</div>
-	</div>
-	
-<span id="template-test-list-tpl" class="hidden">
-	<ul class="lr-margin-20 lr-list-unstyled">
-		<li class="lr-padding-20 bg-cornsilk">node.id: <b>%node.id%</b></li>
-		<li class="lr-padding-20 bg-cornsilk">node.title: <b>%node.title%</b></li>
-	</ul>
-</span>
+
 
 
 </body>

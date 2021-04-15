@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>demo test: bxslider</title>
+
+<!--
+<script src="http://site-content/webdisk/js/shared_functions.js"></script>
+-->
+    <script src="http://code.jquery.com/jquery.min.js"></script>
+
+<!--
+	<script src="http://site-content/webdisk/codebase/js/js_plugins_libs/sliders/flexslider/jquery.flexslider.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+--> 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js" 
+integrity="sha512-p55Bpm5gf7tvTsmkwyszUe4oVMwxJMoff7Jq3J/oHaBk+tNQvDKNz9/gLxn9vyCjgd6SAoqLnL13fnuZzCYAUA==" 
+crossorigin="anonymous"></script>
+
+<link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css" 
+integrity="sha512-rV4fiystTwIvs71MLqeLbKbzosmgDS7VU5Xqk1IwFitAM+Aa9x/8Xil4CW+9DjOvVle2iqg4Ncagsbgu2MWxKQ==" 
+crossorigin="anonymous" />
+
+
+<!-- shared site styles, scripts -->
+<link rel="stylesheet" href="../../css/lr.css" type="text/css">
+
+
+<script>
+$(document).ready(function(){
+	
+	var _jqueryVersion = $.fn.jquery;
+console.log("jQuery version:", _jqueryVersion);
+	document.querySelector("#version-j").innerHTML = _jqueryVersion;
+
+	$("#slider1").bxSlider({
+		mode: 'horizontal', //'vertical', 'fade'
+		
+		onSliderLoad: function(currentIndex){
+console.log("load slide "+currentIndex);		
+		},
+		
+		onSlideNext: function($slideElement, oldIndex, newIndex){
+console.log($slideElement, oldIndex, newIndex);		
+		},
+		
+	});
+	
+	$("#slider2").bxSlider({
+		mode: 'vertical',
+		pager: false		
+	});
+	
+	$("#slider3").bxSlider({
+		mode: 'fade'	
+	});
+	
+});//end ready
+</script>
+
+<style>
+.bxslider img {
+	width: 100%;
+}
+.wrapper{
+position: relative;
+}
+.bx-controls-direction {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.bx-prev {
+	left: 0;
+}
+.bx-next {
+	right: 0;
+}
+.bx-pager.bx-default-pager {
+	position: absolute;
+	right: 30%;
+	top: 0;
+}
+.bx-pager-item {
+	display: inline-block;
+	padding: 5px;
+}
+</style>
+
+</head>
+
+<body class="bg-darkblue-sea">
+
+<a class="lr-btn lr-btn-blue" href="../index.html">Home</a>
+<div class="lr-container lr-padding-small color-white">
+	<h2>jQuery plugin bxSlider</h2>
+	<h4 class="text-right">jQuery version: <span id="version-j"></span></h4>
+</div><!-- #container-->
+
+<div class="lr-container bg-lightsteelblue4">
+	
+	<div class="wrapper lr-panel-inline lr-padding-small w30 lr-border-box lr-border-cyan">
+		<h3>mode: 'horizontal'</h3>
+		<ul id="slider1" class="bxslider">
+			<li>
+<p>Laik, Anry Nemo (Андрей Иванченко), 1999</p>
+<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/gallery_images/imagecache/w1024/gallery_images/anry_laik.jpg" alt="" />
+			</li>
+
+			<li>
+<p>Kargalak, 1999 Anry Nemo</p>
+<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/gallery_images/imagecache/w1024/gallery_images/anry_kargalak.jpg" alt="" />
+			</li>
+
+			<li>
+<p>обложка для книги Робина Хобба Ученик убийцы, Майкл Уэлан, 1995</p>
+<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/michael-whelan_assassins_apprentice_1995.jpg" alt="" />
+			</li>
+
+			<li>
+<p>Сатира на моду больших шляп, Берлин, около 1820</p>
+<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/caricature/kar00035_berlin_artists_around_1820_satire_on_the_fashion_of_the_great_hats.jpg" alt="" />
+			</li>
+		</ul>
+	</div><!-- end slider -->
+
+
+	<div class="wrapper lr-panel-inline lr-padding20 lr-border-box w30">
+		<h3>mode: 'vertical'</h3>
+		<ul id="slider2" class="bxslider">
+			<li>
+<p>Laik, Anry Nemo (Андрей Иванченко), 1999</p>
+<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/gallery_images/imagecache/w1024/gallery_images/anry_laik.jpg" alt="" />
+			</li>
+
+			<li>
+<p>Kargalak, 1999 Anry Nemo</p>
+<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/gallery_images/imagecache/w1024/gallery_images/anry_kargalak.jpg" alt="" />
+			</li>
+
+			<li>
+<p>обложка для книги Робина Хобба Ученик убийцы, Майкл Уэлан, 1995</p>
+<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/michael-whelan_assassins_apprentice_1995.jpg" alt="" />
+			</li>
+
+			<li>
+<p>Сатира на моду больших шляп, Берлин, около 1820</p>
+<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/caricature/kar00035_berlin_artists_around_1820_satire_on_the_fashion_of_the_great_hats.jpg" alt="" />
+			</li>
+		</ul>
+	</div>
+	<!-- end slider -->
+
+
+	<div class="wrapper lr-panel-inline lr-padding20 lr-border-box w30">
+		<h3>mode: 'fade'</h3>
+		<ul id="slider3" class="bxslider">
+			<li>
+<p>Laik, Anry Nemo (Андрей Иванченко), 1999</p>
+<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/gallery_images/imagecache/w1024/gallery_images/anry_laik.jpg" alt="" />
+			</li>
+
+			<li>
+<p>Kargalak, 1999 Anry Nemo</p>
+<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/gallery_images/imagecache/w1024/gallery_images/anry_kargalak.jpg" alt="" />
+			</li>
+
+			<li>
+<p>обложка для книги Робина Хобба Ученик убийцы, Майкл Уэлан, 1995</p>
+<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/michael-whelan_assassins_apprentice_1995.jpg" alt="" />
+			</li>
+
+			<li>
+<p>Сатира на моду больших шляп, Берлин, около 1820</p>
+<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/caricature/kar00035_berlin_artists_around_1820_satire_on_the_fashion_of_the_great_hats.jpg" alt="" />
+			</li>
+		</ul>
+	</div>
+	<!-- end slider -->
+
+
+	<div class="lr-panel-inline lr-padding-small w30 bg-whitesmoke">
+<pre>
+https://bxslider.com/
+https://bxslider.com/install/
+https://bxslider.com/options/
+
+https://cdnjs.com/libraries/bxslider
+
+https://html5book.ru/bxslider-ustanovka-nastroyki-primery/
+https://myrusakov.ru/jquery-bxslider.html
+</pre>
+	</div>
+
+
+</div><!-- #container-->
+
+
+</body>
+</html>
