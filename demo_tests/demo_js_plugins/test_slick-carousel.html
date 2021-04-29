@@ -49,22 +49,24 @@ $(document).ready(function(){
 		slidesToShow: 3,
 		slidesToScroll: 1,
 		mobileFirst: true,
+		centerMode: true,
+		/*centerPadding: '30px',*/
 		prevArrow: "<button class='prev'>Prev</button>",
 		nextArrow: "<button class='next'>Next</button>",
 		responsive: [
 		    {
 		        breakpoint: 1500,
 		        settings: {
-		            slidesToShow: 4,
+		            slidesToShow: 3,
 		            slidesToScroll: 1,
 		            arrows: true
 		        }
 		    },
 
 		    {
-		        breakpoint: 760,
+		        breakpoint: 780,
 		        settings: {
-		            slidesToShow: 3,
+		            slidesToShow: 2,
 		            slidesToScroll: 1,
 		            arrows: true
 		        }
@@ -89,7 +91,6 @@ $(document).ready(function(){
 		]
 
 	});
-
 
 	//$('.slider-for').slick({
 	$("#slider-tube").slick({
@@ -117,7 +118,7 @@ $(document).ready(function(){
 
 <style>
 .slider1 {
-	max-width: 900px;
+	/*max-width: 900px;*/
 	margin: auto;
 	padding-top: 50px;
 }
@@ -142,6 +143,15 @@ $(document).ready(function(){
 	width:100%;
 }
 
+/* center mode */
+.slick-slide > div {
+  transform: scale(.8);
+  transition: transform .3s cubic-bezier(.4,0,.2,1);
+}
+.slick-center > div {
+  transform: scale(1);
+}
+
 .artwork-title{ }
 .autor-name{ font-size: 80% }
 .artwork-year{ font-size: 80%}
@@ -158,7 +168,7 @@ $(document).ready(function(){
 
 @media screen and (max-width:1439px){
 	.slider1 {
-		max-width: 1100px;
+		/*max-width: 1100px;*/
 	}
 	.slider1 .prev {
 		left: -80px;
@@ -192,7 +202,7 @@ $(document).ready(function(){
 
 @media screen and (max-width:479px){
 	.slider1 {
-		max-width: 340px;
+		/*max-width: 340px;*/
 	}
 }
 
@@ -240,7 +250,7 @@ $(document).ready(function(){
 
 
 
-<div class="slider1">
+<div class="slider1 w80">
 
 		<div>
 			<div class="slide picture">

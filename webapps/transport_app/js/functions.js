@@ -115,6 +115,9 @@ _log(msg);
 			var d = new Date;
 			return parseFloat((d.getTime() - timer)/1000);
 		};
+		function _getRunTime( timer){
+			return ( timer.end.getTime() - timer.start.getTime() ) / 1000;
+		}
 
 
 		function _get_attr_to_obj( attr ){
@@ -787,40 +790,20 @@ console.log( "xhr.onerror,", e);
 			
 		};//_runAjaxCorrect()
 		
-		
-//================================
-//Usage :  var today = func.timeStampToDateStr({
-//timestamp : ....timestamp string....,
-//format : "yyyy-mm-dd hh:min" 
-//});
-//1331352390 --> 10-Mar-2012 12:06:30
 
-//https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript
-// Create a new JavaScript Date object based on the timestamp
-// multiplied by 1000 so that the argument is in milliseconds, not seconds.
-//var date = new Date(unix_timestamp * 1000)
-//================================
-		function _timeStampToDateStr( opt ){
+		function _convertDateToStr( opt ){
 			var p = {
-				"timestamp" : null,
-				"format" : ""
+				"dateObj" : null,
+				"format" : "dd-mm-yyyy hh:min",
+				"s_case": false//subjective_case, именительный падеж
 			};
 			for(var key in opt ){
 				p[key] = opt[key];
 			}
 //console.log( p );
-			
-			//date.setTime( timestamp);
-			if( !p.timestamp || p.timestamp.length === 0){
-				var d = new Date();
-			} else {
-				// multiplied by 1000 so that the argument is in milliseconds, not seconds.
-				timestamp = p.timestamp * 1000;
-				var d = new Date( timestamp );
-			}
+			var d = p.dateObj;
 			
 			var sYear = d.getFullYear();
-
 			var sMonth = d.getMonth() + 1;
 	//console.log( sMonth, typeof sMonth );
 			if( sMonth < 10){
@@ -847,9 +830,12 @@ console.log( "xhr.onerror,", e);
 				sSec = "0" + sSec;
 			}
 			
-			var dateStr =  sDate + "-" + sMonth + "-" + sYear + " " + sHours + ":" + sMinutes + ":" + sSec;
-			
+			var dateStr = dateStr =  sDate + "-" + sMonth + "-" + sYear + " " + sHours + ":" + sMinutes + ":" + sSec;
 			switch( p.format ){
+				
+				case "dd-mm-yyyy hh:min":
+					dateStr =  sDate + "-" + sMonth + "-" + sYear + " " + sHours + ":" + sMinutes + ":" + sSec;
+				break;
 				
 				case "yyyy-mm-dd":
 					dateStr = sYear + "-" + sMonth + "-" + sDate;
@@ -863,7 +849,71 @@ console.log( "xhr.onerror,", e);
 					dateStr = sYear + "-" + sMonth + "-" + sDate + " " + sHours + ":" + sMinutes + ":" + sSec;
 				break;
 				
+				case "dd mm hh:min":
+					dateStr = sDate + " " + sMonth +" "+ sHours + ":" + sMinutes;
+				break;
+				
+				case "dd full-month hh:min":
+					sMonth = _getMonthNameByNum( 
+						d.getMonth(),
+						"ru",
+						p.s_case
+					);
+					dateStr = sDate + " " + sMonth +" "+ sHours + ":" + sMinutes;
+				break;
+				
+				case "dd full-month yyyy":
+					sMonth = _getMonthNameByNum( 
+						d.getMonth(),
+						"ru",
+						p.s_case
+					);
+					dateStr = sDate + " " + sMonth +" "+ sYear;
+				break;
+				
 			}//end switch
+			return dateStr;
+		}//end _convertDateToStr()
+	
+		
+//================================
+//Usage :  var today = func.timeStampToDateStr({
+//timestamp : ....timestamp string....,
+//format : "yyyy-mm-dd hh:min" 
+//});
+//1331352390 --> 10-Mar-2012 12:06:30
+
+//https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript
+// Create a new JavaScript Date object based on the timestamp
+// multiplied by 1000 so that the argument is in milliseconds, not seconds.
+//var date = new Date(unix_timestamp * 1000)
+//================================
+		function _timeStampToDateStr( opt ){
+			var p = {
+				"timestamp" : null,
+				"format" : "",
+				"s_case": false//subjective_case, именительный падеж
+			};
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+//console.log( p );
+			
+			//date.setTime( timestamp);
+			if( !p.timestamp || p.timestamp.length === 0){
+				var d = new Date();
+			} else {
+				// multiplied by 1000 so that the argument is in milliseconds, not seconds.
+				timestamp = p.timestamp * 1000;
+				var d = new Date( timestamp );
+			}
+			
+			
+			var dateStr = _convertDateToStr({
+				"dateObj": d,
+				"format": p.format,
+				"s_case": p.s_case
+			});
 			
 			return dateStr;
 		}//end _timeStampToDateStr()
@@ -915,14 +965,62 @@ console.log( "xhr.onerror,", e);
 		}//end _getTimeStampFromDateStr()
 
 		
-		function _getMonthNameByNum( num, lang ){
-			var sMonth = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+		function _getMonthNameByNum( 
+				num, 
+				lang, 
+				s_case //вернуть subjective_case, именительный падеж
+			)
+		{
+var sMonth = [
+"jan", 
+"feb", 
+"mar", 
+"apr", 
+"may", 
+"jun", 
+"jul", 
+"aug", 
+"sep", 
+"oct", 
+"nov", 
+"dec"
+];
 			if( lang === "RU" || lang === "ru" ){
-				sMonth = ["янв", "фев", "март", "апр", "май", "июн", "июл", "авг", "сент", "окт", "ноя", "дек"];
+sMonth = [
+"январь", 
+"февраль", 
+"март", 
+"апрель", 
+"май", 
+"июнь", 
+"июль", 
+"август", 
+"сентябрь", 
+"октябрь", 
+"ноябрь", 
+"декабрь"];
+				if(s_case){
+sMonth = [
+"января", 
+"февраля", 
+"марта", 
+"апреля", 
+"мая", 
+"июня", 
+"июля", 
+"августа", 
+"сентября", 
+"октября", 
+"ноября", 
+"декабря"
+];
+				}
 			}
+//console.log(s_case, sMonth);
 			return sMonth[num];
 		}//end _getMonthNameByNum()
-
+    
+    
 		function _getNumMonthByName( monthName, lang ){
 			var sMonth = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 			if( lang ){
@@ -934,6 +1032,9 @@ console.log( "xhr.onerror,", e);
 			return num;
 		}//end _getNumMonthByName()
 	
+
+
+
 
 		//Convert str to Hash code
 		var _hashCode = function(str){
@@ -1295,6 +1396,7 @@ ONLY second LEVEL !!!!!!!!!!!!
 			runAjax: _runAjax,
 			runAjaxCorrect: _runAjaxCorrect,
 			
+			convertDateToStr: _convertDateToStr,
 			timeStampToDateStr: _timeStampToDateStr,
 			getTimeStampFromDateStr: _getTimeStampFromDateStr,
 			getMonthByNameNum: _getMonthNameByNum,

@@ -56,9 +56,11 @@ console.log(webApp);
 function _transport_api(){
 	_vars = {
 		//"dataUrl" : "data/2019-04-26.xml",
-		"dataUrl" : "v1/data/2019-04-26.json",
+		//"dataUrl" : "v1/data/2019-04-26.json",
+		"dataUrl" : "files/test_ya_schedule.json",
+		
 /*
-			"dataUrl" : "https://cors-anywhere.herokuapp.com/\
+		"dataUrl" : "https://cors-anywhere.herokuapp.com/\
 https://api.rasp.yandex.net/v3.0/search/?\
 from={{from_code}}&\
 to={{to_code}}&\
@@ -99,6 +101,7 @@ https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951e
 			"data": ""
 		},
 		"blocks": [
+/*		
 			{
 				"locationID" : "block-schedule",
 				"title" : "transport schedule", 
@@ -114,7 +117,8 @@ https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951e
 					}
 				}
 			}, //end block
-
+*/ 
+/*
 			{
 				"locationID" : "block-copyright",
 				"title" : "copy Right!", 
@@ -134,7 +138,7 @@ https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951e
 					}
 				}
 			}, //end block
-
+*/
 		],//end blocks
 	}//end _vars
 
@@ -153,9 +157,11 @@ https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951e
 		webApp.vars.titleTo.value = webApp.vars["transportAPI"]["requestParams"]["to"]["title"];
 		webApp.vars.titleTo.dataset["code"] = webApp.vars["transportAPI"]["requestParams"]["to"]["esr_code"];
 		
-		var today = _timeStampToDateStr( new Date() );
+		var today = func.timeStampToDateStr({
+			"format": "yyyy-mm-dd"
+		});
 //console.log(today);
-		//$("#date-widget").val(today);
+
 		webApp.vars["dateWidget"] = webApp.vars.App.querySelector("#date-widget");
 		webApp.vars["dateWidget"].value = today;
 		webApp.vars["transportAPI"]["requestParams"]["date"] = today;
@@ -169,11 +175,11 @@ https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951e
 	var _getTemplates = function(){
 
 		var templates = {
-			"tpl-copyright": "",
-			"tpl-copyright-content": "",
-			"tpl-schedule": "",
-			"tpl-schedule-table": "",
-			"tpl-schedule-mobile": ""
+			//"tpl-copyright": "",
+			//"tpl-copyright-content": "",
+			"tpl-yandex--transport": "",
+			//"tpl-schedule-table": "",
+			//"tpl-schedule-mobile": ""
 		};
 		
 		for(var key in templates){
@@ -183,53 +189,67 @@ https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951e
 		//define template keys info
 		templates["tplKeys"] = {};
 
-		var id = "tpl-schedule-table--tr";
-		templates["tplKeys"][id] = {
-				"dataType": "array",
-				"listTpl": getTpl(id)
+		var keyName = "segments";
+		var keyId = "segments-list-tpl--transport";
+		templates["tplKeys"][keyName] = {
+			"description": "array",
+			"listTpl": getTpl(keyId)
+		};
+
+		var keyName = "segments.tickets_info.et_marker";
+		templates["tplKeys"][keyName] = {
+			"clearValue": "%segments.tickets_info.et_marker%" //key name as in the template page
 		};
 		
-		var id = "tpl-schedule-mobile--record";
-		templates["tplKeys"][id] = {
-				"dataType": "array",
-				"listTpl": getTpl(id)
+	
+		var keyName = "record_num";
+		templates["tplKeys"][keyName] = {
+			"description": "num_element"
 		};
+
+		var keyName = "places";//segments.tickets_info.places
+		var keyId = "tpl--segments-tickets_info-places";
+		templates["tplKeys"][keyName] = {
+			"description": "array",
+			"listTpl": getTpl(keyId),
+			"clearValue": "%places%" //key name as in the template page
+		};
+
+
+		templates["mainTpl"] = templates["tpl-yandex--transport"];
 		
 		return templates;
 	};//end _getTemplates()
 
 	
 	var _dataProcess = function(jsonObj){
-console.log(jsonObj);
+//console.log(jsonObj);
 //https://yandex.ru/dev/rasp/doc/reference/schedule-point-point.html#format
 		//correct date: departure, duration, arrival
 		for( var n = 0; n < jsonObj["segments"].length; n++){
 			
 			var record = jsonObj["segments"][n];
 			record["duration"] = Math.round( record["duration"] / 60);
-			// if( record["duration"] > 60){
-				// record["duration"] = record["duration"] / 60;
-			// }
-/*		
+			if( record["duration"] > 60){
+				record["duration"] = record["duration"] / 60;
+			}
 			
+			//convert date ISO 8601 (YYYY-MM-DDThh:mm:ss±hh:mm) -> dd mm hh:min
 			var _d = new Date( record["departure"] );
-			record["departure_day"] = _d.getDate() +" "+ func.getMonthByNameNum( _d.getMonth(), "ru" );
-			var _min = _d.getMinutes();
-			if( _min < 10){
-				_min = "0" + _min;
-			}
-			record["departure_time"] = _d.getHours() +":"+_min;
-			delete record["departure"];
-			
+//console.log(_d);
+			var _d_format = func.convertDateToStr({
+				"dateObj": _d,
+				"format": "dd full-month hh:min"
+			});
+//console.log(_d_format);			
+			record["departure"] = _d_format;
+
 			var _d = new Date( record["arrival"] );
-			record["arrival_day"] = _d.getDate() +" "+ func.getMonthByNameNum( _d.getMonth(), "ru" );
-			var _min = _d.getMinutes();
-			if( _min < 10){
-				_min = "0" + _min;
-			}
-			record["arrival_time"] = _d.getHours() +":"+_min;
-			delete record["arrival"];
-*/		
+			var _d_format = func.convertDateToStr({
+				"dateObj": _d,
+				"format": "dd full-month hh:min"
+			});
+			record["arrival"] = _d_format;
 		}//next
 		
 	};//end _dataProcess()
@@ -240,7 +260,7 @@ console.log(jsonObj);
 
 function _yandex_api(){
 	_vars = {
-/*
+		/*
 		"dataUrl" : "https://romanlaptev-cors.herokuapp.com/\
 https://api.weather.yandex.ru/v2/informers?\
 lat={{latitude}}&\
@@ -258,115 +278,8 @@ lang=ru_RU",
 				//"latitude": 55.169005, 
 				//"longitude": 83.160846
 		},
-		
 		"templates" : {},
-		dataTpl: {
-			//Объект фактической информации о погоде			
-			"fact": {
-				
-				//"Код расшифровки погодного описания"					
-				"condition": function(selectedOption){
-					var options = {
-				"clear": "ясно",
-				"partly-cloudy": "малооблачно",
-				"cloudy": "облачно с прояснениями",
-				"overcast": "пасмурно",
-				"drizzle": "морось",
-				"light-rain": "небольшой дождь",
-				"rain": "дождь",
-				"moderate-rain": "умеренно сильный дождь",
-				"heavy-rain": "сильный дождь",
-				"continuous-heavy-rain": "длительный сильный дождь",
-				"showers": "ливень",
-				"wet-snow": "дождь со снегом",
-				"light-snow": "небольшой снег",
-				"snow": "снег",
-				"snow-showers": "снегопад",
-				"hail": "град",
-				"thunderstorm": "гроза",
-				"thunderstorm-with-rain": "дождь с грозой",
-				"thunderstorm-with-hail": "гроза с градом"	
-					};
-					return options[selectedOption];
-				},
-				
-				//Направление ветра
-				"wind_dir": function(selectedOption){
-					var options = {
-				"nw": "северо-западное",
-				"n": "северное",
-				"ne": "северо-восточное",
-				"e": "восточное",
-				"se": "юго-восточное",
-				"s": "южное",
-				"sw": "юго-западное",
-				"w": "западное",
-				"с": "штиль"
-					};
-					return options[selectedOption];
-				},
-
-				"daytime": function(selectedOption){
-					var options = {
-				"d": "светлое время суток",
-				"n": "темное время суток"
-					};
-					return options[selectedOption];
-				},
-
-				"season": function(selectedOption){
-					var options = {
-				"summer": "лето",
-				"autumn": "осень",
-				"winter": "зима",
-				"spring": "весна"
-					};
-					return options[selectedOption];
-				},
-
-			},//end object fact
-							
-			//forecast, Объект прогнозной информации о погоде
-			"forecast": {
-				//Текстовый код для фазы Луны					
-				"moon_text": function(selectedOption){
-					var options = {
-				"moon-code-0": "полнолуние",
-				"moon-code-1": "убывающая луна",
-				"moon-code-2": "убывающая луна",
-				"moon-code-3": "убывающая луна",
-				"moon-code-4": "последняя четверть",
-				"moon-code-5": "убывающая луна",
-				"moon-code-6": "убывающая луна",
-				"moon-code-7": "убывающая луна",
-				"moon-code-8": "новолуние",
-				"moon-code-9": "растущая луна",
-				"moon-code-10": "растущая луна",
-				"moon-code-11": "растущая луна",
-				"moon-code-12": "первая четверть",
-				"moon-code-13": "растущая луна",
-				"moon-code-14": "растущая луна",
-				"moon-code-15": "растущая луна"
-					};
-					return options[selectedOption];
-				},
-
-				//Название времени суток
-				"part_name": function(selectedOption){
-					var options = {
-				"night": "ночь",
-				"morning": "утро",
-				"day": "день",
-				"evening": "вечер"
-					};
-					return options[selectedOption];
-				},
-			}//end object forecast
-
-		}//end dataTpl
-					
 	}//end _vars
-
 
 	_vars["init"] = function(){
 		webApp.vars["weatherAPI"]["yandex"]["targetContainer"] = func.getById("response-weather-api");
@@ -377,34 +290,323 @@ lang=ru_RU",
 	var _getTemplates = function(){
 
 		var templates = {
-"template-weather--yandex": "",
-"forecast-parts-0--yandex": ""
+"tpl-yandex--weather": ""
 		};
 		
 		for(var key in templates){
 			templates[key] = getTpl(key);
 		}//next
-/*		
+		
 		//define template keys info
 		templates["tplKeys"] = {};
 
-		var id = "tpl-schedule-table--tr";
-		templates["tplKeys"][id] = {
-				"dataType": "array",
-				"listTpl": getTpl(id)
+//"Код расшифровки погодного описания"
+var condition_opt = {
+"clear": "ясно",
+"partly-cloudy": "малооблачно",
+"cloudy": "облачно с прояснениями",
+"overcast": "пасмурно",
+"drizzle": "морось",
+"light-rain": "небольшой дождь",
+"rain": "дождь",
+"moderate-rain": "умеренно сильный дождь",
+"heavy-rain": "сильный дождь",
+"continuous-heavy-rain": "длительный сильный дождь",
+"showers": "ливень",
+"wet-snow": "дождь со снегом",
+"light-snow": "небольшой снег",
+"snow": "снег",
+"snow-showers": "снегопад",
+"hail": "град",
+"thunderstorm": "гроза",
+"thunderstorm-with-rain": "дождь с грозой",
+"thunderstorm-with-hail": "гроза с градом"	
+};
+
+		var keyName = "fact.condition";
+		templates["tplKeys"][keyName] = {
+			"description": "select list",
+			//"listTpl": getTpl(keyId)
+			//"clearValue": ""
+			"listValue": function(selectedOption){
+				var options = condition_opt;
+				return options[selectedOption];
+			}
+		};
+
+		var keyName = "fact.wind_dir";
+		templates["tplKeys"][keyName] = {
+			"description": "select list",
+			"listValue": function(selectedOption){
+//Направление ветра
+var options = {
+"nw": "северо-западное",
+"n": "северное",
+"ne": "северо-восточное",
+"e": "восточное",
+"se": "юго-восточное",
+"s": "южное",
+"sw": "юго-западное",
+"w": "западное",
+"с": "штиль"
+};
+				return options[selectedOption];
+			}
+		};
+
+		var keyName = "fact.daytime";
+		templates["tplKeys"][keyName] = {
+			"description": "select list",
+			"listValue": function(selectedOption){
+var options = {
+"d": "светлое время суток",
+"n": "темное время суток"
+};
+				return options[selectedOption];
+			}
+		};
+
+
+		var keyName = "fact.season";
+		templates["tplKeys"][keyName] = {
+			"description": "select list",
+			"listValue": function(selectedOption){
+var options = {
+"summer": "лето",
+"autumn": "осень",
+"winter": "зима",
+"spring": "весна"
+};
+				return options[selectedOption];
+			}
+		};
+
+		var keyName = "fact.obs_time";
+		templates["tplKeys"][keyName] = {
+			"description": "date",
+			"formatDate": function(_timestamp){
+				var timeStr = func.timeStampToDateStr({
+					"timestamp": _timestamp,
+					"format": "yyyy-mm-dd hh:min:sec"
+				});
+				return timeStr;
+			}
+		};
+
+		var keyName = "now";
+		templates["tplKeys"][keyName] = {
+			"description": "date",
+			"formatDate": function(_timestamp){
+				var timeStr = func.timeStampToDateStr({
+					"timestamp": _timestamp,
+					"format": "yyyy-mm-dd hh:min:sec"
+				});
+				return timeStr;
+			}
 		};
 		
-		var id = "tpl-schedule-mobile--record";
-		templates["tplKeys"][id] = {
-				"dataType": "array",
-				"listTpl": getTpl(id)
+		var keyName = "forecast.date_ts";
+		templates["tplKeys"][keyName] = {
+			"description": "date",
+			"formatDate": function(_timestamp){
+				var timeStr = func.timeStampToDateStr({
+					"timestamp": _timestamp,
+					"format": "dd full-month yyyy",
+					"s_case": true//subjective_case, именительный падеж
+				});
+				return timeStr;
+			}
 		};
-*/		
+
+		var keyName = "forecast.moon_code";
+		templates["tplKeys"][keyName] = {
+			"description": "select list",
+			"listValue": function(selectedOption){
+//код для фазы Луны
+var options = {
+"0": "полнолуние",
+"1": "убывающая луна",
+"2": "убывающая луна",
+"3": "убывающая луна",
+"4": "последняя четверть",
+"5": "убывающая луна",
+"6": "убывающая луна",
+"7": "убывающая луна",
+"8": "новолуние",
+"9": "растущая луна",
+"10": "растущая луна",
+"11": "растущая луна",
+"12": "первая четверть",
+"13": "растущая луна",
+"14": "растущая луна",
+"15": "растущая луна"
+};
+//console.log(selectedOption, typeof selectedOption, options[selectedOption]);
+				return options[selectedOption];
+			},
+			"process": function( _d ){
+//console.log( this );
+				var selectedOption = _d["moon_code"];
+				if( this["listValue"] && 
+					typeof this["listValue"] === "function" ){
+					_d["moon_code"] = this["listValue"]( selectedOption );
+				}
+			}
+		};
+
+
+		var keyName = "parts";
+		var keyId = "tpl-yandex--forecast-parts";
+		templates["tplKeys"][keyName] = {
+			"type": "array_tpl",
+			"listTpl": getTpl(keyId)
+		};
+
+
+		var keyName = "parts.daytime";
+		templates["tplKeys"][keyName] = {
+			"type": "array_tpl_item",
+			"description": "select list",
+			"listValue": function(selectedOption){
+var options = {
+"d": "светлое время суток",
+"n": "темное время суток"
+};
+				return options[selectedOption];
+			},
+			"process": function( dataArr ){
+				for(var n = 0; n < dataArr.length; n++){
+					var _d = dataArr[n];
+					var selectedOption = _d["daytime"];
+					_d["daytime"] = this["listValue"]( selectedOption );
+				}//next
+			}
+		};
+
+		var keyName = "parts.part_name";
+		templates["tplKeys"][keyName] = {
+			"type": "array_tpl_item",
+			"description": "select list",
+			"listValue": function(selectedOption){
+//Название времени суток
+var options = {
+"night": "ночь",
+"morning": "утро",
+"day": "день",
+"evening": "вечер"
+};
+				return options[selectedOption];
+			},
+			"process": function( dataArr ){
+				for(var n = 0; n < dataArr.length; n++){
+					var _d = dataArr[n];
+					var selectedOption = _d["part_name"];
+					_d["part_name"] = this["listValue"]( selectedOption );
+				}//next
+			}
+		};
+
+		var keyName = "parts.condition";
+		templates["tplKeys"][keyName] = {
+			"description": "select list",
+			"listValue": function(selectedOption){
+				var options = condition_opt;
+				return options[selectedOption];
+			},
+			"process": function( dataArr ){
+				for(var n = 0; n < dataArr.length; n++){
+					var _d = dataArr[n];
+					var selectedOption = _d["condition"];
+					_d["condition"] = this["listValue"]( selectedOption );
+				}//next
+			}
+		};
+
+
+		templates["mainTpl"] = templates["tpl-yandex--weather"];
 		return templates;
 	};//end _getTemplates()
+
 	
-	
+//https://yandex.ru/dev/weather/doc/dg/concepts/forecast-info.html#resp-format	
 	var _dataProcess = function(jsonObj){
+//console.log(jsonObj)
+
+		var tplKeys = this.templates["tplKeys"];
+	//console.log(tplKeys, typeof tplKeys["fact.condition"]["listValue"] === "function");
+		if( tplKeys["fact.condition"] &&
+			typeof tplKeys["fact.condition"]["listValue"] === "function"
+		){
+			jsonObj["fact"]["condition"] = tplKeys["fact.condition"]["listValue"]( jsonObj["fact"]["condition"] );
+		}
+		
+		if( tplKeys["fact.wind_dir"] &&
+			typeof tplKeys["fact.wind_dir"]["listValue"] === "function"
+		){
+			jsonObj["fact"]["wind_dir"] = tplKeys["fact.wind_dir"]["listValue"]( jsonObj["fact"]["wind_dir"] );
+		}
+		
+		if( tplKeys["fact.daytime"] &&
+			typeof tplKeys["fact.daytime"]["listValue"] === "function"
+		){
+			jsonObj["fact"]["daytime"] = tplKeys["fact.daytime"]["listValue"]( jsonObj["fact"]["daytime"] );
+		}
+		
+		if( tplKeys["fact.season"] &&
+			typeof tplKeys["fact.season"]["listValue"] === "function"
+		){
+			jsonObj["fact"]["season"] = tplKeys["fact.season"]["listValue"]( jsonObj["fact"]["season"] );
+		}
+
+		if( tplKeys["fact.obs_time"] &&
+			typeof tplKeys["fact.obs_time"]["formatDate"] === "function"
+		){
+			jsonObj["fact"]["obs_time"] = tplKeys["fact.obs_time"]["formatDate"]( jsonObj["fact"]["obs_time"] );
+		}
+
+		if( tplKeys["now"] &&
+			typeof tplKeys["now"]["formatDate"] === "function"
+		){
+			jsonObj["now"] = tplKeys["now"]["formatDate"]( jsonObj["now"] );
+		}
+
+		if( tplKeys["forecast.date_ts"] &&
+			typeof tplKeys["forecast.date_ts"]["formatDate"] === "function"
+		){
+			jsonObj["forecast"]["date_ts"] = tplKeys["forecast.date_ts"]["formatDate"]( 
+				jsonObj["forecast"]["date_ts"] 
+			);
+		}
+
+		var tpl_keyName ="forecast.moon_code";
+		var keyDataObj = jsonObj["forecast"];
+		//var data_keyName ="moon_code";
+		//if( tplKeys[tpl_keyName] &&	typeof tplKeys[tpl_keyName]["listValue"] === "function"	){
+			//keyDataObj[data_keyName] = tplKeys[tpl_keyName]["listValue"]( keyDataObj[data_keyName] );
+	//console.log( keyDataObj );
+		//}
+		if( tplKeys[tpl_keyName] &&	typeof tplKeys[tpl_keyName]["process"] === "function"	){
+			tplKeys[tpl_keyName]["process"]( keyDataObj );
+		}
+
+		var tpl_keyName ="parts.daytime";
+		var keyDataObj = jsonObj["forecast"]["parts"];
+		if( tplKeys[tpl_keyName] &&	typeof tplKeys[tpl_keyName]["process"] === "function"	){
+			tplKeys[tpl_keyName]["process"]( keyDataObj );
+		}
+	
+		var tpl_keyName ="parts.part_name";
+		var keyDataObj = jsonObj["forecast"]["parts"];
+		if( tplKeys[tpl_keyName] &&	typeof tplKeys[tpl_keyName]["process"] === "function"	){
+			tplKeys[tpl_keyName]["process"]( keyDataObj );
+		}
+
+		var tpl_keyName ="parts.condition";
+		var keyDataObj = jsonObj["forecast"]["parts"];
+		if( tplKeys[tpl_keyName] &&	typeof tplKeys[tpl_keyName]["process"] === "function"	){
+			tplKeys[tpl_keyName]["process"]( keyDataObj );
+		}
+	
 	};//end _dataProcess()
 	
 	return _vars;
@@ -423,8 +625,16 @@ lat={{latitude}}\
 &appid={{apiKey}}\
 &callback=jsonp_callback",
 */
-		//"weatherUrl" : "files/openweathermap_Mochishche.json,
-		"weatherUrl" : "files/openweathermap_Novosibirsk.json",
+/*
+		"weatherUrl" : "http://api.openweathermap.org/data/2.5/weather?\
+lat={{latitude}}\
+&lon={{longitude}}\
+&units=metric\
+&appid={{apiKey}}\
+&lang=ru",
+*/ 
+		"weatherUrl" : "files/openweathermap_Mochishche.json",
+		//"weatherUrl" : "files/openweathermap_Novosibirsk.json",
 		
 
 		//https://openweathermap.org/forecast5
@@ -458,8 +668,8 @@ lat={{latitude}}\
 	
 	var _getTemplates = function(){
 		var templates = {
-"template-weather--openweathermap": "",
-"template-forecast-list-weather-tpl--openweathermap": ""
+"tpl-openweathermap--weather": "",
+"tpl-openweathermap--forecast": ""
 		};
 		
 		for(var key in templates){
@@ -470,24 +680,139 @@ lat={{latitude}}\
 		templates["tplKeys"] = {};
 
 		var keyName = "weather";
-		var keyId = "weather-list-tpl--openweathermap";
+		var keyId = "tpl-openweathermap-weather-list";
 		templates["tplKeys"][keyName] = {
-				"dataType": "array",
-				"listTpl": getTpl(keyId)
+			"description": "array",
+			"listTpl": getTpl(keyId)
 		};
 		
 		var keyName = "list";
-		var keyId = "template-forecast-list-tpl--openweathermap";
+		var keyId = "tpl-openweathermap-forecast--list";
 		templates["tplKeys"][keyName] = {
-				"dataType": "array",
-				"listTpl": getTpl(keyId)
+			"description": "array",
+			"listTpl": getTpl(keyId)
 		};
 
+		var keyName = "weather-forecast";
+		var keyId = "tpl-openweathermap-forecast--list-weather";
+		templates["tplKeys"][keyName] = {
+			"description": "array",
+			"listTpl": getTpl(keyId)
+		};
 
+		var keyName = "record_num";
+		templates["tplKeys"][keyName] = {
+			"description": "num_element"
+		};
+
+		var keyName = "dt";
+		templates["tplKeys"][keyName] = {
+			"description": "date",
+			"formatDate": function(_timestamp){
+				var timeStr = func.timeStampToDateStr({
+					"timestamp": _timestamp,
+					//"format": "yyyy-mm-dd hh:min:sec"
+				});
+				return timeStr;
+			}
+		};
+
+		var keyName = "sys.sunrise";
+		templates["tplKeys"][keyName] = {
+			"description": "date",
+			"formatDate": function(_timestamp){
+				var timeStr = func.timeStampToDateStr({
+					"timestamp": _timestamp,
+				});
+				return timeStr;
+			}
+		};
+
+		var keyName = "sys.sunset";
+		templates["tplKeys"][keyName] = {
+			"description": "date",
+			"formatDate": function(_timestamp){
+				var timeStr = func.timeStampToDateStr({
+					"timestamp": _timestamp,
+				});
+				return timeStr;
+			}
+		};
+
+		var keyName = "city.sunrise";
+		templates["tplKeys"][keyName] = {
+			"description": "date",
+			"formatDate": function(_timestamp){
+				var timeStr = func.timeStampToDateStr({
+					"timestamp": _timestamp,
+				});
+				return timeStr;
+			}
+		};
+
+		var keyName = "city.sunset";
+		templates["tplKeys"][keyName] = {
+			"description": "date",
+			"formatDate": function(_timestamp){
+				var timeStr = func.timeStampToDateStr({
+					"timestamp": _timestamp,
+				});
+				return timeStr;
+			}
+		};
+
+		templates["mainTpl"] = templates["template-weather--openweathermap"];
 		return templates;
 	};//end _getTemplates()
+
 	
 	var _dataProcess = function(jsonObj){
+		
+		var tplKeys = this.templates["tplKeys"];
+		
+if(jsonObj["dt"]){		
+		if( tplKeys["dt"] &&
+			typeof tplKeys["dt"]["formatDate"] === "function"
+		){
+			jsonObj["dt"] = tplKeys["dt"]["formatDate"]( jsonObj["dt"] );
+		}
+}		
+		
+if(jsonObj["sys"]){		
+		if( tplKeys["sys.sunrise"] &&
+			typeof tplKeys["sys.sunrise"]["formatDate"] === "function"
+		){
+			jsonObj["sys"]["sunrise"] = tplKeys["sys.sunrise"]["formatDate"]( 
+				jsonObj["sys"]["sunrise"] 
+			);
+		}
+		
+		if( tplKeys["sys.sunset"] &&
+			typeof tplKeys["sys.sunset"]["formatDate"] === "function"
+		){
+			jsonObj["sys"]["sunset"] = tplKeys["sys.sunset"]["formatDate"]( 
+				jsonObj["sys"]["sunset"] 
+			);
+		}
+}		
+
+if(jsonObj["city"]){
+		if( tplKeys["city.sunrise"] &&
+			typeof tplKeys["city.sunrise"]["formatDate"] === "function"
+		){
+			jsonObj["city"]["sunrise"] = tplKeys["city.sunrise"]["formatDate"]( 
+				jsonObj["city"]["sunrise"] 
+			);
+		}
+		
+		if( tplKeys["city.sunset"] &&
+			typeof tplKeys["city.sunset"]["formatDate"] === "function"
+		){
+			jsonObj["city"]["sunset"] = tplKeys["city.sunset"]["formatDate"]( 
+				jsonObj["city"]["sunset"] 
+			);
+		}
+}
 	};//end _dataProcess()
 	
 	return _vars;
@@ -539,58 +864,10 @@ console.log( "Warn! error parse url in " + target.href );
 	});//end event
 	
 //------------------------------------------------------------------
-
-/*
-	$("#date-widget").on("change", function(event) {
-console.log(event.type, $("#date-widget").val() );
-		_runRequest({
-			callback : function(){console.log("-- this is the end...")}
-		});
-	});//end event
-	
-	$("#btn-update").on("click", function(event) {
-//console.log("event...", $("#date-widget").val() );
-
-		_runRequest({
-			callback : function(){console.log("-- this is the end...")}
-		});
-		
-	});//end event
-*/
 	webApp.vars["dateWidget"].addEventListener("change", function(e){
 console.log(e.type);
 	});//end event
 
-/*	
-	$("#btn-change-direction").on("click", function(event) {
-//console.log("event...", event.type );
-		event = event || window.event;
-		var target = event.target || event.srcElement;
-		if (event.preventDefault) { 
-			event.preventDefault();
-		} else {
-			event.returnValue = false;				
-		}
-
-		var code1 = $("#from-title").data("code");
-		var title1 = $("#from-title").val();
-		
-		var code2 = $("#to-title").data("code");
-		var title2 = $("#to-title").val();
-		
-		$("#from-title").data("code", code2);
-		$("#from-title").val( title2 );
-		
-		$("#to-title").data("code", code1);
-		$("#to-title").val( title1 );
-		
-		_runRequest({
-			callback : function(){console.log("-- this is the end...")}
-		});
-		
-	});//end event
-*/
-//------------------------------------------------------------------	
 }//end defineEvents()
 
 
@@ -649,6 +926,7 @@ func.logAlert(webApp.logMsg, "error");
 				
 				if( apiType === "weather"){
 					apiObj = webApp.vars["weatherAPI"];
+
 				}
 				if( apiType === "forecast"){
 					apiObj = webApp.vars["weatherAPI"];
@@ -670,10 +948,12 @@ console.log( webApp.logMsg );
 				if( apiName === "openweathermap")	{
 					if( apiType === "weather")	{
 						dataUrl = apiObj["weatherUrl"];
+						apiObj.templates["mainTpl"] = apiObj.templates["tpl-openweathermap--weather"];
 					}
 				
 					if( apiType === "forecast") {
 						dataUrl = apiObj["forecastUrl"];
+						apiObj.templates["mainTpl"] = apiObj.templates["tpl-openweathermap--forecast"];
 					}
 				}
 //-------------------
@@ -695,7 +975,7 @@ func.logAlert(webApp.logMsg, "error");
 console.log("-- start server request --");
 				sendRequest({
 					"dataUrl": dataUrl,
-					//"apiName" : apiName,
+					"apiName" : apiName,
 					"requestParams": apiObj["requestParams"],
 					"callback" : function( response ){
 //console.log(arguments);
@@ -742,7 +1022,7 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 function sendRequest( opt ){
 	var p = {
 		"dataUrl" : false,
-		//"apiName" : false,
+		"apiName" : false,
 		"requestParams": false,
 		"callback" : function(){
 //console.log(arguments);
@@ -1043,226 +1323,30 @@ func.logAlert( webApp.vars["logMsg"], "error");
 		p.apiObj.dataProcess( p.data );
 	}
 	
-/*	
-	if( p["api-name"] === "weather"){
-		var sunriseDate = func.timeStampToDateStr({
-			"timestamp": p.data["sys"]["sunrise"],
-			"format": "dd-mm-yyyy hh:min"
-		});
-	//console.log(sunriseDate);	
-		p.data["sys"]["sunrise"] = sunriseDate;
-		
-		var sunsetDate = func.timeStampToDateStr({
-			"timestamp": p.data["sys"]["sunset"],
-			"format": "dd-mm-yyyy hh:min"
-		});
-	//console.log(sunsetDate);	
-		p.data["sys"]["sunset"] = sunsetDate;
-		
-		//define template keys info
-	}
-*/
-
-/*
-	if( p["api-name"] === "forecast"){
-		
-		var sunriseDate = func.timeStampToDateStr({
-			"timestamp": p.data["city"]["sunrise"],
-			"format": "dd-mm-yyyy hh:min"
-		});
-	//console.log(sunriseDate);	
-		p.data["city"]["sunrise"] = sunriseDate;
-		
-		var sunsetDate = func.timeStampToDateStr({
-			"timestamp": p.data["city"]["sunset"],
-			"format": "dd-mm-yyyy hh:min"
-		});
-	//console.log(sunsetDate);	
-		p.data["city"]["sunset"] = sunsetDate;
-	}
-*/
-
-/*
 	var html = wrapData( {
 		"data": p.data,
-		"template" : p.templates["tplMain"]
+		"template" : p.apiObj.templates["mainTpl"],
+		"tplKeys" : p.apiObj.templates["tplKeys"]
 	});
+//console.log(html);
 
 	if( html && html.length > 0){
-		p.targetContainer.innerHTML = html;
+		
+		//clear unfilled template keys
+		for(var key in p.apiObj.templates["tplKeys"]){
+			if( p.apiObj.templates["tplKeys"][key]["clearValue"] ){
+	//console.log(key, ": ", p.apiObj.templates["tplKeys"][key]);
+				var keyName = p.apiObj.templates["tplKeys"][key]["clearValue"];
+				html = html.replace( new RegExp( keyName, "g"), "" );
+			}
+		}//next
+		
+		p.apiObj.targetContainer.innerHTML = html;
 	}
-*/
+
 	
 }//end drawResponse()
 
-
-//===============================================
-/*
-	var _buildPage = function( opt ){
-//console.log("_buildPage()", arguments);
-
-		//if( webApp.vars["wait"] ){
-			//webApp.vars["wait"].className="modal-backdrop in";
-			//webApp.vars["wait"].style.display="block";
-		//}
-		
-		var p = {
-			"callback": null
-		};
-		//extend options object
-		for(var key in opt ){
-			p[key] = opt[key];
-		}
-//console.log(opt);
-
-		//draw blocks
-		for( var n = 0; n < webApp.vars["blocks"].length; n++){
-			var _block = webApp.vars["blocks"][n];
-//console.log(_block["title"]);				
-
-			if( typeof _block["buildBlock"] === "function"){//dynamic form content
-				//if( _block["visibility"]){
-					_block["buildBlock"]();
-					//_block["draw"] = true;
-				//}
-			} else {
-//webApp.vars["logMsg"] = "warning, not found buld function....";
-//console.log( "-- " + webApp.vars["logMsg"], _block );
-					if( _block["content"] && _block["content"].length > 0 ){
-						_draw_buildBlock( _block );
-					}
-			}
-			
-		}//next
-		//for( var n = 0; n < webApp.vars["blocks"].length; n++){
-			//var _opt = webApp.vars["blocks"][n];
-			
-			////do not redraw existing block
-			//if( _opt["draw"] && !_opt["refresh"]){
-				//continue;
-			//}
-			
-			//if( _opt["visibility"]){
-				
-				////closures, need for async data getting from indexedDB
-				//(function(_opt_){
-					////setTimeout(function(){ 
-						////console.log("-- closure function, ", _opt_); 
-					////}, 1000);
-					////_draw_buildBlock( _opt_ );
-					
-					//if( typeof _opt_["buildBlock"] === "function"){
-						////if( _opt_["visibility"]){
-							//_opt_["buildBlock"]();
-							//_opt_["draw"] = true;
-						////}
-					//} else {
-//webApp.vars["logMsg"] = "warning, not found buld function....";
-//console.log( "-- " + webApp.vars["logMsg"], _opt_ );
-					//}
-				//})(_opt);//end closure
-			//}
-
-		//}//next
-
-		//if( webApp.vars["wait"] ){
-			////webApp.vars["wait"].className="";
-			//webApp.vars["wait"].style.display="none";
-		//}
-
-		if( typeof p["callback"] === "function"){//return from _buildPage()
-			p["callback"]();
-		}
-			
-	};//end _buildPage()
-
-/*
-function _buldScheduleHtml(opt){
-//console.log(opt);
-	var p = {
-		data: false
-	}
-	
-	//extend p object
-	for(var key in opt ){
-		p[key] = opt[key];
-	}
-//console.log(p);
-	
-	if( !p.data ){
-webApp.vars["logMsg"] = "error, not find data object..." ;
-func.logAlert( webApp.vars["logMsg"], "error");
-return false;
-	}
-
-	//var data = webApp.vars["DB"]["data"]["search"];
-	//data["from_title"] = data["from"]["title"];
-	//data["to_title"] = data["to"]["title"];
-	//var htmlSearch = _draw_wrapData({
-		//"data": data,
-		//"templateID": "tpl-schedule-search",
-		////"templateListItemID": "tpl-playlist-item"
-	//});
-
-	var htmlTable = webApp.vars["templates"]["tpl-schedule-table"];
-	webApp.vars["tplNameList"] = "tpl-schedule-table--tr";
-	if( window.screen.width <= 460 ){
-//console.log("TEEST");
-		var htmlTable = webApp.vars["templates"]["tpl-schedule-mobile"];
-		webApp.vars["tplNameList"] = "tpl-schedule-mobile--record";
-	}
-
-	var data = p.data["segments"];
-	var htmlTableList = "";
-	for(var n = 0; n < data.length; n++){
-		htmlTableList += __buildTableList( data[n] );
-	}//next
-	htmlTable = htmlTable.replace("{{list}}", htmlTableList);
-	
-	//var html = htmlSearch + htmlTable;
-	var html = htmlTable;
-//console.log( html);
-
-	return html;
-	
-	
-	function __buildTableList( data ){
-		//var htmlList = webApp.vars["templates"]["tpl-schedule-table--tr"];
-		var record = {};
-		
-		//copy data object
-		for(var key in data){
-//console.log(key, data[key], typeof data[key] );
-			if( typeof data[key] === "object"){
-				__addObjectFiels( key, data[key], record );
-			} else {
-				record[key] = data[key];
-			}
-		}//next
-		
-//console.log(record);
-		
-		var htmlList = _draw_wrapData({
-			"data": record,
-			//"templateID": "tpl-schedule-table--tr",
-			"templateID": webApp.vars["tplNameList"],
-		});
-		return htmlList;
-	}//end __buildTableList()
-	
-	function __addObjectFiels( parentKey, srcObj, dstObj ){
-		for(var key in srcObj){
-			if( typeof srcObj[key] === "object"){
-				__addObjectFiels( key, srcObj[key], dstObj );
-			} else {
-				var _key = parentKey+"_"+key;
-				dstObj[_key] = srcObj[key];
-			}
-		}//next
-	}//end __addObjectFields()
-	
-}//end _buildScheduleHtml()
-*/
 
 //============================================== DATA
 /*	
@@ -1343,505 +1427,172 @@ func.logAlert( webApp.vars["logMsg"], "error");
 }//end _loadCopyRightCode()
 */
 
-/*
-function _buildWeatherHtml(opt){
-//console.log(opt);
+
+//============================================== DRAW
+function wrapData( opt ){
 	var p = {
-		data: false
+		"data": null,
+		"template" : "",
+		tplKeys: null,
+		"markerLeft":"%",
+		"markerRight":"%"
+	};
+	//extend options object
+	for(var key in opt ){
+		p[key] = opt[key];
 	}
-	
-	//extend p object
+console.log(p);
+//console.log( p["data"].length );
+
+	if( !p["data"] || p["data"].length === 0){
+console.log("-- _wrapData(), error, incorrect data ...");
+		return false;
+	}
+	if( !p["template"].length === 0 ){
+console.log("-- wrapData(), error, empty template ...");
+		return false;
+	}
+
+	var html = _formHtml({
+			"data": p.data, 
+			"tpl": p.template, 
+			"tplKeys": p.tplKeys, 
+			"markerLeft": p.markerLeft,
+			"markerRight": p.markerRight
+		});
+//console.log(html);
+	return html;
+
+}//end wrapData()
+
+function _formHtml(opt){
+	var p = {
+		data: null,
+		tpl:"", 
+		tplKeys: null, 
+		keyPrefix:"",
+		markerLeft:"%",
+		markerRight:"%"
+	};
+	//extend options object
 	for(var key in opt ){
 		p[key] = opt[key];
 	}
 //console.log(p);
+
+	var _html = p.tpl;
 	
-	if( !p.data ){
-webApp.vars["logMsg"] = "error, not find data object..." ;
-func.logAlert( webApp.vars["logMsg"], "error");
-return false;
-	}
+	for( var key in p.data ){
+//console.log(key, p.data[key], typeof  p.data[key], p.data[key] instanceof Object );
 
-	var html = document.querySelector("#response").innerHTML;
-	
-	var serverTime = func.timeStampToDateStr({
-		"timestamp": p.data["now"],
-		"format": "yyyy-mm-dd hh:min:sec"
-	});
-	html = html.replace("%now%", serverTime)
-.replace("%now_dt%", p.data["now_dt"]);	
+		var tplKey = p.markerLeft + p.keyPrefix + key + p.markerRight;
+//console.log(tplKey);
+//console.log(key, p.data[key], typeof  p.data[key], tplKey);
 
-//info
-	html = html
-.replace("%lat%", p.data["info"]["lat"])
-.replace("%lon%", p.data["info"]["lon"])
-.replace("%url%", p.data["info"]["url"]);	
+//!!!!!!!!!!!!!
+		//if( !p.data[key] ){
+//console.log(key, p.data[key], typeof  p.data[key], tplKey);
+			//_html = _html.replace( new RegExp( tplKey, "g"), "+" );
+		//}
 
-//fact
-	var selectedCondition = webApp.vars.weatherAPI.dataTpl.fact.condition(
-		p.data["fact"]["condition"]
-	);
-	var selectedWind = webApp.vars.weatherAPI.dataTpl.fact.wind_dir(
-		p.data["fact"]["wind_dir"]
-	);
-	var selectedDayTime = webApp.vars.weatherAPI.dataTpl.fact.daytime(
-		p.data["fact"]["daytime"]
-	);
-	var selectedSeason = webApp.vars.weatherAPI.dataTpl.fact.season(
-		p.data["fact"]["season"]
-	);
-	var obsTime = func.timeStampToDateStr({
-		"timestamp": p.data["fact"]["obs_time"],
-		"format": "yyyy-mm-dd hh:min"
-	});
-
-	html = html
-.replace("%temp%", p.data["fact"]["temp"])
-.replace("%feels_like%", p.data["fact"]["feels_like"])
-.replace("%temp_water%", p.data["fact"]["temp_water"])
-.replace("%icon%", p.data["fact"]["icon"])
-.replace("%condition%", selectedCondition )
-.replace("%wind_speed%", p.data["fact"]["wind_speed"])
-.replace("%wind_gust%", p.data["fact"]["wind_gust"])
-.replace("%wind_dir%", selectedWind)
-.replace("%pressure_mm%", p.data["fact"]["pressure_mm"])
-.replace("%pressure_pa%", p.data["fact"]["pressure_pa"])
-.replace("%humidity%", p.data["fact"]["humidity"])
-.replace("%daytime%", selectedDayTime)
-.replace("%polar%", p.data["fact"]["polar"])
-.replace("%season%", selectedSeason)
-.replace("%obs_time%", obsTime);
-
-//forecast
-	var selectedMoonText = webApp.vars.weatherAPI.dataTpl.forecast.moon_text(
-		p.data["forecast"]["moon_text"]
-	);
-	
-	html = html
-.replace("%date%", p.data["forecast"]["date"])
-.replace("%date_ts%", p.data["forecast"]["date_ts"])
-.replace("%week%", p.data["forecast"]["week"])
-.replace("%sunrise%", p.data["forecast"]["sunrise"])
-.replace("%sunset%", p.data["forecast"]["sunset"])
-.replace("%week%", p.data["forecast"]["week"])
-//.replace("%moon_code%", p.data["forecast"]["moon_code"])
-.replace("%moon_text%", selectedMoonText);
-
-//forecast parts
-	var html_parts=document.querySelector("#forecast-parts-0").innerHTML;
-	
-	var partObj = p.data["forecast"]["parts"][0];
-	var selectedPartName = webApp.vars.weatherAPI.dataTpl.forecast.part_name(
-		partObj["part_name"]
-	);
-	var selectedCondition2 = webApp.vars.weatherAPI.dataTpl.fact.condition(
-		partObj["condition"]
-	);
-	var selectedWind2 = webApp.vars.weatherAPI.dataTpl.fact.wind_dir(
-		partObj["wind_dir"]
-	);
-	var selectedDayTime2 = webApp.vars.weatherAPI.dataTpl.fact.daytime(
-		partObj["daytime"]
-	);
-
-	html_parts = html_parts
-.replace("%part_name%", selectedPartName)
-.replace("%temp_min%", partObj["temp_min"])
-.replace("%temp_max%", partObj["temp_max"])
-.replace("%temp_avg%", partObj["temp_avg"])
-.replace("%feels_like%", partObj["feels_like"])
-.replace("%icon%", partObj["icon"])
-.replace("%condition%", selectedCondition2)
-.replace("%daytime%", selectedDayTime2)
-.replace("%polar%", partObj["polar"])
-.replace("%wind_speed%", partObj["wind_speed"])
-.replace("%wind_gust%", partObj["wind_gust"])
-.replace("%wind_dir%", selectedWind2)
-.replace("%pressure_mm%", partObj["pressure_mm"])
-.replace("%pressure_pa%", partObj["pressure_pa"])
-.replace("%humidity%", partObj["humidity"])
-.replace("%prec_mm%", partObj["prec_mm"])
-.replace("%prec_period%", partObj["prec_period"])
-.replace("%prec_prob%", partObj["prec_prob"]);
-	html = html.replace("%forecast_part0%", html_parts);
-
-
-//---------------
-	var html_parts=document.querySelector("#forecast-parts-0").innerHTML;
-	
-	var partObj = p.data["forecast"]["parts"][1];
-	var selectedPartName = webApp.vars.weatherAPI.dataTpl.forecast.part_name(
-		partObj["part_name"]
-	);
-	var selectedCondition2 = webApp.vars.weatherAPI.dataTpl.fact.condition(
-		partObj["condition"]
-	);
-	var selectedWind2 = webApp.vars.weatherAPI.dataTpl.fact.wind_dir(
-		partObj["wind_dir"]
-	);
-	var selectedDayTime2 = webApp.vars.weatherAPI.dataTpl.fact.daytime(
-		partObj["daytime"]
-	);
-
-	html_parts = html_parts
-.replace("%part_name%", selectedPartName)
-.replace("%temp_min%", partObj["temp_min"])
-.replace("%temp_max%", partObj["temp_max"])
-.replace("%temp_avg%", partObj["temp_avg"])
-.replace("%feels_like%", partObj["feels_like"])
-.replace("%icon%", partObj["icon"])
-.replace("%condition%", selectedCondition2)
-.replace("%daytime%", selectedDayTime2)
-.replace("%polar%", partObj["polar"])
-.replace("%wind_speed%", partObj["wind_speed"])
-.replace("%wind_gust%", partObj["wind_gust"])
-.replace("%wind_dir%", selectedWind2)
-.replace("%pressure_mm%", partObj["pressure_mm"])
-.replace("%pressure_pa%", partObj["pressure_pa"])
-.replace("%humidity%", partObj["humidity"])
-.replace("%prec_mm%", partObj["prec_mm"])
-.replace("%prec_period%", partObj["prec_period"])
-.replace("%prec_prob%", partObj["prec_prob"]);
-	html = html.replace("%forecast_part1%", html_parts);
-
-	document.querySelector("#response").innerHTML = html;
-}//end _buildWeatherHtml()
-*/
-
-
-//============================================== DRAW
-	function _draw_wrapData( opt ){
-		var p = {
-			"data": null,
-			//"type" : "",
-			//"wrapType" : "menu",
-			"templateID" : false,
-			"templateListItemID": false
-		};
-		//extend options object
-		for(var key in opt ){
-			p[key] = opt[key];
-		}
-//console.log(p);
-
-		if( !p["data"] || p["data"].length === 0){
-console.log("-- _draw_wrapData(), error, incorrect data ...");
-			return false;
-		}
-		if( !p["templateID"] ){
-console.log("-- _draw_wrapData(), error, templateID was not defined...");
-			return false;
-		}
-		
-		if( !webApp.vars["templates"][p.templateID] ){
-webApp.vars["logMsg"] = "-- _draw_wrapData(),  error, not find template, id: " + p.templateID;
-func.logAlert( webApp.vars["logMsg"], "warning");
-console.log(webApp.vars["logMsg"]);
-			return false;
-		}
-		
-		var html = "";
-//console.log( p["data"].length );
-
-		p["wrapType"] = "item";
-		if( p["data"].length > 0 ){
-			p["wrapType"] = "list";
-		}
-		switch( p["wrapType"] ){
-			case "item" :
-				html = __formNodeHtml( p["data"], webApp.vars["templates"][ p.templateID ] );
-			break;
-			case "list" :
-				if( !p["templateListItemID"] ){
-webApp.vars["logMsg"] = "-- wrapData(), error, var templateListItemID incorrect...";
-console.log(webApp.vars["logMsg"]);							
-					return false;
-				}
-				html = __formListHtml( webApp.vars["templates"][ p.templateID ] );
-			break;
-		}//end switch
-		
-//console.log(html);
-		return html;
-
-		function __formNodeHtml( data, _html ){
-			
-			for( var key in data ){
-//console.log(key, data[key]);
-				if( _html.indexOf("{{"+key+"}}") !== -1 ){
-//console.log(key, data[key]);
-					_html = _html.replace( new RegExp("{{"+key+"}}", "g"), data[key] );
-				}
-			}//next
-			
-//--------------- clear undefined keys (text between {{...}} )
-_html = _html.replace( new RegExp(/{{(.*?)}}/g), "");
-//--------------------			
-
-			return _html;
-		}//end __formNodeHtml()
-		
-		function __formListHtml( _html ){
-			
-			var listHtml = "";
-			for( var n = 0; n < p["data"].length; n++){
-//console.log( n );
-//console.log( p["data"][n], typeof p["data"][n], p["data"].length);
-
-				//form list items
-				var item = p["data"][n];
-					
-				//var itemTpl = _vars["templates"][ p.templateListID];
-				//var itemHtml = __formNodeHtml( item, itemTpl );
-				
-				var itemHtml = webApp.vars["templates"][ p.templateListItemID];
-				
-				
-				//load unique template for item
-				if( item["template"] && item["template"].length > 0){
-					var tplName = item["template"];
-					if( webApp.vars["templates"][ tplName ] ){
-						itemHtml = webApp.vars["templates"][ tplName ];
-					} else {
-console.log("-- warning, not found template, ", tplName );
-					}
-				}
-
-//--------------- get keys from template (text between {{...}} )
-				//if(n === 1){
-					var tplKeys = itemHtml.match(/{{(.*?)}}/g);
-					for(var n1 = 0; n1 < tplKeys.length; n1++){
-						tplKeys[n1] = tplKeys[n1].replace("{{","").replace("}}","");
-					}//next
-//console.log( tplKeys, p.templateListItemID, item );
-				//}
-//---------------
-
-				//make copy object item
-				//var _tmp = {
-					//"number": item["number"]
-				//};
-				var jsonNode = JSON.stringify( item );
-				var _tmp = JSON.parse( jsonNode);
-				
-				//for( var key2 in item){
-				for( var n1 = 0; n1 < tplKeys.length; n1++){
-					var key2 = tplKeys[n1];
-//console.log(item[key2] instanceof Array, key2, item[key2]);
-//if(n === 1){
-//console.log(key2, item[key2]);
-//}
-
-					if( item[key2] instanceof Array ){
-						if(item[key2].length === 0){
-console.log("-- warning, empty field....", key2, item[key2]);
-//continue;	
-							item[key2] = "<span class='not-found-item'>not found " + key2 +"</span>";
-						} else {
-							var subOrdList = item[key2]["listTpl"];
-							var itemTpl = item[key2]["itemTpl"];
-	/*						
-							if( key2 === "title" ){
-								var subOrdList = webApp.vars["templates"]["tpl-videolist"];
-								var itemTpl = webApp.vars["templates"]["tpl-videolist-item--video-title"];
-							}
-
-							if( key2 === "ul" ){
-								var subOrdList = webApp.vars["templates"]["tpl-videolist-links"];
-								var itemTpl = webApp.vars["templates"]["tpl-videolist-item--video-ul"];
-								//var subOrdListHtml = "";
-								//for( var n2 = 0; n2 < item[key2].length; n2++){
-									//subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
-								//}//next
-								//subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
-								//item[key2] = subOrdList;
-							}
-
-							if( key2 === "tags" ){
-								var subOrdList = webApp.vars["templates"]["tpl-videolist-tags"];
-								var itemTpl = webApp.vars["templates"]["tpl-videolist-item--video-tag"];
-								//var subOrdListHtml = "";
-								//for( var n2 = 0; n2 < item[key2].length; n2++){
-									//subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
-								//}//next
-								//subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
-								//item[key2] = subOrdList;
-							}
-							
-							if( key2 === "pictures" ){
-								var subOrdList = webApp.vars["templates"]["tpl-videolist-pictures"];
-								var itemTpl = webApp.vars["templates"]["tpl-videolist-item--video-img"];
-								//var subOrdListHtml = "";
-								//for( var n2 = 0; n2 < item[key2].length; n2++){
-									//subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
-								//}//next
-	////console.log( "subOrdListHtml: ", subOrdListHtml );
-								//subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
-	////console.log( subOrdList );
-								//item[key2] = subOrdList;
-							}
-	*/						
-							var subOrdListHtml = "";
-							for( var n2 = 0; n2 < item[key2].length; n2++){
-//console.log( item[key2][n2]["text"] );
-								subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
-							}//next
-//console.log( subOrdListHtml );
-							subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
-//console.log( subOrdList );
-							//item[key2] = subOrdList;
-							
-							//do not add HTML code to item object!!!
-							_tmp[key2] = subOrdList;
-						}							
-					}
-					
-					if( itemHtml.indexOf("{{"+key2+"}}") !== -1 ){
-//if(n === 1){
-//console.log(key2, item[key2]);
-//}						
-						if( typeof item[key2] === "undefined"){
-//if(n === 1){
-//console.log(key2, item[key2], typeof item[key2]);
-//}						
-							itemHtml = itemHtml.replace(new RegExp("{{"+key2+"}}", "g"), "<span class='not-found-item'>not found " + key2 +"</span>");
-						} else {
-							//itemHtml = itemHtml.replace( new RegExp("{{"+key2+"}}", "g"), item[key2] );
-							itemHtml = itemHtml.replace( new RegExp("{{"+key2+"}}", "g"), _tmp[key2] );
-						}
-					}
-					
-				}//next
-					
-				listHtml += itemHtml;
-//console.log(items);
-//console.log(listHtml);
-			}//next
-			
-			_html = _html.replace("{{list}}", listHtml);
-			return _html;
-		}//end __formListHtml
-
-	}//end _draw_wrapData()
-
-
-	var _draw_buildBlock = function(opt){
-//console.log("_buildBlock()", arguments);
-		var timeStart = new Date();
-		var p = {
-			"title": "",
-			"content" : "",
-			//"contentType" : "",
-			"templateID" : "tpl-block",
-			"contentTpl" : "tpl-list",//"tpl-menu"
-			"contentListTpl" : false,
-			
-			"callback" : function(){
-				var timeEnd = new Date();
-				var ms = timeEnd.getTime() - timeStart.getTime();
-				var msg = "Generate block '" + this.title +"', "+this.templateID+", runtime:" + ms / 1000 + " sec";
-console.log(msg);			
-				//webApp.app.vars["runtime"].push({
-					//"source" : msg,
-					//"ms" : ms,
-					//"sec" : ms / 1000
-				//});
-				
-				//if( typeof p["callback2"] === "function"){
-					//p["callback2"]();//return from _buildBlock()
-				//}
-				
-			}//,//end callback
-			//"callback2" : null
-		};
-//console.log(opt);
-		//extend p object
-		for(var key in opt ){
-			p[key] = opt[key];
-		}
-//console.log(p);
-		_draw_insertBlock( p );
-	};//end _draw_buildBlock()
-
-
-	var _draw_insertBlock = function( opt ){
-		var p = {
-			"templateID": false,
-			"locationID": "block-1",
-			"title" : "block",
-			"content" : false,
-			"callback":null
-		};
-		//extend options object
-		for(var key in opt ){
-			p[key] = opt[key];
-		}
-//console.log("_draw_insertBlock()", p);
-
-		var templateID = p["templateID"];
-		if( !webApp.vars["templates"][templateID] ){
-webApp.vars["logMsg"] = "_draw_insertBlock(), error, not found template, id:" + templateID;
-//func.logAlert( webApp.vars["logMsg"], "error");
-console.log( "-- " + webApp.vars["logMsg"] );
-			if( typeof p["callback"] === "function"){
-				p["callback"]();
+		//data type String, Number, Boolean
+if( _html.indexOf( tplKey ) !== -1  ){
+//console.log( tplKey, p.data[key], typeof p.data[key]);
+//console.log( tplKey);
+			if( typeof p.data[key] === "string" ||
+					typeof p.data[key] === "number"){
+				_html = _html.replace( new RegExp( tplKey, "g"), p.data[key] );
 			}
-			return false;
-		}
-		
-		if( !p["content"] || p["content"].length === 0){
-webApp.vars["logMsg"] = "_draw_insertBlock(), warning, not found or empty content block " + p["locationID"];
-//func.logAlert( webApp.vars["logMsg"], "warning");
-console.log( "-- "+webApp.vars["logMsg"] );
-			//if( typeof p["callback"] === "function"){
-				//p["callback"]();
-			//}
-			//return false;
-		}
-		
-		var html = webApp.vars["templates"][templateID];
-		html = html.replace("{{block_title}}", p["title"]);
-		html = html.replace("{{content}}", p["content"]);
-		
-		var locationBlock = func.getById( p["locationID"] );
-		if( locationBlock ){
-			locationBlock.innerHTML = html;
-		} else {
-webApp.vars["logMsg"] = "error, not found block location id: " + p["locationID"];
-func.logAlert( webApp.vars["logMsg"], "error");
-console.log( webApp.vars["logMsg"] );
-		}		
-		
-		if( typeof p["callback"] === "function"){
-			p["callback"]();
+			
+			if( typeof p.data[key] === "boolean"){
+				_html = _html.replace( new RegExp( tplKey, "g"), p.data[key] );
+			}
+}
+
+		//data type Object
+		if( p.data[key] instanceof Object ){
+			if( !(p.data[key] instanceof Array)  ){
+//console.log(key, p.data[key], typeof  p.data[key] );
+				
+				var objectKeyPrefix = p.keyPrefix+key+".";
+//console.log("objectKeyPrefix: ", objectKeyPrefix );
+				
+				_html = _formHtml({
+					"data": p.data[key],
+					"tpl": _html,
+					"keyPrefix": objectKeyPrefix,
+					"tplKeys": p.tplKeys
+				});
+			}
 		}
 
-	};//end _draw_insertBlock()
+		//data type Array
+		if( p.data[key] instanceof Array ){
+//console.log(_vars["templates"]);
+//console.log(p.tplKeys);
+//console.log(key, p.data[key], typeof  p.data[key], p.data[key] instanceof Array);
+//console.log(key, p.data[key][0], typeof p.data[key][0], p.data[key][0] instanceof Array);
+
+			//if ( !p.data["templates"] ){
+//_vars["logMsg"] = "error, not define template keys info, skip array " + key;
+//func.logAlert(_vars["logMsg"], "warning");
+				//continue;
+			//}
+			if ( !p.tplKeys ){
+_vars["logMsg"] = "error, not define template keys info, skip array "+ key ;
+func.logAlert(_vars["logMsg"], "warning");
+				continue;
+			}
+			if ( !p.tplKeys[key] ){
+_vars["logMsg"] = "error, not define template keys info, skip array "+ key ;
+func.logAlert(_vars["logMsg"], "warning");
+				continue;
+			}
+			if ( p.tplKeys[key]["listTpl"].length === 0 ){
+_vars["logMsg"] = "error, empty listTpl for array " +key;
+func.logAlert(_vars["logMsg"], "warning");
+				continue;
+			}
+	
+			var _htmlRecords = "";
+			for( var n = 0; n < p["data"][key].length; n++){
+				
+				var objectKeyPrefix = p.keyPrefix + key+".";
+			//console.log("objectKeyPrefix: ", objectKeyPrefix, p.data[key][n], key );
+
+				_htmlRecords += _formHtml({
+					"data": p.data[key][n],
+					"tpl": p.tplKeys[key]["listTpl"],
+					"keyPrefix": key+".",
+					//"keyPrefix": p.keyPrefix+key+".",
+					"tplKeys": p.tplKeys
+				});
+
+				//change additional extended keys (%num% ....)
+				__processTplKeys({"record_num": n+1});
+			}//next
+			//console.log(_htmlRecords);
+			_html = _html.replace(p.markerLeft + key + p.markerRight, _htmlRecords);
+		}
+
+	}//next
+	
+	return _html;
+	
+	
+	function __processTplKeys(options){
+//console.log(p.tplKeys, _htmlRecords);
+		if( p.tplKeys["record_num"] ){
+			var _key = p.markerLeft + "record_num" + p.markerRight;
+			var _value = options["record_num"];
+			_htmlRecords = _htmlRecords.replace(_key, _value);
+		}
+	}//end __processTplKeys()
+	
+}//end _formHtml()
+
 
 //=================================================
-	function _timeStampToDateStr( timestamp ){
-		var sYear = timestamp.getFullYear();
-
-		var sMonth = timestamp.getMonth() + 1;
-		//console.log( sMonth, typeof sMonth );
-			if( sMonth < 10){
-				sMonth = "0" + sMonth;
-			}
-			sMonth = "" + sMonth;
-			
-			var sDate = timestamp.getDate();
-			if( sDate < 10){
-				sDate = "0" + sDate;
-			}
-				
-			var dateStr = sYear + "-" + sMonth + "-" + sDate;
-			return dateStr;
-	}//end _timeStampToDateStr()
-	
-	function _getRunTime( timer){
-		return ( timer.end.getTime() - timer.start.getTime() ) / 1000;
-	}//end _getRunTime()
-
 
 function jsonp_callback(response){
 console.log("test jsonp", response);
