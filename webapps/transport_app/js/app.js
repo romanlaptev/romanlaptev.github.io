@@ -57,7 +57,7 @@ function _transport_api(){
 	_vars = {
 		//"dataUrl" : "data/2019-04-26.xml",
 		//"dataUrl" : "v1/data/2019-04-26.json",
-		"dataUrl" : "files/test_ya_schedule.json",
+		//"dataUrl" : "files/test_ya_schedule.json",
 		
 /*
 		"dataUrl" : "https://cors-anywhere.herokuapp.com/\
@@ -70,7 +70,7 @@ transport_types=suburban&\
 system=esr&\
 show_systems=esr",
 */
-/*
+
 		"dataUrl" : "https://romanlaptev-cors.herokuapp.com/\
 https://api.rasp.yandex.net/v3.0/search/?\
 from={{from_code}}&\
@@ -80,7 +80,7 @@ date={{date}}&\
 transport_types=suburban&\
 system=esr&\
 show_systems=esr",
-*/
+
 		"requestParams" : {
 			"apiKey" : "b07a64bc-f237-4e79-9efb-b951ec68eaf7",
 			"from" : {
@@ -321,14 +321,14 @@ console.log(e.type);
 
 function _yandex_api(){
 	_vars = {
-		/*
+		
 		"dataUrl" : "https://romanlaptev-cors.herokuapp.com/\
 https://api.weather.yandex.ru/v2/informers?\
 lat={{latitude}}&\
 lon={{longitude}}&\
 lang=ru_RU",
-*/
-		"dataUrl" : "files/test_ya_pogoda.json",
+
+		//"dataUrl" : "files/test_ya_pogoda.json",
 		
 		"requestParams" : {
 			"apiKey" : "dab03f2c-c76d-4fb6-9445-faa84fa80973",
@@ -686,30 +686,30 @@ lat={{latitude}}\
 &appid={{apiKey}}\
 &callback=jsonp_callback",
 */
-/*
+
 		"weatherUrl" : "http://api.openweathermap.org/data/2.5/weather?\
 lat={{latitude}}\
 &lon={{longitude}}\
 &units=metric\
 &appid={{apiKey}}\
 &lang=ru",
-*/ 
-		"weatherUrl" : "files/openweathermap_Mochishche.json",
+
+		//"weatherUrl" : "files/openweathermap_Mochishche.json",
 		//"weatherUrl" : "files/openweathermap_Novosibirsk.json",
 		
 
 		//https://openweathermap.org/forecast5
-/*		
+
 		"forecastUrl" : "http://api.openweathermap.org/data/2.5/forecast?\
 lat={{latitude}}\
 &lon={{longitude}}\
 &units=metric\
 &appid={{apiKey}}\
 &lang=ru",
-*/
+
 //&callback=jsonp_callback",
 
-		"forecastUrl" : "files/openweathermap_Novosibirsk_forecast.json",
+		//"forecastUrl" : "files/openweathermap_Novosibirsk_forecast.json",
 		
 		"requestParams" : {
 			"apiKey" : "7440bb4eee1e2d8d92bd8ca4a926ddd6",
