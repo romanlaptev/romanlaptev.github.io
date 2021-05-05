@@ -1152,6 +1152,9 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-grey6{/* dm-modal */
   background-color: #607d8b !important;
 }
+.bg-grey7{/* pamyat-naroda.ru */
+  background-color: #567793 !important;
+}
 
 .bg-dark-gray{  background-color: #222222 !important;}
 .bg-light-gray{  background-color: #999999 !important;}
@@ -1216,7 +1219,6 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-color-test11e73be { background:#1e73be;}
 .bg-lightblue-ef { background:#b1d0ef;}
 .bg-mediumblue-light { background:#4e86bf;}
-.bg-color-test1324f5a { background:#324f5a; }
 
 
 .bg-color-test1ccf { background:#ccf;}
@@ -1572,6 +1574,8 @@ https://www.omiod.com/colors/?rgb=d0ccd5
   background-color: #e6eaec !important;
 }
 .bg-grey-green5{  background-color: #cfdfe6 !important;}
+.bg-dark-greygreen { background:#324f5a; }
+
 .bg-palegrey-green{  background-color: #f0f3f6 !important;}
 
 

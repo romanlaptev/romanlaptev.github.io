@@ -91,6 +91,12 @@ show_systems=esr",
 				"title" : "Раздолье (3362 км)",
 				"esr_code" : 851635
 			},
+			//"stations": {
+				//"esr_code" : {
+					//"851508": "Новосибирск-восточный",
+					//"851635": "Раздолье (3362 км)"
+				//}
+			//}
 		},
 		
 		"copyRight": {
@@ -144,33 +150,88 @@ https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951e
 
 	_vars["requestParams"]["from_code"] = _vars["requestParams"]["from"]["esr_code"];
 	_vars["requestParams"]["to_code"] = _vars["requestParams"]["to"]["esr_code"];
+	var today = func.timeStampToDateStr({
+		"format": "yyyy-mm-dd"
+	});
+//console.log(today);
+	_vars["requestParams"]["date"] = today;
 
 
 	_vars["init"] = function(){
 		
-		//get transport params
-		webApp.vars.titleFrom = func.getById("from-title");
-		webApp.vars.titleFrom.value = webApp.vars["transportAPI"]["requestParams"]["from"]["title"];
-		webApp.vars.titleFrom.dataset["code"] = webApp.vars["transportAPI"]["requestParams"]["from"]["esr_code"];
+		//set transport input fields
+		webApp.vars["transportAPI"].inputFrom = func.getById("inp-from-title");
+		webApp.vars["transportAPI"].selectFrom = func.getById("select-from-title");
 		
-		webApp.vars.titleTo = func.getById("to-title");
-		webApp.vars.titleTo.value = webApp.vars["transportAPI"]["requestParams"]["to"]["title"];
-		webApp.vars.titleTo.dataset["code"] = webApp.vars["transportAPI"]["requestParams"]["to"]["esr_code"];
-		
-		var today = func.timeStampToDateStr({
-			"format": "yyyy-mm-dd"
+		webApp.vars["transportAPI"].inputTo = func.getById("inp-to-title");
+		webApp.vars["transportAPI"].selectTo = func.getById("select-to-title");
+
+		webApp.vars["transportAPI"]["dateWidget"] = webApp.vars.App.querySelector("#date-widget");
+
+		initTransportFields({
+			"from_code": webApp.vars["transportAPI"]["requestParams"]["from_code"],
+			"to_code": webApp.vars["transportAPI"]["requestParams"]["to_code"],
+			"list_date": webApp.vars["transportAPI"]["requestParams"]["date"]
 		});
-//console.log(today);
-
-		webApp.vars["dateWidget"] = webApp.vars.App.querySelector("#date-widget");
-		webApp.vars["dateWidget"].value = today;
-		webApp.vars["transportAPI"]["requestParams"]["date"] = today;
-
 		
 		webApp.vars["transportAPI"]["targetContainer"] = func.getById("response-transport-api");
 		webApp.vars["transportAPI"]["templates"] = _getTemplates();
 		webApp.vars["transportAPI"]["dataProcess"] = _dataProcess;
-	};
+		
+		
+		webApp.vars["transportAPI"]["selectFrom"].addEventListener("change", function(e){
+console.log(e.target);
+			var code = e.target.selectedOptions[0].value;
+			webApp.vars["transportAPI"].inputFrom.value = code;
+		});//end event
+		
+		webApp.vars["transportAPI"]["selectTo"].addEventListener("change", function(e){
+			var code = e.target.selectedOptions[0].value;
+			webApp.vars["transportAPI"].inputTo.value = code;
+		});//end event
+		
+		webApp.vars["transportAPI"]["dateWidget"].addEventListener("change", function(e){
+console.log(e.type);
+		});//end event
+
+	};//_transport_api()
+	
+	
+	function initTransportFields(opt){
+		var p = {
+			"from_code" : false,
+			"to_code" : false,
+			"list_date": false
+		};
+	//console.log(opt);
+
+		//extend p object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(p);
+		webApp.vars["transportAPI"].inputFrom.value = p.from_code;
+		for(var n =0; n < webApp.vars["transportAPI"].selectFrom.length; n++){
+			var option = webApp.vars["transportAPI"].selectFrom[n];
+//console.log(option, option.value);
+			if( parseInt(option.value) === p.from_code){
+				webApp.vars["transportAPI"].selectFrom.selectedIndex = n;
+			}
+		}//next
+		
+		webApp.vars["transportAPI"].inputTo.value = p.to_code;
+		for(var n =0; n < webApp.vars["transportAPI"].selectTo.length; n++){
+			var option = webApp.vars["transportAPI"].selectTo[n];
+//console.log(option, option.value);
+			if( parseInt(option.value) === p.to_code){
+				webApp.vars["transportAPI"].selectTo.selectedIndex = n;
+			}
+		}//next
+
+
+		webApp.vars["transportAPI"]["dateWidget"].value = p.list_date;
+	}//end initTransportFields()
+	
 	
 	var _getTemplates = function(){
 
@@ -644,8 +705,10 @@ lat={{latitude}}\
 &lon={{longitude}}\
 &units=metric\
 &appid={{apiKey}}\
-&callback=jsonp_callback",
+&lang=ru",
 */
+//&callback=jsonp_callback",
+
 		"forecastUrl" : "files/openweathermap_Novosibirsk_forecast.json",
 		
 		"requestParams" : {
@@ -716,6 +779,15 @@ lat={{latitude}}\
 				return timeStr;
 			}
 		};
+		
+		var keyName = "timezone";
+		templates["tplKeys"][keyName] = {
+			"description": "Shift in seconds from UTC",
+			"process": function(sec){
+				var hourStr = (sec / 60) /60;
+				return "+"+hourStr+" hour from UTC";
+			}
+		};
 
 		var keyName = "sys.sunrise";
 		templates["tplKeys"][keyName] = {
@@ -736,6 +808,15 @@ lat={{latitude}}\
 					"timestamp": _timestamp,
 				});
 				return timeStr;
+			}
+		};
+
+		var keyName = "city.timezone";
+		templates["tplKeys"][keyName] = {
+			"description": "Shift in seconds from UTC",
+			"process": function(sec){
+				var hourStr = (sec / 60) /60;
+				return "+"+hourStr+" hour from UTC";
 			}
 		};
 
@@ -777,6 +858,14 @@ if(jsonObj["dt"]){
 			jsonObj["dt"] = tplKeys["dt"]["formatDate"]( jsonObj["dt"] );
 		}
 }		
+
+if(jsonObj["timezone"]){
+		if( tplKeys["timezone"] &&
+			typeof tplKeys["timezone"]["process"] === "function"
+		){
+			jsonObj["timezone"] = tplKeys["timezone"]["process"]( jsonObj["timezone"] );
+		}
+}		
 		
 if(jsonObj["sys"]){		
 		if( tplKeys["sys.sunrise"] &&
@@ -797,6 +886,14 @@ if(jsonObj["sys"]){
 }		
 
 if(jsonObj["city"]){
+		if( tplKeys["city.timezone"] &&
+			typeof tplKeys["city.timezone"]["process"] === "function"
+		){
+			jsonObj["city"]["timezone"] = tplKeys["city.timezone"]["process"]( 
+				jsonObj["city"]["timezone"] 
+			);
+		}
+		
 		if( tplKeys["city.sunrise"] &&
 			typeof tplKeys["city.sunrise"]["formatDate"] === "function"
 		){
@@ -863,10 +960,6 @@ console.log( "Warn! error parse url in " + target.href );
 
 	});//end event
 	
-//------------------------------------------------------------------
-	webApp.vars["dateWidget"].addEventListener("change", function(e){
-console.log(e.type);
-	});//end event
 
 }//end defineEvents()
 
