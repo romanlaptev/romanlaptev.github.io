@@ -30,7 +30,7 @@
 		</xdata>
 	</schema>
 
-	<xdata db_name="db/mydb.sqlite" db_type="sqlite" export_date="02-May-2021 18:20:50" export_time="1619954450">
+	<xdata db_name="db/mydb.sqlite" db_type="sqlite" export_date="25-Jul-2020 20:33:02" export_time="1595683982">
 
 
 
@@ -42,7 +42,7 @@
 <item content_id="676" parent_id="437"></item>
 <item content_id="693" parent_id="673"></item>
 <item content_id="697" parent_id="673"></item>
-<item content_id="721" parent_id="722"></item>
+<item content_id="721" parent_id="1114"></item>
 <item content_id="722" parent_id="437"></item>
 <item content_id="724" parent_id="1155"></item>
 <item content_id="725" parent_id="724"></item>
@@ -91,10 +91,10 @@
 <item content_id="777" parent_id="675"></item>
 <item content_id="778" parent_id="675"></item>
 <item content_id="779" parent_id="675"></item>
-<item content_id="780" parent_id="818"></item>
+<item content_id="780" parent_id="737"></item>
 <item content_id="781" parent_id="729"></item>
 <item content_id="782" parent_id="729"></item>
-<item content_id="783" parent_id="818"></item>
+<item content_id="783" parent_id="737"></item>
 <item content_id="784" parent_id="1114"></item>
 <item content_id="788" parent_id="1166"></item>
 <item content_id="790" parent_id="741"></item>
@@ -496,13 +496,6 @@
 <item content_id="1365" parent_id="729"></item>
 <item content_id="1364" parent_id="1108"></item>
 <item content_id="1366" parent_id="1108"></item>
-<item content_id="1372" parent_id="1114"></item>
-<item content_id="1373" parent_id="722"></item>
-<item content_id="1374" parent_id="729"></item>
-<item content_id="1375" parent_id="799"></item>
-<item content_id="1376" parent_id="1108"></item>
-<item content_id="1377" parent_id="1108"></item>
-<item content_id="1378" parent_id="1108"></item>
 		</content_links>		
 		<content>
 <node id="737" type='page'>
@@ -555,8 +548,9 @@ sticky bit в прошлом использовался, чтобы програ
 <node id="721" type='page'>
 	<title>firefox</title>
 	<created>1351175094</created>
-	<changed>1615464262</changed>
+	<changed>1594004243</changed>
 	<body_value body_format="plain_text">
+
 ---------------------------
 Firefox,
 places.sqlite - перезаписать файл бд в папке профиля для переноса закладок
@@ -857,9 +851,42 @@ curl --netrc-file /home/roman/.netrc -T print.pdf https://webdav.yandex.ru
 <node id="722" type='page'>
 	<title>web</title>
 	<created>1351774672</created>
-	<changed>1619953768</changed>
+	<changed>1594004243</changed>
 	<body_value body_format="plain_text">
 
+=========================================
+ &amp;amp;amp;amp;lt;link media=&amp;amp;amp;amp;quot;only screen and (max-device-width: 370px)&amp;amp;amp;amp;quot; rel=&amp;amp;amp;amp;quot;alternate&amp;amp;amp;amp;quot; href=&amp;amp;amp;amp;quot;http://seondo.loc/phone/index.html&amp;amp;amp;amp;quot;/&amp;amp;amp;amp;gt;??????????
+=========================================
+1. php+apache+mysql ( редко oracle) самый дешевый
+2. .NET+IIS+mssql
+3. j2ee+ mssql или oracle (tomcat если не java-машина).
+
+=========================================
+Стандарт HTML 4.01 Strict (строгий), Transitional (переходный), Frameset (с фреймами)
+
+&amp;amp;amp;amp;lt;!DOCTYPE HTML PUBLIC &amp;amp;amp;amp;quot;-//W3C//DTD HTML 4.01//EN&amp;amp;amp;amp;quot; &amp;amp;amp;amp;quot;http://www.w3.org/TR/html4/strict.dtd&amp;amp;amp;amp;quot;&amp;amp;amp;amp;gt;
+&amp;amp;amp;amp;lt;!DOCTYPE HTML PUBLIC &amp;amp;amp;amp;quot;-//W3C//DTD HTML 4.01 Transitional//EN&amp;amp;amp;amp;quot; &amp;amp;amp;amp;quot;http://www.w3.org/TR/html4/loose.dtd&amp;amp;amp;amp;quot;&amp;amp;amp;amp;gt;
+&amp;amp;amp;amp;lt;!DOCTYPE HTML PUBLIC &amp;amp;amp;amp;quot;-//W3C//DTD HTML 4.01 Frameset//EN&amp;amp;amp;amp;quot; &amp;amp;amp;amp;quot;http://www.w3.org/TR/html4/frameset.dtd&amp;amp;amp;amp;quot;&amp;amp;amp;amp;gt;
+
+Стандарт XHTML 1.0 Strict (строгий), Transitional (переходный), Frameset (с фреймами)
+
+&amp;amp;amp;amp;lt;!DOCTYPE html PUBLIC &amp;amp;amp;amp;quot;-//W3C//DTD XHTML 1.0 Strict//EN&amp;amp;amp;amp;quot; &amp;amp;amp;amp;quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&amp;amp;amp;amp;quot;&amp;amp;amp;amp;gt;
+&amp;amp;amp;amp;lt;!DOCTYPE html PUBLIC &amp;amp;amp;amp;quot;-//W3C//DTD XHTML 1.0 Transitional//EN&amp;amp;amp;amp;quot; &amp;amp;amp;amp;quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&amp;amp;amp;amp;quot;&amp;amp;amp;amp;gt;
+&amp;amp;amp;amp;lt;!DOCTYPE html PUBLIC &amp;amp;amp;amp;quot;-//W3C//DTD XHTML 1.0 Frameset//EN&amp;amp;amp;amp;quot; &amp;amp;amp;amp;quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd&amp;amp;amp;amp;quot;&amp;amp;amp;amp;gt;
+
+Стандарт XHTML 1.1 DTD
+
+&amp;amp;amp;amp;lt;!DOCTYPE html PUBLIC &amp;amp;amp;amp;quot;-//W3C//DTD XHTML 1.1//EN&amp;amp;amp;amp;quot; &amp;amp;amp;amp;quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&amp;amp;amp;amp;quot;&amp;amp;amp;amp;gt;
+
+http://www.webmascon.com/topics/coding/25a.asp
+-----------------------------------
+- font-family: &amp;amp;amp;amp;quot;Museo&amp;amp;amp;amp;quot;,&amp;amp;amp;amp;quot;Trebuchet MS&amp;amp;amp;amp;quot;,Trebuchet,Tahoma,Arial,sans-serif;
+-----------------------------------
+
+=========================
+атрибут download, скачать файл вместо открытия
+&amp;amp;amp;amp;lt;a href=&amp;amp;amp;amp;quot;myFolder/myImage.png&amp;amp;amp;amp;quot; download&amp;amp;amp;amp;gt;Download image&amp;amp;amp;amp;lt;/a&amp;amp;amp;amp;gt;
+	
 	</body_value>
 </node>
 <node id="735" type='page'>
@@ -3160,60 +3187,6 @@ SELECT * FROM anketa
 	
 	</body_value>
 </node>
-<node id="1372" type='page'>
-	<title>Mac settings</title>
-	<created>1614494136</created>
-	<changed>1614494177</changed>
-	<body_value body_format="plain_text">
-https://support.apple.com/ru-ru/HT204012
-Включение и отключение учетной записи пользователя root
-
------- OS version
-# sw_vers
-ProductName:	Mac OS X
-ProductVersion:	10.13.6
-BuildVersion:	17G66
-
-------- MacPorts
-download, install ports
-www.macports.org/install.php
-
-# sudo port install mc
-
-
------- Apache
-10:~ jack$ su root
-Password:
-sh-3.2# apachectl start
-sh-3.2# apachectl -t
-php -v
-7.1.16
-
- sudo chmod 777 -R /Library/WebServer/Documents/
-sudo mcedit /etc/apache2/httpd.conf
-- uncomment Loadmodule libphp7.so
-
-apachectl restart
-
-echo "&lt;?php phpinfo(); ?&gt;" &gt; /Library/WebServer/Documents/test.php
-
-
-
-------- Xcode
-xip -x Desktop/xcode_9.xip
-
--------------------- virtualbox
-REM Изменить разрешение на 1920х1080 можно выполнив команду:
-REM cd “C:\Program Files\Oracle\Virtualbox”
-REM VBoxManage setextradata "mac" VBoxInternal2/EfiGraphicsResolution 1920x1080
-
-REM or
-REM VBoxManage setextradata MacOS VBoxInternal2/EfiHorizontalResolution 1920
-REM VBoxManage setextradata MacOS VBoxInternal2/EfiVerticalResolution 1080
-
-REM После в virtualbox зайти в Вид -&gt; Режим полного экрана.
-	</body_value>
-</node>
 <node id="809" type='page'>
 	<title>Mandriva</title>
 	<created>1367983435</created>
@@ -3472,47 +3445,6 @@ echo “pts/0″ &amp;gt;&amp;gt; /etc/securetty
 
 Now, we can login to nas using telnet, user root without password.
 	
-	</body_value>
-</node>
-<node id="1375" type='page'>
-	<title>NFS</title>
-	<created>1616252084</created>
-	<changed>1616254310</changed>
-	<body_value body_format="plain_text">
---------------- install, config
-https://linuxize.com/post/how-to-mount-an-nfs-share-in-linux/
-
-#Installing NFS client on Ubuntu and Debian
-sudo apt update
-sudo apt install nfs-common
-sudo yum install nfs-utils
-
-vbox-fedora
-
-system-config-nfs 
-mkdir /home/net
-chmod 777 /home/net
-
-mcedit /etc/exports
-/etc/init.d/nfs restart
-
------------- /etc/exports
-#/home/net	192.168.56.1(rw,sync,no_root_squash)
-/home/nfs_share	i5(rw,sync,no_root_squash)
-
-cat exports.bak 
-/home/net                vbox-fedora(rw,sync,no_wdelay)
-
-
---------------- /etc/fstab
-192.168.56.120:/home/nfs_share   /home/netlogon   nfs user,noauto 0   0
-
-
---------------- connect to shares
-man mount.nfs 
-mount -t nfs vbox-fedora:/home/nfs_share /home/netlogon
-ls /home/netlogon/
-
 	</body_value>
 </node>
 <node id="1172" type='page'>
@@ -4135,6 +4067,59 @@ enable=1
 - yum install fetchmail wget bzip2 unzip zip nmap openssl lynx fileutils ncftp gcc gcc-c++
 - yum install bind-chroot
 - yum install mysql mysql-devel mysql-server
+	
+	</body_value>
+</node>
+<node id="1097" type='page'>
+	<title>Yii</title>
+	<created>1426516537</created>
+	<changed>1594004243</changed>
+	<body_value body_format="plain_text">
+
+//путь к приложению 
+Yii::getPathofAlias(&amp;quot;webroot&amp;quot;) 
+
+//название темы
+Yii::app()-&amp;gt;theme-&amp;gt;name
+
+//строка запроса
+Yii::app()-&amp;gt;request-&amp;gt;requestUri
+
+=================================
+//вывод иконок аппл на запрос /apple-touch-icon-precomposed.png
+     public function actionGetIcons()
+     {
+         if ( Yii::app()-&amp;gt;theme-&amp;gt;name == &amp;quot;fromvanessa&amp;quot; )
+         {
+             $url = &amp;quot;/themes/&amp;quot; . Yii::app()-&amp;gt;theme-&amp;gt;name. &amp;quot;/assets/image&amp;quot;;
+         }
+         if ( Yii::app()-&amp;gt;theme-&amp;gt;name == &amp;quot;idinfoproduct&amp;quot; )
+         {
+             $url = &amp;quot;/themes/&amp;quot; . Yii::app()-&amp;gt;theme-&amp;gt;name. &amp;quot;/assets/img&amp;quot;;
+         }
+
+         if( isset($url) )
+         {
+             switch( Yii::app()-&amp;gt;request-&amp;gt;requestUri )
+             {
+                 case &amp;quot;/apple-touch-icon-precomposed.png&amp;quot;:
+                         $url = $url . &amp;quot;/apple-touch-icon.png&amp;quot;;
+                     break;
+
+                 case &amp;quot;/apple-touch-icon.png&amp;quot;:
+                         $url = $url . &amp;quot;/apple-touch-icon.png&amp;quot;;
+                     break;
+
+                 case &amp;quot;/browserconfig.xml&amp;quot;:
+                         $url = &amp;quot;/themes/&amp;quot; . Yii::app()-&amp;gt;theme-&amp;gt;name.
+&amp;quot;/assets&amp;quot;;
+                         $url = $url . &amp;quot;/browserconfig.xml&amp;quot;;
+                     break;
+             }
+             $this-&amp;gt;redirect( $url );
+         }
+
+     }
 	
 	</body_value>
 </node>
@@ -10938,26 +10923,11 @@ http://www.indiz.fr/photo-artiste
 <node id="750" type='page'>
 	<title>mixed notes</title>
 	<created>1363003280</created>
-	<changed>1609981107</changed>
+	<changed>1594004243</changed>
 	<body_value body_format="plain_text">
-------------------- Edge, синхронизация
-roman.laptev@infonetsoft.ru
-Синхронизация включена
 
-------------------- яблоки
 
-- Айдаред
-- Брейберн
-- Гольден
-- Гала
-- Глостер
-- Гренни Смит +
-- Джонагольд/Джонагоред
-- Моди +
-- Ред Чиф
-- Ройял Гала
-- Слава Победителям +
-- Флорина Молдавия
+	
 	</body_value>
 </node>
 <node id="1181" type='page'>
@@ -11585,17 +11555,11 @@ http://flash-world.ru/raznoe/132-notepad_regular_expressions.html
 <node id="437" type='page'>
 	<title>notes</title>
 	<created>1331352390</created>
-	<changed>1615464444</changed>
+	<changed>1594014087</changed>
 	<body_value body_format="plain_text">
-https://disk.yandex.ru/notes/	
 
-http://romanlaptev.github.io/projects/notes/index.html
-
-https://romanlaptev.herokuapp.com/projects/webapp_notes/
-http://i5/projects/romanlaptev.heroku/projects/webapp_notes/
-
-http://romanlaptev.gearhostpreview.com/
-
+place for notes, short comments..
+	
 	</body_value>
 </node>
 <node id="1272" type='page'>
@@ -11804,8 +11768,9 @@ soft-tuning.ru © 2013-2017
 <node id="783" type='page'>
 	<title>photoalbum, htaccess</title>
 	<created>1364305655</created>
-	<changed>1611628211</changed>
+	<changed>1594004243</changed>
 	<body_value body_format="plain_text">
+
 #AuthType Basic
 #AuthName &amp;quot;Enter your password:&amp;quot;
 #AuthUserFile /mnt/POCKI-DRIVE/opt/documents/0_config/0_programs/apache/www/.htpasswd
@@ -11825,80 +11790,6 @@ RewriteRule (.*) /photoalbum/2000x/2011/01-10-2011/$1 [R=301,L]
 	<body_value body_format="plain_text">
 
 
-	
-	</body_value>
-</node>
-<node id="1374" type='page'>
-	<title>php code, Laravel</title>
-	<created>1615520139</created>
-	<changed>1615520139</changed>
-	<body_value body_format="plain_text">
---------------------- ORM, whereNotIn
-
-    $result[ $category-&gt;id ] = Product::where('site_id', $site-&gt;id)
-     -&gt;where('active', 1)
-     -&gt;whereNotIn('main_category_id', [107, 108, 109, 110, 111, 112, 113,114])
-     -&gt;orderBy('created_at', 'DESC')
-     -&gt;with($with)
-     -&gt;limit(20)
-     -&gt;get();
-
-
-https://stackoverflow.com/questions/25849015/laravel-eloquent-where-not-in
-Laravel Eloquent “WHERE NOT IN”
--------------------
-
-	</body_value>
-</node>
-<node id="1097" type='page'>
-	<title>php code, Yii</title>
-	<created>1426516537</created>
-	<changed>1615520162</changed>
-	<body_value body_format="plain_text">
-//путь к приложению 
-Yii::getPathofAlias(&amp;quot;webroot&amp;quot;) 
-
-//название темы
-Yii::app()-&amp;gt;theme-&amp;gt;name
-
-//строка запроса
-Yii::app()-&amp;gt;request-&amp;gt;requestUri
-
-=================================
-//вывод иконок аппл на запрос /apple-touch-icon-precomposed.png
-     public function actionGetIcons()
-     {
-         if ( Yii::app()-&amp;gt;theme-&amp;gt;name == &amp;quot;fromvanessa&amp;quot; )
-         {
-             $url = &amp;quot;/themes/&amp;quot; . Yii::app()-&amp;gt;theme-&amp;gt;name. &amp;quot;/assets/image&amp;quot;;
-         }
-         if ( Yii::app()-&amp;gt;theme-&amp;gt;name == &amp;quot;idinfoproduct&amp;quot; )
-         {
-             $url = &amp;quot;/themes/&amp;quot; . Yii::app()-&amp;gt;theme-&amp;gt;name. &amp;quot;/assets/img&amp;quot;;
-         }
-
-         if( isset($url) )
-         {
-             switch( Yii::app()-&amp;gt;request-&amp;gt;requestUri )
-             {
-                 case &amp;quot;/apple-touch-icon-precomposed.png&amp;quot;:
-                         $url = $url . &amp;quot;/apple-touch-icon.png&amp;quot;;
-                     break;
-
-                 case &amp;quot;/apple-touch-icon.png&amp;quot;:
-                         $url = $url . &amp;quot;/apple-touch-icon.png&amp;quot;;
-                     break;
-
-                 case &amp;quot;/browserconfig.xml&amp;quot;:
-                         $url = &amp;quot;/themes/&amp;quot; . Yii::app()-&amp;gt;theme-&amp;gt;name.
-&amp;quot;/assets&amp;quot;;
-                         $url = $url . &amp;quot;/browserconfig.xml&amp;quot;;
-                     break;
-             }
-             $this-&amp;gt;redirect( $url );
-         }
-
-     }
 	
 	</body_value>
 </node>
@@ -12120,14 +12011,9 @@ echo date('d.m.Y',strtotime('-1 month'));
 <node id="932" type='page'>
 	<title>postfix</title>
 	<created>1390058147</created>
-	<changed>1608688695</changed>
+	<changed>1594004243</changed>
 	<body_value body_format="plain_text">
-+/usr/sbin/dpkg-reconfigure postfix
-/usr/sbin/postconf
-/usr/sbin/postfix check
-/usr/sbin/postfix reload
 
---------
 Postfix: настройка
 
 Для доступа к почтовому серверу из локальной сети, выполнить: 
@@ -12913,8 +12799,9 @@ Sendmail: настройка
 <node id="780" type='page'>
 	<title>sensoren, htaccess</title>
 	<created>1363964677</created>
-	<changed>1611628183</changed>
+	<changed>1594004243</changed>
 	<body_value body_format="plain_text">
+
 http://habrahabr.ru/post/154643/
 Обязательно не забыть про условие &amp;lt;IfModule mod_rewrite.c&amp;gt;.
 Не окажись у хостера данного модуля и ваш сайт станет выдавать 500-ую ошибку.
@@ -15641,15 +15528,57 @@ sudo service apache2 restart
 <node id="996" type='page'>
 	<title>unsort</title>
 	<created>1397906903</created>
-	<changed>1608686990</changed>
+	<changed>1594008388</changed>
 	<body_value body_format="plain_text">
--------------- группировка в почтовике тандерберд
+&amp;lt;note&amp;gt;
+&amp;lt;h3&amp;gt; группировка в почтовике тандерберд &amp;lt;/h3&amp;gt;
+&amp;lt;pre&amp;gt;
 Пример группировки писем по дате получения -
 1. Вид - Сортировка - по дате получения
 2. Вид - Сортировка - группировать по методу сортировки 
+&amp;lt;/pre&amp;gt;
+&amp;lt;/note&amp;gt;
 
+&amp;lt;note&amp;gt;
+&amp;lt;h3&amp;gt;Postfix: настройка &amp;lt;/h3&amp;gt;
+&amp;lt;pre&amp;gt;
+Для доступа к почтовому серверу из локальной сети, выполнить: 
+- gedit /etc/postfix/main.cf
+изменить строку с параметром inet_interfaces
 
--------------- Доступ к SMTP через telnet (отправка почты)
+	#inet_interfaces = loopback-only
+	inet_interfaces = all
+
+- /etc/init.d/postfix restart
+&amp;lt;/pre&amp;gt;
+
+&amp;lt;h3&amp;gt; Sendmail: настройка &amp;lt;/h3&amp;gt;
+&amp;lt;pre&amp;gt;
+Для доступа к почтовому серверу из локальной сети, выполнить: 
+
+	service sendmail stop
+	vi /etc/mail/sendmail.cf 
+
+закомменировать (добавить dnl) строку -
+	DAEMON_OPTIONS ('Port=smtp,Addr=127.0.0.1, Name=MTA') 
+	dnl 
+
+	m4 /etc/mail/sendmail.mc &amp;gt; /etc/mail/sendmail.cf
+должен быть установлен пакет sendmail_cf 
+
+	service sendmail start
+&amp;lt;/pre&amp;gt;
+
+&amp;lt;h3&amp;gt;Настройка Exim&amp;lt;/h3&amp;gt;
+&amp;lt;pre&amp;gt;
+при сообщении Mailing to remote domains not supported, разрешить нелокальную доставку почты -
+	dpkg-reconfigure exim4-config
+&amp;lt;/pre&amp;gt;
+&amp;lt;/note&amp;gt;
+
+&amp;lt;note&amp;gt;
+&amp;lt;h3&amp;gt;Доступ к SMTP через telnet (отправка почты)  &amp;lt;/h3&amp;gt;
+&amp;lt;pre&amp;gt;
 1. telnet mail.mydomain.ru 25 
 2. ehlo lo 
 3. mail from: user2@mydomain.ru 
@@ -15660,9 +15589,8 @@ sudo service apache2 restart
  quit  - выход из сессии 
 
 если на сервере включено требование авторизации перед отправкой, необходим ввод пароля в BASE64 
+Доступ к POP через telnet (прием почты) 
 
-
------------- Доступ к POP через telnet (прием почты) 
 1. telnet mydomain.ru 110 
 2. user user2 
 3. pass  пароль (текстовая строка) 
@@ -15685,10 +15613,12 @@ Content-Type: text/html
 Content-Length: 119
 
 400 Bad Request
+&amp;lt;/pre&amp;gt;
+&amp;lt;/note&amp;gt;
 
-
----------- Outlook Express , расположение почтовых баз
-
+&amp;lt;note&amp;gt;
+&amp;lt;h3&amp;gt;Outlook Express , расположение почтовых баз&amp;lt;/h3&amp;gt;
+&amp;lt;pre&amp;gt;
 \\sinicinc$\Documents and Settings\%USERNAME%\Local Settings\Application 
 Data\Identities\{7FA1354A­703C­41D1­B52F­EF48302CD247}\Microsoft\Outlook Express\
 адресная книга
@@ -15766,8 +15696,38 @@ set user_id=S­1­5­21­1390067357­1637723038­725345543­2276
 reg export &amp;quot;HKEY_USERS\%user_id%\Software\Microsoft\Windows NT\CurrentVersion\Windows Messaging Subsystem\Profiles\Outlook&amp;quot; msoutlook_account_eshmeleva.reg 
 
 reg export &amp;quot;HKEY_USERS\%user_id%\Software\Microsoft\Internet Account Manager\Accounts\00000001&amp;quot; oe_account_eshmeleva.reg 
+&amp;lt;/pre&amp;gt;
+&amp;lt;/note&amp;gt;
 
+&amp;lt;note&amp;gt;
+&amp;lt;h3&amp;gt; Re: Cannot get plaintext auth working on IMAP or POP &amp;lt;/h3&amp;gt;
+&amp;lt;pre&amp;gt;
+It was using /etc/dovecot.conf
 
+I managed to get it working, by editing the protocol imap { sections
+Now just need to get authentication working for postfix in plaintext.
+
+Cheers,
+Richard
+
+    Pascal Volk-3 wrote:
+    On 07/28/2009 04:11 PM crunchbytes wrote:
+    &amp;gt; Server: Ubuntu 9.04 desktop edition
+    &amp;gt; Dovecot 1.1.11
+    &amp;gt;
+    &amp;gt; Issue: I have set dovecot.conf with:
+    &amp;gt; disable_plaintext_auth = no
+
+    In which file? /etc/dovecot.conf or /etc/dovecot-postfix.conf
+
+    &amp;gt; …
+    &amp;gt; in my mail.log, I have:
+    &amp;gt; Jul 28 15:09:43 &amp;quot;name&amp;quot; dovecot: imap-login: Disconnected (tried to use
+    &amp;gt; disabled plaintext auth): rip=x.x.x.x, lip=x.x.x.x
+
+    Looks like as would Dovecot not read your settings.
+&amp;lt;/pre&amp;gt;
+&amp;lt;/note&amp;gt;
 	
 	</body_value>
 </node>
@@ -17521,558 +17481,6 @@ if ($posttags) {
 	
 	</body_value>
 </node>
-<node id="1376" type='page'>
-	<title>wp - code</title>
-	<created>1619953883</created>
-	<changed>1619953883</changed>
-	<body_value body_format="plain_text">
-//================== CONFIG
-//wp-config.php, rewrite DB site path variables
-
-define('WP_SITEURL', 'http://'.$_SERVER['HTTP_HOST']);
-define('WP_HOME', 'http://'.$_SERVER['HTTP_HOST']);
-
-define('WP_SITEURL', 'http://'.$_SERVER['HTTP_HOST'].$_SERVER["REQUEST_URI"]);
-define('WP_HOME', 'http://'.$_SERVER['HTTP_HOST'].$_SERVER["REQUEST_URI"]);
-
-
-//https://ipipe.ru/info/wordpress-logi-oshibok
-//Как включить/выключить логирование
-define( 'WP_DEBUG', true );
-define( 'WP_DEBUG_DISPLAY', false );
-define( 'WP_DEBUG_LOG', true );
-
-
-//=================== Debug
-$out = "&lt;pre&gt;".print_r($categoryInfo, 1)."&lt;/pre&gt;";
-error_log( 	date("Y-m-d H:i:s") . " - categoryInfo = ".$out."\n", 	3, 	dirname(__FILE__)."/log.txt");
-
-$d = date("Y-m-d H:i:s");
-$msg = "--------------------".$d."\n";
-$msg .= "post id:".$post_ID."\n";
-$msg .= "branch_sample_id:".$branch_sample_id."\n";
-
-$logFile = dirname(__FILE__)."/log.txt";
-if( file_exists($logFile) ){
-	unlink($logFile);
-}
-error_log( $msg."\n", 3, $logFile );
-
-
-
-
-//================== SHORTCODE
-//https://wp-kama.ru/function/do_shortcode
-if($post-&gt;post_name == "lestnichnye-ograzhdeniya-iz-trub"){
-	echo do_shortcode("[masterslider id='2']");
-}
-
-
-//================== Remove and replace hook
-add_action( 'after_setup_theme', function(){
-	if( remove_action( 'widgets_init', 'infinity_widgets_init' ) ){
-		echo "-- remove hook widgets_init";
-	} else {
-		echo "-- fail remove hook widgets_init";
-	}
-});
-
-add_action( 'widgets_init', '_widgets_init' );
-function _widgets_init(){
-...
-}
-
-//---------------------- get theme url for post, widgets
-add_shortcode('theme_url', function(){
-	return get_template_directory_uri();
-});
-add_filter( 'widget_text', 'do_shortcode' );
-
-
-//------------
-//https://wp-kama.ru/function/get_the_privacy_policy_link
-//https://misha.agency/wordpress/shortcodes.html
-//https://wp-kama.ru/plugin/contact-form-7/sozdanie-tegov-formy
-//https://wp-kama.ru/hook/the_privacy_policy_link
-
-//add_shortcode('privacy_policy_link', function(){
-//	return get_the_privacy_policy_link();
-//});
-//
-
-add_filter( 'the_privacy_policy_link', '_filter_privacy_policy_link', 10, 2 );
-function _filter_privacy_policy_link( $link, $privacy_policy_url ){
-	$link = str_replace("Политика конфиденциальности", "Я согласен на обработку персональных данных", $link);
-	return $link;
-}
-
-add_filter( 'wpcf7_form_elements', 'do_shortcode' );
-add_shortcode('privacy_policy_link', function(){
-	return get_the_privacy_policy_link();
-});
-
-
-
-//================== WIDGETS
-https://wp-kama.ru/function/the_widget
-https://wpincode.com/kak-dobavit-podderzhku-vidzhetov-v-temu-wordpress-v-3-shaga/
-https://misha.agency/wordpress/sidebars.html
-
-function.php
-//======================
-add_action( 'widgets_init', '_register_wp_sidebars' );
-function _register_wp_sidebars() {
- 
-	register_sidebar(
-		array(
-			'id' =&gt; 'footer-widgets',
-			'name' =&gt; 'Footer',
-			'description' =&gt; 'Перетащите сюда виджеты, чтобы добавить их в футер.',
-			'before_widget' =&gt; '&lt;div id="%1$s" class="foot widget %2$s"&gt;',
-			'after_widget' =&gt; '&lt;/div&gt;',
-			'before_title' =&gt; '&lt;h4 class="widget-title"&gt;',
-			'after_title' =&gt; '&lt;/h4&gt;'
-		)
-	);
-	
-}//end
-
-
-footer.php
-&lt;?php 
-$display = true;
-
-if( strpos($_SERVER['REQUEST_URI'], "contacts") ){
-	$display = false;
-}
-
-if( $display ){
-	dynamic_sidebar( 'footer-widgets' ); 
-}
-
-?&gt;
-
-HTML-widget
-&lt;div style='display:none'&gt;test&lt;/div&gt;
-
-------------- Как убрать заголовок виджета в WordPress
-http://gruz0.ru/zagolovok-vidzheta-wordpress/
-
-add_filter( 'widget_title', 'hide_widget_title' );
-function hide_widget_title( $title ) {
-    if ( empty( $title ) ) return '';
-    if ( $title[0] == '!' ) return '';
-    return $title;
-}
-
-
-
-//================== SHORTCODES
-https://www.youtube.com/watch?v=NPlJkphom5w
-
-http://testpoint.beget.tech/test-page/
-[products limit="3" columns="2"]
-[products limit="3" columns="2" class="class-1" attribute="product_type" terms="video"]
-
-[product_categories number="0" parent="0"]
-
-[recent_products]
-
-
-
-//================== CUSTOM FIELDS
-//https://wp-kama.ru/function-cat/proizvolnyie-polya
-//https://wp-kama.ru/function/get_post_custom_values
-$field_preview_img = get_post_custom_values('field_preview_img_value');
-//echo "TEST1";	
-//var_dump($field_preview_img);
-
-//https://wp-kama.ru/function/get_post_meta
-//$test = get_post_meta( $post-&gt;ID);
-//echo "&lt;pre&gt;";
-//print_r($test);
-//echo "&lt;/pre&gt;";
-
-//https://wp-kama.ru/function/the_meta
-//the_meta();
-
-----------------------------
-https://misha.blog/wordpress/custom-fields.html
-Произвольные поля
-
-//if not exists menu SCREEN settings / CUSTOM FIELDS
-add_action("init", function () {
-	//https://misha.blog/wordpress/custom-fields.html
-	//add_post_type_support( 'page', 'custom-fields');
-});
-
-
-
-//================== HOOKS
-//add_filter( 'get_search_form', 'keyhole_search_form' );
-//add_action( 'after_setup_theme', 'keyhole_after_setup' );
-//add_action( 'wp_footer', 'keyhole_footer' );
-
-//https://wp-kama.ru/hook/wp_head
-//add_action( 'wp_head', 'chld_thm_cfg_add_parent_dep', 2 );
-//add_action( 'wp_head', 'action_function_name_11' );
-//function action_function_name_11(){
-	// action...
-//}
-
-add_action("init", function () { });
-
-//add_filter( 'woocommerce_before_output_product_categories', '_before_output_product_categories' );
-//add_filter( 'woocommerce_after_output_product_categories', '_after_output_product_categories' );
-
-//add_action( 'woocommerce_before_subcategory', 'change_product_category_view' );
-//add_action( 'woocommerce_before_subcategory_title', 'test' );
-
-//add_filter( 'woocommerce_shop_loop_subcategory_title', 'test' );
-//wc-template-hooks.php, 
-//add_action( 'woocommerce_shop_loop_subcategory_title', 'woocommerce_template_loop_category_title', 10 );
-// /wp-content/plugins/woocommerce/includes/wc-template-functions.php:		&lt;h2 class="woocommerce-loop-category__title"&gt;
-
-//'woocommerce_after_subcategory_title'
-//'woocommerce_after_subcategory'
-
-//add_action( 'wp_ajax_product_quickview', '_product_quickview' );
-//add_action( 'wp_ajax_nopriv_product_quickview', '_product_quickview' );
-
-//add_filter( 'woocommerce_product_categories_widget_args', '_product_categories_widget_args' );
-
-//add_filter( 'woocommerce_product_categories', '_product_categories' );
-//function _product_categories( $terms ){
-//echo "terms:&lt;pre&gt;";	
-//print_r($terms);
-//echo "&lt;/pre&gt;";
-	//return $terms;
-//}
-
-
-
-//================ custom Contact form validation
-//доп. валидация в Contact form 7 WP
-//https://qna.habr.com/q/352060
-//https://wp-kama.ru/plugin/contact-form-7/hook/wpcf7_validate_(type)
-//add_filter('wpcf7_validate_tel*', 'dco_wpcf7_validate', 10, 2);
-//add_filter('wpcf7_validate_email*', 'dco_wpcf7_validate', 10, 2);
-//add_filter('wpcf7_validate_text*', 'dco_wpcf7_validate', 10, 2);
-//add_filter('wpcf7_validate_textarea*', 'dco_wpcf7_validate', 10, 2);
-
-
-add_filter("wpcf7_validate_tel", "_wpcf7_validate", 10, 2);
-add_filter("wpcf7_validate_email", "_wpcf7_validate", 10, 2);
-
-function _wpcf7_validate( $result, $tag ){
-	$name = $tag-&gt;name;
-	$value = "";
-	if( isset( $_POST[ $name] ) ){
-		$value = trim( wp_unslash( strtr( (string) $_POST[$name], "\n", " " ) ) );
-	}
-
-	if ( $tag-&gt;basetype == "tel" ) {
-		if(!empty( $_POST[ "your-email" ] ) ){
-			return $result;
-		}
-
-		if ( empty($value) ) {
-			$result-&gt;invalidate( $tag, wpcf7_get_message( "invalid_required" ) );
-			return $result;
-		} 
-
-	}
-
-	if ( $tag-&gt;basetype == "email" ) {
-		if(!empty( $_POST[ "tel-713" ] ) ){
-			return $result;
-		}
-
-		if ( empty($value) ) {
-			$result-&gt;invalidate( $tag, wpcf7_get_message( "invalid_required" ) );
-			return $result;
-		} 
-
-		if ( ! is_email( $value ) ) {
-			$result-&gt;invalidate( $tag, wpcf7_get_message( "invalid_email" ) );
-			return $result;
-		}
-	}
-	
-	return $result;
-}//end _wpcf7_validate()
-
-
-//================ MENU
-add_filter( 'wp_nav_menu_args', '_nav_args',3000001);
-add_filter( 'wp_nav_menu_items', '_nav_search',9999);
-
-//https://wp-kama.ru/hook/nav_menu_item_args
-add_filter( 'nav_menu_item_args', '_change_menu_item_args', 10, 2 );
-
-//https://wp-kama.ru/hook/wp_nav_menu_objects
-add_filter( 'wp_nav_menu_objects', '_menu_objects' );
-function _menu_objects( $items ) {
-echo "&lt;pre&gt;";
-print_r($items);
-echo "&lt;/pre&gt;";
-	return $items;
-}
-
-function _change_menu_item_args( $args, $item ) {
-	//if ( $item-&gt;object == 'page' ) {
-		//$args-&gt;link_before = '&lt;span class="dashicons dashicons-admin-links"&gt;&lt;/span&gt;';
-	//}
-	
-	//if ( $item-&gt;object == 'product_cat' ) {
-//print_r($args);
-//print_r($item);
-	//}
-
-	//$args-&gt;link_before = $item-&gt;object;
-	return $args;
-}
-
-//----------- menu info
-$menu_object = wp_get_nav_menu_object( 'Производители' ); 
-echo "&lt;pre&gt;";
-print_r($menu_object);
-echo "&lt;/pre&gt;";
-//$menu_slug = $menu_object-&gt;slug;
-
-wp_nav_menu(
-	array(
-		'menu' =&gt; 'Производители',
-		'menu_class'     =&gt; 'menu-brand',
-		'items_wrap'     =&gt; '&lt;ul id="%1$s" class="%2$s"&gt;%3$s&lt;/ul&gt;',
-	)
-);
-
-
-
-//================== //hook, get_terms, filter categories....
-add_filter( 'get_term', '_get_term', 10, 2 );
-
-function _get_term( $_term, $taxonomy ){
-echo "function _get_term()";
-echo "&lt;br&gt;";
-	if( $taxonomy == "product_cat"){
-		$_term-&gt;name = $_term-&gt;name." (".$_term-&gt;count.")";
-	}
-	return $_term;
-}
-
-
-//================== //hook, get_terms, filter categories....
-add_filter( 'get_terms', '_filter_terms', 10, 4 );
-
-....
-function _filter_terms($terms, $taxonomies, $args, $term_query){
-......
-    return $terms;
-}//end
-
-//================== //hook, filter template
-add_filter("template_include", function( $path ){
-echo "include template: ".$path;
-echo "&lt;br&gt;";
-  return $path;
-});
-
-
-//================== hook, filter content
-//https://wp-kama.ru/hook/the_title
-add_filter( 'the_title', '_filter_title' );
-
-//https://wp-kama.ru/hook/the_content
-add_filter( 'the_content', '_filter_content' );
-
-function _filter_title( $title ) {
-	return "&lt;div&gt;".htmlspecialchars( "---".$title."---" )."&lt;/div&gt;";
-	//return $title;
-}//end
-
-function _filter_content( $content ) {
-	return "&lt;dv&gt;".htmlspecialchars( $content )."&lt;/div&gt;";
-	//return $content;
-}//end
-
-
-
-//================== //Переопределяем папку загрузки
-add_filter('upload_dir', 'custom_multisit_upload_dir_function');
-function custom_multisit_upload_dir_function( $dirs ) {
-    $dirs['baseurl'] = network_site_url( '/wp-content/uploads' );
-    $dirs['basedir'] = ABSPATH . 'wp-content/uploads';
-    $dirs['path'] = $dirs['basedir'] . $dirs['subdir'];
-    $dirs['url'] = $dirs['baseurl'] . $dirs['subdir'];
-
-    return $dirs;
-}
-
-//================== //Хук, заменяющий e-mail получателя
-add_action("wpcf7_before_send_mail", "custom_multisite_wpcf7_before_send_mail");
-function custom_multisite_wpcf7_before_send_mail($contact_form) {
-
-//error_log( " - TEST\n", 3,	dirname(__FILE__)."/log.log");
-error_log( " - POST: ".print_r($_POST,1)."\n", 3,	dirname(__FILE__)."/log.log");
-error_log( " - SESSION: ".print_r($_SESSION,1)."\n", 3,	dirname(__FILE__)."/log.log");
-
-	//$branch_id = $_POST['branch'];
-
-	//if (empty($branch_id)){
-		//$branch_id = $_POST['branch_id'];
-	//}
-
-	$branch_id = $_SESSION['current_branch_id'];
-	$city_id = $_POST['city_id'];
-
-	if (empty($branch_id) || empty($city_id)){
-		return;
-	}
-
-	$new_email = MultiSite::getBranchOption('email', $branch_id, $city_id);
-error_log( " - new_email: ".$new_email."\n", 3,	dirname(__FILE__)."/log.log");
-  
-	$address = MultiSite::getBranchOption('address', $branch_id, $city_id);
-error_log( " - address: ".$address."\n", 3,	dirname(__FILE__)."/log.log");
-
-	if (!empty($new_email)){
-		$mail = $contact_form-&gt;prop('mail');
-		$mail['recipient'] = $new_email;
-error_log( " - mail: ".print_r($mail,1)."\n", 3,	dirname(__FILE__)."/log.log");
-      
-		$contact_form-&gt;set_properties(array('mail'=&gt;$mail));
-	}
-}
-
-//================== hook, include theme styles, scripts
-add_action( 'wp_enqueue_scripts', '_register_css_js' );
-function _register_css_js() {
-    wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
-	wp_enqueue_style( 'child-style',
-        get_stylesheet_directory_uri() . '/style.css',
-        array( 'parent-style' ),
-        wp_get_theme()-&gt;get('Version')
-    );
-
-	$handle = "script";
-	$src = get_stylesheet_directory_uri() . "/js/script.js";
-	wp_enqueue_script( $handle, $src);
-}//end
-
-
-//===================== FILTER PAGINATION
-add_filter( 'woocommerce_pagination_args', '_pagination_args' );
-function _pagination_args( $array ){
-//echo "&lt;div style='display:none'&gt;";
-//echo "&lt;pre&gt;";	
-//print_r($array);
-//echo "&lt;/pre&gt;";
-$array["prev_text"] = str_replace("Prev","Назад", $array["prev_text"]);
-$array["next_text"] = str_replace("Next","Далее", $array["next_text"]);
-//echo htmlspecialchars($array["prev_text"]);
-//echo "&lt;/div&gt;";	
-	return $array;
-}
-//&lt;span class="btn btn-link"&gt;&lt;i class="ion-left ion ion-ios-arrow-back"&gt;&lt;/i&gt; Prev&lt;/span&gt;	
-
-========================== CATEGORY API
-		$categories = get_categories(array(
-			'taxonomy' =&gt; 'category',
-			'hide_empty' =&gt; false
-		));
-echo "categories:&lt;pre&gt;";	
-print_r($categories);
-echo "&lt;/pre&gt;";	
-
-
-
-//========================== DB API
-//https://wp-kama.ru/function/wp_query
-
-//получить все посты из рубрики portfolio
-$query_obj = new WP_Query;
-$args = array(
-//	'post_type' =&gt; 'post',
-	//'cat' =&gt; 1,
-	'category_name' =&gt; 'portfolio',
-	'posts_per_page'   =&gt; -1,
-);
-$portfolio_posts = $query_obj-&gt;query($args);
-echo "portfolio_posts:". count($portfolio_posts);	
-
-foreach( $portfolio_posts as $_post ){
-	echo "&lt;li&gt;".$_post-&gt;post_title."&lt;/li&gt;";
-}
-
-
-----
-https://coderoad.ru/45256142/WordPress-%D0%BE%D0%B3%D1%80%D0%B0%D0%BD%D0%B8%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D1%80%D0%B5%D0%B7%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%82%D0%B0-%D0%BF%D0%BE%D0%B8%D1%81%D0%BA%D0%B0
-
-Изменение Количества Результатов На Странице
-
-По умолчанию WordPress использует число, определенное в разделе 
-Настройки &gt; чтение (страницы блога показывают не более...), 
-чтобы определить, сколько результатов появляется на странице результатов поиска. 
-Если вы хотите показать больше, меньше или бесконечное количество результатов 
-на странице поиска, вы можете сделать это с помощью следующего кода:
-
-// Alter search posts per page
-function pd_search_posts_per_page($query) {
-    if ( $query-&gt;is_search ) {
-        $query-&gt;set( 'posts_per_page', '10' );
-    }
-    return $query;
-}
-add_filter( 'pre_get_posts','pd_search_posts_per_page' );
-
------
-https://wp-kama.ru/hook/pre_get_posts
-Событие срабатывает перед каждым запросом WP_Query. До того, как был сделан запрос в базу. 
-
-// Исключить категории
-function exclude_cat($query) {
-	if ($query-&gt;is_feed || ($query-&gt;is_search) || ($query-&gt;is_archive)) {
-		$query-&gt;set('cat','-2');
-	}
-	return $query;
-}
-add_filter('pre_get_posts','exclude_cat');
-
------------ получить посты портфолио определенной категории
-https://wp-kama.ru/function/get_posts
-https://8-points.ru/wp-admin/theme-editor.php?file=page-portfolio.php&amp;theme=8points
-
-		$args = array(
-			'post_type' =&gt; 'portfolio',
-			'numberposts' =&gt; -1,
-		);
-
-		if ($portfolio_category){
-			$args = array_merge($args, array(
-				'tax_query' =&gt; array(
-					array(
-						'taxonomy' =&gt; 'portfolio_category',
-						'field' =&gt; 'id',
-						//'terms' =&gt; $portfolio_category-&gt;term_id,
-						'terms' =&gt; 7,//sajty-pod-klyuch
-					)
-				)
-			));
-		}
-
-		$cases = get_posts($args);
-echo "test&lt;pre&gt;";
-print_r($cases);
-echo "&lt;/pre&gt;";
-exit;
-
-
-
-
-	</body_value>
-</node>
 <node id="1160" type='page'>
 	<title>wp api, category list</title>
 	<created>1454152716</created>
@@ -19411,19 +18819,19 @@ http://wiki.e-lug.ru/%D0%9C%D0%BE%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%B
 <node id="933" type='page'>
 	<title>Настройка Exim</title>
 	<created>1390058225</created>
-	<changed>1608686916</changed>
+	<changed>1594004243</changed>
 	<body_value body_format="plain_text">
+
 cat /var/log/exim4/mailog
 cat /var/mail/www-data
 cat /var/mail/roman
-
 ==================================
 при сообщении 
 Mailing to remote domains not supported, 
 разрешить нелокальную доставку почты 
 - dpkg-reconfigure exim4-config
-
-=================================== Exim и smarthost – почта на Yandex’e
+===================================
+Exim и smarthost – почта на Yandex’e
 отправка почты через smarthost; локальная почта отсутствует
 Почтовое имя системы: mydomain.ru
 IP-адреса, с которых следует ожидать входящие соединения SMTP: 127.0.0.1 ; ::1
@@ -19440,8 +18848,7 @@ smtp.yandex.ru:email@mydomain.ru:password
 
 http://www.blog.26info.ru/exim-i-smarthost-pochta-na-yandexe/
 https://wiki.debian.org/GmailAndExim4
-
-
+	
 	</body_value>
 </node>
 <node id="812" type='page'>
@@ -19692,30 +19099,6 @@ powercfg -h off
 	
 	</body_value>
 </node>
-<node id="1373" type='page'>
-	<title>Отключение кэша редиректов в FireFox</title>
-	<created>1615464125</created>
-	<changed>1615464125</changed>
-	<body_value body_format="plain_text">
-Отключение кэша редиректов в FireFox
-
-
-Вписываем в строку поиска: about:config и переходим в настройки.
-Находим настройку: browser.cache.disk.enable и выставляем FALSE
-Находим настройку: browser.cache.memory.enable и выставляем FALSE
-Проверяем нужный URL.
-
-После всех проверок рекомендуется вернуть настройки в исходное состояние, потому что такое кэширование все же нужно, вам самим в первую очередь!
-
-
-
-http://woocomp.ru/otklyuchenie-kesha-redirektov-v-google-chrome-i-firefox
-
-Отключение кэша редиректов в Google Chrome и FireFox
-
-
-	</body_value>
-</node>
 <node id="1174" type='page'>
 	<title>Отключить &amp;quot;Чистые ссылки&amp;quot;</title>
 	<created>1463022572</created>
@@ -19784,11 +19167,8 @@ elseif ($depth &amp;gt;= $min_depth &amp;amp;&amp;amp; mb_ereg($mask, $file)) {
 <node id="921" type='page'>
 	<title>Перенаправление всех запросов</title>
 	<created>1387553148</created>
-	<changed>1611628150</changed>
+	<changed>1594004243</changed>
 	<body_value body_format="plain_text">
-================================= adksib.ru
-перенаправление всех запросов на картинки с тестового сайта на основной
-Redirect /wp-content/uploads/ https://adksib.ru/wp-content/uploads/
 
 =================================
 http://joomlaforum.ru/index.php?topic=133345.0
@@ -20505,41 +19885,65 @@ hor_line_15.jpg \
 <node id="1244" type='page'>
 	<title>Сценарии программ</title>
 	<created>1586139182</created>
-	<changed>1596933947</changed>
+	<changed>1594004243</changed>
 	<body_value body_format="plain_text">
+
 Сценарии программ 
 
-- сделать плагин Wordpress для импорта/экспорта notes.xml
+    БД:  
 
-БД:  
+    Получить список записей БД notes (удаленное подключение к postgreSQL, sqlite, mySql) 
 
--   Получить список записей БД notes (удаленное подключение к postgreSQL, sqlite, mySql) 
--   Реализация личного кабинета (авторизация, пользователи по ролям, регистрация по запросу) (PHP – YII, Codeigniter, native) 
--   Перенести список видеоуроков (проект learn_yii) на YII2, CodeIgniter, Laravel 
--   Сделать server_info.html, где с помощью запросов к серверу определять его название, версию, поддерживаемые языки и т.д. 
--   Возможно ли использование версии браузера - portable - для локального запуска веб-приложения (Firerfox portable и т.п.) 
--   Сделать консольную утилиту для сетевого обмена (загрузка данных на сервер или т.п.) 
-
-?    Функции JS объекта Math на примере электронной таблицы 
-
-*- js, сделать форму авторизации для romanlaptev.github.io (cookies) 
-- php, просмотреть php-код, собрать в utils.php полезные функции 
  
-- Сделать пересылку данных (XML-файл) в ZIP формате,  
 
--------
+    Реализация личного кабинета (авторизация, пользователи по ролям, регистрация по запросу) (PHP – YII, Codeigniter, native) 
+
+ 
+
+    Перенести список видеоуроков (проект learn_yii) на YII2, CodeIgniter, Laravel 
+
+ 
+
+    Сделать server_info.html, где с помощью запросов к серверу определять его название, версию, поддерживаемые языки и т.д. 
+
+ 
+
+    Возможно ли использование версии браузера - portable - для локального запуска веб-приложения (Firerfox portable и т.п.) 
+
+    Сделать консольную утилиту для сетевого обмена (загрузка данных на сервер или т.п.) 
+
+C, Delphi, Java... 
+
+    Функции JS объекта Math на примере электронной таблицы 
+
+ 
+
+- js, сделать форму авторизации для romanlaptev.github.io (cookies) 
+
+- php, просмотреть php-код, собрать в utils.php полезные функции 
+
+ 
+
+    Сделать пересылку данных (XML-файл) в ZIP формате,  
+
 Упаковка на сервере, распаковка на клиенте 
+
     Приложение для доступа со смартфона к яндекс-диску 
+
     Сделать приложение для мобильных устройств 
+
 Несколько активити с кнопками “Далее”, “Пропустить”, “Назад”, 
+
 каждая страница - вопрос теста и варианты ответа.  
+
 По окончанию ответов ставится оценка. 
+
 Вопросы и ответы вначале записаны в коде, затем сделать чтение из БД (локальной или онлайн) 
 
-----
     Приложение (веб или мобильное) с использованием карты движения городского транспорта, Яндекс.Транспорт 
 
     По IP-адресу определять географич. Положение 
+
 (freegeoip.net/json/72.229.28.185) 
 
 ------------------- 
@@ -20547,33 +19951,47 @@ hor_line_15.jpg \
 Сценарий   приложения CD Archive 
 
     Создать БД со списком файлов (софт,  видео, музыка, книги) 
+
     Сопоставить  каждому файлу CD, DVD диск, на к-рый файл записан 
+
     Каждый диск имеет ID обозначенный на нем надписью , лежит на определенной полке 
+
     При запросе файла (или названия,  описания) выдается список с информацией об ID диска и  полке, где находится коробка с дисками 
 
 Disk 1.  
 
 Side 1. Master Collection CS5.part1.rar 
+
 Side 2. Master Collection CS5.part2.rar 
+
 Adobe Photoshop CS5 RUРазрыв страницы 
 
-*    Восстановить скрипт подбора параметров обоев с сайта quick-decor (Joomla) 
--    Сделать HTML-блок с возможностью скрытия, перетаскивания за заголовок 
-*-    Custom colors 
+    Восстановить скрипт подбора параметров обоев с сайта quick-decor (Joomla) 
+
+ 
+
+    Сделать HTML-блок с возможностью скрытия, перетаскивания за заголовок 
+
+    Custom colors 
+
 Сделать вывод палитры цветов в виде сотовых ячеек, при наведении на ячейку курсор меняется, при клике код цвета копируется в буфер 
 
  
 
     Подключить к сайту скрипт чата 
+
     Выяснить про создание и подключение бота 
+
     Выяснить про создание нейросетей и возможность работы на сайте???? 
 
  
 
 Создать демо-версии (на javascript???) для 
+
     Диалоговая программа на делфи, проверка таблицы умножения 
 
 Сделать возможность считывания яваскрипт-файла с логикой и выполнение инструкций 
+
     Sea-fight, Скрипт на php, игра Морской бой 
 
 Игра Bolder Dash, Sokoban,  Aladdin ?????
@@ -21243,53 +20661,6 @@ if ($row3-&amp;gt;fid==10)//profile_address
 SELECT DISTINCT (number_group) FROM `iblock`
 ------------------------------------------------------------------------------
 	
-	</body_value>
-</node>
-<node id="1377" type='page'>
-	<title>вывести дочерние страницы в виде подменю</title>
-	<created>1619953943</created>
-	<changed>1619953959</changed>
-	<body_value body_format="plain_text">
-https://wp-kama.ru/function/wp_list_pages
-https://wp-kama.ru/function/get_pages
-https://qna.habr.com/q/64186
-
----
-$childPages = get_pages( 
-    array(
-        'title_li' =&gt; '',
-        'child_of' =&gt; $post-&gt;ID,
-        'depth' =&gt; 1,
-    ) 
-);
-echo "&lt;pre&gt;";
-print_r($childPages);
-echo "&lt;/pre&gt;";
-
----
-$args = array(
-	'depth'        =&gt; 0,
-	'show_date'    =&gt; 'created',
-	//'date_format'  =&gt; get_option('date_format'),
-	'child_of'     =&gt; $post-&gt;ID,
-	'exclude'      =&gt; '',
-	'exclude_tree' =&gt; '',
-	'include'      =&gt; '',
-	'title_li'     =&gt; __('Pages'),
-	'echo'         =&gt; 1,
-	'authors'      =&gt; '',
-	'sort_column'  =&gt; 'menu_order, post_title',
-	'sort_order'   =&gt; 'ASC',
-	'link_before'  =&gt; '',
-	'link_after'   =&gt; '',
-	'meta_key'     =&gt; '',
-	'meta_value'   =&gt; '',
-	'number'       =&gt; '',
-	'offset'       =&gt; '',
-	'walker'       =&gt; '',
-	'post_type'    =&gt; 'page', 
-); 
-wp_list_pages( $args );
 	</body_value>
 </node>
 <node id="759" type='page'>
@@ -22643,8 +22014,9 @@ function getNameBrouser() {
 <node id="1161" type='page'>
 	<title>определить и выполнить свой хук из шаблона страницы</title>
 	<created>1454152842</created>
-	<changed>1595686630</changed>
+	<changed>1594004243</changed>
 	<body_value body_format="plain_text">
+
 определить и выполнить свой хук из шаблона страницы
 http://wp-kama.ru/function/add_action
 ------------------------ frontpage.tpl.php
@@ -22908,40 +22280,6 @@ alert(typeof num);
 
 http://javascript.ru/forum/misc/16338-kak-poluchit-cifry-iz-stroki.html
 	
-	</body_value>
-</node>
-<node id="1378" type='page'>
-	<title>получить посты портфолио определенной категории</title>
-	<created>1619954026</created>
-	<changed>1619954026</changed>
-	<body_value body_format="plain_text">
-https://wp-kama.ru/function/get_posts
-https://8-points.ru/wp-admin/theme-editor.php?file=page-portfolio.php&amp;theme=8points
-
-		$args = array(
-			'post_type' =&gt; 'portfolio',
-			'numberposts' =&gt; -1,
-		);
-
-		if ($portfolio_category){
-			$args = array_merge($args, array(
-				'tax_query' =&gt; array(
-					array(
-						'taxonomy' =&gt; 'portfolio_category',
-						'field' =&gt; 'id',
-						//'terms' =&gt; $portfolio_category-&gt;term_id,
-						'terms' =&gt; 7,//sajty-pod-klyuch
-					)
-				)
-			));
-		}
-
-		$cases = get_posts($args);
-echo "test&lt;pre&gt;";
-print_r($cases);
-echo "&lt;/pre&gt;";
-exit;
-
 	</body_value>
 </node>
 <node id="779" type='page'>

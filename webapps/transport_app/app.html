@@ -62,38 +62,236 @@ href="?q=switch-tab&target_id=tab-weather">Погода</a>
 			
 			<div id="tab-transport" class="tab-pane tab-active lr-panel">
 				
-				<div class="lr-padding-20 bg-darkblue-green">
-					<h1 class="color-white text-right">расписание транспорта</h1>
-<div id="search-panel" class="lr-flex lr-flex-hstart">
+				<div class="lr-padding-20 bg-darkblue-green color-white">
+					<h1 class="text-right">расписание транспорта</h1>
+<div id="search-panel" class="lr-flex lr-flex-hstart lr-flex-v-top">
+	
 	<div class="lr-margin-10">
-		<input id="from-title" class="lr-padding-10" value=""/>
+		<div>
+код станции отправления (esr)<br>
+<input id="inp-from-title" class="lr-padding-10 w100" value=""/>
+		</div>
+		<select id="select-from-title" 
+name="select_fromTitle" 
+class="w100"		
+autocomplete="off">
+<option value="" selected>не выбрано</option>			
+<option value="851508">Новосибирск-восточный</option>			
+<option value="851635">Раздолье (3362 км)</option>			
+		</select>
 	</div>
+	
 	<div class="lr-margin-10">
+<br>
+<br>
 <a href="?q=change-direction" class="lr-padding-20 bg-orange arrows" title="change direction"></a>
 	</div>
+	
 	<div class="lr-margin-10">
-			<input id="to-title" class="lr-padding-10" value=""/>
+		<div>
+код станции прибытия (esr)<br>
+<input id="inp-to-title" class="lr-padding-10 w100" value=""/>
+		</div>
+		<select id="select-to-title" 
+name="select_toTitle" 
+class="w100"		
+autocomplete="off">
+<option value="" selected>не выбрано</option>			
+<option value="851508">Новосибирск-восточный</option>			
+<option value="851635">Раздолье (3362 км)</option>			
+		</select>
+			
 	</div>
 	<div class="lr-margin-10">
+дата списка рейсов<br>
 <input id="date-widget" type="date" name="date_widget" class="lr-padding-10" value=""  max="" min="">
 	</div>
 
 	<div class="lr-margin-10">
-<!--
-	  <button id="btn-update" class="lr-btn lr-btn-danger">update</button>
--->
-<a href="?q=send-request&api=transportAPI" class="send-request lr-btn bg-darkblue text-white">send ajax request</a>
+<br>
+<br>
+<a href="?q=send-request&api-type=transport" 
+class="send-request lr-padding-20 bg-darkblue color-white">получить список</a>
 	</div>
 </div>
 				</div>
 				
 				<div class="lr-margin-10-top">
 <div class="bg-snow lr-border-box lr-border-cyan">
-	<div class="lr-panel-body" id="block-schedule"></div>
+	<div class="lr-panel-body" id="response-transport-api"></div>
+	
+<!-- transport templates -->
+	<span id="tpl-copyright">{{content}}</span>
+	<span id="tpl-copyright-content">
+{{logo_hy}}
+<!--
+<p>{{text}}</p>
+<p>​​​​​{{url}}</p>
+-->
+	</span>
+
+	<span id="tpl-yandex--transport" class="hidden">
+<div class="lr-panel lr-padding-20">
+	<div class="lr-panel-body bg-aliceblue">
+		<div class="lr-padding-20 text-center">
+	%search.from.station_type_name% <b>%search.from.title%</b> >>
+<!--
+	search.from.code: <b>%search.from.code%</b>,
+	search.from.codes.esr: <b>%search.from.codes.esr%</b>
+-->
+	%search.to.station_type_name% <b>%search.to.title%</b>
+<!--
+	search.to.code: <b>%search.to.code%</b>,
+	search.to.codes.esr: <b>%search.to.codes.esr%</b>
+-->
+		</div>
+		<div class="text-left">
+			<small>дата списка рейсов: <b>%search.date%</b></small>
+		</div>
+		
+		<div>
+%segments%		
+		</div>
+	</div>
+</div>
+	</span>
+	
+	<span id="segments-list-tpl--transport" class="hidden">
+<div class="bg-lavender lr-margin-top-20 lr-padding-10">
+<h3>record: %record_num%</h3>
+
+<div>дата отправления рейса: <b>%segments.start_date%</b></div>
+<div>
+	<p>%segments.thread.transport_subtype.title%, N:<b>%segments.thread.number%</b></p>
+	<p>%segments.from.station_type_name% <b>%segments.from.title%</b> -
+	%segments.to.station_type_name% <b>%segments.to.title%</b></p>
+</div>
+		<ul>
+			<li>время отправления: <b>%segments.departure%</b></li>
+			<li>время прибытия: <b>%segments.arrival%</b></li>
+			<li>продолжительность рейса: <b>%segments.duration%</b> мин.</li>
+			<li>остановки: <b>%segments.stops%</b></li>
+		</ul>
+	<p>электронный билет: <b>%segments.tickets_info.et_marker%</b></p>
+	<div>%places%</div>
+</div>
+	</span>
+
+	<span id="tpl--segments-tickets_info-places" class="hidden">
+цена билета: <b>%places.price.whole%</b> %places.currency%
+	</span>
+	
+<!--
+	<span id="tpl-schedule-table">
+<table class="table table-bordered">
+
+	<thead>
+		<tr class="list-header success">
+			<th>​</th>
+			<th class="text-center">​​​​​номер и название транспорта</th>
+			<th class="text-center">отправление</th>
+			<th class="text-center">время в пути</th>
+			<th class="text-center">прибытие</th>
+			<th class="text-center">стоимость билета</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+{{list}}		
+	</tbody>
+</table>
+	</span>
+	
+	<span id="tpl-schedule-table--tr">
+		<tr>
+			<td class="">
+<figure class="TransportIcon_type_suburban" aria-label="электричка">
+	<svg class="TransportIcon__icon">
+	
+		<path fill-rule="evenodd" clip-rule="evenodd" 
+d="M10.7 3.2L11.8 1H13V.5c0-.3-.2-.5-.5-.5h-9c-.3 0-.5.2-.5.5V1h1.2l1.1 2.2C2.2 3.6 0 4.7 0 6v11c0 .6.4 1 1 1h14c.6 0 1-.4 1-1V6c0-1.3-2.2-2.4-5.3-2.8zM10.5 1l-1 2.1C9 3 8.5 3 8 3s-1 0-1.5.1L5.5 1h5zM9 6c0 .6-.4 1-1 1s-1-.4-1-1 .4-1 1-1 1 .4 1 1zM5 16H2v-2h3v2zm9 0h-3v-2h3v2zm0-4H2V8h12v4zM3 21h.8l-1.5 3h1.9l1.5-3h4.6l1.5 3h2l-1.5-3h.7c1.1 0 2-.9 2-2H1c0 1.1.9 2 2 2z">
+		</path>
+	</svg>
+</figure>
+			</td>
+		
+			<td class="">
+<div class="SegmentTitle">
+	<span class="SegmentTitle__number">{{thread_number}}</span>
+	<span class="SegmentTitle__title">{{thread_title}}</span>
+	<p class="SegmentTransport">{{carrier_title}}</p>
+</div>
+			</td>
+			
+			<td>
+<div class="Segment__dateTime Time_important">
+	<div class="Segment__date">{{departure_day}}</div>
+	<span class="Segment__time">{{departure_time}}</span>
+</div>
+<span class="Segment__stations">{{from_title}}</span>
+<div class="Segment__stops">остановки: {{stops}}</div>
+			</td>
+			
+			<td>{{duration}} мин.</td>
+			
+			<td>
+<div class="Segment__dateTime Time_important">
+	<div class="Segment__date">{{arrival_day}}</div>
+	<span class="Segment__time">{{arrival_time}}</span>
+</div>
+<span class="Segment__stations">{{to_title}}</span>
+			</td>
+			
+			<td>{{price_whole}} {{0_currency}}</td>
+		</tr>
+	</span>
+-->
+
+<!--
+	<span id="tpl-schedule-mobile">
+<div class="schedule-block-mobile">{{list}}</div>
+	</span>
+	
+	<span id="tpl-schedule-mobile--record">
+		<div class="lr-panel">
+			<div class="lr-panel-body">
+				<div class="SegmentTitle">
+					<span class="SegmentTitle__number">{{thread_number}}</span>
+					<span class="SegmentTitle__title">{{thread_title}}</span>
+					<p class="SegmentTransport">{{carrier_title}}</p>
+				</div>
+
+				<div><i>отправление</i>:
+					<span class="Segment__dateTime Time_important">
+						<span class="Segment__date">{{departure_day}}, </span>
+						<span class="Segment__time">{{departure_time}} </span>
+					</span>
+					<span class="Segment__stations">{{from_title}}</span>
+				</div>
+							
+				<div><i>остановки</i>:<span class="Segment__stops">{{stops}}</span></div>
+				<div><i>время в пути</i>: <span class="Segment__duration">{{duration}} мин.</span></div>
+
+				<div><i>прибытие</i>:
+					<span class="Segment__dateTime Time_important">
+						<span class="Segment__date">{{arrival_day}}, </span>
+						<span class="Segment__time">{{arrival_time}} </span>
+					</span>
+					<span class="Segment__stations">{{to_title}}</span>
+				</div>			
+							
+				<div><i>билет</i>: {{price_whole}} {{0_currency}}</div>
+			
+			</div>
+		</div>
+	</span>
+-->	
 </div>
 
 				</div>
-			</div><!-- end tab -->
+			</div><!-- end tab-transport -->
+
+
 
 			<div id="tab-weather" class="tab-pane lr-panel bg-snow">
 				
@@ -107,13 +305,13 @@ href="?q=switch-tab&target_id=tab-weather">Погода</a>
 id="inp-url" class=""  autocomplete="off" 
 value="http://api.openweathermap.org/data/2.5/weather"/>
 -->
-<a href="?q=send-request&req-type=weather-api&api-name=yandex" 
+<a href="?q=send-request&api-type=weather&api-name=yandex" 
 class="send-request lr-btn bg-darkblue text-white">получить данные (yandex)</a>
 
-<a href="?q=send-request&req-type=weather-api&api-name=openweathermap" 
+<a href="?q=send-request&api-type=weather&api-name=openweathermap" 
 class="lr-btn bg-darkblue text-white">get weather (openweathermap)</a>
 
-<a href="?q=send-request&req-type=forecast-api&api-name=openweathermap" 
+<a href="?q=send-request&api-type=forecast&api-name=openweathermap" 
 class="lr-btn bg-blue text-white">get weather forecast (openweathermap)</a>
 
 <a href="?q=test&func=testWrapDate" class="lr-btn bg-orange text-black">testBtn</a>
@@ -174,10 +372,10 @@ API address:
 				</div><!-- end tab-header -->
 				
 				<div class="lr-panel-body">
-					<div id="response"></div>
+					<div id="response-weather-api"></div>
 				</div>
 				
-			</div><!-- end tab -->
+			</div><!-- end tab-weather -->
 			
 
 		</div><!-- end tab-content -->
@@ -203,10 +401,27 @@ API address:
 
 		<div class="lr-padding-small bg-floralwhite">
 			<ul class="list-inline">
-	<li><a href="v1/app.html" target="_blank">shedule app, version 1, ajax js request</a></li>
-	<li><a href="https://rasp.yandex.ru/search/suburban/?fromName=%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D0%B8%D0%B1%D0%B8%D1%80%D1%81%D0%BA-%D0%B2%D0%BE%D1%81%D1%82%D0%BE%D1%87%D0%BD%D1%8B%D0%B9&toName=%D0%A0%D0%B0%D0%B7%D0%B4%D0%BE%D0%BB%D1%8C%D0%B5+(3362+%D0%BA%D0%BC)&fromId=s9610190&toId=s9610235&when=26+%D0%B0%D0%BF%D1%80%D0%B5%D0%BB%D1%8F&gone=y" target="_blank">yandex.ru</a></li>
-	<li><a href="https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr" target="_blank">api.rasp.yandex.net, JSON</a></li>
-	<li><a href="https://developer.tech.yandex.ru/services/4/" target="_blank">developer.tech.yandex.ru, Кабинет разработчика</a></li>
+<li><a href="https://rasp.yandex.ru/search/suburban/?fromName=%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D0%B8%D0%B1%D0%B8%D1%80%D1%81%D0%BA-%D0%B2%D0%BE%D1%81%D1%82%D0%BE%D1%87%D0%BD%D1%8B%D0%B9&toName=%D0%A0%D0%B0%D0%B7%D0%B4%D0%BE%D0%BB%D1%8C%D0%B5+(3362+%D0%BA%D0%BC)&fromId=s9610190&toId=s9610235&when=26+%D0%B0%D0%BF%D1%80%D0%B5%D0%BB%D1%8F&gone=y" target="_blank">rasp.yandex.ru</a></li>
+<li><a href="https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr" target="_blank">api.rasp.yandex.net, JSON</a></li>
+<li><a href="https://developer.tech.yandex.ru/services/4/" target="_blank">developer.tech.yandex.ru, Кабинет разработчика</a></li>
+
+<li><a href="https://tech.yandex.ru/rasp/doc/reference/schedule-point-point-docpage/#format" target="_blank">
+Расписание рейсов между станциями, doc/reference</a></li>
+<li><a href="https://ru.wikipedia.org/wiki/%D0%95%D0%B4%D0%B8%D0%BD%D0%B0%D1%8F_%D1%81%D0%B5%D1%82%D0%B5%D0%B2%D0%B0%D1%8F_%D1%80%D0%B0%D0%B7%D0%BC%D0%B5%D1%82%D0%BA%D0%B0" target="_blank">
+Единая сетевая разметка</a></li>
+
+<li><a href="https://yandex.ru/dev/weather/doc/dg/concepts/forecast-info.html#resp-format" target="_blank">
+Погода на вашем сайте: forecast, данные прогноза погоды.</a></li>
+
+<li><a href="https://openweathermap.org/current" target="_blank">
+openweathermap.org, Current weather data: Weather fields in API response</a></li>
+
+<li><a href="https://openweathermap.org/forecast5#geo5" target="_blank">
+openweathermap.org, 5 day weather forecast</a></li>
+
+<li><a href="v1/app.html" target="_blank">archive, shedule app, version 1</a></li>
+
+
 			</ul>
 				
 		</div>
@@ -244,164 +459,178 @@ prepare data:
 
 
 <!-- ********************** TEMPLATES ************************** -->	
-<div id="forecast-parts-0" class="hidden">
-	<h4>%part_name%</h4>
-	<div>
-		<img class="w5" src="https://yastatic.net/weather/i/icons/blueye/color/svg/%icon%.svg">
-		<div><b>%condition%</b></div>
-	</div>
-<p>
-Мин. т.: <b>%temp_min% °C</b>,
-Макс. т.: <b>%temp_max% °C</b>,
-Средняя т.: <b>%temp_avg% °C</b>,
-Ощущаемая т.: <b>%feels_like% °C</b>
-<p>
-<b>%daytime%</b>
-<p>
-	Направление ветра <b>%wind_dir%</b>, 
-	скорость: <b>%wind_speed%</b> м/с, 
-	скорость порывов ветра: <b>%wind_gust%</b> м/с
-</p>
-<p>
-	Влажность воздуха: <b>%humidity%</b>, 
-	давление: <b>%pressure_mm%</b> мм рт. ст.
-</p>
-<p>
-	Прогноз осадков: <b>%prec_mm%</b> (мм), 
-<!--
-	<li>prec_period: <b>%prec_period%</b>	<small>Прогнозируемый период осадков (в минутах). 	Число</small></li>
--->
-	Вероятность выпадения осадков: <b>%prec_prob%</b>
-</p>
-</div><!-- end forecast-parts-0 -->
-
-
+<span id="tpl-yandex--weather" class="hidden">
 <div class="bg-lavender lr-padding-20">
 	<div class="lr-panel">
-		<p>
-Широта: <input name="latitude" type="text" class="lr-padding-small" value="%lat%"/>
-долгота: <input name="longitude" type="text" class="lr-padding-small" value="%lon%"/> 
+		<p class="">
+			<small>Время замера погодных данных: <b>%fact.obs_time%</b></small>, 
+			<small>Время сервера: <b>%now%</b></small>, 
+			<a href="%info.url%">Яндекс.Погода</a>
 		</p>
-		<p><b>Волочаевский жилмассив, Новосибирск</b>, <a href="%url%"><small>Яндекс.Погода</small></a></p>
-<p>
-	<b>%temp% °C</b> 
-	<img class="w5" src="https://yastatic.net/weather/i/icons/blueye/color/svg/%icon%.svg">
-	<b>%condition%</b>
-<p>
-<p>
-	Ощущаемая температура: <b>%feels_like% °C</b>, 
-	температура воды: <b>%temp_water%</b> °C
-</p>
-<p>
-	Направление ветра <b>%wind_dir%</b>, 
-	скорость: <b>%wind_speed%</b> м/с, 
-	скорость порывов ветра: <b>%wind_gust%</b> м/с
-</p>
-<p>
-	Влажность воздуха: <b>%humidity%</b>, 
-	давление: <b>%pressure_mm%</b> мм рт. ст.
-</p>
-<p>
-	<b>%season%</b>, <b>%daytime%</b>
-</p>
-<p><small>Время замера погодных данных: <b>%obs_time%</b></small></p>
-<p><small>Время сервера: <b>%now%</b>, UTC: <b>%now_dt%</b></small></p>
+
+<p class="lr-margin-0">Широта: <b>%info.lat%</b>&deg;, долгота: <b>%info.lon%</b>&deg;</p>
+<p class="lr-margin-0"><b>%fact.season%</b>, <b>%fact.daytime%</b></p>
+			
+		<ul>
+			<li>температура: <b>%fact.temp%</b> °C</li>
+			<li>ощущаемая температура: <b>%fact.feels_like%</b> °C</li>
+			<li>температура воды: <b>%fact.temp_water%</b> °C</li>
+		</ul>
+
+		<div class="lr-flex lr-flex-vcenter">
+	<img class="w5" src="https://yastatic.net/weather/i/icons/blueye/color/svg/%fact.icon%.svg">
+	<p><b>%fact.condition%</b></p>
+		</div>
+			
+		<h3>ветер</h3>	
+		<ul>
+			<li>направление:<b>%fact.wind_dir%</b></li> 
+			<li>скорость: <b>%fact.wind_speed%</b> м/с</li> 
+			<li>скорость порывов: <b>%fact.wind_gust%</b> м/с</li>
+		</ul>
+
+		<p>
+			Влажность воздуха: <b>%fact.humidity%</b>%,  
+			давление: <b>%fact.pressure_mm%</b> мм рт.ст.
+		</p>
 	</div>
 </div>
 
-
-
 <div class="bg-lightgreen lr-padding-20">
-	<h3>данные прогноза погоды на %date%</h3>
+	<h3>данные прогноза погоды на %forecast.date_ts%</h3>
 	
 	<div class="lr-panel">
 
-		<p>
-Время восхода Солнца: <b>%sunrise%</b>,  
-время заката Солнца: <b>%sunset%</b>,
-<b>%moon_text%</b>
-		<p>
+<p>восход: <b>%forecast.sunrise%</b>, закат: <b>%forecast.sunset%</b><p>
+<p>Код фазы Луны: <b>%forecast.moon_code%</b><p>
 
-		<div class="lr-row">		
-			<div class="w50 float-left bg-darkblue-gray color-white lr-padding-20">
-		%forecast_part0%
-			</div>
-			<div class="w50 float-left bg-aliceblue color-black lr-padding-20">
-		%forecast_part1%
-			</div>
+		<div class="lr-margin-small lr-padding-20">
+%parts%
 		</div>
 
 	</div>
 </div>
+</span>
 
 
-	<div id="template-main">
-		
-		<h2>Weather</h2>
-		<ul>		
-			<li>id: <b>%id%</b></li>
-			<li>name: <b>%name%</b></li>
+<span id="tpl-yandex--forecast-parts" class="hidden">
+<div class="bg-aliceblue lr-margin-10 lr-padding-20">
+
+	<div>
+		<b>%parts.daytime%</b>,
+		<b>%parts.part_name%</b>
+	</div>
+	
+	<ul>
+		<li>мин. температура: <b>%parts.temp_min%</b> °C</li>
+		<li>макс. температура: <b>%parts.temp_max%</b> °C</li>
+		<li>средняя температура: <b>%parts.temp_avg%</b> °C</li>
+		<li>ощущаемая температура: <b>%parts.feels_like%</b> °C</li>
+		<li>температура воды: <b>%parts.temp_water%</b> °C</li>
+	</ul>
+	
+	<div class="lr-flex lr-flex-vcenter">
+<img class="w5" src="https://yastatic.net/weather/i/icons/blueye/color/svg/%parts.icon%.svg">
+<p><b>%parts.condition%</b></p>
+	</div>
+	
+	<h3>ветер</h3>	
+	<ul>
+		<li>направление:<b>%parts.wind_dir%</b></li> 
+		<li>скорость: <b>%parts.wind_speed%</b> м/с</li> 
+		<li>скорость порывов: <b>%parts.wind_gust%</b> м/с</li>
+	</ul>
+
+	<p>
+		Влажность воздуха: <b>%parts.humidity%</b> %, 
+		давление: <b>%parts.pressure_mm%</b> мм рт. ст.
+	</p>
+	<p>
+		Прогноз осадков: <b>%parts.prec_mm%</b> (мм), 
+<!--
+	<li>prec_period: <b>%prec_period%</b>	<small>Прогнозируемый период осадков (в минутах). 	Число</small></li>
+-->
+		Вероятность выпадения осадков: <b>%parts.prec_prob%</b>
+	</p>
+</div>
+</span><!-- end forecast-parts -->
+
+
+
+<!-- templates  openweathermap (weather) 
+https://openweathermap.org/current
+-->
+	<span id="tpl-openweathermap--weather" class="hidden">
+<div class="bg-lightgreen lr-padding-20">
+	<h2>Weather</h2>
+	<ul class="lr-list lr-list-disclosure bg-light-orange lr-margin-20 lr-padding-20">		
+		<li>city id: <b>%id%</b></li>
+		<li>city name: <b>%name%</b></li>
+<!--
 			<li>cod: <b>%cod%</b></li>
 			<li>base: <b>%base%</b></li>
-			<li>dt: <b>%dt%</b></li>
-			<li>timezone: <b>%timezone%</b></li>
-			<li>visibility: <b>%visibility%</b></li>
-		</ul>
+-->
+		<li>time of data calculation: <b>%dt%</b></li>
+		<li>timezone: <b>%timezone%</b></li>
+		<li>visibility: <b>%visibility%</b> meter</li>
+	</ul>
 			
-		<ul>		
-			<li>Облачность, clouds.all: <b>%clouds.all%</b>%</li>
-		</ul>
+<p>Облачность, clouds.all: <b>%clouds.all%</b>%</p>
+<p>
+geo latitude: <b>%coord.lat%</b>, 
+geo longitude: <b>%coord.lon%</b>
+</p>
 
-		<ul>		
-			<li>coord.lat: <b>%coord.lat%</b></li>
-			<li>coord.lon: <b>%coord.lon%</b></li>
-		</ul>
+	<ul class="lr-list-group bg-floralwhite lr-margin-20 lr-padding-20">		
+		<li>main.temp: <b>%main.temp%</b>&deg;</li>
+		<li>main.feels_like: <b>%main.feels_like%</b>&deg;</li>
+		<li>main.temp_max: <b>%main.temp_max%</b>&deg;</li>
+		<li>main.temp_min: <b>%main.temp_min%</b>&deg;</li>
+		<li>main.pressure: <b>%main.pressure%</b> hPa</li>
+		<li>влажность (main.humidity): <b>%main.humidity%</b>%</li>
+	</ul>
 
-		<ul>		
-			<li>main.temp: <b>%main.temp%</b>&deg;</li>
-			<li>main.feels_like: <b>%main.feels_like%</b>&deg;</li>
-			<li>main.temp_max: <b>%main.temp_max%</b>&deg;</li>
-			<li>main.temp_min: <b>%main.temp_min%</b>&deg;</li>
-			<li>main.pressure: <b>%main.pressure%</b> hPa</li>
-			<li>влажность (main.humidity): <b>%main.humidity%</b>%</li>
-		</ul>
+	<ul>		
+		<li>sys.country: <b>%sys.country%</b></li>
+		<li>sys.sunrise: <b>%sys.sunrise%</b></li>
+		<li>sys.sunset: <b>%sys.sunset%</b></li>
+	</ul>
 
-		<ul>		
-			<li>sys.country: <b>%sys.country%</b></li>
-			<li>sys.sunrise: <b>%sys.sunrise%</b></li>
-			<li>sys.sunset: <b>%sys.sunset%</b></li>
-		</ul>
-
-		<div>print array
-		%weather%
-		</div>
-		
+	<div>
+%weather%
 	</div>
+	
+</div>		
+	</span>
 
-	<div id="weather-list-tpl">
+	<span id="tpl-openweathermap-weather-list" class="hidden">
 		<ul>
 			<li>weather.main: <b>%weather.main%</b></li>
 			<li>weather.description: <b>%weather.description%</b></li>
-			<li>weather.icon: <b>%weather.icon%</b></li>
+<img src="http://openweathermap.org/img/w/%weather.icon%.png">
 		</ul>
-	</div>
+	</span>
 
 
-	<div id="template-forecast">
+<!-- templates  openweathermap (forecast) 
+https://openweathermap.org/forecast5#geo5
+
+-->
+	<span id="tpl-openweathermap--forecast" class="hidden">
 		<h2>Forecast</h2>
-		<ul>		
-			<li>cod: <b>%cod%</b></li>
-			<li>message: <b>%message%</b></li>
-		</ul>
 		
-		<ul>
+<!--
+<p>
+cod: <b>%cod%</b>, message: <b>%message%</b>
+</p>
+-->
+		
+		<ul class="lr-list bg-silver-f1 lr-margin-20 lr-padding-20">
 					
-			<li>city.coord:
-				<ul>		
-					<li>lat: <b>%city.coord.lat%</b></li>
-					<li>lon: <b>%city.coord.lon%</b></li>
-				</ul>
-			</li>
+<p>
+geo latitude: <b>%city.coord.lat%</b>, 
+geo longitude: <b>%city.coord.lon%</b>
+</p>
 			
 			<li>city.country: <b>%city.country%</b></li>
 			<li>city.name: <b>%city.name%</b></li>
@@ -415,10 +644,12 @@ prepare data:
 %list%
 		</div>
 
-	</div>
+	</span>
 	
-	<span id="template-forecast-list-tpl" class="">
-		<ul class="bg-lavender lr-padding-20">
+<span id="tpl-openweathermap-forecast--list" class="hidden">
+	<ul class="lr-list bg-lavender lr-margin-20 lr-padding-20">
+		
+<h3>record: %record_num%</h3>
 <li class="">dt_txt: 
 	<small>Time of data forecasted, ISO, UTC</small>
 	<b>%list.dt_txt%</b>
@@ -434,12 +665,26 @@ prepare data:
 	<b>%list.clouds.all%</b>%
 </li>
 
-			
-			<ul class="bg-floralwhite">
-				<li class="">temp: <b>%list.main.temp%</b>&#8451;</li>
-				<li class="">feels_like: <b>%list.main.feels_like%</b>&#8451;</li>
-				<li class="">min: <b>%list.main.temp_min%</b>&#8451;</li>
-				<li class="">max: <b>%list.main.temp_max%</b>&#8451;</li>
+<li class="">pop: 
+	<small>Probability of precipitation (возможность осадков)</small>
+	<b>%list.pop%</b>
+</li>
+<!--
+<li class="">rain: 
+	<small>Rain volume for last 3 hours (Объем дождя за последние 3 часа )</small>
+	<b>%list.rain.3h%</b>mm
+</li>
+-->
+<li class="">pod: 
+	<small>Part of the day (n - night, d - day)</small>
+	<b>%list.sys.pod%</b>
+</li>
+
+		<ul class="bg-floralwhite lr-margin-20 lr-padding-20">
+			<li class="">temp: <b>%list.main.temp%</b>&#8451;</li>
+			<li class="">feels_like: <b>%list.main.feels_like%</b>&#8451;</li>
+			<li class="">min: <b>%list.main.temp_min%</b>&#8451;</li>
+			<li class="">max: <b>%list.main.temp_max%</b>&#8451;</li>
 <li class="">pressure:
 	<small>Atmospheric pressure on the sea level by default</small>
 	<b>%list.main.pressure%</b> hPa
@@ -458,30 +703,14 @@ prepare data:
 	<small>Humidity</small>
 	<b>%list.main.humidity%</b>%
 </li>
-			</ul>
-
-<li class="">pop: 
-	<small>Probability of precipitation (возможность осадков)</small>
-	<b>%list.pop%</b>
-</li>
-<!--
-<li class="">rain: 
-	<small>Rain volume for last 3 hours (Объем дождя за последние 3 часа )</small>
-	<b>%list.rain.3h%</b>mm
-</li>
--->
-<li class="">pod: 
-	<small>Part of the day (n - night, d - day)</small>
-	<b>%list.sys.pod%</b>
-</li>
-
 		</ul>
 		
-<div class="bg-darkblue-gray color-white lr-padding-20">array
-	%weather%
-</div>
+		<ul class="bg-grey-green color-darkgreen lr-margin-20 lr-padding-20">
+%weather-forecast%
+%weather%
+		</ul>
 
-		<ul class="bg-lightgreen lr-padding-20">
+		<ul class="bg-lightgreen color-black lr-margin-20 lr-padding-20">
 <li class="">list.wind.deg: 
 	<small>Wind direction, degrees (meteorological)</small>
 	<b>%list.wind.deg%</b>&deg;
@@ -490,49 +719,28 @@ prepare data:
 	<small>Wind speed:</small>
 	<b>%list.wind.speed%</b> meter/sec
 </li>
-
 		</ul>
 		
-	</span>
-
-
-	<span id="template-forecast-list-weather-tpl" class="">
-		<ul class="bg-powderblue lr-margin-small lr-padding-20">list.weather:
-			<li class="">main: 
-				<small>Group of weather parameters (Rain, Snow, Extreme etc.)</small>
-				<b>%list.weather.main%</b>
-			</li>
-			<li class="">description: 
-				<small>Weather condition within the group.</small>
-				<b>%list.weather.description%</b>
-			</li>
-			<li class="">icon: 
-				<small>Weather icon id</small>
-				<b>%list.weather.icon%</b>
-			</li>
-		</ul>
-	</span>
-
-	<div id="template-test">
-		<p>key1: %key1%</p>
-		<p>key2: %key2%</p>
-		
-		<div>object:
-			<p>title: %obj1.title%</p>
-			<p>key1: %obj1.key1%</p>
-		</div>
-		
-		<div class="lr-flex">
-print array: %node%
-		</div>
-	</div>
-	
-<span id="template-test-list-tpl" class="hidden">
-	<ul class="lr-margin-20 lr-list-unstyled">
-		<li class="lr-padding-20 bg-cornsilk">node.id: <b>%node.id%</b></li>
-		<li class="lr-padding-20 bg-cornsilk">node.title: <b>%node.title%</b></li>
 	</ul>
 </span>
+
+<span id="tpl-openweathermap-forecast--list-weather" class="hidden">
+	<ul class="bg-powderblue lr-margin-small lr-padding-20">list.weather:
+		<li class="">main: 
+			<small>Group of weather parameters (Rain, Snow, Extreme etc.)</small>
+			<b>%list.weather.main%</b>
+		</li>
+		<li class="">description: 
+			<small>Weather condition within the group.</small>
+			<b>%list.weather.description%</b>
+		</li>
+		<li class="">icon: 
+			<small>Weather icon id</small>
+			<b>%list.weather.icon%</b>
+		</li>
+	</ul>
+</span>
+
 
 
 </body>

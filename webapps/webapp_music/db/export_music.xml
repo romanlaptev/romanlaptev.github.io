@@ -42,6 +42,7 @@
 	<tag tid="73" vid="5" group_name="alphabetical_voc">Х</tag>
 	<tag tid="74" vid="5" group_name="alphabetical_voc">Ц</tag>
 	<tag tid="77" vid="5" group_name="alphabetical_voc">Ш</tag>
+	<tag tid="80" vid="5" group_name="alphabetical_voc">Я</tag>
 	<tag tid="83" vid="5" group_name="alphabetical_voc">A</tag>
 	<tag tid="84" vid="5" group_name="alphabetical_voc">B</tag>
 	<tag tid="85" vid="5" group_name="alphabetical_voc">D</tag>
@@ -1765,6 +1766,35 @@ https://en.wikipedia.org/wiki/Katzenjammer_Kabarett</description>
 
 	<published format="d-M-Y H:i:s">01-Apr-2021 19:57:18</published>
 	<updated format="d-M-Y H:i:s">01-Apr-2021 19:57:18</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Янка</item>
+	</title>
+	<images>
+		<img src="https://avatars.yandex.net/get-music-user-playlist/28719/9941293.1011.24068/200x200?1618132020245"/>
+	</images>
+
+	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/Yanka.json">Yanka.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1011">music.yandex.ru</a></li>
+		<li><a data-type="external-link" href="https://ru.wikipedia.org/wiki/%D0%94%D1%8F%D0%B3%D0%B8%D0%BB%D0%B5%D0%B2%D0%B0,_%D0%AF%D0%BD%D0%BA%D0%B0">wiki</a></li>
+	</related_links>
+
+	<node_tags>
+		<item vid="5" tid="80" group_name="alphabetical_voc">Я</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="152" group_name="music_styles">фолк-рок</item>
+		<item vid="2" tid="107" group_name="music_styles">rock</item>
+		<item vid="2" tid="45" group_name="music_styles">punk</item>
+		<item vid="4" tid="149" group_name="country">Россия</item>
+		<item vid="4" tid="150" group_name="country">СССР</item>
+	</node_tags>
+
+	<published format="d-M-Y H:i:s">11-Apr-2021 16:09:49</published>
+	<updated format="d-M-Y H:i:s">11-Apr-2021 16:09:49</updated>
 </node>
 	</database>
 </xroot>
