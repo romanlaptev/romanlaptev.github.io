@@ -1077,11 +1077,30 @@ border: 1px solid;
 }
 
 .lr-border-white{border-color: #fff;}
+.lr-list-group.lr-border-white li {
+	border-color: #fff;
+}
+
 .lr-border-black{border-color: #000;}
+.lr-list-group.lr-border-black li {
+	border-color: #000;
+}
+
 .lr-border-red{border-color: #f00;}
+.lr-list-group.lr-border-red li {
+	border-color: #f00;
+}
+
 .lr-border-silver{border-color:#c0c0c0;}
+.lr-list-group.lr-border-silver li {
+	border-color: #c0c0c0;
+}
+
 .lr-border-cyan {
 	border-color:#159fd2;
+}
+.lr-list-group.lr-border-cyan li {
+	border-color: #159fd2;
 }
 
 .lr-border-radius5{
