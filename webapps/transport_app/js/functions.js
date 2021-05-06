@@ -27,12 +27,17 @@ _log(msg);
 		}
 		
 		// private variables and functions
-		//.......
+		var _vars = {
+			"logOrderBy": "ASC"
+		};//end _vars
 
 		function _getById(id){
 			
 			if( document.querySelector ){
-				var obj = document.querySelector("#"+id);
+				if(id.indexOf("#") === -1){
+					id = "#" + id;
+				}
+				var obj = document.querySelector(id);
 				return obj;
 			}
 			
@@ -55,45 +60,34 @@ _log(msg);
 		}//end _getById()
 
 
-		function _log( msg, id){
-//console.log(arguments);
-//alert(arguments.length);
-//		for( var n = 0; n < arguments.length; n++){
-//			var _s = "<li> arguments." + n +" = "+ arguments[n] + "</li>";
-//alert( _s );
-//		}
-			var id = id || arguments[1];//IE4 fix
-//alert( msg );
-//alert( id );
+		//USAGE: var groupBtnDelete = func.getByClass("child-nodes li");
+		function _getByClass(className){
 
-			if(!id){
-				var id = "log";
-			}
-			
-			var output = _getById(id);
-			if( output ){	
-				if( msg.length == 0){
-					output.innerHTML = "";
-				} else {
-					output.innerHTML += msg;
-					//output.innerHTML = msg + output.innerHTML;
+			if( typeof window.jQuery === "function"){
+				if(className.indexOf(".") === -1){
+					className = "." + className;
 				}
-				
-			} else {
-				console.log(msg);
-				//alert(msg);
-				//document.writeln(msg);
+				var group = $(className);
+				return group;
 			}
-			
-			//if( typeof _showHiddenLog === "function"){
-		//console.log(_showHiddenLog);
-				//_showHiddenLog();
-			//}
-			if( output && output.style.display !== "block"){
-				output.style.display = "block";
+
+			if( document.querySelector ){
+				if(className.indexOf(".") === -1){
+					className = "." + className;
+				}
+				var group = document.querySelectorAll(className);
+				return group;
 			}
-			
-		}//end _log()
+		
+//document.getElementsByTagName('head')
+			if( typeof document.getElementsByClassName === "function" ){
+				var group = document.getElementsByClassName(className);
+				return group;
+			}
+
+			return false;
+		}//end _getByClass()
+
 
 		function _push( ar, item){
 			if( ar.push ){
@@ -115,10 +109,11 @@ _log(msg);
 			var d = new Date;
 			return parseFloat((d.getTime() - timer)/1000);
 		};
+
 		function _getRunTime( timer){
 			return ( timer.end.getTime() - timer.start.getTime() ) / 1000;
 		}
-
+		
 
 		function _get_attr_to_obj( attr ){
 			if( attr.length === 0){
@@ -130,6 +125,122 @@ _log(msg);
 			}
 			return item_attr;
 		}//end _get_attr_to_obj()
+
+
+		function _log( msg, id){
+//console.log(arguments);
+//alert(arguments.length);
+//		for( var n = 0; n < arguments.length; n++){
+//			var _s = "<li> arguments." + n +" = "+ arguments[n] + "</li>";
+//alert( _s );
+//		}
+			var id = id || arguments[1];//IE4 fix
+//alert( msg );
+//alert( id );
+
+			if(!id){
+				var id = "log";
+			}
+			
+			var output = _getById(id);
+			if( output ){	
+				if( msg.length == 0){
+					output.innerHTML = "";
+				} else {
+
+					if( _vars["logOrderBy"] === "DESC"){
+						output.innerHTML = msg+output.innerHTML;
+					} else {
+						output.innerHTML += msg;
+					}
+
+				}
+				
+			} else {
+				console.log(msg);
+				//alert(msg);
+				//document.writeln(msg);
+			}
+			
+			//if( typeof _showHiddenLog === "function"){
+		//console.log(_showHiddenLog);
+				//_showHiddenLog();
+			//}
+			if( output && output.style.display !== "block"){
+				output.style.display = "block";
+			}
+			
+		}//end _log()
+
+		function _alert( message, level ){
+			switch (level) {
+				case "info":
+					message = "<p class='alert alert-info'>" + message + "</p>";
+					_log(message);
+				break;
+				
+				case "warning":
+					message = "<p class='alert alert-warning'>" + message + "</p>";
+					_log(message);
+				break;
+				
+				case "danger":
+				case "error":
+					message = "<p class='alert alert-danger'>" + message + "</p>";
+					_log(message);
+				break;
+				
+				case "success":
+					message = "<p class='alert alert-success'>" + message + "</p>";
+					_log(message);
+				break;
+				
+				default:
+					_log(message);
+				break;
+			}//end switch
+			
+		}//end _alert()		
+	
+		function _wrapLogMsg( message, level ){
+			switch (level) {
+				case "info":
+					message = "<p class='alert alert-info'>" + message + "</p>";
+					return message;
+				break;
+				
+				case "warning":
+					message = "<p class='alert alert-warning'>" + message + "</p>";
+					return message;
+				break;
+				
+				case "danger":
+				case "error":
+					message = "<p class='alert alert-danger'>" + message + "</p>";
+					return message;
+				break;
+				
+				case "success":
+					message = "<p class='alert alert-success'>" + message + "</p>";
+					return message;
+				break;
+				
+				default:
+					return message;
+				break;
+			}//end switch
+			
+		}//end _wrapLogMsg()
+		
+	
+		function _addEvent( element, eventName, func ) {
+			if ( element.addEventListener ) {
+				return element.addEventListener(eventName, func, false);
+			} else if ( element.attachEvent ) {
+				return element.attachEvent("on" + eventName, func);
+			}
+		};//end _addEvent()
+
 
 
 		// SORT by key, alphabetical sorting
@@ -551,7 +662,7 @@ console.log( logMsg, xhr );
 				}
 			}
 
-//console.log(xhr.upload);
+console.log(xhr.upload);
 			if( xhr.upload ){
 /*				
 				xhr.upload.onerror = function(e){
@@ -790,7 +901,7 @@ console.log( "xhr.onerror,", e);
 			
 		};//_runAjaxCorrect()
 		
-
+		
 		function _convertDateToStr( opt ){
 			var p = {
 				"dateObj" : null,
@@ -874,6 +985,7 @@ console.log( "xhr.onerror,", e);
 			}//end switch
 			return dateStr;
 		}//end _convertDateToStr()
+
 	
 		
 //================================
@@ -917,8 +1029,8 @@ console.log( "xhr.onerror,", e);
 			
 			return dateStr;
 		}//end _timeStampToDateStr()
-		
 
+		
 //================================
 // "15-May-2015 09:58:16" --> 1431662296000
 // var arr = "15-May-2015 09:58:16".split(" ");
@@ -1019,8 +1131,8 @@ sMonth = [
 //console.log(s_case, sMonth);
 			return sMonth[num];
 		}//end _getMonthNameByNum()
-    
-    
+
+
 		function _getNumMonthByName( monthName, lang ){
 			var sMonth = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 			if( lang ){
@@ -1032,9 +1144,6 @@ sMonth = [
 			return num;
 		}//end _getNumMonthByName()
 	
-
-
-
 
 		//Convert str to Hash code
 		var _hashCode = function(str){
@@ -1255,74 +1364,6 @@ ONLY second LEVEL !!!!!!!!!!!!
 
 		}//end _parseXmlToObj()
 
-		function _alert( message, level ){
-			switch (level) {
-				case "info":
-					message = "<p class='alert alert-info'>" + message + "</p>";
-					_log(message);
-				break;
-				
-				case "warning":
-					message = "<p class='alert alert-warning'>" + message + "</p>";
-					_log(message);
-				break;
-				
-				case "danger":
-				case "error":
-					message = "<p class='alert alert-danger'>" + message + "</p>";
-					_log(message);
-				break;
-				
-				case "success":
-					message = "<p class='alert alert-success'>" + message + "</p>";
-					_log(message);
-				break;
-				
-				default:
-					_log(message);
-				break;
-			}//end switch
-			
-		}//end _alert()		
-	
-		function _wrapLogMsg( message, level ){
-			switch (level) {
-				case "info":
-					message = "<p class='alert alert-info'>" + message + "</p>";
-					return message;
-				break;
-				
-				case "warning":
-					message = "<p class='alert alert-warning'>" + message + "</p>";
-					return message;
-				break;
-				
-				case "danger":
-				case "error":
-					message = "<p class='alert alert-danger'>" + message + "</p>";
-					return message;
-				break;
-				
-				case "success":
-					message = "<p class='alert alert-success'>" + message + "</p>";
-					return message;
-				break;
-				
-				default:
-					return message;
-				break;
-			}//end switch
-			
-		}//end _wrapLogMsg()
-		
-	
-		function _addEvent( element, eventName, func ) {
-			if ( element.addEventListener ) {
-				return element.addEventListener(eventName, func, false);
-			} else if ( element.attachEvent ) {
-				return element.attachEvent("on" + eventName, func);
-			}
-		};//end _addEvent()
 		
 
 		function _testSupport() {
@@ -1381,8 +1422,15 @@ ONLY second LEVEL !!!!!!!!!!!!
 		
 		// public interfaces
 		return{
+			vars : _vars,
+
 			getById: _getById,
+			getByClass: _getByClass,
+
 			log:	_log,
+			logAlert: _alert,
+			wrapLogMsg: _wrapLogMsg,
+			addEvent: _addEvent,
 			
 			push: _push,
 			set_timer: _set_timer,
@@ -1406,9 +1454,6 @@ ONLY second LEVEL !!!!!!!!!!!!
 			parseXmlToObj: _parseXmlToObj,
 			convertXmlToObj: _convertXmlToObj,
 			
-			logAlert: _alert,
-			wrapLogMsg: _wrapLogMsg,
-			addEvent: _addEvent,
 			testSupport: _testSupport
 			
 			//get_content: function( params ){ 

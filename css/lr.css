@@ -166,7 +166,7 @@ pre {
 
 /*--------------------- LOAD --------------*/
 /* http://dbmast.ru/adaptivnoe-modalnoe-okno-strogo-po-centru */
-.dm-overlay {
+#modal-wait-window.dm-overlay {
 position: fixed;
 top: 0;
 left: 0;
@@ -178,48 +178,56 @@ height: 100%;
 z-index: 1000;
 }
 
-.dm-table {
+#modal-wait-window  .dm-table {
 display: table;
 width: 100%;
 height: 100%;
 }
 
-.dm-cell {
+#modal-wait-window  .dm-cell {
 display: table-cell;
 padding: 0 1em;
 vertical-align: middle;
 text-align: center;
 }
 
-.dm-modal {
+#modal-wait-window  .dm-modal {
 display: inline-block;
 max-width: 50em;
-/*background: #607d8b;*/
-/*background-color: rgb(200, 200, 250);*/
+width: 15em;
 background-color: #b0c4de;
+color: #000;
 border-radius: 10px;
-padding: 25px;
-/* width: 300px; */
+padding: 10px 20px;
 z-index: 1042;
 -webkit-box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
 -moz-box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
 box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
-/*color: #cfd8dc;*/
-color: #000;
 text-align: center;
 }
-
-#win1 .circle-clipper .circle {
-	border-width: 10px;
-}
-#win1 .progress {
+#modal-wait-window .progress {
+	position: relative;
 	height: 20px;
+	display: block;
+	width: 100%;
 	background-color: #fff;
 	border-radius: 3px;
+	margin: .5rem 0 1rem 0;
+	overflow: hidden;
 }
-#win1 .loader {
-border: 16px solid #f3f3f3; /* Light grey */
-border-top: 16px solid #3498db; /* Blue */
+#modal-wait-window .progress .determinate {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	background-color: #2196F3;	
+	-webkit-transition: width .3s linear;
+	transition: width .3s linear;
+}
+
+#modal-wait-window .loader {
+border: 1px solid #f3f3f3;
+border-top: 16px solid #3498db;
 border-radius: 50%;
 width: 80px;
 height: 80px;
@@ -227,7 +235,7 @@ margin: auto;
 animation: spin 2s linear infinite;
 /*animation: spin 3s alternate infinite;*/
 }
-#win1 .loader2 {
+#modal-wait-window .loader2 {
 border-bottom: 16px solid #1c5a83;
 border-top: 16px solid #1c5a83;
 }
@@ -2648,3 +2656,4 @@ justify-content: space-between;
 	padding: 10px;
 	border: 1px solid #EDEDEC;
 }
+

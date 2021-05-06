@@ -10692,7 +10692,8 @@ https://www.kinopoisk.ru/film/8365/</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="/video/films/G/Leonid_Gayday/Ne.mozhet.bit.1975_[torrents.ru].avi">Ne.mozhet.bit.1975_[torrents.ru].avi</a></li>
+		<li><a data-type="local-file" href="file:///mnt/terra/video/films/G/Leonid_Gayday/Ne_mozhet_byt_1975.mp4">Ne_mozhet_byt_1975.mp4</a></li>
+		<li><a data-type="local-file" href="/video2/films/G/Leonid_Gayday/Ne_mozhet_byt_1975.mp4">Ne_mozhet_byt_1975.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/DZHXRy-FTuM">youtube.com</a></li>
 	</ul>
 
@@ -10704,11 +10705,11 @@ https://www.kinopoisk.ru/film/8365/</description>
 		<item tid="73">СССР</item>
 		<item tid="22">avi</item>
 		<item tid="241">Н</item>
-		<item tid="293">1976</item>
+		<item tid="323">1975</item>
 	</tags>
 
 	<published>18-Mar-2013 21:41:53</published>
-	<updated>12-Apr-2019 21:52:57</updated>
+	<updated>06-May-2021 20:06:53</updated>
 </video>
 
 <video type="video">
