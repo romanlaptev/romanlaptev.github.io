@@ -1,4 +1,5 @@
 var func = sharedFunc();
+func.vars["logOrderBy"] = "DESC";
 //console.log("func:", func);
 
 window.onload = function(){
@@ -32,9 +33,11 @@ console.log("init webapp!");
 		this["vars"]["App"] = func.getById("App");
 		this["vars"]["log"] = func.getById("log");
 		
+		this["vars"]["waitWindow"] = func.getById("modal-wait-window");
 		this["vars"]["loadProgressBar"] = func.getById("load-progress-bar");
-		this["vars"]["waitWindow"] = func.getById("win1");
-		this["vars"]["numTotalLoad"] = func.getById("num-total-load");
+		this["vars"]["percentComplete"] = func.getById("percent-complete");
+		//this["vars"]["numTotal"] = func.getById("num-total-load");
+		this["vars"]["numLoaded"] = func.getById("num-loaded");
 		
 
 		this["vars"]["tab-transport"] = webApp.vars.App.querySelector("#tab-transport");
@@ -58,7 +61,6 @@ function _transport_api(){
 		//"dataUrl" : "data/2019-04-26.xml",
 		//"dataUrl" : "v1/data/2019-04-26.json",
 		//"dataUrl" : "files/test_ya_schedule.json",
-		
 /*
 		"dataUrl" : "https://cors-anywhere.herokuapp.com/\
 https://api.rasp.yandex.net/v3.0/search/?\
@@ -1064,7 +1066,47 @@ func.logAlert(webApp.logMsg, "error");
  //document.body.appendChild(script);
 //console.log(url);
 //return;				
-    
+
+//webApp.vars["timers"]["request"]["start"] = new Date();
+
+//view overlay
+if( webApp["vars"]["waitWindow"] ){
+	webApp["vars"]["waitWindow"].style.display="block";
+}
+
+//---------------------- test wait window
+/*
+var totalBytes = 516800;
+var sizeBlockBytes = 5168;
+var totalLoadedBytes = 0;
+var percentComplete = 0;
+var bytesPerPercent = totalBytes / 100;
+			
+var num = 1;
+var interval = setInterval(function(){
+	num++;
+//console.log(num);
+				
+	totalLoadedBytes += sizeBlockBytes;
+	webApp.vars["numLoaded"].innerHTML = totalLoadedBytes;
+
+	if( num > 100){
+		clearInterval(interval);
+	}
+				
+	percentComplete = Math.ceil( totalLoadedBytes / totalBytes * 100);
+	//test = Math.ceil( totalLoadedBytes / bytesPerPercent );
+//console.log( percentComplete +"%" );
+	
+	webApp.vars["loadProgressBar"].style.width = percentComplete+"%";
+	webApp.vars["percentComplete"].innerHTML = percentComplete+"%";
+
+}, 500);
+
+return;
+*/
+//----------------------
+			
 console.log("-- start server request --");
 				sendRequest({
 					"dataUrl": dataUrl,
@@ -1093,12 +1135,11 @@ console.log("-- start server request --");
 //webApp.vars["logMsg"] = "request runtime: " + _getRunTime( webApp.vars["timers"]["request"] ) + "sec";
 //func.logAlert( webApp.vars["logMsg"],"info" );
 console.log("-- end server request --");
-//hide overlay
-//setTimeout(function(){
-	//if( webApp["vars"]["waitWindow"] ){
-		//webApp["vars"]["waitWindow"].style.display="none";
-	//}		
-//}, 1000*3);
+						//hide block overlay and wait window
+						if( webApp["vars"]["waitWindow"] ){
+							webApp["vars"]["waitWindow"].style.display="none";
+						}
+
 					}//end callback
 				});
 
@@ -1141,13 +1182,6 @@ func.logAlert(webApp.logMsg, "error");
 	}//next
 //console.log( dataUrl );		
 
-//webApp.vars["timers"]["request"]["start"] = new Date();
-////view overlay
-//if( webApp["vars"]["waitWindow"] ){
-	//webApp["vars"]["waitWindow"].style.display="block";
-//}
-
-
 	try{
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET", dataUrl, true);
@@ -1157,23 +1191,21 @@ func.logAlert(webApp.logMsg, "error");
 			//xhr.setRequestHeader("Access-Control-Allow-Credentials", "true");
 		}
 		
-/*
-			"onProgress" : function( e ){
+		xhr.onprogress = function( e ){
 				var percentComplete = 0;
 				if(e.lengthComputable) {
 					percentComplete = Math.ceil(e.loaded / e.total * 100);
 				}
 console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
+				webApp.vars["numLoaded"].innerHTML = e.loaded;
+				//webApp.vars["numTotal"].innerHTML = e.total;
+
 				if( webApp.vars["loadProgressBar"] ){
-					webApp.vars["loadProgressBar"].className = "progress-bar";
 					webApp.vars["loadProgressBar"].style.width = percentComplete+"%";
-					webApp.vars["loadProgressBar"].innerHTML = percentComplete+"%";
-					
-					webApp.vars["numTotalLoad"].innerHTML = ((e.total / 1024) / 1024).toFixed(2)  + " Mb";
+					webApp.vars["percentComplete"].innerHTML = percentComplete+"%";
 				}
-				
-			},
-*/		
+		},//end onprogress
+
 		xhr.onload = function(e) {
 //console.log(arguments);
 // console.log("event type:" + e.type);

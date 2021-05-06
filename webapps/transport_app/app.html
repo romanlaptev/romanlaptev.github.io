@@ -393,6 +393,13 @@ API address:
 </div><!-- end App container -->
 
 
+<div class="">
+	<button id="btn-scroll-to-top" 
+class="lr-btn lr-btn-info scroll-to nolink" 
+data-target="App">scroll to top</button>
+</div>
+
+
 <footer class="lr-container">
 	<div class="lr-padding-10 bg-grey-green">
 		<div class="lr-panel bg-whitesmoke">
@@ -428,35 +435,38 @@ openweathermap.org, 5 day weather forecast</a></li>
 	</div>
 </footer>
 
-<!-- ********************** load progress bar ************************** -->	
-<div id="wait" class="hide"></div>
-
-<div class="dm-overlay" id="win1">
+<!--  wait window -->	
+<div class="dm-overlay" id="modal-wait-window">
     <div class="dm-table">
+		<div class="dm-cell">
+			<div class="dm-modal">
+			
+				<p>please, wait...</p>
+				<div class="loader loader2"></div>
+				
+				<div id="load-progress" class="lr-margin-top-10">
+					<div class="">
+						<span id="percent-complete"></span>
+					</div>
+					<div class="progress">
+						<div id="load-progress-bar" class="determinate"></div>
+					</div>
 
-        <div class="dm-cell">
-            <div class="dm-modal">
-                <h1 class="text-center">wait...</h1>
-
-				<div class="loader loader2"></div> 
-<div id="load-progress">				
-ajax load: <span id="num-total-load"></span>
-	<div class="progress">
-		<div id="load-progress-bar" class="progress-bar hide"></div>
-	</div>
-</div>
-<!--
-prepare data:
-	<div class="progress">
-		<div id="parse-progress-bar" class="progress-bar"></div>
-	</div>
+					<div>
+Loaded <span id="num-loaded"></span> bytes 
+<!-- 
+of total <span id="num-total-load"></span>
+( <span id="total-mb"></span> Mb) 
 -->
-			</div>
+					</div>
+
+				</div>
+			
+			</div><!-- end dm-modal -->
+				
 		</div>
-
-    </div>
+	</div>
 </div>
-
 
 <!-- ********************** TEMPLATES ************************** -->	
 <span id="tpl-yandex--weather" class="hidden">
