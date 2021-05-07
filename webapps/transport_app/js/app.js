@@ -62,6 +62,8 @@ function _transport_api(){
 		//"dataUrl" : "data/2019-04-26.xml",
 		//"dataUrl" : "v1/data/2019-04-26.json",
 		//"dataUrl" : "files/test_ya_schedule.json",
+		//"dataUrl" : "files/test_ya_schedule_error.json",
+		
 /*
 		"dataUrl" : "https://cors-anywhere.herokuapp.com/\
 https://api.rasp.yandex.net/v3.0/search/?\
@@ -976,7 +978,7 @@ function defineEvents(){
 //console.log( "preventDefault: " + event.preventDefault );
 		if( target.tagName === "A"){
 			
-			if ( target.href.indexOf("#") !== -1){
+			if ( target.href.indexOf("#change-direction") !== -1){
 				if (event.preventDefault) { 
 					event.preventDefault();
 				} else {
