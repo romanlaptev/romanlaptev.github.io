@@ -42,6 +42,7 @@ console.log("init webapp!");
 
 		this["vars"]["tab-transport"] = webApp.vars.App.querySelector("#tab-transport");
 		this["vars"]["tab-weather"] = webApp.vars.App.querySelector("#tab-weather");
+		this["vars"]["tab-info"] = webApp.vars.App.querySelector("#tab-info");
 		this["vars"]["tab-buttons"] = webApp.vars.App.querySelectorAll("#tab-buttons .tab-btn");
 		
 		
@@ -169,6 +170,7 @@ https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951e
 		webApp.vars["transportAPI"].selectTo = func.getById("select-to-title");
 
 		webApp.vars["transportAPI"]["dateWidget"] = webApp.vars.App.querySelector("#date-widget");
+		webApp.vars["transportAPI"]["btnDir"] = webApp.vars.App.querySelector("a[href='#change-direction']");
 
 		initTransportFields({
 			"from_code": webApp.vars["transportAPI"]["requestParams"]["from_code"],
@@ -181,19 +183,50 @@ https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951e
 		webApp.vars["transportAPI"]["dataProcess"] = _dataProcess;
 		
 		
+//------------------		
 		webApp.vars["transportAPI"]["selectFrom"].addEventListener("change", function(e){
-console.log(e.target);
+//console.log(e.target);
 			var code = e.target.selectedOptions[0].value;
 			webApp.vars["transportAPI"].inputFrom.value = code;
+			//webApp.vars["transportAPI"]["requestParams"]["from_code"] = code;
+			
+			if( webApp.vars["transportAPI"].inputFrom.value === webApp.vars["transportAPI"].inputTo.value){
+				webApp.vars["transportAPI"].inputTo.value = "";
+				webApp.vars["transportAPI"].selectTo.selectedIndex = 0;
+			}
 		});//end event
 		
+//------------------		
 		webApp.vars["transportAPI"]["selectTo"].addEventListener("change", function(e){
 			var code = e.target.selectedOptions[0].value;
 			webApp.vars["transportAPI"].inputTo.value = code;
+			//webApp.vars["transportAPI"]["requestParams"]["to_code"] = code;
+			
+			if( webApp.vars["transportAPI"].inputTo.value === webApp.vars["transportAPI"].inputFrom.value){
+				webApp.vars["transportAPI"].inputFrom.value = "";
+				webApp.vars["transportAPI"].selectFrom.selectedIndex = 0;
+			}
 		});//end event
 		
+//------------------		
 		webApp.vars["transportAPI"]["dateWidget"].addEventListener("change", function(e){
-console.log(e.type);
+//console.log(e.type, e.target);
+			webApp.vars["transportAPI"]["requestParams"]["date"] = e.target.value;
+		});//end event
+		
+//------------------		
+		webApp.vars["transportAPI"]["btnDir"].addEventListener("click", function(e){
+//console.log(e.type, e.target);
+			var codeFromIndex = webApp.vars["transportAPI"].selectFrom.selectedIndex;
+			var codeFrom = webApp.vars["transportAPI"].selectFrom.selectedOptions[0].value;
+			
+			var codeToIndex = webApp.vars["transportAPI"].selectTo.selectedIndex;
+			var codeTo = webApp.vars["transportAPI"].selectTo.selectedOptions[0].value;
+			
+			webApp.vars["transportAPI"].selectFrom.selectedIndex = codeToIndex;
+			webApp.vars["transportAPI"].inputFrom.value = codeTo;
+			webApp.vars["transportAPI"].selectTo.selectedIndex = codeFromIndex;
+			webApp.vars["transportAPI"].inputTo.value = codeFrom;
 		});//end event
 
 	};//_transport_api()
@@ -302,7 +335,8 @@ console.log(e.type);
 //console.log(_d);
 			var _d_format = func.convertDateToStr({
 				"dateObj": _d,
-				"format": "dd full-month hh:min"
+				//"format": "dd full-month hh:min"
+				"format": "hh:min"
 			});
 //console.log(_d_format);			
 			record["departure"] = _d_format;
@@ -310,7 +344,7 @@ console.log(e.type);
 			var _d = new Date( record["arrival"] );
 			var _d_format = func.convertDateToStr({
 				"dateObj": _d,
-				"format": "dd full-month hh:min"
+				"format": "hh:min"
 			});
 			record["arrival"] = _d_format;
 		}//next
@@ -941,6 +975,15 @@ function defineEvents(){
 //console.log( event.eventPhase );
 //console.log( "preventDefault: " + event.preventDefault );
 		if( target.tagName === "A"){
+			
+			if ( target.href.indexOf("#") !== -1){
+				if (event.preventDefault) { 
+					event.preventDefault();
+				} else {
+					event.returnValue = false;				
+				}
+			}
+			
 			if ( target.href.indexOf("?q=") !== -1){
 				
 				if (event.preventDefault) { 
@@ -992,11 +1035,12 @@ function _urlManager( target ){
 			case "switch-tab":
 				webApp.vars["tab-transport"].classList.remove("tab-active");
 				webApp.vars["tab-weather"].classList.remove("tab-active");
+				webApp.vars["tab-info"].classList.remove("tab-active");
 				
 				var activePaneId = webApp.vars["GET"]["target_id"];
 				webApp.vars[activePaneId].classList.add("tab-active");
 				
-//console.log(target);
+console.log(target);
 				for(var n = 0; n < webApp.vars["tab-buttons"].length; n++){
 					var btn = webApp.vars["tab-buttons"][n];
 					btn.classList.remove("btn-active");
@@ -1017,6 +1061,11 @@ func.logAlert(webApp.logMsg, "error");
 				}
 				if( apiType === "transport"){
 					apiObj = webApp.vars["transportAPI"];
+var code = webApp.vars["transportAPI"].inputFrom.value;
+webApp.vars["transportAPI"]["requestParams"]["from_code"] = code;
+			
+var code = webApp.vars["transportAPI"].inputTo.value;
+webApp.vars["transportAPI"]["requestParams"]["to_code"] = code;
 				}
 				
 				if( apiType === "weather"){
@@ -1073,7 +1122,6 @@ func.logAlert(webApp.logMsg, "error");
 if( webApp["vars"]["waitWindow"] ){
 	webApp["vars"]["waitWindow"].style.display="block";
 }
-
 //---------------------- test wait window
 /*
 var totalBytes = 516800;
@@ -1103,7 +1151,7 @@ var interval = setInterval(function(){
 
 }, 500);
 
-return;
+return false;
 */
 //----------------------
 			
@@ -1124,6 +1172,7 @@ console.log("-- start server request --");
 //var logMsg = "end parse ajax response";
 //func.logAlert( logMsg, "info");
 						}
+						
 						if( responseData ){
 							drawResponse({
 								data: responseData,
@@ -1142,6 +1191,11 @@ console.log("-- end server request --");
 
 					}//end callback
 				});
+				
+				//hide block overlay and wait window
+				if( webApp["vars"]["waitWindow"] ){
+					webApp["vars"]["waitWindow"].style.display="none";
+				}
 
 			break;
 			
@@ -1178,9 +1232,15 @@ func.logAlert(webApp.logMsg, "error");
 
 	var dataUrl = p["dataUrl"];
 	for(var key in p.requestParams){
+		if( !p.requestParams[key]){
+webApp.logMsg = "error, undefined requestParams <b>" + key + "</b>";
+func.logAlert(webApp.logMsg, "error");
+			return false;
+		}
 		dataUrl = dataUrl.replace( new RegExp("{{"+key+"}}", "g"), p.requestParams[key] );
 	}//next
 //console.log( dataUrl );		
+//return false;
 
 	try{
 		var xhr = new XMLHttpRequest();

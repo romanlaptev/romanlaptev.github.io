@@ -907,10 +907,16 @@ padding: 10px;
 .lr-flex-wrap {	flex-wrap: wrap;}
 .lr-flex-hcenter, .lr-flex-h-center{	justify-content:center;}
 .lr-flex-hbetween{	justify-content:space-between;}
+.lr-flex-hstart{justify-content:start;}
 .lr-flex-h-end{	justify-content:end;}
 .lr-flex-vcenter, .lr-flex-v-center{ align-items:center;}
 .lr-flex-v-top{	align-items: start;}
 .lr-flex-v-end{	align-items: end;}
+
+
+.lr-tab-pane, .tab-pane {display:none;}
+.lr-tab-active, .tab-active {display:block !important;}
+
 
 /*====== GRID =======*/
 @supports (display: grid) {

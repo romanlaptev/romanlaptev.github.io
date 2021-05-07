@@ -26,8 +26,9 @@
 	
 	<link type="text/css" rel="stylesheet" href="css/lr.css">
 	<link type="text/css" rel="stylesheet" href="css/custom.css">
-	
+<!--	
 	<script src="../../js/jquery.min.js"></script>
+-->	
 	<script src="js/functions.js"></script>
 	<script src="js/app.js"></script>
 
@@ -54,6 +55,11 @@ href="?q=switch-tab&target_id=tab-transport">Транспорт</a>
 	<li>
 <a class="tab-btn lr-padding-20 w10 color-white" 
 href="?q=switch-tab&target_id=tab-weather">Погода</a>
+	</li>
+	
+	<li>
+<a class="tab-btn lr-padding-20 w10 color-white" 
+href="?q=switch-tab&target_id=tab-info">info</a>
 	</li>
 			</ul>
 		</div>
@@ -84,7 +90,7 @@ autocomplete="off">
 	<div class="lr-margin-10">
 <br>
 <br>
-<a href="?q=change-direction" class="lr-padding-20 bg-orange arrows" title="change direction"></a>
+<a href="#change-direction" class="lr-padding-20 bg-orange arrows" title="change direction"></a>
 	</div>
 	
 	<div class="lr-margin-10">
@@ -121,8 +127,8 @@ class="send-request lr-padding-20 bg-darkblue color-white">получить сп
 	<div class="lr-panel-body" id="response-transport-api"></div>
 	
 <!-- transport templates -->
-	<span id="tpl-copyright">{{content}}</span>
-	<span id="tpl-copyright-content">
+	<span id="tpl-copyright" class="hidden">{{content}}</span>
+	<span id="tpl-copyright-content" class="hidden">
 {{logo_hy}}
 <!--
 <p>{{text}}</p>
@@ -144,12 +150,10 @@ class="send-request lr-padding-20 bg-darkblue color-white">получить сп
 	search.to.code: <b>%search.to.code%</b>,
 	search.to.codes.esr: <b>%search.to.codes.esr%</b>
 -->
-		</div>
-		<div class="text-left">
-			<small>дата списка рейсов: <b>%search.date%</b></small>
+<p><small>дата списка рейсов: <b>%search.date%</b></small></p>
 		</div>
 		
-		<div>
+		<div class="lr-flex lr-flex-wrap lr-flex-hcenter">
 %segments%		
 		</div>
 	</div>
@@ -157,135 +161,38 @@ class="send-request lr-padding-20 bg-darkblue color-white">получить сп
 	</span>
 	
 	<span id="segments-list-tpl--transport" class="hidden">
-<div class="bg-lavender lr-margin-top-20 lr-padding-10">
-<h3>record: %record_num%</h3>
+<div class="bg-lavender lr-margin-10 lr-padding-10">
 
+<!--
+<h3>record: %record_num%</h3>
 <div>дата отправления рейса: <b>%segments.start_date%</b></div>
 <div>
 	<p>%segments.thread.transport_subtype.title%, N:<b>%segments.thread.number%</b></p>
 	<p>%segments.from.station_type_name% <b>%segments.from.title%</b> -
 	%segments.to.station_type_name% <b>%segments.to.title%</b></p>
 </div>
-		<ul>
-			<li>время отправления: <b>%segments.departure%</b></li>
-			<li>время прибытия: <b>%segments.arrival%</b></li>
-			<li>продолжительность рейса: <b>%segments.duration%</b> мин.</li>
-			<li>остановки: <b>%segments.stops%</b></li>
+-->
+	<div class="">
+		<div class="text-center">
+			<img src="img/directions_transit_24px.svg" class="icon-train _filter-green"/>
+		</div>
+		<ul class="lr-list-unstyled">
+			<li><small>отправление</small>: <b>%segments.departure%</b></li>
+			<li><small>в пути</small>: <b>%segments.duration%</b> мин.</li>
+			<li><small>прибытие</small>: <b>%segments.arrival%</b></li>
+			<li><small>остановки</small>: <b>%segments.stops%</b></li>
 		</ul>
+	</div>
+<!--
 	<p>электронный билет: <b>%segments.tickets_info.et_marker%</b></p>
+-->
 	<div>%places%</div>
 </div>
 	</span>
 
 	<span id="tpl--segments-tickets_info-places" class="hidden">
-цена билета: <b>%places.price.whole%</b> %places.currency%
+<small>цена билета</small>: <b>%places.price.whole%</b> %places.currency%
 	</span>
-	
-<!--
-	<span id="tpl-schedule-table">
-<table class="table table-bordered">
-
-	<thead>
-		<tr class="list-header success">
-			<th>​</th>
-			<th class="text-center">​​​​​номер и название транспорта</th>
-			<th class="text-center">отправление</th>
-			<th class="text-center">время в пути</th>
-			<th class="text-center">прибытие</th>
-			<th class="text-center">стоимость билета</th>
-		</tr>
-	</thead>
-	
-	<tbody>
-{{list}}		
-	</tbody>
-</table>
-	</span>
-	
-	<span id="tpl-schedule-table--tr">
-		<tr>
-			<td class="">
-<figure class="TransportIcon_type_suburban" aria-label="электричка">
-	<svg class="TransportIcon__icon">
-	
-		<path fill-rule="evenodd" clip-rule="evenodd" 
-d="M10.7 3.2L11.8 1H13V.5c0-.3-.2-.5-.5-.5h-9c-.3 0-.5.2-.5.5V1h1.2l1.1 2.2C2.2 3.6 0 4.7 0 6v11c0 .6.4 1 1 1h14c.6 0 1-.4 1-1V6c0-1.3-2.2-2.4-5.3-2.8zM10.5 1l-1 2.1C9 3 8.5 3 8 3s-1 0-1.5.1L5.5 1h5zM9 6c0 .6-.4 1-1 1s-1-.4-1-1 .4-1 1-1 1 .4 1 1zM5 16H2v-2h3v2zm9 0h-3v-2h3v2zm0-4H2V8h12v4zM3 21h.8l-1.5 3h1.9l1.5-3h4.6l1.5 3h2l-1.5-3h.7c1.1 0 2-.9 2-2H1c0 1.1.9 2 2 2z">
-		</path>
-	</svg>
-</figure>
-			</td>
-		
-			<td class="">
-<div class="SegmentTitle">
-	<span class="SegmentTitle__number">{{thread_number}}</span>
-	<span class="SegmentTitle__title">{{thread_title}}</span>
-	<p class="SegmentTransport">{{carrier_title}}</p>
-</div>
-			</td>
-			
-			<td>
-<div class="Segment__dateTime Time_important">
-	<div class="Segment__date">{{departure_day}}</div>
-	<span class="Segment__time">{{departure_time}}</span>
-</div>
-<span class="Segment__stations">{{from_title}}</span>
-<div class="Segment__stops">остановки: {{stops}}</div>
-			</td>
-			
-			<td>{{duration}} мин.</td>
-			
-			<td>
-<div class="Segment__dateTime Time_important">
-	<div class="Segment__date">{{arrival_day}}</div>
-	<span class="Segment__time">{{arrival_time}}</span>
-</div>
-<span class="Segment__stations">{{to_title}}</span>
-			</td>
-			
-			<td>{{price_whole}} {{0_currency}}</td>
-		</tr>
-	</span>
--->
-
-<!--
-	<span id="tpl-schedule-mobile">
-<div class="schedule-block-mobile">{{list}}</div>
-	</span>
-	
-	<span id="tpl-schedule-mobile--record">
-		<div class="lr-panel">
-			<div class="lr-panel-body">
-				<div class="SegmentTitle">
-					<span class="SegmentTitle__number">{{thread_number}}</span>
-					<span class="SegmentTitle__title">{{thread_title}}</span>
-					<p class="SegmentTransport">{{carrier_title}}</p>
-				</div>
-
-				<div><i>отправление</i>:
-					<span class="Segment__dateTime Time_important">
-						<span class="Segment__date">{{departure_day}}, </span>
-						<span class="Segment__time">{{departure_time}} </span>
-					</span>
-					<span class="Segment__stations">{{from_title}}</span>
-				</div>
-							
-				<div><i>остановки</i>:<span class="Segment__stops">{{stops}}</span></div>
-				<div><i>время в пути</i>: <span class="Segment__duration">{{duration}} мин.</span></div>
-
-				<div><i>прибытие</i>:
-					<span class="Segment__dateTime Time_important">
-						<span class="Segment__date">{{arrival_day}}, </span>
-						<span class="Segment__time">{{arrival_time}} </span>
-					</span>
-					<span class="Segment__stations">{{to_title}}</span>
-				</div>			
-							
-				<div><i>билет</i>: {{price_whole}} {{0_currency}}</div>
-			
-			</div>
-		</div>
-	</span>
--->	
 </div>
 
 				</div>
@@ -297,7 +204,7 @@ d="M10.7 3.2L11.8 1H13V.5c0-.3-.2-.5-.5-.5h-9c-.3 0-.5.2-.5.5V1h1.2l1.1 2.2C2.2 
 				
 				<div class="tab-header lr-lr-page-heading lr-padding-20 bg-darkblue-green">
 <h1 class="color-white text-right">данные погоды и прогноз</h1>
-		<div class="lr-panel-inline lr-border-box lr-border-cyan text-left">
+					<div class="lr-panel-inline lr-border-box lr-border-cyan text-left">
 <form name="form_request_params">
 			<div class="lr-panel-body">
 <!--
@@ -368,7 +275,7 @@ API address:
 			</div>
 			
 </form><!-- end form_request_params -->
-
+					</div>
 				</div><!-- end tab-header -->
 				
 				<div class="lr-panel-body">
@@ -376,36 +283,8 @@ API address:
 				</div>
 				
 			</div><!-- end tab-weather -->
-			
 
-		</div><!-- end tab-content -->
-	</div><!-- end panel -->
-	
-
-	<div class="log-panel panel">
-		<div class="float-right">
-			<a href="?q=toggle-log" title="Toggle log" class="lr-btn lr-btn-default">-</a>
-			<a href="?q=clear-log" title="Clear log" class="lr-btn lr-btn-default">x</a>
-		</div>
-		<div id="log" class="lr-panel-body lr-row"></div>
-	</div>
-
-</div><!-- end App container -->
-
-
-<div class="">
-	<button id="btn-scroll-to-top" 
-class="lr-btn lr-btn-info scroll-to nolink" 
-data-target="App">scroll to top</button>
-</div>
-
-
-<footer class="lr-container">
-	<div class="lr-padding-10 bg-grey-green">
-		<div class="lr-panel bg-whitesmoke">
-			<span id="block-copyright"></span>			
-		</div>
-
+			<div id="tab-info" class="tab-pane lr-panel bg-snow">
 		<div class="lr-padding-small bg-floralwhite">
 			<ul class="list-inline">
 <li><a href="https://rasp.yandex.ru/search/suburban/?fromName=%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D0%B8%D0%B1%D0%B8%D1%80%D1%81%D0%BA-%D0%B2%D0%BE%D1%81%D1%82%D0%BE%D1%87%D0%BD%D1%8B%D0%B9&toName=%D0%A0%D0%B0%D0%B7%D0%B4%D0%BE%D0%BB%D1%8C%D0%B5+(3362+%D0%BA%D0%BC)&fromId=s9610190&toId=s9610235&when=26+%D0%B0%D0%BF%D1%80%D0%B5%D0%BB%D1%8F&gone=y" target="_blank">rasp.yandex.ru</a></li>
@@ -430,7 +309,37 @@ openweathermap.org, 5 day weather forecast</a></li>
 
 
 			</ul>
-				
+		</div>
+			</div><!-- end tab-info -->
+
+		</div><!-- end tab-content -->
+		
+		
+	</div><!-- end panel -->
+	
+
+	<div class="log-panel panel">
+		<div class="float-right">
+			<a href="?q=toggle-log" title="Toggle log" class="lr-btn lr-btn-default">-</a>
+			<a href="?q=clear-log" title="Clear log" class="lr-btn lr-btn-default">x</a>
+		</div>
+		<div id="log" class="lr-panel-body lr-row"></div>
+	</div>
+
+</div><!-- end App container -->
+
+<!--
+<div class="">
+	<button id="btn-scroll-to-top" 
+class="lr-btn lr-btn-info scroll-to nolink" 
+data-target="App">scroll to top</button>
+</div>
+-->
+
+<footer class="lr-container">
+	<div class="lr-padding-10 _bg-grey-green">
+		<div class="lr-panel bg-whitesmoke">
+			<span id="block-copyright"></span>			
 		</div>
 	</div>
 </footer>
