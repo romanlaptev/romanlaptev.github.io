@@ -1,14 +1,3 @@
-.lr-flex-hstart{
-	justify-content:start;
-}
-
-.lr-tab-pane, .tab-pane {
-display:none;
-}
-
-.lr-tab-active, .tab-active {
-display:block !important;
-}
 
 .lr-btn-active, .btn-active {
 background-color: #1e90ff !important;
@@ -28,4 +17,13 @@ background-color: #1e90ff !important;
 	/* background-size: contain; */
 	background-size: 100%;
 	padding: 20px 30px;
+}
+
+.icon-train {
+	/*height: 30px;*/
+	width: 30%;
+	/*color: #1dc11d;*/
+}
+.filter-green{
+    filter: invert(85%) sepia(32%) saturate(6425%) hue-rotate(66deg) brightness(81%) contrast(104%);
 }
