@@ -206,6 +206,52 @@ class="send-request lr-padding-20 bg-darkblue color-white">получить сп
 <h1 class="color-white text-right">данные погоды и прогноз</h1>
 					<div class="lr-panel-inline lr-border-box lr-border-cyan text-left">
 <form name="form_request_params">
+
+			<div class="lr-panel-body lr-flex lr-flex-wrap">
+					
+					<div class="lr-margin-small">
+<label class="bg-floralwhite lr-padding-small">широта 
+<small>(90...-90 deg./град.)</small>
+</label><br>
+<input id="latitude-input" type="text"
+name="coord_lat" 
+value="0" autocomplete="off" placeholder=""><br>
+<input id="latitude-range" type="range" 
+class="range" min="-90" max="90" step="0.05" value="" autocomplete="off">
+					</div>
+					
+					
+					
+					<div class="lr-margin-small">
+<label class="bg-floralwhite lr-padding-small">долгота 
+<small>(-180...180 deg./град.)</small>
+</label><br>
+<input id="longitude-input" 
+name="coord_long" 
+type="text" value="-60" autocomplete="off" placeholder=""><br>
+<input id="longitude-range" 
+type="range" class="range" min="-180" max="180" step="0.05" value="" autocomplete="off">
+					</div>
+			
+				<div class="text-center lr-padding-small">
+<label class="color-white">get coordinates by selected address</label><br>
+<select name="address">
+	<option value="addr1">address1</option>
+	<option value="addr2">address2</option>
+	<option value="addr3">address3</option>
+</select>
+				</div>
+
+				<div class="text-center lr-padding-small">
+<label class="color-white">API address:</label><br>
+<select name="api-addr">
+	<option value="yandex.ru/pogoda/novosibirsk">Яндекс.Погода</option>
+	<option value="openweathermap.org">openweathermap.org</option>
+</select>
+				</div>
+
+			</div>
+
 			<div class="lr-panel-body">
 <!--
 <input type="text" size="80" 
@@ -222,58 +268,7 @@ class="lr-btn bg-darkblue text-white">get weather (openweathermap)</a>
 class="lr-btn bg-blue text-white">get weather forecast (openweathermap)</a>
 
 <a href="?q=test&func=testWrapDate" class="lr-btn bg-orange text-black">testBtn</a>
-			</div>
-
-			<div class="lr-panel-body">
-				<div class="row panel">
-					
-					<div class="lr-margin-small">
-<small>Latitude <mark class="bg-lavender lr-padding-small">(широта), 90...-90 deg./град.</mark>:</small> 
-					</div>
-					<div class="">
-<input id="latitude-input" type="text"
-name="coord_lat" 
-value="0" autocomplete="off" placeholder="">
-<input id="latitude-range" type="range" 
-class="range" min="-90" max="90" step="0.05" value="" autocomplete="off">
-					</div>
-					
-				</div>
-					
-				<div class="">
-					
-					<div class="lr-margin-small">
-<small>Longitude <mark class="bg-lavender lr-padding-small">(долгота), -180...180 deg./град.</mark>:</small> 
-					</div>
-					<div class="">
-<input id="longitude-input" 
-name="coord_long" 
-type="text" value="-60" autocomplete="off" placeholder="">
-<input id="longitude-range" 
-type="range" class="range" min="-180" max="180" step="0.05" value="" autocomplete="off">
-					</div>
-					
-				</div>
-				
-			</div>
-			
-			<div class="">
-select address for get coordinates:
-<select name="address">
-	<option value="addr1">address1</option>
-	<option value="addr2">address2</option>
-	<option value="addr3">address3</option>
-</select>
-			</div>
-			
-			<div>
-API address:
-<select name="api-addr">
-	<option value="yandex.ru/pogoda/novosibirsk">Яндекс.Погода</option>
-	<option value="openweathermap.org">openweathermap.org</option>
-</select>
-			</div>
-			
+			</div>			
 </form><!-- end form_request_params -->
 					</div>
 				</div><!-- end tab-header -->
@@ -423,8 +418,8 @@ of total <span id="num-total-load"></span>
 	
 	<div class="lr-panel">
 
-<p>восход: <b>%forecast.sunrise%</b>, закат: <b>%forecast.sunset%</b><p>
-<p>Код фазы Луны: <b>%forecast.moon_code%</b><p>
+<p>восход: <b>%forecast.sunrise%</b>, закат: <b>%forecast.sunset%</b></p>
+<p>Код фазы Луны: <b>%forecast.moon_code%</b></p>
 
 		<div class="lr-margin-small lr-padding-20">
 %parts%
@@ -538,58 +533,71 @@ geo longitude: <b>%coord.lon%</b>
 https://openweathermap.org/forecast5#geo5
 
 -->
-	<span id="tpl-openweathermap--forecast" class="hidden">
-		<h2>Forecast</h2>
-		
+<span id="tpl-openweathermap--forecast" class="hidden">
+	<div class="lr-margin-20">
+		<h2>прогноз на 5 дней</h2>
+	</div>
 <!--
 <p>
 cod: <b>%cod%</b>, message: <b>%message%</b>
 </p>
 -->
 		
-		<ul class="lr-list bg-silver-f1 lr-margin-20 lr-padding-20">
-					
-<p>
-geo latitude: <b>%city.coord.lat%</b>, 
-geo longitude: <b>%city.coord.lon%</b>
+	<div class="bg-whitesmoke lr-margin-20 lr-padding-20">
+<p class="lr-margin-0">
+<b>%city.name%</b>, <b>%city.country%</b>, 
+широта: <b>%city.coord.lat%</b>, 
+долгота: <b>%city.coord.lon%</b>
 </p>
-			
-			<li>city.country: <b>%city.country%</b></li>
-			<li>city.name: <b>%city.name%</b></li>
+<!--
 			<li>city.population: <b>%city.population%</b></li>
-			<li>city.timezone: <b>%city.timezone%</b></li>
-			<li>city.sunrise: <b>%city.sunrise%</b></li>
-			<li>city.sunset: <b>%city.sunset%</b></li>
-		</ul>
+-->
+<p class="lr-margin-0">
+часовой пояс: <b>%city.timezone%</b>
+</p>
+<p class="lr-margin-0">
+восход: <b>%city.sunrise%</b>, 
+закат: <b>%city.sunset%</b>
+</p>
 		
-		<div>
+		<div class="lr-flex lr-flex-wrap lr-flex-hcenter">
 %list%
 		</div>
-
-	</span>
+	</div>
+</span>
 	
 <span id="tpl-openweathermap-forecast--list" class="hidden">
-	<ul class="lr-list bg-lavender lr-margin-20 lr-padding-20">
+	<div class="bg-lavender lr-margin-20 lr-padding-20">
+<!-- <h3>record: %record_num%</h3> -->
+<!-- <small>Time of data forecasted, ISO, UTC</small> -->
+
+		<div class="lr-flex lr-flex-hbetween">
+			<div>
+				<h3>%list.dt%</h3>
+				<h3>%list.sys.pod%</h3>
+			</div>
+%weather%		
+		</div>
 		
-<h3>record: %record_num%</h3>
-<li class="">dt_txt: 
-	<small>Time of data forecasted, ISO, UTC</small>
-	<b>%list.dt_txt%</b>
+		<ul class="lr-list-unstyled">
+<li class="">
+	<small>температура</small>: <b>%list.main.temp%</b> &#8451;, 
+	<small>ощущается как</small>: 
+	<b>%list.main.feels_like%</b> &#8451;
 </li>
-
-<li class="">visibility: 
-	<small>Average visibility</small>
-	<b>%list.visibility%</b> metres
+<li class="">
+	<small>мин. т.</small>: <b>%list.main.temp_min%</b> &#8451;, 
+	<small>макс. т.</small>: <b>%list.main.temp_max%</b> &#8451;
 </li>
-
-<li class="">clouds.all: 
-	<small>Cloudiness</small>
-	<b>%list.clouds.all%</b>%
+<li class="">
+	<small>давление</small>: <b>%list.main.pressure%</b> hPa, <b>%list.main.grnd_level%</b> hPa
 </li>
+<li class=""><small>влажность</small>: <b>%list.main.humidity%</b>%</li>
 
-<li class="">pop: 
-	<small>Probability of precipitation (возможность осадков)</small>
-	<b>%list.pop%</b>
+<li class=""><small>средняя видимость</small>: 	<b>%list.visibility%</b> метров</li>
+<li class="">
+	<small>облачность</small>: <b>%list.clouds.all%</b>%, 
+	<small>возможность осадков</small>: <b>%list.pop%</b>
 </li>
 <!--
 <li class="">rain: 
@@ -597,72 +605,25 @@ geo longitude: <b>%city.coord.lon%</b>
 	<b>%list.rain.3h%</b>mm
 </li>
 -->
-<li class="">pod: 
-	<small>Part of the day (n - night, d - day)</small>
-	<b>%list.sys.pod%</b>
+<li class=""><h4 class="lr-margin-0">ветер</h4> 
+	<small>направление</small>: <b>%list.wind.deg%</b>&deg;, 
+	<small>скорость</small>: <b>%list.wind.speed%</b> meter/sec
 </li>
-
-		<ul class="bg-floralwhite lr-margin-20 lr-padding-20">
-			<li class="">temp: <b>%list.main.temp%</b>&#8451;</li>
-			<li class="">feels_like: <b>%list.main.feels_like%</b>&#8451;</li>
-			<li class="">min: <b>%list.main.temp_min%</b>&#8451;</li>
-			<li class="">max: <b>%list.main.temp_max%</b>&#8451;</li>
-<li class="">pressure:
-	<small>Atmospheric pressure on the sea level by default</small>
-	<b>%list.main.pressure%</b> hPa
-</li>
-<li class="">sea_level:
-	<small>Atmospheric pressure on the sea level</small>
-	<b>%list.main.sea_level%</b> hPa
-</li>
-
-<li class="">grnd_level:
-	<small>Atmospheric pressure on the ground level</small>
-	<b>%list.main.grnd_level%</b> hPa
-</li>
-
-<li class="">humidity:
-	<small>Humidity</small>
-	<b>%list.main.humidity%</b>%
-</li>
+		
 		</ul>
 		
-		<ul class="bg-grey-green color-darkgreen lr-margin-20 lr-padding-20">
-%weather-forecast%
-%weather%
-		</ul>
-
-		<ul class="bg-lightgreen color-black lr-margin-20 lr-padding-20">
-<li class="">list.wind.deg: 
-	<small>Wind direction, degrees (meteorological)</small>
-	<b>%list.wind.deg%</b>&deg;
-</li>
-<li class="">list.wind.speed: 
-	<small>Wind speed:</small>
-	<b>%list.wind.speed%</b> meter/sec
-</li>
-		</ul>
-		
-	</ul>
+	</div>
 </span>
+
 
 <span id="tpl-openweathermap-forecast--list-weather" class="hidden">
-	<ul class="bg-powderblue lr-margin-small lr-padding-20">list.weather:
-		<li class="">main: 
-			<small>Group of weather parameters (Rain, Snow, Extreme etc.)</small>
-			<b>%list.weather.main%</b>
-		</li>
-		<li class="">description: 
-			<small>Weather condition within the group.</small>
-			<b>%list.weather.description%</b>
-		</li>
-		<li class="">icon: 
-			<small>Weather icon id</small>
-			<b>%list.weather.icon%</b>
-		</li>
-	</ul>
+	<div class="text-center w40">
+		<div class="">
+<img src="http://openweathermap.org/img/w/%weather.icon%.png">
+<p class="lr-margin-0"><b>%weather.description%</b></p>
+		</div>
+	</div>
 </span>
-
 
 
 </body>
