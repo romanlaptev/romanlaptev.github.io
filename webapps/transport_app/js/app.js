@@ -62,6 +62,8 @@ function _transport_api(){
 		//"dataUrl" : "data/2019-04-26.xml",
 		//"dataUrl" : "v1/data/2019-04-26.json",
 		//"dataUrl" : "files/test_ya_schedule.json",
+		//"dataUrl" : "files/test_ya_schedule_error.json",
+		
 /*
 		"dataUrl" : "https://cors-anywhere.herokuapp.com/\
 https://api.rasp.yandex.net/v3.0/search/?\
@@ -878,6 +880,49 @@ lat={{latitude}}\
 			}
 		};
 
+
+		var keyName = "list.dt";
+		templates["tplKeys"][keyName] = {
+			"type": "array_tpl_item",
+			"description": "date",
+			"formatDate": function(_timestamp){
+				var timeStr = func.timeStampToDateStr({
+					"timestamp": _timestamp,
+					"format": "dd full-month hh:min",
+					"s_case": true//subjective_case, именительный падеж
+				});
+				return timeStr;
+			},
+			"process": function( dataArr ){
+				for(var n = 0; n < dataArr.length; n++){
+					var _d = dataArr[n];
+					_d["dt"] = this["formatDate"]( _d["dt"] );
+				}//next
+			}
+		};
+
+		var keyName = "list.sys.pod";
+		templates["tplKeys"][keyName] = {
+			"type": "array_tpl_item",
+			"description": "select list",
+			"listValue": function(selectedOption){
+//Название времени суток
+var options = {
+"n": "ночь",
+"d": "день",
+};
+				return options[selectedOption];
+			},
+			"process": function( dataArr ){
+				for(var n = 0; n < dataArr.length; n++){
+					var _d = dataArr[n];
+					var selectedOption = _d["sys"]["pod"];
+					_d["sys"]["pod"] = this["listValue"]( selectedOption );
+				}//next
+			}
+		};
+
+
 		templates["mainTpl"] = templates["template-weather--openweathermap"];
 		return templates;
 	};//end _getTemplates()
@@ -946,6 +991,27 @@ if(jsonObj["city"]){
 			);
 		}
 }
+
+if(jsonObj["list"]){
+
+		var keyDataObj = jsonObj["list"];
+	
+		var tpl_keyName ="list.dt";
+		if( tplKeys[tpl_keyName] &&	
+				typeof tplKeys[tpl_keyName]["process"] === "function"	)
+		{
+			tplKeys[tpl_keyName]["process"]( keyDataObj );
+		}
+
+		var tpl_keyName ="list.sys.pod";
+//console.log(keyDataObj);
+		if( tplKeys[tpl_keyName] &&	
+				typeof tplKeys[tpl_keyName]["process"] === "function"	)
+		{
+			tplKeys[tpl_keyName]["process"]( keyDataObj );
+		}
+}
+
 	};//end _dataProcess()
 	
 	return _vars;
@@ -976,7 +1042,7 @@ function defineEvents(){
 //console.log( "preventDefault: " + event.preventDefault );
 		if( target.tagName === "A"){
 			
-			if ( target.href.indexOf("#") !== -1){
+			if ( target.href.indexOf("#change-direction") !== -1){
 				if (event.preventDefault) { 
 					event.preventDefault();
 				} else {
@@ -1098,6 +1164,9 @@ console.log( webApp.logMsg );
 					if( apiType === "forecast") {
 						dataUrl = apiObj["forecastUrl"];
 						apiObj.templates["mainTpl"] = apiObj.templates["tpl-openweathermap--forecast"];
+//console.log(apiObj);
+//fix					
+apiObj.templates["tplKeys"]["weather"]["listTpl"] = apiObj.templates["tplKeys"]["weather-forecast"]["listTpl"];
 					}
 				}
 //-------------------
@@ -1193,9 +1262,9 @@ console.log("-- end server request --");
 				});
 				
 				//hide block overlay and wait window
-				if( webApp["vars"]["waitWindow"] ){
-					webApp["vars"]["waitWindow"].style.display="none";
-				}
+				//if( webApp["vars"]["waitWindow"] ){
+					//webApp["vars"]["waitWindow"].style.display="none";
+				//}
 
 			break;
 			
