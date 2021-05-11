@@ -47,6 +47,15 @@ console.log("init webapp!");
 		
 		
 		webApp.vars["transportAPI"].init();
+		
+		webApp.vars["weatherAPI"]["selectAddr"] = func.getById("select-addr");
+		webApp.vars["weatherAPI"]["selectApiName"] = func.getById("select-api");
+		
+		webApp.vars["weatherAPI"]["latitudeInput"] = func.getById("latitude-input");
+		webApp.vars["weatherAPI"]["latitudeRange"] = func.getById("latitude-range");
+		webApp.vars["weatherAPI"]["longitudeInput"] = func.getById("longitude-input");
+		webApp.vars["weatherAPI"]["longitudeRange"] = func.getById("longitude-range");
+		
 		webApp.vars["weatherAPI"]["yandex"].init();
 		webApp.vars["weatherAPI"]["openweathermap"].init();
 
@@ -359,14 +368,14 @@ https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951e
 
 function _yandex_api(){
 	_vars = {
-		
+/*		
 		"dataUrl" : "https://romanlaptev-cors.herokuapp.com/\
 https://api.weather.yandex.ru/v2/informers?\
 lat={{latitude}}&\
 lon={{longitude}}&\
 lang=ru_RU",
-
-		//"dataUrl" : "files/test_ya_pogoda.json",
+*/
+		"dataUrl" : "files/test_ya_pogoda.json",
 		
 		"requestParams" : {
 			"apiKey" : "dab03f2c-c76d-4fb6-9445-faa84fa80973",
@@ -381,10 +390,17 @@ lang=ru_RU",
 	}//end _vars
 
 	_vars["init"] = function(){
+		
+		webApp.vars["weatherAPI"]["latitudeInput"].value = _vars["requestParams"]["latitude"];
+		webApp.vars["weatherAPI"]["latitudeRange"].value = _vars["requestParams"]["latitude"];
+		webApp.vars["weatherAPI"]["longitudeInput"].value = _vars["requestParams"]["longitude"];
+		webApp.vars["weatherAPI"]["longitudeRange"].value = _vars["requestParams"]["longitude"];
+		
 		webApp.vars["weatherAPI"]["yandex"]["targetContainer"] = func.getById("response-weather-api");
 		webApp.vars["weatherAPI"]["yandex"]["templates"] = _getTemplates();;
 		webApp.vars["weatherAPI"]["yandex"]["dataProcess"] = _dataProcess;
-	};
+		
+	};//end init()
 	
 	var _getTemplates = function(){
 
@@ -1072,6 +1088,44 @@ console.log( "Warn! error parse url in " + target.href );
 	});//end event
 	
 
+//------------------		
+	webApp.vars["weatherAPI"]["selectAddr"].addEventListener("change", function(e){
+//console.log(e.target);
+		var dataSet = e.target.selectedOptions[0].dataset;
+//console.log(dataSet);
+		webApp.vars["weatherAPI"]["latitudeInput"].value = dataSet.lat;
+		webApp.vars["weatherAPI"]["latitudeRange"].value = dataSet.lat;
+		
+		webApp.vars["weatherAPI"]["longitudeInput"].value = dataSet.lon;
+		webApp.vars["weatherAPI"]["longitudeRange"].value = dataSet.lon;
+		
+	});//end event
+
+//------------------		
+	webApp.vars["weatherAPI"]["selectApiName"].addEventListener("change", function(e){
+		var apiName = e.target.selectedOptions[0].value;
+console.log(apiName);
+	});//end event
+
+//------------------		
+	//webApp.vars["weatherAPI"]["latitudeRange"].addEventListener("change", function(e){
+//console.log(e.type, e.target);
+		//webApp.vars["weatherAPI"]["latitudeInput"].value = e.target.value;
+	//});//end event
+
+//------------------		
+	webApp.vars["weatherAPI"]["latitudeRange"].addEventListener("input", function(e){
+//console.log(e.type, e.target);
+		webApp.vars["weatherAPI"]["latitudeInput"].value = e.target.value;
+	});//end event
+
+//------------------		
+	webApp.vars["weatherAPI"]["longitudeRange"].addEventListener("input", function(e){
+//console.log(e.type, e.target);
+		webApp.vars["weatherAPI"]["longitudeInput"].value = e.target.value;
+	});//end event
+
+
 }//end defineEvents()
 
 
@@ -1106,7 +1160,7 @@ function _urlManager( target ){
 				var activePaneId = webApp.vars["GET"]["target_id"];
 				webApp.vars[activePaneId].classList.add("tab-active");
 				
-console.log(target);
+//console.log(target);
 				for(var n = 0; n < webApp.vars["tab-buttons"].length; n++){
 					var btn = webApp.vars["tab-buttons"][n];
 					btn.classList.remove("btn-active");
@@ -1127,20 +1181,22 @@ func.logAlert(webApp.logMsg, "error");
 				}
 				if( apiType === "transport"){
 					apiObj = webApp.vars["transportAPI"];
+/*					
 var code = webApp.vars["transportAPI"].inputFrom.value;
 webApp.vars["transportAPI"]["requestParams"]["from_code"] = code;
 			
 var code = webApp.vars["transportAPI"].inputTo.value;
 webApp.vars["transportAPI"]["requestParams"]["to_code"] = code;
+*/
 				}
 				
 				if( apiType === "weather"){
 					apiObj = webApp.vars["weatherAPI"];
-
 				}
 				if( apiType === "forecast"){
 					apiObj = webApp.vars["weatherAPI"];
 				}
+
 
 //-------------------
 				var apiName = webApp.vars["GET"]["api-name"];
@@ -1151,6 +1207,25 @@ console.log( webApp.logMsg );
 				} else{
 					apiObj = apiObj[apiName];
 				}
+
+//-------------------
+//console.log(apiObj);
+if( apiObj["requestParams"]["from_code"] ){
+	var code = webApp.vars["transportAPI"].inputFrom.value;
+	apiObj["requestParams"]["from_code"] = code;
+}
+if( apiObj["requestParams"]["to_code"] ){
+	var code = webApp.vars["transportAPI"].inputTo.value;
+	apiObj["requestParams"]["to_code"] = code;
+}
+if( apiObj["requestParams"]["latitude"] ){
+	apiObj["requestParams"]["latitude"] = webApp.vars["weatherAPI"]["latitudeInput"].value;
+}
+if( apiObj["requestParams"]["longitude"] ){
+	apiObj["requestParams"]["longitude"] = webApp.vars["weatherAPI"]["longitudeInput"].value;
+}
+//console.log(apiObj["requestParams"]);
+
 				
 				var dataUrl = apiObj["dataUrl"];
 				
