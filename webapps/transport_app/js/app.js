@@ -390,6 +390,12 @@ lang=ru_RU",
 	}//end _vars
 
 	_vars["init"] = function(){
+		
+		webApp.vars["weatherAPI"]["latitudeInput"].value = _vars["requestParams"]["latitude"];
+		webApp.vars["weatherAPI"]["latitudeRange"].value = _vars["requestParams"]["latitude"];
+		webApp.vars["weatherAPI"]["longitudeInput"].value = _vars["requestParams"]["longitude"];
+		webApp.vars["weatherAPI"]["longitudeRange"].value = _vars["requestParams"]["longitude"];
+		
 		webApp.vars["weatherAPI"]["yandex"]["targetContainer"] = func.getById("response-weather-api");
 		webApp.vars["weatherAPI"]["yandex"]["templates"] = _getTemplates();;
 		webApp.vars["weatherAPI"]["yandex"]["dataProcess"] = _dataProcess;
@@ -1083,25 +1089,16 @@ console.log( "Warn! error parse url in " + target.href );
 	
 
 //------------------		
-/*
-		webApp.vars["weatherAPI"]["latitudeInput"] = func.getById("latitude-input");
-		webApp.vars["weatherAPI"]["latitudeRange"] = func.getById("latitude-range");
-		webApp.vars["weatherAPI"]["longitudeInput"] = func.getById("longitude-input");
-		webApp.vars["weatherAPI"]["longitudeRange"] = func.getById("longitude-range");
-*/
 	webApp.vars["weatherAPI"]["selectAddr"].addEventListener("change", function(e){
 //console.log(e.target);
 		var dataSet = e.target.selectedOptions[0].dataset;
-console.log(dataSet);
-/*
-			webApp.vars["transportAPI"].inputFrom.value = code;
-			//webApp.vars["transportAPI"]["requestParams"]["from_code"] = code;
-			
-			if( webApp.vars["transportAPI"].inputFrom.value === webApp.vars["transportAPI"].inputTo.value){
-				webApp.vars["transportAPI"].inputTo.value = "";
-				webApp.vars["transportAPI"].selectTo.selectedIndex = 0;
-			}
-*/ 
+//console.log(dataSet);
+		webApp.vars["weatherAPI"]["latitudeInput"].value = dataSet.lat;
+		webApp.vars["weatherAPI"]["latitudeRange"].value = dataSet.lat;
+		
+		webApp.vars["weatherAPI"]["longitudeInput"].value = dataSet.lon;
+		webApp.vars["weatherAPI"]["longitudeRange"].value = dataSet.lon;
+		
 	});//end event
 
 //------------------		
@@ -1109,6 +1106,25 @@ console.log(dataSet);
 		var apiName = e.target.selectedOptions[0].value;
 console.log(apiName);
 	});//end event
+
+//------------------		
+	//webApp.vars["weatherAPI"]["latitudeRange"].addEventListener("change", function(e){
+//console.log(e.type, e.target);
+		//webApp.vars["weatherAPI"]["latitudeInput"].value = e.target.value;
+	//});//end event
+
+//------------------		
+	webApp.vars["weatherAPI"]["latitudeRange"].addEventListener("input", function(e){
+//console.log(e.type, e.target);
+		webApp.vars["weatherAPI"]["latitudeInput"].value = e.target.value;
+	});//end event
+
+//------------------		
+	webApp.vars["weatherAPI"]["longitudeRange"].addEventListener("input", function(e){
+//console.log(e.type, e.target);
+		webApp.vars["weatherAPI"]["longitudeInput"].value = e.target.value;
+	});//end event
+
 
 }//end defineEvents()
 
@@ -1165,20 +1181,22 @@ func.logAlert(webApp.logMsg, "error");
 				}
 				if( apiType === "transport"){
 					apiObj = webApp.vars["transportAPI"];
+/*					
 var code = webApp.vars["transportAPI"].inputFrom.value;
 webApp.vars["transportAPI"]["requestParams"]["from_code"] = code;
 			
 var code = webApp.vars["transportAPI"].inputTo.value;
 webApp.vars["transportAPI"]["requestParams"]["to_code"] = code;
+*/
 				}
 				
 				if( apiType === "weather"){
 					apiObj = webApp.vars["weatherAPI"];
-
 				}
 				if( apiType === "forecast"){
 					apiObj = webApp.vars["weatherAPI"];
 				}
+
 
 //-------------------
 				var apiName = webApp.vars["GET"]["api-name"];
@@ -1189,6 +1207,25 @@ console.log( webApp.logMsg );
 				} else{
 					apiObj = apiObj[apiName];
 				}
+
+//-------------------
+//console.log(apiObj);
+if( apiObj["requestParams"]["from_code"] ){
+	var code = webApp.vars["transportAPI"].inputFrom.value;
+	apiObj["requestParams"]["from_code"] = code;
+}
+if( apiObj["requestParams"]["to_code"] ){
+	var code = webApp.vars["transportAPI"].inputTo.value;
+	apiObj["requestParams"]["to_code"] = code;
+}
+if( apiObj["requestParams"]["latitude"] ){
+	apiObj["requestParams"]["latitude"] = webApp.vars["weatherAPI"]["latitudeInput"].value;
+}
+if( apiObj["requestParams"]["longitude"] ){
+	apiObj["requestParams"]["longitude"] = webApp.vars["weatherAPI"]["longitudeInput"].value;
+}
+//console.log(apiObj["requestParams"]);
+
 				
 				var dataUrl = apiObj["dataUrl"];
 				

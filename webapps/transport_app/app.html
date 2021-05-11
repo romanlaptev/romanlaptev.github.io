@@ -209,34 +209,39 @@ class="send-request lr-padding-20 bg-darkblue color-white">получить сп
 
 			<div class="lr-panel-body lr-flex lr-flex-wrap">
 					
-					<div class="lr-margin-small">
-<label class="bg-floralwhite lr-padding-small">широта 
-<small>(90...-90 deg./град.)</small>
-</label><br>
+					<div class="lr-margin-10 color-white">
+<label class="">широта</label><br>
 <input id="latitude-input" type="text"
 name="coord_lat" 
 value="0" autocomplete="off" placeholder=""><br>
+<div class="lr-flex lr-flex-vcenter">
+	<span>90&deg;</span>
 <input id="latitude-range" type="range" 
-class="range" min="-90" max="90" step="0.05" value="" autocomplete="off">
+class="range" min="-90" max="90" step="0.05" value="0" autocomplete="off">
+	<span>-90&deg;</span>
+</div>	
+
 					</div>
 					
-					
-					
-					<div class="lr-margin-small">
-<label class="bg-floralwhite lr-padding-small">долгота 
-<small>(-180...180 deg./град.)</small>
-</label><br>
+					<div class="lr-margin-10 color-white">
+<label class="">долгота</label><br>
 <input id="longitude-input" 
 name="coord_long" 
 type="text" value="-60" autocomplete="off" placeholder=""><br>
+<div class="lr-flex lr-flex-vcenter">
+	<span>-180&deg;</span>
 <input id="longitude-range" 
-type="range" class="range" min="-180" max="180" step="0.05" value="" autocomplete="off">
+type="range" class="range" min="-180" max="180" step="0.05" value="60" autocomplete="off">
+	<span>180&deg;</span>
+</div>	
+
 					</div>
 			
 				<div class="text-center lr-padding-small">
 <label class="color-white">get coordinates by selected address</label><br>
 <select name="address" id="select-addr" autocomplete="off">
-	<option value="nsk" data-lat="55.038115899999994" data-lon="83.0094459">Новосибирск</option>
+	<option data-lat="0" data-lon="60">не выбрано</option>
+	<option selected value="nsk" data-lat="55.038115899999994" data-lon="83.0094459">Новосибирск</option>
 	<option value="okt" data-lat="55.169005" data-lon="83.160846">пос.Октябрьский</option>
 </select>
 				</div>
