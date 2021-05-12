@@ -237,21 +237,26 @@ type="range" class="range" min="-180" max="180" step="0.05" value="60" autocompl
 
 					</div>
 			
-				<div class="text-center lr-padding-small">
-<label class="color-white">get coordinates by selected address</label><br>
+				<div class="text-center lr-padding-small w20">
+<label class="color-white">получить координаты по адресу</label><br>
+					<div class="lr-padding-small">
 <select name="address" id="select-addr" autocomplete="off">
 	<option data-lat="0" data-lon="60">не выбрано</option>
 	<option selected value="nsk" data-lat="55.038115899999994" data-lon="83.0094459">Новосибирск</option>
 	<option value="okt" data-lat="55.169005" data-lon="83.160846">пос.Октябрьский</option>
 </select>
+					</div>
 				</div>
 
 				<div class="text-center lr-padding-small">
-<label class="color-white">API address:</label><br>
-<select name="api-name" id="select-api" autocomplete="off">
-	<option value="yandex">Яндекс.Погода</option>
-	<option value="openweathermap">openweathermap.org</option>
+<label class="color-white">параметры API</label><br>
+					<div class="lr-padding-small">
+<select name="api-params" id="select-api" autocomplete="off">
+	<option data-name="yandex" data-type="weather">Яндекс.Погода</option>
+	<option data-name="openweathermap" data-type="weather">weather, openweathermap.org</option>
+	<option data-name="openweathermap" data-type="forecast">5 day weather forecast, openweathermap.org</option>
 </select>
+					</div>
 				</div>
 
 			</div>

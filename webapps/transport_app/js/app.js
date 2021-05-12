@@ -1103,8 +1103,8 @@ console.log( "Warn! error parse url in " + target.href );
 
 //------------------		
 	webApp.vars["weatherAPI"]["selectApiName"].addEventListener("change", function(e){
-		var apiName = e.target.selectedOptions[0].value;
-console.log(apiName);
+		var dataSet = e.target.selectedOptions[0].dataset;
+console.log(dataSet);
 	});//end event
 
 //------------------		
