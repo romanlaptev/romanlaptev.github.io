@@ -368,14 +368,14 @@ https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951e
 
 function _yandex_api(){
 	_vars = {
-/*		
+
 		"dataUrl" : "https://romanlaptev-cors.herokuapp.com/\
 https://api.weather.yandex.ru/v2/informers?\
 lat={{latitude}}&\
 lon={{longitude}}&\
 lang=ru_RU",
-*/
-		"dataUrl" : "files/test_ya_pogoda.json",
+
+		//"dataUrl" : "files/test_ya_pogoda.json",
 		
 		"requestParams" : {
 			"apiKey" : "dab03f2c-c76d-4fb6-9445-faa84fa80973",
@@ -1103,8 +1103,8 @@ console.log( "Warn! error parse url in " + target.href );
 
 //------------------		
 	webApp.vars["weatherAPI"]["selectApiName"].addEventListener("change", function(e){
-		var apiName = e.target.selectedOptions[0].value;
-console.log(apiName);
+		var dataSet = e.target.selectedOptions[0].dataset;
+console.log(dataSet);
 	});//end event
 
 //------------------		
