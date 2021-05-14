@@ -386,56 +386,68 @@ of total <span id="num-total-load"></span>
 
 <!-- ********************** TEMPLATES ************************** -->	
 <span id="tpl-yandex--weather" class="hidden">
-<div class="bg-lavender lr-padding-20">
-	<div class="lr-panel">
-		<p class="">
-			<small>Время замера погодных данных: <b>%fact.obs_time%</b></small>, 
-			<small>Время сервера: <b>%now%</b></small>, 
-			<a href="%info.url%">Яндекс.Погода</a>
-		</p>
-
-<p class="lr-margin-0">Широта: <b>%info.lat%</b>&deg;, долгота: <b>%info.lon%</b>&deg;</p>
-<p class="lr-margin-0"><b>%fact.season%</b>, <b>%fact.daytime%</b></p>
+	<div class="lr-flex">
+		<div class="bg-lavender lr-padding-20">
 			
-		<ul>
-			<li>температура: <b>%fact.temp%</b> °C</li>
-			<li>ощущаемая температура: <b>%fact.feels_like%</b> °C</li>
-			<li>температура воды: <b>%fact.temp_water%</b> °C</li>
-		</ul>
-
-		<div class="lr-flex lr-flex-vcenter">
-	<img class="w5" src="https://yastatic.net/weather/i/icons/blueye/color/svg/%fact.icon%.svg">
-	<p><b>%fact.condition%</b></p>
-		</div>
-			
-		<h3>ветер</h3>	
-		<ul>
-			<li>направление:<b>%fact.wind_dir%</b></li> 
-			<li>скорость: <b>%fact.wind_speed%</b> м/с</li> 
-			<li>скорость порывов: <b>%fact.wind_gust%</b> м/с</li>
-		</ul>
-
-		<p>
-			Влажность воздуха: <b>%fact.humidity%</b>%,  
-			давление: <b>%fact.pressure_mm%</b> мм рт.ст.
-		</p>
+<div class="lr-flex lr-flex-hbetween lr-flex-v-top">
+	<h3>погодные данные на <b>%fact.obs_time%</b></small></h3>
+	<div class="">
+		<a href="%info.url%">Яндекс.Погода</a>
 	</div>
 </div>
 
-<div class="bg-lightgreen lr-padding-20">
-	<h3>данные прогноза погоды на %forecast.date_ts%</h3>
-	
-	<div class="lr-panel">
 
+<p class="lr-margin-0">
+	<b>%fact.season%</b>, <b>%fact.daytime%</b>
+</p>
+
+			<div class="lr-flex lr-flex-vcenter">	
+				<div class="w50 text-center lr-padding-20">
+<img class="w50" src="https://yastatic.net/weather/i/icons/blueye/color/svg/%fact.icon%.svg">
+<br>
+<b>%fact.condition%</b>
+				</div>
+
+				<div class="w50">
+<p class="lr-margin-0">
+	<small>температура:</small> <b>%fact.temp%</b>°C, 
+	<small>ощущается как:</small>: <b>%fact.feels_like%</b> &#8451;, 
+	<small>вода:</small> <b>%fact.temp_water%</b> °C
+</p>
+
+<p class="lr-margin-0">
+	<small>направление ветра:</small> <b>%fact.wind_dir%</b>,  
+	<small>скорость:</small>: <b>%fact.wind_speed%</b> м/с, 
+	<small>порывы</small> <b>%fact.wind_gust%</b> м/с
+</p>
+
+<p class="lr-margin-0">
+	<small>Влажность воздуха:</small> <b>%fact.humidity%</b> %, 
+	<small>давление:</small> <b>%fact.pressure_mm%</b> мм рт. ст.
+</p>
+
+				</div>
+			</div>	
+				
+
+<p class="lr-margin-0">
+	<small>широта:</small> <b>%info.lat%</b>&deg;<br> 
+	<small>долгота:</small> <b>%info.lon%</b>&deg;<br>
+	<small>Время сервера: <b>%now%</b></small><br>
+</p>
+			
+		</div>
+
+		<div class="bg-lightgreen lr-padding-20">
+<h3>данные прогноза погоды на %forecast.date_ts%</h3>
 <p>восход: <b>%forecast.sunrise%</b>, закат: <b>%forecast.sunset%</b></p>
+<!--
 <p>Код фазы Луны: <b>%forecast.moon_code%</b></p>
-
-		<div class="lr-margin-small lr-padding-20">
-%parts%
+-->
+			<div class="lr-flex">%parts%</div>
 		</div>
-
+		
 	</div>
-</div>
 </span>
 
 
@@ -447,37 +459,48 @@ of total <span id="num-total-load"></span>
 		<b>%parts.part_name%</b>
 	</div>
 	
-	<ul>
-		<li>мин. температура: <b>%parts.temp_min%</b> °C</li>
-		<li>макс. температура: <b>%parts.temp_max%</b> °C</li>
-		<li>средняя температура: <b>%parts.temp_avg%</b> °C</li>
-		<li>ощущаемая температура: <b>%parts.feels_like%</b> °C</li>
-		<li>температура воды: <b>%parts.temp_water%</b> °C</li>
-	</ul>
+<div class="lr-flex">	
 	
-	<div class="lr-flex lr-flex-vcenter">
-<img class="w5" src="https://yastatic.net/weather/i/icons/blueye/color/svg/%parts.icon%.svg">
-<p><b>%parts.condition%</b></p>
+	<div class="text-center lr-padding-20">
+<img class="w50" src="https://yastatic.net/weather/i/icons/blueye/color/svg/%parts.icon%.svg">
+<br>
+<b>%parts.condition%</b>
+	</div>
+
+	<div>
+<h4>температура</h4>
+<p class="lr-margin-0">
+	<b>%parts.temp_min%</b> °C - <b>%parts.temp_max%</b> °C
+	<small>(<b>%parts.temp_avg%</b> °C)</small>
+</p>
+<p class="lr-margin-0">
+	<small>ощущается как</small>: <b>%parts.feels_like%</b> &#8451;
+</p>
+<p class="lr-margin-0">
+	<small>вода:</small>: <b>%parts.temp_water%</b> °C
+</p>
 	</div>
 	
-	<h3>ветер</h3>	
-	<ul>
-		<li>направление:<b>%parts.wind_dir%</b></li> 
-		<li>скорость: <b>%parts.wind_speed%</b> м/с</li> 
-		<li>скорость порывов: <b>%parts.wind_gust%</b> м/с</li>
-	</ul>
+</div>	
 
-	<p>
-		Влажность воздуха: <b>%parts.humidity%</b> %, 
-		давление: <b>%parts.pressure_mm%</b> мм рт. ст.
-	</p>
-	<p>
-		Прогноз осадков: <b>%parts.prec_mm%</b> (мм), 
+<p class="lr-margin-0">
+	<small>направление ветра:</small> <b>%parts.wind_dir%</b>,  
+	<small>скорость:</small>: <b>%parts.wind_speed%</b> м/с, 
+	<small>порывы</small> <b>%parts.wind_gust%</b> м/с
+</p>
+
+<p class="lr-margin-0">
+	<small>Влажность воздуха:</small> <b>%parts.humidity%</b> %, 
+	<small>давление:</small> <b>%parts.pressure_mm%</b> мм рт. ст.
+</p>
+<p class="lr-margin-0">
+	<small>Прогноз осадков:</small> <b>%parts.prec_mm%</b> (мм), 
 <!--
 	<li>prec_period: <b>%prec_period%</b>	<small>Прогнозируемый период осадков (в минутах). 	Число</small></li>
 -->
-		Вероятность выпадения осадков: <b>%parts.prec_prob%</b>
-	</p>
+	<small>Вероятность выпадения осадков:</small> <b>%parts.prec_prob%</b>
+</p>
+
 </div>
 </span><!-- end forecast-parts -->
 
