@@ -334,7 +334,7 @@ https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951e
 
 	
 	var _dataProcess = function(jsonObj){
-console.log(jsonObj);
+//console.log(jsonObj);
 //https://yandex.ru/dev/rasp/doc/reference/schedule-point-point.html#format
 
 		//response API about error
@@ -378,6 +378,7 @@ console.log(jsonObj);
 			record["arrival"] = _d_format;
 		}//next
 		
+		return true;
 	};//end _dataProcess()
 	
 	return _vars;
@@ -739,7 +740,8 @@ var options = {
 		if( tplKeys[tpl_keyName] &&	typeof tplKeys[tpl_keyName]["process"] === "function"	){
 			tplKeys[tpl_keyName]["process"]( keyDataObj );
 		}
-	
+
+		return true;
 	};//end _dataProcess()
 	
 	return _vars;
@@ -1046,6 +1048,7 @@ if(jsonObj["list"]){
 		}
 }
 
+		return true;
 	};//end _dataProcess()
 	
 	return _vars;
@@ -1667,8 +1670,7 @@ func.logAlert( webApp.vars["logMsg"], "error");
 	}
 	
 	if( p.apiObj.dataProcess && typeof p.apiObj.dataProcess === "function"){
-		var res = true;
-		res = p.apiObj.dataProcess( p.data );
+		var res = p.apiObj.dataProcess( p.data );
 	}
 	
 	if(!res){
