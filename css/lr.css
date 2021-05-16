@@ -1441,7 +1441,9 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-blue-gray{  background-color: #203040;}
 .bg-gray {background-color: #808080;}
 .bg-light-grey {background-color: #d3d3d3;}
+.bg-light-grey-b {background-color: #DEE2DE;}/*busybox.net*/
 .bg-very-light-grey {background-color: #E0E0E0;}
+
 
 .bg-color-test1BFBFBF { background:#BFBFBF;}  /*Серый, #BFBFBF */
 .bg-color-test1AFAFAF { background:#AFAFAF;}  /*Стальной, #AFAFAF */
@@ -2623,6 +2625,7 @@ body.page-green {
 		display: block;
 	}
 }
+
 
 @media screen and (max-width:479px){
 }

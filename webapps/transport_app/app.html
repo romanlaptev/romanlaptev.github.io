@@ -137,20 +137,20 @@ class="send-request lr-padding-20 bg-darkblue color-white">получить сп
 	</span>
 
 	<span id="tpl-yandex--transport" class="hidden">
-<div class="lr-panel lr-padding-20">
-	<div class="lr-panel-body bg-aliceblue">
-		<div class="lr-padding-20 text-center">
-	%search.from.station_type_name% <b>%search.from.title%</b> >>
+<div class="lr-panel">
+	<div class="lr-panel-body">
+		<div class="text-right">
 <!--
+	%search.from.station_type_name% <b>%search.from.title%</b> >>
 	search.from.code: <b>%search.from.code%</b>,
 	search.from.codes.esr: <b>%search.from.codes.esr%</b>
 -->
-	%search.to.station_type_name% <b>%search.to.title%</b>
 <!--
+	%search.to.station_type_name% <b>%search.to.title%</b>
 	search.to.code: <b>%search.to.code%</b>,
 	search.to.codes.esr: <b>%search.to.codes.esr%</b>
 -->
-<p><small>дата списка рейсов: <b>%search.date%</b></small></p>
+<small>дата списка рейсов: <b>%search.date%</b></small>
 		</div>
 		
 		<div class="lr-flex lr-flex-wrap lr-flex-hcenter">
@@ -174,24 +174,32 @@ class="send-request lr-padding-20 bg-darkblue color-white">получить сп
 -->
 	<div class="">
 		<div class="text-center">
-			<img src="img/directions_transit_24px.svg" class="icon-train _filter-green"/>
+<p class="lr-margin-0"><small><b>%search.from.title%</b></small></p>
+<img src="img/directions_transit_24px.svg" class="icon-train _filter-green"/>
+<p class="lr-margin-0"><small><b>%search.to.title%</b></small></p>
+<p class="lr-margin-small">
+	<b>%segments.departure%</b> - <b>%segments.arrival%</b><br> 
+	<small><b>%segments.duration%</b> мин. в пути</small><br>
+	<small>%places%</small>
+</p>
 		</div>
+<!--
 		<ul class="lr-list-unstyled">
 			<li><small>отправление</small>: <b>%segments.departure%</b></li>
 			<li><small>в пути</small>: <b>%segments.duration%</b> мин.</li>
 			<li><small>прибытие</small>: <b>%segments.arrival%</b></li>
 			<li><small>остановки</small>: <b>%segments.stops%</b></li>
 		</ul>
-	</div>
+-->
 <!--
 	<p>электронный билет: <b>%segments.tickets_info.et_marker%</b></p>
 -->
-	<div>%places%</div>
+	</div>
 </div>
 	</span>
 
 	<span id="tpl--segments-tickets_info-places" class="hidden">
-<small>цена билета</small>: <b>%places.price.whole%</b> %places.currency%
+билет: <b>%places.price.whole%</b> %places.currency%
 	</span>
 </div>
 

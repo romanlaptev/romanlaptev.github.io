@@ -27,3 +27,30 @@ background-color: #1e90ff !important;
 .filter-green{
     filter: invert(85%) sepia(32%) saturate(6425%) hue-rotate(66deg) brightness(81%) contrast(104%);
 }
+
+body.touch {
+	background-color: #003366 !important;
+}
+
+@media screen and (max-width:640px){
+	.lr-container {
+		width: 100%;
+		padding: 0;
+	}
+
+	.log-panel {
+		position: static !important;
+	}
+
+	.log-panel  .lr-panel-body {
+		padding: 5px;
+		word-wrap: break-word;
+	}
+}
+
+@media screen and (max-width:360px){
+	.lr-padding-20, .lr-padding20, .padding-20, .padding20 {
+		padding: 5px;
+	}
+}
+
