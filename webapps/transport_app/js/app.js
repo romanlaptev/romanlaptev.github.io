@@ -334,8 +334,22 @@ https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951e
 
 	
 	var _dataProcess = function(jsonObj){
-//console.log(jsonObj);
+console.log(jsonObj);
 //https://yandex.ru/dev/rasp/doc/reference/schedule-point-point.html#format
+
+		//response API about error
+		if( jsonObj["error"] ){
+			var logMsg = "<b>response API about error</b><br>";
+			
+			for( var key in jsonObj["error"]){
+		//console.log( key +" : "+e[key] );
+				logMsg += "<b>"+key +"</b> : "+ jsonObj["error"][key]+"<br>";
+			}//next
+			
+			func.logAlert(logMsg, "error");
+			return false;
+		}	
+		
 		//correct date: departure, duration, arrival
 		for( var n = 0; n < jsonObj["segments"].length; n++){
 			
@@ -1653,7 +1667,12 @@ func.logAlert( webApp.vars["logMsg"], "error");
 	}
 	
 	if( p.apiObj.dataProcess && typeof p.apiObj.dataProcess === "function"){
-		p.apiObj.dataProcess( p.data );
+		var res = true;
+		res = p.apiObj.dataProcess( p.data );
+	}
+	
+	if(!res){
+		return false;
 	}
 	
 	var html = wrapData( {
