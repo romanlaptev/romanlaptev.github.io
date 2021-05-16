@@ -4,6 +4,10 @@ func.vars["logOrderBy"] = "DESC";
 
 window.onload = function(){
 func.logAlert( navigator.userAgent, "info");
+
+	if ('ontouchstart' in window) { 
+		document.body.classList.add("touch");
+	}
 	
 	//Start webApp
 	if( typeof webApp === "object"){

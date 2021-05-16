@@ -16,6 +16,12 @@ use module:
 	var sharedFunc =  sharedFunc || function(){
 
 
+		// private variables and functions
+		var _vars = {
+			"logOrderBy": "ASC"
+		};//end _vars
+
+//----------------------
 		if( typeof window.jQuery === "function"){
 var msg = 'You are running jQuery version: ' + jQuery.fn.jquery;
 _log(msg);
@@ -26,12 +32,33 @@ _log(msg);
 
 		}
 		
+//----------------------
 		_defineEvents();
 		
-		// private variables and functions
-		var _vars = {
-			"logOrderBy": "ASC"
-		};//end _vars
+//---------------------- replace console.log for old IE
+//---------------------- replace console.log for mobile browsers
+if (  (!window.console ) || 	('ontouchstart' in window)  	){ 
+
+	window.console = {"log" : function( msg ){
+			if( typeof msg === "string"){
+				msg = "<small>console.log </small>(&quot;"+ msg + "&quot;)";
+			} else {
+				msg = "console.log (  "+ typeof msg  + ")";
+			}
+
+			var log = _getById( "log" );
+			if( log ){
+				_alert( msg, "info" );
+			} else {
+				alert(msg);
+				//document.writeln(msg);
+			}
+		}
+	};
+
+}
+
+
 
 		function _defineEvents(){
 /*
@@ -1536,41 +1563,6 @@ ONLY second LEVEL !!!!!!!!!!!!
 	
 	//window.Lib = Lib;
 //})();
-
-
-//console.log for old IE
-if (!window.console){ 
-	window.console = {
-		"log" : function( msg ){
-			
-			var id = "log";
-			var log = false;
-			if( document.querySelector ){
-				log = document.querySelector("#"+id);
-			}
-	
-			if( document.getElementById ){
-				log = document.getElementById(id);
-			}
-	
-			if( document.all ){
-				log = document.all[id];
-			}
-	
-			//if( document.layers ){
-				//var log = document.layers[id];
-			//}
-	
-
-			if(log){
-				log.innerHTML += msg +"<br>";
-			} else {
-				alert(msg);
-				//document.writeln(msg);
-			}
-		}
-	}
-};
 
 
 function runAjaxJQuery( params ) {
