@@ -70,9 +70,9 @@ href="?q=switch-tab&target_id=tab-info">info</a>
 				
 				<div class="lr-padding-20 bg-darkblue-green color-white">
 					<h1 class="text-right">расписание транспорта</h1>
-<div id="search-panel" class="lr-flex lr-flex-hstart lr-flex-v-top lr-flex-wrap">
+<div id="search-panel" class="lr-flex lr-flex-hstart lr-flex-v-top lr-flex-wrap lr-row">
 	
-	<div class="lr-margin-10">
+	<div class="lr-margin-10 lr-float-left">
 		<div>
 код станции отправления (esr)<br>
 <input id="inp-from-title" class="lr-padding-10 w100" value=""/>
@@ -87,13 +87,13 @@ autocomplete="off">
 		</select>
 	</div>
 	
-	<div class="lr-margin-10">
+	<div class="lr-margin-10 lr-float-left">
 <br>
 <br>
 <a href="#change-direction" class="lr-padding-20 bg-orange arrows" title="change direction"></a>
 	</div>
 	
-	<div class="lr-margin-10">
+	<div class="lr-margin-10 lr-float-left">
 		<div>
 код станции прибытия (esr)<br>
 <input id="inp-to-title" class="lr-padding-10 w100" value=""/>
@@ -108,12 +108,12 @@ autocomplete="off">
 		</select>
 			
 	</div>
-	<div class="lr-margin-10">
+	<div class="lr-margin-10 lr-float-left">
 дата списка рейсов<br>
 <input id="date-widget" type="date" name="date_widget" class="lr-padding-10" value=""  max="" min="">
 	</div>
 
-	<div class="lr-margin-10">
+	<div class="lr-margin-10 lr-float-left">
 <br>
 <br>
 <a href="?q=send-request&api-type=transport" 
@@ -153,7 +153,7 @@ class="send-request lr-padding-20 bg-darkblue color-white">получить сп
 <small>дата списка рейсов: <b>%search.date%</b></small>
 		</div>
 		
-		<div class="lr-flex lr-flex-wrap lr-flex-hcenter lr-border-box lr-border-cyan">
+		<div class="lr-flex lr-flex-wrap lr-flex-hcenter lr-border-box lr-border-cyan lr-row">
 %segments%		
 		</div>
 	</div>
@@ -161,7 +161,7 @@ class="send-request lr-padding-20 bg-darkblue color-white">получить сп
 	</span>
 	
 	<span id="segments-list-tpl--transport" class="hidden">
-<div class="bg-lavender lr-margin-10 lr-padding-10">
+<div class="bg-lavender lr-margin-10 lr-padding-10 lr-float-left">
 
 <!--
 <h3>record: %record_num%</h3>

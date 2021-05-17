@@ -3,7 +3,7 @@ func.vars["logOrderBy"] = "DESC";
 //console.log("func:", func);
 
 window.onload = function(){
-func.logAlert( navigator.userAgent, "info");
+	func.logAlert( navigator.userAgent, "info");
 
 	if ('ontouchstart' in window) { 
 		document.body.classList.add("touch");
@@ -74,7 +74,7 @@ function _transport_api(){
 	_vars = {
 		//"dataUrl" : "data/2019-04-26.xml",
 		//"dataUrl" : "v1/data/2019-04-26.json",
-		//"dataUrl" : "files/test_ya_schedule.json",
+		"dataUrl" : "files/test_ya_schedule.json",
 		//"dataUrl" : "files/test_ya_schedule_error.json",
 		
 /*
@@ -88,7 +88,7 @@ transport_types=suburban&\
 system=esr&\
 show_systems=esr",
 */
-
+/*
 		"dataUrl" : "https://romanlaptev-cors.herokuapp.com/\
 https://api.rasp.yandex.net/v3.0/search/?\
 from={{from_code}}&\
@@ -98,7 +98,7 @@ date={{date}}&\
 transport_types=suburban&\
 system=esr&\
 show_systems=esr",
-
+*/
 		"requestParams" : {
 			"apiKey" : "b07a64bc-f237-4e79-9efb-b951ec68eaf7",
 			"from" : {
@@ -201,7 +201,14 @@ https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951e
 //------------------		
 		webApp.vars["transportAPI"]["selectFrom"].addEventListener("change", function(e){
 //console.log(e.target);
-			var code = e.target.selectedOptions[0].value;
+//for(var key in e.target){
+//console.log(key, e.target[key]);	
+//}//next
+			var _selectNum = e.target["selectedIndex"];
+			var code = e.target["options"][_selectNum].value;
+			//var code = e.target.selectedOptions[0].value;
+//console.log( code );
+			
 			webApp.vars["transportAPI"].inputFrom.value = code;
 			//webApp.vars["transportAPI"]["requestParams"]["from_code"] = code;
 			
@@ -209,11 +216,15 @@ https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951e
 				webApp.vars["transportAPI"].inputTo.value = "";
 				webApp.vars["transportAPI"].selectTo.selectedIndex = 0;
 			}
-		});//end event
+		}, false);//end event
 		
 //------------------		
 		webApp.vars["transportAPI"]["selectTo"].addEventListener("change", function(e){
-			var code = e.target.selectedOptions[0].value;
+			
+			//var code = e.target.selectedOptions[0].value;
+			var _selectNum = e.target["selectedIndex"];
+			var code = e.target["options"][_selectNum].value;
+			
 			webApp.vars["transportAPI"].inputTo.value = code;
 			//webApp.vars["transportAPI"]["requestParams"]["to_code"] = code;
 			
@@ -221,28 +232,31 @@ https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951e
 				webApp.vars["transportAPI"].inputFrom.value = "";
 				webApp.vars["transportAPI"].selectFrom.selectedIndex = 0;
 			}
-		});//end event
+		}, false);//end event
 		
 //------------------		
 		webApp.vars["transportAPI"]["dateWidget"].addEventListener("change", function(e){
 //console.log(e.type, e.target);
 			webApp.vars["transportAPI"]["requestParams"]["date"] = e.target.value;
-		});//end event
+		}, false);//end event
 		
 //------------------		
 		webApp.vars["transportAPI"]["btnDir"].addEventListener("click", function(e){
 //console.log(e.type, e.target);
 			var codeFromIndex = webApp.vars["transportAPI"].selectFrom.selectedIndex;
-			var codeFrom = webApp.vars["transportAPI"].selectFrom.selectedOptions[0].value;
+			
+			//var codeFrom = webApp.vars["transportAPI"].selectFrom.selectedOptions[0].value;
+			var codeFrom = webApp.vars["transportAPI"].selectFrom["options"][codeFromIndex].value;
 			
 			var codeToIndex = webApp.vars["transportAPI"].selectTo.selectedIndex;
-			var codeTo = webApp.vars["transportAPI"].selectTo.selectedOptions[0].value;
+			//var codeTo = webApp.vars["transportAPI"].selectTo.selectedOptions[0].value;
+			var codeTo = webApp.vars["transportAPI"].selectTo["options"][codeToIndex].value;
 			
 			webApp.vars["transportAPI"].selectFrom.selectedIndex = codeToIndex;
 			webApp.vars["transportAPI"].inputFrom.value = codeTo;
 			webApp.vars["transportAPI"].selectTo.selectedIndex = codeFromIndex;
 			webApp.vars["transportAPI"].inputTo.value = codeFrom;
-		});//end event
+		}, false);//end event
 
 	};//_transport_api()
 	
@@ -1106,7 +1120,7 @@ console.log( "Warn! error parse url in " + target.href );
 			}
 		}
 
-	});//end event
+	}, false);//end event
 	
 
 //------------------		
@@ -1120,31 +1134,31 @@ console.log( "Warn! error parse url in " + target.href );
 		webApp.vars["weatherAPI"]["longitudeInput"].value = dataSet.lon;
 		webApp.vars["weatherAPI"]["longitudeRange"].value = dataSet.lon;
 		
-	});//end event
+	}, false);//end event
 
 //------------------		
 	webApp.vars["weatherAPI"]["selectApiName"].addEventListener("change", function(e){
 		var dataSet = e.target.selectedOptions[0].dataset;
 console.log(dataSet);
-	});//end event
+	}, false);//end event
 
 //------------------		
 	//webApp.vars["weatherAPI"]["latitudeRange"].addEventListener("change", function(e){
 //console.log(e.type, e.target);
 		//webApp.vars["weatherAPI"]["latitudeInput"].value = e.target.value;
-	//});//end event
+	//}, false);//end event
 
 //------------------		
 	webApp.vars["weatherAPI"]["latitudeRange"].addEventListener("input", function(e){
 //console.log(e.type, e.target);
 		webApp.vars["weatherAPI"]["latitudeInput"].value = e.target.value;
-	});//end event
+	}, false);//end event
 
 //------------------		
 	webApp.vars["weatherAPI"]["longitudeRange"].addEventListener("input", function(e){
 //console.log(e.type, e.target);
 		webApp.vars["weatherAPI"]["longitudeInput"].value = e.target.value;
-	});//end event
+	}, false);//end event
 
 
 }//end defineEvents()
