@@ -5,6 +5,10 @@ html {
 *, *::before, *::after {
 	box-sizing:inherit;
 }
+html, body{
+	height:100%;
+	margin:0;
+}
 
 a {
 	/*color: #8a29e3;*/
@@ -46,7 +50,14 @@ pre {
 .lr-w100{width:100% !important;}
 
 .lr-h50{	height:50px;}
+.h50{height:50%;}
+
+.lr-h75{	height:75px;}
+.h75{height:75%;}
+
 .lr-h100{	height:100px;}
+.h100{height:100%;}
+
 .lr-h200{	height:200px;}
 .lr-h300{	height:300px;}
 .lr-h400{	height:400px;}
@@ -879,39 +890,53 @@ padding: 10px;
 
 
 /*====== FLEX ===== */
-@supports (display : flex) {
-   .test-support-flex {
-		background-color : #20ce20 !important;
-	}
-}
-@supports not (display : flex) {
-   .test-support-flex {
-		background-color : #ff7f50 !important;
-	}
-}
+/*
 .CSS-support-fail .test-support-flex{
 	background-color : #ff7f50 !important;
 }
-
-
-.lr-flex, .df{
-	display:flex;
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;	
+*/
+.test-support-flex {
+	padding:20px;
+	text-align:center;
 }
-.CSS-support-fail .lr-flex{
-	display:inline-block !important;
+.support-flex-false {
+	background-color : #ff7f50 !important;
+}
+.support-flex-true {
+	background-color : #20ce20 !important;
+	display:none;
 }
 
-.lr-flex-wrap {	flex-wrap: wrap;}
-.lr-flex-hcenter, .lr-flex-h-center{	justify-content:center;}
-.lr-flex-hbetween{	justify-content:space-between;}
-.lr-flex-hstart{justify-content:start;}
-.lr-flex-h-end{	justify-content:end;}
-.lr-flex-vcenter, .lr-flex-v-center{ align-items:center;}
-.lr-flex-v-top{	align-items: start;}
-.lr-flex-v-end{	align-items: end;}
+@supports not (display : flex) {}
+@supports (display : flex) {
+   .support-flex-true {
+		display : block;
+	}
+   .support-flex-false {
+		display : none;
+	}
+
+	.lr-flex, .df{
+		display:flex;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;	
+	}
+/*
+	.CSS-support-fail .lr-flex{
+		display:inline-block !important;
+	}
+*/
+	.lr-flex-wrap {	flex-wrap: wrap;}
+	.lr-flex-hcenter, .lr-flex-h-center{	justify-content:center;}
+	.lr-flex-hbetween{	justify-content:space-between;}
+	.lr-flex-hstart{justify-content:start;}
+	.lr-flex-h-end{	justify-content:end;}
+	.lr-flex-vcenter, .lr-flex-v-center{ align-items:center;}
+	.lr-flex-v-top{	align-items: start;}
+	.lr-flex-v-end{	align-items: end;}
+	
+}
 
 
 .lr-tab-pane, .tab-pane {display:none;}

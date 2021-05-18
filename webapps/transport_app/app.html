@@ -30,6 +30,8 @@
 	<script src="../../js/jquery.min.js"></script>
 -->	
 	<script src="js/functions.js"></script>
+	<script src="js/polyfills/classList.js"></script>
+	
 	<script src="js/app.js"></script>
 
 	
@@ -175,7 +177,11 @@ class="send-request lr-padding-20 bg-darkblue color-white">получить сп
 	<div class="">
 		<div class="text-center">
 <p class="lr-margin-0"><small><b>%search.from.title%</b></small></p>
-<img src="img/directions_transit_24px.svg" class="icon-train _filter-green"/>
+
+<img src="img/directions_transit_24px.svg" 
+class="icon-train _filter-green"
+onerror="this.onerror=console.log('error load '+this.src);this.src='img/directions_transit.png'"/>
+
 <p class="lr-margin-0"><small><b>%search.to.title%</b></small></p>
 <p class="lr-margin-small">
 	<b>%segments.departure%</b> - <b>%segments.arrival%</b><br> 
@@ -212,12 +218,12 @@ class="send-request lr-padding-20 bg-darkblue color-white">получить сп
 				
 				<div class="tab-header lr-lr-page-heading lr-padding-20 bg-darkblue-green">
 <h1 class="color-white text-right">данные погоды и прогноз</h1>
-					<div class="lr-panel-inline lr-border-box lr-border-cyan text-left">
+					<div class="lr-panel lr-border-box lr-border-cyan text-left">
 <form name="form_request_params">
 
-			<div class="lr-panel-body lr-flex lr-flex-wrap">
+			<div class="lr-panel-body lr-flex lr-flex-wrap lr-row">
 					
-					<div class="lr-margin-10 color-white">
+					<div class="lr-margin-10 color-white lr-float-left">
 <label class="">широта</label><br>
 <input id="latitude-input" type="text"
 name="coord_lat" 
@@ -231,7 +237,7 @@ class="range" min="-90" max="90" step="0.05" value="0" autocomplete="off">
 
 					</div>
 					
-					<div class="lr-margin-10 color-white">
+					<div class="lr-margin-10 color-white lr-float-left">
 <label class="">долгота</label><br>
 <input id="longitude-input" 
 name="coord_long" 
@@ -245,7 +251,7 @@ type="range" class="range" min="-180" max="180" step="0.05" value="60" autocompl
 
 					</div>
 			
-				<div class="text-center lr-padding-small">
+				<div class="text-center lr-padding-small lr-float-left">
 <label class="color-white">получить координаты по адресу</label><br>
 					<div class="lr-padding-small">
 <select name="address" id="select-addr" autocomplete="off">
@@ -256,10 +262,10 @@ type="range" class="range" min="-180" max="180" step="0.05" value="60" autocompl
 					</div>
 				</div>
 
-				<div class="text-center lr-padding-small">
+				<div class="text-center lr-padding-small lr-float-left">
 <label class="color-white">параметры API</label><br>
 					<div class="lr-padding-small">
-<select name="api-params" id="select-api" autocomplete="off">
+<select name="api-params" id="select-api" autocomplete="off" class="w80">
 	<option data-name="yandex" data-type="weather">Яндекс.Погода</option>
 	<option data-name="openweathermap" data-type="weather">weather, openweathermap.org</option>
 	<option data-name="openweathermap" data-type="forecast">5 day weather forecast, openweathermap.org</option>
@@ -393,9 +399,9 @@ of total <span id="num-total-load"></span>
 </div>
 
 <!-- ********************** TEMPLATES ************************** -->	
-<span id="tpl-yandex--weather" class="hidden">
-	<div class="lr-flex">
-		<div class="bg-lavender lr-padding-20">
+<script id="tpl-yandex--weather" type="text/template">
+	<div class="lr-flex lr-flex-wrap lr-row">
+		<div class="bg-lavender lr-padding-20 lr-float-left">
 			
 <div class="lr-flex lr-flex-hbetween lr-flex-v-top">
 	<h3>погодные данные на <b>%fact.obs_time%</b></small></h3>
@@ -411,7 +417,9 @@ of total <span id="num-total-load"></span>
 
 			<div class="lr-flex lr-flex-vcenter">	
 				<div class="w50 text-center lr-padding-20">
-<img class="w50" src="https://yastatic.net/weather/i/icons/blueye/color/svg/%fact.icon%.svg">
+<img class="w50" src="https://yastatic.net/weather/i/icons/blueye/color/svg/%fact.icon%.svg"
+onerror="this.onerror=console.log('error load '+this.src);this.src='img/%fact.icon%.png'"/>
+
 <br>
 <b>%fact.condition%</b>
 				</div>
@@ -419,18 +427,18 @@ of total <span id="num-total-load"></span>
 				<div class="w50">
 <p class="lr-margin-0">
 	<small>температура:</small> <b>%fact.temp%</b>°C, 
-	<small>ощущается как:</small>: <b>%fact.feels_like%</b> &#8451;, 
+	<small>ощущается как:</small>: <b>%fact.feels_like%</b> &#8451;<br>
 	<small>вода:</small> <b>%fact.temp_water%</b> °C
 </p>
 
 <p class="lr-margin-0">
-	<small>направление ветра:</small> <b>%fact.wind_dir%</b>,  
+	<small>направление ветра:</small> <b>%fact.wind_dir%</b><br>  
 	<small>скорость:</small>: <b>%fact.wind_speed%</b> м/с, 
 	<small>порывы</small> <b>%fact.wind_gust%</b> м/с
 </p>
 
 <p class="lr-margin-0">
-	<small>Влажность воздуха:</small> <b>%fact.humidity%</b> %, 
+	<small>Влажность воздуха:</small> <b>%fact.humidity%</b> %<br>  
 	<small>давление:</small> <b>%fact.pressure_mm%</b> мм рт. ст.
 </p>
 
@@ -446,22 +454,20 @@ of total <span id="num-total-load"></span>
 			
 		</div>
 
-		<div class="bg-lightgreen lr-padding-20">
+		<div class="bg-lightgreen lr-padding-20 lr-float-left">
 <h3>данные прогноза погоды на %forecast.date_ts%</h3>
 <p>восход: <b>%forecast.sunrise%</b>, закат: <b>%forecast.sunset%</b></p>
 <!--
 <p>Код фазы Луны: <b>%forecast.moon_code%</b></p>
 -->
-			<div class="lr-flex">%parts%</div>
+			<div class="lr-flex lr-flex-wrap lr-row">%parts%</div>
 		</div>
 		
 	</div>
-</span>
+</script>
 
-
-<span id="tpl-yandex--forecast-parts" class="hidden">
-<div class="bg-aliceblue lr-margin-10 lr-padding-20">
-
+<script id="tpl-yandex--forecast-parts" type="text/template">
+<div class="bg-aliceblue lr-margin-10 lr-padding-20 lr-float-left">
 	<div>
 		<b>%parts.daytime%</b>,
 		<b>%parts.part_name%</b>
@@ -470,7 +476,8 @@ of total <span id="num-total-load"></span>
 <div class="lr-flex">	
 	
 	<div class="text-center lr-padding-20">
-<img class="w50" src="https://yastatic.net/weather/i/icons/blueye/color/svg/%parts.icon%.svg">
+<img class="w50" src="https://yastatic.net/weather/i/icons/blueye/color/svg/%parts.icon%.svg"
+onerror="this.onerror=console.log('error load '+this.src);this.src='img/%parts.icon%.png'"/>
 <br>
 <b>%parts.condition%</b>
 	</div>
@@ -492,17 +499,17 @@ of total <span id="num-total-load"></span>
 </div>	
 
 <p class="lr-margin-0">
-	<small>направление ветра:</small> <b>%parts.wind_dir%</b>,  
+	<small>направление ветра:</small> <b>%parts.wind_dir%</b><br> 
 	<small>скорость:</small>: <b>%parts.wind_speed%</b> м/с, 
 	<small>порывы</small> <b>%parts.wind_gust%</b> м/с
 </p>
 
 <p class="lr-margin-0">
-	<small>Влажность воздуха:</small> <b>%parts.humidity%</b> %, 
+	<small>Влажность воздуха:</small> <b>%parts.humidity%</b> %<br>  
 	<small>давление:</small> <b>%parts.pressure_mm%</b> мм рт. ст.
 </p>
 <p class="lr-margin-0">
-	<small>Прогноз осадков:</small> <b>%parts.prec_mm%</b> (мм), 
+	<small>Прогноз осадков:</small> <b>%parts.prec_mm%</b> (мм)<br>  
 <!--
 	<li>prec_period: <b>%prec_period%</b>	<small>Прогнозируемый период осадков (в минутах). 	Число</small></li>
 -->
@@ -510,7 +517,8 @@ of total <span id="num-total-load"></span>
 </p>
 
 </div>
-</span><!-- end forecast-parts -->
+</script>
+<!-- end forecast-parts -->
 
 
 

@@ -8,7 +8,7 @@ window.onload = function(){
 	if ('ontouchstart' in window) { 
 		document.body.classList.add("touch");
 	}
-	
+
 	//Start webApp
 	if( typeof webApp === "object"){
 		webApp.init(function(){
@@ -74,7 +74,7 @@ function _transport_api(){
 	_vars = {
 		//"dataUrl" : "data/2019-04-26.xml",
 		//"dataUrl" : "v1/data/2019-04-26.json",
-		"dataUrl" : "files/test_ya_schedule.json",
+		//"dataUrl" : "files/test_ya_schedule.json",
 		//"dataUrl" : "files/test_ya_schedule_error.json",
 		
 /*
@@ -88,7 +88,7 @@ transport_types=suburban&\
 system=esr&\
 show_systems=esr",
 */
-/*
+
 		"dataUrl" : "https://romanlaptev-cors.herokuapp.com/\
 https://api.rasp.yandex.net/v3.0/search/?\
 from={{from_code}}&\
@@ -98,7 +98,7 @@ date={{date}}&\
 transport_types=suburban&\
 system=esr&\
 show_systems=esr",
-*/
+
 		"requestParams" : {
 			"apiKey" : "b07a64bc-f237-4e79-9efb-b951ec68eaf7",
 			"from" : {
@@ -471,6 +471,19 @@ var condition_opt = {
 "thunderstorm-with-hail": "гроза с градом"	
 };
 
+//Направление ветра
+var wind_dir_opt = {
+"nw": "северо-западное",
+"n": "северное",
+"ne": "северо-восточное",
+"e": "восточное",
+"se": "юго-восточное",
+"s": "южное",
+"sw": "юго-западное",
+"w": "западное",
+"с": "штиль"
+};
+
 		var keyName = "fact.condition";
 		templates["tplKeys"][keyName] = {
 			"description": "select list",
@@ -486,18 +499,7 @@ var condition_opt = {
 		templates["tplKeys"][keyName] = {
 			"description": "select list",
 			"listValue": function(selectedOption){
-//Направление ветра
-var options = {
-"nw": "северо-западное",
-"n": "северное",
-"ne": "северо-восточное",
-"e": "восточное",
-"se": "юго-восточное",
-"s": "южное",
-"sw": "юго-западное",
-"w": "западное",
-"с": "штиль"
-};
+				var options = wind_dir_opt;
 				return options[selectedOption];
 			}
 		};
@@ -671,6 +673,22 @@ var options = {
 		};
 
 
+		var keyName = "parts.wind_dir";
+		templates["tplKeys"][keyName] = {
+			"description": "select list",
+			"listValue": function(selectedOption){
+				var options = wind_dir_opt;
+				return options[selectedOption];
+			},
+			"process": function( dataArr ){
+				for(var n = 0; n < dataArr.length; n++){
+					var _d = dataArr[n];
+					var selectedOption = _d["wind_dir"];
+					_d["wind_dir"] = this["listValue"]( selectedOption );
+				}//next
+			}
+		};
+
 		templates["mainTpl"] = templates["tpl-yandex--weather"];
 		return templates;
 	};//end _getTemplates()
@@ -750,6 +768,13 @@ var options = {
 		}
 
 		var tpl_keyName ="parts.condition";
+		var keyDataObj = jsonObj["forecast"]["parts"];
+		if( tplKeys[tpl_keyName] &&	typeof tplKeys[tpl_keyName]["process"] === "function"	){
+			tplKeys[tpl_keyName]["process"]( keyDataObj );
+		}
+
+
+		var tpl_keyName ="parts.wind_dir";
 		var keyDataObj = jsonObj["forecast"]["parts"];
 		if( tplKeys[tpl_keyName] &&	typeof tplKeys[tpl_keyName]["process"] === "function"	){
 			tplKeys[tpl_keyName]["process"]( keyDataObj );
@@ -1089,6 +1114,7 @@ function defineEvents(){
 		event = e || window.e;
 		var target = event.target || event.srcElement;
 //console.log( target);
+
 //console.log( event.eventPhase );
 //console.log( "preventDefault: " + event.preventDefault );
 		if( target.tagName === "A"){
@@ -1150,7 +1176,7 @@ console.log(dataSet);
 
 //------------------		
 	webApp.vars["weatherAPI"]["latitudeRange"].addEventListener("input", function(e){
-//console.log(e.type, e.target);
+console.log(e.type, e.target);
 		webApp.vars["weatherAPI"]["latitudeInput"].value = e.target.value;
 	}, false);//end event
 
@@ -1473,15 +1499,16 @@ func.logAlert( logMsg, "info");
 //console.log(arguments);		
 console.log(e);		
 
-webApp.vars["logMsg"] = "error, ajax load failed...";
+webApp.vars["logMsg"] = "<ul class='bg-orange color-black'>";
+webApp.vars["logMsg"] += "error, ajax load failed...";
 //func.logAlert( _vars["logMsg"], "error");
-func.logAlert( webApp.vars["logMsg"], "danger");
-
 			for( var key in e){
 //console.log( key +" : "+e[key] );
-				webApp.vars["logMsg"] = "<b>"+key +"</b> : "+ e[key];
-				func.logAlert( webApp.vars["logMsg"], "error");
+				webApp.vars["logMsg"] += "<li class=''><b>"+key +"</b> : "+ e[key]+"</li>";
 			}//next
+webApp.vars["logMsg"] += "</ul>";
+func.logAlert( webApp.vars["logMsg"], "danger");
+
 			p.callback(false);
 		}//end error callback
 
