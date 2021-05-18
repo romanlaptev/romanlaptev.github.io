@@ -32,12 +32,10 @@ _log(msg);
 
 		}
 		
-//----------------------
-		_defineEvents();
-		
 //---------------------- replace console.log for old IE
 //---------------------- replace console.log for mobile browsers
-if (  (!window.console ) || 	('ontouchstart' in window)  	){ 
+if ( (!window.console ) || 	
+	('ontouchstart' in window) ){ 
 
 	window.console = {"log" : function( msg ){
 			if( typeof msg === "string"){
@@ -55,76 +53,8 @@ if (  (!window.console ) || 	('ontouchstart' in window)  	){
 			}
 		}
 	};
-
 }
 
-
-
-		function _defineEvents(){
-/*
-window.onload = function(){
-console.log("window event onload");
-//console.log("-- document.readyState = " + document.readyState);
-	
-	//btn_scroll = getById("btn-scroll-to-top");
-	
-//send message to frame	
-//<iframe width="98%" height="80%" name="content_frame" scrolling=auto style='background-color: silver;' src=""></iframe>
-//window.frames['content_frame'].document.write ('hello frame');
-	
-}//end load
-*/
-
-/* for Mozilla/Firefox/Opera 9 */
-//https://developer.mozilla.org/ru/docs/Web/Events/DOMContentLoaded
-//https://learn.javascript.ru/onload-ondomcontentloaded
-//if (document.addEventListener) {
-	//document.addEventListener("DOMContentLoaded", function(){
-//console.log("DOMContentLoaded");
-//console.log("-- document.readyState = " + document.readyState);
-		//_vars["btn_scroll"] = _getById("btn-scroll-to-top");
-	//},false);//end dom load
-//}
-
-//window.onscroll = function(event) {
-//console.log("scroll on ");
-//console.log( "btn_scroll: ", _vars["btn_scroll"].style );
-	//if( btn_scroll.style.display === "" || btn_scroll.style.display === "none"){
-		//btn_scroll.style.display = "block";
-	//}
-//}//end event
-	
-//window.onresize = function(event) {
-//console.log("resize window");
-//}//end event
-
-
-//console.log("window.addEventListener:" + window.addEventListener);
-//console.log("window.attachEvent:" + window.attachEvent);
-//if ( window.addEventListener ) {
-	//window.addEventListener("load", function(e) {
-//console.log("window.addEventListener, event load");
-	//}, false);
-//} else {
-	//if (window.attachEvent)	{
-		//window.attachEvent("onload", function(){
-//console.log("window.attachEvent, event onload");
-		//});
-	//}
-//};
-
-//https://developer.mozilla.org/ru/docs/Web/API/Document/readyState
-// альтернатива событию DOMContentLoaded
-/*
-document.onreadystatechange = function () {
-  if (document.readyState == "interactive") {
-    initApplication();
-  }
-}
-*/
-		}//end _defineEvents()
-
-		
 		function _getById(id){
 			
 			if( document.querySelector ){

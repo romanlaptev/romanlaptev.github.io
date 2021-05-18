@@ -3,12 +3,12 @@ func.vars["logOrderBy"] = "DESC";
 //console.log("func:", func);
 
 window.onload = function(){
-func.logAlert( navigator.userAgent, "info");
+	func.logAlert( navigator.userAgent, "info");
 
 	if ('ontouchstart' in window) { 
 		document.body.classList.add("touch");
 	}
-	
+
 	//Start webApp
 	if( typeof webApp === "object"){
 		webApp.init(function(){
@@ -201,7 +201,14 @@ https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951e
 //------------------		
 		webApp.vars["transportAPI"]["selectFrom"].addEventListener("change", function(e){
 //console.log(e.target);
-			var code = e.target.selectedOptions[0].value;
+//for(var key in e.target){
+//console.log(key, e.target[key]);	
+//}//next
+			var _selectNum = e.target["selectedIndex"];
+			var code = e.target["options"][_selectNum].value;
+			//var code = e.target.selectedOptions[0].value;
+//console.log( code );
+			
 			webApp.vars["transportAPI"].inputFrom.value = code;
 			//webApp.vars["transportAPI"]["requestParams"]["from_code"] = code;
 			
@@ -209,11 +216,15 @@ https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951e
 				webApp.vars["transportAPI"].inputTo.value = "";
 				webApp.vars["transportAPI"].selectTo.selectedIndex = 0;
 			}
-		});//end event
+		}, false);//end event
 		
 //------------------		
 		webApp.vars["transportAPI"]["selectTo"].addEventListener("change", function(e){
-			var code = e.target.selectedOptions[0].value;
+			
+			//var code = e.target.selectedOptions[0].value;
+			var _selectNum = e.target["selectedIndex"];
+			var code = e.target["options"][_selectNum].value;
+			
 			webApp.vars["transportAPI"].inputTo.value = code;
 			//webApp.vars["transportAPI"]["requestParams"]["to_code"] = code;
 			
@@ -221,28 +232,31 @@ https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951e
 				webApp.vars["transportAPI"].inputFrom.value = "";
 				webApp.vars["transportAPI"].selectFrom.selectedIndex = 0;
 			}
-		});//end event
+		}, false);//end event
 		
 //------------------		
 		webApp.vars["transportAPI"]["dateWidget"].addEventListener("change", function(e){
 //console.log(e.type, e.target);
 			webApp.vars["transportAPI"]["requestParams"]["date"] = e.target.value;
-		});//end event
+		}, false);//end event
 		
 //------------------		
 		webApp.vars["transportAPI"]["btnDir"].addEventListener("click", function(e){
 //console.log(e.type, e.target);
 			var codeFromIndex = webApp.vars["transportAPI"].selectFrom.selectedIndex;
-			var codeFrom = webApp.vars["transportAPI"].selectFrom.selectedOptions[0].value;
+			
+			//var codeFrom = webApp.vars["transportAPI"].selectFrom.selectedOptions[0].value;
+			var codeFrom = webApp.vars["transportAPI"].selectFrom["options"][codeFromIndex].value;
 			
 			var codeToIndex = webApp.vars["transportAPI"].selectTo.selectedIndex;
-			var codeTo = webApp.vars["transportAPI"].selectTo.selectedOptions[0].value;
+			//var codeTo = webApp.vars["transportAPI"].selectTo.selectedOptions[0].value;
+			var codeTo = webApp.vars["transportAPI"].selectTo["options"][codeToIndex].value;
 			
 			webApp.vars["transportAPI"].selectFrom.selectedIndex = codeToIndex;
 			webApp.vars["transportAPI"].inputFrom.value = codeTo;
 			webApp.vars["transportAPI"].selectTo.selectedIndex = codeFromIndex;
 			webApp.vars["transportAPI"].inputTo.value = codeFrom;
-		});//end event
+		}, false);//end event
 
 	};//_transport_api()
 	
@@ -336,6 +350,20 @@ https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951e
 	var _dataProcess = function(jsonObj){
 //console.log(jsonObj);
 //https://yandex.ru/dev/rasp/doc/reference/schedule-point-point.html#format
+
+		//response API about error
+		if( jsonObj["error"] ){
+			var logMsg = "<b>response API about error</b><br>";
+			
+			for( var key in jsonObj["error"]){
+		//console.log( key +" : "+e[key] );
+				logMsg += "<b>"+key +"</b> : "+ jsonObj["error"][key]+"<br>";
+			}//next
+			
+			func.logAlert(logMsg, "error");
+			return false;
+		}	
+		
 		//correct date: departure, duration, arrival
 		for( var n = 0; n < jsonObj["segments"].length; n++){
 			
@@ -364,6 +392,7 @@ https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951e
 			record["arrival"] = _d_format;
 		}//next
 		
+		return true;
 	};//end _dataProcess()
 	
 	return _vars;
@@ -442,6 +471,19 @@ var condition_opt = {
 "thunderstorm-with-hail": "гроза с градом"	
 };
 
+//Направление ветра
+var wind_dir_opt = {
+"nw": "северо-западное",
+"n": "северное",
+"ne": "северо-восточное",
+"e": "восточное",
+"se": "юго-восточное",
+"s": "южное",
+"sw": "юго-западное",
+"w": "западное",
+"с": "штиль"
+};
+
 		var keyName = "fact.condition";
 		templates["tplKeys"][keyName] = {
 			"description": "select list",
@@ -457,18 +499,7 @@ var condition_opt = {
 		templates["tplKeys"][keyName] = {
 			"description": "select list",
 			"listValue": function(selectedOption){
-//Направление ветра
-var options = {
-"nw": "северо-западное",
-"n": "северное",
-"ne": "северо-восточное",
-"e": "восточное",
-"se": "юго-восточное",
-"s": "южное",
-"sw": "юго-западное",
-"w": "западное",
-"с": "штиль"
-};
+				var options = wind_dir_opt;
 				return options[selectedOption];
 			}
 		};
@@ -642,6 +673,22 @@ var options = {
 		};
 
 
+		var keyName = "parts.wind_dir";
+		templates["tplKeys"][keyName] = {
+			"description": "select list",
+			"listValue": function(selectedOption){
+				var options = wind_dir_opt;
+				return options[selectedOption];
+			},
+			"process": function( dataArr ){
+				for(var n = 0; n < dataArr.length; n++){
+					var _d = dataArr[n];
+					var selectedOption = _d["wind_dir"];
+					_d["wind_dir"] = this["listValue"]( selectedOption );
+				}//next
+			}
+		};
+
 		templates["mainTpl"] = templates["tpl-yandex--weather"];
 		return templates;
 	};//end _getTemplates()
@@ -725,7 +772,15 @@ var options = {
 		if( tplKeys[tpl_keyName] &&	typeof tplKeys[tpl_keyName]["process"] === "function"	){
 			tplKeys[tpl_keyName]["process"]( keyDataObj );
 		}
-	
+
+
+		var tpl_keyName ="parts.wind_dir";
+		var keyDataObj = jsonObj["forecast"]["parts"];
+		if( tplKeys[tpl_keyName] &&	typeof tplKeys[tpl_keyName]["process"] === "function"	){
+			tplKeys[tpl_keyName]["process"]( keyDataObj );
+		}
+
+		return true;
 	};//end _dataProcess()
 	
 	return _vars;
@@ -1032,6 +1087,7 @@ if(jsonObj["list"]){
 		}
 }
 
+		return true;
 	};//end _dataProcess()
 	
 	return _vars;
@@ -1058,6 +1114,7 @@ function defineEvents(){
 		event = e || window.e;
 		var target = event.target || event.srcElement;
 //console.log( target);
+
 //console.log( event.eventPhase );
 //console.log( "preventDefault: " + event.preventDefault );
 		if( target.tagName === "A"){
@@ -1089,7 +1146,7 @@ console.log( "Warn! error parse url in " + target.href );
 			}
 		}
 
-	});//end event
+	}, false);//end event
 	
 
 //------------------		
@@ -1103,31 +1160,31 @@ console.log( "Warn! error parse url in " + target.href );
 		webApp.vars["weatherAPI"]["longitudeInput"].value = dataSet.lon;
 		webApp.vars["weatherAPI"]["longitudeRange"].value = dataSet.lon;
 		
-	});//end event
+	}, false);//end event
 
 //------------------		
 	webApp.vars["weatherAPI"]["selectApiName"].addEventListener("change", function(e){
 		var dataSet = e.target.selectedOptions[0].dataset;
 console.log(dataSet);
-	});//end event
+	}, false);//end event
 
 //------------------		
 	//webApp.vars["weatherAPI"]["latitudeRange"].addEventListener("change", function(e){
 //console.log(e.type, e.target);
 		//webApp.vars["weatherAPI"]["latitudeInput"].value = e.target.value;
-	//});//end event
+	//}, false);//end event
 
 //------------------		
 	webApp.vars["weatherAPI"]["latitudeRange"].addEventListener("input", function(e){
-//console.log(e.type, e.target);
+console.log(e.type, e.target);
 		webApp.vars["weatherAPI"]["latitudeInput"].value = e.target.value;
-	});//end event
+	}, false);//end event
 
 //------------------		
 	webApp.vars["weatherAPI"]["longitudeRange"].addEventListener("input", function(e){
 //console.log(e.type, e.target);
 		webApp.vars["weatherAPI"]["longitudeInput"].value = e.target.value;
-	});//end event
+	}, false);//end event
 
 
 }//end defineEvents()
@@ -1442,15 +1499,16 @@ func.logAlert( logMsg, "info");
 //console.log(arguments);		
 console.log(e);		
 
-webApp.vars["logMsg"] = "error, ajax load failed...";
+webApp.vars["logMsg"] = "<ul class='bg-orange color-black'>";
+webApp.vars["logMsg"] += "error, ajax load failed...";
 //func.logAlert( _vars["logMsg"], "error");
-func.logAlert( webApp.vars["logMsg"], "danger");
-
 			for( var key in e){
 //console.log( key +" : "+e[key] );
-				webApp.vars["logMsg"] = "<b>"+key +"</b> : "+ e[key];
-				func.logAlert( webApp.vars["logMsg"], "error");
+				webApp.vars["logMsg"] += "<li class=''><b>"+key +"</b> : "+ e[key]+"</li>";
 			}//next
+webApp.vars["logMsg"] += "</ul>";
+func.logAlert( webApp.vars["logMsg"], "danger");
+
 			p.callback(false);
 		}//end error callback
 
@@ -1653,7 +1711,11 @@ func.logAlert( webApp.vars["logMsg"], "error");
 	}
 	
 	if( p.apiObj.dataProcess && typeof p.apiObj.dataProcess === "function"){
-		p.apiObj.dataProcess( p.data );
+		var res = p.apiObj.dataProcess( p.data );
+	}
+	
+	if(!res){
+		return false;
 	}
 	
 	var html = wrapData( {
