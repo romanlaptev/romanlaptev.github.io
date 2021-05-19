@@ -89,10 +89,8 @@ autocomplete="off">
 		</select>
 	</div>
 	
-	<div class="lr-margin-10 lr-float-left">
-<br>
-<br>
-<a href="#change-direction" class="lr-padding-20 bg-orange arrows" title="change direction"></a>
+	<div class="lr-margin-10 lr-padding-20 lr-float-left">
+<a href="#change-direction" class="bg-orange arrows" title="change direction"></a>
 	</div>
 	
 	<div class="lr-margin-10 lr-float-left">
@@ -119,7 +117,7 @@ autocomplete="off">
 <br>
 <br>
 <a href="?q=send-request&api-type=transport" 
-class="send-request lr-padding-20 bg-darkblue color-white">получить список</a>
+class="btn-send-request lr-padding-20 bg-darkblue color-white">получить список</a>
 	</div>
 </div>
 				</div>
@@ -219,9 +217,10 @@ onerror="this.onerror=console.log('error load '+this.src);this.src='img/directio
 				<div class="tab-header lr-lr-page-heading lr-padding-20 bg-darkblue-green">
 <h1 class="color-white text-right">данные погоды и прогноз</h1>
 					<div class="lr-panel lr-border-box lr-border-cyan text-left">
+<!--
 <form name="form_request_params">
-
-			<div class="lr-panel-body lr-flex lr-flex-wrap lr-row">
+-->
+						<div class="lr-panel-body lr-flex lr-flex-wrap lr-row">
 					
 					<div class="lr-margin-10 color-white lr-float-left">
 <label class="">широта</label><br>
@@ -266,33 +265,39 @@ type="range" class="range" min="-180" max="180" step="0.05" value="60" autocompl
 <label class="color-white">параметры API</label><br>
 					<div class="lr-padding-small">
 <select name="api-params" id="select-api" autocomplete="off" class="w80">
-	<option data-name="yandex" data-type="weather">Яндекс.Погода</option>
-	<option data-name="openweathermap" data-type="weather">weather, openweathermap.org</option>
-	<option data-name="openweathermap" data-type="forecast">5 day weather forecast, openweathermap.org</option>
+	<option>не выбрано</option>
+	<option data-source="yandex" data-type="weather">Яндекс.Погода</option>
+	<option data-source="openweathermap" data-type="weather">weather, openweathermap.org</option>
+	<option data-source="openweathermap" data-type="forecast">5 day weather forecast, openweathermap.org</option>
 </select>
 					</div>
 				</div>
-
 			</div>
 
-			<div class="lr-panel-body">
+						<div class="lr-panel-body">
 <!--
 <input type="text" size="80" 
 id="inp-url" class=""  autocomplete="off" 
 value="http://api.openweathermap.org/data/2.5/weather"/>
--->
-<a href="?q=send-request&api-type=weather&api-name=yandex" 
+
+<a href="?q=send-request&api-type=weather&api-source=yandex" 
 class="send-request lr-btn bg-darkblue text-white">получить данные (yandex)</a>
 
-<a href="?q=send-request&api-type=weather&api-name=openweathermap" 
+<a href="?q=send-request&api-type=weather&api-source=openweathermap" 
 class="lr-btn bg-darkblue text-white">get weather (openweathermap)</a>
 
-<a href="?q=send-request&api-type=forecast&api-name=openweathermap" 
+<a href="?q=send-request&api-type=forecast&api-source=openweathermap" 
 class="lr-btn bg-blue text-white">get weather forecast (openweathermap)</a>
-
-<a href="?q=test&func=testWrapDate" class="lr-btn bg-orange text-black">testBtn</a>
+-->
+<span class="lr-padding-20 bg-orange">
+	<a href="?q=send-request&api-type={{api-type}}&api-source={{api-source}}" 
+class="btn-send-request text-black">получить данные</a>
+</span>
 			</div>			
-</form><!-- end form_request_params -->
+<!--
+</form>
+-->
+<!-- end form_request_params -->
 					</div>
 				</div><!-- end tab-header -->
 				
