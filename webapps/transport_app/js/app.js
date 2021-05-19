@@ -63,7 +63,29 @@ console.log("init webapp!");
 		webApp.vars["weatherAPI"]["yandex"].init();
 		webApp.vars["weatherAPI"]["openweathermap"].init();
 
+		webApp.vars["weatherAPI"]["btnRequest"] = webApp.vars["tab-weather"].querySelector(".btn-send-request");
+		webApp.vars["weatherAPI"]["tpl_requestUrl"] = webApp.vars["weatherAPI"]["btnRequest"].href;
+		
 		defineEvents();
+		
+webApp.vars["weatherAPI"]["selectApiName"].selectedIndex = 1;//yandex weather default
+webApp.vars["weatherAPI"]["selectApiName"].dispatchEvent(new Event('change'));
+/*
+if ("createEvent" in document) {
+    var evt = document.createEvent("HTMLEvents");
+    evt.initEvent("change", false, true);
+    element.dispatchEvent(evt);
+}
+else
+    element.fireEvent("onchange"); 
+//--------------
+// Create a new 'change' event
+var event = new Event('change');
+
+// Dispatch it.
+element.dispatchEvent(event);
+*/
+		
 	}//end init()
 	
 };//end webApp()
@@ -1165,7 +1187,24 @@ console.log( "Warn! error parse url in " + target.href );
 //------------------		
 	webApp.vars["weatherAPI"]["selectApiName"].addEventListener("change", function(e){
 		var dataSet = e.target.selectedOptions[0].dataset;
-console.log(dataSet);
+//console.log(dataSet, dataSet.length, typeof dataSet);
+
+		var apiType = "";
+		var apiSource = "";
+		if( dataSet.type && dataSet.type.length > 0){
+			apiType = dataSet.type;
+		}
+		if( dataSet.source && dataSet.source.length > 0){
+			apiSource = dataSet.source;
+		}
+		
+var requestUrl = webApp.vars["weatherAPI"]["tpl_requestUrl"]
+.replace("{{api-type}}", apiType)
+.replace("{{api-source}}", apiSource);
+
+//console.log(requestUrl);
+		webApp.vars["weatherAPI"]["btnRequest"].href = requestUrl;
+		
 	}, false);//end event
 
 //------------------		
@@ -1260,13 +1299,13 @@ webApp.vars["transportAPI"]["requestParams"]["to_code"] = code;
 
 
 //-------------------
-				var apiName = webApp.vars["GET"]["api-name"];
-				if( !apiName || apiName.length === 0 ){
+				var apiSource = webApp.vars["GET"]["api-source"];
+				if( !apiSource || apiSource.length === 0 ){
 webApp.logMsg = "warning, empty or undefined API name";
 //func.logAlert(webApp.logMsg, "warning");
 console.log( webApp.logMsg );
 				} else{
-					apiObj = apiObj[apiName];
+					apiObj = apiObj[apiSource];
 				}
 
 //-------------------
@@ -1291,7 +1330,7 @@ if( apiObj["requestParams"]["longitude"] ){
 				var dataUrl = apiObj["dataUrl"];
 				
 //-------------------
-				if( apiName === "openweathermap")	{
+				if( apiSource === "openweathermap")	{
 					if( apiType === "weather")	{
 						dataUrl = apiObj["weatherUrl"];
 						apiObj.templates["mainTpl"] = apiObj.templates["tpl-openweathermap--weather"];
@@ -1363,7 +1402,7 @@ return false;
 console.log("-- start server request --");
 				sendRequest({
 					"dataUrl": dataUrl,
-					"apiName" : apiName,
+					"apiSource" : apiSource,
 					"requestParams": apiObj["requestParams"],
 					"callback" : function( response ){
 //console.log(arguments);
@@ -1415,7 +1454,7 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 function sendRequest( opt ){
 	var p = {
 		"dataUrl" : false,
-		"apiName" : false,
+		"apiSource" : false,
 		"requestParams": false,
 		"callback" : function(){
 //console.log(arguments);
@@ -1451,7 +1490,7 @@ func.logAlert(webApp.logMsg, "error");
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET", dataUrl, true);
 		
-		if(p.apiName === "yandex"){
+		if(p.apiSource === "yandex"){
 			xhr.setRequestHeader("X-Yandex-API-Key", p.requestParams["apiKey"] );
 			//xhr.setRequestHeader("Access-Control-Allow-Credentials", "true");
 		}
