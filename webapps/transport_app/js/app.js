@@ -69,7 +69,14 @@ console.log("init webapp!");
 		defineEvents();
 		
 webApp.vars["weatherAPI"]["selectApiName"].selectedIndex = 1;//yandex weather default
-webApp.vars["weatherAPI"]["selectApiName"].dispatchEvent(new Event('change'));
+//webApp.vars["weatherAPI"]["selectApiName"].dispatchEvent(new Event('change'));
+if ("createEvent" in document) {
+    var evt = document.createEvent("HTMLEvents");
+    evt.initEvent("change", false, true);
+    webApp.vars["weatherAPI"]["selectApiName"].dispatchEvent(evt);
+} else {
+    webApp.vars["weatherAPI"]["selectApiName"].fireEvent("onchange"); 
+}
 /*
 if ("createEvent" in document) {
     var evt = document.createEvent("HTMLEvents");
@@ -1173,7 +1180,7 @@ console.log( "Warn! error parse url in " + target.href );
 
 //------------------		
 	webApp.vars["weatherAPI"]["selectAddr"].addEventListener("change", function(e){
-//console.log(e.target);
+//console.log(e.type);
 		var dataSet = e.target.selectedOptions[0].dataset;
 //console.log(dataSet);
 		webApp.vars["weatherAPI"]["latitudeInput"].value = dataSet.lat;
@@ -1186,9 +1193,16 @@ console.log( "Warn! error parse url in " + target.href );
 
 //------------------		
 	webApp.vars["weatherAPI"]["selectApiName"].addEventListener("change", function(e){
+//console.log(e.type);
+//console.log(e.target.selectedIndex);
+//console.log(typeof e.target.selectedIndex);
+//console.log(typeof e.target.selectedOptions);
+//for(var key in e.target){
+//console.log(key +": "+ e.target[key]);
+//}//next
 		var dataSet = e.target.selectedOptions[0].dataset;
 //console.log(dataSet, dataSet.length, typeof dataSet);
-
+//console.log("test: "+dataSet.type);
 		var apiType = "";
 		var apiSource = "";
 		if( dataSet.type && dataSet.type.length > 0){
@@ -1197,14 +1211,14 @@ console.log( "Warn! error parse url in " + target.href );
 		if( dataSet.source && dataSet.source.length > 0){
 			apiSource = dataSet.source;
 		}
+//console.log(apiType+", "+apiSource);
 		
 var requestUrl = webApp.vars["weatherAPI"]["tpl_requestUrl"]
 .replace("{{api-type}}", apiType)
 .replace("{{api-source}}", apiSource);
 
-//console.log(requestUrl);
+console.log(requestUrl);
 		webApp.vars["weatherAPI"]["btnRequest"].href = requestUrl;
-		
 	}, false);//end event
 
 //------------------		
