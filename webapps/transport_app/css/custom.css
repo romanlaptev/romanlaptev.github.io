@@ -49,6 +49,10 @@ body.touch {
 	}
 }
 
+@media screen and (max-width:500px){
+
+}
+
 @media screen and (max-width:360px){
 	.lr-padding-20, .lr-padding20, .padding-20, .padding20 {
 		padding: 5px;
