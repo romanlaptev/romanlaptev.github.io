@@ -280,7 +280,6 @@ type="range" class="range" min="-180" max="180" step="0.05" value="60" autocompl
 <input type="text" size="80" 
 id="inp-url" class=""  autocomplete="off" 
 value="http://api.openweathermap.org/data/2.5/weather"/>
--->
 <a href="?q=send-request&api-type=weather&api-source=yandex" 
 class="send-request lr-btn bg-darkblue text-white">получить данные (yandex)</a>
 
@@ -289,6 +288,7 @@ class="lr-btn bg-darkblue text-white">get weather (openweathermap)</a>
 
 <a href="?q=send-request&api-type=forecast&api-source=openweathermap" 
 class="lr-btn bg-blue text-white">get weather forecast (openweathermap)</a>
+-->
 
 <span class="lr-padding-20 bg-orange">
 	<a href="?q=send-request&api-type={{api-type}}&api-source={{api-source}}" 
@@ -409,9 +409,9 @@ of total <span id="num-total-load"></span>
 	<div class="lr-flex lr-flex-wrap lr-row">
 		<div class="bg-lavender lr-padding-20 lr-float-left">
 			
-<div class="lr-flex lr-flex-hbetween lr-flex-v-top">
+<div class="lr-flex lr-flex-hbetween lr-flex-v-top lr-flex-wrap _lr-row">
 	<h3>погодные данные на <b>%fact.obs_time%</b></small></h3>
-	<div class="">
+	<div class="_lr-float-right">
 		<a href="%info.url%">Яндекс.Погода</a>
 	</div>
 </div>
@@ -421,8 +421,8 @@ of total <span id="num-total-load"></span>
 	<b>%fact.season%</b>, <b>%fact.daytime%</b>
 </p>
 
-			<div class="lr-flex lr-flex-vcenter">	
-				<div class="w50 text-center lr-padding-20">
+			<div class="lr-flex lr-flex-vcenter lr-flex-wrap">	
+				<div class="_w50 text-center lr-padding-20">
 <img class="w50" src="https://yastatic.net/weather/i/icons/blueye/color/svg/%fact.icon%.svg"
 onerror="this.onerror=console.log('error load '+this.src);this.src='img/%fact.icon%.png'"/>
 
@@ -430,12 +430,13 @@ onerror="this.onerror=console.log('error load '+this.src);this.src='img/%fact.ic
 <b>%fact.condition%</b>
 				</div>
 
-				<div class="w50">
+				<div class="_w50">
 <p class="lr-margin-0">
 	<small>температура:</small> <b>%fact.temp%</b>°C, 
 	<small>ощущается как:</small>: <b>%fact.feels_like%</b> &#8451;<br>
 	<small>вода:</small> <b>%fact.temp_water%</b> °C
 </p>
+
 
 <p class="lr-margin-0">
 	<small>направление ветра:</small> <b>%fact.wind_dir%</b><br>  
@@ -479,7 +480,7 @@ onerror="this.onerror=console.log('error load '+this.src);this.src='img/%fact.ic
 		<b>%parts.part_name%</b>
 	</div>
 	
-<div class="lr-flex">	
+<div class="lr-flex lr-flex-wrap">	
 	
 	<div class="text-center lr-padding-20">
 <img class="w50" src="https://yastatic.net/weather/i/icons/blueye/color/svg/%parts.icon%.svg"
@@ -489,17 +490,11 @@ onerror="this.onerror=console.log('error load '+this.src);this.src='img/%parts.i
 	</div>
 
 	<div>
-<h4>температура</h4>
-<p class="lr-margin-0">
-	<b>%parts.temp_min%</b> °C - <b>%parts.temp_max%</b> °C
-	<small>(<b>%parts.temp_avg%</b> °C)</small>
-</p>
-<p class="lr-margin-0">
-	<small>ощущается как</small>: <b>%parts.feels_like%</b> &#8451;
-</p>
-<p class="lr-margin-0">
-	<small>вода:</small>: <b>%parts.temp_water%</b> °C
-</p>
+<b>температура</b><br>
+от <b>%parts.temp_min%</b> °C до <b>%parts.temp_max%</b> °C;
+(<b>%parts.temp_avg%</b> °C)<br>
+<small>ощущается как</small>: <b>%parts.feels_like%</b> °C<br>
+<small>вода:</small>: <b>%parts.temp_water%</b> °C
 	</div>
 	
 </div>	
@@ -531,63 +526,65 @@ onerror="this.onerror=console.log('error load '+this.src);this.src='img/%parts.i
 <!-- templates  openweathermap (weather) 
 https://openweathermap.org/current
 -->
-	<span id="tpl-openweathermap--weather" class="hidden">
+<script id="tpl-openweathermap--weather" type="text/template">
 <div class="bg-lightgreen lr-padding-20">
-	<h2>Weather</h2>
-	<ul class="lr-list lr-list-disclosure bg-light-orange lr-margin-20 lr-padding-20">		
-		<li>city id: <b>%id%</b></li>
-		<li>city name: <b>%name%</b></li>
-<!--
-			<li>cod: <b>%cod%</b></li>
-			<li>base: <b>%base%</b></li>
--->
-		<li>time of data calculation: <b>%dt%</b></li>
-		<li>timezone: <b>%timezone%</b></li>
-		<li>visibility: <b>%visibility%</b> meter</li>
-	</ul>
-			
-<p>Облачность, clouds.all: <b>%clouds.all%</b>%</p>
-<p>
-geo latitude: <b>%coord.lat%</b>, 
-geo longitude: <b>%coord.lon%</b>
-</p>
-
-	<ul class="lr-list-group bg-floralwhite lr-margin-20 lr-padding-20">		
-		<li>main.temp: <b>%main.temp%</b>&deg;</li>
-		<li>main.feels_like: <b>%main.feels_like%</b>&deg;</li>
-		<li>main.temp_max: <b>%main.temp_max%</b>&deg;</li>
-		<li>main.temp_min: <b>%main.temp_min%</b>&deg;</li>
-		<li>main.pressure: <b>%main.pressure%</b> hPa</li>
-		<li>влажность (main.humidity): <b>%main.humidity%</b>%</li>
-	</ul>
-
-	<ul>		
-		<li>sys.country: <b>%sys.country%</b></li>
-		<li>sys.sunrise: <b>%sys.sunrise%</b></li>
-		<li>sys.sunset: <b>%sys.sunset%</b></li>
-	</ul>
-
-	<div>
+	<h3 class="text-center">%sys.country%, %name%, погодные данные на <b>%dt%</b></h3>	
+	
+<div class="lr-flex lr-flex-wrap lr-flex-hcenter">	
+	<div class="text-center lr-padding-20">	
 %weather%
 	</div>
 	
+	<div class="lr-padding-20">
+<p class="lr-margin-0">
+<small>широта:</small> <b>%coord.lat%</b>, 
+<small>долгота:</small> <b>%coord.lon%</b>
+</p>
+
+<p class="lr-margin-0">
+<b>температура</b>
+<ul>
+от <b>%main.temp_min%</b> &deg; до <b>%main.temp_max%</b> &deg;
+	(<b>%main.temp%</b> &deg;)<br>
+	<small>ощущается как</small>: <b>%main.feels_like%</b> &deg;
+</ul>	
+</p>
+
+<p class="lr-margin-0">давление: <b>%main.pressure%</b> hPa</p>
+<p class="lr-margin-0">влажность: <b>%main.humidity%</b> %</p>
+<p class="lr-margin-0">восход: <b>%sys.sunrise%</b>, закат: <b>%sys.sunset%</b></p>
+<p class="lr-margin-0">Облачность: <b>%clouds.all%</b>%</p>
+
+	</div>
+</div>
+
+<!--
+	<ul class="lr-list lr-list-disclosure bg-light-orange lr-margin-20 lr-padding-20">		
+		<li>city name: <b>%name%</b></li>
+		<li>city id: <b>%id%</b></li>
+			<li>cod: <b>%cod%</b></li>
+			<li>base: <b>%base%</b></li>
+		<li>timezone: <b>%timezone%</b></li>
+		<li>visibility: <b>%visibility%</b> meter</li>
+	</ul>
+-->
+	
 </div>		
-	</span>
+</script>
 
-	<span id="tpl-openweathermap-weather-list" class="hidden">
-		<ul>
-			<li>weather.main: <b>%weather.main%</b></li>
-			<li>weather.description: <b>%weather.description%</b></li>
-<img src="http://openweathermap.org/img/w/%weather.icon%.png">
-		</ul>
-	</span>
-
+<script id="tpl-openweathermap-weather-list" type="text/template">
+<img src="http://openweathermap.org/img/w/%weather.icon%.png" 
+	onerror="this.onerror=console.log('error load '+this.src);this.src='img/%weather.icon%.png'">
+<br>
+<b>%weather.main%,</b> <b>%weather.description%</b>
+</script>
+			
 
 <!-- templates  openweathermap (forecast) 
 https://openweathermap.org/forecast5#geo5
 
 -->
-<span id="tpl-openweathermap--forecast" class="hidden">
+<script id="tpl-openweathermap--forecast" type="text/template">
 	<div class="lr-margin-20">
 		<h2>прогноз на 5 дней</h2>
 	</div>
@@ -618,9 +615,9 @@ cod: <b>%cod%</b>, message: <b>%message%</b>
 %list%
 		</div>
 	</div>
-</span>
+</script>
 	
-<span id="tpl-openweathermap-forecast--list" class="hidden">
+<script id="tpl-openweathermap-forecast--list" type="text/template">
 	<div class="bg-lavender lr-margin-20 lr-padding-20">
 <!-- <h3>record: %record_num%</h3> -->
 <!-- <small>Time of data forecasted, ISO, UTC</small> -->
@@ -628,9 +625,11 @@ cod: <b>%cod%</b>, message: <b>%message%</b>
 		<div class="lr-flex lr-flex-hbetween">
 			<div>
 				<h3>%list.dt%</h3>
-				<h3>%list.sys.pod%</h3>
+				<h4>%list.sys.pod%</h4>
 			</div>
+			<div class="text-center w40">
 %weather%		
+			</div>
 		</div>
 		
 		<ul class="lr-list-unstyled">
@@ -667,17 +666,17 @@ cod: <b>%cod%</b>, message: <b>%message%</b>
 		</ul>
 		
 	</div>
-</span>
+</script>
 
 
-<span id="tpl-openweathermap-forecast--list-weather" class="hidden">
-	<div class="text-center w40">
+<script id="tpl-openweathermap-forecast--list-weather" type="text/template">
 		<div class="">
-<img src="http://openweathermap.org/img/w/%weather.icon%.png">
+<img src="http://openweathermap.org/img/w/%weather.icon%.png" 
+onerror="this.onerror=console.log('error load '+this.src);this.src='img/%weather.icon%.png'">
+
 <p class="lr-margin-0"><b>%weather.description%</b></p>
 		</div>
-	</div>
-</span>
+</script>
 
 
 </body>

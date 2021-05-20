@@ -437,7 +437,7 @@ lat={{latitude}}&\
 lon={{longitude}}&\
 lang=ru_RU",
 
-		//"dataUrl" : "files/test_ya_pogoda.json",
+		"dataUrl" : "files/test_ya_pogoda.json",
 		
 		"requestParams" : {
 			"apiKey" : "dab03f2c-c76d-4fb6-9445-faa84fa80973",
