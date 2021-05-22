@@ -611,28 +611,24 @@ cod: <b>%cod%</b>, message: <b>%message%</b>
 закат: <b>%city.sunset%</b>
 </p>
 		
-		<div class="lr-flex lr-flex-wrap lr-flex-hcenter">
+		<div class="lr-flex lr-flex-wrap lr-flex-hcenter lr-row">
 %list%
 		</div>
+		
 	</div>
 </script>
 	
 <script id="tpl-openweathermap-forecast--list" type="text/template">
-	<div class="bg-lavender lr-margin-20 lr-padding-20">
+	<div class="bg-lavender lr-margin-small lr-padding-20 lr-float-left">
 <!-- <h3>record: %record_num%</h3> -->
 <!-- <small>Time of data forecasted, ISO, UTC</small> -->
 
-		<div class="lr-flex lr-flex-hbetween">
-			<div>
-				<h3>%list.dt%</h3>
-				<h4>%list.sys.pod%</h4>
-			</div>
-			<div class="text-center w40">
-%weather%		
-			</div>
-		</div>
+		<div class="lr-flex lr-flex-hbetween lr-row">
 		
-		<ul class="lr-list-unstyled">
+			<div class="lr-float-left lr-padding-20">
+				<b>%list.dt%</b>, %list.sys.pod%
+%weather%		
+				<ul class="lr-list-unstyled">
 <li class="">
 	<small>температура</small>: <b>%list.main.temp%</b> &#8451;, 
 	<small>ощущается как</small>: 
@@ -664,6 +660,42 @@ cod: <b>%cod%</b>, message: <b>%message%</b>
 </li>
 		
 		</ul>
+			</div>	
+				
+			<div class="text-center _w40 lr-float-left">
+				<div class="lr-flex lr-row thermometer-wrapper">
+					<div class="thermometer lr-float-left">
+<div class="grad-fluid" 
+style="height:%list.grad_fluid_height%px;
+background-color:%list.grad_fluid_color%;"></div>
+					</div>
+					<div class="temp-scale lr-float-left">
+	<div class="grad-cell"><div class="grad-line"></div><div class="grad-mark">50</div></div>
+	<div class="grad-cell"><div class="grad-line short-line"></div><div class="grad-mark"></div></div>		
+	<div class="grad-cell"><div class="grad-line"></div><div class="grad-mark">40</div></div>		
+	<div class="grad-cell"><div class="grad-line short-line"></div><div class="grad-mark"></div></div>
+	<div class="grad-cell"><div class="grad-line"></div><div class="grad-mark">30</div></div>
+	<div class="grad-cell"><div class="grad-line short-line"></div><div class="grad-mark"></div></div>
+	<div class="grad-cell"><div class="grad-line"></div><div class="grad-mark">20</div></div>
+	<div class="grad-cell"><div class="grad-line short-line"></div><div class="grad-mark"></div></div>
+	<div class="grad-cell"><div class="grad-line"></div><div class="grad-mark">10</div></div>
+	<div class="grad-cell"><div class="grad-line short-line"></div><div class="grad-mark"></div></div>
+	<div class="grad-cell"><div class="grad-line"></div><div class="grad-mark">0</div></div>
+	<div class="grad-cell"><div class="grad-line short-line"></div><div class="grad-mark"></div></div>
+	<div class="grad-cell"><div class="grad-line"></div><div class="grad-mark">-10</div></div>
+	<div class="grad-cell"><div class="grad-line short-line"></div><div class="grad-mark"></div></div>
+	<div class="grad-cell"><div class="grad-line"></div><div class="grad-mark">-20</div></div>
+	<div class="grad-cell"><div class="grad-line short-line"></div><div class="grad-mark"></div></div>
+	<div class="grad-cell"><div class="grad-line"></div><div class="grad-mark">-30</div></div>
+	<div class="grad-cell"><div class="grad-line short-line"></div><div class="grad-mark"></div></div>
+	<div class="grad-cell"><div class="grad-line"></div><div class="grad-mark">-40</div></div>
+	<div class="grad-cell"><div class="grad-line short-line"></div><div class="grad-mark"></div></div>
+	<div class="grad-cell"><div class="grad-line"></div><div class="grad-mark">-50</div></div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
 		
 	</div>
 </script>

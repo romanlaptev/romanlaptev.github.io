@@ -223,7 +223,7 @@ https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951e
 		});
 		
 		webApp.vars["transportAPI"]["targetContainer"] = func.getById("response-transport-api");
-		webApp.vars["transportAPI"]["templates"] = _getTemplates();
+		webApp.vars["transportAPI"]["templates"] = _defineTemplates();
 		webApp.vars["transportAPI"]["dataProcess"] = _dataProcess;
 		
 		
@@ -326,7 +326,7 @@ https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951e
 	}//end initTransportFields()
 	
 	
-	var _getTemplates = function(){
+	var _defineTemplates = function(){
 
 		var templates = {
 			//"tpl-copyright": "",
@@ -373,7 +373,7 @@ https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951e
 		templates["mainTpl"] = templates["tpl-yandex--transport"];
 		
 		return templates;
-	};//end _getTemplates()
+	};//end _defineTemplates()
 
 	
 	var _dataProcess = function(jsonObj){
@@ -459,12 +459,12 @@ lang=ru_RU",
 		webApp.vars["weatherAPI"]["longitudeRange"].value = _vars["requestParams"]["longitude"];
 		
 		webApp.vars["weatherAPI"]["yandex"]["targetContainer"] = func.getById("response-weather-api");
-		webApp.vars["weatherAPI"]["yandex"]["templates"] = _getTemplates();;
+		webApp.vars["weatherAPI"]["yandex"]["templates"] = _defineTemplates();;
 		webApp.vars["weatherAPI"]["yandex"]["dataProcess"] = _dataProcess;
 		
 	};//end init()
 	
-	var _getTemplates = function(){
+	var _defineTemplates = function(){
 
 		var templates = {
 "tpl-yandex--weather": ""
@@ -720,7 +720,7 @@ var options = {
 
 		templates["mainTpl"] = templates["tpl-yandex--weather"];
 		return templates;
-	};//end _getTemplates()
+	};//end _defineTemplates()
 
 	
 //https://yandex.ru/dev/weather/doc/dg/concepts/forecast-info.html#resp-format	
@@ -841,7 +841,6 @@ lat={{latitude}}\
 		
 
 		//https://openweathermap.org/forecast5
-
 		"forecastUrl" : "http://api.openweathermap.org/data/2.5/forecast?\
 lat={{latitude}}\
 &lon={{longitude}}\
@@ -850,8 +849,8 @@ lat={{latitude}}\
 &lang=ru",
 
 //&callback=jsonp_callback",
-
 		//"forecastUrl" : "files/openweathermap_Novosibirsk_forecast.json",
+		//"forecastUrl" : "/projects/test_code.git/test_api/files_ignore/openweathermap_Novosibirsk_forecast.json",
 		
 		"requestParams" : {
 			"apiKey" : "7440bb4eee1e2d8d92bd8ca4a926ddd6",
@@ -867,11 +866,11 @@ lat={{latitude}}\
 
 	_vars["init"] = function(){
 		webApp.vars["weatherAPI"]["openweathermap"]["targetContainer"] = func.getById("response-weather-api");
-		webApp.vars["weatherAPI"]["openweathermap"]["templates"] = _getTemplates();
+		webApp.vars["weatherAPI"]["openweathermap"]["templates"] = _defineTemplates();
 		webApp.vars["weatherAPI"]["openweathermap"]["dataProcess"] = _dataProcess;
 	};
 	
-	var _getTemplates = function(){
+	var _defineTemplates = function(){
 		var templates = {
 "tpl-openweathermap--weather": "",
 "tpl-openweathermap--forecast": ""
@@ -880,6 +879,7 @@ lat={{latitude}}\
 		for(var key in templates){
 			templates[key] = getTpl(key);
 		}//next
+	
 	
 		//define template keys info
 		templates["tplKeys"] = {};
@@ -1026,10 +1026,34 @@ var options = {
 			}
 		};
 
+		var keyName = "list.grad_fluid_height";
+		templates["tplKeys"][keyName] = {
+			"description": "thermometer fluid height, px",
+			"process": function(dataArr){
+//calculate temperature position in pixels				
+				var _thermometerHeightPx = 400; //px, .thermometer height
+				var _numDegree = 100; //number of degrees on the thermometer scale
+				var _pixelsPerDegree = _thermometerHeightPx / _numDegree;
+				var _startPosPx = 200; //px, .thermometer .grad-fluid height
+
+				for(var n = 0; n < dataArr.length; n++){
+					var _d = dataArr[n];
+					var _tempPx = _d["main"]["temp"] * _pixelsPerDegree;
+					var _h = _startPosPx + _tempPx;
+					_d["grad_fluid_height"] = _h;
+					
+					_d["grad_fluid_color"] = "#ff0000";//red
+					if( _d["main"]["temp"] < 0){
+						_d["grad_fluid_color"] = "#0000ff";//blue
+					}
+					
+				}//next
+			}
+		};
 
 		templates["mainTpl"] = templates["template-weather--openweathermap"];
 		return templates;
-	};//end _getTemplates()
+	};//end _defineTemplates()
 
 	
 	var _dataProcess = function(jsonObj){
@@ -1114,8 +1138,16 @@ if(jsonObj["list"]){
 		{
 			tplKeys[tpl_keyName]["process"]( keyDataObj );
 		}
+		
+		var tpl_keyName = "list.grad_fluid_height";
+		if( tplKeys[tpl_keyName] &&	
+				typeof tplKeys[tpl_keyName]["process"] === "function"	)
+		{
+			tplKeys[tpl_keyName]["process"](keyDataObj);
+		}
 }
 
+		
 		return true;
 	};//end _dataProcess()
 	
