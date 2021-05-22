@@ -33,6 +33,53 @@ body.touch {
 	background-color: #003366 !important;
 }
 
+
+.thermometer {
+	width: 25px;
+	height: 410px;
+	background-color: #f5f5f5;
+	border: 1px solid #000;
+	position: relative;
+	border-radius: 10px;
+}
+.thermometer .grad-fluid {
+	background-color: red;
+	height: 200px;
+	position: absolute;
+	bottom: 5px;
+	left: 50%;
+	width: 9px;
+	margin-left: -4px;
+	border-radius: 0 0 5px 5px;
+}
+
+.temp-scale {
+	height: 400px;
+	background-color: #fdf5e6;
+}
+
+.temp-scale .grad-cell {
+display:flex;
+align-items:center;
+height: 19.5px;
+}
+
+.temp-scale .grad-line {
+	border-bottom: 2px solid #00f;
+	width: 10px;
+	height: 3px;
+	/* display: block; */
+	margin-right: 3px;
+}
+.temp-scale .grad-mark {
+	font-size: 10px;
+}
+.temp-scale .short-line {
+	width: 5px;
+	/* margin-right: 1px; */
+	/* font-size: 10px; */
+}
+
 @media screen and (max-width:640px){
 	.lr-container {
 		width: 100%;
