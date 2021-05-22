@@ -2665,6 +2665,29 @@ body.page-green {
 
 /* Galaxy S9 */
 @media screen and (max-width:360px){
+
+	.lr-container {
+		width: 100%;
+		padding: 0;
+	}
+
+	.log-panel {
+		position: static !important;
+	}
+
+	.log-panel  .lr-panel-body {
+		padding: 5px;
+		word-wrap: break-word;
+	}
+	
+	.lr-padding-20, .lr-padding20, .padding-20, .padding20 {
+		padding: 2px;
+	}
+	.lr-margin-20, .lr-margin20 {margin:2px;}
+	
+	.lr-panel-body {
+		padding: 5px;
+	}
 }
 
 @media screen and (max-width:340px){

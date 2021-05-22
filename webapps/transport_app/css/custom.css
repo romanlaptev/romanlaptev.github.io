@@ -80,6 +80,18 @@ height: 19.5px;
 	/* font-size: 10px; */
 }
 
+.temp-feels-like {
+	width: 12px;
+	height: 5px;
+	background-color: #ffa500;
+	position: absolute;
+	bottom: 0px;
+	/* left: -10px; */
+	/* z-index: 3; */
+	/* border-bottom: 5px solid #fff; */
+}
+
+
 @media screen and (max-width:640px){
 	.lr-container {
 		width: 100%;
@@ -102,6 +114,11 @@ height: 19.5px;
 
 @media screen and (max-width:360px){
 	.lr-padding-20, .lr-padding20, .padding-20, .padding20 {
+		padding: 2px;
+	}
+	.lr-margin-20, .lr-margin20 {margin:2px;}
+	
+	.lr-panel-body {
 		padding: 5px;
 	}
 }
