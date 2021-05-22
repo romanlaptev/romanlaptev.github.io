@@ -437,7 +437,7 @@ lat={{latitude}}&\
 lon={{longitude}}&\
 lang=ru_RU",
 
-		"dataUrl" : "files/test_ya_pogoda.json",
+		//"dataUrl" : "files/test_ya_pogoda.json",
 		
 		"requestParams" : {
 			"apiKey" : "dab03f2c-c76d-4fb6-9445-faa84fa80973",
@@ -1047,6 +1047,10 @@ var options = {
 						_d["grad_fluid_color"] = "#0000ff";//blue
 					}
 					
+					var _tempPx = _d["main"]["feels_like"] * _pixelsPerDegree;
+					var _h = _startPosPx + _tempPx;
+					_d["temp_feels_like"] = _h;//px
+
 				}//next
 			}
 		};
