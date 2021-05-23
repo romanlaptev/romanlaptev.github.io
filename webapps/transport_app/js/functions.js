@@ -12,26 +12,6 @@ use module:
 	});
 */
 
-//(function(){
-	var sharedFunc =  sharedFunc || function(){
-
-
-		// private variables and functions
-		var _vars = {
-			"logOrderBy": "ASC"
-		};//end _vars
-
-//----------------------
-		if( typeof window.jQuery === "function"){
-var msg = 'You are running jQuery version: ' + jQuery.fn.jquery;
-_log(msg);
-
-			$(document).ready(function(){
-//....				
-			});//end ready	
-
-		}
-		
 //---------------------- replace console.log for old IE
 //---------------------- replace console.log for mobile browsers
 if ( (!window.console ) || 	
@@ -54,6 +34,27 @@ if ( (!window.console ) ||
 		}
 	};
 }
+
+//(function(){
+	var sharedFunc =  sharedFunc || function(){
+
+
+		// private variables and functions
+		var _vars = {
+			"logOrderBy": "ASC"
+		};//end _vars
+
+//----------------------
+		if( typeof window.jQuery === "function"){
+var msg = 'You are running jQuery version: ' + jQuery.fn.jquery;
+_log(msg);
+
+			$(document).ready(function(){
+//....				
+			});//end ready	
+
+		}
+		
 
 		function _getById(id){
 			
