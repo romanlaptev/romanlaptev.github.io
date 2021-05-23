@@ -1,4 +1,6 @@
 ========================== mobile version
+*- для расписания транспорта, сделать копирайт-блок яндекса
+
 - исправить зависание при аякс-запросе, браузер desktop Konqueror
 
 - FF 4, Opera/9.80 (Windows NT 5.1; U; ru) Presto/2.5.24 Version/10.53
@@ -6,8 +8,13 @@ dataSet is undefined
 http://i5/projects/romanlaptev.github.io/webapps/transport_app/js/app.js
 Line 1244
 
-*- для наглядного вывода температуры можно использовать
+- openweather.org, forecast...сделать группировку прогноза по дням
+(объеденить части дня в один блок)
+
+- для наглядного вывода температуры можно использовать
 вертикальный слайдер со шкалой
+* - openweather.org, forecast
+
 
 *- сделать замену console.log для Android
 - исправить верстку шаблонов
