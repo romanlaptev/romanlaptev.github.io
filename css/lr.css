@@ -98,8 +98,8 @@ pre {
 .lr-text-underline, .text-underline{text-decoration:underline;}
 .lr-text-bold, .text-bold{font-weight:bold;}
 
-.lr-padding-0 {padding: 0;}
-.lr-margin-0 {margin: 0;}
+.lr-padding-0 {padding: 0 !important;}
+.lr-margin-0 {margin: 0 !important;}
 
 .lr-margin-small, .margin-small{margin:5px;}
 .lr-margin-small-top{margin-top:5px;}
@@ -889,24 +889,20 @@ padding: 10px;
 }
 
 
-/*====== FLEX ===== */
-/*
-.CSS-support-fail .test-support-flex{
-	background-color : #ff7f50 !important;
-}
-*/
-.test-support-flex {
+/*====== TEST SUPPORT ===== */
+.test-support, .test-support-flex, .test-support-grid {
 	padding:20px;
 	text-align:center;
 }
-.support-flex-false {
+.support-flex-false, .support-grid-false {
 	background-color : #ff7f50 !important;
 }
-.support-flex-true {
+.support-flex-true, .support-grid-true {
 	background-color : #20ce20 !important;
 	display:none;
 }
 
+/*====== FLEX ===== */
 @supports not (display : flex) {}
 @supports (display : flex) {
    .support-flex-true {
@@ -915,18 +911,12 @@ padding: 10px;
    .support-flex-false {
 		display : none;
 	}
-
 	.lr-flex, .df{
 		display:flex;
 		display: -webkit-box;
 		display: -webkit-flex;
 		display: -ms-flexbox;	
 	}
-/*
-	.CSS-support-fail .lr-flex{
-		display:inline-block !important;
-	}
-*/
 	.lr-flex-wrap {	flex-wrap: wrap;}
 	.lr-flex-hcenter, .lr-flex-h-center{	justify-content:center;}
 	.lr-flex-hbetween{	justify-content:space-between;}
@@ -944,21 +934,18 @@ padding: 10px;
 
 
 /*====== GRID =======*/
+@supports not (display: grid) {}
 @supports (display: grid) {
-   .test-support-grid {
-		background-color : #20ce20;
+   .support-grid-true {
+		display : block;
 	}
-}
-@supports not (display: grid) {
-   .test-support-grid {
-		background-color : #ff7f50;
+   .support-grid-false {
+		display : none;
 	}
+	.lr-grid, .dg {  display: grid;}
+	.lr-grid-gap-small {grid-gap: 5px;}
+	.lr-grid-center {place-items: center;}
 }
-.CSS-support-fail .test-support-grid{
-	background-color : #ff7f50 !important;
-}
-.lr-grid, .dg {  display: grid;}
-.lr-grid-gap-small {grid-gap: 5px;}
 
 
 /*====== COLORS ======= */
@@ -1543,7 +1530,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-color-test100A500 { background:#00A500;}  /*:Ярко-зелёный с желтоватым отливом, #00A500 */
 .bg-color-test1009E60 { background:#009E60;}  /*:Трилистник, #009E60 */
 .bg-color-test1009900 { background:#009900;}  /*:Мусульманский,Islamic_green, #009900 */
-.bg-color-test132CD32 { background:#32CD32;}  /*Лаймовый, Lime_Green, #32CD32 */
+
 
 .bg-persian-green { background:#00A693;}  /*:Персидский зелёный, #00A693 */
 /*https://cpalettes.com/color/03aea6*/
@@ -1558,7 +1545,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-mediumspringgreen {background-color: #00fa9a;}
 .bg-mediumseagreen {background-color: #3cb371;}
 .bg-lime {background-color: #00ff00;}
-.bg-limegreen {background-color: #32cd32;}
+.bg-limegreen {background-color: #32cd32;}  /*Лаймовый, Lime_Green, #32CD32 */
 
 .bg-light-weak-yellow { background:#cccc99;}
 
