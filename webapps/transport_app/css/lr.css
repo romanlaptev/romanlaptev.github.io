@@ -49,6 +49,9 @@ pre {
 .w100{width:100%;}
 .lr-w100{width:100% !important;}
 
+@media screen and (min-width: 500px) {	.w50-lg {width: 50%;}	 }
+@media screen and (max-width: 500px) {.w100-sm {width: 100% !important;}	}
+
 .lr-h50{	height:50px;}
 .h50{height:50%;}
 
@@ -98,8 +101,8 @@ pre {
 .lr-text-underline, .text-underline{text-decoration:underline;}
 .lr-text-bold, .text-bold{font-weight:bold;}
 
-.lr-padding-0 {padding: 0;}
-.lr-margin-0 {margin: 0;}
+.lr-padding-0 {padding: 0 !important;}
+.lr-margin-0 {margin: 0 !important;}
 
 .lr-margin-small, .margin-small{margin:5px;}
 .lr-margin-small-top{margin-top:5px;}
@@ -889,24 +892,20 @@ padding: 10px;
 }
 
 
-/*====== FLEX ===== */
-/*
-.CSS-support-fail .test-support-flex{
-	background-color : #ff7f50 !important;
-}
-*/
-.test-support-flex {
+/*====== TEST SUPPORT ===== */
+.test-support, .test-support-flex, .test-support-grid {
 	padding:20px;
 	text-align:center;
 }
-.support-flex-false {
+.support-flex-false, .support-grid-false {
 	background-color : #ff7f50 !important;
 }
-.support-flex-true {
+.support-flex-true, .support-grid-true {
 	background-color : #20ce20 !important;
 	display:none;
 }
 
+/*====== FLEX ===== */
 @supports not (display : flex) {}
 @supports (display : flex) {
    .support-flex-true {
@@ -915,18 +914,12 @@ padding: 10px;
    .support-flex-false {
 		display : none;
 	}
-
 	.lr-flex, .df{
 		display:flex;
 		display: -webkit-box;
 		display: -webkit-flex;
 		display: -ms-flexbox;	
 	}
-/*
-	.CSS-support-fail .lr-flex{
-		display:inline-block !important;
-	}
-*/
 	.lr-flex-wrap {	flex-wrap: wrap;}
 	.lr-flex-hcenter, .lr-flex-h-center{	justify-content:center;}
 	.lr-flex-hbetween{	justify-content:space-between;}
@@ -935,6 +928,11 @@ padding: 10px;
 	.lr-flex-vcenter, .lr-flex-v-center{ align-items:center;}
 	.lr-flex-v-top{	align-items: start;}
 	.lr-flex-v-end{	align-items: end;}
+	.lr-flex-1{flex:1;}
+	.lr-flex-2{flex:2;}
+	.lr-flex-3{flex:3;}
+	.lr-flex-4{flex:4;}
+	.lr-flex-5{flex:5;}	
 	
 }
 
@@ -944,21 +942,18 @@ padding: 10px;
 
 
 /*====== GRID =======*/
+@supports not (display: grid) {}
 @supports (display: grid) {
-   .test-support-grid {
-		background-color : #20ce20;
+   .support-grid-true {
+		display : block;
 	}
-}
-@supports not (display: grid) {
-   .test-support-grid {
-		background-color : #ff7f50;
+   .support-grid-false {
+		display : none;
 	}
+	.lr-grid, .dg {  display: grid;}
+	.lr-grid-gap-small {grid-gap: 5px;}
+	.lr-grid-center {place-items: center;}
 }
-.CSS-support-fail .test-support-grid{
-	background-color : #ff7f50 !important;
-}
-.lr-grid, .dg {  display: grid;}
-.lr-grid-gap-small {grid-gap: 5px;}
 
 
 /*====== COLORS ======= */
@@ -1111,53 +1106,31 @@ padding: 10px;
 .color-yellowgreen, .text-yellowgreen {color: #9acd32;}
 
 
-.lr-border-box{
-border: 1px solid;
-}
+/* BORDERS */
+.lr-border-box, .border-box{border: 1px solid;}
 
-.lr-border-white{border-color: #fff;}
-.lr-list-group.lr-border-white li {
-	border-color: #fff;
-}
+.lr-border-bottom, .lr-page-header, .page-header {	border-bottom: 1px solid;}
+.lr-border-top {	border-top: 1px solid;}
+.lr-border-right {	border-right: 1px solid;}
+.lr-border-left {	border-right: 1px solid;}
+
+.lr-border-white, .border-white{border-color: #fff !important;}
+.lr-list-group.lr-border-white li {	border-color: #fff;}
 
 .lr-border-black{border-color: #000;}
-.lr-list-group.lr-border-black li {
-	border-color: #000;
-}
+.lr-list-group.lr-border-black li {border-color: #000;}
 
 .lr-border-red{border-color: #f00;}
-.lr-list-group.lr-border-red li {
-	border-color: #f00;
-}
+.lr-list-group.lr-border-red li {border-color: #f00;}
 
-.lr-border-silver{border-color:#c0c0c0;}
-.lr-list-group.lr-border-silver li {
-	border-color: #c0c0c0;
-}
+.lr-border-silver, .border-silver, .lr-list-group.lr-border-silver li {	border-color: #c0c0c0  !important;}
 
-.lr-border-cyan {
-	border-color:#159fd2;
-}
-.lr-list-group.lr-border-cyan li {
-	border-color: #159fd2;
-}
+.lr-border-cyan {	border-color:#159fd2;}
+.lr-list-group.lr-border-cyan li {	border-color: #159fd2;}
 
-.lr-border-radius5{
-	border-radius: 5px;
-}
-.lr-border-round-small{
-	border-radius: 5px;
-}
-.lr-border-round{
-	border-radius: 35px;
-}
+.lr-border-radius5, .lr-border-round-small{	border-radius: 5px;}
+.lr-border-round{border-radius: 10px;}
 
-.border-white{border: 3px solid #fff !important;}
-.border-silver{border: 1px solid #c0c0c0;}
-
-.border-box{
-border: 1px solid #004586;
-}
 
 
 /* Background colors */
@@ -1222,6 +1195,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-grey-c9{  background-color: #70708c !important;}
 
 .bg-purple1{  background-color: #9999CC !important;}
+.bg-purple2{background-color:  #6f42c1;}
 
 
 .bg-light-violet1{  background-color: #cecefa !important;}
@@ -1247,8 +1221,30 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-azure {background-color: #f0ffff;}
 .bg-beige {background-color: #f5f5dc;}
 .bg-bisque {background-color: #ffe4c4;}
+
 .bg-black {background-color: #000000;}
+
+.bg-black2 { background-color: #0c0d0e;}
+
+.bg-black-025 {background-color: #fafafb;}
+.bg-black-050 {background-color: #eff0f1;}
+.bg-black-075 {background-color: #e4e6e8;}
+.bg-black-100 {background-color: #d6d9dc;}
+.bg-black-150 {background-color: #c8ccd0;}
+.bg-black-200 {background-color: #bbc0c4;}
+.bg-black-300 {background-color: #9fa6ad;}
+.bg-black-350 {background-color: #9199a1;}
+.bg-black-400 {background-color: #848d95;}
+.bg-black-500 {background-color: #6a737c;}
+.bg-black-600 {background-color: #535a60;}
+.bg-black-700 {background-color: #3c4146;}
+.bg-black-750 {background-color: #2f3337;}
+.bg-black-800 {background-color: #242729;}
+.bg-black-900 {background-color: #0c0d0e;}
+
+
 .bg-blanchedalmond {background-color: #ffebcd;}
+
 
 
 .bg-green-slack { background-color: #53b388; }
@@ -1259,6 +1255,21 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 
 /* BLUE, DARKBLUE */
+
+.bg-blue-050 { background-color: #f2f9ff;}
+.bg-blue-100 { background-color: #cfeafe;}
+.bg-blue-200 { background-color: #addafc;}
+.bg-blue-300 { background-color: #6cbbf7;}
+.bg-blue-400 { background-color: #379fef;}
+.bg-blue-500 { background-color: #0095ff;}
+
+.bg-blue-550 { background-color: #007bff;}
+
+.bg-blue-600 { background-color: #0077cc;}
+.bg-blue-700 { background-color: #0064bd;}
+.bg-blue-800 { background-color: #0054a3;}
+.bg-blue-900 { background-color: #004487;}
+
 
 .bg-color-blue {background-color: #0000ff;}
 .bg-blueviolet {background-color: #8a2be2;}
@@ -1416,6 +1427,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 
 .bg-brown {background-color: #a52a2a;}
+.bg-brown2 {background-color: #2e2e2e}
 .bg-red-brown {background-color: #5A2000;}
 
 .bg-burlywood {background-color: #deb887;}
@@ -1443,7 +1455,10 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 .bg-darksalmon {background-color: #e9967a;}
 .bg-darkseagreen {background-color: #8fbc8f;}
+
 .bg-darkslateblue {background-color: #483d8b;}
+.bg-darkslateblue2 {background-color: #3d5396;}
+
 .bg-darkslategray {background-color: #2f4f4f;}
 .bg-darkturquoise {background-color: #00ced1;}
 .bg-darkviolet {background-color: #9400d3;}
@@ -1458,8 +1473,19 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-fuchsia {background-color: #ff00ff;}
 .bg-gainsboro {background-color: #dcdcdc;}
 .bg-ghostwhite {background-color: #f8f8ff;}
+
 .bg-gold {background-color: #ffd700;}
 .bg-goldenrod {background-color: #daa520;}
+
+.bg-gold2 { background-color: #ffcc01;}
+.bg-gold3 { background-color: #fff4d1;}
+.bg-gold4 { background-color: #f1b600;}
+
+
+.bg-bronze { background-color: #caa789;}
+.bg-bronze2 { background-color: #f2e9e1;}
+.bg-bronze3 { background-color: #ab825f;}
+
 
 /*Оттенки серого цвета*/
 .bg-dark-blue-gray{  background-color: #334455 !important;}
@@ -1493,10 +1519,21 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-green {background-color: #008000;}
 .bg-greenyellow {background-color: #adff2f;}
 
+.bg-green-025 { background-color: #eef8f1;}
+.bg-green-050 { background-color: #dcf0e2;}
+.bg-green-100 { background-color: #cae8d4;}
+.bg-green-200 { background-color: #a6d9b7;}
+.bg-green-300 { background-color: #82ca9a;}
+.bg-green-400 { background-color: #5eba7d;}
+.bg-green-500 { background-color: #48a868;}
+.bg-green-600 { background-color: #3d8f58;}
+.bg-green-700 { background-color: #2f6f44;}
+.bg-green-800 { background-color: #29603b;}
+.bg-green-900 { background-color: #1e472c;}
+
 .bg-color-test1ccffff { background:#ccffff;}
 .bg-color-test1225033 { background:#225033;}
-.bg-color-test121301f { background:#21301f;}
-.bg-color-test121301f { background:#21301f;}
+.bg-blackgreen { background:#21301f;}
 
 .bg-very-dark-green{ background:#004000;}
 .bg-very-dark-green2{ background:#072F07;}
@@ -1565,7 +1602,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-color-test100A500 { background:#00A500;}  /*:Ярко-зелёный с желтоватым отливом, #00A500 */
 .bg-color-test1009E60 { background:#009E60;}  /*:Трилистник, #009E60 */
 .bg-color-test1009900 { background:#009900;}  /*:Мусульманский,Islamic_green, #009900 */
-.bg-color-test132CD32 { background:#32CD32;}  /*Лаймовый, Lime_Green, #32CD32 */
+
 
 .bg-persian-green { background:#00A693;}  /*:Персидский зелёный, #00A693 */
 /*https://cpalettes.com/color/03aea6*/
@@ -1580,7 +1617,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-mediumspringgreen {background-color: #00fa9a;}
 .bg-mediumseagreen {background-color: #3cb371;}
 .bg-lime {background-color: #00ff00;}
-.bg-limegreen {background-color: #32cd32;}
+.bg-limegreen {background-color: #32cd32;}  /*Лаймовый, Lime_Green, #32CD32 */
 
 .bg-light-weak-yellow { background:#cccc99;}
 
@@ -1649,7 +1686,10 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 .bg-hotpink {background-color: #ff69b4;}
 .bg-indianred {background-color: #cd5c5c;}
+
 .bg-indigo {background-color: #4b0082;}
+.bg-indigo2 {background-color: #6610f2;}
+
 .bg-ivory {background-color: #fffff0;}
 
 .bg-khaki {background-color: #f0e68c;}
@@ -1721,9 +1761,22 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-rebeccapurple{background-color: #639;}
 
 
+.bg-powder-050 { background-color: #f4f8fb;}
+.bg-powder-100 { background-color: #e1ecf4;}
+.bg-powder-200 { background-color: #d1e5f1;}
+.bg-powder-300 { background-color: #b3d3ea;}
+.bg-powder-400 { background-color: #a0c7e4;}
+.bg-powder-500 { background-color: #7aa7c7;}
+.bg-powder-600 { background-color: #5b8db1;}
+.bg-powder-700 { background-color: #39739d;}
+.bg-powder-800 { background-color: #2c5777;}
+.bg-powder-900 { background-color: #1e3c52;}
 
 
 /* ORANGE */
+.bg-orange {background-color: #ffa500;}
+.bg-orangered {background-color: #ff4500;}
+
 .bg-orange1 {  background-color: #ff950e !important;}
 .bg-orange2 {  background-color: #ffb515 !important;}
 .bg-orange-tango {  background-color: #e09d00 !important;}
@@ -1733,24 +1786,48 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 }
 .bg-orange5 {  background-color: #E9B96E !important;}
 
+.bg-orange-050 { background-color: #fff7f2;}
+.bg-orange-100 { background-color: #fee3cf;}
+.bg-orange-200 { background-color: #fcd0ad;}
+.bg-orange-300 { background-color: #f7aa6d;}
+.bg-orange-400 { background-color: #f48024;}
+.bg-orange-500 { background-color: #f2720c;}
+.bg-orange-600 { background-color: #da670b;}
+.bg-orange-700 { background-color: #bd5c00;}
+.bg-orange-800 { background-color: #a35200;}
+.bg-orange-900 { background-color: #874600;}
+
 .bg-light-orange {background-color: #EDD4A0;}
 .bg-light-orange2 {background-color: #EAE2D3;}
 .bg-light-orange3 {background-color: #cac2b1;}/* Thor bg */
 .bg-light-orange4 {background-color: #f2eadb;}
 
 
-.bg-orange {background-color: #ffa500;}
-.bg-orangered {background-color: #ff4500;}
 .bg-vivid-orange {  background-color:  #ffaa00;}
 .bg-vivid-orange2 {background-color: #FFB515;}
 .bg-vivid-orange3 {background-color: #FFAC19;}
+.bg-vivid-orange5 { background:#ffac00; }
 .bg-vivid-orange4 {background-color: #fedab8;}
+
 .bg-golden {background-color: #FF8C00;}/* win10, desktop color, light-orange*/
 .bg-darkorange {background-color: #ff8c00;}
-.bg-darkorange2 { background:#bf864e; }
+
+.bg-brown3 { background:#bf864e; }
 
 
 /* RED */
+
+.bg-red-050 { background-color: #fdf3f4;}
+.bg-red-100 { background-color: #f9d3d7;}
+.bg-red-200 { background-color: #f4b4bb;}
+.bg-red-300 { background-color: #e87c87;}
+.bg-red-400 { background-color: #de535e;}
+.bg-red-500 { background-color: #d1383d;}
+.bg-red-600 { background-color: #c02d2e;}
+.bg-red-700 { background-color: #ac2726;}
+.bg-red-800 { background-color: #942121;}
+.bg-red-900 { background-color: #7a1819;}
+
 .bg-maroon {background-color: #800000;}
 .bg-darkred {background-color: #8b0000;}
 .bg-very-darkred {background-color: #2F0709;}
@@ -1767,7 +1844,10 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 .bg-rosybrown {background-color: #bc8f8f;}
 .bg-royalblue {background-color: #4169e1;}
+
 .bg-saddlebrown {background-color: #8b4513;}
+.bg-saddlebrown2 {background-color: #945913;}
+	
 .bg-salmon {background-color: #fa8072;}
 .bg-sandybrown {background-color: #f4a460;}
 .bg-seagreen {background-color: #2e8b57;}
@@ -1778,6 +1858,9 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-lightsilver {background-color: #e9e9e9;}
 .bg-silver-f1 {background-color: #f1f1f1;}
 .bg-silver-f7 {background-color: #f7f7f7;}
+.bg-silver2 { background-color: #b4b8bc;}
+.bg-silver3 { background-color: #e8e8e8;}
+.bg-silver4 { background-color: #9a9c9f;}
 
 
 .bg-skyblue {background-color: #87ceeb;}
@@ -1798,10 +1881,22 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-wheat {background-color: #f5deb3;}
 .bg-white {background-color: #ffffff !important;}
 .bg-whitesmoke {background-color: #f5f5f5;}
+.bg-whitesmoke2 {background-color: #f4f6f2;}
 
 
 
 /* YELLOW  */
+
+.bg-yellow-050 { background-color: #fdf7e3;}
+.bg-yellow-100 { background-color: #fbf2d4;}
+.bg-yellow-200 { background-color: #f1e5bc;}
+.bg-yellow-300 { background-color: #e6d178;}
+.bg-yellow-400 { background-color: #e9c63f;}
+.bg-yellow-500 { background-color: #ddb624;}
+.bg-yellow-600 { background-color: #cea51b;}
+.bg-yellow-700 { background-color: #b89516;}
+.bg-yellow-800 { background-color: #9f8010;}
+.bg-yellow-900 { background-color: #826a0b;}
 
 .bg-yellow {background-color: #ffff00;}
 .bg-yellowgreen {background-color: #9acd32;}
@@ -2665,6 +2760,29 @@ body.page-green {
 
 /* Galaxy S9 */
 @media screen and (max-width:360px){
+
+	.lr-container {
+		width: 100%;
+		padding: 0;
+	}
+
+	.log-panel {
+		position: static !important;
+	}
+
+	.log-panel  .lr-panel-body {
+		padding: 5px;
+		word-wrap: break-word;
+	}
+	
+	.lr-padding-20, .lr-padding20, .padding-20, .padding20 {
+		padding: 2px;
+	}
+	.lr-margin-20, .lr-margin20 {margin:2px;}
+	
+	.lr-panel-body {
+		padding: 5px;
+	}
 }
 
 @media screen and (max-width:340px){
@@ -2680,6 +2798,31 @@ textarea {resize:vertical;}
 textarea {resize:horizontal;}
 */
 
+/*
+:root {
+	--pink: #e83e8c;
+	--red: #dc3545;
+	--orange: #fd7e14;
+	--yellow: #ffc107;
+	--green: #28a745;
+	--teal: #20c997;
+	--cyan: #17a2b8;
+	--white: #fff;
+	--gray: #6c757d;
+	--gray-dark: #343a40;
+	--primary: #007bff;
+	--secondary: #6c757d;
+	--success: #28a745;
+	--info: #17a2b8;
+	--warning: #ffc107;
+	--danger: #dc3545;
+	--light: #f8f9fa;
+	--dark: #343a40;
+}
+
+https://stackoverflow.com/questions/40236108/joomla-displaydata-not-defined
+ */ 
+
 .product-card {
 	/*width: 270px;
 	min-height: 440px;*/
@@ -2690,4 +2833,6 @@ justify-content: space-between;
 	padding: 10px;
 	border: 1px solid #EDEDEC;
 }
+
+
 
