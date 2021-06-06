@@ -1240,18 +1240,18 @@ console.log( "Warn! error parse url in " + target.href );
 //console.log(dataSet, dataSet.length, typeof dataSet);
 //console.log("test: "+dataSet.type);
 		var apiType = "";
-		var apiSource = "";
+		var apiObjectName = "";
 		if( dataSet.type && dataSet.type.length > 0){
 			apiType = dataSet.type;
 		}
 		if( dataSet.source && dataSet.source.length > 0){
-			apiSource = dataSet.source;
+			apiObjectName = dataSet.source;
 		}
-//console.log(apiType+", "+apiSource);
+//console.log(apiType+", "+apiObjectName);
 		
 var requestUrl = webApp.vars["weatherAPI"]["tpl_requestUrl"]
 .replace("{{api-type}}", apiType)
-.replace("{{api-source}}", apiSource);
+.replace("{{api-object}}", apiObjectName);
 
 console.log(requestUrl);
 		webApp.vars["weatherAPI"]["btnRequest"].href = requestUrl;
@@ -1349,13 +1349,13 @@ webApp.vars["transportAPI"]["requestParams"]["to_code"] = code;
 
 
 //-------------------
-				var apiSource = webApp.vars["GET"]["api-source"];
-				if( !apiSource || apiSource.length === 0 ){
+				var apiObjectName = webApp.vars["GET"]["api-object"];
+				if( !apiObjectName || apiObjectName.length === 0 ){
 webApp.logMsg = "warning, empty or undefined API name";
 //func.logAlert(webApp.logMsg, "warning");
 console.log( webApp.logMsg );
 				} else{
-					apiObj = apiObj[apiSource];
+					apiObj = apiObj[apiObjectName];
 				}
 
 //-------------------
@@ -1380,7 +1380,7 @@ if( apiObj["requestParams"]["longitude"] ){
 				var dataUrl = apiObj["dataUrl"];
 				
 //-------------------
-				if( apiSource === "openweathermap")	{
+				if( apiObjectName === "openweathermap")	{
 					if( apiType === "weather")	{
 						dataUrl = apiObj["weatherUrl"];
 						apiObj.templates["mainTpl"] = apiObj.templates["tpl-openweathermap--weather"];
@@ -1452,7 +1452,7 @@ return false;
 console.log("-- start server request --");
 				sendRequest({
 					"dataUrl": dataUrl,
-					"apiSource" : apiSource,
+					"apiObjectName" : apiObjectName,
 					"requestParams": apiObj["requestParams"],
 					"callback" : function( response ){
 //console.log(arguments);
@@ -1504,7 +1504,7 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 function sendRequest( opt ){
 	var p = {
 		"dataUrl" : false,
-		"apiSource" : false,
+		"apiObjectName" : false,
 		"requestParams": false,
 		"callback" : function(){
 //console.log(arguments);
@@ -1540,7 +1540,7 @@ func.logAlert(webApp.logMsg, "error");
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET", dataUrl, true);
 		
-		if(p.apiSource === "yandex"){
+		if(p.apiObjectName === "yandex"){
 			xhr.setRequestHeader("X-Yandex-API-Key", p.requestParams["apiKey"] );
 			//xhr.setRequestHeader("Access-Control-Allow-Credentials", "true");
 		}

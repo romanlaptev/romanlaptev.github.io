@@ -272,18 +272,18 @@ type="range" class="range" min="-180" max="180" step="0.05" value="60" autocompl
 <input type="text" size="80" 
 id="inp-url" class=""  autocomplete="off" 
 value="http://api.openweathermap.org/data/2.5/weather"/>
-<a href="?q=send-request&api-type=weather&api-source=yandex" 
+<a href="?q=send-request&api-type=weather&api-object=yandex" 
 class="send-request lr-btn bg-darkblue text-white">получить данные (yandex)</a>
 
-<a href="?q=send-request&api-type=weather&api-source=openweathermap" 
+<a href="?q=send-request&api-type=weather&api-object=openweathermap" 
 class="lr-btn bg-darkblue text-white">get weather (openweathermap)</a>
 
-<a href="?q=send-request&api-type=forecast&api-source=openweathermap" 
+<a href="?q=send-request&api-type=forecast&api-object=openweathermap" 
 class="lr-btn bg-blue text-white">get weather forecast (openweathermap)</a>
 -->
 
 <span class="lr-padding-20 bg-orange">
-	<a href="?q=send-request&api-type={{api-type}}&api-source={{api-source}}" 
+	<a href="?q=send-request&api-type={{api-type}}&api-object={{api-object}}" 
 class="btn-send-request text-black">получить данные</a>
 </span>
 			</div>			
