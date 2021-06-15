@@ -1536,6 +1536,7 @@ func.logAlert(webApp.logMsg, "error");
 //console.log( dataUrl );		
 //return false;
 
+	var timeStart = new Date();
 	try{
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET", dataUrl, true);
@@ -1566,10 +1567,15 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 //console.log( this.responseText );
 //func.log( this.responseText, "response");
 
-var logMsg = "ajax load time: " + e.timeStamp + "ms, "+ (e.timeStamp / 1000)+" sec , "; 
+var logMsg = "ajax load time: " + e.timeStamp + " ms, "+ (e.timeStamp / 1000)+" sec , "; 
 logMsg += "total: " + e.total + " bytes, "; 
 logMsg += "loaded: " + e.loaded + " bytes, " + (e.loaded / 1024).toFixed(2)+" Kbytes"; 
 //console.log( logMsg );	
+func.logAlert( logMsg, "info");
+
+			var timeEnd = new Date();
+			var runtime = (timeEnd.getTime() - timeStart.getTime());
+var logMsg = "ajax runtime: " + runtime + " ms, "+ (runtime / 1000)+" sec";
 func.logAlert( logMsg, "info");
 			
 			var _response = false;

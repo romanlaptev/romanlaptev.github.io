@@ -8,6 +8,10 @@ body{
 	padding-top: 1%;
 }
 
+h4 {
+	margin: 5px;
+}
+
 .lr-container {
 	border-radius: 4px;
 	width: 80%;
@@ -35,50 +39,15 @@ margin-bottom: 1%;
 	font-weight: bold;
 }
 
-.nav>li>a:focus,
-.nav>li>a:hover {
- text-decoration:none;
- background-color:#000
-}
-
-.nav > li > a:hover {
-    background-color: #004586 !important;
-    color: #fff;
-}
-
-.nav > li > a:focus  {
-/*background-color: #4682b4 !important;*/
-/*color: #fff;*/
-background-color: #fff !important;
-border: 1px solid #337ab7;
-color: #337ab7;
-/*outline: none;*/
-}
-
-
-/*
-.nav > li > a:visited  {
-background-color: #fff !important;
-border: 1px solid #337ab7;
-color: #337ab7;
-}
-*/
-
-#content-list li {
-cursor:pointer;
-color:#004586;
-}
-#content-list li.active {
-font-weight:bold;
-cursor:default;
-}
 
 .lr-panel-inline {
 	width: 30%;
 border-radius: 5px;
 margin: 0;
 }
-
+.lr-panel-body{
+/*padding:5px 15px;*/
+}
 
 .lr-btn-darkblue {
 	font-family: ticker_taperegular;
@@ -90,6 +59,11 @@ margin: 0;
 	padding: 10px 15px;
 }
 
+.lr-icon {
+	width: 30px;
+	height: 30px;
+	margin: 5px;
+}
 
 /*====== MEDIA styles =======*/
 @media screen and (max-width:1600px){}
