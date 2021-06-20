@@ -81,12 +81,8 @@ pre {
 .clearfix {
 	clear: both;
 }
-.lr-float-left, .float-left, .pull-left {
-	float: left;
-}
-.lr-float-right, .float-right, .pull-right {
-	float: right;
-}
+.lr-float-left, .float-left, .pull-left {float: left;}
+.lr-float-right, .float-right, .pull-right {float: right;}
 
 
 .lr-page-header, .page-header {
@@ -1364,12 +1360,15 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 
 .bg-grey-blue {  background-color: #5a819d !important;}
-.bg-blue-grey {/*c1*/
+.bg-blue-grey-900 {/*c1*/
   background-color: #315570 !important;
 }
+.bg-blue-grey-200 {  background-color: #8CAAB5 !important}
+.bg-blue-grey-100{  background-color: #cfdfe6 !important;}
+
 .bg-lightblue-grey {  background-color: #e6e6ff !important;}
 
-.bg-pale-dull-azure{ background:#99CCFF;}
+.bg-pale-dull-azure{ background:#99CCFF !important;}
 .bg-lightskyblue1{  background-color: #87cefa !important;}
 .bg-sky-blue5{  background-color: #006699 !important;}
 .bg-sky-blue66{  background-color: #003366 !important;}
@@ -1677,7 +1676,6 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-grey-green4{/* book_Rods */
   background-color: #e6eaec !important;
 }
-.bg-grey-green5{  background-color: #cfdfe6 !important;}
 .bg-dark-greygreen { background:#324f5a; }
 
 .bg-palegrey-green{  background-color: #f0f3f6 !important;}
@@ -2838,5 +2836,26 @@ justify-content: space-between;
 	border: 1px solid #EDEDEC;
 }
 
+/*
+ hover transform tile
+ 
+.block-service-tile .service-tile:hover {
+  transform: scale(1.1);
+	-moz-transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	-o-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=1.5, M12=0, M21=0, M22=1.5, SizingMethod='auto expand')";
+	filter: progid:DXImageTransform.Microsoft.Matrix(M11=1.5, M12=0, M21=0, M22=1.5, SizingMethod='auto expand');
+}
+.block-service-tile .service-tile {
+	background-position: center;
+	transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-ms-transition: all 0.5s ease;
+	-webkit-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+}
 
+*/
 
