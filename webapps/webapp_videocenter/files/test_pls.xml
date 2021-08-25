@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<playlist xmlns="http://xspf.org/ns/0/" xmlns:vlc="http://www.videolan.org/vlc/playlist/ns/0/" version="1">
+	<title>Плейлист</title>
+	<trackList>
+		<track>
+			<title>Homeland, season 1, ep.1, Pilot</title>
+			<location>/video2/films/H/Homeland/Season%201/S01E01.mp4</location>
+
+			<subtitles>
+<track label="English, ep.1" srclang="en" src="/video2/films/H/Homeland/Season%201/Subtitles/VTT/S01E01.ENG.vtt"/>
+<track label="Russian, ep.1" srclang="ru" src="/video2/films/H/Homeland/Season%201/Subtitles/VTT/S01E01.RUS.vtt"/>
+			</subtitles>
+			
+			<duration>3319781</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>0</vlc:id>
+			</extension>
+		</track>
+
+		<track>
+			<title>Breaking Bad (2008) Season_01 Episode_01: Pilot / Пилот</title>
+			<location>file:///mnt/terra/video/films/B/Breaking_Bad/Season_01/s01e01_Pilot.mp4</location>
+			<duration>3486528</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>0</vlc:id>
+			</extension>
+		</track>
+
+		<track>
+			<title>Idiocracy</title>
+			<location>/video2/films/I/Idiocracy/Idiocracy.mp4</location>
+			<subtitles>
+<track label="English, Idiocracy" srclang="en" src="/video2/films/I/Idiocracy/Idiocracy.ENG.vtt"/>
+<track label="Russian, Idiocracy" srclang="ru" src="/video2/films/I/Idiocracy/Idiocracy.RUS.vtt"/>
+			</subtitles>
+		</track>
+	</trackList>
+<!--	
+	<extension application="http://www.videolan.org/vlc/playlist/0">
+			<vlc:item tid="0"/>
+			<vlc:item tid="1"/>
+			<vlc:item tid="2"/>
+			<vlc:item tid="3"/>
+			<vlc:item tid="4"/>
+			<vlc:item tid="5"/>
+			<vlc:item tid="6"/>
+			<vlc:item tid="7"/>
+			<vlc:item tid="8"/>
+			<vlc:item tid="9"/>
+			<vlc:item tid="10"/>
+			<vlc:item tid="11"/>
+			<vlc:item tid="12"/>
+			<vlc:item tid="13"/>
+			<vlc:item tid="14"/>
+			<vlc:item tid="15"/>
+			<vlc:item tid="16"/>
+			<vlc:item tid="17"/>
+			<vlc:item tid="18"/>
+			<vlc:item tid="19"/>
+			<vlc:item tid="20"/>
+			<vlc:item tid="21"/>
+			<vlc:item tid="22"/>
+			<vlc:item tid="23"/>
+			<vlc:item tid="24"/>
+			<vlc:item tid="25"/>
+			<vlc:item tid="26"/>
+			<vlc:item tid="27"/>
+			<vlc:item tid="28"/>
+			<vlc:item tid="29"/>
+			<vlc:item tid="30"/>
+			<vlc:item tid="31"/>
+			<vlc:item tid="32"/>
+			<vlc:item tid="33"/>
+			<vlc:item tid="34"/>
+			<vlc:item tid="35"/>
+			<vlc:item tid="36"/>
+			<vlc:item tid="37"/>
+			<vlc:item tid="38"/>
+			<vlc:item tid="39"/>
+			<vlc:item tid="40"/>
+			<vlc:item tid="41"/>
+			<vlc:item tid="42"/>
+			<vlc:item tid="43"/>
+			<vlc:item tid="44"/>
+			<vlc:item tid="45"/>
+			<vlc:item tid="46"/>
+			<vlc:item tid="47"/>
+	</extension>
+-->	
+</playlist>
