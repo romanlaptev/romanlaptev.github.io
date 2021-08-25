@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<playlist xmlns="http://xspf.org/ns/0/" xmlns:vlc="http://www.videolan.org/vlc/playlist/ns/0/" version="1">
+	<title>Плейлист</title>
+	<trackList>
+		<track>
+			<title>season 1, ep.1, Pilot</title>
+			<location>/video2/films/H/Homeland/Season%201/S01E01.mp4</location>
+
+			<subtitles>
+<track label="English, ep.1" srclang="en" src="/video2/films/H/Homeland/Season%201/Subtitles/VTT/S01E01.ENG.vtt"/>
+<track label="Russian, ep.1" srclang="ru" src="/video2/films/H/Homeland/Season%201/Subtitles/VTT/S01E01.RUS.vtt"/>
+			</subtitles>
+			
+			<duration>3319781</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>0</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<title>season 1, ep.2, Grace</title>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%201/S01E02.mp4</location>
+			<subtitles>
+<track label="English, ep.2" srclang="en" src="/video2/films/H/Homeland/Season%201/Subtitles/VTT/S01E02.ENG.vtt"/>
+<track label="Russian, ep.2" srclang="ru" src="/video2/films/H/Homeland/Season%201/Subtitles/VTT/S01E02.RUS.vtt"/>
+			</subtitles>
+			
+			<duration>3027071</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>1</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<title>season 1, ep.3, Clean Skin</title>
+			<subtitles>
+<track label="English, ep.3" srclang="en" src="/video2/films/H/Homeland/Season%201/Subtitles/VTT/S01E03.ENG.vtt"/>
+<track label="Russian, ep.3" srclang="ru" src="/video2/films/H/Homeland/Season%201/Subtitles/VTT/S01E03.RUS.vtt"/>
+			</subtitles>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%201/S01E03.mp4</location>
+			<duration>2940993</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>2</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<title>season 1, ep.4, Semper I</title>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%201/S01E04.mp4</location>
+			<subtitles>
+<track label="English, ep.4" srclang="en" src="/video2/films/H/Homeland/Season%201/Subtitles/VTT/S01E04.ENG.vtt"/>
+<track label="Russian, ep.4" srclang="ru" src="/video2/films/H/Homeland/Season%201/Subtitles/VTT/S01E04.RUS.vtt"/>
+			</subtitles>
+			<duration>2986030</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>3</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<title>season 1, ep.5, Blind Spot</title>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%201/S01E05.mp4</location>
+			<subtitles>
+<track label="English, ep.5" srclang="en" src="/video2/films/H/Homeland/Season%201/Subtitles/VTT/S01E05.ENG.vtt"/>
+<track label="Russian, ep.5" srclang="ru" src="/video2/films/H/Homeland/Season%201/Subtitles/VTT/S01E05.RUS.vtt"/>
+			</subtitles>
+			<duration>3336381</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>4</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<title>season 1, ep.6, The Good Soldier</title>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%201/S01E06.mp4</location>
+			<subtitles>
+<track label="English, ep.6" srclang="en" src="/video2/films/H/Homeland/Season%201/Subtitles/VTT/S01E06.ENG.vtt"/>
+<track label="Russian, ep.6" srclang="ru" src="/video2/films/H/Homeland/Season%201/Subtitles/VTT/S01E06.RUS.vtt"/>
+			</subtitles>
+			<duration>2942987</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>5</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<title>season 1, ep.7, The Weekend</title>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%201/S01E07.mp4</location>
+			<subtitles>
+<track label="English, ep.7" srclang="en" src="/video2/films/H/Homeland/Season%201/Subtitles/VTT/S01E07.ENG.vtt"/>
+<track label="Russian, ep.7" srclang="ru" src="/video2/films/H/Homeland/Season%201/Subtitles/VTT/S01E07.RUS.vtt"/>
+			</subtitles>
+			<duration>3475520</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>6</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<title>season 1, ep.8, Achilles Heel</title>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%201/S01E08.mp4</location>
+			<subtitles>
+<track label="English, ep.8" srclang="en" src="/video2/films/H/Homeland/Season%201/Subtitles/VTT/S01E08.ENG.vtt"/>
+<track label="Russian, ep.8" srclang="ru" src="/video2/films/H/Homeland/Season%201/Subtitles/VTT/S01E08.RUS.vtt"/>
+			</subtitles>
+			<duration>2971015</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>7</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<title>season 1, ep.9, Crossfire</title>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%201/S01E09.mp4</location>
+			<subtitles>
+<track label="English, ep.9" srclang="en" src="/video2/films/H/Homeland/Season%201/Subtitles/VTT/S01E09.ENG.vtt"/>
+<track label="Russian, ep.9" srclang="ru" src="/video2/films/H/Homeland/Season%201/Subtitles/VTT/S01E09.RUS.vtt"/>
+			</subtitles>
+			<duration>2963007</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>8</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<title>season 1, ep.10, Representative Brody</title>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%201/S01E10.mp4</location>
+			<subtitles>
+<track label="English, ep.10" srclang="en" src="/video2/films/H/Homeland/Season%201/Subtitles/VTT/S01E10.ENG.vtt"/>
+<track label="Russian, ep.10" srclang="ru" src="/video2/films/H/Homeland/Season%201/Subtitles/VTT/S01E10.RUS.vtt"/>
+			</subtitles>
+			<duration>2889934</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>9</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<title>season 1, ep.11, Marine One</title>
+			<subtitles>
+<track label="English, ep.11" srclang="en" src="/video2/films/H/Homeland/Season%201/Subtitles/VTT/S01E11.ENG.vtt"/>
+<track label="Russian, ep.11" srclang="ru" src="/video2/films/H/Homeland/Season%201/Subtitles/VTT/S01E11.RUS.vtt"/>
+			</subtitles>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%201/S01E11.mp4</location>
+			<duration>3256300</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>10</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<title>season 1, ep.12, The Vest</title>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%201/S01E12.mp4</location>
+			<subtitles>
+<track label="English, ep.12" srclang="en" src="/video2/films/H/Homeland/Season%201/Subtitles/VTT/S01E12.ENG.vtt"/>
+<track label="Russian, ep.12" srclang="ru" src="/video2/films/H/Homeland/Season%201/Subtitles/VTT/S01E12.RUS.vtt"/>
+			</subtitles>
+			<duration>5062107</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>11</vlc:id>
+			</extension>
+		</track>
+		
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%202/S02E01.mp4</location>
+			<duration>3323368</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>12</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%202/S02E02.mp4</location>
+			<duration>2901948</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>13</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%202/S02E03.mp4</location>
+			<duration>3254298</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>14</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%202/S02E04.mp4</location>
+			<duration>2948993</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>15</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%202/S02E05.mp4</location>
+			<duration>3378447</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>16</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%202/S02E06.mp4</location>
+			<duration>2953998</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>17</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%202/S02E07.mp4</location>
+			<duration>3150194</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>18</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%202/S02E08.mp4</location>
+			<duration>3094139</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>19</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%202/S02E09.mp4</location>
+			<duration>2867912</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>20</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%202/S02E10.mp4</location>
+			<duration>2874919</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>21</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%202/S02E11.mp4</location>
+			<duration>3137181</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>22</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%202/S02E12.mp4</location>
+			<duration>3906951</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>23</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%203/S03E01.mp4</location>
+			<duration>3487609</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>24</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%203/S03E02.mp4</location>
+			<duration>2921007</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>25</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%203/S03E03.mp4</location>
+			<duration>3210310</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>26</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%203/S03E04.mp4</location>
+			<duration>2964050</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>27</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%203/S03E05.mp4</location>
+			<duration>2811902</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>28</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%203/S03E06.mp4</location>
+			<duration>2915011</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>29</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%203/S03E07.mp4</location>
+			<duration>2864976</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>30</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%203/S03E08.mp4</location>
+			<duration>2786884</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>31</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%203/S03E09.mp4</location>
+			<duration>3405491</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>32</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%203/S03E10.mp4</location>
+			<duration>2789875</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>33</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%203/S03E11.mp4</location>
+			<duration>3232318</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>34</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%203/S03E12.mp4</location>
+			<duration>3602689</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>35</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%204/S04E01.mp4</location>
+			<duration>2933811</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>36</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%204/S04E02.mp4</location>
+			<duration>2903781</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>37</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%204/S04E03.mp4</location>
+			<duration>2933811</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>38</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%204/S04E04.mp4</location>
+			<duration>3150027</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>39</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%204/S04E05.mp4</location>
+			<duration>2829707</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>40</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%204/S04E06.mp4</location>
+			<duration>2915793</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>41</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%204/S04E07.mp4</location>
+			<duration>3061248</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>42</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%204/S04E08.mp4</location>
+			<duration>2978856</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>43</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%204/S04E09.mp4</location>
+			<duration>2840718</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>44</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%204/S04E10.mp4</location>
+			<duration>2715593</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>45</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%204/S04E11.mp4</location>
+			<duration>2671549</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>46</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///mnt/terra/video/films/H/Homeland/Season%204/S04E12.mp4</location>
+			<duration>3154031</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>47</vlc:id>
+			</extension>
+		</track>
+	</trackList>
+	<extension application="http://www.videolan.org/vlc/playlist/0">
+			<vlc:item tid="0"/>
+			<vlc:item tid="1"/>
+			<vlc:item tid="2"/>
+			<vlc:item tid="3"/>
+			<vlc:item tid="4"/>
+			<vlc:item tid="5"/>
+			<vlc:item tid="6"/>
+			<vlc:item tid="7"/>
+			<vlc:item tid="8"/>
+			<vlc:item tid="9"/>
+			<vlc:item tid="10"/>
+			<vlc:item tid="11"/>
+			<vlc:item tid="12"/>
+			<vlc:item tid="13"/>
+			<vlc:item tid="14"/>
+			<vlc:item tid="15"/>
+			<vlc:item tid="16"/>
+			<vlc:item tid="17"/>
+			<vlc:item tid="18"/>
+			<vlc:item tid="19"/>
+			<vlc:item tid="20"/>
+			<vlc:item tid="21"/>
+			<vlc:item tid="22"/>
+			<vlc:item tid="23"/>
+			<vlc:item tid="24"/>
+			<vlc:item tid="25"/>
+			<vlc:item tid="26"/>
+			<vlc:item tid="27"/>
+			<vlc:item tid="28"/>
+			<vlc:item tid="29"/>
+			<vlc:item tid="30"/>
+			<vlc:item tid="31"/>
+			<vlc:item tid="32"/>
+			<vlc:item tid="33"/>
+			<vlc:item tid="34"/>
+			<vlc:item tid="35"/>
+			<vlc:item tid="36"/>
+			<vlc:item tid="37"/>
+			<vlc:item tid="38"/>
+			<vlc:item tid="39"/>
+			<vlc:item tid="40"/>
+			<vlc:item tid="41"/>
+			<vlc:item tid="42"/>
+			<vlc:item tid="43"/>
+			<vlc:item tid="44"/>
+			<vlc:item tid="45"/>
+			<vlc:item tid="46"/>
+			<vlc:item tid="47"/>
+	</extension>
+</playlist>

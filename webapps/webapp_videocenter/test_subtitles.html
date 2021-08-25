@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test subtitles</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="-1">	
+	
+<style>
+.lr-container {
+	width: 90%;
+	margin: auto;
+	padding: 20px;
+}
+p{
+margin:0;
+}
+</style>
+
+<script>
+window.onload = function(e){
+//console.log(e.type);
+	window.webPlayer = document.querySelector("#player1");
+console.log("textTracks:", webPlayer.textTracks);
+
+//=====================
+	//webPlayer.addEventListener("loadedmetadata", function(e) {
+	webPlayer.onloadedmetadata = function(e) {//??????
+console.log("loadedmetadata", e);		
+		//track = document.createElement("track");
+	};//end event
+
+	webPlayer.textTracks.onaddtrack = function(e) {
+console.log("onaddtrack", e);		
+	};//end event
+	
+	webPlayer.textTracks.onchange = function(e) {
+console.log("onchange", e);		
+	};//end event
+	
+	webPlayer.textTracks.onremovetrack = function(e) {
+console.log("onremovetrack", e);		
+	};//end event
+	
+//=================
+	var btnInfo = document.querySelector("#btn-get-info");
+	btnInfo.addEventListener("click", function(e){
+//console.log(e.type);
+_log("");
+		if( !webPlayer.textTracks || 
+			webPlayer.textTracks.length === 0
+		){
+var logMsg = ""; 
+logMsg += "<h2>no text tracks found</h2>";
+_log(logMsg); 	
+			return false;
+		}
+		
+		for( var n1 = 0; n1 < webPlayer.textTracks.length; n1++){
+			var track = webPlayer.textTracks[n1];
+var logMsg = ""; 
+logMsg += "<h2>text track "+n1+"</h2>";
+			for( var key in track){
+logMsg += "<p><b>"+key+":</b> "+track[key]+"</p>"; 
+			}//next
+
+
+			if( track.cues && track.cues.length > 0){
+logMsg += "<h3>text cues</h3>"; 
+logMsg += "<ul>"; 
+				for(var n2 = 0; n2 < track.cues.length; n2++){
+logMsg += "<li>"; 
+logMsg += "<b><small>startTime:</small></b> " + track.cues[n2].startTime +", "; 
+logMsg += "<b><small>endTime:</small></b> " + track.cues[n2].endTime +", "; 
+logMsg += "<b><small>text:</small></b> " + track.cues[n2].text +", "; 
+logMsg += "</li>"; 
+				}//next
+logMsg += "</ul>"; 
+			}
+			
+		}//next
+_log(logMsg); 	
+
+	});//end event
+	
+//=================
+	var buttonsLoad = document.querySelectorAll(".btn-load-sub");
+//console.log(buttonsLoad.length);
+	for( var n = 0; n < buttonsLoad.length; n++){
+		var btnLoad = buttonsLoad[n];
+//console.log(btnLoad);
+
+		btnLoad.addEventListener("click", function(e){
+//console.log(e.type);		
+			//var arr = e.target.hash.split("=");
+			var parseUrl = e.target.hash.replace("#","");
+			$_GET = _parseGetParams(parseUrl); 
+console.log( $_GET);
+	
+track = document.createElement("track");
+track.kind = "subtitles";
+track.label = $_GET["label"];
+track.srclang = $_GET["srclang"];
+track.src = $_GET["filepath"];
+webPlayer.appendChild(track);
+//+++++track.mode = "showing";
+
+/*
+			var newTextTrack = webPlayer.addTextTrack("subtitles","Eng","en");
+//newTextTrack.addEventListener("load", function(e) {
+//console.log("load new track", e);		
+//});	
+			
+			//+++++++newTextTrack.src = $_GET["filepath"];
+			newTextTrack.mode = "showing";
+// addCue(id: string, startSecond: number, endSecond: number, pauseOnExit: boolean, text: string)
+//++++++newTextTrack.addCue('cue1', 0, 3, false, 'hola mundo');
+ //newTextTrack.addCue(new VTTCue(0, 12, "-[Test]-"));
+ 
+        //newTextTrack.oncuechange = ($event) => {
+           //this.handleCueChanged(newTextTrack);
+       //};
+
+*/			
+		});//end event
+
+	}//next
+
+//=================
+	var btnRemove = document.querySelector("#btn-remove-tracks");
+	btnRemove.addEventListener("click", function(e){
+//console.log(e.type);
+	
+		var tracks = webPlayer.querySelectorAll("track[kind='subtitles']");
+		for( var n = 0; n < tracks.length; n++){
+			var ch = tracks[n];
+_log("-- remove subtitle track "+ ch.label);
+webPlayer.removeChild( ch );
+		}//next
+		
+	});//end event
+
+
+	
+}//end load
+
+function _log(msg){
+	var logPanel = document.querySelector("#log");
+	
+	if(msg.length > 0 ){
+		//msg = "<p>"+msg+"</p>";
+		logPanel.innerHTML += msg;
+	} else {
+		logPanel.innerHTML = msg;
+	}
+	
+}//end
+
+
+function _parseGetParams( parseStr ) { 
+//console.log(parseStr);
+//console.log(window.location);
+
+	if( !parseStr ){
+		var parse_url = window.location.search.substring(1).split("&"); 
+	} else {
+		//p = parseStr.split("?");
+//console.log(p);
+		//parseStr = p["1"];
+		var parse_url = parseStr.split("&"); 
+	}
+	
+	var $_GET = {}; 
+	for(var n = 0; n < parse_url.length; n++) { 
+	var getVar = parse_url[n].split("="); 
+		//$_GET[ getVar[0] ] = typeof(getVar[1])=="undefined" ? "" : getVar[1]; 
+		if( typeof(getVar[1])=="undefined" ){
+			$_GET[ getVar[0] ] = "";
+		} else {
+		 $_GET[ getVar[0] ] = getVar[1];
+		}
+	}//next
+	return $_GET; 
+}//end _parseGetParams() 
+
+</script>	
+
+</head>
+
+<body class="bg-darkblue-project">
+	<div class="lr-container bg-light-purple">
+		
+	<h1>...test subtitles...&larr;&rarr;&uarr;&darr;&crarr;&real;</h1>
+
+<div>	
+	<video id="player1" controls="controls">
+		
+		<source src="http://i5/mnt/terra/video/films/H/Homeland/Season%201/S01E01.mp4">
+<!--		
+<track 
+label="Russian" 
+srclang="ru" 
+kind="subtitles" 
+src="files/Subtitles/S01E01.RUS.vtt">
+-->
+
+<!--
+		<source src="S01E01.mp4">
+<track 
+label="English" 
+srclang="en" 
+kind="subtitles" 
+src="files/Subtitles/S01E01.ENG.vtt" 
+default>
+-->
+		Tag <b>video</b> not supported by this browser.... 
+	</video>
+</div>
+
+<!--
+<video id="player2" controls="controls" preload="metadata">
+	<source src="S01E06.mp4" type="video/mp4">
+	<track label="English" srclang="en" kind="subtitles" src="S01E01-ENG.vtt" default>
+	Tag <b>video</b> not supported by this browser.... 
+</video>
+-->	
+		<button id="btn-get-info">Get text tracks info</button>
+<ul>		
+
+<li><a href="#filepath=files/Subtitles/S01E01.ENG.vtt&label=English&srclang=en" class="btn-load-sub">
+load EN subtitle track</a></li>
+
+<li><a href="#filepath=files/Subtitles/S01E01.RUS.vtt&label=Russians&srclang=ru" class="btn-load-sub">
+add RU subtitle track</a></li>
+
+</ul>
+		<button id="btn-remove-tracks">remove all text tracks</button>
+		
+		<div id="log"></div>
+
+	</div><!-- end container -->
+
+	<div class="lr-container bg-light-purple">
+<pre>
+	
+https://quuz.org/webvtt/
+Live WebVTT Validator
+
+https://developer.mozilla.org/ru/docs/Web/API/WebVTT_API
+Формат Web Video Text Tracks (WebVTT)
+
+https://atelier.u-sub.net/srt2vtt/
+Simple SubRip to WebVTT converter
+
+Субтитры не отображаются с помощью WebVTT
+https://coderoad.ru/16092609/%D0%A1%D1%83%D0%B1%D1%82%D0%B8%D1%82%D1%80%D1%8B-%D0%BD%D0%B5-%D0%BE%D1%82%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B0%D1%8E%D1%82%D1%81%D1%8F-%D1%81-%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D1%8C%D1%8E-WebVTT
+
+Вы используете неправильный формат метки времени. После второго значения должно быть . (точка).
+Это должно быть так: 00:00:00.000 --> 00:00:10.000
+
+
+https://superuser.com/questions/117929/open-source-command-line-subtitle-converter/1143003
+Open source command line subtitle converter
+
+ffmpeg -i file.srt file.vtt
+for i in *.ass ; do ffmpeg -i "$i" "$i.srt" ; done
+
+-------------
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/textTracks
+https://developer.mozilla.org/en-US/docs/Web/API/TextTrackList
+https://iandevlin.com/blog/2015/02/javascript/dynamically-adding-text-tracks-to-html5-video/	
+
+https://andew.ru/pages/page/html5-audio-video-js-addtexttrack.php
+
+
+</pre>
+		
+	</div><!-- end container -->
+
+</body>
+</html>
