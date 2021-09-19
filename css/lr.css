@@ -1605,7 +1605,10 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-color-test12E8B57 { background:#2E8B57;}  /*:Морская зелень, #2E8B57 */
 .bg-color-test100FF7F { background:#00FF7F;}  /*Весенняя зелень, #00FF7F */
 .bg-color-test1ACB78E { background:#ACB78E;}  /*Болотная зелень, #ACB78E */
-.bg-color-test1D0F0C0 { background:#D0F0C0;}  /*Зелёный чай,#D0F0C0 */
+
+.bg-green-tea { background:#D0F0C0;}  /*Зелёный чай,#D0F0C0 */
+.bg-green-tea2 { background:#ecfbcf;}
+
 .bg-color-test1228B22 { background:#228B22;}  /*:Лесная зелень, #228B22 */
 .bg-color-test13FFF00 { background:#3FFF00;}  /*Harlequin, #3FFF00 */
 .bg-color-test1008000 { background:#008000;}  /*:Office green, #008000 */
@@ -1652,6 +1655,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-lightgreen{  background-color: #d9ead3 !important;}
 .bg-lightgreen2 {background-color: #bee4ce;}
 .bg-lightgreen3 {background-color: #90ee90;}
+.bg-light-green4 {background-color: #99e657;}
 
 .bg-palegreen1{  background-color: #98fb98 !important;}
 .bg-palegreen2{/*css.html*/
