@@ -188,43 +188,6 @@ window.onload = function(){
 		ua.innerHTML = html;
 	}
 	
-//----------------------------- test css Support
-if( document.querySelector ){
-	//var ua_header = document.querySelector("#user-agent");
-	var flex_info = document.querySelector("#supportFlex");
-	var grid_info = document.querySelector("#supportGrid");
-} else {
-	//var ua_header = document.getElementById("ua");
-	var flex_info = document.getElementById("supportFlex");
-	var grid_info = document.getElementById("supportGrid");
-}
-
-	//ua_header.innerHTML = navigator.userAgent;
-
-if( flex_info && grid_info){
-	if( typeof CSS !== "undefined" ){
-		if( typeof CSS.supports === "function" ){
-
-			var supportFlex = CSS.supports("display", "flex");
-			flex_info.innerHTML += " : " + supportFlex;
-
-			var supportGrid = CSS.supports("display", "grid");
-			grid_info.innerHTML += " : " + supportGrid;
-
-		} else {
-				flex_info.innerHTML += " false";
-				flex_info.classList.add("CSS-support-fail");
-				grid_info.innerHTML += " false";
-				document.body.classList.add("CSS-support-fail");
-		}
-
-	} else {
-			flex_info.innerHTML += " false";
-			flex_info.classList.add("CSS-support-fail");
-			grid_info.innerHTML += " false";
-			document.body.classList.add("CSS-support-fail");
-	}
-}	
 //------------------------------------ screen, page size
 //http://hashcode.ru/questions/243682/javascript-%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D1%80%D0%B0%D0%B7%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F-%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0
 
@@ -660,6 +623,8 @@ function runTests(){
 /*@
 	@if (@_jscript_version >= 5)
 @*/
+//https://habr.com/ru/post/120917/
+//Новые возможности XMLHttpRequest2
 		try{
 			var xhr = new XMLHttpRequest();
 			var test = {
@@ -1283,6 +1248,25 @@ console.log( key, document.body[key]);
 	}//next
 	
 	_push( tests, test );
+
+//--------------------------------------
+	var test = {
+		"name" : "HTML5: Media API",
+		"msg" : "Media API not supported",
+		"result" : false
+	};
+	test["links"]=[];
+	var obj = {
+		"link" : "https://metanit.com/web/html5/7.3.php", 
+		"text" : "Media API. Управление видео из JavaScript"
+	};
+	_push( test["links"], obj );
+	
+	if( typeof HTMLMediaElement === "function"){
+			test["result"]= true;
+			test["msg"]= "";
+	}
+	_push( tests, test );
 	
 //--------------------------------------
 	var test = {
@@ -1515,10 +1499,6 @@ background-color: #dec;;
 	<div class="panel">
 		<div class="panel-body">Info panel
 			<div id="info"></div>
-<ul>			
-	<li id="supportFlex" class="test-support-flex text-white lr-padding-small">support-flex</li>
-	<li id="supportGrid" class="test-support-grid text-white lr-padding-small">support-grid</li>
-</ul>			
 		</div>
 	</div>
 
@@ -1561,3 +1541,4 @@ background-color: #dec;;
 
 </body>
 </html>
+
