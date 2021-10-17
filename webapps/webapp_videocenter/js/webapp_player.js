@@ -310,7 +310,8 @@ func.logAlert( _vars["logMsg"], "warning");
 			if(n > 0) {
 				_trackTitle += ", ";
 			}
-			_trackTitle += _node["title"][n]["text"];
+			//_trackTitle += _node["title"][n]["text"];
+			_trackTitle += _link.text;
 		}//next
 		
 		var _trackSrc = _link["href"];
