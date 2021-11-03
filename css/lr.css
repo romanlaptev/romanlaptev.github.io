@@ -1042,6 +1042,8 @@ padding: 10px;
 
 /*====== COLORS ======= */
 .color-white, .text-white {color: #fff !important;}
+.color-hover-white:hover {color: #fff !important;}
+
 .color-aliceblue, .text-aliceblue {color: #f0f8ff;}
 .color-antiquewhite, .text-antiquewhite {color: #faebd7;}
 .color-aqua, .text-aqua {color: #00ffff;}
@@ -1049,7 +1051,10 @@ padding: 10px;
 .color-azure, .text-azure {color: #f0ffff;}
 .color-beige, .text-beige {color: #f5f5dc;}
 .color-bisque, .text-bisque {color: #ffe4c4;}
+
 .color-black, .text-black {color: #000000;}
+.color-hover-black:hover {color: #000000 !important;}
+
 .color-blanchedalmond, .text-blanchedalmond {color: #ffebcd;}
 .color-blue, .text-blue {color: #0000ff;}
 .color-blueviolet, .text-blueviolet {color: #8a2be2;}
