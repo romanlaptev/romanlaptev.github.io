@@ -116,8 +116,8 @@ https://bootstrap-4.ru/docs/4.0/utilities/spacing/
 .mb-1 { margin-bottom:.25rem!important}
 .ml-1 { margin-left:.25rem!important}
 .m-2 { margin:.5rem!important}
-.mt-2, { margin-top:.5rem!important}
-.mr-2, { margin-right:.5rem!important}
+.mt-2 { margin-top:.5rem!important}
+.mr-2 { margin-right:.5rem!important}
 .mb-2 { margin-bottom:.5rem!important}
 .ml-2 { margin-left:.5rem!important}
 .m-3 { margin:1rem!important}
@@ -1203,14 +1203,40 @@ padding: 10px;
 .lr-border-right {	border-right: 1px solid;}
 .lr-border-left {	border-right: 1px solid;}
 
-.lr-border-radius5, .lr-border-round-small{	border-radius: 5px;}
-.lr-border-round{border-radius: 10px;}
+.lr-border-0 { border:0 !important}
+.lr-border-top-0 { border-top:0 !important}
+.lr-border-right-0 { border-right:0 !important}
+.lr-border-bottom-0 { border-bottom:0 !important}
+.lr-border-left-0 { border-left:0 !important}
 
-.lr-border-0 { border:0!important}
-.lr-border-top-0 { border-top:0!important}
-.lr-border-right-0 { border-right:0!important}
-.lr-border-bottom-0 { border-bottom:0!important}
-.lr-border-left-0 { border-left:0!important}
+.lr-border-thin { border-width:thin}
+.lr-border-medium { border-width:medium}
+.lr-border-thick { border-width:thick}
+.lr-border-w7 { border-width:7px}
+.lr-border-w8 { border-width:8px}
+.lr-border-w9 { border-width:9px}
+.lr-border-w10 { border-width:10px}
+
+.lr-borders-top-bottom { border-width:medium 0}
+.lr-borders-left-right { border-width: 0 medium}
+.lr-borders-right-bottom { border-width: 0 medium medium 0}
+.lr-borders-right-top { border-width: medium medium 0 0}
+
+.lr-borders-left-bottom { border-width: 0 0 medium medium}
+.lr-borders-left-top { border-width: medium 0 0 medium}
+
+/*
+http://htmlbook.ru/index.php/css/border-style
+ */
+.lr-border-style-none{ border-style: none}
+.lr-border-style-dotted { border-style: dotted}
+.lr-border-style-dashed { border-style: dashed}
+.lr-border-style-solid { border-style: solid}
+.lr-border-style-double { border-style: double}
+.lr-border-style-groove { border-style: groove}
+.lr-border-style-ridge { border-style: ridge}
+.lr-border-style-inset { border-style: inset}
+.lr-border-style-outset{ border-style: outset}
 
 /*
 https://bootstrap-4.ru/docs/4.0/utilities/borders/
@@ -1276,10 +1302,10 @@ https://bootstrap-4.ru/docs/4.0/utilities/borders/
 
 .lr-radius-0 { border-radius:0;}
 .lr-radius-4 { border-radius:4px;}
-.lr-radius-5 { border-radius:5px;}
+.lr-radius-5, .lr-border-radius5, .lr-border-round-small { border-radius:5px;}
 .lr-radius-6 { border-radius:6px;}
 .lr-radius-8 { border-radius:8px;}
-.lr-radius-10 { border-radius:10px;}
+.lr-radius-10, .lr-border-round { border-radius:10px;}
 .lr-radius-12 { border-radius:12px;}
 .lr-radius-15 { border-radius:15px;}
 .lr-radius-16 { border-radius:16px;}
@@ -1381,6 +1407,19 @@ https://www.omiod.com/colors/?rgb=d0ccd5
   background-color: #567793 !important;
 }
 
+.bg-grey-w { background-color:#5D7896;}
+.color-grey-w {color: #5D7896 !important;}
+.lr-border-grey {border-color: #5D7896;}
+
+.bg-grey-suva { background-color:#9a8c89;}
+.color-grey-suva {color: #9a8c89 !important;}
+.lr-border-grey-suva {border-color: #9a8c89;}
+
+.bg-grey-cyprus { background-color:#003333;}
+.color-grey-cyprus {color: #003333 !important;}
+.lr-border-grey-cyprus {border-color: #003333;}
+
+
 .bg-dark-gray{  background-color: #222222 !important;}
 .bg-light-gray{  background-color: #999999 !important;}
 
@@ -1420,6 +1459,8 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .lr-border-black{border-color: #000;}
 .lr-list-group.lr-border-black li {border-color: #000;}
 
+
+
 .bg-black-025 {background-color: #fafafb;}
 .bg-black-050 {background-color: #eff0f1;}
 .bg-black-075 {background-color: #e4e6e8;}
@@ -1429,10 +1470,24 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-black-300 {background-color: #9fa6ad;}
 .bg-black-350 {background-color: #9199a1;}
 .bg-black-400 {background-color: #848d95;}
+
 .bg-black-500 {background-color: #6a737c;}
+.color-black-500 {color: #6a737c !important;}
+.lr-border-black-500 {border-color: #6a737c;}
+
+.bg-black-russian { background-color:#1B1C33;}
+.color-black-russian {color: #1B1C33 !important;}
+.lr-border-black-russian {border-color: #1B1C33;}
+
 .bg-black-600 {background-color: #535a60;}
 .bg-black-700 {background-color: #3c4146;}
+
 .bg-black-750 {background-color: #2f3337;}
+
+.bg-nero { background-color:#232323;}
+.color-nero {color: #232323 !important;}
+.lr-border-nero {border-color: #232323;}
+
 .bg-black-800 {background-color: #242729;}
 .bg-black-900 {background-color: #0c0d0e;}
 
@@ -1470,21 +1525,39 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .lr-list-group.lr-border-blue li {border-color: #0000ff;}
 
 .bg-blueviolet {background-color: #8a2be2;}
-.bg-color-test1003089 { background:#003089;}
+.bg-color-test1003089 { background-color:#003089;}
+
+.bg-prussian-blue { background-color:#003B70;}
+.color-prussian-blue {color: #003B70 !important;}
+.lr-border-prussian-blue {border-color: #003B70;}
+
+.bg-prussian-blue2 { background-color:#003163;}
+.color-bg-prussian-blue2 {color: #003163 !important;}
+.lr-border-bg-prussian-blue2 {border-color: #003163;}
 
 
-.bg-darkblue-green { background:#055c80;}
+.bg-darkblue-green { background-color:#055c80;}
 
-.bg-color-test13d5afe { background:#3d5afe;}
-.bg-color-test15a5eff { background:#5a5eff;}
-.bg-color-test17cc0de { background:#7cc0de;}
-.bg-color-test100c1d5 { background:#00c1d5;}
-.bg-color-test1C7D5EC { background:#C7D5EC;}
-.bg-color-test13950C9 { background:#3950C9;}
+.bg-color-test13d5afe { background-color:#3d5afe;}
+.bg-color-test15a5eff { background-color:#5a5eff;}
+.bg-color-test17cc0de { background-color:#7cc0de;}
+.bg-color-test100c1d5 { background-color:#00c1d5;}
+.bg-color-test1C7D5EC { background-color:#C7D5EC;}
+.bg-color-test13950C9 { background-color:#3950C9;}
+
+.bg-lavender-blue { background-color:#cbcbff;}
+.color-lavender-blue {color: #cbcbf !important;}
+.lr-border-lavender-blue {border-color: #cbcbff;}
+
+
 .bg-very-dark-blue { background:#130040;}
 .bg-color-test11e73be { background:#1e73be;}
 .bg-lightblue-ef { background:#b1d0ef;}
 .bg-mediumblue-light { background:#4e86bf;}
+
+.bg-columbia-blue { background-color:#9fcfff;}
+.color-columbia-blue {color: #9fcfff !important;}
+.lr-border-columbia-blue {border-color: #9fcfff;}
 
 
 .bg-color-test1ccf { background:#ccf;}
@@ -1520,7 +1593,21 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-darkblue-tango{  background-color: #0c253c !important;}
 .bg-darkblue-tango2{  background-color: #001b33 !important;}
 .bg-darkblue-project{	background-color: #082844;}
+
+.bg-darkblue-m { background-color:#2B3956;}
+.color-darkblue-m {color: #2B3956 !important;}
+.lr-border-darkblue {border-color: #2B3956;}
+
 .bg-darkblue-gray{	background-color: #335566;}
+
+.bg-midnightblue2 { background-color:#000040;}
+.color-midnightblue2 {color: #000040 !important;}
+.lr-border-midnightblue {border-color: #000040;}
+
+.bg-tropaz { background-color:#335280;}
+.color-tropaz {color: #335280 !important;}
+.lr-border-tropaz {border-color: #335280;}
+
 .bg-very-darkblue{  background-color: #001B33;}
 .bg-darkblue-a{  background-color: #002168;}
 
@@ -1638,6 +1725,10 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 .bg-red-brown {background-color: #5A2000;}
 
+.bg-sealbrown { background-color:#3A160E;}
+.color-sealbrown {color: #3A160E !important;}
+.lr-border-brown, .lr-border-sealbrown  {border-color: #3A160E;}
+
 .bg-burlywood {background-color: #deb887;}
 
 .bg-chocolate {background-color: #d2691e;}
@@ -1676,7 +1767,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-darkslateblue {background-color: #483d8b;}
 .bg-darkslateblue2 {background-color: #3d5396;}
 
-.bg-darkslategray {background-color: #2f4f4f;}
+.bg-darkslategray, .bg-darkslategrey {background-color: #2f4f4f;}
 .bg-darkturquoise {background-color: #00ced1;}
 .bg-darkviolet {background-color: #9400d3;}
 .bg-deeppink {background-color: #ff1493;}
@@ -1701,6 +1792,10 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-gold3 { background-color: #fff4d1;}
 .bg-gold4 { background-color: #f1b600;}
 
+.bg-gold5 { background-color:#FFD201;}
+.color-gold5 {color: #FFD201 !important;}
+.lr-border-gold {border-color: #FFD201;}
+
 
 .bg-bronze { background-color: #caa789;}
 .bg-bronze2 { background-color: #f2e9e1;}
@@ -1709,7 +1804,13 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 /*Оттенки серого цвета*/
 .bg-dark-blue-gray{  background-color: #334455 !important;}
+
 .bg-blue-gray{  background-color: #203040;}
+
+.bg-blue-gray2 { background-color:#DEE7EF;}
+.color-blue-gray {color: #DEE7EF !important;}
+.lr-border-blue-gray {border-color: #DEE7EF;}
+
 .bg-gray {background-color: #808080;}
 .bg-light-grey {background-color: #d3d3d3;}
 .bg-light-grey-b {background-color: #DEE2DE;}/*busybox.net*/
@@ -1779,9 +1880,17 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-lightgreen-b{  background-color: #dde7e9 !important}/* bitrix, admin */
 .bg-lightgreen-p{  background-color:  #e6f0e5 !important}
 
-.bg-honeydew {background-color: #f0fff0;border:1px solid #009900;}
+.bg-lightgreen-s { background-color:#DDFFDD;}
+.color-lightgreen-s {color: #DDFFDD !important;}
+.lr-border-lightgreen {border-color: #DDFFDD;}
 
 .bg-color-test1E5F2C0 { background:#E5F2C0;}
+
+.bg-gamboge { background-color:#e5ad00;}
+.color-gamboge {color: #e5ad00 !important;}
+.lr-border-gamboge {border-color: #e5ad00;}
+
+
 .bg-color-test10C9E54 { background:#0C9E54;}
 
 .bg-color-test166FF00 { background:#66FF00;}  /* Ярко-зелёный, #66FF00 */
@@ -1979,6 +2088,8 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 .bg-pink {background-color: #ffc0cb;}
 .bg-pink2 {background-color: #e83e8c;}
+.bg-pink-icq {background-color: rgb(232,133,146);} /*#eb8592 */
+.bg-sweet-pink {background-color: rgb(232,146,133);} /*#EB9285 */
 
 .bg-plum {background-color: #dda0dd;}
 .bg-powderblue {background-color: #b0e0e6;}
@@ -2040,6 +2151,9 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-darkorange {background-color: #ff8c00;}
 .bg-darkorange2 { background:#f89406;}
 
+.bg-darkorange-b { background-color:#FF8000;}
+.color-darkorange {color: #FF8000 !important;}
+.lr-border-darkorange {border-color: #FF8000;}
 
 
 /* RED */
@@ -2099,7 +2213,12 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 
 .bg-skyblue {background-color: #87ceeb;}
+
 .bg-slateblue {background-color: #6a5acd;}
+.bg-slateblue2 {background-color: #5843C2;}
+.color-slateblue2 {color: #5843C2 !important;}
+.lr-border-slateblue2 {border-color: #5843C2;}
+
 .bg-slategray {background-color: #708090;}
 .bg-snow {background-color: #fffafa;}
 .bg-springgreen {background-color: #00ff7f;}
@@ -2181,7 +2300,13 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-color-test1707070 { background:#707070;}
 .bg-color-test13f3f3f { background:#3f3f3f;}
 .bg-color-test1666 { background:#666;}
+
 .bg-color-test1beb49b { background:#beb49b;}
+
+.bg-nugget { background-color:#BE8F1C;}
+.color-nugget {color: #BE8F1C !important;}
+.lr-border-nugget {border-color: #BE8F1C;}
+
 .bg-color-test1d8c8b3 { background:#d8c8b3;}
 
 .bg-concrete { background:#f3f3f3;}
@@ -3328,6 +3453,9 @@ body {
 	border-color: var(--theme-button-filled-border-color);
 	box-shadow: inset 0 1px 0 0 hsla(0,0%,100%,0.7);
 }
+
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+
  */ 
 
 .product-card {
