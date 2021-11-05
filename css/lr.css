@@ -886,11 +886,11 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fed081', endCo
 color: #337ab7;
 }
 .lr-nav  li a:hover {
-    background-color: #004586 !important;
+    background-color: #004586;
     color: #fff;
 }
 .lr-nav  li  a:focus  {
-    background-color: transparent !important;
+    background-color: transparent;
 	/*color: #fff;*/
 	color: #337ab7;
 	border-left: 1px solid #0000fb;
@@ -1004,19 +1004,28 @@ padding: 10px;
 		display: -ms-flexbox;	
 	}
 	.lr-flex-wrap {	flex-wrap: wrap;}
-	.lr-flex-hcenter, .lr-flex-h-center{	justify-content:center;}
-	.lr-flex-hbetween{	justify-content:space-between;}
+
 	.lr-flex-hstart{justify-content:start;}
+	.lr-flex-left {  justify-content: flex-start;}
+	
+	.lr-flex-center, .lr-flex-hcenter, .lr-flex-h-center {  justify-content: center;}
+
 	.lr-flex-h-end{	justify-content:end;}
+	.lr-flex-right {  justify-content: flex-end;}
+	
+	.lr-flex-between, .lr-flex-hbetween {  justify-content: space-between;}
+	.lr-flex-around {  justify-content: space-around;}
+	
 	.lr-flex-vcenter, .lr-flex-v-center{ align-items:center;}
 	.lr-flex-v-top{	align-items: start;}
 	.lr-flex-v-end{	align-items: end;}
+/*	
 	.lr-flex-1{flex:1;}
 	.lr-flex-2{flex:2;}
 	.lr-flex-3{flex:3;}
 	.lr-flex-4{flex:4;}
 	.lr-flex-5{flex:5;}	
-	
+*/
 }
 
 
@@ -1458,38 +1467,66 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-black {background-color: #000000;}
 .lr-border-black{border-color: #000;}
 .lr-list-group.lr-border-black li {border-color: #000;}
-
+.bg-black-hsl {background-color: hsl(210,8%,5%);}
+.lr-nav-black  li a:hover {
+    background-color: #000 !important;
+    color: #fff;
+}
+/*
+.lr-nav-black  li  a:visited  {
+	color: #337ab7;
+}
+.lr-nav-black  li  a:focus  {
+    background-color: transparent !important;
+	color: #337ab7;
+}
+*/
 
 
 .bg-black-025 {background-color: #fafafb;}
+.bg-black-025-hsl {background-color: hsl(210,8%,97.5%);}
 .bg-black-050 {background-color: #eff0f1;}
+.bg-black-050-hsl {background-color: hsl(210,8%,95%);}
 .bg-black-075 {background-color: #e4e6e8;}
+.bg-black-075-hsl {background-color: hsl(210,8%,90%);}
 .bg-black-100 {background-color: #d6d9dc;}
+.bg-black-100-hsl {background-color: hsl(210,8%,85%);}
 .bg-black-150 {background-color: #c8ccd0;}
+.bg-black-150-hsl {background-color: hsl(210,8%,80%);}
 .bg-black-200 {background-color: #bbc0c4;}
+.bg-black-200-hsl {background-color: hsl(210,8%,75%);}
 .bg-black-300 {background-color: #9fa6ad;}
+.bg-black-300-hsl {background-color: hsl(210,8%,65%);}
 .bg-black-350 {background-color: #9199a1;}
+.bg-black-350-hsl {background-color: hsl(210,8%,60%);}
 .bg-black-400 {background-color: #848d95;}
+.bg-black-400-hsl {background-color: hsl(210,8%,55%);}
 
 .bg-black-500 {background-color: #6a737c;}
 .color-black-500 {color: #6a737c !important;}
 .lr-border-black-500 {border-color: #6a737c;}
+.bg-black-500-hsl {background-color: hsl(210,8%,45%);}
 
 .bg-black-russian { background-color:#1B1C33;}
 .color-black-russian {color: #1B1C33 !important;}
 .lr-border-black-russian {border-color: #1B1C33;}
 
 .bg-black-600 {background-color: #535a60;}
+.bg-black-600-hsl {background-color: hsl(210,8%,35%);}
 .bg-black-700 {background-color: #3c4146;}
+.bg-black-700-hsl {background-color: hsl(210,8%,25%);}
 
 .bg-black-750 {background-color: #2f3337;}
+.bg-black-750-hsl {background-color: hsl(210,8%,20%);}
 
 .bg-nero { background-color:#232323;}
 .color-nero {color: #232323 !important;}
 .lr-border-nero {border-color: #232323;}
 
 .bg-black-800 {background-color: #242729;}
+.bg-black-800-hsl {background-color: hsl(210,8%,15%);}
 .bg-black-900 {background-color: #0c0d0e;}
+.bg-black-900-hsl {background-color: hsl(210,8%,5%);}
 
 
 .bg-blanchedalmond {background-color: #ffebcd;}
@@ -1504,6 +1541,19 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 
 /* BLUE, DARKBLUE */
+
+ .bg--blue { background-color: hsl(206,100%,40%);}
+ .bg--blue-050 { background-color: hsl(206,100%,97%);}
+ .bg--blue-100 { background-color: hsl(206,96%,90%);}
+ .bg--blue-200 { background-color: hsl(206,93%,83.5%);}
+ .bg--blue-300 { background-color: hsl(206,90%,69.5%);}
+ .bg--blue-400 { background-color: hsl(206,85%,57.5%);}
+ .bg--blue-500 { background-color: hsl(206,100%,52%);}
+ .bg--blue-600 { background-color: hsl(206,100%,40%);}
+ .bg--blue-700 { background-color: hsl(209,100%,37.5%);}
+ .bg--blue-800 { background-color: hsl(209,100%,32%);}
+ .bg--blue-900 { background-color: hsl(209,100%,26%);}
+ 
 
 .bg-blue-050 { background-color: #f2f9ff;}
 .bg-blue-100 { background-color: #cfeafe;}
@@ -1852,6 +1902,20 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-green-800 { background-color: #29603b;}
 .bg-green-900 { background-color: #1e472c;}
 
+ .bg--green { background-color: hsl(140,40%,55%);}
+ .bg--green-025 { background-color: hsl(140,42%,95%);}
+ .bg--green-050 { background-color: hsl(140,40%,90%);}
+ .bg--green-100 { background-color: hsl(140,40%,85%);}
+ .bg--green-200 { background-color: hsl(140,40%,75%);}
+ .bg--green-300 { background-color: hsl(140,40%,65%);}
+ .bg--green-400 { background-color: hsl(140,40%,55%);}
+ .bg--green-500 { background-color: hsl(140,40%,47%);}
+ .bg--green-600 { background-color: hsl(140,40%,40%);}
+ .bg--green-700 { background-color: hsl(140,41%,31%);}
+ .bg--green-800 { background-color: hsl(140,40%,27%);}
+ .bg--green-900 { background-color: hsl(140,40%,20%);}
+ 
+
 .bg-color-test1ccffff { background:#ccffff;}
 .bg-color-test1225033 { background:#225033;}
 .bg-blackgreen { background:#21301f;}
@@ -2109,6 +2173,19 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-powder-800 { background-color: #2c5777;}
 .bg-powder-900 { background-color: #1e3c52;}
 
+  .bg--powder { background-color: hsl(205,46%,92%);}
+ .bg--powder-050 { background-color: hsl(205,47%,97%);}
+ .bg--powder-100 { background-color: hsl(205,46%,92%);}
+ .bg--powder-200 { background-color: hsl(205,53%,88%);}
+ .bg--powder-300 { background-color: hsl(205,57%,81%);}
+ .bg--powder-400 { background-color: hsl(205,56%,76%);}
+ .bg--powder-500 { background-color: hsl(205,41%,63%);}
+ .bg--powder-600 { background-color: hsl(205,36%,53%);}
+ .bg--powder-700 { background-color: hsl(205,47%,42%);}
+ .bg--powder-800 { background-color: hsl(205,46%,32%);}
+ .bg--powder-900 { background-color: hsl(205,46%,22%);}
+ 
+
 
 /* ORANGE */
 .bg-orange {background-color: #ffa500;}
@@ -2122,6 +2199,19 @@ https://www.omiod.com/colors/?rgb=d0ccd5
   background-color: #FECD90 !important;
 }
 .bg-orange5 {  background-color: #E9B96E !important;}
+
+ .bg--orange { background-color::hsl(27,90%,55%);}
+ .bg--orange-050 { background-color: hsl(27,100%,97%);}
+ .bg--orange-100 { background-color: hsl(27,95%,90%);}
+ .bg--orange-200 { background-color:hsl(27,90%,83%);}
+ .bg--orange-300 { background-color:hsl(27,90%,70%);}
+ .bg--orange-400 { background-color:hsl(27,90%,55%);}
+ .bg--orange-500 { background-color:hsl(27,90%,50%);}
+ .bg--orange-600 { background-color:hsl(27,90%,45%);}
+ .bg--orange-700 { background-color:hsl(27,90%,39%);}
+ .bg--orange-800 { background-color:hsl(27,87%,35%);}
+ .bg--orange-900 { background-color:hsl(27,80%,30%);}
+
 
 .bg-orange-050 { background-color: #fff7f2;}
 .bg-orange-100 { background-color: #fee3cf;}
@@ -2171,6 +2261,18 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-red-800 { background-color: #942121;}
 .bg-red-900 { background-color: #7a1819;}
 
+ .bg--red { background-color: hsl(358,62%,52%);}
+ .bg--red-050 { background-color: hsl(358,75%,97%);}
+ .bg--red-100 { background-color: hsl(358,76%,90%);}
+ .bg--red-200 { background-color: hsl(358,74%,83%);}
+ .bg--red-300 { background-color: hsl(358,70%,70%);}
+ .bg--red-400 { background-color: hsl(358,68%,59%);}
+ .bg--red-500 { background-color: hsl(358,62%,52%);}
+ .bg--red-600 { background-color: hsl(358,62%,47%);}
+ .bg--red-700 { background-color: hsl(358,64%,41%);}
+ .bg--red-800 { background-color: hsl(358,64%,35%);}
+ .bg--red-900 { background-color: hsl(358,67%,29%);}
+
 .bg-maroon {background-color: #800000;}
 .bg-darkred {background-color: #8b0000;}
 .bg-very-darkred {background-color: #2F0709;}
@@ -2179,6 +2281,23 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-red {background-color: #ff0000;}
 .lr-border-red{border-color: #f00;}
 .lr-list-group.lr-border-red li {border-color: #f00;}
+.lr-nav-red > li > a:hover  {
+    background-color: #800000 !important;
+    color: #ffd700;
+}
+/*
+.lr-nav-red > li > a, 
+.lr-nav-red > li > a:visited{
+	color:  #b22222;
+}
+.lr-nav-red > li > a:focus  {
+	background-color: transparent;
+	color: #337ab7 !important;
+	border: none;
+}
+*/
+
+
 
 .bg-lightred-t{  background-color: #cec1bc;}/* landing */
 
@@ -2255,6 +2374,20 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-yellow-700 { background-color: #b89516;}
 .bg-yellow-800 { background-color: #9f8010;}
 .bg-yellow-900 { background-color: #826a0b;}
+
+ .bg--yellow { background-color: hsl(47,83%,91%);}
+ .bg--yellow-050 { background-color: hsl(47,87%,94%);}
+ .bg--yellow-100 { background-color: hsl(47,83%,91%);}
+ .bg--yellow-200 { background-color: hsl(47,65%,84%);}
+ .bg--yellow-300 { background-color: hsl(47,69%,69%);}
+ .bg--yellow-400 { background-color: hsl(47,79%,58%);}
+ .bg--yellow-500 { background-color: hsl(47,73%,50%);}
+ .bg--yellow-600 { background-color: hsl(47,76%,46%);}
+ .bg--yellow-700 { background-color: hsl(47,79%,40%);}
+ .bg--yellow-800 { background-color: hsl(47,82%,34%);}
+ .bg--yellow-900 { background-color: hsl(47,84%,28%);}
+
+
 
 .bg-yellow {background-color: #ffff00;}
 .lr-border-yellow {border-color:#ffff00;}
@@ -3220,127 +3353,54 @@ body:not(.theme-dark),
 body.theme-dark .theme-light__forced,
 body.theme-system .theme-light__forced {
  --white:hsl(0,0%,100%);
- --black:hsl(210,8%,5%);
- --orange:hsl(27,90%,55%);
- --yellow:hsl(47,83%,91%);
- --green:hsl(140,40%,55%);
- --blue:hsl(206,100%,40%);
- --powder:hsl(205,46%,92%);
- --red:hsl(358,62%,52%);
- --black-025:hsl(210,8%,97.5%);
- --black-050:hsl(210,8%,95%);
- --black-075:hsl(210,8%,90%);
- --black-100:hsl(210,8%,85%);
- --black-150:hsl(210,8%,80%);
- --black-200:hsl(210,8%,75%);
- --black-300:hsl(210,8%,65%);
- --black-350:hsl(210,8%,60%);
- --black-400:hsl(210,8%,55%);
- --black-500:hsl(210,8%,45%);
- --black-600:hsl(210,8%,35%);
- --black-700:hsl(210,8%,25%);
- --black-750:hsl(210,8%,20%);
- --black-800:hsl(210,8%,15%);
- --black-900:hsl(210,8%,5%);
- --orange-050:hsl(27,100%,97%);
- --orange-100:hsl(27,95%,90%);
- --orange-200:hsl(27,90%,83%);
- --orange-300:hsl(27,90%,70%);
- --orange-400:hsl(27,90%,55%);
- --orange-500:hsl(27,90%,50%);
- --orange-600:hsl(27,90%,45%);
- --orange-700:hsl(27,90%,39%);
- --orange-800:hsl(27,87%,35%);
- --orange-900:hsl(27,80%,30%);
- --blue-050:hsl(206,100%,97%);
- --blue-100:hsl(206,96%,90%);
- --blue-200:hsl(206,93%,83.5%);
- --blue-300:hsl(206,90%,69.5%);
- --blue-400:hsl(206,85%,57.5%);
- --blue-500:hsl(206,100%,52%);
- --blue-600:hsl(206,100%,40%);
- --blue-700:hsl(209,100%,37.5%);
- --blue-800:hsl(209,100%,32%);
- --blue-900:hsl(209,100%,26%);
- --powder-050:hsl(205,47%,97%);
- --powder-100:hsl(205,46%,92%);
- --powder-200:hsl(205,53%,88%);
- --powder-300:hsl(205,57%,81%);
- --powder-400:hsl(205,56%,76%);
- --powder-500:hsl(205,41%,63%);
- --powder-600:hsl(205,36%,53%);
- --powder-700:hsl(205,47%,42%);
- --powder-800:hsl(205,46%,32%);
- --powder-900:hsl(205,46%,22%);
- --green-025:hsl(140,42%,95%);
- --green-050:hsl(140,40%,90%);
- --green-100:hsl(140,40%,85%);
- --green-200:hsl(140,40%,75%);
- --green-300:hsl(140,40%,65%);
- --green-400:hsl(140,40%,55%);
- --green-500:hsl(140,40%,47%);
- --green-600:hsl(140,40%,40%);
- --green-700:hsl(140,41%,31%);
- --green-800:hsl(140,40%,27%);
- --green-900:hsl(140,40%,20%);
- --yellow-050:hsl(47,87%,94%);
- --yellow-100:hsl(47,83%,91%);
- --yellow-200:hsl(47,65%,84%);
- --yellow-300:hsl(47,69%,69%);
- --yellow-400:hsl(47,79%,58%);
- --yellow-500:hsl(47,73%,50%);
- --yellow-600:hsl(47,76%,46%);
- --yellow-700:hsl(47,79%,40%);
- --yellow-800:hsl(47,82%,34%);
- --yellow-900:hsl(47,84%,28%);
- --red-050:hsl(358,75%,97%);
- --red-100:hsl(358,76%,90%);
- --red-200:hsl(358,74%,83%);
- --red-300:hsl(358,70%,70%);
- --red-400:hsl(358,68%,59%);
- --red-500:hsl(358,62%,52%);
- --red-600:hsl(358,62%,47%);
- --red-700:hsl(358,64%,41%);
- --red-800:hsl(358,64%,35%);
- --red-900:hsl(358,67%,29%);
- --gold:hsl(48,100%,50%);
- --gold-lighter:hsl(48,100%,91%);
- --gold-darker:hsl(45,100%,47%);
- --silver:hsl(210,6%,72%);
- --silver-lighter:hsl(0,0%,91%);
- --silver-darker:hsl(210,3%,61%);
- --bronze:hsl(28,38%,67%);
- --bronze-lighter:hsl(28,40%,92%);
- --bronze-darker:hsl(28,31%,52%);
- --bc-lightest:var(--black-025);
- --bc-lighter:var(--black-050);
- --bc-light:var(--black-075);
- --bc-medium:var(--black-100);
- --bc-dark:var(--black-150);
- --bc-darker:var(--black-200);
- --fc-dark:hsl(210,8%,5%);
- --fc-medium:hsl(210,8%,25%);
- --fc-light:hsl(210,8%,45%);
- --focus-ring-success:hsla(140,40%,75%,0.4);
- --focus-ring-warning:hsla(47,79%,58%,0.4);
- --focus-ring-error:hsla(358,62%,47%,0.15);
- --focus-ring-muted:hsla(210,8%,15%,0.1);
- --bs-sm:0 1px 2px hsla(0,0%,0%,0.05),0 1px 4px hsla(0,0%,0%,0.05),0 2px 8px hsla(0,0%,0%,0.05);
- --bs-md:0 1px 3px hsla(0,0%,0%,0.06),0 2px 6px hsla(0,0%,0%,0.06),0 3px 8px hsla(0,0%,0%,0.09);
- --bs-lg:0 1px 4px hsla(0,0%,0%,0.09),0 3px 8px hsla(0,0%,0%,0.09),0 4px 13px hsla(0,0%,0%,0.13);
- --scrollbar:hsla(0,0%,0%,0.2);
- --highlight-bg:hsl(0,0%,96.5%);
- --highlight-color:var(--black-750);
- --highlight-comment:hsl(210,8%,43.5%);
- --highlight-punctuation:var(--black-600);
- --highlight-namespace:hsl(27,99%,36%);
- --highlight-attribute:hsl(206,98.5%,29%);
- --highlight-literal:hsl(27,99%,36%);
- --highlight-symbol:hsl(306,43%,35%);
- --highlight-keyword:hsl(206,98.5%,29%);
- --highlight-variable:hsl(80,80.5%,26.5%);
- --highlight-addition:var(--green-700);
- --highlight-deletion:var(--red-600)
+
+ 
+ 
+ .bg--gold { background-color: hsl(48,100%,50%);}
+ .bg--gold-lighter { background-color: hsl(48,100%,91%);}
+ .bg--gold-darker { background-color: hsl(45,100%,47%);}
+ 
+ .bg--silver { background-color: hsl(210,6%,72%);}
+ .bg--silver-lighter { background-color: hsl(0,0%,91%);}
+ .bg--silver-darker { background-color: hsl(210,3%,61%);}
+ 
+ .bg--bronze { background-color: hsl(28,38%,67%);}
+ .bg--bronze-lighter { background-color: hsl(28,40%,92%);}
+ .bg--bronze-darker { background-color: hsl(28,31%,52%);}
+ 
+ .bg--bc-lightest:var(--black-025);}
+ .bg--bc-lighter:var(--black-050);}
+ .bg--bc-light:var(--black-075);}
+ .bg--bc-medium:var(--black-100);}
+ .bg--bc-dark:var(--black-150);}
+ .bg--bc-darker:var(--black-200);}
+ 
+ .bg--fc-dark { background-color: hsl(210,8%,5%);}
+ .bg--fc-medium { background-color: hsl(210,8%,25%);}
+ .bg--fc-light { background-color: hsl(210,8%,45%);}
+ 
+ .bg--focus-ring-success:hsla(140,40%,75%,0.4);}
+ .bg--focus-ring-warning:hsla(47,79%,58%,0.4);}
+ .bg--focus-ring-error:hsla(358,62%,47%,0.15);}
+ .bg--focus-ring-muted:hsla(210,8%,15%,0.1);}
+ 
+ .bg--bs-sm:0 1px 2px hsla(0,0%,0%,0.05),0 1px 4px hsla(0,0%,0%,0.05),0 2px 8px hsla(0,0%,0%,0.05);}
+ .bg--bs-md:0 1px 3px hsla(0,0%,0%,0.06),0 2px 6px hsla(0,0%,0%,0.06),0 3px 8px hsla(0,0%,0%,0.09);}
+ .bg--bs-lg:0 1px 4px hsla(0,0%,0%,0.09),0 3px 8px hsla(0,0%,0%,0.09),0 4px 13px hsla(0,0%,0%,0.13);}
+ .bg--scrollbar:hsla(0,0%,0%,0.2);}
+ 
+ .bg--highlight-bg { background-color: hsl(0,0%,96.5%);}
+ .bg--highlight-color:var(--black-750);}
+ .bg--highlight-comment { background-color: hsl(210,8%,43.5%);}
+ .bg--highlight-punctuation:var(--black-600);}
+ .bg--highlight-namespace { background-color: hsl(27,99%,36%);}
+ .bg--highlight-attribute { background-color: hsl(206,98.5%,29%);}
+ .bg--highlight-literal { background-color: hsl(27,99%,36%);}
+ .bg--highlight-symbol { background-color: hsl(306,43%,35%);}
+ .bg--highlight-keyword { background-color: hsl(206,98.5%,29%);}
+ .bg--highlight-variable { background-color: hsl(80,80.5%,26.5%);}
+ .bg--highlight-addition:var(--green-700);}
+ .bg--highlight-deletion:var(--red-600)
 }
 
 body {
