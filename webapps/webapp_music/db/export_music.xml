@@ -280,10 +280,16 @@
 	<title>
 		<item>Аквариум</item>
 	</title>
-	
+	<images>
+		<img src="https://avatars.yandex.net/get-music-user-playlist/34120/9941293.1048.20588/200x200?1635250630499"/>
+	</images>
 
-	<description>https://ru.wikipedia.org/wiki/%D0%90%D0%BA%D0%B2%D0%B0%D1%80%D0%B8%D1%83%D0%BC_(%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D0%B0)</description>
 	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/Auqarium.json">Auqarium.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1048">music.yandex.ru</a></li>
+		<li><a data-type="external-link" href="https://ru.wikipedia.org/wiki/%D0%90%D0%BA%D0%B2%D0%B0%D1%80%D0%B8%D1%83%D0%BC_(%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D0%B0)">wiki</a></li>
+	</related_links>
 
 	<node_tags>
 		<item vid="5" tid="53" group_name="alphabetical_voc">А</item>
@@ -301,7 +307,7 @@
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">07-Aug-2013 20:13:48</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 10:59:35</updated>
+	<updated format="d-M-Y H:i:s">29-Oct-2021 18:39:15</updated>
 </node>
 
 <node type="playlist">

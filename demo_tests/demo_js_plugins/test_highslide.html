@@ -25,6 +25,7 @@
 	
 	hs.restoreCursor = null;
 	hs.lang.restoreTitle = 'Click for next image';
+    hs.outlineWhileAnimating = true;
 
 	// Add the simple close button
 	hs.registerOverlay({
@@ -106,10 +107,18 @@
 		
 
 	<div>
-		<a href="#" onclick="return hs.htmlExpand(this)" class="btn btn-blue">popup window</a>
+		<a href="#" onclick="return hs.htmlExpand(this)" class="lr-btn lr-btn-blue">popup window</a>
 <div class="highslide-maincontent">
 000000
 </div>
+
+<a href="https://youtube.com/embed/U0fUkwNUTRg?rel=0&amp;wmode=transparent" 
+		onclick="return hs.htmlExpand(this, {objectType: 'iframe', width: 640, height: 480, 
+		allowSizeReduction: false, wrapperClassName: 'draggable-header no-footer', 
+		preserveContent: false, objectLoadTime: 'after'})"
+        class="highslide lr-btn lr-btn-darkblue">
+    Display YouTube movie
+</a>	
 	</div><!-- end panel -->
 
 		<pre>
