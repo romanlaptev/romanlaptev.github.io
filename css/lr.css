@@ -1509,6 +1509,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .lr-border-black{border-color: #000;}
 .lr-list-group.lr-border-black li {border-color: #000;}
 .bg-black-hsl {background-color: hsl(210,8%,5%);}
+.lr-hover-black:hover,
 .lr-nav-black  li a:hover {
     background-color: #000 !important;
     color: #fff;
@@ -1635,10 +1636,6 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-color-test100c1d5 { background-color:#00c1d5;}
 
 .bg-color-test1C7D5EC { background-color:#C7D5EC;}
-.lr-hover-blue:hover{
-	color: #000 !important;
-    background-color: #c7d5ec !important;
-}
 
 
 .bg-color-test13950C9 { background-color:#3950C9;}
@@ -1764,6 +1761,16 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-lightblue-grey {  background-color: #e6e6ff !important;}
 
 .bg-pale-dull-azure{ background:#99CCFF !important;}
+.lr-hover-blue:hover{
+	color:  #99CCFF !important;
+    background-color: #0000ff !important;
+}
+.lr-hover-lightblue:hover{
+	color:  #0000ff  !important;
+    background-color: #99CCFF !important;
+}
+
+
 .bg-lightskyblue1{  background-color: #87cefa !important;}
 .bg-sky-blue5{  background-color: #006699 !important;}
 .bg-sky-blue66{  background-color: #003366 !important;}
@@ -1936,6 +1943,11 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 /* GREEN */
 
 .bg-green {background-color: #008000;}
+.lr-hover-green:hover{
+	color: #ffd700 !important;
+    background-color: #008000 !important;
+}
+
 .bg-greenyellow {background-color: #adff2f;}
 .bg-green-025 { background-color: #eef8f1;}
 .bg-green-050 { background-color: #dcf0e2;}
@@ -2194,10 +2206,6 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-palegreen {background-color: #98fb98;}
 
 .bg-paleturquoise {background-color: #afeeee;}
-.lr-hover-green:hover{
-	color: #000 !important;
-    background-color: #afeeee !important;
-}
 
 .bg-palevioletred {background-color: #d87093;}
 .bg-papayawhip {background-color: #ffefd5;}
@@ -2349,6 +2357,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-red {background-color: #ff0000;}
 .lr-border-red{border-color: #f00;}
 .lr-list-group.lr-border-red li {border-color: #f00;}
+.lr-hover-red:hover,
 .lr-nav-red > li > a:hover  {
     background-color: #800000 !important;
     color: #ffd700;
@@ -2466,7 +2475,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .lr-border-yellowgreen {border-color:#9acd32;}
 .lr-list-group.lr-border-yellowgreen li {	border-color: #9acd32;}
 .lr-nav-yellowgreen  li a {color: #ffffff !important;}
-.lr-nav-yellowgreen  li a:hover {    background-color: #9acd32 !important;}
+.lr-hover-yellowgreen:hover, .lr-nav-yellowgreen  li a:hover {    background-color: #9acd32 !important;}
 .lr-nav-yellowgreen  li  a:visited  {color: #daa520;}
 .lr-nav-yellowgreen  li  a:focus  {    color: #ffd700;}
 
@@ -3122,6 +3131,7 @@ inset -2px -1px 40px rgba(0, 0, 0, 0.1),
 .lr-panel-darkred .lr-nav > li > a:visited{
 	color: #9c8f4b;
 }
+.lr-hover-darkred:hover,
 .lr-panel-darkred .lr-nav > li > a:hover  {
     background-color: #800000 !important;
     color: #ffd700;
@@ -3158,6 +3168,9 @@ inset -2px -1px 40px rgba(0, 0, 0, 0.1),
 .lr-panel-grey .lr-nav > li > a, 
 .lr-panel-grey .lr-nav > li > a:visited{
 	color: #e5c51c;
+}
+.lr-hover-grey:hover  {
+    background-color: #607d8b !important;
 }
 .lr-panel-grey .lr-nav > li > a:hover  {
     background-color: #800000 !important;
