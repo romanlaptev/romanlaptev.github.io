@@ -180,21 +180,19 @@ https://bootstrap-4.ru/docs/4.0/utilities/spacing/
 
 .lr-hidden, .hidden {display:none;}
 
+/* SHADOWS */
 .lr-shadow-box {
 	-webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
 	-moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
 	box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
 }
 
-.lr-shadow-0 {
-	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06);
-}
+.lr-shadow-0 {	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06);}
 .lr-shadow-1 {box-shadow: 0px 1px 3px rgba(0,0,0,0.1), 0px 1px 2px rgba(0,0,0,0.06);}
 .lr-shadow-2 {box-shadow: 0px 1px 1px rgba(0,0,0,0.1), 0px 2px 2px rgba(0,0,0,0.08), 0px 4px 4px rgba(0,0,0,0.06), 0px 8px 8px rgba(0,0,0,0.04), 0px 16px 16px rgba(0,0,0,0.02);}
 .lr-shadow-3 {box-shadow: 0px 1px 1px rgba(0,0,0,0.02), 0px 2px 2px rgba(0,0,0,0.04), 0px 4px 4px rgba(0,0,0,0.06), 0px 8px 8px rgba(0,0,0,0.08), 0px 16px 16px rgba(0,0,0,0.1);}
 .lr-shadow-4 {box-shadow: 0px 1px 1px rgba(0,0,0,0.02), 0px 2px 2px rgba(0,0,0,0.04), 0px 4px 4px rgba(0,0,0,0.06), 0px 8px 8px rgba(0,0,0,0.08), 0px 16px 16px rgba(0,0,0,0.1), 0px 24px 24px rgba(0,0,0,0.12);}
 .lr-shadow-5 {box-shadow: 5px 5px #C0C0C0};
-
 .lr-shadow-1-flip {box-shadow: 0px -1px 3px rgba(0,0,0,0.01), 0px -1px 2px rgba(0,0,0,0.06);}
 .lr-shadow-1-inset {box-shadow: inset 0px -1px 0px #E9EAEC;}
 .lr-shadow-5-inset {box-shadow: inset 0 0 5px #C0C0C0;}
@@ -204,9 +202,64 @@ https://bootstrap-4.ru/docs/4.0/utilities/spacing/
 	border: 1px solid;
 	box-shadow: 5px 5px silver;
 }
-.picture:hover {
-	box-shadow: 0 0 5px inset;
+.picture:hover {	box-shadow: 0 0 5px inset;}
+
+/* bootstrap441.css  */
+.b--shadow-sm {  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;}
+.b--shadow {  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;}
+.b--shadow-lg {  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;}
+.b--shadow-none {  box-shadow: none !important;}
+
+/*
+ Box-shadow, UIKit
+ https://3uikit.ru/utility
+ */
+.uk-box-shadow-small {  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);}
+.uk-box-shadow-medium {  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);}
+.uk-box-shadow-large {  box-shadow: 0 14px 25px rgba(0, 0, 0, 0.16);}
+.uk-box-shadow-xlarge {  box-shadow: 0 28px 50px rgba(0, 0, 0, 0.16);}
+
+/* Hover shadow */
+[class*='uk-box-shadow-hover'] {  transition: box-shadow 0.1s ease-in-out;}
+.uk-box-shadow-hover-small:hover {  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);}
+.uk-box-shadow-hover-medium:hover {  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);}
+.uk-box-shadow-hover-large:hover {  box-shadow: 0 14px 25px rgba(0, 0, 0, 0.16);}
+.uk-box-shadow-hover-xlarge:hover {  box-shadow: 0 28px 50px rgba(0, 0, 0, 0.16);}
+
+/* Box-shadow bottom  */
+/*
+ * 1. Set position.
+ * 2. Set style
+ * 3. Blur doesn't work on pseudo elements with negative `z-index` in Edge.
+ *    Solved by using `before` and add position context to child elements.
+ */
+@supports (filter: blur(0)) {
+  .uk-box-shadow-bottom {
+    display: inline-block;
+    position: relative;
+    max-width: 100%;
+    vertical-align: middle;
+  }
+  .uk-box-shadow-bottom::before {
+    content: '';
+    /* 1 */
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    right: 0;
+    /* 2 */
+    height: 30px;
+    border-radius: 100%;
+    background: #444;
+    filter: blur(20px);
+  }
+  /* 3 */
+  .uk-box-shadow-bottom > * {
+    position: relative;
+  }
 }
+.lr-text-shadow {	text-shadow: 1px 1px 1px #495057;}
+
 
 
 /* PANELS */
@@ -243,10 +296,10 @@ https://bootstrap-4.ru/docs/4.0/utilities/spacing/
 	padding: 5px 5px;
 }
 
-/* TILE */
-.lr-tile {
-	margin: 5px;
-	padding: 5px;
+/* POPUP TILE */
+.lr-tile, .lr-popup {
+/*	margin: 5px;*/
+/*	padding: 5px;*/
 	/*border: 1px solid #EDEDEC;*/
 	background-color: inherit;
 	background-position: center;
@@ -256,7 +309,8 @@ https://bootstrap-4.ru/docs/4.0/utilities/spacing/
 	-webkit-transition: all 0.5s ease;
 	-o-transition: all 0.5s ease;
 }
-.lr-tile:hover {
+.lr-tile:hover,
+.lr-popup:hover {
   transform: scale(1.1);
 	-moz-transform: scale(1.1);
 	-webkit-transform: scale(1.1);
@@ -838,19 +892,6 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fed081', endCo
 }
 .lr-btn-violet-fb:hover {
 	color: #fff;
-}
-
-.lr-hover-blue:hover{
-	color: #000 !important;
-    background-color: #c7d5ec !important;
-}
-.lr-hover-green:hover{
-	color: #000 !important;
-    background-color: #afeeee !important;
-}
-.lr-hover-orange:hover{
-	color: #000 !important;
-    background-color: #f89406 !important;
 }
 
 
@@ -1592,7 +1633,14 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-color-test15a5eff { background-color:#5a5eff;}
 .bg-color-test17cc0de { background-color:#7cc0de;}
 .bg-color-test100c1d5 { background-color:#00c1d5;}
+
 .bg-color-test1C7D5EC { background-color:#C7D5EC;}
+.lr-hover-blue:hover{
+	color: #000 !important;
+    background-color: #c7d5ec !important;
+}
+
+
 .bg-color-test13950C9 { background-color:#3950C9;}
 
 .bg-lavender-blue { background-color:#cbcbff;}
@@ -1769,8 +1817,8 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 
 .bg-brown {background-color: #a52a2a;}
-.bg-brown10 {background-color: #1e1e1e}
-.bg-brown20 {background-color: #2e2e2e}
+.bg-brown1e {background-color: #1e1e1e}
+.bg-brown2e {background-color: #2e2e2e}
 .bg-brown30 { background:#bf864e; }
 
 .bg-red-brown {background-color: #5A2000;}
@@ -2144,7 +2192,13 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-orchid {background-color: #da70d6;}
 .bg-palegoldenrod {background-color: #eee8aa;}
 .bg-palegreen {background-color: #98fb98;}
+
 .bg-paleturquoise {background-color: #afeeee;}
+.lr-hover-green:hover{
+	color: #000 !important;
+    background-color: #afeeee !important;
+}
+
 .bg-palevioletred {background-color: #d87093;}
 .bg-papayawhip {background-color: #ffefd5;}
 .bg-peachpuff {background-color: #ffdab9;}
@@ -2239,7 +2293,13 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 .bg-golden {background-color: #FF8C00;}/* win10, desktop color, light-orange*/
 .bg-darkorange {background-color: #ff8c00;}
+
 .bg-darkorange2 { background:#f89406;}
+.lr-hover-orange:hover{
+	color: #000 !important;
+    background-color: #f89406 !important;
+}
+
 
 .bg-darkorange-b { background-color:#FF8000;}
 .color-darkorange {color: #FF8000 !important;}
@@ -2274,6 +2334,14 @@ https://www.omiod.com/colors/?rgb=d0ccd5
  .bg--red-900 { background-color: hsl(358,67%,29%);}
 
 .bg-maroon {background-color: #800000;}
+.lr-border-maroon{border-color: #800000;}
+.lr-list-group.lr-border-maroonk li {border-color: #800000;}
+.lr-hover-maroon:hover {
+    background-color: #800000 !important;
+    color: #fff;
+}
+
+
 .bg-darkred {background-color: #8b0000;}
 .bg-very-darkred {background-color: #2F0709;}
 .bg-marlboro-red {background-color: #C80000;}
