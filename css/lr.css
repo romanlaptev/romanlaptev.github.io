@@ -296,30 +296,6 @@ https://bootstrap-4.ru/docs/4.0/utilities/spacing/
 	padding: 5px 5px;
 }
 
-/* POPUP TILE */
-.lr-tile, .lr-popup {
-/*	margin: 5px;*/
-/*	padding: 5px;*/
-	/*border: 1px solid #EDEDEC;*/
-	background-color: inherit;
-	background-position: center;
-	transition: all 0.5s ease;
-	-moz-transition: all 0.5s ease;
-	-ms-transition: all 0.5s ease;
-	-webkit-transition: all 0.5s ease;
-	-o-transition: all 0.5s ease;
-}
-.lr-tile:hover,
-.lr-popup:hover {
-  transform: scale(1.1);
-	-moz-transform: scale(1.1);
-	-webkit-transform: scale(1.1);
-	-o-transform: scale(1.1);
-	-ms-transform: scale(1.1);
-	-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=1.5, M12=0, M21=0, M22=1.5, SizingMethod='auto expand')";
-	filter: progid:DXImageTransform.Microsoft.Matrix(M11=1.5, M12=0, M21=0, M22=1.5, SizingMethod='auto expand');
-}
-
 
 /*--------------------- LOAD --------------*/
 /* http://dbmast.ru/adaptivnoe-modalnoe-okno-strogo-po-centru */
@@ -599,12 +575,27 @@ margin-left: 15px;
 	color: #fff !important;
 	outline: 0;
 }
-
-.lr-btn-blue:active:focus {
-	color: #000 !important;
-}
+.lr-btn-blue:active:focus {	color: #000 !important;}
 .lr-btn-blue:active {}
 .lr-btn-blue:visited {}
+
+
+.lr-btn-flat{
+	padding:10px 20px;
+	background-color: #55acee;
+	color:#fff;
+	box-shadow: 0px 5px 0px #3C93D5;
+}
+.lr-btn-flat:hover {
+	text-decoration: none;
+	color:#000;
+}
+.lr-btn-flat:visited {
+	text-decoration: none;
+}
+.lr-btn-flat:focus {
+	text-decoration: none;
+}
 
 
 .lr-btn-darkblue {
@@ -1291,11 +1282,11 @@ http://htmlbook.ru/index.php/css/border-style
 /*
 https://bootstrap-4.ru/docs/4.0/utilities/borders/
 */
-.border {  border: 1px solid #dee2e6 !important;}
-.border-top {  border-top: 1px solid #dee2e6 !important;}
-.border-right {  border-right: 1px solid #dee2e6 !important;}
-.border-bottom {  border-bottom: 1px solid #dee2e6 !important;}
-.border-left {  border-left: 1px solid #dee2e6 !important;}
+.border {  border: 1px solid #dee2e6;}
+.border-top {  border-top: 1px solid #dee2e6;}
+.border-right {  border-right: 1px solid #dee2e6;}
+.border-bottom {  border-bottom: 1px solid #dee2e6;}
+.border-left {  border-left: 1px solid #dee2e6;}
 .border-0 {  border: 0 !important;}
 .border-top-0 {  border-top: 0 !important;}
 .border-right-0 {  border-right: 0 !important;}
@@ -1501,7 +1492,11 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-antiquewhite {background-color: #faebd7;}
 .bg-aqua {background-color: #00ffff;}
 .bg-aquamarine {background-color: #7fffd4;}
+
 .bg-azure {background-color: #f0ffff;}
+.bg-light-azure {background-color: #55acee;}
+.bg-azure2 {background-color: #3C93D5;}
+
 .bg-beige {background-color: #f5f5dc;}
 .bg-bisque {background-color: #ffe4c4;}
 
@@ -1635,11 +1630,8 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-color-test17cc0de { background-color:#7cc0de;}
 .bg-color-test100c1d5 { background-color:#00c1d5;}
 
-.bg-color-test1C7D5EC { background-color:#C7D5EC;}
-
-
+.bg-grayishblue { background-color:#C7D5EC;}
 .bg-color-test13950C9 { background-color:#3950C9;}
-
 .bg-lavender-blue { background-color:#cbcbff;}
 .color-lavender-blue {color: #cbcbf !important;}
 .lr-border-lavender-blue {border-color: #cbcbff;}
@@ -1656,7 +1648,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 
 .bg-color-test1ccf { background:#ccf;}
-.bg-color-test1def { background:#def;}
+.bg-paleblue { background:#def;}
 .bg-color-test1196e9c { background:#196e9c; }
 .bg-color-test10060a0 { background:#0060a0;}
 
@@ -1941,8 +1933,9 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-color-test14D5D53 { background:#4D5D53;}  /*:Фельдграу,#4D5D53 */
 
 /* GREEN */
-
 .bg-green {background-color: #008000;}
+.lr-border-green{border-color: #008000;}
+.lr-list-group.lr-border-green li {border-color: #008000;}
 .lr-hover-green:hover{
 	color: #ffd700 !important;
     background-color: #008000 !important;
@@ -2107,10 +2100,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
   color: #679f41;/* ligth-green */
 }
 .bg-palegreen-b{  background-color: #d3ead5;}
-
-
 .bg-green-grass1{  background-color: #9c9 !important;}
-
 .bg-green-grass2{/* gitlab button, bg */
   background-color: #1aaa55 !important;
 }
@@ -3619,3 +3609,57 @@ justify-content: space-between;
 .d-table-cell{display:table-cell!important}
 .d-flex{display:flex!important}
 .d-inline-flex{display:inline-flex!important}
+
+/* TRANSFORM */
+.lr-transform-rotate-90 {
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg); 
+    -webkit-transform: rotate(90deg);
+    -o-transform: rotate(90deg); 
+    transform: rotate(90deg);
+}
+.lr-transform-rotate--90 {
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg); 
+    -webkit-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg); 
+    transform: rotate(-90deg);
+}
+.lr-transform-rotate-45 {
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg); 
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg); 
+    transform: rotate(45deg);
+}
+.lr-transform-rotate--45 {
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg); 
+    -webkit-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg); 
+    transform: rotate(-45deg);
+}
+
+/* POPUP TILE */
+.lr-tile, .lr-popup {
+/*	margin: 5px;*/
+/*	padding: 5px;*/
+	/*border: 1px solid #EDEDEC;*/
+	background-color: inherit;
+	background-position: center;
+	transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-ms-transition: all 0.5s ease;
+	-webkit-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+}
+.lr-tile:hover,
+.lr-popup:hover {
+  transform: scale(1.1);
+	-moz-transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	-o-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=1.5, M12=0, M21=0, M22=1.5, SizingMethod='auto expand')";
+	filter: progid:DXImageTransform.Microsoft.Matrix(M11=1.5, M12=0, M21=0, M22=1.5, SizingMethod='auto expand');
+}

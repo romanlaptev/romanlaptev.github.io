@@ -77,31 +77,31 @@ href="?q=switch-tab&target_id=tab-info">info</a>
 	
 	<div class="lr-margin-10 lr-float-left">
 		<div>
-код станции отправления (esr)<br>
+<div class="lr-margin-small">код станции отправления (esr)</div>
 <input id="inp-from-title" class="lr-padding-10 w100" value=""/>
 		</div>
 		<select id="select-from-title" 
 name="select_fromTitle" 
-class="w100"		
+class="_w100 lr-form-control"		
 autocomplete="off">
 <option value="" selected>не выбрано</option>			
 <option value="851508">Новосибирск-восточный</option>			
 <option value="851635">Раздолье (3362 км)</option>			
 		</select>
 	</div>
-	
-	<div class="lr-margin-10 lr-padding-20 lr-float-left">
+
+	<div class="btn-direction-wrap lr-float-left">
 <a href="#change-direction" class="bg-orange arrows lr-border-round-small" title="change direction"></a>
 	</div>
 	
 	<div class="lr-margin-10 lr-float-left">
 		<div>
-код станции прибытия (esr)<br>
+<div class="lr-margin-small">код станции прибытия (esr)</div>
 <input id="inp-to-title" class="lr-padding-10 w100" value=""/>
 		</div>
 		<select id="select-to-title" 
 name="select_toTitle" 
-class="w100"		
+class="_w100 lr-form-control"
 autocomplete="off">
 <option value="" selected>не выбрано</option>			
 <option value="851508">Новосибирск-восточный</option>			
@@ -110,7 +110,7 @@ autocomplete="off">
 			
 	</div>
 	<div class="lr-margin-10 lr-float-left">
-дата списка рейсов<br>
+<div class="lr-margin-small">дата списка рейсов</div>
 <input id="date-widget" type="date" name="date_widget" class="lr-padding-10" value=""  max="" min="">
 	</div>
 
@@ -203,8 +203,6 @@ onerror="this.onerror=console.log('error load '+this.src);this.src='img/directio
 				</div>
 			</div><!-- end tab-transport -->
 
-
-
 			<div id="tab-weather" class="tab-pane lr-panel bg-snow">
 				
 				<div class="tab-header lr-lr-page-heading lr-padding-20 bg-darkblue-green lr-border-round-small">
@@ -216,9 +214,10 @@ onerror="this.onerror=console.log('error load '+this.src);this.src='img/directio
 						<div class="lr-panel-body lr-flex lr-flex-wrap lr-row">
 					
 					<div class="lr-margin-10 color-white lr-float-left">
-<label class="">широта</label><br>
+<div class="lr-padding-small">широта</div>
 <input id="latitude-input" type="text"
 name="coord_lat" 
+class="lr-form-control"
 value="0" autocomplete="off" placeholder=""><br>
 <div class="lr-flex lr-flex-vcenter">
 	<span>90&deg;</span>
@@ -230,9 +229,10 @@ class="range" min="-90" max="90" step="0.05" value="0" autocomplete="off">
 					</div>
 					
 					<div class="lr-margin-10 color-white lr-float-left">
-<label class="">долгота</label><br>
+<div class="lr-padding-small">долгота</div>
 <input id="longitude-input" 
 name="coord_long" 
+class="lr-form-control"
 type="text" value="-60" autocomplete="off" placeholder=""><br>
 <div class="lr-flex lr-flex-vcenter">
 	<span>-180&deg;</span>
@@ -244,9 +244,11 @@ type="range" class="range" min="-180" max="180" step="0.05" value="60" autocompl
 					</div>
 			
 				<div class="text-center lr-padding-small lr-float-left">
-<label class="color-white">получить координаты по адресу</label><br>
+<div class="lr-padding-small color-white">получить координаты по адресу</div>
 					<div class="lr-padding-small">
-<select name="address" id="select-addr" autocomplete="off">
+<select name="address" id="select-addr" 
+class="lr-form-control"
+autocomplete="off">
 	<option data-lat="0" data-lon="60">не выбрано</option>
 	<option selected value="nsk" data-lat="55.038115899999994" data-lon="83.0094459">Новосибирск</option>
 	<option value="okt" data-lat="55.169005" data-lon="83.160846">пос.Октябрьский</option>
@@ -255,9 +257,10 @@ type="range" class="range" min="-180" max="180" step="0.05" value="60" autocompl
 				</div>
 
 				<div class="text-center lr-padding-small lr-float-left">
-<label class="color-white">параметры API</label><br>
+<div class="lr-padding-small color-white">параметры API</div>
 					<div class="lr-padding-small">
-<select name="api-params" id="select-api" autocomplete="off" class="w80">
+<select name="api-params" id="select-api" autocomplete="off" 
+class="w80 lr-form-control">
 	<option>не выбрано</option>
 	<option data-source="yandex" data-type="weather">Яндекс.Погода</option>
 	<option data-source="openweathermap" data-type="weather">weather, openweathermap.org</option>
@@ -336,10 +339,10 @@ openweathermap.org, 5 day weather forecast</a></li>
 	</div><!-- end panel -->
 	
 
-	<div class="log-panel panel">
+	<div class="log-panel panel bg-lightsteelblue5">
 		<div class="float-right">
-			<a href="?q=toggle-log" title="Toggle log" class="lr-btn lr-btn-default">-</a>
-			<a href="?q=clear-log" title="Clear log" class="lr-btn lr-btn-default">x</a>
+			<a href="?q=toggle-log" title="Toggle log" class="lr-btn bg-white">-</a>
+			<a href="?q=clear-log" title="Clear log" class="lr-btn bg-orange">x</a>
 		</div>
 		<div id="log" class="lr-panel-body lr-row"></div>
 	</div>
