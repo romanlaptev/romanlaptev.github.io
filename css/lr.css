@@ -147,10 +147,9 @@ https://bootstrap-4.ru/docs/4.0/utilities/spacing/
 .pb-3 { padding-bottom:1rem!important}
 .pl-3 { padding-left:1rem!important}
 
-.lr-padding-0, .lr-padding0{padding: 0 !important;}
 .lr-margin-0, .lr-margin0{margin: 0 !important;}
-.lr-margin-small, .margin-small{margin:5px;}
-.lr-margin-small-top{margin-top:5px;}
+.lr-margin-sm, .lr-margin-small, .margin-small{margin:5px;}
+.lr-margin-top-small, .lr-margin-top-sm,  .lr-margin-small-top,  .lr-margin-sm-top{margin-top:5px;}
 .lr-margin-auto, .margin-auto{margin:auto;}
 .lr-margin-10, .lr-margin10 {margin:10px;}
 .lr-margin-20, .lr-margin20 {margin:20px;}
@@ -159,26 +158,30 @@ https://bootstrap-4.ru/docs/4.0/utilities/spacing/
 .lr-margin-bottom-10, .lr-margin-10-bottom, .lr-margin10-bottom {margin-bottom:10px;}
 .lr-margin-bottom-20, .lr-margin-20-bottom, .lr-margin20-bottom {margin-bottom:20px;}
 
-.lr-padding-small, .padding-small{padding:5px;}
+.lr-padding-0, .lr-padding0{padding: 0 !important;}
+.lr-padding-sm, .lr-padding-small, .padding-small{padding:5px;}
 .lr-padding-10, .padding-10{padding:10px;}
 .lr-padding-20, .lr-padding20, .padding-20, .padding20 {padding:20px;}
+
+.lr-padding-top-small, .lr-padding-top-sm,  .lr-padding-small-top,  .lr-padding-sm-top{padding-top:5px;}
 .lr-padding-top-10, .lr-padding-10-top, .lr-padding10-top {padding-top: 10px;}
 .lr-padding-top-20, .lr-padding-20-top, .lr-padding20-top {padding-top: 20px;}
 .lr-padding-top-30, .lr-padding-30-top, .lr-padding30-top {padding-top: 30px;}
 .lr-padding-top-50, .lr-padding-50-top, .lr-padding50-top {padding-top: 50px;}
 .lr-padding-top-60, .lr-padding-60-top, .lr-padding60-top {padding-top: 60px;}
+
 .lr-padding-bottom-10, .lr-padding-10-bottom, .lr-padding10-bottom {padding-bottom: 10px;}
 .lr-padding-bottom-20, .lr-padding-20-bottom, .lr-padding20-bottom {padding-bottom: 20px;}
 
-.lr-padding-right-small {	padding-right: 10px;}
-
-.colorbox { padding:20px; }
+.lr-padding-bottom-sm, .lr-padding-bottom-small {	padding-bottom: 5px; }
+.lr-padding-right-sm, .lr-padding-right-small {	padding-right: 5px; }
+.lr-padding-left-sm, .lr-padding-left-small {	padding-left: 5px; }
 
 .lr-font-bold{	font-weight:bold;}
 .lr-font-italic{ font-style:italic;}
 .lr-text-small{	font-size: 12px;}
 
-.lr-hidden, .hidden {display:none;}
+.lr-hidden  {display:none;}
 
 /* SHADOWS */
 .lr-shadow-box {
@@ -197,12 +200,13 @@ https://bootstrap-4.ru/docs/4.0/utilities/spacing/
 .lr-shadow-1-inset {box-shadow: inset 0px -1px 0px #E9EAEC;}
 .lr-shadow-5-inset {box-shadow: inset 0 0 5px #C0C0C0;}
 
-.picture {
+.lr-card {
+	margin: 5px;
 	padding: 10px;
 	border: 1px solid;
 	box-shadow: 5px 5px silver;
 }
-.picture:hover {	box-shadow: 0 0 5px inset;}
+.lr-card:hover {	box-shadow: 0 0 5px inset;}
 
 /* bootstrap441.css  */
 .b--shadow-sm {  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;}
