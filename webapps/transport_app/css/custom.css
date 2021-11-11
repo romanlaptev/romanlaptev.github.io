@@ -92,6 +92,12 @@ height: 19.5px;
 }
 
 
+.btn-direction-wrap {
+	line-height: 150px;
+	padding: 0 5px 0 5px;
+}	
+
+
 @media screen and (max-width:640px){
 	.lr-container {
 		width: 100%;

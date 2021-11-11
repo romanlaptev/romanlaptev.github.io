@@ -2,62 +2,15 @@ html {
     font-family: segoe-ui-webfont, OpenSans-Regular, hattori_hanzolight, 'ComfortaaLight';
 }
 
-body{
-/*font-family: Helvetica, Arial, sans-serif;*/
-/*font-size:14px;*/
-	padding-top: 1%;
+.site-header {
+	font-size: 62px;
+	font-weight: normal;
+	margin: 15px;
 }
 
-h4 {
-	margin: 5px;
-}
-
-.lr-container {
-	border-radius: 4px;
-	width: 80%;
-/*background-color: #b6cfed;	*/
-/*border: 1px solid rgba(0, 0, 0, 0.15);*/
-/*box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);*/
-	padding: 1%;
-}
-
-
-.page-header {
-	border-bottom: 1px solid #000;
-margin-bottom: 1%;
-}
-.page-header h1 {
-	font-family: ticker_taperegular;
-/*
-	font-family: Lobster;
-	font-family: Victorian LET Regular;
-*/
-	/*font-family: fiddums-family;*/
-	/*font-size: 3.5em;*/
-	font-size: 200%;
-	/*font-size: 36px;*/
-	font-weight: bold;
-}
-
-
-.lr-panel-inline {
-	width: 30%;
-border-radius: 5px;
-margin: 0;
-}
-.lr-panel-body{
-/*padding:5px 15px;*/
-}
-
-.lr-btn-darkblue {
-	font-family: ticker_taperegular;
-}
-.lr-btn-blue {
-}
-.lr-btn-green-shadow {
-	/*font-family: Lobster;*/
-	padding: 10px 15px;
-}
+.lr-btn-darkblue {	font-family: ticker_taperegular;}
+.lr-btn-blue {}
+.lr-btn-green-shadow {	padding: 10px 15px;}
 
 .lr-icon {
 	width: 30px;
@@ -120,5 +73,4 @@ margin: 0;
 	}
 }
 
-@media screen and (max-width:340px){
-}
+@media screen and (max-width:340px){}
