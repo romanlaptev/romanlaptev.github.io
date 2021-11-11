@@ -1,3 +1,4 @@
+
 @font-face {
     font-family: 'ticker_taperegular';
     src: url('Ticker_Tape/ticker_tape-webfont.eot');
@@ -10,6 +11,7 @@
     font-style: normal;
 	font-display: swap;
 }
+.lr-font-ticker {	font-family: ticker_taperegular;}
 
 @font-face {
 font-family:hattori_hanzolight_italic;
@@ -29,6 +31,7 @@ url('hattori_hanzo/hattori_hanzo-webfont.ttf') format('truetype');
 font-weight:400;
 font-style:normal
 }
+.lr-font-hattori { font-family: hattori_hanzolight;}
 
 
 @font-face {
@@ -42,6 +45,7 @@ font-style:normal
     font-weight: normal;
     font-style: normal;
 }
+.lr-font-huxley { font-family:a_Huxley;}
 
 /*
 @font-face {
@@ -67,6 +71,7 @@ font-style:normal
 			url("Victorian_LET/victorian-let-regular.ttf")  format('truetype'),
 			url("Victorian_LET/victorian-let-regular.svg")  format('svg');
 }
+.lr-font-victorian {	font-family: Victorian LET Regular;}
 
  /* French Script MT" */
 	/*src: url("../test_code/css/load_font/FRSCRIPT.TTF");*/
@@ -178,7 +183,6 @@ font-family: Gilroy;
 */
 
 
-
 @font-face {
     font-family: 'ComfortaaLight';
     src: url('comfortaa/comfortaa-light.eot');
@@ -187,7 +191,7 @@ font-family: Gilroy;
          url('comfortaa/comfortaa-light.woff') format('woff'),
          url('comfortaa/comfortaa-light.ttf') format('truetype');
 }
-
+.lr-font-comfortaa { font-family: 'ComfortaaLight';}
 
 @font-face
 {
@@ -200,6 +204,7 @@ font-family: Gilroy;
 	font-weight: normal;
 	font-style: normal;
 }
+.lr-font-lobster {	font-family: Lobster;}
 
 @font-face
 {
@@ -318,6 +323,7 @@ src: url('AVANTGAR/AVANTGAR.eot?#iefix') format('embedded-opentype'),
   url('AVANTGAR/AVANTGAR.svg#AGREVC') format('svg');
 	font-display: swap;
 }
+.lr-font-avantgarde {	font-family: 'avantgarde';}
 
 
 @font-face {
@@ -330,3 +336,4 @@ src: url('AVANTGAR/AVANTGAR.eot?#iefix') format('embedded-opentype'),
     font-weight: normal;
     font-style: normal;
 }
+.lr-font-segoe { font-family: segoe-ui-webfont;}

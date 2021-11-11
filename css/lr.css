@@ -1451,6 +1451,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-grey7{/* pamyat-naroda.ru */
   background-color: #567793 !important;
 }
+.bg-raven{  background-color: #727B89 !important;}
 
 .bg-grey-w { background-color:#5D7896;}
 .color-grey-w {color: #5D7896 !important;}
@@ -1618,13 +1619,19 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-blueviolet {background-color: #8a2be2;}
 .bg-color-test1003089 { background-color:#003089;}
 
-.bg-prussian-blue { background-color:#003B70;}
-.color-prussian-blue {color: #003B70 !important;}
-.lr-border-prussian-blue {border-color: #003B70;}
 
-.bg-prussian-blue2 { background-color:#003163;}
-.color-bg-prussian-blue2 {color: #003163 !important;}
-.lr-border-bg-prussian-blue2 {border-color: #003163;}
+
+.bg-prussian-blue { background-color:#003153;}
+.color-prussian-blue {color: #003153 !important;}
+.lr-border-prussian-blue {border-color: #003153;}
+
+.bg-prussian-blue2 { background-color:#003B70;}
+.color-prussian-blue2 {color: #003B70 !important;}
+.lr-border-prussian-blue2 {border-color: #003B70;}
+
+.bg-prussian-blue3 { background-color:#003163;}
+.color-bg-prussian-blue3 {color: #003163 !important;}
+.lr-border-bg-prussian-blue3 {border-color: #003163;}
 
 
 .bg-darkblue-green { background-color:#055c80;}
