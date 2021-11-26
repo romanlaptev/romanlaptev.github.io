@@ -101,6 +101,9 @@ pre {
 .lr-text-center, .text-center{text-align:center;}
 .lr-text-underline, .text-underline{text-decoration:underline;}
 .lr-text-bold, .text-bold{font-weight:bold;}
+.lr-text-lowercase {  text-transform: lowercase !important;}
+.lr-text-uppercase {  text-transform: uppercase !important;}
+.lr-text-capitalize {  text-transform: capitalize !important;}
 
 /* 
 https://bootstrap-4.ru/docs/4.0/utilities/spacing/ 
@@ -179,9 +182,31 @@ https://bootstrap-4.ru/docs/4.0/utilities/spacing/
 
 .lr-font-bold{	font-weight:bold;}
 .lr-font-italic{ font-style:italic;}
-.lr-text-small{	font-size: 12px;}
+.lr-text-small{	font-size: 80%;}
+
 
 .lr-hidden  {display:none;}
+/* bootstrap3 */
+@media (max-width: 767px) {
+  .hidden-xs {
+    display: none !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .hidden-sm {
+    display: none !important;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .hidden-md {
+    display: none !important;
+  }
+}
+@media (min-width: 1200px) {
+  .hidden-lg {
+    display: none !important;
+  }
+}
 
 /* SHADOWS */
 .lr-shadow-box {
@@ -393,10 +418,10 @@ border-top: 16px solid #1c5a83;
 	margin-left: 15px;	
 }
 
-.lr-list-unstyled {
-	padding: 0;
-	list-style: none;
+.lr-list-unstyled > li{
+	list-style: none !important;
 }
+
 .lr-list-inline {
 	padding: 0;
 	list-style: none;
@@ -1052,7 +1077,10 @@ padding: 10px;
 	.lr-flex-between, .lr-flex-hbetween {  justify-content: space-between;}
 	.lr-flex-around {  justify-content: space-around;}
 	
-	.lr-flex-vcenter, .lr-flex-v-center{ align-items:center;}
+	.lr-flex-vcenter, .lr-flex-v-center, .align-items-center{ 
+		-ms-flex-align: center !important;
+		align-items: center !important;
+	}
 	.lr-flex-v-top{	align-items: start;}
 	.lr-flex-v-end{	align-items: end;}
 /*	
@@ -1314,6 +1342,7 @@ https://bootstrap-4.ru/docs/4.0/utilities/borders/
 	border-top-left-radius:1rem!important;
 	border-top-right-radius:1rem!important
 }
+
 .rounded-right {
  border-top-right-radius:1rem!important;
  border-bottom-right-radius:1rem!important
@@ -1348,6 +1377,10 @@ https://bootstrap-4.ru/docs/4.0/utilities/borders/
 .lr-radius-0 { border-radius:0;}
 .lr-radius-4 { border-radius:4px;}
 .lr-radius-5, .lr-border-radius5, .lr-border-round-small { border-radius:5px;}
+.lr-radius-top-small { 
+	border-top-left-radius:10px!important;
+	border-top-right-radius:10px!important
+}
 .lr-radius-6 { border-radius:6px;}
 .lr-radius-8 { border-radius:8px;}
 .lr-radius-10, .lr-border-round { border-radius:10px;}
@@ -1468,6 +1501,17 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 .bg-dark-gray{  background-color: #222222 !important;}
 .bg-light-gray{  background-color: #999999 !important;}
+
+.bg-metallic{  background-color: #bebebe;}
+.color-metallic {color: #bebebe;}
+.lr-border-metallic {border-color: #bebebe;}
+.lr-hover-metallic:hover{
+	color:  #000000;
+    background-color: #bebebe;
+}
+
+.bg-gunmetal{  background-color: #2a3439;}
+.color-gunmetal {color: #2a3439;}
 
 
 .bg-grey-c8{  background-color: #333340 !important;}
@@ -1760,17 +1804,25 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 }
 .bg-blue-grey-200 {  background-color: #8CAAB5 !important}
 .bg-blue-grey-100{  background-color: #cfdfe6 !important;}
-
 .bg-lightblue-grey {  background-color: #e6e6ff !important;}
-
 .bg-pale-dull-azure{ background:#99CCFF !important;}
+
 .lr-hover-blue:hover{
 	color:  #99CCFF !important;
     background-color: #0000ff !important;
 }
+.lr-nav-blue > li > a:hover  {
+    background-color: ##0000ff !important;
+    color: #99CCFF;
+}
+
 .lr-hover-lightblue:hover{
 	color:  #0000ff  !important;
     background-color: #99CCFF !important;
+}
+.lr-nav-lightblue > li > a:hover  {
+    background-color: #99CCFF !important;
+    color: #0000ff;
 }
 
 
@@ -2133,6 +2185,14 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 
 .bg-teal {background-color: #008080;}
+.lr-border-teal{border-color: #008080;}
+.lr-list-group.lr-border-teal li {border-color: #008080;}
+.lr-hover-teal:hover,
+.lr-nav-teal > li > a:hover  {
+    background-color: #008080 !important;
+    color: #fff;
+}
+
 .bg-teal2 {background-color: #20c997;}
 .bg-vivid-teal { background:#00B8D9;}
 .bg-dark-teal {  background-color:  #003438;}
@@ -2344,7 +2404,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 .bg-maroon {background-color: #800000;}
 .lr-border-maroon{border-color: #800000;}
-.lr-list-group.lr-border-maroonk li {border-color: #800000;}
+.lr-list-group.lr-border-maroon li {border-color: #800000;}
 .lr-hover-maroon:hover {
     background-color: #800000 !important;
     color: #fff;
