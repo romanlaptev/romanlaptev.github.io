@@ -1,6 +1,5 @@
-
 @font-face {
-    font-family: 'ticker_taperegular';
+    font-family: 'ticker-tape-regular';
     src: url('Ticker_Tape/ticker_tape-webfont.eot');
     src: url('Ticker_Tape/ticker_tape-webfont.eot?#iefix') format('embedded-opentype'),
          url('Ticker_Tape/ticker_tape-webfont.woff2') format('woff2'),
@@ -11,10 +10,10 @@
     font-style: normal;
 	font-display: swap;
 }
-.lr-font-ticker {	font-family: ticker_taperegular;}
+.lr-font-ticker {	font-family: ticker-tape-regularr;}
 
 @font-face {
-font-family:hattori_hanzolight_italic;
+font-family:hattori-hanzolight-italic;
 src:url('hattori_hanzo/hattori_hanzo_italic-webfont.eot');
 src:url('hattori_hanzo/hattori_hanzo_italic-webfont.eot?#iefix') format('embedded-opentype'),
 url('hattori_hanzo/hattori_hanzo_italic-webfont.woff') format('woff'),
@@ -23,7 +22,7 @@ font-weight:400;
 font-style:normal
 }
 @font-face {
-font-family:hattori_hanzolight;
+font-family:hattori-hanzolight;
 src:url('hattori_hanzo/hattori_hanzo-webfont.eot');
 src:url('hattori_hanzo/hattori_hanzo-webfont.eot?#iefix') format('embedded-opentype'),
 url('hattori_hanzo/hattori_hanzo-webfont.woff') format('woff'),
@@ -31,7 +30,7 @@ url('hattori_hanzo/hattori_hanzo-webfont.ttf') format('truetype');
 font-weight:400;
 font-style:normal
 }
-.lr-font-hattori { font-family: hattori_hanzolight;}
+.lr-font-hattori { font-family: hattori-hanzolight;}
 
 
 @font-face {
@@ -64,28 +63,37 @@ font-style:normal
 	/*src: url("Victorian_LET/victorian-let-plain.ttf")  format('truetype');*/
 
 /* http://www.freefontconverter.com/ */
-	src: url('Victorian_LET/victorian-let-regular.eot');/* EOT file for IE8 */
-	src: url('Victorian_LET/victorian-let-regular.eot?#iefix') format("embedded-opentype"), /* EOT file for IE */
+/*
+	src: url('https://romanlaptev-cors.herokuapp.com/https://cloclo55.cloud.mail.ru/weblink/view/JSDm/zciANxB6p/fonts/V/Victorian_LET/victorian-let-regular.eot');
+	src: url('https://romanlaptev-cors.herokuapp.com/https://cloclo55.cloud.mail.ru/weblink/view/JSDm/zciANxB6p/fonts/V/Victorian_LET/victorian-let-regular.eot?#iefix') format("embedded-opentype"),
+			url('https://romanlaptev-cors.herokuapp.com/https://cloclo55.cloud.mail.ru/weblink/view/JSDm/zciANxB6p/fonts/V/Victorian_LET/victorian-let-regular.woff2') format('woff2'),
+			url('https://romanlaptev-cors.herokuapp.com/https://cloclo55.cloud.mail.ru/weblink/view/JSDm/zciANxB6p/fonts/V/Victorian_LET/victorian-let-regular.woff') format('woff'),
+			url("https://romanlaptev-cors.herokuapp.com/https://cloclo55.cloud.mail.ru/weblink/view/JSDm/zciANxB6p/fonts/V/Victorian_LET/victorian-let-regular.ttf")  format('truetype'),
+			url("https://romanlaptev-cors.herokuapp.com/https://cloclo55.cloud.mail.ru/weblink/view/JSDm/zciANxB6p/fonts/V/Victorian_LET/victorian-let-regular.svg")  format('svg');
+*/
+	src: url('Victorian_LET/victorian-let-regular.eot');
+	src: url('Victorian_LET/victorian-let-regular.eot?#iefix') format("embedded-opentype"),
 			url('Victorian_LET/victorian-let-regular.woff2') format('woff2'),
 			url('Victorian_LET/victorian-let-regular.woff') format('woff'),
 			url("Victorian_LET/victorian-let-regular.ttf")  format('truetype'),
 			url("Victorian_LET/victorian-let-regular.svg")  format('svg');
+
 }
 .lr-font-victorian {	font-family: Victorian LET Regular;}
 
  /* French Script MT" */
 	/*src: url("../test_code/css/load_font/FRSCRIPT.TTF");*/
-/*
 @font-face {
     font-family: french-script-mt;
-    src: url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.eot");
-    src: url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.eot?#iefix") format('embedded-opentype'),
-         url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.woff2") format('woff2'),
-         url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.woff") format('woff'),
-         url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.ttf") format('truetype'),
-         url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.svg#FRSCRIPT") format('svg');
+    src: url("FRSCRIPT/FRSCRIPT.eot");
+    src: url("FRSCRIPT/FRSCRIPT.eot?#iefix") format('embedded-opentype'),
+         url("FRSCRIPT/FRSCRIPT.woff2") format('woff2'),
+         url("FRSCRIPT/FRSCRIPT.woff") format('woff'),
+         url("FRSCRIPT/FRSCRIPT.ttf") format('truetype'),
+         url("fonts/FRSCRIPT/FRSCRIPT.svg#FRSCRIPT") format('svg');
 }
-*/
+.lr-font-french-script {	font-family: french-script;}
+
 
 /*
 @font-face 
@@ -114,18 +122,19 @@ font-style:normal
 */
 
 /*src: url("http://rex.dax.ru/uploads/fiddums_family.ttf");*/
-/*
+
 @font-face 
 {
 	font-family: fiddums-family;
-	src: url("http://graphic-art-collection.16mb.com/fonts/fiddums-family/fiddums-family.eot");
-	src: url("http://graphic-art-collection.16mb.com/fonts/fiddums-family/fiddums-family.eot?#iefix") format("embedded-opentype"),
-			url("http://graphic-art-collection.16mb.com/fonts/fiddums-family/fiddums-family.woff2") format('woff2'),
-			url("http://graphic-art-collection.16mb.com/fonts/fiddums-family/fiddums-family.woff") format('woff'),
-			url("http://graphic-art-collection.16mb.com/fonts/fiddums-family/fiddums-family.ttf")  format('truetype'),
-			url("http://graphic-art-collection.16mb.com/fonts/fiddums-family/fiddums-family.svg")  format('svg');
+	src: url("fiddums-family/fiddums-family.eot");
+	src: url("fiddums-family/fiddums-family.eot?#iefix") format("embedded-opentype"),
+			url("fiddums-family/fiddums-family.woff2") format('woff2'),
+			url("fiddums-family/fiddums-family.woff") format('woff'),
+			url("fiddums-family/fiddums-family.ttf")  format('truetype'),
+			url("fiddums-family/fiddums-family.svg")  format('svg');
 }
-*/
+.lr-font-fiddums-family {	font-family: fiddums-family;}
+
 
 /*
 @font-face {
@@ -313,6 +322,9 @@ src:url('OpenSans/webfonts/OpenSans-SemiboldItalic-webfont.eot?#iefix') format('
 	font-weight: normal;
 	font-style: normal;
 }
+.lr-font-opensans {	font-family: OpenSans-Regular;}
+
+
 
 @font-face { font-family: 'avantgarde';
 src: url('AVANTGAR/AVANTGAR.eot');
