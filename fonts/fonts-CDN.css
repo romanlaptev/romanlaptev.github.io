@@ -901,6 +901,8 @@ https://fontawesome.com/v5.15/how-to-use/customizing-wordpress/snippets/setup-cd
   src: local('EB Garamond Bold'), local('EBGaramond-Bold'), url(https://fonts.gstatic.com/s/ebgaramond/v9/op4fHM8PJYvTt3cOgGzs_4lIZu-HDpmDIZMigmsroc4.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2212, U+2215;
 }
+.lr-font-garamond-e{font-family:'EB Garamond'}
+
 /* latin-ext */
 @font-face {
   font-family: 'Enriqueta';
