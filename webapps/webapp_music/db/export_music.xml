@@ -146,22 +146,34 @@
 	<title>
 		<item>Крематорий</item>
 	</title>
-	
+	<images>
+		<img src="https://avatars.yandex.net/get-music-user-playlist/27701/9941293.1050.96455/200x200?1643509644686"/>
+	</images>
 
 	
-	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/K/Крематорий/playlist.json">playlist.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1050">music.yandex.ru</a></li>
+		<li><a data-type="external-link" href="https://ru.wikipedia.org/wiki/%D0%9A%D1%80%D0%B5%D0%BC%D0%B0%D1%82%D0%BE%D1%80%D0%B8%D0%B9_(%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D0%B0)">wiki</a></li>
+	</related_links>
 
 	<node_tags>
 		<item vid="5" tid="62" group_name="alphabetical_voc">К</item>
 		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="154" group_name="music_styles">блюз-рок</item>
+		<item vid="2" tid="151" group_name="music_styles">рок-н-ролл</item>
+		<item vid="2" tid="152" group_name="music_styles">фолк-рок</item>
+		<item vid="2" tid="112" group_name="music_styles">psychedelic rock</item>
+		<item vid="2" tid="109" group_name="music_styles">hard-rock</item>
 		<item vid="2" tid="108" group_name="music_styles">art-rock</item>
+		<item vid="2" tid="106" group_name="music_styles">post-punk</item>
 		<item vid="4" tid="149" group_name="country">Россия</item>
 		<item vid="4" tid="150" group_name="country">СССР</item>
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">27-Jan-2013 17:51:34</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 10:58:30</updated>
+	<updated format="d-M-Y H:i:s">30-Jan-2022 09:31:24</updated>
 </node>
 
 <node type="playlist">
@@ -649,7 +661,9 @@ Russian Translation
 	<title>
 		<item>classic music</item>
 	</title>
-	
+	<images>
+		<img src="https://avatars.yandex.net/get-music-user-playlist/70586/9941293.1007.6941/200x200?1638925523880"/>
+	</images>
 
 	
 	<related_links>
@@ -665,10 +679,11 @@ Russian Translation
 		<item vid="2" tid="137" group_name="music_styles">Опера</item>
 		<item vid="2" tid="140" group_name="music_styles">Оркестровая музыка</item>
 		<item vid="2" tid="142" group_name="music_styles">Средневековье</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">28-Dec-2019 12:14:24</published>
-	<updated format="d-M-Y H:i:s">23-Jan-2020 15:54:00</updated>
+	<updated format="d-M-Y H:i:s">08-Dec-2021 08:05:30</updated>
 </node>
 
 <node type="playlist">
@@ -1848,6 +1863,37 @@ https://en.wikipedia.org/wiki/Katzenjammer_Kabarett</description>
 
 	<published format="d-M-Y H:i:s">11-Apr-2021 16:09:49</published>
 	<updated format="d-M-Y H:i:s">11-Apr-2021 16:09:49</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>ХЗ</item>
+	</title>
+	<images>
+		<img src="https://avatars.yandex.net/get-music-user-playlist/28719/9941293.1051.59842/200x200?1643462100151"/>
+	</images>
+
+	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/X/XZ/playlist.json">playlist.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1051">music.yandex.ru</a></li>
+		<li><a data-type="external-link" href="http://rock-musicland.com/ru-bands/xui-zabei.html">rock-musicland.com</a></li>
+		<li><a data-type="external-link" href="https://ru.wikipedia.org/wiki/%D0%A5%D1%83%D0%B9_%D0%B7%D0%B0%D0%B1%D0%B5%D0%B9">wiki</a></li>
+	</related_links>
+
+	<node_tags>
+		<item vid="5" tid="73" group_name="alphabetical_voc">Х</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="9" tid="126" group_name="music_genre">Шансон, романс, авторская песня</item>
+		<item vid="2" tid="107" group_name="music_styles">rock</item>
+		<item vid="2" tid="45" group_name="music_styles">punk</item>
+		<item vid="4" tid="149" group_name="country">Россия</item>
+		<item vid="4" tid="150" group_name="country">СССР</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</node_tags>
+
+	<published format="d-M-Y H:i:s">30-Jan-2022 09:14:23</published>
+	<updated format="d-M-Y H:i:s">30-Jan-2022 09:15:50</updated>
 </node>
 	</database>
 </xroot>

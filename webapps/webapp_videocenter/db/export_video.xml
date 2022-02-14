@@ -279,6 +279,9 @@ https://ru.wikipedia.org/wiki/%D0%91%D1%80%D0%B8%D0%B4%D0%B6%D0%B5%D1%81,_%D0%9B
 	<tag tid="348" vid="1" name="Алексей Петренко"></tag>
 	<tag tid="350" vid="1" name="Владимир Ильин"></tag>
 	<tag tid="351" vid="1" name="Эрик Цанг">Eric Tsang</tag>
+	<tag tid="352" vid="1" name="Роман Филиппов">https://www.kinopoisk.ru/name/191599/</tag>
+	<tag tid="353" vid="1" name="Ciaran Hinds">https://www.kinopoisk.ru/name/14570/</tag>
+	<tag tid="354" vid="3" name="U"></tag>
 </taglist>
 
 
@@ -5795,12 +5798,13 @@ https://www.kinopoisk.ru/film/43777/
 		<item tid="259">1</item>
 		<item tid="260">2</item>
 		<item tid="233">Д</item>
+		<item tid="352">Роман Филиппов</item>
 		<item tid="272">youtube</item>
 		<item tid="315">1971</item>
 	</tags>
 
 	<published>11-Oct-2012 22:07:57</published>
-	<updated>31-Aug-2021 08:52:07</updated>
+	<updated>19-Dec-2021 07:33:56</updated>
 </video>
 
 <video type="video">
@@ -13317,36 +13321,39 @@ http://www.kinopoisk.ru/film/43724/</description>
 
 <video type="video">
 	<title>
-		<item>Наши матери, наши отцы / Unsere Mütter, unsere Väter</item>
+		<item>Наши матери, наши отцы</item>
+		<item>Unsere Mütter, unsere Väter</item>
 </title>
 	
 	<producer>Филипп Кадельбах / Philipp Kadelbach</producer>
 	<roles>Фолькер Брух, Том Шиллинг, Катарина Шюттлер, Людвиг Трепте, Мириам Штайн, Марк Вашке, Генриетта Рихтер-Роль, Готц Шуберт, Кристиана Пауль, Сильвестр Грот и др.	</roles>
-	<description>&amp;lt;iframe width=&amp;quot;320&amp;quot; height=&amp;quot;240&amp;quot; src=&amp;quot;http://youtube.com/embed/osULg_CUJYs&amp;quot; frameborder=&amp;quot;0&amp;quot; allowfullscreen&amp;gt;&amp;lt;/iframe&amp;gt;
-https://www.youtube.com/watch?v=osULg_CUJYs&amp;amp;index=28&amp;amp;list=PL2sTusldk6UiOS6SLrbUjBPslKJhV0_cf
-
-&amp;lt;iframe width=&amp;quot;320&amp;quot; height=&amp;quot;240&amp;quot; src=&amp;quot;http://youtube.com/embed/vLbA_U5Gsps&amp;quot; frameborder=&amp;quot;0&amp;quot; allowfullscreen&amp;gt;&amp;lt;/iframe&amp;gt;
-https://www.youtube.com/watch?v=vLbA_U5Gsps&amp;amp;index=29&amp;amp;list=PL2sTusldk6UiOS6SLrbUjBPslKJhV0_cf
-
-&amp;lt;iframe width=&amp;quot;320&amp;quot; height=&amp;quot;240&amp;quot; src=&amp;quot;http://youtube.com/embed/LPvIVwig5Yo&amp;quot; frameborder=&amp;quot;0&amp;quot; allowfullscreen&amp;gt;&amp;lt;/iframe&amp;gt;
-https://www.youtube.com/watch?v=LPvIVwig5Yo&amp;amp;index=30&amp;amp;list=PL2sTusldk6UiOS6SLrbUjBPslKJhV0_cf
-
-http://rutracker.org/forum/viewtopic.php?t=4396360</description>
+	<description>http://rutracker.org/forum/viewtopic.php?t=4396360
+https://rutracker.org/forum/viewtopic.php?t=6083278</description>
 	
 
-	
+	<ul>
+		<li><a data-type="embed-video" href="http://youtube.com/embed/osULg_CUJYs">ep01, youtube.com</a></li>
+		<li><a data-type="embed-video" href="http://youtube.com/embed/vLbA_U5Gsps">ep02, youtube.com</a></li>
+		<li><a data-type="embed-video" href="http://youtube.com/embed/LPvIVwig5Yo">ep03, youtube.com</a></li>
+		<li><a data-type="external-link" href="https://www.kinopoisk.ru/series/618935/">kinopoisk.ru</a></li>
+		<li><a data-type="local-file" href="/video2/films/U/Unsere Mütter, unsere.Väter/S01E01.mp4">S01E01.mp4</a></li>
+		<li><a data-type="local-file" href="/video2/films/U/Unsere Mütter, unsere.Väter/S01E02.mp4">S01E02.mp4</a></li>
+		<li><a data-type="local-file" href="/video2/films/U/Unsere Mütter, unsere.Väter/S01E03.mp4">S01E03.mp4</a></li>
+		<li><a data-type="external-link" href="https://www.kinopoisk.ru/series/618935/">kinopoisk.ru</a></li>
+	</ul>
 
 	<tags>
 		<item tid="169">война</item>
 		<item tid="4">драма</item>
 		<item tid="61">Германия</item>
+		<item tid="354">U</item>
 		<item tid="241">Н</item>
 		<item tid="272">youtube</item>
 		<item tid="275">2013</item>
 	</tags>
 
 	<published>01-Aug-2015 21:28:47</published>
-	<updated>22-Oct-2017 15:26:12</updated>
+	<updated>23-Jan-2022 11:45:23</updated>
 </video>
 
 <video type="video">
@@ -13720,6 +13727,7 @@ https://www.kinopoisk.ru/film/42090/</description>
 	</pictures>
 
 	<ul>
+		<li><a data-type="local-file" href="/video2/films/R/Rasskazi_2012.mp4">Rasskazi_2012.mp4</a></li>
 		<li><a data-type="embed-video" href="https://ok.ru/videoembed/319116806870">OK.ru</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/Jc27AJLtgdQ">youtube.com</a></li>
 		<li><a data-type="embed-video" href="https://yandex.ru/efir?stream_id=4a94e588e4e7482e9505f52460cdd742">Яндекс.Эфир</a></li>
@@ -13735,7 +13743,7 @@ https://www.kinopoisk.ru/film/42090/</description>
 	</tags>
 
 	<published>24-Jun-2016 20:19:31</published>
-	<updated>06-Apr-2021 18:59:49</updated>
+	<updated>20-Oct-2021 08:53:34</updated>
 </video>
 
 <video type="video">
@@ -14157,12 +14165,13 @@ https://yandex.ru/video/%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81/%D1%81%D0%B5%D1%80%
 		<item tid="24">mp4</item>
 		<item tid="223">R</item>
 		<item tid="244">Р</item>
+		<item tid="353">Ciaran Hinds</item>
 		<item tid="281">2007</item>
 		<item tid="283">2005</item>
 	</tags>
 
 	<published>03-Aug-2017 19:32:45</published>
-	<updated>03-Sep-2021 07:59:39</updated>
+	<updated>05-Jan-2022 14:29:06</updated>
 </video>
 
 <video type="video">
@@ -15928,6 +15937,58 @@ http://vse-subtitri.ru/tv-shows/game-of-thrones-1492.html</description>
 
 	<published>20-Oct-2021 07:45:20</published>
 	<updated>20-Oct-2021 07:59:53</updated>
+</video>
+
+<video type="video">
+	<title>
+		<item>Айвенго</item>
+		<item>Ivanhoe</item>
+</title>
+	
+	<producer>Стюарт Орм</producer>
+	<roles>    Дэвид Баррасс
+    Ральф Браун
+    Джимми Чишолм
+    Тревор Купер
+    Киран Хайндс
+    Дэвид Хорович
+    Сьюзен Линч
+    Виктория Смёрфит
+    Стивен Вэддингтон
+    Джеймс Космо	</roles>
+	<description></description>
+	<pictures>
+		<img src="/video/0_covers/Ivanhoe.webp"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="local-file" href="/video2/films/I/Ivanhoe_1997/ep01/ep01.mp4">ep01.mp4</a></li>
+		<li><a data-type="local-file" href="/video2/films/I/Ivanhoe_1997/ep02/ep02.mp4">ep02.mp4</a></li>
+		<li><a data-type="local-file" href="/video2/films/I/Ivanhoe_1997/ep03/ep03.mp4">ep03.mp4</a></li>
+		<li><a data-type="local-file" href="/video2/films/I/Ivanhoe_1997/ep04/ep04.mp4">ep04.mp4</a></li>
+		<li><a data-type="local-file" href="/video2/films/I/Ivanhoe_1997/ep05/ep05.mp4">ep05.mp4</a></li>
+		<li><a data-type="local-file" href="/video2/films/I/Ivanhoe_1997/ep06/ep06.mp4">ep06.mp4</a></li>
+		<li><a data-type="external-link" href="https://www.kinopoisk.ru/series/401701/">kinopoisk.ru</a></li>
+	</ul>
+
+	<tags>
+		<item tid="4">драма</item>
+		<item tid="54">мелодрама</item>
+		<item tid="14">приключения</item>
+		<item tid="117">сериал</item>
+		<item tid="119">экранизация</item>
+		<item tid="60">Великобритания</item>
+		<item tid="66">США</item>
+		<item tid="150">srt</item>
+		<item tid="24">mp4</item>
+		<item tid="215">I</item>
+		<item tid="229">А</item>
+		<item tid="353">Ciaran Hinds</item>
+		<item tid="295">1997</item>
+	</tags>
+
+	<published>05-Jan-2022 14:10:55</published>
+	<updated>05-Jan-2022 14:34:49</updated>
 </video>
 
 <video type="videoclip">
