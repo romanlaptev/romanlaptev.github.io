@@ -12,28 +12,9 @@ use module:
 	});
 */
 
-//---------------------- replace console.log for old IE
-//---------------------- replace console.log for mobile browsers
-if ( (!window.console ) || 	
-	('ontouchstart' in window) ){ 
+//alert(window.console);
+//alert('ontouchstart' in window);
 
-	window.console = {"log" : function( msg ){
-			if( typeof msg === "string"){
-				msg = "<small>console.log </small>(&quot;"+ msg + "&quot;)";
-			} else {
-				msg = "console.log (  "+ typeof msg  + ")";
-			}
-
-			var log = _getById( "log" );
-			if( log ){
-				_alert( msg, "info" );
-			} else {
-				alert(msg);
-				//document.writeln(msg);
-			}
-		}
-	};
-}
 
 //(function(){
 	var sharedFunc =  sharedFunc || function(){
@@ -55,6 +36,37 @@ _log(msg);
 
 		}
 		
+
+//---------------------- replace console.log for old IE
+//---------------------- replace console.log for mobile browsers
+		if ( (!window.console ) || 	
+			('ontouchstart' in window) ){ 
+
+			window.console = {"log" : function( msg ){
+					if( typeof msg === "string"){
+						msg = "<small>console.log </small>(&quot;"+ msg + "&quot;)";
+					} else {
+						msg = "console.log (  "+ typeof msg  + ")";
+//var convert_msg = "";						
+//for( var items in msg){
+	//convert_msg += items+" : "+msg[items]+"\r\n";
+//}//next
+//msg = "console.log (  "+ convert_msg  + ")";
+
+					}
+
+					var log = _getById( "log" );
+//alert(log);
+					if( log ){
+						_alert( msg, "info" );
+					} else {
+						//alert(msg);
+						document.writeln(msg);
+					}
+				}
+			};
+//alert(window.console.toString() );
+		}
 
 		function _getById(id){
 			
