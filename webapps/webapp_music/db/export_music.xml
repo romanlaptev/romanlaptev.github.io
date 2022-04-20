@@ -49,6 +49,7 @@
 	<tag tid="86" vid="5" group_name="alphabetical_voc">E</tag>
 	<tag tid="87" vid="5" group_name="alphabetical_voc">F</tag>
 	<tag tid="89" vid="5" group_name="alphabetical_voc">H</tag>
+	<tag tid="90" vid="5" group_name="alphabetical_voc">I</tag>
 	<tag tid="91" vid="5" group_name="alphabetical_voc">J</tag>
 	<tag tid="92" vid="5" group_name="alphabetical_voc">K</tag>
 	<tag tid="94" vid="5" group_name="alphabetical_voc">M</tag>
@@ -1894,6 +1895,62 @@ https://en.wikipedia.org/wiki/Katzenjammer_Kabarett</description>
 
 	<published format="d-M-Y H:i:s">30-Jan-2022 09:14:23</published>
 	<updated format="d-M-Y H:i:s">30-Jan-2022 09:15:50</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Black Sabbath</item>
+	</title>
+	<images>
+		<img src="https://avatars.yandex.net/get-music-user-playlist/38125/9941293.1052.58299/300x300?1645921603076"/>
+	</images>
+
+	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/B/Black Sabbath/playlists.json">playlist.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1052">music.yandex.ru</a></li>
+		<li><a data-type="external-link" href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=&amp;cad=rja&amp;uact=8&amp;ved=2ahUKEwjNs-nbzJ72AhW7Q_EDHSUJBqYQFnoECBEQAQ&amp;url=https%3A%2F%2Fru.wikipedia.org%2Fwiki%2FBlack_Sabbath&amp;usg=AOvVaw2LD8Z">wiki</a></li>
+	</related_links>
+
+	<node_tags>
+		<item vid="5" tid="84" group_name="alphabetical_voc">B</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="109" group_name="music_styles">hard-rock</item>
+		<item vid="2" tid="107" group_name="music_styles">rock</item>
+		<item vid="2" tid="10" group_name="music_styles">heavy metal</item>
+		<item vid="4" tid="132" group_name="country">Великобритания</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</node_tags>
+
+	<published format="d-M-Y H:i:s">27-Feb-2022 07:18:37</published>
+	<updated format="d-M-Y H:i:s">27-Feb-2022 07:30:19</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Iron Maiden</item>
+	</title>
+	<images>
+		<img src="https://avatars.yandex.net/get-music-user-playlist/27701/9941293.1053.46680/300x300"/>
+	</images>
+
+	
+	<related_links>
+		<li><a data-type="playlist-file" href="/mnt/d2/music/I/Iron Maiden/tracklist.json">tracklist.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1053">music.yandex.ru</a></li>
+		<li><a data-type="external-link" href="https://ru.wikipedia.org/wiki/Iron_Maiden">wiki</a></li>
+	</related_links>
+
+	<node_tags>
+		<item vid="5" tid="90" group_name="alphabetical_voc">I</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="10" group_name="music_styles">heavy metal</item>
+		<item vid="4" tid="132" group_name="country">Великобритания</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</node_tags>
+
+	<published format="d-M-Y H:i:s">04-Apr-2022 07:39:37</published>
+	<updated format="d-M-Y H:i:s">04-Apr-2022 07:43:22</updated>
 </node>
 	</database>
 </xroot>
