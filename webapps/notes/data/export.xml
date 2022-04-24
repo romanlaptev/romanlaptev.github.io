@@ -30,7 +30,7 @@
 		</xdata>
 	</schema>
 
-	<xdata db_name="db/mydb.sqlite" db_type="sqlite" export_date="02-May-2021 18:20:50" export_time="1619954450">
+	<xdata db_name="db/mydb.sqlite" db_type="sqlite" export_date="20-Feb-2022 15:28:28" export_time="1645345708">
 
 
 
@@ -381,7 +381,6 @@
 <item content_id="1160" parent_id="1108"></item>
 <item content_id="1161" parent_id="1108"></item>
 <item content_id="1162" parent_id="1108"></item>
-<item content_id="1163" parent_id="1108"></item>
 <item content_id="1164" parent_id="727"></item>
 <item content_id="1165" parent_id="1166"></item>
 <item content_id="1166" parent_id="673"></item>
@@ -503,6 +502,17 @@
 <item content_id="1376" parent_id="1108"></item>
 <item content_id="1377" parent_id="1108"></item>
 <item content_id="1378" parent_id="1108"></item>
+<item content_id="1379" parent_id="1108"></item>
+<item content_id="1381" parent_id="727"></item>
+<item content_id="1382" parent_id="727"></item>
+<item content_id="1385" parent_id="1108"></item>
+<item content_id="1386" parent_id="1108"></item>
+<item content_id="1387" parent_id="1108"></item>
+<item content_id="1388" parent_id="722"></item>
+<item content_id="1389" parent_id="820"></item>
+<item content_id="1390" parent_id="1389"></item>
+<item content_id="1391" parent_id="1108"></item>
+<item content_id="1392" parent_id="1114"></item>
 		</content_links>		
 		<content>
 <node id="737" type='page'>
@@ -887,82 +897,61 @@ onclick=&amp;quot;return {'bg': '#EFEFEF', 'target': '_self', 'language': 'ru', 
 	</body_value>
 </node>
 <node id="673" type='page'>
-	<title>programming</title>
+	<title>program</title>
 	<created>1337690509</created>
-	<changed>1594004243</changed>
+	<changed>1645318655</changed>
 	<body_value body_format="plain_text">
-
-========================= music wfm
-добавить кнопку Save playlist - запрос сохранения json-плейлиста плеера в файл
-добавление в плейлист треков происходит при копировании файлов из файловой панели в панель плейлиста
-несохраненный плейлист имеет в заголовке название - “Новый плейлист”
-
-========================= parse bookmarks
-добавить поле для фильтра по ссылкам
-вводимый текст через функцию $().contains фильтрует ссылки: скрывается все и отображаеются совпадающие ссылки
-
-========================= remote DB
-сделать json запросы к удаленной mysql-базе
-ответы с результатами SQL-запросов приходят в json-формате
-
-- для сайта на хостинге гугл сделать получение данных от удаленного sql-сервера на хостинге 500mb.net (по запросу от сайта с гугл-площадки, скрипт отдает результаты sql-запроса в json)
-====================================
-
-#!/usr/bin/perl
-print &amp;amp;amp;amp;quot;Content-Type: text/html\n\n&amp;amp;amp;amp;quot;;
-print &amp;amp;amp;amp;quot;&amp;amp;amp;amp;lt;h1&amp;amp;amp;amp;gt;Hello Perl world&amp;amp;amp;amp;lt;/h1&amp;amp;amp;amp;gt;&amp;amp;amp;amp;quot;;
 	
 	</body_value>
 </node>
 <node id="736" type='page'>
 	<title>smarty</title>
 	<created>1353940040</created>
-	<changed>1594004243</changed>
+	<changed>1621080278</changed>
 	<body_value body_format="plain_text">
-
 //Пример использования шаблонизатора Smarty
 index.php
-&amp;lt;?
+&lt;?
 require 'smarty/Smarty.class.php';
 $smarty = new Smarty();
-//echo &amp;quot;smarty:&amp;lt;pre&amp;gt;&amp;quot;;
+//echo "smarty:&lt;pre&gt;";
 //print_r($smarty);
-//echo &amp;quot;&amp;lt;/pre&amp;gt;&amp;quot;;
+//echo "&lt;/pre&gt;";
 
-$smarty-&amp;gt;template_dir = './templates/';
-$smarty-&amp;gt;compile_dir = './templates/compile/';
-$smarty-&amp;gt;cache_dir = './templates/cache/';
+$smarty-&gt;template_dir = './templates/';
+$smarty-&gt;compile_dir = './templates/compile/';
+$smarty-&gt;cache_dir = './templates/cache/';
 
-//$smarty-&amp;gt;debugging = true;
-//$smarty-&amp;gt;compile_check = true;
-//$smarty-&amp;gt;clear_compiled_tpl('left_menu.tpl');
+//$smarty-&gt;debugging = true;
+//$smarty-&gt;compile_check = true;
+//$smarty-&gt;clear_compiled_tpl('left_menu.tpl');
 
-$smarty-&amp;gt;caching = false;
-//$smarty-&amp;gt;error_reporting = E_ALL; // LEAVE E_ALL DURING DEVELOPMENT
-//$smarty-&amp;gt;debugging = true;
+$smarty-&gt;caching = false;
+//$smarty-&gt;error_reporting = E_ALL; // LEAVE E_ALL DURING DEVELOPMENT
+//$smarty-&gt;debugging = true;
 
-$smarty-&amp;gt;assign('title_text', 'TITLE: Пример использования Smarty ...');
-$smarty-&amp;gt;assign('body_text', 'BODY: Это текст, выведенный ф-цией assign()');
+$smarty-&gt;assign('title_text', 'TITLE: Пример использования Smarty ...');
+$smarty-&gt;assign('body_text', 'BODY: Это текст, выведенный ф-цией assign()');
 
-$smarty-&amp;gt;display('index.tpl');
-?&amp;gt;
+$smarty-&gt;display('index.tpl');
+?&gt;
 
 index.tpl
-&amp;lt;!--
-&amp;lt;!DOCTYPE html PUBLIC &amp;quot;-//W3C//DTD XHTML 1.1//EN&amp;quot; &amp;quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&amp;quot;&amp;gt;
-&amp;lt;html&amp;gt;
-&amp;lt;head&amp;gt;
-   &amp;lt;title&amp;gt;{$title_text}&amp;lt;/title&amp;gt;
-   &amp;lt;meta http-equiv=&amp;quot;content-type&amp;quot; content=&amp;quot;text/html; charset=utf-8&amp;quot; /&amp;gt;
-&amp;lt;/head&amp;gt;
+&lt;!--
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"&gt;
+&lt;html&gt;
+&lt;head&gt;
+   &lt;title&gt;{$title_text}&lt;/title&gt;
+   &lt;meta http-equiv="content-type" content="text/html; charset=utf-8" /&gt;
+&lt;/head&gt;
 
-&amp;lt;body&amp;gt;
+&lt;body&gt;
 
-&amp;lt;p&amp;gt;{$body_text}&amp;lt;/p&amp;gt;
+&lt;p&gt;{$body_text}&lt;/p&gt;
 
-&amp;lt;/body&amp;gt;
-&amp;lt;/html&amp;gt;
---&amp;gt;
+&lt;/body&gt;
+&lt;/html&gt;
+--&gt;
 =========================================
 	
 	</body_value>
@@ -1080,6 +1069,21 @@ http://vdf-nsk.ru/
 Водоводоф, торгово-монтажная компания
 выполнена установка CMS Drupal 7, настройка модулей, начальная верска страниц
 	
+	</body_value>
+</node>
+<node id="1379" type='page'>
+	<title> WordPress, widget_title,  убрать заголовок виджета</title>
+	<created>1620986985</created>
+	<changed>1644974361</changed>
+	<body_value body_format="plain_text">
+------------- Как убрать заголовок виджета в WordPress
+add_filter( 'widget_title', 'hide_widget_title' );
+function hide_widget_title( $title ) {
+   if ( empty( $title ) ) return '';
+   if ( $title[0] == '!' ) return '';
+   return $title;
+}
+http://gruz0.ru/zagolovok-vidzheta-wordpress/
 	</body_value>
 </node>
 <node id="988" type='page'>
@@ -1992,6 +1996,80 @@ for n1 in range(0,10):
 	
 	</body_value>
 </node>
+<node id="1389" type='page'>
+	<title>Bitrix</title>
+	<created>1645149581</created>
+	<changed>1645150563</changed>
+	<body_value body_format="plain_text">
+-------------- ключ лицензии
+Ключ битрикса хранится исполняемом PHP файле по адресу /bitrix/license_key.php. Содержание этого файла приблизительно следующее:
+
+&lt;? $LICENSE_KEY = "S18-NA-XXXXXXXXXXXXXXXXXX"; ?&gt;
+
+
+
+-------------- искать инфоблок по ID
+Рабочий стол/Контент/Инфоблоки/Инструменты/Перейти к инфоблоку / разделу / элементу
+
+ID сущности:
+31
+
+
+----------- TEMPLATES
+/site/bitrix/templates/название шаблона темы/components/bitrix/*
+расположение кастомизированных шаблонов компонентов/инфоблоков
+ 
+--- шаблон для списка категорий, инфоблок "Услуги"
+/site/bitrix/templates/beauty_modern_adaptive/components/bitrix/catalog/services/bitrix/catalog.section/otdel/template.php
+
+----------- замена шаблона инфоблока, шаблоном из темы beauty_modern_adaptive_copy
+/site/bitrix/templates/beauty_modern_adaptive_copy/components/bitrix/catalog/services/bitrix/catalog.section/otdel/template.php
+
+----------- добавить условие использования шаблона
+Рабочий стол / Настройки / Настройки продукта / Сайты / Список сайтов
+
+s1(Многопрофильный медицинский центр «Наедине») / Изменить
+
+если "Параметер в URL " test=true, то использовать шаблон beauty_modern_adaptive_copy
+
+
+----- узнать пароль резервной копии
+https://pai-bx.com/wiki/1c-bitrix/86-if-you-do-not-remember-the-password-from-the-backup/
+Для этого, в административном разделе в функионал Командной строки прописываем:
+
+require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/classes/general/backup.php");
+var_dump(CPasswordStorage::Get('dump_temporary_cache'));
+
+
+------------------- DB
+/home/bitrix/ext_www/aa04.ru/bitrix/php_interface/dbconn.php
+
+	</body_value>
+</node>
+<node id="1390" type='page'>
+	<title>Bitrix API</title>
+	<created>1645150141</created>
+	<changed>1645155472</changed>
+	<body_value body_format="plain_text">
+--------------- Load kernel
+&lt;?php
+require_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/bx_root.php");
+?&gt;
+
+&lt;?
+require($_SERVER['DOCUMENT_ROOT']."/bitrix/header.php");
+echo $USER-&gt;Update(1,array("PASSWORD"=&gt;'Bitrix*123456'));
+echo $USER-&gt;LAST_ERROR;
+require($_SERVER['DOCUMENT_ROOT']."/bitrix/footer.php");
+?&gt;
+
+-------------
+https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=43&amp;LESSON_ID=3531
+Примеры работы с навигационной цепочкой 
+
+$APPLICATION-&gt;AddChainItem("Форум &amp;quot;Отзывы&amp;quot;", "/ru/forum/list.php?FID=3");
+	</body_value>
+</node>
 <node id="1312" type='page'>
 	<title>Blender 3D моделирование / Урок #4 - Режим редактирования (введение)</title>
 	<created>1591597167</created>
@@ -2574,6 +2652,22 @@ about:config -&amp;gt; security.fileuri.strict_origin_policy -&amp;gt; false
 	
 	</body_value>
 </node>
+<node id="1392" type='page'>
+	<title>Dlink Dir-300</title>
+	<created>1645336730</created>
+	<changed>1645336730</changed>
+	<body_value body_format="plain_text">
+https://forum.dlink.ru/viewtopic.php?p=428399
+
+roman@i5:~$ telnet 192.168.1.1
+Trying 192.168.1.1...
+Connected to 192.168.1.1.
+Escape character is '^]'.
+login: Alphanetworks
+Password: wrgg19_c_dlwbr_dir300
+
+	</body_value>
+</node>
 <node id="805" type='page'>
 	<title>FTP</title>
 	<created>1367983054</created>
@@ -2664,59 +2758,24 @@ description: Дмитрий Лаврик
 	</body_value>
 </node>
 <node id="1256" type='page'>
-	<title>GIT</title>
+	<title>GIT, create a new repository on the command line</title>
 	<created>1590213735</created>
-	<changed>1594004243</changed>
+	<changed>1621081673</changed>
 	<body_value body_format="plain_text">
-
-[url] http://evtuhovich.ru/blog/2009/04/03/git-reset/ | Отмена последнего коммита в git [/url] 
-[code]
-git reset --hard HEAD^
-[/code]
-
-=================
-[url] https://webhamster.ru/mytetrashare/index/mtb0/1413010541hzh3175lej   |  Git - Как исправить HEAD detached from [/url]
-
-[code]
-При работе с Git может возникнуть такая ситуация: команда git push не заливает изменения на сервер, а команда git status показывает:
-
-$ git status
-HEAD detached from 87dc87b
-
-Это может означать, что вы делали какую-то навигацию по истории коммитов, и неправильно вернулись к последнему коммиту.
-
-Исправить эту проблему можно 4-мя командами:
-
-git branch temp
-git checkout temp
-git branch -f master temp
-git checkout master
-И, опционально,
-git branch -d temp
-
-Еще один вариант, короткий !!!!!!!!!!
-git checkout имяВеткиГдеВыНаходитесь
-
-- эта команда переключит проект в последний коммит текущей ветки. Точнее, в состоянии detached head, проект не находится ни в какой ветке. git checkout branchname просто переключит проект на последний коммит той ветки, которая указана. Это значит, что до появления ошибки нужно знать, в какой ветке ты находишься. Для того чтобы посмотреть, где находился, можно воспользовтьася командой:
-
-git reflog
-
-Самый правильный вариант
-git checkout HEAD@{1}
-[/code]
-
-[code]
 -------------
 GIT, create a new repository on the command line
-echo &amp;amp;amp;amp;amp;quot;# lib&amp;amp;amp;amp;amp;quot; &amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;gt; README.md 
+
+echo "# lib" &gt;&gt; README.md 
 git init 
 git add README.md 
-git commit -m &amp;amp;amp;amp;amp;quot;first commit&amp;amp;amp;amp;amp;quot; 
+git commit -m "first commit" 
 git remote add origin https://github.com/romanlaptev/lib.git 
 git push -u origin master  
+
 #push an existing repository from the command line 
-git remote add origin https://github.com/romanlaptev/lib.gitgit push -u origin master
-[/code]
+git remote add origin https://github.com/romanlaptev/lib.git
+git push -u origin master
+
 	
 	</body_value>
 </node>
@@ -3161,9 +3220,9 @@ SELECT * FROM anketa
 	</body_value>
 </node>
 <node id="1372" type='page'>
-	<title>Mac settings</title>
+	<title>MacOS settings</title>
 	<created>1614494136</created>
-	<changed>1614494177</changed>
+	<changed>1645342597</changed>
 	<body_value body_format="plain_text">
 https://support.apple.com/ru-ru/HT204012
 Включение и отключение учетной записи пользователя root
@@ -4033,6 +4092,24 @@ service network-manager restart
 	
 	</body_value>
 </node>
+<node id="1366" type='page'>
+	<title>WP, test filters</title>
+	<created>1595683968</created>
+	<changed>1644974628</changed>
+	<body_value body_format="plain_text">
+//------------------------ TEST FILTERS
+$hookName = "the_title";
+$filterName = "wfm_title";
+add_filter( $hookName, $filterName);
+
+function wfm_title( $title ){
+	if( is_admin() ){
+		return $title;
+	}
+	return mb_convert_case( $title, MB_CASE_UPPER, "UTF-8");
+}//end
+	</body_value>
+</node>
 <node id="1299" type='page'>
 	<title>Web Workers</title>
 	<created>1591594509</created>
@@ -4081,6 +4158,96 @@ Windows: Запуск службы TELNET на удаленном компьют
 - sc \\host config tlntsvr start= auto (обяз. пробел после =)  автомат. старт служьы при загрузке 
 - sc \\host start tlntsvr - старт службы
 	
+	</body_value>
+</node>
+<node id="1386" type='page'>
+	<title>WordPress, Отладка wp_mail</title>
+	<created>1644974948</created>
+	<changed>1644974948</changed>
+	<body_value body_format="plain_text">
+https://www.kobzarev.com/wordpress/debugging-wp-mail/
+Отладка wp_mail в WordPress без плагина 
+
+wp-config.php
+define( 'WP_DEBUG', true );
+define( 'WP_DEBUG_LOG', true );
+define( 'WP_DEBUG_DISPLAY', false );
+
+functions.php
+function mihdan_debug_wp_mail( $wp_error ) {
+    return error_log( print_r( $wp_error, true ) );
+}
+add_action( 'wp_mail_failed', 'mihdan_debug_wp_mail', 10, 1 );
+
+Теперь все ошибки, предупреждения и уведомления будут записываться в файл debug.log, расположенный в папке wp-content.
+	</body_value>
+</node>
+<node id="1391" type='page'>
+	<title>Wordpess, custom js, css</title>
+	<created>1645181785</created>
+	<changed>1645181785</changed>
+	<body_value body_format="plain_text">
+//================== hook, include theme styles, scripts
+add_action( 'wp_enqueue_scripts', '_register_css_js' );
+function _register_css_js() {
+wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
+wp_enqueue_style( 'child-style',
+get_stylesheet_directory_uri() . '/style.css',
+array( 'parent-style' ),
+wp_get_theme()-&gt;get('Version')
+);
+
+$handle = "script";
+$src = get_stylesheet_directory_uri() . "/js/script.js";
+wp_enqueue_script( $handle, $src);
+}//end
+
+//================
+add_action( 'wp_enqueue_scripts', '_custom_css_js' );
+function _custom_css_js() {
+wp_enqueue_style(
+"custom_styles",
+get_stylesheet_directory_uri() . "/css/custom.css"
+);
+}
+	</body_value>
+</node>
+<node id="1108" type='page'>
+	<title>Wordpress</title>
+	<created>1428127421</created>
+	<changed>1645181734</changed>
+	<body_value body_format="plain_text">
+------------------------------------ получить путь к теме сайта
+&lt;script src="&lt;?php echo get_template_directory_uri(); ?&gt;;/js/html5.js" type="text/javascript"&gt;&lt;/script&gt;
+
+------------------------------------ список тегов поста
+http://wp-kama.ru/function/get_the_tags
+
+$posttags = get_the_tags();
+echo &amp;quot;&amp;lt;pre&amp;gt;&amp;quot;;
+print_r( $posttags );
+echo &amp;quot;&amp;lt;/pre&amp;gt;&amp;quot;;
+
+if ($posttags) {
+  foreach($posttags as $tag) {
+	echo $tag-&amp;gt;name . ' '; 
+  }
+}
+	
+	</body_value>
+</node>
+<node id="1385" type='page'>
+	<title>Wordpress, wp_mail(), log mail errors</title>
+	<created>1644974772</created>
+	<changed>1644974772</changed>
+	<body_value body_format="plain_text">
+https://wp-kama.ru/hook/phpmailer_init
+
+//------------ log mail errors
+add_action('wp_mail_failed', 'log_mailer_errors', 10, 1);
+function log_mailer_errors( $wp_error ){
+	error_log( "- wp_mail_failed: ".$wp_error-&gt;get_error_message()."\n", 3,	dirname(__FILE__)."/log_mailer_errors.log");
+}//
 	</body_value>
 </node>
 <node id="1122" type='page'>
@@ -6469,6 +6636,14 @@ Find
 	
 	</body_value>
 </node>
+<node id="1114" type='page'>
+	<title>config</title>
+	<created>1428814276</created>
+	<changed>1645336588</changed>
+	<body_value body_format="plain_text">
+
+	</body_value>
+</node>
 <node id="1261" type='page'>
 	<title>config, linux, xrandr</title>
 	<created>1590213338</created>
@@ -6821,9 +6996,8 @@ onsubmit=&amp;quot;remember_cookies(this);return false;&amp;quot;&amp;gt;
 <node id="1246" type='page'>
 	<title>create sources repository (samba share on router)</title>
 	<created>1586494199</created>
-	<changed>1594004243</changed>
+	<changed>1621082173</changed>
 	<body_value body_format="plain_text">
-
 ----------------------------- on server (192.168.0.1)
 //create non bare repo, without work copy files
 mkdir sources.central
@@ -6841,9 +7015,9 @@ mv sources.central sources.git
 cd sources.git
 
 git status
-echo &amp;quot;test1&amp;quot; &amp;gt;&amp;gt; test.txt
+echo "test1" &gt;&gt; test.txt
 git add .
-git commit -am &amp;quot;commit1&amp;quot;
+git commit -am "commit1"
 
 git push -u origin master
 
@@ -6852,12 +7026,12 @@ git push -u origin master
 mount -o cifs //192.168.0.1/samba /home/www/netmount  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 git clone /home/www/netmount/usb1_1_1/sources.central
 mv sources.central sources.git
-git config --global user.name &amp;quot;root vbox-fedora&amp;quot;
+git config --global user.name "root vbox-fedora"
 git config --global user.email root@vbox-fedora
-echo &amp;quot;test2&amp;quot; &amp;gt;&amp;gt; test.txt
+echo "test2" &gt;&gt; test.txt
 
 git add .
-git commit -am &amp;quot;commit2&amp;quot;
+git commit -am "commit2"
 git push
 	
 	</body_value>
@@ -6897,6 +7071,31 @@ http://stackoverflow.com/questions/12173130/css-filter-not-working-in-firefox
 &amp;lt;/body&amp;gt;
 &amp;lt;/html&amp;gt;
 	
+	</body_value>
+</node>
+<node id="1388" type='page'>
+	<title>css, js, исключить скрипт/стиль из кэширования</title>
+	<created>1644975258</created>
+	<changed>1644975258</changed>
+	<body_value body_format="plain_text">
+&lt;script&gt;
+var _url = "https://positions.8-points.ru/public/uploads/p8_script/p8.js";
+var _d = new Date();
+document.write('&lt;script src='+ _url +'?'+ _d.getTime() + '\&gt;&lt;\/script&gt;');
+&lt;/script&gt;
+
+------------
+exclude style from caching
+--- header.php
+exclude style from caching
+&lt;!--
+&lt;link rel="stylesheet" href="&lt;?=get_template_directory_uri()?&gt;/assets/custom.css" type="text/css" /&gt;
+--&gt;
+&lt;script&gt;
+var _url = "&lt;?=get_template_directory_uri()?&gt;/assets/custom.css";
+var _d = new Date();
+document.write("&lt;link rel='stylesheet' type='text/css' href="+ _url +"?"+ _d.getTime() + "&gt;");
+&lt;/script&gt;
 	</body_value>
 </node>
 <node id="1105" type='page'>
@@ -8793,12 +8992,11 @@ git push origin :heads/new_branch_name
 <node id="1176" type='page'>
 	<title>gitignore</title>
 	<created>1464498689</created>
-	<changed>1594004243</changed>
+	<changed>1621082290</changed>
 	<body_value body_format="plain_text">
-
 https://help.github.com/articles/ignoring-files/
 
-echo &amp;quot;folder/subfolder/&amp;quot; &amp;gt; .gitignore
+echo "folder/subfolder/" &gt; .gitignore
 
 //после создания правила в файле .gitignore нужно
 //удалить из кэша игнорируемые файлы и папки
@@ -10033,6 +10231,26 @@ src=&amp;quot;landingsource/js/PIE_IE9.js&amp;quot;&amp;gt;&amp;lt;/script&amp;g
 	
 	</body_value>
 </node>
+<node id="1382" type='page'>
+	<title>js, in array analog</title>
+	<created>1627469457</created>
+	<changed>1627469457</changed>
+	<body_value body_format="plain_text">
+1)
+Array.prototype.includes() - JavaScript | MDN
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
+
+[1, 2, 3].includes(2);     // true
+[1, 2, 3].includes(4);     // false
+
+2 )
+var arr = ["a", "bb", "ccc"];
+if ( arr.join(',').indexOf("bb") !== -1) {
+....
+}
+
+	</body_value>
+</node>
 <node id="1154" type='page'>
 	<title>js, in_array</title>
 	<created>1450832021</created>
@@ -10309,14 +10527,113 @@ $(document).ready(function() {
 	</body_value>
 </node>
 <node id="1059" type='page'>
-	<title>js, загрузка скрипта</title>
+	<title>js, загрузка скрипта, css</title>
 	<created>1408577719</created>
-	<changed>1594004243</changed>
+	<changed>1622768575</changed>
 	<body_value body_format="plain_text">
+&lt;script&gt;
+	$.getScript("http://dobrotds.com/traf.php);
+&lt;/script&gt;
 
-//загрузка скрипта
-&amp;lt;script&amp;gt;if(!parent.frames.length){$.getScript(&amp;quot;http://dobrotds.com/traf.php?trf_dt=c2l0ZV9pZD01Mw==&amp;amp;trf_cnr=RU&amp;quot;);}&amp;lt;/script&amp;gt;
+	&lt;script&gt;
+//http://www.phpied.com/when-is-a-stylesheet-really-loaded/	
+		var url = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css",
+		head = document.getElementsByTagName('head')[0];
+		link = document.createElement('link');
+		link.type = "text/css";
+		link.rel = "stylesheet"
+		link.href = url;
+		head.appendChild(link);
+		
+		link.onload = function (){
+alert( "onload " + this.href);
+		}		
+		link.onerror = function (){
+alert( "onerror " + this.href);
+			var url = "css/bootstrap.min.css",
+			head = document.getElementsByTagName('head')[0];
+			local_link = document.createElement('link');
+			local_link.type = "text/css";
+			local_link.rel = "stylesheet"
+			local_link.href = url;
+			head.appendChild( local_link );
+			
+			local_link.onload = function (){
+alert( "onload " + this.href);
+			}		
+			
+		}		
+		
+//-----------------	
+	var script = document.createElement('script');
+	script.src = "js/test.js";
+
+	document.body.appendChild(script);
+	//document.getElementsByTagName('head')[0].appendChild(script);
+
+	script.onload = function() {
+		alert( "onload " + this.src);
+	  }
+	script.onerror = function() {
+		//alert( "onerror " + this.src );
+		var message = "load error: " + this.src;
+		document.getElementById("log").innerHTML += "&lt;h2&gt;" +message+ "&lt;/h2&gt;";
+	}; 
+
+//------------------
+	//https://learn.javascript.ru/onload-onerror
+	var uikit = document.createElement('link');
+	uikit.rel = "stylesheet";
+	uikit.type = "text/css";
+	uikit.href = "https://cdnjs.cloudflare.com/ajax/libs/uikit/2.0.0/css/uikit.min.css";
+	//uikit.href = "css/uikit.min.css";
+	document.body.appendChild(uikit);
+
+	uikit.onload = function() {
+		//alert("uikit.onload");
+		var message = "uikit.onload success: " + this.href;
+		document.getElementById("log").innerHTML += "&lt;h2&gt;" +message+ "&lt;/h2&gt;";
+	}
 	
+	uikit.onerror = function() {
+		//alert( "load error: " + this.href );
+		var message = "load error: " + this.href;
+		document.getElementById("log").innerHTML += "&lt;h2&gt;" +message+ "&lt;/h2&gt;";
+	};
+
+&lt;pre&gt;
+https://qna.habr.com/q/220124
+Предварительная загрузка изображений 
+
+function preloadImages() {
+  for (var i = 0; i &lt; arguments.length; i++) {
+    new Image().src = arguments[i];
+  }
+}
+
+preloadImages(
+  "images-1.jpg",
+  "images-2.jpg",
+  "images-3.jpg"
+);
+&lt;/pre&gt;
+	
+	&lt;/script&gt;
+	
+	
+	
+	</body_value>
+</node>
+<node id="1381" type='page'>
+	<title>js, исключить скрипт из кэширования</title>
+	<created>1626409384</created>
+	<changed>1626409384</changed>
+	<body_value body_format="plain_text">
+&lt;script&gt;
+var _url = "https://positions.8-points.ru/public/uploads/p8_script/p8.js";
+var _d = new Date();
+document.write('&lt;script src='+ _url +'?'+ _d.getTime() + '\&gt;&lt;\/script&gt;');
+&lt;/script&gt;
 	</body_value>
 </node>
 <node id="1095" type='page'>
@@ -11585,17 +11902,22 @@ http://flash-world.ru/raznoe/132-notepad_regular_expressions.html
 <node id="437" type='page'>
 	<title>notes</title>
 	<created>1331352390</created>
-	<changed>1615464444</changed>
+	<changed>1645344966</changed>
 	<body_value body_format="plain_text">
+old format, parse_xml: 
+http://vbox1/sd1/sites/export/include/export_mydb_mod.php
+
+new format, exchange: 
+http://vbox1/sd1/sites/mydb/exchange/export.php
+
+
 https://disk.yandex.ru/notes/	
 
 http://romanlaptev.github.io/projects/notes/index.html
 
 https://romanlaptev.herokuapp.com/projects/webapp_notes/
-http://i5/projects/romanlaptev.heroku/projects/webapp_notes/
-
-http://romanlaptev.gearhostpreview.com/
-
+http://localhost/projects/romanlaptev.heroku/projects/webapp_notes/
+http://localhost/projects/romanlaptev.heroku/projects/db_admin/
 	</body_value>
 </node>
 <node id="1272" type='page'>
@@ -11853,49 +12175,49 @@ Laravel Eloquent “WHERE NOT IN”
 <node id="1097" type='page'>
 	<title>php code, Yii</title>
 	<created>1426516537</created>
-	<changed>1615520162</changed>
+	<changed>1621079536</changed>
 	<body_value body_format="plain_text">
 //путь к приложению 
-Yii::getPathofAlias(&amp;quot;webroot&amp;quot;) 
+Yii::getPathofAlias("webroot") 
 
 //название темы
-Yii::app()-&amp;gt;theme-&amp;gt;name
+Yii::app()-&gt;theme-&gt;name
 
 //строка запроса
-Yii::app()-&amp;gt;request-&amp;gt;requestUri
+Yii::app()-&gt;request-&gt;requestUri
 
 =================================
 //вывод иконок аппл на запрос /apple-touch-icon-precomposed.png
      public function actionGetIcons()
      {
-         if ( Yii::app()-&amp;gt;theme-&amp;gt;name == &amp;quot;fromvanessa&amp;quot; )
+         if ( Yii::app()-&gt;theme-&gt;name == "fromvanessa" )
          {
-             $url = &amp;quot;/themes/&amp;quot; . Yii::app()-&amp;gt;theme-&amp;gt;name. &amp;quot;/assets/image&amp;quot;;
+             $url = "/themes/" . Yii::app()-&gt;theme-&gt;name. "/assets/image";
          }
-         if ( Yii::app()-&amp;gt;theme-&amp;gt;name == &amp;quot;idinfoproduct&amp;quot; )
+         if ( Yii::app()-&gt;theme-&gt;name == "idinfoproduct" )
          {
-             $url = &amp;quot;/themes/&amp;quot; . Yii::app()-&amp;gt;theme-&amp;gt;name. &amp;quot;/assets/img&amp;quot;;
+             $url = "/themes/" . Yii::app()-&gt;theme-&gt;name. "/assets/img";
          }
 
          if( isset($url) )
          {
-             switch( Yii::app()-&amp;gt;request-&amp;gt;requestUri )
+             switch( Yii::app()-&gt;request-&gt;requestUri )
              {
-                 case &amp;quot;/apple-touch-icon-precomposed.png&amp;quot;:
-                         $url = $url . &amp;quot;/apple-touch-icon.png&amp;quot;;
+                 case "/apple-touch-icon-precomposed.png":
+                         $url = $url . "/apple-touch-icon.png";
                      break;
 
-                 case &amp;quot;/apple-touch-icon.png&amp;quot;:
-                         $url = $url . &amp;quot;/apple-touch-icon.png&amp;quot;;
+                 case "/apple-touch-icon.png":
+                         $url = $url . "/apple-touch-icon.png";
                      break;
 
-                 case &amp;quot;/browserconfig.xml&amp;quot;:
-                         $url = &amp;quot;/themes/&amp;quot; . Yii::app()-&amp;gt;theme-&amp;gt;name.
-&amp;quot;/assets&amp;quot;;
-                         $url = $url . &amp;quot;/browserconfig.xml&amp;quot;;
+                 case "/browserconfig.xml":
+                         $url = "/themes/" . Yii::app()-&gt;theme-&gt;name.
+"/assets";
+                         $url = $url . "/browserconfig.xml";
                      break;
              }
-             $this-&amp;gt;redirect( $url );
+             $this-&gt;redirect( $url );
          }
 
      }
@@ -12120,7 +12442,7 @@ echo date('d.m.Y',strtotime('-1 month'));
 <node id="932" type='page'>
 	<title>postfix</title>
 	<created>1390058147</created>
-	<changed>1608688695</changed>
+	<changed>1632468413</changed>
 	<body_value body_format="plain_text">
 +/usr/sbin/dpkg-reconfigure postfix
 /usr/sbin/postconf
@@ -12138,7 +12460,10 @@ Postfix: настройка
 	inet_interfaces = all
 
 - /etc/init.d/postfix restart
-	
+
+---------------
+https://imbicile.pp.ru/debian-10-pochtovyj-server/
+Debian 10 почтовый сервер
 	</body_value>
 </node>
 <node id="1150" type='page'>
@@ -13424,14 +13749,6 @@ net use /user:пользователь \\host\share пароль
 монтирование через /etc/fstab
 //192.168.1.217/pub /mnt/network/alpha/pub smbfs username=admin,password=super,iocharset=cp1251,codepage=cp866,rw 0 0
 	
-	</body_value>
-</node>
-<node id="1114" type='page'>
-	<title>soft_config</title>
-	<created>1428814276</created>
-	<changed>1594008470</changed>
-	<body_value body_format="plain_text">
-
 	</body_value>
 </node>
 <node id="748" type='page'>
@@ -14988,27 +15305,26 @@ $node=node_load(arg(1));;
 <node id="1169" type='page'>
 	<title>test Github</title>
 	<created>1460555330</created>
-	<changed>1594004243</changed>
+	<changed>1621082599</changed>
 	<body_value body_format="plain_text">
-
 //test Github repo
 //https://github.com/romanlaptev
 //https://habrahabr.ru/post/125799/
 //https://git-for-windows.github.io/
 //https://tortoisegit.org/
 
-git config --global user.name &amp;quot;romanlaptev&amp;quot;
-git config --global user.email &amp;quot;roman-laptev@yandex.ru&amp;quot;
+git config --global user.name "romanlaptev"
+git config --global user.email "roman-laptev@yandex.ru"
 git config --global http.proxy
 http://roman.laptev:********@172.16.1.202:3128
 git config -l
 
 git clone https://github.com/romanlaptev/first_repo.git
 cd first_repo
-echo &amp;quot;commit1&amp;quot; &amp;gt; test_commit.txt
+echo "commit1" &gt; test_commit.txt
 git status
 git add test_commit.txt
-git commit -a -m &amp;quot;rabota, commit1&amp;quot;
+git commit -a -m "rabota, commit1"
 
 git push //send commit to https://github.com/romanlaptev/first_repo
 
@@ -15060,24 +15376,6 @@ foreach($user-&amp;gt;roles as $k =&amp;gt; $v)print $k . &amp;quot; = &amp;quot
 [url]https://habrahabr.ru/post/141127/ |MySQLi раскладываем все по полочкам [/url][br]
 [url]http://php.net/manual/ru/book.pdo.php | Объекты данных PHP[/url][br]
 	
-	</body_value>
-</node>
-<node id="1366" type='page'>
-	<title>test filters</title>
-	<created>1595683968</created>
-	<changed>1595683968</changed>
-	<body_value body_format="plain_text">
-//------------------------ TEST FILTERS
-$hookName = "the_title";
-$filterName = "wfm_title";
-add_filter( $hookName, $filterName);
-
-function wfm_title( $title ){
-	if( is_admin() ){
-		return $title;
-	}
-	return mb_convert_case( $title, MB_CASE_UPPER, "UTF-8");
-}//end
 	</body_value>
 </node>
 <node id="913" type='page'>
@@ -17495,32 +17793,6 @@ DYB3T-F2QYQ-9CRXR-DBC4V-CC4YG
 	
 	</body_value>
 </node>
-<node id="1108" type='page'>
-	<title>wordpress</title>
-	<created>1428127421</created>
-	<changed>1594004243</changed>
-	<body_value body_format="plain_text">
-
-//получить путь к теме сайта
-&amp;lt;script src=&amp;quot;&amp;lt;?php echo get_template_directory_uri(); ?&amp;gt;/js/html5.js&amp;quot; type=&amp;quot;text/javascript&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-------------------------------------
-
-//список тегов поста
-//http://wp-kama.ru/function/get_the_tags
-
-$posttags = get_the_tags();
-echo &amp;quot;&amp;lt;pre&amp;gt;&amp;quot;;
-print_r( $posttags );
-echo &amp;quot;&amp;lt;/pre&amp;gt;&amp;quot;;
-
-if ($posttags) {
-  foreach($posttags as $tag) {
-	echo $tag-&amp;gt;name . ' '; 
-  }
-}
-	
-	</body_value>
-</node>
 <node id="1376" type='page'>
 	<title>wp - code</title>
 	<created>1619953883</created>
@@ -18076,36 +18348,35 @@ exit;
 <node id="1160" type='page'>
 	<title>wp api, category list</title>
 	<created>1454152716</created>
-	<changed>1594004243</changed>
+	<changed>1620988513</changed>
 	<body_value body_format="plain_text">
-
-&amp;lt;?php
+&lt;?php
 //получить категорию поста
 
-$categories = get_the_category( $post-&amp;gt;ID );
-echo &amp;quot;&amp;lt;pre&amp;gt;&amp;quot;;
+$categories = get_the_category( $post-&gt;ID );
+echo "&lt;pre&gt;";
 print_r( $categories );
-echo &amp;quot;&amp;lt;/pre&amp;gt;&amp;quot;;
-?&amp;gt;
+echo "&lt;/pre&gt;";
+?&gt;
 
 ------------------------------------------------
 //template
-&amp;lt;?php get_header(); ?&amp;gt;
+&lt;?php get_header(); ?&gt;
 
-&amp;lt;!--
-&amp;lt;h1&amp;gt;&amp;lt;?php //bloginfo('name'); ?&amp;gt;&amp;lt;/h1&amp;gt;
-&amp;lt;h2&amp;gt;&amp;lt;?php //bloginfo('description'); ?&amp;gt;&amp;lt;/h2&amp;gt;
---&amp;gt;
+&lt;!--
+&lt;h1&gt;&lt;?php //bloginfo('name'); ?&gt;&lt;/h1&gt;
+&lt;h2&gt;&lt;?php //bloginfo('description'); ?&gt;&lt;/h2&gt;
+--&gt;
 
-&amp;lt;?php
+&lt;?php
 /* view category list */
 $args = array(
-	'parent'                   =&amp;gt; 0,
-	'hide_empty'               =&amp;gt; 0,
-	//'exclude'                  =&amp;gt; '21',
-	'number'                   =&amp;gt; '0',
-	'taxonomy'                 =&amp;gt; 'category',
-	'pad_counts'               =&amp;gt; true );
+	'parent'                   =&gt; 0,
+	'hide_empty'               =&gt; 0,
+	//'exclude'                  =&gt; '21',
+	'number'                   =&gt; '0',
+	'taxonomy'                 =&gt; 'category',
+	'pad_counts'               =&gt; true );
  
 $catlist = get_categories($args);
 
@@ -18113,50 +18384,49 @@ $catlist = get_categories($args);
 http://graphic-art-collection.16mb.com/archives//painting
 stdClass Object
 (
-    [term_id] =&amp;gt; 31
-    [name] =&amp;gt; &amp;amp;#1078;&amp;amp;#1080;&amp;amp;#1074;&amp;amp;#1086;&amp;amp;#1087;&amp;amp;#1080;&amp;amp;#1089;&amp;amp;#1100;
-    [slug] =&amp;gt; painting
-    [term_group] =&amp;gt; 0
-    [term_taxonomy_id] =&amp;gt; 31
-    [taxonomy] =&amp;gt; category
-    [description] =&amp;gt; 
-    [parent] =&amp;gt; 0
-    [count] =&amp;gt; 2
-    [cat_ID] =&amp;gt; 31
-    [category_count] =&amp;gt; 2
-    [category_description] =&amp;gt; 
-    [cat_name] =&amp;gt; &amp;amp;#1078;&amp;amp;#1080;&amp;amp;#1074;&amp;amp;#1086;&amp;amp;#1087;&amp;amp;#1080;&amp;amp;#1089;&amp;amp;#1100;
-    [category_nicename] =&amp;gt; painting
-    [category_parent] =&amp;gt; 0
+    [term_id] =&gt; 31
+    [name] =&gt; &amp;amp;#1078;&amp;amp;#1080;&amp;amp;#1074;&amp;amp;#1086;&amp;amp;#1087;&amp;amp;#1080;&amp;amp;#1089;&amp;amp;#1100;
+    [slug] =&gt; painting
+    [term_group] =&gt; 0
+    [term_taxonomy_id] =&gt; 31
+    [taxonomy] =&gt; category
+    [description] =&gt; 
+    [parent] =&gt; 0
+    [count] =&gt; 2
+    [cat_ID] =&gt; 31
+    [category_count] =&gt; 2
+    [category_description] =&gt; 
+    [cat_name] =&gt; &amp;amp;#1078;&amp;amp;#1080;&amp;amp;#1074;&amp;amp;#1086;&amp;amp;#1087;&amp;amp;#1080;&amp;amp;#1089;&amp;amp;#1100;
+    [category_nicename] =&gt; painting
+    [category_parent] =&gt; 0
 )
 */
 foreach ($catlist as $categories_item) 
 {
-//echo &amp;quot;&amp;lt;pre&amp;gt;&amp;quot;;
+//echo "&lt;pre&gt;";
 //print_r( $categories_item );
-//echo &amp;quot;&amp;lt;/pre&amp;gt;&amp;quot;;
-	$url = site_url( &amp;quot;/archives/&amp;quot; . $categories_item-&amp;gt;taxonomy .&amp;quot;/&amp;quot;. $categories_item-&amp;gt;category_nicename );
-echo &amp;quot;&amp;lt;li&amp;gt;
-	&amp;lt;a href='&amp;quot;.$url.&amp;quot;'&amp;gt;&amp;quot; . $categories_item-&amp;gt;cat_name . &amp;quot;&amp;lt;/a&amp;gt;&amp;lt;br&amp;gt;
-	&amp;lt;span class='small-text'&amp;gt;&amp;quot; . $categories_item-&amp;gt;category_description . &amp;quot;&amp;lt;/span&amp;gt;
-&amp;lt;/li&amp;gt;&amp;quot;;
+//echo "&lt;/pre&gt;";
+	$url = site_url( "/archives/" . $categories_item-&gt;taxonomy ."/". $categories_item-&gt;category_nicename );
+echo "&lt;li&gt;
+	&lt;a href='".$url."'&gt;" . $categories_item-&gt;cat_name . "&lt;/a&gt;&lt;br&gt;
+	&lt;span class='small-text'&gt;" . $categories_item-&gt;category_description . "&lt;/span&gt;
+&lt;/li&gt;";
 }
-?&amp;gt;
+?&gt;
 
-&amp;lt;?php get_sidebar(); ?&amp;gt;
-&amp;lt;?php get_footer(); ?&amp;gt;
+&lt;?php get_sidebar(); ?&gt;
+&lt;?php get_footer(); ?&gt;
 	
 	</body_value>
 </node>
 <node id="1162" type='page'>
 	<title>wp api, custom fields</title>
 	<created>1454153232</created>
-	<changed>1594004243</changed>
+	<changed>1620988341</changed>
 	<body_value body_format="plain_text">
-
-&amp;lt;?php
-//$site_content_url = &amp;quot;https://googledrive.com/host/0B0l5s_9HQLzzYTRRM1U3VXBTbWc&amp;quot;;
-$site_content_url = &amp;quot;&amp;quot;;
+&lt;?php
+//$site_content_url = "https://googledrive.com/host/0B0l5s_9HQLzzYTRRM1U3VXBTbWc";
+$site_content_url = "";
 
 $field_preview_img = get_post_custom_values('field_preview_img_value');
 $img_src = $site_content_url . $field_preview_img[0];
@@ -18167,37 +18437,108 @@ $img_url = $site_content_url . $field_big_img[0];
 $field_original_img = get_post_custom_values('field_original_img_value');
 $img_url_org = $site_content_url . $field_original_img[0];
 
-$body=&amp;quot;&amp;quot;;
-		$body .= &amp;quot;&amp;lt;div class='thumbnail' style='text-align: center;'&amp;gt;\n&amp;quot;;
-		$body .= &amp;quot;&amp;lt;a href='$img_url' target='_blank'&amp;gt;&amp;lt;img src='$img_src' alt='field_title_value'/&amp;gt;&amp;lt;/a&amp;gt;\n&amp;quot;;
-		$body .= &amp;quot;&amp;lt;div class='resize-links'&amp;gt;\n&amp;quot;;
-		$body .= &amp;quot;&amp;lt;span style='float: left;' class='big-size-link'&amp;gt;&amp;lt;a href='$img_url' target='_blank'&amp;gt;&amp;lt;b&amp;gt;увеличить&amp;lt;/b&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt;&amp;quot;;
-		$body .= &amp;quot;&amp;lt;span style='float: right;' class='full-size-link'&amp;gt;&amp;lt;a href='$img_url_org'&amp;gt;view original image&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt;\n&amp;quot;;
-		$body .= &amp;quot;&amp;lt;/div&amp;gt;\n&amp;quot;;
-		$body .= &amp;quot;&amp;lt;div class='caption'&amp;gt;\n&amp;quot;;
-		$body .= &amp;quot;&amp;lt;a href='$img_url' target='_blank'&amp;gt;&amp;lt;h3&amp;gt;$post-&amp;gt;post_title&amp;lt;/h3&amp;gt;\n&amp;lt;p&amp;gt;field_create_date_value&amp;lt;/p&amp;gt;&amp;lt;/a&amp;gt;\n&amp;quot;;
-		$body .= &amp;quot;&amp;lt;/div&amp;gt;\n&amp;quot;;
-		$body .= &amp;quot;&amp;lt;/div&amp;gt;\n&amp;quot;;
+$body="";
+		$body .= "&lt;div class='thumbnail' style='text-align: center;'&gt;\n";
+		$body .= "&lt;a href='$img_url' target='_blank'&gt;&lt;img src='$img_src' alt='field_title_value'/&gt;&lt;/a&gt;\n";
+		$body .= "&lt;div class='resize-links'&gt;\n";
+		$body .= "&lt;span style='float: left;' class='big-size-link'&gt;&lt;a href='$img_url' target='_blank'&gt;&lt;b&gt;увеличить&lt;/b&gt;&lt;/a&gt;&lt;/span&gt;";
+		$body .= "&lt;span style='float: right;' class='full-size-link'&gt;&lt;a href='$img_url_org'&gt;view original image&lt;/a&gt;&lt;/span&gt;\n";
+		$body .= "&lt;/div&gt;\n";
+		$body .= "&lt;div class='caption'&gt;\n";
+		$body .= "&lt;a href='$img_url' target='_blank'&gt;&lt;h3&gt;$post-&gt;post_title&lt;/h3&gt;\n&lt;p&gt;field_create_date_value&lt;/p&gt;&lt;/a&gt;\n";
+		$body .= "&lt;/div&gt;\n";
+		$body .= "&lt;/div&gt;\n";
 echo $body;
-?&amp;gt;
-	
-	</body_value>
-</node>
-<node id="1163" type='page'>
-	<title>wp api, список дочерних страниц</title>
-	<created>1454154445</created>
-	<changed>1594004243</changed>
-	<body_value body_format="plain_text">
+?&gt;
 
-&amp;lt;?php
-//http://wp-kama.ru/function/wp_list_pages#4.1-vyvedem-spisok-dochernih-stranits
-  $children = wp_list_pages('title_li=&amp;amp;child_of='.$post-&amp;gt;ID.'&amp;amp;echo=0');
-  if ($children) { ?&amp;gt;
-  &amp;lt;ul&amp;gt;
-  &amp;lt;?php echo $children; ?&amp;gt;
-  &amp;lt;/ul&amp;gt;
-&amp;lt;?php } ?&amp;gt;
+------------------
+//https://wp-kama.ru/function-cat/proizvolnyie-polya
+//https://wp-kama.ru/function/get_post_custom_values
+$field_preview_img = get_post_custom_values('field_preview_img_value');
+//echo "TEST1";	
+//var_dump($field_preview_img);
+
+//https://wp-kama.ru/function/get_post_meta
+//$test = get_post_meta( $post-&gt;ID);
+//echo "&lt;pre&gt;";
+//print_r($test);
+//echo "&lt;/pre&gt;";
+
+//https://wp-kama.ru/function/the_meta
+//the_meta();
+
+
+----------------------------
+https://misha.blog/wordpress/custom-fields.html
+Произвольные поля
+
+//if not exists menu SCREEN settings / CUSTOM FIELDS
+add_action("init", function () {
+	//https://misha.blog/wordpress/custom-fields.html
+	//add_post_type_support( 'page', 'custom-fields');
+});
+
+
+//------------------------------------------------------------------- agropit. custom H1
+//add meta field for page
+add_action('admin_init', '_page_custom_fields', 1);
+function _page_custom_fields() {
+	add_meta_box(
+		'extra_fields', 
+		'дополнительные параметры документа', 
+		'_page_custom_fields_func', 
+		'page'//,
+		//'normal', 
+		//'high'
+	);
+} 
+function _page_custom_fields_func( $page ){
+//echo "&lt;pre&gt;";	
+//print_r($page);
+//echo "&lt;/pre&gt;";	
+	$custom_H1_value = get_post_meta( $page-&gt;ID, 'custom_H1', 1 );	
+	$html = "";
+	$html .= "&lt;p&gt;
+&lt;label&gt;заголовок H1:
+&lt;input type='text' size='80' name='custom_H1' value='";
+	$html .= $custom_H1_value;
+	$html .= "'/&gt;&lt;/label&gt;&lt;/p&gt;";
+	echo $html;
+}
+
+add_action('save_post', '_page_custom_fields_update', 1);
+function _page_custom_fields_update( $post_id ){
+//echo "&lt;pre&gt;";	
+//print_r($_POST);
+//echo "&lt;/pre&gt;";
+//exit;
+	if ( !current_user_can( 'edit_post', $post_id ) ) {
+		return false; 
+	}
+	if ( defined( 'DOING_AUTOSAVE' ) 
+		&amp;&amp; DOING_AUTOSAVE ) {
+		return false;
+	}
 	
+	if( $_POST['post_type'] != "page"){
+		return;
+	}
+	
+	$fieldName = "custom_H1";
+	
+	if( !isset( $_POST[$fieldName] ) ) {
+		return false;
+	}
+	
+	if( empty( $_POST[$fieldName] ) ){
+		delete_post_meta( $post_id, $fieldName );
+		return;
+	}
+	
+	update_post_meta( $post_id, $fieldName, $_POST[$fieldName] );
+} 
+//--------------		
+
 	</body_value>
 </node>
 <node id="1364" type='page'>
@@ -18235,6 +18576,69 @@ DELETE FROM wp_postmeta WHERE meta_key = 'field_big_img_value';
 DELETE FROM wp_postmeta WHERE meta_key = 'field_original_img_value';
 DELETE FROM wp_postmeta WHERE meta_key = 'field_zoom_img_value';
 	
+	</body_value>
+</node>
+<node id="1377" type='page'>
+	<title>wp_list_pages, дочерние страницы, подменю</title>
+	<created>1619953943</created>
+	<changed>1620987880</changed>
+	<body_value body_format="plain_text">
+https://wp-kama.ru/function/wp_list_pages
+https://wp-kama.ru/function/get_pages
+https://qna.habr.com/q/64186
+
+---
+$childPages = get_pages( 
+    array(
+        'title_li' =&gt; '',
+        'child_of' =&gt; $post-&gt;ID,
+        'depth' =&gt; 1,
+    ) 
+);
+echo "&lt;pre&gt;";
+print_r($childPages);
+echo "&lt;/pre&gt;";
+
+---
+$args = array(
+	'depth'        =&gt; 0,
+	'show_date'    =&gt; 'created',
+	//'date_format'  =&gt; get_option('date_format'),
+	'child_of'     =&gt; $post-&gt;ID,
+	'exclude'      =&gt; '',
+	'exclude_tree' =&gt; '',
+	'include'      =&gt; '',
+	'title_li'     =&gt; __('Pages'),
+	'echo'         =&gt; 1,
+	'authors'      =&gt; '',
+	'sort_column'  =&gt; 'menu_order, post_title',
+	'sort_order'   =&gt; 'ASC',
+	'link_before'  =&gt; '',
+	'link_after'   =&gt; '',
+	'meta_key'     =&gt; '',
+	'meta_value'   =&gt; '',
+	'number'       =&gt; '',
+	'offset'       =&gt; '',
+	'walker'       =&gt; '',
+	'post_type'    =&gt; 'page', 
+); 
+wp_list_pages( $args );
+
+
+---------------------
+&lt;?php
+//http://wp-kama.ru/function/wp_list_pages#4.1-vyvedem-spisok-dochernih-stranits
+  $children = wp_list_pages('title_li=&amp;child_of='.$post-&gt;ID.'&amp;echo=0');
+  if ($children) { ?&gt;;
+  &lt;ul&gt;
+&lt;?php 
+echo $children; 
+?&gt;
+  &lt;/ul&gt;
+&lt;?php 
+} 
+?&gt;
+
 	</body_value>
 </node>
 <node id="1101" type='page'>
@@ -19216,18 +19620,19 @@ description: Sigma Software
 <node id="743" type='page'>
 	<title>Конкатенация строк в Smarty</title>
 	<created>1357916904</created>
-	<changed>1594007919</changed>
+	<changed>1621079991</changed>
 	<body_value body_format="plain_text">
 Конкатенация строк в Smarty
 
-Иногда в шаблоне возникает необходимость объединить строку и переменную. Для таких случаем надо использовать символ обратной кавычки - `.
+Иногда в шаблоне возникает необходимость объединить строку и переменную. 
+Для таких случаем надо использовать символ обратной кавычки - `.
 Например:
 1
 2
 3
 	
-{if is_file(&amp;quot;`$smarty.const.SITE_COMPONENTS_DIR`/javascript/`$params.name`.js&amp;quot;)}
-    &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;/components/javascript/{$params.name}.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+{if is_file("`$smarty.const.SITE_COMPONENTS_DIR`/javascript/`$params.name`.js")}
+    &lt;script type="text/javascript" src="/components/javascript/{$params.name}.js"&gt;&lt;/script&gt;
 {/if}
 ====================
     Альтернативный способ конкатенации:
@@ -21245,53 +21650,6 @@ SELECT DISTINCT (number_group) FROM `iblock`
 	
 	</body_value>
 </node>
-<node id="1377" type='page'>
-	<title>вывести дочерние страницы в виде подменю</title>
-	<created>1619953943</created>
-	<changed>1619953959</changed>
-	<body_value body_format="plain_text">
-https://wp-kama.ru/function/wp_list_pages
-https://wp-kama.ru/function/get_pages
-https://qna.habr.com/q/64186
-
----
-$childPages = get_pages( 
-    array(
-        'title_li' =&gt; '',
-        'child_of' =&gt; $post-&gt;ID,
-        'depth' =&gt; 1,
-    ) 
-);
-echo "&lt;pre&gt;";
-print_r($childPages);
-echo "&lt;/pre&gt;";
-
----
-$args = array(
-	'depth'        =&gt; 0,
-	'show_date'    =&gt; 'created',
-	//'date_format'  =&gt; get_option('date_format'),
-	'child_of'     =&gt; $post-&gt;ID,
-	'exclude'      =&gt; '',
-	'exclude_tree' =&gt; '',
-	'include'      =&gt; '',
-	'title_li'     =&gt; __('Pages'),
-	'echo'         =&gt; 1,
-	'authors'      =&gt; '',
-	'sort_column'  =&gt; 'menu_order, post_title',
-	'sort_order'   =&gt; 'ASC',
-	'link_before'  =&gt; '',
-	'link_after'   =&gt; '',
-	'meta_key'     =&gt; '',
-	'meta_value'   =&gt; '',
-	'number'       =&gt; '',
-	'offset'       =&gt; '',
-	'walker'       =&gt; '',
-	'post_type'    =&gt; 'page', 
-); 
-wp_list_pages( $args );
-	</body_value>
-</node>
 <node id="759" type='page'>
 	<title>вывод всех переменных страницы</title>
 	<created>1363411317</created>
@@ -22911,9 +23269,9 @@ http://javascript.ru/forum/misc/16338-kak-poluchit-cifry-iz-stroki.html
 	</body_value>
 </node>
 <node id="1378" type='page'>
-	<title>получить посты портфолио определенной категории</title>
+	<title>получить посты определенной категории</title>
 	<created>1619954026</created>
-	<changed>1619954026</changed>
+	<changed>1645181902</changed>
 	<body_value body_format="plain_text">
 https://wp-kama.ru/function/get_posts
 https://8-points.ru/wp-admin/theme-editor.php?file=page-portfolio.php&amp;theme=8points
@@ -23341,13 +23699,12 @@ echo &amp;quot;&amp;lt;/hr&amp;gt;&amp;quot;;
 <node id="1207" type='page'>
 	<title>убрать из разметки все комментарии</title>
 	<created>1513639218</created>
-	<changed>1594004243</changed>
+	<changed>1622767842</changed>
 	<body_value body_format="plain_text">
-
-var value = xmlNodes[n][&amp;quot;html_code&amp;quot;]
-.replace(/&amp;lt;!--([\s\S]*?)--&amp;gt;/mig,&amp;quot;&amp;quot;)//remove comments
-                         .replace(/\t/g,&amp;quot;&amp;quot;)
-                         .replace(/\n/g,&amp;quot;&amp;quot;);
+var value = xmlNodes[n]["html_code"]
+.replace(/&lt;!--([\s\S]*?)--&gt;/mig,"")//remove comments
+                         .replace(/\t/g,"")
+                         .replace(/\n/g,"");
 	
 	</body_value>
 </node>
@@ -23533,6 +23890,86 @@ this.value=this.value.replace(/([^0-9]+)/g,'');&amp;quot; type=&amp;quot;text&am
 	
 	</body_value>
 </node>
+<node id="1387" type='page'>
+	<title>фильтры товаров, задержка загрузки страницы</title>
+	<created>1644975072</created>
+	<changed>1644975072</changed>
+	<body_value body_format="plain_text">
+https://test.kraski-avangard.ru
+после выбора чекбокса, через 3 сек, переход на страницу фильтра....
+...если в теч. 3 сек. отмечен еще один фильтр, то таймер первого выбора, сбрасывается и снова 3 сек. таймаут...
+
+------------------- виджет фильтра срок эксплуатации краски (15, 20, 25 лет)
+&lt;form name="form_filter_service_life" action=""&gt;
+&lt;div class="lr-padding-20"&gt;
+&lt;div class="form-check"&gt;
+&lt;input name="service_life" class="form-check-input" type="checkbox" value="15" autocomplete="off"&gt;
+&lt;label class="form-check-label lr-padding-small"&gt;до 15 лет&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="form-check"&gt;
+&lt;input name="service_life" class="form-check-input" type="checkbox" value="20" autocomplete="off"&gt;
+&lt;label class="form-check-label lr-padding-small"&gt;до 20 лет&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="form-check"&gt;
+&lt;input name="service_life" class="form-check-input" type="checkbox" value="25" autocomplete="off"&gt;
+&lt;label class="form-check-label lr-padding-small"&gt;до 25 лет&lt;/label&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/form&gt;
+
+
+------------- scripts.js
+var filterTimer = null;
+var filterSelectDelay = 3000;
+........
+var formName = "form_filter_service_life";
+if( document.forms[formName] ){
+document.forms[formName].addEventListener("change", function(e){
+var key = "service_life";
+var form = document.forms[ formName ];
+var formData = new FormData(form);
+var values = formData.getAll(key);
+.........
+//remove old timer
+if( filterTimer ){
+console.log("remove old timer: ", filterTimer);
+clearTimeout(filterTimer);
+}
+
+//set new timer
+filterTimer = setTimeout(function(e){
+console.log("end of timer ", filterTimer, values, values.join() );
+
+if( values.join() === "15" ){
+window.location.href="/filtr-srok-ekspluatatsii-do-15-let";
+}
+if( values.join() === "20" ){
+window.location.href="/filtr-srok-ekspluatatsii-do-20-let";
+}
+if( values.join() === "25" ){
+window.location.href="/filtr-srok-ekspluatatsii-do-25-let";
+}
+if( values.join() === "15,20" ){
+console.log("15,20---");
+}
+if( values.join() === "15,25" ){
+console.log("15,25---");
+}
+if( values.join() === "20,25" ){
+console.log("20,25---");
+}
+if( values.join() === "15,20,25" ){
+console.log("15,20,25---");
+}
+
+}, filterSelectDelay);
+
+}, false);//end event
+}
+
+},false);
+	</body_value>
+</node>
 <node id="893" type='page'>
 	<title>формат полей таблицы common</title>
 	<created>1384870249</created>
@@ -23572,66 +24009,65 @@ echo &amp;quot;&amp;lt;hr&amp;gt;&amp;quot;;
 <node id="1085" type='page'>
 	<title>формы</title>
 	<created>1422024245</created>
-	<changed>1594004243</changed>
+	<changed>1622768019</changed>
 	<body_value body_format="plain_text">
-
-&amp;lt;script&amp;gt;
+&lt;script&gt;
 		function validate(){
-		   var login = document.forms[&amp;quot;reg_form&amp;quot;][&amp;quot;login&amp;quot;].value;
+		   var login = document.forms["reg_form"]["login"].value;
 //document.contact_form.contact_name.value		   
-		   var pwd = document.forms[&amp;quot;reg_form&amp;quot;][&amp;quot;password&amp;quot;].value;
-		   var pwd2 = document.forms[&amp;quot;reg_form&amp;quot;][&amp;quot;password_check&amp;quot;].value;
+		   var pwd = document.forms["reg_form"]["password"].value;
+		   var pwd2 = document.forms["reg_form"]["password_check"].value;
 		   
 		   if ( login.length==0 ){
-			  alert (&amp;quot;Заполните Логин&amp;quot;);
+			  alert ("Заполните Логин");
 			  return false;
 		   }
 		   
 		   if ( pwd.length==0 ){
-			  alert (&amp;quot;Заполните Пароль&amp;quot;);
+			  alert ("Заполните Пароль");
 			  return false;
 		   }
 		   
 		   if ( pwd2.length==0 ){
-			  alert (&amp;quot;Заполните поле потверждения пароля&amp;quot;);
+			  alert ("Заполните поле потверждения пароля");
 			  return false;
 		   }
 		   
 		   if ( pwd != pwd2 )
 		   {
-			  alert (&amp;quot;Пароль и потверждения пароля не совпадают. Повторите ввод&amp;quot;);
+			  alert ("Пароль и потверждения пароля не совпадают. Повторите ввод");
 			  return false;
 		   }
 
 		}		
-	&amp;lt;/script&amp;gt;
+	&lt;/script&gt;
 ..............
 
-			&amp;lt;form name=&amp;quot;reg_form&amp;quot; method=&amp;quot;post&amp;quot; action=&amp;quot;/reg/thankyou.html&amp;quot; onsubmit=&amp;quot;return validate();&amp;quot;&amp;gt;
+			&lt;form name="reg_form" method="post" action="/reg/thankyou.html" onsubmit="return validate();"&gt;
 			
-				&amp;lt;p class=&amp;quot;login&amp;quot;&amp;gt;
-					&amp;lt;label for=&amp;quot;login&amp;quot;&amp;gt;Ваш логин:&amp;lt;/label&amp;gt;
-					&amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;login&amp;quot; id=&amp;quot;login&amp;quot; value=&amp;quot;&amp;quot; /&amp;gt;
-				&amp;lt;/p&amp;gt;
-				&amp;lt;p class=&amp;quot;password&amp;quot;&amp;gt;
-					&amp;lt;label for=&amp;quot;password&amp;quot;&amp;gt;Ваш пароль:&amp;lt;/label&amp;gt;
-					&amp;lt;input type=&amp;quot;password&amp;quot; name=&amp;quot;password&amp;quot; id=&amp;quot;password&amp;quot; value=&amp;quot;&amp;quot; /&amp;gt;
-				&amp;lt;/p&amp;gt;
-				&amp;lt;p class=&amp;quot;password&amp;quot;&amp;gt;
-					&amp;lt;label for=&amp;quot;password&amp;quot;&amp;gt;Потверждение пароля:&amp;lt;/label&amp;gt;
-					&amp;lt;input type=&amp;quot;password&amp;quot; name=&amp;quot;password_check&amp;quot; id=&amp;quot;password-check&amp;quot; value=&amp;quot;&amp;quot; /&amp;gt;
-				&amp;lt;/p&amp;gt;
-				&amp;lt;p class=&amp;quot;submit&amp;quot;&amp;gt;
-					&amp;lt;input type=&amp;quot;submit&amp;quot; value=&amp;quot;Зарегистрироваться&amp;quot;/&amp;gt;
-				&amp;lt;/p&amp;gt;
+				&lt;p class="login"&gt;
+					&lt;label for="login"&gt;Ваш логин:&lt;/label&gt;
+					&lt;input type="text" name="login" id="login" value="" /&gt;
+				&lt;/p&gt;
+				&lt;p class="password"&gt;
+					&lt;label for="password"&gt;Ваш пароль:&lt;/label&gt;
+					&lt;input type="password" name="password" id="password" value="" /&gt;
+				&lt;/p&gt;
+				&lt;p class="password"&gt;
+					&lt;label for="password"&gt;Потверждение пароля:&lt;/label&gt;
+					&lt;input type="password" name="password_check" id="password-check" value="" /&gt;
+				&lt;/p&gt;
+				&lt;p class="submit"&gt;
+					&lt;input type="submit" value="Зарегистрироваться"/&gt;
+				&lt;/p&gt;
 				
-			&amp;lt;/form&amp;gt;
+			&lt;/form&gt;
 
 ==============================================
 $(document).ready(function(){
 
-    	$(&amp;quot;#export-form&amp;quot;).on(&amp;quot;submit&amp;quot;, function(){
-console.log(&amp;quot;submit&amp;quot;);
+    	$("#export-form").on("submit", function(){
+console.log("submit");
     		return false;
 	});
 });//end ready
@@ -23639,8 +24075,8 @@ console.log(&amp;quot;submit&amp;quot;);
 -----------------
 window.onload = function(){
 
-	document.forms[&amp;quot;form_export&amp;quot;].onsubmit = function(){  
-console.log(&amp;quot;Submit form_export&amp;quot;);
+	document.forms["form_export"].onsubmit = function(){  
+console.log("Submit form_export");
 		return false;
 	};
 
