@@ -1,4 +1,4 @@
-/* calc padding within div*/
+/* calc padding within div -*/
 html {	box-sizing:border-box;}
 *, *::before, *::after {	box-sizing:inherit;}
 
@@ -76,7 +76,7 @@ pre {	overflow: auto;}
 .w60, .w3-5 {    width: 60%; }
 .w65 {width:65%;}
 .w5-8, .w15-24 {    width: 62.5000%; }
-.w66, .w2-3, .w8-12, .w18-24 {  width: 66.6666666667%; }
+.w66, .w2-3, .w8-12, .w16-24 {  width: 66.6666666667%; }
 .w17-24 {    width: 70.8333%; }
 .w70{width:70%;}
 .w3-4, .w9-12, .w18-24 {  width: 75%; }
@@ -87,7 +87,7 @@ pre {	overflow: auto;}
 .w90{ width:90%; }
 .w11-12, .w22-24 {  width: 91.6666666667%;}
 .w23-24 {    width: 95.8333%; }
-.w100, .w1, .w5, .w24, .w12 {  width: 100%; }
+.w100,  .w5-5, .w24-24, .w12-12 {  width: 100%; }
 
 .w30px {width:30px;}
 .w40px{width:40px;}
@@ -1455,6 +1455,7 @@ padding: 10px;
 .color-yellow, .text-yellow {color: #ffff00;}
 .color-yellowgreen, .text-yellowgreen {color: #9acd32;}
 
+.color-light-orange{ color: #eee5d5;}
 
 /* BORDERS */
 .lr-border-box, .border-box{border: 1px solid;}
@@ -1584,6 +1585,10 @@ https://bootstrap-4.ru/docs/4.0/utilities/borders/
 https://cpalettes.com/color/03aea6
 https://www.omiod.com/colors/?rgb=d0ccd5
 */
+
+.bg-red-brown-6d{ background-color: #6d6263;}
+.bg-gray-4c{ background-color: #4c5d64;}
+.bg-green-6d{ background-color: #6d7861;}
 
 .bg-cyan-bluish-gray{ background-color: #abb8c3;}
 .bg-pale-pink{ background-color: #f78da7;}
@@ -2723,7 +2728,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-light-orange2 {background-color: #EAE2D3;}
 .bg-light-orange3 {background-color: #cac2b1;}/* Thor bg */
 .bg-light-orange4 {background-color: #f2eadb;}
-
+.bg-light-orange-ee{ background-color: #eee5d5;}
 
 .bg-vivid-orange {  background-color:  #ffaa00;}
 .bg-vivid-orange2 {background-color: #FFB515;}
@@ -2938,7 +2943,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-yellow-pre {  background-color: #fff7d7}
 
 
-.bg-red-brown {  background-color: #2f0606 !important;}
+.bg-red-brown-2f {  background-color: #2f0606 !important;}
 .bg-red-pink {  background-color: #a68caa !important;}
 
 
