@@ -3,9 +3,9 @@ html {
 }
 
 .site-header {
-	font-size: 62px;
+	font-size: xx-large;
 	font-weight: normal;
-	margin: 15px;
+	/*margin: 15px;*/
 }
 
 .lr-btn-darkblue {	font-family: ticker-tape-regular;}
@@ -62,7 +62,12 @@ html {
 }
 
 @media screen and (max-width:690px){}
-@media screen and (max-width:610px){}
+@media screen and (max-width:600px){
+	.site-header {
+		/*font-size: 20px;*/
+		text-align:center;
+	}
+}
 
 @media screen and (max-width:480px){
 	.lr-container {
@@ -73,4 +78,8 @@ html {
 	}
 }
 
-@media screen and (max-width:340px){}
+@media screen and (max-width:380px){
+	.site-header {
+		margin: 0;
+	}
+}
