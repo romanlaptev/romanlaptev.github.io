@@ -1,32 +1,73 @@
-﻿<!DOCTYPE html> 
-<html> 
-	<head> 
-	<title>test touch events</title> 	
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Test JS: touch events</title>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1"> 
-	<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-<!--	
-	<link href="http://code.jquery.com/mobile/latest/jquery.mobile.min.css" rel="stylesheet" type="text/css" />
-	<script type="text/javascript" src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>
-	
-	<link href="lib/jquery.mobile/jquery.mobile.min.css" rel="stylesheet" type="text/css" />
-	<script src="lib/jquery.mobile/jquery-1.3.2.mobile.min.js"></script> 
--->
-	
-	<!-- <script src="lib/jquery-latest.min.js"></script> -->
-	<!-- <script src="lib/shared_functions.js"></script> -->
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">	
-	
-<script>
-	//var func = sharedFunc();
-//console.log("func:", func);
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
-	var logMsg;
+	<script src="lib/shared_functions.js"></script>
+	<link rel="stylesheet" href="../css/lr.css">
+
+	<script src="https://raw.githack.com/romanlaptev/test_code/master/css/js/shared_functions.js"></script>
+	<link rel="stylesheet" href="https://raw.githack.com/romanlaptev/test_code/master/css/lr.css">
+
+
+<script>
+	var func = sharedFunc();
+console.log("func:", func);
+
+	var _testObj = {
+		"logMsg": "",
+		"support": func.testSupport()
+	};
+console.log( _testObj );
+
 	var touchOffsetX, touchOffsetY;
 
+	document.addEventListener("DOMContentLoaded", function(e){
+
+
+		for(key in _testObj["support"]){
+			_testObj.logMsg = key + ": "+_testObj["support"][key];
+			//func.logAlert( _testObj.logMsg, "info");
+		}//next
+
+		_testObj.logMsg = navigator.userAgent;
+		func.logAlert( _testObj.logMsg, "info");
+
+		_testObj.logMsg = "supportTouch: "+_testObj["support"]["supportTouch"];
+		func.logAlert( _testObj.logMsg, "info");
+
+		//init test object
+		_testObj["log"] = func.getById("log");
+		_testObj["btn_clear_log"] = func.getById("btn-clear-log");
+
+		_testObj["btn_clear_log"].onclick = function( event ){
+//console.log("click...", e);
+			event = event || window.event;
+			var target = event.target || event.srcElement;
+			if (event.preventDefault) {
+				event.preventDefault();
+			} else {
+				event.returnValue = false;
+			}
+			_testObj.log.innerHTML = "";
+			//_testObj.log.classList.add("hide");
+		};//end event
+
+		if( _testObj["support"]["supportTouch"] ){
+			startup();
+		}
+
+	});//end load
+
+
+/*
+
 	//touchstart, touchmove, touchend и touchcancel
-	var touchSupport = 'ontouchstart' in window;
-	
+
 	$(document).ready(function(){
 		logMsg = "userAgent:" +navigator.userAgent +"<br>";
 		logMsg += 'jQuery version: ' + jQuery.fn.jquery +"<br>";
@@ -34,30 +75,27 @@
 
 		logMsg = "Touch Events support: " +touchSupport;
 		$("#log")[0].innerHTML += "<p class='alert alert-info'>"+logMsg +"</p>";
-		
+
 		$("#btn-clear-log").on("click",function(e){
 			e.preventDefault();
 			$("#log")[0].innerHTML = "";
 		});//end event();
 
-		if( touchSupport ){
-			startup();
-		}
-		
 	});//end ready
+*/
 
 function startup() {
 	//document.addEventListener("touchstart", handleStart, false);
 	//document.addEventListener("touchend", handleEnd, false);
 	//document.addEventListener("touchcancel", handleCancel, false);
 	//document.addEventListener("touchmove", handleMove, false);
-	
+
 	var area = document.querySelector("#test-area");
 	area.addEventListener("touchstart", handleStart, false);
 	area.addEventListener("touchend", handleEnd, false);
 	area.addEventListener("touchmove", handleMove, false);
 	area.addEventListener("touchcancel", handleCancel, false);
-	
+
 	//$("#test-area").on("touchstart", function(e){
 		//handleStart(e);
 	//});
@@ -66,15 +104,15 @@ function startup() {
 function handleStart(e) {
 	e.preventDefault();
 	logMsg = "event type: " + e.type;
-	
+
 	if (e.targetTouches.length == 1) {
 		var touch=e.targetTouches[0];
 		touchOffsetX = touch.pageX - touch.target.offsetLeft;
 		touchOffsetY = touch.pageY - touch.target.offsetTop;
-		
+
 		$("#box").css("left", touchOffsetX+"px");
 		$("#box").css("top", touchOffsetY+"px");
-		
+
 		logMsg += ", pageX: " + touch.pageX;
 		logMsg += ", pageY: " + touch.pageY;
 		logMsg += ", touchOffsetX: " + touch.pageX +" - " +touch.target.offsetLeft+" = "+touchOffsetX;
@@ -82,19 +120,19 @@ function handleStart(e) {
 	}
 
 	$("#log")[0].innerHTML += "<p>"+logMsg +"</p>";
-	
+
 	//for( var key in e.targetTouches[0]){
 		//$("#log")[0].innerHTML += "<p>"+logMsg +"</p>";
 		//logMsg = key +", " + e.targetTouches[0][key];
 	//}
 
-/*	
+/*
 	var touches = e.changedTouches;//массив активных точек касаний
 	for( var key in touches[0]){
 		logMsg = key +", " + touches[0][key];
 		$("#log")[0].innerHTML += "<p>"+logMsg +"</p>";
 	}
-*/	
+*/
 	//for (var n = 0; n < touches.length; n++) {
 		//logMsg = "changedTouches:" + n + "...";
 		//$("#log")[0].innerHTML += "<p>"+logMsg +"</p>";
@@ -103,17 +141,17 @@ function handleStart(e) {
 
 function handleEnd(e) {
 	e.preventDefault();
-	
+
 	logMsg = "event type: " + e.type;
 	logMsg += ", screenX: " + e.changedTouches[0]["screenX"];
 	logMsg += ", screenY: " + e.changedTouches[0]["screenY"];
 	$("#log")[0].innerHTML += "<p>"+logMsg +"</p>";
-	
+
 }//end event
 
 function handleMove(e) {
 	e.preventDefault();
-	
+
 	logMsg = "event type: " + e.type;
 	//logMsg += ", screenX: " + e.changedTouches[0]["screenX"];
 	//logMsg += ", screenY: " + e.changedTouches[0]["screenY"];
@@ -121,7 +159,7 @@ function handleMove(e) {
 	logMsg += ", touchOffsetX: " + touchOffsetX;
 	logMsg += ", touchOffsetY: " + touchOffsetY;
 	$("#log")[0].innerHTML += "<p>"+logMsg +"</p>";
-	
+
 	if (e.targetTouches.length == 1) {
 		var touch = e.targetTouches[0];
 		$("#box").css("left", touch.pageX-touchOffsetX+"px");
@@ -132,7 +170,7 @@ function handleMove(e) {
 
 function handleCancel(e) {
 	e.preventDefault();
-	
+
 	logMsg = "event type: " + e.type;
 	$("#log")[0].innerHTML += "<p>"+logMsg +"</p>";
 
@@ -140,87 +178,47 @@ function handleCancel(e) {
 		$("#log")[0].innerHTML += "<p>"+logMsg +"</p>";
 		logMsg = key +", " + e[key];
 	}
-	
+
 }//end event
 
 </script>
 
 <style>
-.log-panel {
-    margin-bottom: 0;
-    margin-top: 5px;
-/*
-background-color: #f5f5f5;
-border: 1px solid #ccc;
-*/
+.border-box{
+	border-width: 2px;
+	border-style: dashed;
+	border-color: red;
+	text-align:center;
+	padding:20px;
 }
-.log-panel .panel-body{
-    padding: 5px;
-}
-
-.log-panel span a{
-text-decoration:none;
-outline: none;
-}
-
-#log {
-    height: 200px;
-    overflow-y: scroll;
-}
-#log .alert {
-margin-bottom: 0;
-padding: 10px;
-}
-
-#log p{
-margin: 0;
-}
-
-#test-area{
-height:400px;
-}
-
-#box{
-width:50px;
-height:50px;
-background-color: orange;
-position:relative;
-left:0;
-top:0;
-padding:0;
-text-align:center;
-border-radius: 25px;
+#log.hide{
+	height:0;
 }
 </style>
 
-</head> 
+</head>
 
-<body> 
+<body class="bg-darkblue-sea">
 
-<div class="container">
-	<div class="page-header">
-		<h1>Test touch events</h1>
-	</div>
+<div class="lr-container w80 mt20 color-white">
+	<h1 class="m0">Test JS: touch events</h1>
+</div>
 
-		<div class="log-panel panel">
-			<div class="panel-body">
-				<span class="pull-right">
-					<a id="btn-clear-log" href="#" title="Clear log" class="btn btn-sm btn-default">x</a>
-				</span>
-				<div id="log" class="panel-body"></div>
-			</div>
-		</div>
-	
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h2>Test area</h2>
-		</div>
-		<div id="test-area" class="panel-body" >
-<div id="box">touch me....</div>
+<div class="lr-container w80 p20 bg-grey-green lr-border-round">
+
+	<div class="log-panel panel">
+		<div id="log" class=""></div>
+		<div class="float-right">
+			<a title="Clear log" id="btn-clear-log" class="lr-btn lr-btn-default">x</a>
 		</div>
 	</div>
-	
-	<pre>
+
+
+	<div id="test-area" class="p20 p20 h400px">
+		<div class="border-box w100px h100px bg-white">touch me....</div>
+	</div>
+
+	<pre class="bg-yellow-pre p10">
 https://www.w3.org/TR/touch-events/
 https://www.w3schools.com/jsref/event_touchstart.asp
 
@@ -235,10 +233,10 @@ Touch события на javascript, мультитач - реализация
 
 https://habr.com/ru/company/mailru/blog/165213/
 Touch-web: Swipe
-	</pre>	
-	
-	
-</div><!-- end container -->
+	</pre>
+
+</div>
+<!-- end container -->
 
 </body>
 </html>
