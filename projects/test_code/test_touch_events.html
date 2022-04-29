@@ -16,13 +16,13 @@
 
 <script>
 	var func = sharedFunc();
-console.log("func:", func);
+//console.log("func:", func);
 
 	var _testObj = {
 		"logMsg": "",
 		"support": func.testSupport()
 	};
-console.log( _testObj );
+//console.log( _testObj );
 
 	var touchOffsetX, touchOffsetY;
 
@@ -44,19 +44,24 @@ console.log( _testObj );
 		_testObj["log"] = func.getById("log");
 		_testObj["testBox"] = func.getById("test-box");
 
+		//_testObj["btn_clear_log"] = document.querySelector("#btn-clear-log");
 		_testObj["btn_clear_log"] = func.getById("btn-clear-log");
 		_testObj["btn_clear_log"].onclick = function( event ){
-//console.log("click...", e);
-			event = event || window.event;
-			var target = event.target || event.srcElement;
-			if (event.preventDefault) {
-				event.preventDefault();
-			} else {
-				event.returnValue = false;
-			}
-			_testObj.log.innerHTML = "";
-			//_testObj.log.classList.add("hide");
+//alert("click...");
+				event = event || window.event;
+				var target = event.target || event.srcElement;
+				if (event.preventDefault) {
+					event.preventDefault();
+				} else {
+					event.returnValue = false;
+				}
+				_testObj.log.innerHTML = "";
+				//_testObj.log.classList.add("hide");
+
 		};//end event
+		//_testObj["btn_clear_log"].addEventListener("click", function(e){
+//console.log("click...", event);
+		//}, false);//end event
 
 		_testObj["btn_toggle_log"] = func.getById("btn-toggle-log");
 		_testObj["btn_toggle_log"].onclick = function( event ){
@@ -80,7 +85,7 @@ console.log( _testObj );
 			startup();
 		}
 
-	});//end load
+	}, false);//end load
 
 
 function startup() {
@@ -101,7 +106,7 @@ function startup() {
 }
 
 function handleStart(e) {
-	e.preventDefault();
+	//e.preventDefault();
 	_testObj.logMsg = "event type: " + e.type;
 
 	if (e.targetTouches.length == 1) {
@@ -139,7 +144,7 @@ function handleStart(e) {
 }//end event
 
 function handleEnd(e) {
-	e.preventDefault();
+	//e.preventDefault();
 
 	_testObj.logMsg = "event type: " + e.type;
 	_testObj.logMsg += ", screenX: " + e.changedTouches[0]["screenX"];
@@ -150,7 +155,7 @@ function handleEnd(e) {
 }//end event
 
 function handleMove(e) {
-	e.preventDefault();
+	//e.preventDefault();
 
 	_testObj.logMsg = "event type: " + e.type;
 	//logMsg += ", screenX: " + e.changedTouches[0]["screenX"];
@@ -170,7 +175,7 @@ function handleMove(e) {
 }//end event
 
 function handleCancel(e) {
-	e.preventDefault();
+	//e.preventDefault();
 
 	_testObj.logMsg = "event type: " + e.type;
 	func.logAlert( _testObj.logMsg, "info");
