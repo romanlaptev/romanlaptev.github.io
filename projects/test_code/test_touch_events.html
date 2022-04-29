@@ -42,8 +42,9 @@ console.log( _testObj );
 
 		//init test object
 		_testObj["log"] = func.getById("log");
-		_testObj["btn_clear_log"] = func.getById("btn-clear-log");
+		_testObj["testBox"] = func.getById("test-box");
 
+		_testObj["btn_clear_log"] = func.getById("btn-clear-log");
 		_testObj["btn_clear_log"].onclick = function( event ){
 //console.log("click...", e);
 			event = event || window.event;
@@ -57,6 +58,24 @@ console.log( _testObj );
 			//_testObj.log.classList.add("hide");
 		};//end event
 
+		_testObj["btn_toggle_log"] = func.getById("btn-toggle-log");
+		_testObj["btn_toggle_log"].onclick = function( event ){
+			event = event || window.event;
+			var target = event.target || event.srcElement;
+			if (event.preventDefault) {
+				event.preventDefault();
+			} else {
+				event.returnValue = false;
+			}
+				if( _testObj.log.style.display==="none"){
+					_testObj.log.style.display="block";
+					_testObj["btn_toggle_log"].innerHTML="-";
+				} else {
+					_testObj.log.style.display="none";
+					_testObj["btn_toggle_log"].innerHTML="+";
+				}
+		};//end event
+
 		if( _testObj["support"]["supportTouch"] ){
 			startup();
 		}
@@ -64,31 +83,11 @@ console.log( _testObj );
 	});//end load
 
 
-/*
-
-	//touchstart, touchmove, touchend и touchcancel
-
-	$(document).ready(function(){
-		logMsg = "userAgent:" +navigator.userAgent +"<br>";
-		logMsg += 'jQuery version: ' + jQuery.fn.jquery +"<br>";
-		$("#log")[0].innerHTML += "<p class='alert alert-info'>"+logMsg +"</p>";
-
-		logMsg = "Touch Events support: " +touchSupport;
-		$("#log")[0].innerHTML += "<p class='alert alert-info'>"+logMsg +"</p>";
-
-		$("#btn-clear-log").on("click",function(e){
-			e.preventDefault();
-			$("#log")[0].innerHTML = "";
-		});//end event();
-
-	});//end ready
-*/
-
 function startup() {
-	//document.addEventListener("touchstart", handleStart, false);
-	//document.addEventListener("touchend", handleEnd, false);
-	//document.addEventListener("touchcancel", handleCancel, false);
-	//document.addEventListener("touchmove", handleMove, false);
+	document.addEventListener("touchstart", handleStart, false);
+	document.addEventListener("touchend", handleEnd, false);
+	document.addEventListener("touchcancel", handleCancel, false);
+	document.addEventListener("touchmove", handleMove, false);
 
 	var area = document.querySelector("#test-area");
 	area.addEventListener("touchstart", handleStart, false);
@@ -103,23 +102,23 @@ function startup() {
 
 function handleStart(e) {
 	e.preventDefault();
-	logMsg = "event type: " + e.type;
+	_testObj.logMsg = "event type: " + e.type;
 
 	if (e.targetTouches.length == 1) {
 		var touch=e.targetTouches[0];
 		touchOffsetX = touch.pageX - touch.target.offsetLeft;
 		touchOffsetY = touch.pageY - touch.target.offsetTop;
 
-		$("#box").css("left", touchOffsetX+"px");
-		$("#box").css("top", touchOffsetY+"px");
+		_testObj["testBox"].style.left = touchOffsetX+"px";
+		_testObj["testBox"].style.top = touchOffsetY+"px";
 
-		logMsg += ", pageX: " + touch.pageX;
-		logMsg += ", pageY: " + touch.pageY;
-		logMsg += ", touchOffsetX: " + touch.pageX +" - " +touch.target.offsetLeft+" = "+touchOffsetX;
-		logMsg += ", touchOffsetY: " + touch.pageY +" - " +touch.target.offsetTop+" =" + touchOffsetY;
+		_testObj.logMsg += ", pageX: " + touch.pageX;
+		_testObj.logMsg += ", pageY: " + touch.pageY;
+		_testObj.logMsg += ", touchOffsetX: " + touch.pageX +" - " +touch.target.offsetLeft+" = "+touchOffsetX;
+		_testObj.logMsg += ", touchOffsetY: " + touch.pageY +" - " +touch.target.offsetTop+" =" + touchOffsetY;
 	}
 
-	$("#log")[0].innerHTML += "<p>"+logMsg +"</p>";
+	func.logAlert( _testObj.logMsg, "info");
 
 	//for( var key in e.targetTouches[0]){
 		//$("#log")[0].innerHTML += "<p>"+logMsg +"</p>";
@@ -142,17 +141,18 @@ function handleStart(e) {
 function handleEnd(e) {
 	e.preventDefault();
 
-	logMsg = "event type: " + e.type;
-	logMsg += ", screenX: " + e.changedTouches[0]["screenX"];
-	logMsg += ", screenY: " + e.changedTouches[0]["screenY"];
-	$("#log")[0].innerHTML += "<p>"+logMsg +"</p>";
+	_testObj.logMsg = "event type: " + e.type;
+	_testObj.logMsg += ", screenX: " + e.changedTouches[0]["screenX"];
+	_testObj.logMsg += ", screenY: " + e.changedTouches[0]["screenY"];
+
+	func.logAlert( _testObj.logMsg, "info");
 
 }//end event
 
 function handleMove(e) {
 	e.preventDefault();
 
-	logMsg = "event type: " + e.type;
+	_testObj.logMsg = "event type: " + e.type;
 	//logMsg += ", screenX: " + e.changedTouches[0]["screenX"];
 	//logMsg += ", screenY: " + e.changedTouches[0]["screenY"];
 /*
@@ -166,16 +166,17 @@ function handleMove(e) {
 		$("#box").css("top", touch.pageY-touchOffsetY+"px");
 	}
 */
+	//func.logAlert( _testObj.logMsg, "info");
 }//end event
 
 function handleCancel(e) {
 	e.preventDefault();
 
-	logMsg = "event type: " + e.type;
-	$("#log")[0].innerHTML += "<p>"+logMsg +"</p>";
+	_testObj.logMsg = "event type: " + e.type;
+	func.logAlert( _testObj.logMsg, "info");
 
 	for( var key in e){
-		$("#log")[0].innerHTML += "<p>"+logMsg +"</p>";
+	_testObj["log"].innerHTML += "<p>"+logMsg +"</p>";
 		logMsg = key +", " + e[key];
 	}
 
@@ -191,9 +192,6 @@ function handleCancel(e) {
 	text-align:center;
 	padding:20px;
 }
-#log.hide{
-	height:0;
-}
 </style>
 
 </head>
@@ -202,6 +200,7 @@ function handleCancel(e) {
 
 <div class="lr-container w80 mt20 color-white">
 	<h1 class="m0">Test JS: touch events</h1>
+<p>touchstart, touchmove, touchend, touchcancel</p>
 </div>
 
 <div class="lr-container w80 p20 bg-grey-green lr-border-round">
@@ -209,13 +208,14 @@ function handleCancel(e) {
 	<div class="log-panel panel">
 		<div id="log" class=""></div>
 		<div class="float-right">
-			<a title="Clear log" id="btn-clear-log" class="lr-btn lr-btn-default">x</a>
+			<a id="btn-toggle-log" href="#" title="Toggle log" class="lr-btn lr-btn-default">-</a>
+			<a id="btn-clear-log" href="#" title="Clear log" class="lr-btn lr-btn-default">x</a>
 		</div>
 	</div>
 
 
 	<div id="test-area" class="p20 p20 h400px">
-		<div class="border-box w100px h100px bg-white">touch me....</div>
+		<div id="test-box" class="border-box w100px h100px bg-white">touch me....</div>
 	</div>
 
 	<pre class="bg-yellow-pre p10">
