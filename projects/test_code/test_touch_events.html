@@ -7,11 +7,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
+	<script src="https://romanlaptev.github.io/js/shared_functions.js"></script>
+	<link rel="stylesheet" href="https://romanlaptev.github.io/css/lr.css">
+
 	<script src="lib/shared_functions.js"></script>
 	<link rel="stylesheet" href="../css/lr.css">
 
-	<script src="https://romanlaptev.github.io/js/shared_functions.js"></script>
-	<link rel="stylesheet" href="https://romanlaptev.github.io/css/lr.css">
 
 
 <script>
@@ -28,7 +29,6 @@
 
 	document.addEventListener("DOMContentLoaded", function(e){
 
-
 		for(key in _testObj["support"]){
 			_testObj.logMsg = key + ": "+_testObj["support"][key];
 			//func.logAlert( _testObj.logMsg, "info");
@@ -43,6 +43,7 @@
 		//init test object
 		_testObj["log"] = func.getById("log");
 		_testObj["testBox"] = func.getById("test-box");
+		_testObj["testArea"] = document.querySelector("#test-area");
 
 		//_testObj["btn_clear_log"] = document.querySelector("#btn-clear-log");
 		_testObj["btn_clear_log"] = func.getById("btn-clear-log");
@@ -72,13 +73,27 @@
 			} else {
 				event.returnValue = false;
 			}
-				if( _testObj.log.style.display==="none"){
-					_testObj.log.style.display="block";
-					_testObj["btn_toggle_log"].innerHTML="-";
-				} else {
-					_testObj.log.style.display="none";
-					_testObj["btn_toggle_log"].innerHTML="+";
-				}
+
+			if( _testObj.log.style.display==="none"){
+				_testObj.log.style.display="block";
+				_testObj["btn_toggle_log"].innerHTML="-";
+			} else {
+				_testObj.log.style.display="none";
+				_testObj["btn_toggle_log"].innerHTML="+";
+			}
+
+			//if( _testObj["log"].classList.contains("d-none") ){
+				//_testObj["log"].classList.remove("d-none");
+				//_testObj["log"].classList.add("d-block");
+				//return;
+			//}
+			//if( _testObj["log"].classList.contains("d-block") ){
+				//_testObj["log"].classList.remove("d-block");
+				//_testObj["log"].classList.add("d-none");
+				//return;
+			//}
+			//_testObj["log"].classList.add("d-none");
+
 		};//end event
 
 		if( _testObj["support"]["supportTouch"] ){
@@ -89,20 +104,15 @@
 
 
 function startup() {
-	document.addEventListener("touchstart", handleStart, false);
-	document.addEventListener("touchend", handleEnd, false);
-	document.addEventListener("touchcancel", handleCancel, false);
-	document.addEventListener("touchmove", handleMove, false);
+	//document.addEventListener("touchstart", handleStart, false);
+	//document.addEventListener("touchend", handleEnd, false);
+	//document.addEventListener("touchcancel", handleCancel, false);
+	//document.addEventListener("touchmove", handleMove, false);
 
-	var area = document.querySelector("#test-area");
-	area.addEventListener("touchstart", handleStart, false);
-	area.addEventListener("touchend", handleEnd, false);
-	area.addEventListener("touchmove", handleMove, false);
-	area.addEventListener("touchcancel", handleCancel, false);
-
-	//$("#test-area").on("touchstart", function(e){
-		//handleStart(e);
-	//});
+	_testObj["testArea"].addEventListener("touchstart", handleStart, false);
+	_testObj["testArea"].addEventListener("touchend", handleEnd, false);
+	_testObj["testArea"].addEventListener("touchmove", handleMove, false);
+	_testObj["testArea"].addEventListener("touchcancel", handleCancel, false);
 }
 
 function handleStart(e) {
@@ -145,13 +155,10 @@ function handleStart(e) {
 
 function handleEnd(e) {
 	//e.preventDefault();
-
 	_testObj.logMsg = "event type: " + e.type;
 	_testObj.logMsg += ", screenX: " + e.changedTouches[0]["screenX"];
 	_testObj.logMsg += ", screenY: " + e.changedTouches[0]["screenY"];
-
 	func.logAlert( _testObj.logMsg, "info");
-
 }//end event
 
 function handleMove(e) {
@@ -160,17 +167,21 @@ function handleMove(e) {
 	_testObj.logMsg = "event type: " + e.type;
 	//logMsg += ", screenX: " + e.changedTouches[0]["screenX"];
 	//logMsg += ", screenY: " + e.changedTouches[0]["screenY"];
-/*
-	logMsg += ", touchOffsetX: " + touchOffsetX;
-	logMsg += ", touchOffsetY: " + touchOffsetY;
-	$("#log")[0].innerHTML += "<p>"+logMsg +"</p>";
 
 	if (e.targetTouches.length == 1) {
-		var touch = e.targetTouches[0];
-		$("#box").css("left", touch.pageX-touchOffsetX+"px");
-		$("#box").css("top", touch.pageY-touchOffsetY+"px");
+		var touch=e.targetTouches[0];
+		touchOffsetX = touch.pageX - touch.target.offsetLeft;
+		touchOffsetY = touch.pageY - touch.target.offsetTop;
+
+		_testObj["testBox"].style.left = touchOffsetX+"px";
+		_testObj["testBox"].style.top = touchOffsetY+"px";
+
+		//_testObj.logMsg += ", pageX: " + touch.pageX;
+		//_testObj.logMsg += ", pageY: " + touch.pageY;
+		//_testObj.logMsg += ", touchOffsetX: " + touch.pageX +" - " +touch.target.offsetLeft+" = "+touchOffsetX;
+		//_testObj.logMsg += ", touchOffsetY: " + touch.pageY +" - " +touch.target.offsetTop+" =" + touchOffsetY;
 	}
-*/
+
 	//func.logAlert( _testObj.logMsg, "info");
 }//end event
 
@@ -197,6 +208,24 @@ function handleCancel(e) {
 	text-align:center;
 	padding:20px;
 }
+/*@media (max-width:400px){*/
+	.log-panel {
+		bottom: auto;
+		top: 0px;
+		left:0;
+	}
+	.log-panel .btn-group {
+		position: fixed;
+		top: 0;
+		left: 0;
+	}
+
+	#log {
+		position: relative;
+		top: 45px;
+	}
+
+/*}*/
 </style>
 
 </head>
@@ -212,15 +241,15 @@ function handleCancel(e) {
 
 	<div class="log-panel panel">
 		<div id="log" class=""></div>
-		<div class="float-right">
+		<div class="btn-group">
 			<a id="btn-toggle-log" href="#" title="Toggle log" class="lr-btn lr-btn-default">-</a>
 			<a id="btn-clear-log" href="#" title="Clear log" class="lr-btn lr-btn-default">x</a>
 		</div>
 	</div>
 
 
-	<div id="test-area" class="p20 p20 h400px">
-		<div id="test-box" class="border-box w100px h100px bg-white">touch me....</div>
+	<div id="test-area" class="p20 p20 h400px w80 bg-lavender">test-area
+		<div id="test-box" class="border-box pos-center-rel w100px h100px bg-white">touch me....</div>
 	</div>
 
 	<pre class="bg-yellow-pre p10">
