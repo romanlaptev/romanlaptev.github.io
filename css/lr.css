@@ -1587,6 +1587,7 @@ https://bootstrap-4.ru/docs/4.0/utilities/borders/
 https://cpalettes.com/color/03aea6
 https://www.omiod.com/colors/?rgb=d0ccd5
 */
+.bg-lightgreen-bcd{ background-color: #bcdcc8;}
 .bg-lightgreen-aab{ background-color: #aabbaa;}
 .bg-lightgreen-ccd{ background-color: #ccddcc;}
 .bg-gray-44{ background-color: #445566;}
@@ -2428,7 +2429,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-color-test1a9bf4e { background:#a9bf4e;}
 .bg-color-test1E3EFB1 { background:#E3EFB1;}
 
-.bg-color-test170D14E { background:#70D14E;}
+.bg-green170 { background-color:#70D14E;}
 
 .bg-vivid-very-light-green{  background-color: #f8fff0; border:1px solid #009900;}/* Drupal info alert */
 .bg-lightgreen-d{  background-color: #bbee77;}/* Drupal info alert */
@@ -2469,7 +2470,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 .bg-color-test100A86B { background:#00A86B;}  /*Жадеитовый цвет,Желтовато-зелёный, #00A86B */
 .bg-color-test140826D { background:#40826D;}  /*:Виридиан, #40826D */
-.bg-color-test1ADDFAD { background:#ADDFAD;}  /*Мох, #ADDFAD */
+.bg-moss-FAD { background-color:#ADDFAD;}  /*Мох, #ADDFAD */
 .bg-color-test121421E { background:#21421E;}  /*:Мирт, #21421E */
 .bg-color-test1808000 { background:#808000;}  /*:Оливковый, #808000 */
 .bg-color-test16B8E23 { background:#6B8E23;}  /*:Оливково-серый, #6B8E23 */
@@ -2530,10 +2531,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-lightgreen3 {background-color: #90ee90;}
 .bg-light-green4 {background-color: #99e657;}
 
-.bg-palegreen1{  background-color: #98fb98 !important;}
-.bg-palegreen2{/*css.html*/
-  background-color: #99cc99 !important;
-}
+.bg-palegreen2{  background-color: #99cc99 !important;}
 
 .bg-palegreen3{/*www.neberitrubku.ru/nomer-telefona/*/
   background-color: #cfd9db !important;
@@ -3505,17 +3503,15 @@ inset -2px -1px 40px rgba(0, 0, 0, 0.1),
 	display: inline-block;
 }
 
-
 .bg-gradient-test {
 }
 
-
-.fc_red {    background-color: #ca0067 !important;}
-.fc_red_l {    background-color: #e00073 !important;}
-.fc_blue {    background-color: #0c2868 !important;}
-.fc_blue_l {    background-color: #3b4a88 !important;}
-.fc_blue_2l {    background-color: #3d5396 !important;}
-.fc_blue_3l {    background-color: #3253a7 !important;}
+.bg-fc_red {    background-color: #ca0067 !important;}
+.bg-fc_red_l {    background-color: #e00073 !important;}
+.bg-fc_blue {    background-color: #0c2868 !important;}
+.bg-fc_blue_l {    background-color: #3b4a88 !important;}
+.bg-fc_blue_2l {    background-color: #3d5396 !important;}
+.bg-fc_blue_3l {    background-color: #3253a7 !important;}
 
 /*ORANGE*/
 .bamb--orange-gradient{background: linear-gradient(360deg, #FBBB20 0%, #FCD370 100%) };
