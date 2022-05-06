@@ -297,7 +297,7 @@ document.onreadystatechange = function () {
 				p[key] = opt[key];
 			}
 
-console.log(p);
+//console.log(p);
 			if( !p.message){
 				return false;
 			}
@@ -1828,6 +1828,7 @@ ONLY second LEVEL !!!!!!!!!!!!
 				"PushManager": window.PushManager  ? true : false,
 				"EventSource": window.EventSource  ? true : false,
 				"InternationalizationAPI": window.Intl  ? true : false,
+				"supportCSSvars": _test_CSSvars(),
 				//CanvasSupported
 				//WebGL support
 				//SVG support
@@ -1837,6 +1838,17 @@ ONLY second LEVEL !!!!!!!!!!!!
 			};
 		};//end _testSupport()
 
+		function _test_CSSvars(){
+			var supportCSSvars = false;
+			if (window.CSS &&
+				window.CSS.supports &&
+				window.CSS.supports('--fake-var', 0)
+			){
+				supportCSSvars = true;
+			}
+			return supportCSSvars;
+		}//end
+		
 		function _detectDataStoreType(){
 			var dataStoreType = false;
 			if( window['localStorage']  ? true : false ){

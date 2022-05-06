@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Test CSS: vars</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="https://romanlaptev.github.io/css/lr.css">
+	<script src="https://romanlaptev.github.io/js/lr.js"></script>
+
+	<link rel="stylesheet" href="../css/lr.css">
+	<script src="../js/lr.js"></script>
+
+<style type="text/css">
+:root {
+  --bg-color1: #A52A2A;
+  --bg-color2: #000;
+  --page-bg: powderblue;
+}
+
+
+.box{
+  margin: 10px;
+  padding: 10px;
+  width: 100px;
+  color: white;
+  --element-height: 100px;
+}
+
+.box.two{
+  --element-height: 150px;
+}
+.box.three{
+  --bg-color1: coral;
+}
+.box.four{
+  --element-height: 200px;
+}
+
+
+.one {
+	background-color: var(--bg-color1, #1E90FF);
+	height: var(--element-height);
+}
+.two {
+	background-color: var(--bg-color2);
+	height: var(--element-height);
+}
+.three {
+	background-color: var(--bg-color1);
+	height: var(--element-height);
+}
+.four {
+	background-color: var(--bg-color2);
+	height: var(--element-height);
+}
+.five {
+	background-color: var(--bg-color1, #1E90FF);
+	height: var(--element-height);
+}
+
+
+</style>
+
+</head>
+
+<body class="bg-darkblue-sea">
+
+<div class="lr-container w80 bg-whitesmoke lr-border-box lr-border-thick lr-border-grey">
+	<h1>Test CSS: vars</h1>
+
+	<div id="log"></div>
+
+<style>
+#demo1 {
+  background-color: var(--page-bg);
+}
+</style>
+	<div id="demo1" class="w100px h100px p20">
+		<p>demo1</p>
+		<button class="btn lr-btn lr-btn-default">change --page-bg</button>
+	</div>
+
+	<div class="p10 m10 bg-white lr-border-box lr-border-grey">
+		<pre>
+https://developer.mozilla.org/ru/docs/Web/CSS/Using_CSS_custom_properties
+Использование переменных в CSS
+
+https://html5css.ru/css/css3_variables.php
+
+#A52A2Ahttps://habr.com/ru/company/skillfactory/blog/523130/
+
+https://css-live.ru/articles/dostup-k-css-peremennym-i-ix-izmenenie-spomoshhyu-javascript.html
+Доступ к CSS-переменным и их изменение с помощью Javascript
+footer.style.setProperty('--footer-color', this.value)
+
+https://xhtml.ru/2021/javascript/sharing-data-between-css-and-javascript-using-custom-properties/
+Передача данных между CSS и JavaScript с помощью CSS-переменных
+
+
+https://overcoder.net/q/306768/%D0%BA%D0%B0%D0%BA-%D1%8F-%D0%BC%D0%BE%D0%B3%D1%83-%D0%BE%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B8%D1%82%D1%8C-%D0%BF%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%BA%D1%83-css-%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%8B%D1%85-%D1%81-%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D1%8C%D1%8E-javascript
+window.CSS.supports('--fake-var', 0);
+		</pre>
+	</div>
+
+	<div class="p10 m10 bg-white lr-border-box lr-border-thick lr-border-grey-suva d-flex">
+			<div class="box one">box one</div>
+			<div class="box two">box two</div>
+			<div class="box three">box three</div>
+			<div class="box four">box four</div>
+			<div class="box five">box five</div>
+	</div>
+
+</div><!-- end container -->
+
+<script type="text/javascript">
+	var func = sharedFunc();
+//console.log("func:", func);
+
+var _testObj = {
+	"logMsg": "",
+	"support": func.testSupport()
+};
+console.log( _testObj );
+
+document.addEventListener("DOMContentLoaded", function(e){
+	_testObj.logMsg = navigator.userAgent;
+	func.logAlert( _testObj.logMsg, "info");
+
+	//init test object
+	_testObj["log"] = func.getById("log");
+/*
+	_testObj["btn_clear_log"] = func.getById("btn-clear-log");
+
+	_testObj["btn_clear_log"].onclick = function( event ){
+//console.log("click...", e);
+		event = event || window.event;
+		var target = event.target || event.srcElement;
+		if (event.preventDefault) {
+			event.preventDefault();
+		} else {
+			event.returnValue = false;
+		}
+		_testObj.log.innerHTML = "";
+	};//end event
+*/
+/*
+	var supportCSSvars = false;
+	if (window.CSS &&
+				window.CSS.supports &&
+						window.CSS.supports('--fake-var', 0)
+			){
+		supportCSSvars = true;
+	}
+*/
+	_testObj.logMsg = "CSS vars support: " + _testObj.support.supportCSSvars;
+	func.logAlert( _testObj.logMsg, "info");
+
+	if( _testObj.support.supportCSSvars ){
+		_runTest();
+	}
+});//end load
+
+
+function _runTest(){
+
+//https://xhtml.ru/2021/javascript/sharing-data-between-css-and-javascript-using-custom-properties/
+	var pageBg = getComputedStyle( document.documentElement ).getPropertyValue("--page-bg");
+	//console.log(pageBg);
+		_testObj.logMsg = "--page-bg: "+pageBg;
+		func.logAlert( _testObj.logMsg, "info");
+
+		document.querySelector("#demo1 button").addEventListener("click", function(e){
+	//console.log(e);
+			document.documentElement.style.setProperty('--page-bg', 'firebrick');
+			pageBg = getComputedStyle( document.documentElement ).getPropertyValue("--page-bg");
+			_testObj.logMsg = "--page-bg: "+pageBg;
+			func.logAlert( _testObj.logMsg, "info");
+		});//end event
+
+}//end _runTest()
+
+</script>
+
+</body>
+</html>
