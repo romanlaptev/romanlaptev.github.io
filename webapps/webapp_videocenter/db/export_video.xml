@@ -125,6 +125,7 @@
 	<tag tid="160" vid="2" name="Милош Форман"></tag>
 	<tag tid="161" vid="2" name="Ларри Кларк"></tag>
 	<tag tid="164" vid="2" name="мюзикл"></tag>
+	<tag tid="166" vid="2" name="Николай Караченцов"></tag>
 	<tag tid="167" vid="2" name="программирование"></tag>
 	<tag tid="168" vid="2" name="Сербия"></tag>
 	<tag tid="169" vid="2" name="война"></tag>
@@ -282,6 +283,8 @@ https://ru.wikipedia.org/wiki/%D0%91%D1%80%D0%B8%D0%B4%D0%B6%D0%B5%D1%81,_%D0%9B
 	<tag tid="352" vid="1" name="Роман Филиппов">https://www.kinopoisk.ru/name/191599/</tag>
 	<tag tid="353" vid="1" name="Ciaran Hinds">https://www.kinopoisk.ru/name/14570/</tag>
 	<tag tid="354" vid="3" name="U"></tag>
+	<tag tid="355" vid="1" name="Михаил Светин">https://www.kinopoisk.ru/name/269888/</tag>
+	<tag tid="356" vid="1" name="home video">Домашнее видео</tag>
 </taglist>
 
 
@@ -15989,6 +15992,96 @@ http://vse-subtitri.ru/tv-shows/game-of-thrones-1492.html</description>
 
 	<published>05-Jan-2022 14:10:55</published>
 	<updated>05-Jan-2022 14:34:49</updated>
+</video>
+
+<video type="video">
+	<title>
+		<item>Трест, который лопнул</item>
+</title>
+	
+	<producer>Александр Павловский</producer>
+	<roles>    Регимантас Адомайтис
+    Николай Караченцов
+    Леонид Куравлёв
+    Михаил Светин
+    Ирина Понаровская
+    Владимир Басов
+    Юрий Мажуга
+    Павел Винник
+    Елена Аминова
+    Всеволод Абдулов	</roles>
+	
+	<pictures>
+		<img src="https://kinopoisk-ru.clstorage.net/298Vmy401/d09b2eAHES5/VBvayNX2YLRfMpNbSf6p3WpVChcU_sy-Q4uhhwDsDe6BOy6TDcCO1Km3tbgbuQ0cs9amPr8Fp8C8AuYlh44XqcGL298RcaMgyLcUj17-_o84wJ1SxqzYb0TPdZCXJ8HkjbFyGoIKht-x5iWp3S2aSqPSJb1tknURrJ5ptB5Jx7gVU1jP0ObrNZ1l0V"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="embed-video" href="http://youtube.com/embed/WH-hE55qhB0">youtube.com</a></li>
+		<li><a data-type="external-link" href="https://www.kinopoisk.ru/series/81473/">kinopoisk.ru</a></li>
+	</ul>
+
+	<tags>
+		<item tid="5">комедия</item>
+		<item tid="164">мюзикл</item>
+		<item tid="136">Куравлев, Леонид</item>
+		<item tid="166">Николай Караченцов</item>
+		<item tid="246">Т</item>
+		<item tid="355">Михаил Светин</item>
+		<item tid="272">youtube</item>
+		<item tid="304">1982</item>
+	</tags>
+
+	<published>15-May-2022 20:05:45</published>
+	<updated>15-May-2022 20:10:13</updated>
+</video>
+
+<video type="video">
+	<title>
+		<item>Домашнее видео</item>
+</title>
+	
+	
+	
+	<description></description>
+	<pictures>
+		<img src=" "/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="local-file" href="/video/home_video/2009/2009_dog.mp4">2009_dog.mp4</a></li>
+		<li><a data-type="local-file" href="/video/home_video/2009/2009_Volga_most.mp4">2009_Volga_most.mp4</a></li>
+		<li><a data-type="local-file" href="/video2/home_video/2011/2011_video_d.Kolya_phone.mp4">2011, с телефона д.Коли</a></li>
+		<li><a data-type="local-file" href="/video/home_video/2013/08-2013_flowers.mp4">08-2013, цветы</a></li>
+		<li><a data-type="local-file" href="/video/home_video/2013/10-2013_film_title.mp4">08-2013, д. Коля, шашлык</a></li>
+		<li><a data-type="local-file" href="/video2/home_video/2014/31-12-2014_Nsk.mp4">31-12-2014, квартира</a></li>
+		<li><a data-type="local-file" href="/video2/home_video/2014/12-2014_Nsk_cat.mp4">12-2014, кошка</a></li>
+		<li><a data-type="local-file" href="/video2/home_video/2015/NY_fireworks_in_Novosibirsk_01-01-2015.mp4">01-01-2015, фейерверки</a></li>
+		<li><a data-type="local-file" href="/video2/home_video/2015/cat.mp4">2015, кошка</a></li>
+		<li><a data-type="local-file" href="/video2/home_video/2022/2022-01-08_Dom_GalaxyA12.mp4">01-08-2022, Раздолье, дом</a></li>
+		<li><a data-type="local-file" href="http://site-content/video2/home_video/2022/08-01-2022_sneg_GalaxyA12.mp4">01-08-2022, Раздолье, снег, GalaxyA12</a></li>
+		<li><a data-type="local-file" href="/video2/home_video/2022/08-01-2022_sneg_Oyster.mp4">01-08-2022, Раздолье, снег</a></li>
+		<li><a data-type="local-file" href="/video2/home_video/2022/29-05-2022_suburban_train.mp4">29-05-2022, Раздолье, пригородная электричка</a></li>
+		<li><a data-type="local-file" href="/video2/home_video/2022/29-05-2022_Dom.mp4">29-05-2022_Dom.mp4</a></li>
+		<li><a data-type="local-file" href="http://site-content/video2/home_video/2022/04-06-22_НИИТО.mp4">04-06-22, НИИТО, ул.Фрунзе</a></li>
+		<li><a data-type="local-file" href="http://site-content/video2/home_video/2022/09-06-2022_walk.mp4">09-06-2022, утро, прогулка по городу</a></li>
+		<li><a data-type="local-file" href="http://site-content/video2/home_video/2022/2022-06-11/06-34_start.mp4">11-06-2022, 06:34, квартира</a></li>
+		<li><a data-type="local-file" href="http://site-content/video2/home_video/2022/2022-06-11/07-07_tram.mp4">07:07, трамвай</a></li>
+		<li><a data-type="local-file" href="http://site-content/video2/home_video/2022/2022-06-11/07-19_tram.mp4">07:19, трамвай</a></li>
+		<li><a data-type="local-file" href="http://site-content/video2/home_video/2022/2022-06-11/07-31_tram.mp4">07:31, трамвай</a></li>
+		<li><a data-type="local-file" href="http://site-content/video2/home_video/2022/2022-06-11/08-50_p1-9.mp4">11-06-2022, 8:50, двор</a></li>
+		<li><a data-type="local-file" href="http://site-content/video2/home_video/2022/2022-06-11/11-40_yard.mp4">11:40, двор, участок</a></li>
+		<li><a data-type="local-file" href="http://site-content/video2/home_video/2022/2022-06-11/12-00_dom.mp4">12:00, в доме</a></li>
+		<li><a data-type="local-file" href="http://site-content/video2/home_video/2022/2022-06-11/13-10_Alcatel4030.mp4">13:10, участок</a></li>
+		<li><a data-type="local-file" href="http://site-content/video2/home_video/2022/2022-06-11/13-29_Roman_selfy.mp4">13:29, Roman, selfy</a></li>
+		<li><a data-type="local-file" href="http://site-content/video2/home_video/2022/2022-06-11/14-45_Station.mp4">14:45, станция</a></li>
+	</ul>
+
+	<tags>
+		<item tid="356">home video</item>
+	</tags>
+
+	<published>05-Jun-2022 12:12:32</published>
+	<updated>13-Jun-2022 10:26:42</updated>
 </video>
 
 <video type="videoclip">

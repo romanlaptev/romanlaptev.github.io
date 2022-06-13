@@ -1764,9 +1764,9 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 .bg-obscure-dull-cyan{  background-color: #006666 !important;}
 
-.bg-turquoise7{  background-color: #006633 !important;}
-.bg-turquoise8{  background-color: #00848c !important;}
-.bg-turquoise9{  background-color: #66cc99 !important;}
+.bg-dark-green-blue{  background-color: #006633;}
+.bg-turquoise8{  background-color: #00848c;}
+.bg-turquoise9{  background-color: #66cc99;}
 
 .bg-steel-grey{  background-color: #53687c !important;}
 .bg-pale-rose-c5{  background-color: #d3c5be !important;}
@@ -1833,7 +1833,6 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 
 .bg-light-violet1{  background-color: #cecefa !important;}
-.bg-light-violet-lavender{  background-color: #e6e6fa !important;}
 .bg-light-violet2{  background-color: #e6e6ff !important;}
 .bg-light-violet3 {/* video.css*/
   background-color: #E6E6FF !important;
@@ -1971,7 +1970,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 
 .bg-blueviolet {background-color: #8a2be2;}
-.bg-color-test1003089 { background-color:#003089;}
+.bg-blue089 { background-color:#003089;}
 
 .bg-prussian-blue { background-color:#003153;}
 .color-prussian-blue {color: #003153 !important;}
@@ -1988,56 +1987,42 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 .bg-darkblue-green { background-color:#055c80;}
 
-.bg-color-test13d5afe { background-color:#3d5afe;}
-.bg-color-test15a5eff { background-color:#5a5eff;}
-.bg-color-test17cc0de { background-color:#7cc0de;}
-.bg-color-test100c1d5 { background-color:#00c1d5;}
+.bg-blue13 { background-color:#3d5afe;}
+.bg-blue15 { background-color:#5a5eff;}
+.bg-blue17{ background-color:#7cc0de;}
+.bg-blue100 { background-color:#00c1d5;}
 
 .bg-grayishblue { background-color:#C7D5EC;}
-.bg-color-test13950C9 { background-color:#3950C9;}
-.bg-lavender-blue { background-color:#cbcbff;}
-.color-lavender-blue {color: #cbcbf !important;}
-.lr-border-lavender-blue {border-color: #cbcbff;}
+.bg-blue1395 { background-color:#3950C9;}
 
-
-.bg-very-dark-blue { background:#130040;}
-.bg-color-test11e73be { background:#1e73be;}
-.bg-lightblue-ef { background:#b1d0ef;}
-.bg-mediumblue-light { background:#4e86bf;}
+.bg-very-dark-blue { background-color:#130040;}
+.bg-blue73 { background-color:#1e73be;}
+.bg-lightblue-ef { background-color:#b1d0ef;}
+.bg-mediumblue-light { background-color:#4e86bf;}
 
 .bg-columbia-blue { background-color:#9fcfff;}
 .color-columbia-blue {color: #9fcfff !important;}
 .lr-border-columbia-blue {border-color: #9fcfff;}
 
+.bg-paleblue { background-color:#def;}
+.bg-blue196 { background-color:#196e9c; }
+.bg-blue60 { background-color:#0060a0;}
 
-.bg-color-test1ccf { background:#ccf;}
-.bg-paleblue { background:#def;}
-.bg-color-test1196e9c { background:#196e9c; }
-.bg-color-test10060a0 { background:#0060a0;}
-
-.bg-blue-b { background:#17568c !important;} /*joomla dmin*/
+.bg-blue-b { background-color:#17568c !important;} /*joomla dmin*/
 
 .bg-light-blue-a {  background-color: #9bb4d5;}
 .bg-light-blue-darken-4 {  background-color: #01579b !important;} /* materialize.css */
 .bg-light-blue-darken-40 { background:#0061A0; }
-
-.bg-color-test1074e68 { background:#074e68;}
-.bg-color-test12f96b4 { background:#2f96b4;}
-
+.bg-blue68 { background-color:#074e68;}
+.bg-blue12 { background-color:#2f96b4;}
 .bg-cadetblue {background-color: #5f9ea0;}
 .bg-cornflowerblue {background-color: #6495ed;}
-
+.bg-pale-cornflower-blue {background-color: #abcdef;}
 .bg-darkblue {/*Диаграмма 1*/
   background-color: #004586 !important;
 }
 .bg-dark-blue {background-color: #00008b;}
-
-.bg-darkblue2{ /* comp-books.css */
-  background-color: #000080 !important;
-}
-.bg-darkblue3{/*css.html*/
-  background-color: #0e1f40 !important;
-}
+.bg-darkblue3{  background-color: #0e1f40 !important;}
 .bg-darkblue4{  background-color: #062237 !important;}
 .bg-darkblue5{  background-color: #153449 !important;}
 .bg-darkblue-tango{  background-color: #0c253c !important;}
@@ -2249,7 +2234,6 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 /* Raspberry (color) https://en.wikipedia.org/wiki/Raspberry_(color) */
 .bg-raspberry {background-color: #E30B5C;}
 
-
 .bg-dimgray {background-color: #696969;}
 .bg-feldspar {background-color: #d19275;}
 .bg-firebrick {background-color: #b22222;}
@@ -2355,7 +2339,6 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-greentea { background-color:#CADABA;}  /*Серо-зелёный чай, #CADABA */
 .bg-grey5050 { background-color:#505050;}  /*:Мокрый асфальт,#505050 */
 .bg-grey-carbon46 { background-color:#464646;}  /*:Угольный,#464646 */
-.bg-grey-slate90 { background-color:#708090;}  /*:Грифельный,#708090 */
 .bg-greyD53 { background-color:#4D5D53;}  /*:Фельдграу,#4D5D53 */
 
 /* GREEN */
@@ -2556,12 +2539,11 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-sea-desktop {background-color: #038387;}/* win10, desktop color*/
 .bg-mint {background-color: #018574;}/* win10, desktop color*/
 
-
-
 .bg-lavender {background-color: #e6e6fa !important;}
 .bg-lavenderblush {background-color: #fff0f5  !important;}
 .bg-lavender-h {background-color: #C9C6D3  !important;}/* lib body color*/
-
+.bg-lavender-bff { background-color:#cbcbff;}
+.bg-lavender-ccf { background-color:#ccf;}
 
 .bg-lemonchiffon {background-color: #fffacd;}
 .bg-lightblue {background-color: #add8e6;}
@@ -2711,14 +2693,15 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 	color: #000 !important;
     background-color: #f89406 !important;
 }
-
-
 .bg-darkorange-b { background-color:#FF8000;}
 .color-darkorange {color: #FF8000 !important;}
 .lr-border-darkorange {border-color: #FF8000;}
 
-
 /* RED */
+.bg-red-636 { background-color: #e32636;}
+.bg-red-e52 { background-color: #e52b50;}
+.bg-red-33e { background-color: #ff033e;}
+
 .bg-red-050 { background-color: #fdf3f4;}
 .bg-red-100 { background-color: #f9d3d7;}
 .bg-red-200 { background-color: #f4b4bb;}
@@ -2779,9 +2762,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 	border: none;
 }
 */
-
-
-
+.bg-red-scarlet{  background-color: #ff2400;}
 .bg-lightred-t{  background-color: #cec1bc;}/* landing */
 
 .bg-lilac{  background-color: #C8A2C8;}
@@ -2950,7 +2931,6 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-color-test1gb7766 { background:rgb(77,66,90); }
 .bg-color-test1gb7792 { background:rgb(77,92,106); }
 .bg-color-test14D425A { background:#4D425A; }
-.bg-color-test14b0082 { background:#4b0082;}
 
 .bg-dark-purple1 { background:#2E1441;}
 .bg-dark-purple2 { background:#41013D;}
@@ -3007,6 +2987,13 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 	box-shadow: inset 0 1px 2px #12b3db, 0 1px 2px rgba(255, 255, 255, 0.3);
 	color: #273362;
 	text-shadow: 0 1px 2px rgba(255, 255, 255, 0.65);
+}
+
+.bg-gradient-blue3 { 
+	background: -webkit-linear-gradient(-45deg,#0080bc,#00619a,#00295a,#004479);
+	background: -o-linear-gradient(-45deg,#0080bc,#00619a,#00295a,#004479);
+	background: -moz-linear-gradient(-45deg,#0080bc,#00619a,#00295a,#004479);
+	background: linear-gradient(-45deg,#0080bc,#00619a,#00295a,#004479);
 }
 
 .bg-gradient-blue-green {
@@ -3831,7 +3818,7 @@ body.page-green {
 
 /*==== LAYERS ===*/
 .pos-rel, .pos-relative {position: relative; }
-.pos-rel-centerl {
+.pos-rel-center {
 	position: relative;
 	left: 50%;
 	top: 50%;
@@ -3846,8 +3833,30 @@ body.page-green {
 }
 
 .pos-left-0 {	left: 0;	}
+.pos-left-5 {	left: 5%;	}
+.pos-left-10 {	left: 10%;	}
+.pos-left-15 {	left: 15%;	}
+.pos-left-25 {	left: 25%;	}
+.pos-left-50 {	left: 50%;	}
+.pos-left-75 {	left: 75%;	}
+.pos-left-80 {	left: 80%;	}
+.pos-left-90 {	left: 90%;	}
+.pos-left-100 {	left: 100%;	}
+
 .pos-right-0{right: 0;	}
+
 .pos-top-0{	top: 0;	}
+.pos-top-5 {	top: 5%;	}
+.pos-top-10 {	top: 10%;	}
+.pos-top-15 {	top: 15%;	}
+.pos-top-25 {	top: 25%;	}
+.pos-top-50 {	top: 50%;	}
+.pos-top-75 {	top: 75%;	}
+.pos-top-80 {	top: 80%;	}
+.pos-top-90 {	top: 90%;	}
+.pos-top-100 {	top: 100%;	}
+
+
 .pos-bottom-0{bottom: 0;	}
 .pos-left-auto {left: auto;}
 .pos-right-auto {	right: auto;	}
@@ -4010,6 +4019,7 @@ body.page-green {
 	.mb10-lg{margin-bottom:10px;}
 	.mr10-lg{margin-right:10px;}
 	.ml10-lg{margin-left:10px;}
+	.m-auto-lg{margin:auto;}
 	
 	.w60-lg { width:60%;  }  
 	.w80-lg{width:80%;}
@@ -4032,9 +4042,16 @@ body.page-green {
 	.mb10-md{margin-bottom:10px;}
 	.mr10-md{margin-right:10px;}
 	.ml10-md{margin-left:10px;}
+	.m-auto-md{margin:auto;}
 	
+	.w50-md{width:50%;}
+	.w60-md{width:60%;}
+	.w70-md{width:70%;}
 	.w80-md{width:80%;}
-	.w100-md{width:100%;}	
+	.w100-md{width:100%;}
+	.w-auto-md{width:auto;}	
+
+	.h-auto-md {height: auto;}
 	
 	.lr-flex-wrap-md {	flex-wrap: wrap;}
 	.lr-flex-center-md { justify-content: center;}
@@ -4058,6 +4075,7 @@ body.page-green {
 	.mb10-sm{margin-bottom:10px;}
 	.mr10-sm{margin-right:10px;}
 	.ml10-sm{margin-left:10px;}
+	.m-auto-sm{margin:auto;}
 	
 	.lr-text-center-sm, .text-center-sm{text-align:center;}
 
@@ -4069,9 +4087,14 @@ body.page-green {
 	.lr-flex-center-sm { justify-content: center;}
 	.lr-flex-auto-sm {	flex: auto;	}
 	
-	.w-auto-sm{width:auto;}
+	.w50-sm{width:50%;}
+	.w60-sm{width:60%;}
+	.w70-sm{width:70%;}
 	.w80-sm{width:80%;}
-	.w100-sm{width:100%;}	
+	.w100-sm{width:100%;}
+	.w-auto-sm{width:auto;}	
+
+	.h-auto-sm {height: auto;}
 }
 
 @media (max-width:600px){
@@ -4167,34 +4190,59 @@ body.page-green {
 
 
 /* TRANSFORM */
-.lr-transform-rotate-90 {
-    -moz-transform: rotate(90deg);
-    -ms-transform: rotate(90deg); 
-    -webkit-transform: rotate(90deg);
-    -o-transform: rotate(90deg); 
-    transform: rotate(90deg);
-}
-.lr-transform-rotate--90 {
-    -moz-transform: rotate(-90deg);
-    -ms-transform: rotate(-90deg); 
-    -webkit-transform: rotate(-90deg);
-    -o-transform: rotate(-90deg); 
-    transform: rotate(-90deg);
-}
-.lr-transform-rotate-45 {
+.lr-rotate-3, .rotate-3{transform: rotate(-3deg);}
+.lr-rotate3, .rotate3{transform: rotate(3deg);}
+.lr-rotate-5, .rotate-5{transform: rotate(-5deg);}
+.lr-rotate5, .rotate5{transform: rotate(5deg);}
+.lr-rotate-10, .rotate-10{transform: rotate(-10deg);}
+.lr-rotate10, .rotate10{transform: rotate(10deg);}
+.lr-rotate-15, .rotate-15{transform: rotate(-15deg);}
+.lr-rotate15, .rotate15{transform: rotate(15deg);}
+.lr-rotate-20, .rotate-20{transform: rotate(-20deg);}
+.lr-rotate20, .rotate20{transform: rotate(20deg);}
+.lr-rotate-25, .rotate-25{transform: rotate(-25deg);}
+.lr-rotate25, .rotate25{transform: rotate(25deg);}
+.lr-rotate-30, .rotate-30{transform: rotate(-30deg);}
+.lr-rotate30, .rotate30{transform: rotate(30deg);}
+.lr-rotate-35, .rotate-35{transform: rotate(-35deg);}
+.lr-rotate35, .rotate35{transform: rotate(35deg);}
+.lr-rotate-40, .rotate-40{transform: rotate(-40deg);}
+.lr-rotate40, .rotate40{transform: rotate(40deg);}
+.lr-rotate45, .rotate45 {
     -moz-transform: rotate(45deg);
     -ms-transform: rotate(45deg); 
     -webkit-transform: rotate(45deg);
     -o-transform: rotate(45deg); 
     transform: rotate(45deg);
 }
-.lr-transform-rotate--45 {
+.lr-rotate-45, .rotate-45 {
     -moz-transform: rotate(-45deg);
     -ms-transform: rotate(-45deg); 
     -webkit-transform: rotate(-45deg);
     -o-transform: rotate(-45deg); 
     transform: rotate(-45deg);
 }
+
+.lr-rotate90, .rotate90 {
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg); 
+    -webkit-transform: rotate(90deg);
+    -o-transform: rotate(90deg); 
+    transform: rotate(90deg);
+}
+.lr-rotate-90, .rotate-90 {
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg); 
+    -webkit-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg); 
+    transform: rotate(-90deg);
+}
+.lr-rotate180, .rotate180 {transform: rotate(180deg);}
+.lr-rotate-180, .rotate-180 {transform: rotate(-180deg);}
+
+.lr-rotate270, .rotate270 {transform: rotate(270deg);}
+.lr-rotate-270, .rotate-270 {transform: rotate(-270deg);}
+
 
 .lr-slide-right{
   transform: translateX(-150%);
