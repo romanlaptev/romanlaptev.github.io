@@ -16,11 +16,10 @@ use module:
 
 //(function(){
 	var sharedFunc =  sharedFunc || function(){
-
-
+	
 		// private variables and functions
 		var _vars = {
-			"logOrderBy": "ASC"
+			"logOrderBy": "DESC"//"ASC"
 		};//end _vars
 
 //----------------------
@@ -539,7 +538,7 @@ console.log( logMsg );
 				"responseType" : "", //"", "arraybuffer", "blob", "document","json","text","moz-chunked-arraybuffer","ms-stream"
 				"async" :  true,
 				"dataUrl" : false,
-				"requestParams": false,
+				"requestParams": false,//{dir: p.dirName}
 				"formData": null,
 				"headers": null,// { 'x-my-custom-header': 'some value'},
 //"Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
@@ -625,7 +624,7 @@ console.log(arguments);
 				.catch(catchFunc);
 
 			function thenFunc(response){
-//console.log( response);
+console.log( response);
 //Content-Type	application/xml
 				return response.text();
 				//return response.json();
@@ -659,6 +658,25 @@ console.log('Fetch Error : ', err);
 			var timeStart = new Date();
 			var logMsg;
 
+			var url = p.dataUrl;
+			//get values from params and form paramsStr....
+			if( p.requestMethod === "GET"){
+				var num=0;
+				if( p.requestParams ){
+					var paramsStr = "";
+					for( var item in p.requestParams ){
+						var value = encodeURIComponent( p.requestParams[item] );
+						if( num > 0){
+							paramsStr += "&";
+						}
+						paramsStr += item + "=" + value;
+						num++;
+					}//next
+					url += "?"+ paramsStr;
+				}
+			}
+//console.log(url);
+
 			var xhr = _createRequestObject();
 			if ( !xhr ) {
 				logMsg = "XMLHttpRequest create error";
@@ -675,7 +693,7 @@ console.log( logMsg, xhr );
 			}
 
 			try{
-				xhr.open( p.requestMethod, p.dataUrl, p.async );
+				xhr.open( p.requestMethod, url, p.async );
 			} catch(e){
 				logMsg = "xhr.open error...";
 //for( var key in e){
@@ -801,6 +819,7 @@ console.log("event type:" + e.type);
 			}catch(e){
 //console.log(e);
 				logMsg = "error send XHR...";
+				logMsg += "url: " + url;
 				if( typeof  p["onError"] === "function"){
 					p["onError"]({
 						"message" : logMsg,
@@ -855,18 +874,18 @@ console.log("end request, state ", xhr.readyState, ", status: ", xhr.status);
 			}//end onreadystatechange
 
 			function _onload(e){
-//console.log("event type:" + e.type);
-
-				var logMsg = "ajax load time: " + e.timeStamp + " ms, "+ (e.timeStamp / 1000)+" sec , ";
-				logMsg += "total: " + e.total +"bytes , ";
-				logMsg += "loaded: " + e.loaded + " bytes, " + (e.loaded / 1024).toFixed(2)+" Kbytes";
-	console.log(logMsg);
-		//console.log( this.responseText );
+//console.log("event:", e);
 
 				var timeEnd = new Date();
 				var runtime = (timeEnd.getTime() - timeStart.getTime());
-				logMsg = "sendRequest runtime: " + runtime + " ms, "+ (runtime / 1000)+" sec";
-	console.log(logMsg);
+				logMsg = "server AJAX request,  runtime: " + runtime + " ms, "+ (runtime / 1000)+" sec<br>";
+				logMsg += "<div class='pl20 lr-list bg-white fz12'>";
+				logMsg += "<li>url: " + decodeURIComponent( e.target.responseURL )+" </li> ";
+				//logMsg += "<li>url: " + url +" </li> ";
+				logMsg += "<li>total: " + e.total +"bytes </li>";
+				logMsg += "<li>loaded: " + e.loaded + " bytes, " + (e.loaded / 1024).toFixed(2)+" Kbytes</li>";
+				logMsg += "</div> ";
+//console.log(logMsg);
 
 				var _response = false;
 				if( "response" in xhr){
@@ -877,14 +896,16 @@ console.log("end request, state ", xhr.readyState, ", status: ", xhr.status);
 				//_vars["contentType"] = xhr.getResponseHeader('content-type');
 
 				if( typeof p.callback === "function"){
-					p.callback(_response);
+					p.callback({
+						"message" : logMsg,
+						"status" :"success",
+						"response": _response
+					});
 				}
 
 			}//end onload
 
-
 		}//end _xmlHttpRequest()
-
 
 
 		/*
