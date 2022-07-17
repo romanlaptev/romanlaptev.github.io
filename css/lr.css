@@ -3217,7 +3217,6 @@ background-image: radial-gradient(ellipse closest-corner at center, #135987 30%,
 
 
 .bg-gradient-success {/* Bootstrap button */
-  color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #5bb75b;
   *background-color: #51a351;
@@ -3234,7 +3233,6 @@ background-image: radial-gradient(ellipse closest-corner at center, #135987 30%,
  }
 
 .bg-gradient-green {
-	color: #000;
 	background-color: #7ec971;
 	background-image: -webkit-linear-gradient(bottom,#7ec971,#90e182);
 	background-image: -moz-linear-gradient(bottom,#7ec971,#90e182);
@@ -3248,7 +3246,6 @@ background-image: radial-gradient(ellipse closest-corner at center, #135987 30%,
   background-image: linear-gradient(to top, #0caa40, #2cf136);
 }
 .bg-gradient-green3 {
-	background-color: #fff;
 	background-image: -webkit-linear-gradient(bottom,#789931,#c3e245);
 	background-image: -moz-linear-gradient(bottom,#789931,#c3e245);
 	background-image: -o-linear-gradient(bottom,#789931,#c3e245);
@@ -3269,7 +3266,6 @@ background-image: radial-gradient(ellipse closest-corner at center, #135987 30%,
 
 
 .bg-gradient-info {/* Bootstrap button */
-  color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #49afcd;
   *background-color: #2f96b4;
@@ -4118,10 +4114,6 @@ body.page-green {
 	
 	.lr-text-center-sm, .text-center-sm{text-align:center;}
 
-	.lr-flex-center-sm  { 
-		-ms-flex-pack: center !important;
-		justify-content: center;
-	}
 	.lr-flex-wrap-sm {	flex-wrap: wrap;}
 	.lr-flex-center-sm { justify-content: center;}
 	.lr-flex-auto-sm {	flex: auto;	}

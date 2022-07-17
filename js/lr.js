@@ -40,14 +40,14 @@ _log(msg);
 
 			window.console = {"log" : function( msg ){
 					if( typeof msg === "string"){
-						msg = "<small>console.log </small>(&quot;"+ msg + "&quot;)";
+						msg = "console.log ("+ msg + ")";
 					} else {
 						msg = "console.log (  "+ typeof msg  + ")";
 					}
 
 					var log = _getById( "log" );
 					if( log ){
-						_alert( msg, "info" );
+						_alert_log( msg, "info" );
 					} else {
 						alert(msg);
 						//document.writeln(msg);
@@ -598,7 +598,7 @@ console.log(arguments);
 //console.log("function _fetchRequest()");
 
 			var p = {
-				method : opt.requestMethod,
+				method : opt.requestMethod//,
 				//body: JSON.stringify({ items: obj, name: n.name.value, phone: n.phone.value, code: n.code.value }),
 				//referrer: "about:client",
 				//referrerPolicy: "no-referrer-when-downgrade", // no-referrer, origin, same-origin...
@@ -618,10 +618,17 @@ console.log(arguments);
 			}
 //console.log(p);
 
+/*@cc_on @*/
+/*@
+	@if (@_jscript_version >=10)
+@*/
 			fetch( dataUrl, p)
 				.then( thenFunc )
 				.then( thenFunc2 )
 				.catch(catchFunc);
+/*@
+	@end 
+@*/
 
 			function thenFunc(response){
 console.log( response);
@@ -643,7 +650,7 @@ console.log('Fetch Error : ', err);
 				if( typeof  opt["onError"] === "function"){
 					opt["onError"]({
 						"msg" : "Fetch Error: " + err,
-						"status" :"error",
+						"status" :"error"//,
 						//"errorObj" : err
 					});
 				}
@@ -1849,7 +1856,7 @@ ONLY second LEVEL !!!!!!!!!!!!
 				"PushManager": window.PushManager  ? true : false,
 				"EventSource": window.EventSource  ? true : false,
 				"InternationalizationAPI": window.Intl  ? true : false,
-				"supportCSSvars": _test_CSSvars(),
+				"supportCSSvars": _test_CSSvars()//,
 				//CanvasSupported
 				//WebGL support
 				//SVG support
@@ -2370,3 +2377,7 @@ console.log("image load error", e);
 	});//end scroll
 
 }
+
+//IE javascript  version
+//var jscriptVersion = new Function("/*@cc_on return @_jscript_version; @*/")();
+//alert(jscriptVersion);
