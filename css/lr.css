@@ -35,7 +35,7 @@ html, body{
   --breakpoint-sm: 768px;
   --breakpoint-md: 980px;
   --breakpoint-lg: 1280px;
-  --breakpoint-xl: 1600px;
+  --breakpoint-xl: 1400px;
 }
 
 a {
@@ -1785,29 +1785,33 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 .bg-grey-d5{  background-color: #D5D5D5;}
 
+.bg-grey-6D{  background-color: #6D6D6D;}
+.color-grey-6D {color: #6D6D6D;}
+.lr-border-grey-6D {border-color: #6D6D6D;}
+
 .bg-grey1{ /* comp-books.css */
-  background-color: #404050 !important;
+  background-color: #404050;
 }
 .bg-grey2{ /* comp-books.css */
-  background-color: #5E789C !important;
+  background-color: #5E789C;
 }
-.bg-grey3{  background-color: #2C3F66 !important;}
+.bg-grey3{  background-color: #2C3F66;}
 .bg-grey4{ /* comp-books.css */
-  background-color: #5A5963 !important;
+  background-color: #5A5963;
 }
 .bg-grey5{/*css.html*/
-  background-color: #475570 !important;
+  background-color: #475570;
 }
 .bg-grey6{/* dm-modal */
-  background-color: #607d8b !important;
+  background-color: #607d8b;
 }
 .bg-grey7{/* pamyat-naroda.ru */
-  background-color: #567793 !important;
+  background-color: #567793;
 }
-.bg-raven{  background-color: #727B89 !important;}
+.bg-raven{  background-color: #727B89;}
 
 .bg-grey-w { background-color:#5D7896;}
-.color-grey-w {color: #5D7896 !important;}
+.color-grey-w {color: #5D7896;}
 .lr-border-grey {border-color: #5D7896;}
 
 .bg-grey-suva { background-color:#9a8c89;}
@@ -2274,6 +2278,9 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg--bronze-lighter { background-color: hsl(28,40%,92%);}
 .bg--bronze-darker { background-color: hsl(28,31%,52%);}
 
+.bg-coffee-ae { background-color: #ae9e88;}
+.color-coffee {color: #ae9e88;}
+.lr-border-coffee {border-color: #ae9e88;}
 
 /*Оттенки серого цвета*/
 .bg-dark-blue-gray{  background-color: #334455 !important;}
@@ -3995,9 +4002,49 @@ body.page-green {
 }
 
 
-/*====== MEDIA styles =======*/
-/*Extra large*/
-@media screen and (max-width:1600px){
+/*====== MEDIA styles =======
+https://bootstrap-5.ru/docs/5.2/layout/breakpoints/#core-concepts
+https://getuikit.com/v2/docs/core.html
+*/
+
+/* bootstrap3 */
+/*
+@media (max-width: 767px) {
+  .hidden-xs {    display: none !important;  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+ .hidden-sm {    display: none !important;  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .hidden-md {    display: none !important;  }
+}
+@media (min-width: 1200px) {
+  .hidden-lg {    display: none !important;  }
+}
+*/
+@media (min-width: 1400px){
+	.lr-hidden-xxl {    display: none !important;  }
+	.d-none-xxl{display:none}
+}
+@media (min-width: 1280px)  and (max-width: 1400px){
+	.lr-hidden-lg {    display: none !important;  }
+}
+@media (min-width: 980px)  and (max-width: 1280px){
+	.lr-hidden-md {    display: none !important;  }
+}
+@media (min-width: 768px)  and (max-width: 980px){
+	.lr-hidden-sm {    display: none !important;  }
+}
+@media (min-width: 600px)  and (max-width: 768px){
+	.lr-hidden-xs {    display: none !important;  }
+}
+@media (max-width: 600px){
+	.lr-hidden-xxs {    display: none !important;  }
+}
+
+@media screen and (max-width:1400px){
+	.d-none-xl {display:none}
+	
 	.p10-xl{padding:10px;}
 	.pt10-xl{padding-top:10px;}
 	.pb10-xl{padding-bottom:10px;}
@@ -4013,7 +4060,7 @@ body.page-green {
 
 @media (max-width:1280px){
 	.lr-panel-inline {		width: 45%;	}
-	
+	.p0-lg {padding: 0;}
 	.p10-lg{padding:10px;}
 	.pt10-lg{padding-top:10px;}
 	.pb10-lg{padding-bottom:10px;}
@@ -4029,13 +4076,16 @@ body.page-green {
 	.w60-lg { width:60%;  }  
 	.w80-lg{width:80%;}
 	.w100-lg{width:100%;}
-	
+	.w-auto-lg{width:auto;}
 }
 @media (max-width:980px){
 	.lr-container {	width: 90%;}
 	.list-group-item a {	display: block;	}
 	.lr-panel-inline {		width: auto !important;	}
 
+	.d-none-md{ display:none } 
+	.d-block-md{ display:block !important } 
+	
 	.p0-md {padding: 0;}
 	.pt0-md {padding-top: 0;}
 	.pb0-md {padding-bottom: 0;}
@@ -4075,11 +4125,13 @@ body.page-green {
 	.lr-flex-auto-md {	flex: auto;	}
 }
 
-/* IPAD */
 @media screen and (max-width:768px){
 	.page-header h1 {		font-size: 150%;	}
 	.float-left, .pull-left {		float: none;	}
 	.float-right, .pull-right {		float: none;	}
+
+	.d-none-sm {display:none}
+	.d-block-sm{ display:block !important} 
 	
 	.p0-sm {padding: 0;}
 	.pt0-sm {padding-top: 0;}
@@ -4135,6 +4187,9 @@ body.page-green {
 	.lr-container {		width: 99%;	}
 	.page-header h1 {		font-size: 120%;	}
 	.lr-panel-inline {		display: block;	}
+
+	.d-none-xs {display:none}
+	.d-block-xs{ display:block !important} 
 	
 	.p10-xs{padding:10px;}
 	.pt10-xs{padding-top:10px;}
@@ -4168,6 +4223,8 @@ body.page-green {
 
 /* iPhone */
 @media screen and (max-width:414px){
+	.d-none-xxs{display:none}
+	.d-block-xxs{ display:block } 
 }
 
 /* iPhone 6 */
@@ -4180,19 +4237,10 @@ body.page-green {
 		width: 100%;
 		padding: 0;
 	}
-/*	
-	.log-panel {		position: static !important;	}
-	.log-panel  .lr-panel-body {
-		padding: 5px;
-		word-wrap: break-word;
-	}
-*/	
 	.p20 {padding: 2px;	}
 	.m20{margin:2px;}
 	.lr-panel-body {		padding: 5px;	}
 }
-
-.template { display:none}
 
 .d-inline{display:inline}
 .d-inline-block{display:inline-block}
@@ -4202,35 +4250,8 @@ body.page-green {
 .d-table-cell{display:table-cell}
 .d-flex{display:flex}
 .d-inline-flex{display:inline-flex}
-
 .d-none, .lr-hidden, .lr-hide {display:none}
-@media (max-width:600px){
-	.d-none-sm, .lr-hidden-sm, .lr-hide-sm {display:none}
-}
-@media (max-width:400px){
-	.d-none-xs, .lr-hidden-xs, .lr-hide-xs {display:none}
-}
-
-@media (min-width:768px){	
-	.d-block-md{ display:block } 
-}
-@media (max-width:768px){	
-	.d-block-sm{ display:block } 
-}
-
-/* bootstrap3 */
-@media (max-width: 767px) {
-  .hidden-xs {    display: none !important;  }
-}
-@media (min-width: 768px) and (max-width: 991px) {
-  .hidden-sm {    display: none !important;  }
-}
-@media (min-width: 992px) and (max-width: 1199px) {
-  .hidden-md {    display: none !important;  }
-}
-@media (min-width: 1200px) {
-  .hidden-lg {    display: none !important;  }
-}
+.template { display:none}
 
 .lr-overflow-auto {overflow: auto;}
 .lr-overflow-hidden {overflow: hidden;}

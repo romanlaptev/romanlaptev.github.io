@@ -285,6 +285,7 @@ https://ru.wikipedia.org/wiki/%D0%91%D1%80%D0%B8%D0%B4%D0%B6%D0%B5%D1%81,_%D0%9B
 	<tag tid="354" vid="3" name="U"></tag>
 	<tag tid="355" vid="1" name="Михаил Светин">https://www.kinopoisk.ru/name/269888/</tag>
 	<tag tid="356" vid="1" name="home video">Домашнее видео</tag>
+	<tag tid="357" vid="1" name="1962"></tag>
 </taglist>
 
 
@@ -16082,6 +16083,48 @@ http://vse-subtitri.ru/tv-shows/game-of-thrones-1492.html</description>
 
 	<published>05-Jun-2022 12:12:32</published>
 	<updated>13-Jun-2022 10:26:42</updated>
+</video>
+
+<video type="video">
+	<title>
+		<item>Гусарская баллада</item>
+</title>
+	
+	<producer>Эльдар Рязанов</producer>
+	<roles>Лариса Голубкина
+    Юрий Яковлев
+    Игорь Ильинский
+    Николай Крючков
+    Виктор Кольцов
+    Антоний Ходурский
+    Татьяна Шмыга
+Лев Поляков
+Алексей Полевой
+Владимир Ширяев	</roles>
+	<description></description>
+	<pictures>
+		<img src="https://i3.ytimg.com/vi/929O4WzLRDg/maxresdefault.jpg"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="embed-video" href="http://youtube.com/embed/929O4WzLRDg">youtube.com</a></li>
+		<li><a data-type="external-link" href="https://www.kinopoisk.ru/film/44623/">kinopoisk.ru</a></li>
+	</ul>
+
+	<tags>
+		<item tid="96">история</item>
+		<item tid="5">комедия</item>
+		<item tid="164">мюзикл</item>
+		<item tid="139">Юрий Яковлев</item>
+		<item tid="82">Рязанов, Эльдар</item>
+		<item tid="73">СССР</item>
+		<item tid="232">Г</item>
+		<item tid="272">youtube</item>
+		<item tid="357">1962</item>
+	</tags>
+
+	<published>24-Jul-2022 12:29:18</published>
+	<updated>24-Jul-2022 12:36:41</updated>
 </video>
 
 <video type="videoclip">

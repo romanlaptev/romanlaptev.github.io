@@ -1856,13 +1856,16 @@ ONLY second LEVEL !!!!!!!!!!!!
 				"PushManager": window.PushManager  ? true : false,
 				"EventSource": window.EventSource  ? true : false,
 				"InternationalizationAPI": window.Intl  ? true : false,
-				"supportCSSvars": _test_CSSvars()//,
+				"supportCSSvars": _test_CSSvars(),
+				"loading": 'loading' in HTMLImageElement.prototype, // IMG: image attribute loading
+				"srcset": 'srcset' in HTMLImageElement.prototype, //IMG: 'srcset'  attribute support
+				"picture" : typeof window.HTMLPictureElement === "function"//, //IMG: tag 'picture' support
+	
 				//CanvasSupported
 				//WebGL support
 				//SVG support
 				//classList support
 				//test media support
-				//image attribute loading
 			};
 		};//end _testSupport()
 
