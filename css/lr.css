@@ -88,6 +88,7 @@ pre {	overflow: auto;}
 .w11-12, .w22-24 {  width: 91.6666666667%;}
 .w23-24 {    width: 95.8333%; }
 .w100,  .w5-5, .w24-24, .w12-12 {  width: 100%; }
+.w100-imp{width:100% !important;}
 
 .w0 {width:0;}
 .w30px {width:30px;}
@@ -151,8 +152,13 @@ pre {	overflow: auto;}
 .h75{height:75%;}
 .h100{height:100%;}
 
-.mw-100, .responsive-width {max-width: 100%;}
-.mh-100, .responsive-height {max-height: 100%;}
+.max-w-100, .responsive-width {max-width: 100%;}
+.max-h-100, .responsive-height {max-height: 100%;}
+
+.min-h-100px{min-height:100px;}
+.min-h-200px{min-height:200px;}
+.min-h-300px{min-height:300px;}
+.min-h-450px{min-height:450px;}
 
 .lr-row {
   margin-left: auto;
@@ -564,6 +570,74 @@ border-top: 16px solid #1c5a83;
 0% { transform: rotate(0deg); }
 100% { transform: rotate(360deg); }
 }
+
+
+/*------- SPINNER animations (Bootsrap 4) -------*/
+.spinner-border {
+	display: inline-block;
+	width: 4rem;
+	height: 4rem;
+	vertical-align: -.125em;
+	/*vertical-align: text-bottom;*/
+	border: .25em solid currentColor;
+	border-right-color: transparent;
+	border-radius: 50%;
+	-webkit-animation: .75s linear infinite spinner-border;
+	animation: .75s linear infinite spinner-border;
+}
+.spinner-border-sm {
+  width: 1rem;
+  height: 1rem;
+  border-width: 0.2em;
+}
+@-webkit-keyframes spinner-border {
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes spinner-border {
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.spinner-grow {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  vertical-align: text-bottom;
+  background-color: currentColor;
+  border-radius: 50%;
+  opacity: 0;
+  -webkit-animation: spinner-grow .75s linear infinite;
+  animation: spinner-grow .75s linear infinite;
+}
+
+.spinner-grow-sm {
+  width: 1rem;
+  height: 1rem;
+}
+@-webkit-keyframes spinner-grow {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes spinner-grow {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
 
 
 /* LIST */
@@ -2194,6 +2268,8 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-coffee3 { background-color:#795D4C; }
 .bg-coffee-bean { background-color:#2A140E; }
 .bg-tea { background-color:#923c01; }
+.bg-tea2 { background-color:#440808; }
+
 
 .bg-red-brown {background-color: #5A2000;}
 
@@ -2663,7 +2739,18 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-orange4 {/* video.css*/
   background-color: #FECD90 !important;
 }
-.bg-orange5 {  background-color: #E9B96E !important;}
+.bg-orange5 {  background-color: #E9B96E;}
+
+.bg-amber { background-color: #FFC000;}
+.color-amber { color: #FFC000;}
+.bg-amber2 { background-color: #FFC600;}
+.lr-border-amber, .border-amber{border-color: #FFC000;}
+.lr-border-amber li {border-color: #FFC000;}
+.lr-nav-amber  li a:hover, .bg-hover-amber:hover {
+    background-color: #FFC000;
+    color: #000000;
+    background-image: none;
+}
 
  .bg--orange { background-color::hsl(27,90%,55%);}
  .bg--orange-050 { background-color: hsl(27,100%,97%);}
@@ -3855,6 +3942,12 @@ body.page-green {
 .pos-left-90 {	left: 90%;	}
 .pos-left-100 {	left: 100%;	}
 
+.pos-rel-left-5px{left:5px;}
+.pos-rel-left-10px{left:10px;}
+.pos-rel-left-20px{left:20px;}
+.pos-rel-left-25px{left:25px;}
+.pos-rel-left-30px{left:30px;}
+
 .pos-right-0{right: 0;	}
 
 .pos-top-0{	top: 0;	}
@@ -3867,6 +3960,12 @@ body.page-green {
 .pos-top-80 {	top: 80%;	}
 .pos-top-90 {	top: 90%;	}
 .pos-top-100 {	top: 100%;	}
+
+.pos-rel-top-5px{top:5px;}
+.pos-rel-top-10px{top:10px;}
+.pos-rel-top-20px{top:20px;}
+.pos-rel-top-25px{top:25px;}
+.pos-rel-top-30px{top:30px;}
 
 
 .pos-bottom-0{bottom: 0;	}
@@ -4025,6 +4124,13 @@ https://getuikit.com/v2/docs/core.html
 @media (min-width: 1400px){
 	.lr-hidden-xxl {    display: none !important;  }
 	.d-none-xxl{display:none}
+	
+	.w50-xxl{width:80%;}
+	.w60-xxl{width:80%;}
+	.w70-xxl{width:80%;}
+	.w80-xxl{width:80%;}
+	.w90-xxl{width:90%;}
+	.w100-xxl{width:100%;}
 }
 @media (min-width: 1280px)  and (max-width: 1400px){
 	.lr-hidden-lg {    display: none !important;  }
@@ -4115,6 +4221,7 @@ https://getuikit.com/v2/docs/core.html
 	.w60-md{width:60%;}
 	.w70-md{width:70%;}
 	.w80-md{width:80%;}
+	.w90-md{width:90%;}
 	.w100-md{width:100%;}
 	.w-auto-md{width:auto;}	
 
@@ -4407,22 +4514,26 @@ https://getuikit.com/v2/docs/core.html
 
 	
 /* FONTS */
-.fz9 {  font-size: 9px;}
-.fz10 {  font-size: 10px;}
-.fz11 {  font-size: 11px;}
-.fz12 {  font-size: 12px;}
-.fz14 {  font-size: 14px;}
-.fz16 {  font-size: 16px;}
-.fz17 {  font-size: 17px;}
-.fz18 {  font-size: 18px;}
-.fz19 {  font-size: 19px;}
-.fz20 {  font-size: 20px;}
-.fz21 {  font-size: 21px;}
-.fz22 {  font-size: 22px;}
-.fz24 {  font-size: 24px;}
-.fz26 {  font-size: 26px;}
-.fz28 {  font-size: 28px;}
-.fz30 {  font-size: 30px;}
+.fz9{font-size:9px;}
+.fz10{font-size:10px;}
+.fz11{font-size:11px;}
+.fz12{font-size:12px;}
+.fz14{font-size:14px;}
+.fz16{font-size:16px;}
+.fz17{font-size:17px;}
+.fz18{font-size:18px;}
+.fz19{font-size:19px;}
+.fz20{font-size:20px;}
+.fz21{font-size:21px;}
+.fz22{font-size:22px;}
+.fz24{font-size:24px;}
+.fz26{font-size:26px;}
+.fz28{font-size:28px;}
+.fz30{font-size:30px;}
+
+.fz1rem{font-size:1rem}
+.fz1-125rem{font-size:1.125rem}
+.fz1-5rem{font-size:1.5rem}
 
 /* Weight modifier
 =================== */

@@ -19,7 +19,9 @@ use module:
 	
 		// private variables and functions
 		var _vars = {
-			"logOrderBy": "DESC"//"ASC"
+			"logOrderBy": "DESC", //"ASC"
+			"displayLog": true,
+			"support": _testSupport()//,
 		};//end _vars
 
 //----------------------
@@ -44,14 +46,27 @@ _log(msg);
 					} else {
 						msg = "console.log (  "+ typeof msg  + ")";
 					}
+//alert( _vars["displayLog"] );
+					if(!_vars["displayLog"]){
+						return false;
+					}			
 
 					var log = _getById( "log" );
-					if( log ){
-						_alert_log( msg, "info" );
-					} else {
-						alert(msg);
+					if( !log ){
+//document.body.append("<h1>t2</h1>")
+//var textElem = document.createTextNode('test1')
+//document.body.appendChild(textElem)
+var newDiv = document.createElement("div");
+newDiv.className = "log-panel";
+newDiv.setAttribute("id", "log");
+//newDiv.innerHTML = "<h1>this is newDiv...</h1>";
+//document.body.append(newDiv);
+document.body.appendChild(newDiv);
+						//alert(msg);
 						//document.writeln(msg);
 					}
+					_alert_log( msg, "info" );
+					
 				}
 			};
 		}
@@ -238,6 +253,9 @@ document.onreadystatechange = function () {
 
 
 		function _log( msg, id){
+			if(!_vars["displayLog"]){
+				return false;
+			}			
 //console.log(arguments);
 //alert(arguments.length);
 //		for( var n = 0; n < arguments.length; n++){
@@ -276,14 +294,16 @@ document.onreadystatechange = function () {
 		//console.log(_showHiddenLog);
 				//_showHiddenLog();
 			//}
-			if( output && output.style.display !== "block"){
+			if( output && output.style.display !== "none"){
 				output.style.display = "block";
 			}
-
 		}//end _log()
 
-
 		function _alert(opt){
+			if(!_vars["displayLog"]){
+				return false;
+			}			
+			
 			var p = {
 				"message" : null,
 				"level": "",
@@ -340,6 +360,9 @@ console.log("error, undefined log wrapper: ", output);
 		}//end _alert()
 
 		function _alert_log( message, level ){
+			if(!_vars["displayLog"]){
+				return false;
+			}			
 			switch (level) {
 				case "info":
 					message = "<p class='alert alert-info'>" + message + "</p>";
@@ -575,7 +598,7 @@ console.log(arguments);
 				return false;
 			}
 
-			this.vars["support"] = this.testSupport();
+			//this.vars["support"] = this.testSupport();
 //File API
 //FormData
 //ActiveXObject
@@ -1859,8 +1882,9 @@ ONLY second LEVEL !!!!!!!!!!!!
 				"supportCSSvars": _test_CSSvars(),
 				"loading": 'loading' in HTMLImageElement.prototype, // IMG: image attribute loading
 				"srcset": 'srcset' in HTMLImageElement.prototype, //IMG: 'srcset'  attribute support
-				"picture" : typeof window.HTMLPictureElement === "function"//, //IMG: tag 'picture' support
-	
+				"picture" : typeof window.HTMLPictureElement === "function", //IMG: tag 'picture' support
+//https://developer.mozilla.org/ru/docs/Web/HTML/Element/template				
+				"template": 'content' in document.createElement('template')//,
 				//CanvasSupported
 				//WebGL support
 				//SVG support
@@ -1894,7 +1918,7 @@ ONLY second LEVEL !!!!!!!!!!!!
 			return dataStoreType;
 		}//end _detectDataStoreType()
 
-		var _supportTouch = function() {
+		function  _supportTouch() {
 			//return !!('ontouchstart' in window);
 
 			var supportTouch = false;
@@ -1909,14 +1933,14 @@ ONLY second LEVEL !!!!!!!!!!!!
 			return supportTouch;
 		};//end _supportTouch
 
-		var _supportFileAPI = function(){
+		function _supportFileAPI(){
 			if( window.File && window.FileList && window.FileReader ){
 				return true;
 			}
 			return false;
 		}//end __supportFileAPI()
 
-		var _supportXHR2 =  function(){
+		function _supportXHR2(){
 			var result = false;
 
 			var xhr = new XMLHttpRequest();
@@ -1930,7 +1954,6 @@ ONLY second LEVEL !!!!!!!!!!!!
 
 			return result;
 		}//end
-
 
 
 		// public interfaces
