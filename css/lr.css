@@ -2947,7 +2947,6 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 
 /* YELLOW  */
-
 .bg-yellow-050 { background-color: #fdf7e3;}
 .bg-yellow-100 { background-color: #fbf2d4;}
 .bg-yellow-200 { background-color: #f1e5bc;}
@@ -2970,8 +2969,6 @@ https://www.omiod.com/colors/?rgb=d0ccd5
  .bg--yellow-700 { background-color: hsl(47,79%,40%);}
  .bg--yellow-800 { background-color: hsl(47,82%,34%);}
  .bg--yellow-900 { background-color: hsl(47,84%,28%);}
-
-
 
 .bg-yellow {background-color: #ffff00;}
 .lr-border-yellow {border-color:#ffff00;}
@@ -3004,6 +3001,25 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-middlebrown { background:#bf794e; }
 .bg-peach2 { background:#efd0b1; }
 
+.bg-matte-white{background-color:#f2f3f4;}
+
+.bg-white-d5{background-color:#ffefd5;}
+.bg-white-cream{background-color:#fffdd0;}
+.bg-white-blond{background-color:#faf0be;}
+
+.bg-vanilla{background-color:#f3e5ab;}
+.bg-rosy-af{background-color:#ebc2af;}
+.bg-almond{background-color:#efdecd;}
+
+.bg-yellow-flax{background-color:#eedc82;}
+.bg-yellow-peach{background-color:#fadfad;}
+.bg-peach-b4{background-color:#ffe5b4;}
+.bg-pale-yellow{background-color:#f0dc82;}
+.bg-old-gold{background-color:#cfb53b;}
+
+.bg-brown-chestnut{background-color:#986960;}
+.bg-darkcoral{background-color:#cd5b45;}
+.bg-copper{background-color:#b87333;}
 
 .bg-deeporange { background:#CCA96E; }
 
