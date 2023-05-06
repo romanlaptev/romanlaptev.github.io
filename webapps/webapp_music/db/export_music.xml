@@ -1952,5 +1952,34 @@ https://en.wikipedia.org/wiki/Katzenjammer_Kabarett</description>
 	<published format="d-M-Y H:i:s">04-Apr-2022 07:39:37</published>
 	<updated format="d-M-Y H:i:s">04-Apr-2022 07:43:22</updated>
 </node>
+
+<node type="playlist">
+	<title>
+		<item>This Way to the Egress</item>
+	</title>
+	<images>
+		<img src="https://avatars.yandex.net/get-music-user-playlist/59900/9941293.1054.82068/200x200?1683376900655"/>
+	</images>
+
+	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/T/This Way to the Egress/playlist.json">playlist.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1054">music.yandex.ru</a></li>
+		<li><a data-type="external-link" href="http://thiswaytotheegress.com/music-band-egress-art-punk">thiswaytotheegress.com</a></li>
+	</related_links>
+
+	<node_tags>
+		<item vid="5" tid="100" group_name="alphabetical_voc">T</item>
+		<item vid="9" tid="129" group_name="music_genre">Ска</item>
+		<item vid="2" tid="157" group_name="music_styles">ска-панк</item>
+		<item vid="2" tid="110" group_name="music_styles">alternative rock</item>
+		<item vid="2" tid="45" group_name="music_styles">punk</item>
+		<item vid="4" tid="116" group_name="country">США</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</node_tags>
+
+	<published format="d-M-Y H:i:s">06-May-2023 19:53:47</published>
+	<updated format="d-M-Y H:i:s">06-May-2023 19:53:47</updated>
+</node>
 	</database>
 </xroot>
