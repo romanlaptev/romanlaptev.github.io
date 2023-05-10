@@ -1981,5 +1981,30 @@ https://en.wikipedia.org/wiki/Katzenjammer_Kabarett</description>
 	<published format="d-M-Y H:i:s">06-May-2023 19:53:47</published>
 	<updated format="d-M-Y H:i:s">06-May-2023 19:53:47</updated>
 </node>
+
+<node type="playlist">
+	<title>
+		<item>Katzenjammer</item>
+	</title>
+	<images>
+		<img src="https://avatars.yandex.net/get-music-content/49876/461d43f0.a.418204-1/200x200"/>
+	</images>
+
+	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/K/Katzenjammer/playlist.json">playlist.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1055">music.yandex.ru</a></li>
+	</related_links>
+
+	<node_tags>
+		<item vid="5" tid="92" group_name="alphabetical_voc">K</item>
+		<item vid="9" tid="123" group_name="music_genre">Фолк</item>
+		<item vid="2" tid="152" group_name="music_styles">фолк-рок</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</node_tags>
+
+	<published format="d-M-Y H:i:s">10-May-2023 19:09:30</published>
+	<updated format="d-M-Y H:i:s">10-May-2023 19:09:30</updated>
+</node>
 	</database>
 </xroot>
