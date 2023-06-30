@@ -843,6 +843,7 @@ margin-left: 15px;
 	background-color: #55acee;
 	color:#fff;
 	box-shadow: 0px 5px 0px #3C93D5;
+	margin: 5px;
 }
 .lr-btn-flat:hover {
 	text-decoration: none;
@@ -1510,7 +1511,10 @@ padding: 10px;
 .color-seagreen, .text-seagreen {color: #2e8b57;}
 .color-seashell, .text-seashell {color: #fff5ee;}
 .color-sienna, .text-sienna {color: #a0522d;}
-.color-silver, .text-silver {color: #c0c0c0;}
+
+.color-silver,.text-silver {color: #c0c0c0;}
+.color-silver-visited:visited{color: #c0c0c0;}
+
 .color-skyblue, .text-skyblue {color: #87ceeb;}
 .color-slateblue, .text-slateblue {color: #6a5acd;}
 .color-slategray, .text-slategray {color: #708090;}
@@ -1705,6 +1709,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .border-cyan-blue10 {  border-color: #0078d4;}
 
 .bg-blue10 {  background-color: #4f6bed;}
+.bg-egyptian-blue {  background-color: #1034A6;}
 
 .bg-blue-magenta40 {  background-color: #373277;}
 .bg-blue-magenta30 {  background-color: #5c2e91;}
@@ -1918,20 +1923,10 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-purple1{  background-color: #9999CC !important;}
 .bg-purple2{background-color:  #6f42c1;}
 
-
 .bg-light-violet1{  background-color: #cecefa !important;}
 .bg-light-violet2{  background-color: #e6e6ff !important;}
-.bg-light-violet3 {/* video.css*/
-  background-color: #E6E6FF !important;
-}
-
-
 .bg-violet1{  background-color: #99c !important;}
-.bg-violet2{/* progress window*/
-  background-color: rgb(200, 200, 250) !important;
-}
-
-
+.bg-violet2{  background-color: rgb(200, 200, 250) !important;}
 .bg-dark-violet{  background-color: #021859 !important;}
 
 .bg-aliceblue {background-color: #f0f8ff;}

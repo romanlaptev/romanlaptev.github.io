@@ -1420,7 +1420,7 @@ console.log(e);
 			if( sSec < 10){
 				sSec = "0" + sSec;
 			}
-
+//????
 			var dateStr = dateStr =  sDate + "-" + sMonth + "-" + sYear + " " + sHours + ":" + sMinutes + ":" + sSec;
 			switch( p.format ){
 
