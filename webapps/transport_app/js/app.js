@@ -21,10 +21,10 @@ console.log("end webApp initialize....");
 var webApp = {
 	
 	"vars" : {
-		"transportAPI": _transport_api(),
+		//"transportAPI": _transport_api(),
 		
 		"weatherAPI": {
-				"yandex": _yandex_api(),
+				//"yandex": _yandex_api(),
 				"openweathermap": _openweathermap_api()
 		},
 		
@@ -44,13 +44,13 @@ console.log("init webapp!");
 		this["vars"]["numLoaded"] = func.getById("num-loaded");
 		
 
-		this["vars"]["tab-transport"] = webApp.vars.App.querySelector("#tab-transport");
+		//this["vars"]["tab-transport"] = webApp.vars.App.querySelector("#tab-transport");
 		this["vars"]["tab-weather"] = webApp.vars.App.querySelector("#tab-weather");
 		this["vars"]["tab-info"] = webApp.vars.App.querySelector("#tab-info");
 		this["vars"]["tab-buttons"] = webApp.vars.App.querySelectorAll("#tab-buttons .tab-btn");
 		
 		
-		webApp.vars["transportAPI"].init();
+		//webApp.vars["transportAPI"].init();
 		
 		webApp.vars["weatherAPI"]["selectAddr"] = func.getById("select-addr");
 		webApp.vars["weatherAPI"]["selectApiName"] = func.getById("select-api");
@@ -60,7 +60,7 @@ console.log("init webapp!");
 		webApp.vars["weatherAPI"]["longitudeInput"] = func.getById("longitude-input");
 		webApp.vars["weatherAPI"]["longitudeRange"] = func.getById("longitude-range");
 		
-		webApp.vars["weatherAPI"]["yandex"].init();
+		//webApp.vars["weatherAPI"]["yandex"].init();
 		webApp.vars["weatherAPI"]["openweathermap"].init();
 
 		webApp.vars["weatherAPI"]["btnRequest"] = webApp.vars["tab-weather"].querySelector(".btn-send-request");
@@ -98,7 +98,7 @@ element.dispatchEvent(event);
 };//end webApp()
 console.log(webApp);
 
-
+/*
 function _transport_api(){
 	_vars = {
 		//"dataUrl" : "data/2019-04-26.xml",
@@ -106,19 +106,28 @@ function _transport_api(){
 		//"dataUrl" : "files/test_ya_schedule.json",
 		//"dataUrl" : "files/test_ya_schedule_error.json",
 		
-/*
-		"dataUrl" : "https://cors-anywhere.herokuapp.com/\
-https://api.rasp.yandex.net/v3.0/search/?\
-from={{from_code}}&\
-to={{to_code}}&\
-apikey={{apikey}}&\
-date={{date}}&\
-transport_types=suburban&\
-system=esr&\
-show_systems=esr",
-*/
 
-		"dataUrl" : "https://romanlaptev-cors.herokuapp.com/\
+		//"dataUrl" : "https://cors-anywhere.herokuapp.com/\
+//https://api.rasp.yandex.net/v3.0/search/?\
+//from={{from_code}}&\
+//to={{to_code}}&\
+//apikey={{apikey}}&\
+//date={{date}}&\
+//transport_types=suburban&\
+//system=esr&\
+//show_systems=esr",
+
+		//"dataUrl" : "https://romanlaptev-cors.herokuapp.com/\
+//https://api.rasp.yandex.net/v3.0/search/?\
+//from={{from_code}}&\
+//to={{to_code}}&\
+//apikey={{apiKey}}&\
+//date={{date}}&\
+//transport_types=suburban&\
+//system=esr&\
+//show_systems=esr",
+
+		"dataUrl" : "http://vbox1:8080/\
 https://api.rasp.yandex.net/v3.0/search/?\
 from={{from_code}}&\
 to={{to_code}}&\
@@ -149,49 +158,48 @@ show_systems=esr",
 		"copyRight": {
 //"url": "https://cors-anywhere.herokuapp.com/\
 	//https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&format=json",
-			"url": "https://romanlaptev-cors.herokuapp.com/\
+			"url": "http://vbox1:8080/\
 https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&format=json",
 			"data": ""
 		},
 		"blocks": [
-/*		
-			{
-				"locationID" : "block-schedule",
-				"title" : "transport schedule", 
-				"templateID" : "tpl-schedule",
-				"content" : "",
-				//"visibility" : true,
-				"buildBlock" : function(){
-//console.log(this);
-					var html = _buldScheduleHtml();
-					if( html && html.length > 0 ){
-						this.content = html;
-						_draw_buildBlock( this );
-					}
-				}
-			}, //end block
-*/ 
-/*
-			{
-				"locationID" : "block-copyright",
-				"title" : "copy Right!", 
-				"templateID" : "tpl-copyright",
-				"content" :  "",
-				"buildBlock" : function(){
-//console.log(this);
-					var data = webApp.vars["copyRight"]["data"];
-					var html = _draw_wrapData({
-						"data": data,
-						"templateID": "tpl-copyright-content",
-					});
-//console.log(html);
-					if( html && html.length > 0 ){
-						this.content = html;
-						_draw_buildBlock( this );
-					}
-				}
-			}, //end block
-*/
+
+			//{
+				//"locationID" : "block-schedule",
+				//"title" : "transport schedule", 
+				//"templateID" : "tpl-schedule",
+				//"content" : "",
+				////"visibility" : true,
+				//"buildBlock" : function(){
+////console.log(this);
+					//var html = _buldScheduleHtml();
+					//if( html && html.length > 0 ){
+						//this.content = html;
+						//_draw_buildBlock( this );
+					//}
+				//}
+			//}, //end block
+
+			//{
+				//"locationID" : "block-copyright",
+				//"title" : "copy Right!", 
+				//"templateID" : "tpl-copyright",
+				//"content" :  "",
+				//"buildBlock" : function(){
+////console.log(this);
+					//var data = webApp.vars["copyRight"]["data"];
+					//var html = _draw_wrapData({
+						//"data": data,
+						//"templateID": "tpl-copyright-content",
+					//});
+////console.log(html);
+					//if( html && html.length > 0 ){
+						//this.content = html;
+						//_draw_buildBlock( this );
+					//}
+				//}
+			//}, //end block
+
 		],//end blocks
 	}//end _vars
 
@@ -426,12 +434,13 @@ https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951e
 	
 	return _vars;
 }//end _transport_api()
+*/
 
-
+/*
 function _yandex_api(){
 	_vars = {
 
-		"dataUrl" : "https://romanlaptev-cors.herokuapp.com/\
+		"dataUrl" : "http://vbox1:8080/\
 https://api.weather.yandex.ru/v2/informers?\
 lat={{latitude}}&\
 lon={{longitude}}&\
@@ -814,7 +823,7 @@ var options = {
 	
 	return _vars;
 }//end _yandex_api()
-
+*/
 
 function _openweathermap_api(){
 
@@ -1303,7 +1312,7 @@ function _urlManager( target ){
 			break;
 			
 			case "switch-tab":
-				webApp.vars["tab-transport"].classList.remove("tab-active");
+				//webApp.vars["tab-transport"].classList.remove("tab-active");
 				webApp.vars["tab-weather"].classList.remove("tab-active");
 				webApp.vars["tab-info"].classList.remove("tab-active");
 				
@@ -1329,8 +1338,8 @@ webApp.logMsg = "error, empty or undefined API api-type";
 func.logAlert(webApp.logMsg, "error");
 					return false;
 				}
-				if( apiType === "transport"){
-					apiObj = webApp.vars["transportAPI"];
+				//if( apiType === "transport"){
+					//apiObj = webApp.vars["transportAPI"];
 /*					
 var code = webApp.vars["transportAPI"].inputFrom.value;
 webApp.vars["transportAPI"]["requestParams"]["from_code"] = code;
@@ -1338,7 +1347,7 @@ webApp.vars["transportAPI"]["requestParams"]["from_code"] = code;
 var code = webApp.vars["transportAPI"].inputTo.value;
 webApp.vars["transportAPI"]["requestParams"]["to_code"] = code;
 */
-				}
+				//}
 				
 				if( apiType === "weather"){
 					apiObj = webApp.vars["weatherAPI"];
