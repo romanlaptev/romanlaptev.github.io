@@ -838,7 +838,7 @@ lat={{latitude}}\
 &callback=jsonp_callback",
 */
 
-		"weatherUrl" : "http://api.openweathermap.org/data/2.5/weather?\
+		"weatherUrl" : "https://api.openweathermap.org/data/2.5/weather?\
 lat={{latitude}}\
 &lon={{longitude}}\
 &units=metric\
@@ -850,7 +850,7 @@ lat={{latitude}}\
 		
 
 		//https://openweathermap.org/forecast5
-		"forecastUrl" : "http://api.openweathermap.org/data/2.5/forecast?\
+		"forecastUrl" : "https://api.openweathermap.org/data/2.5/forecast?\
 lat={{latitude}}\
 &lon={{longitude}}\
 &units=metric\
