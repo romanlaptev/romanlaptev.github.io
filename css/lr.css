@@ -1318,6 +1318,8 @@ padding: 10px;
 	.lr-flex-1{flex:1;}
 	.lr-flex-auto {	flex: auto;	}
 	
+	.lr-flex-fill{flex:1 1;}
+
 	.lr-flex-basis100 {	flex-basis: 100%; }
 	
 	/*=== flex Direction === */
@@ -4627,6 +4629,9 @@ https://getuikit.com/v2/docs/core.html
 
 .lr-font-oswald{font-family: 'Oswald';}
 .lr-font-overlock{font-family: 'Overlock';}
+
+.lr-font-pacifico{font-family: 'Pacifico';}
+
 .lr-font-patrick{font-family: 'Patrick Hand';}
 .lr-font-play{font-family: 'Play';}
 .lr-font-playfair{font-family: 'Playfair Display';}
