@@ -4,11 +4,9 @@ func.vars["logOrderBy"] = "DESC";
 
 window.onload = function(){
 	func.logAlert( navigator.userAgent, "info");
-
 	if ('ontouchstart' in window) { 
 		document.body.classList.add("touch");
 	}
-
 	//Start webApp
 	if( typeof webApp === "object"){
 		webApp.init(function(){
@@ -19,7 +17,6 @@ console.log("end webApp initialize....");
 };//end onload
 
 var webApp = {
-	
 	"vars": {
 		//"transportAPI": _transport_api(),
 		"weatherAPI": {
@@ -28,10 +25,8 @@ var webApp = {
 		},
 		"logMsg" : "",
 	},//end vars
-
 	"init": function( postFunc ){
 console.log("init webapp!");
-
 		this["vars"]["App"] = func.getById("App");
 		this["vars"]["log"] = func.getById("log");
 		
@@ -64,7 +59,7 @@ console.log("init webapp!");
 		
 		defineEvents();
 		
-webApp.vars["weatherAPI"]["selectApiName"].selectedIndex = 1;//yandex weather default
+webApp.vars["weatherAPI"]["selectApiName"].selectedIndex = 1;
 //webApp.vars["weatherAPI"]["selectApiName"].dispatchEvent(new Event('change'));
 if ("createEvent" in document) {
     var evt = document.createEvent("HTMLEvents");
@@ -94,735 +89,7 @@ element.dispatchEvent(event);
 };//end webApp()
 console.log(webApp);
 
-/*
-function _transport_api(){
-	_vars = {
-		//"dataUrl" : "data/2019-04-26.xml",
-		//"dataUrl" : "v1/data/2019-04-26.json",
-		//"dataUrl" : "files/test_ya_schedule.json",
-		//"dataUrl" : "files/test_ya_schedule_error.json",
-		
-
-		//"dataUrl" : "https://cors-anywhere.herokuapp.com/\
-//https://api.rasp.yandex.net/v3.0/search/?\
-//from={{from_code}}&\
-//to={{to_code}}&\
-//apikey={{apikey}}&\
-//date={{date}}&\
-//transport_types=suburban&\
-//system=esr&\
-//show_systems=esr",
-
-		//"dataUrl" : "https://romanlaptev-cors.herokuapp.com/\
-//https://api.rasp.yandex.net/v3.0/search/?\
-//from={{from_code}}&\
-//to={{to_code}}&\
-//apikey={{apiKey}}&\
-//date={{date}}&\
-//transport_types=suburban&\
-//system=esr&\
-//show_systems=esr",
-
-		"dataUrl" : "http://vbox1:8080/\
-https://api.rasp.yandex.net/v3.0/search/?\
-from={{from_code}}&\
-to={{to_code}}&\
-apikey={{apiKey}}&\
-date={{date}}&\
-transport_types=suburban&\
-system=esr&\
-show_systems=esr",
-
-		"requestParams" : {
-			"apiKey" : "b07a64bc-f237-4e79-9efb-b951ec68eaf7",
-			"from" : {
-				"title" : "Новосибирск-восточный",
-				"esr_code" : 851508
-			},
-			"to" : {
-				"title" : "Раздолье (3362 км)",
-				"esr_code" : 851635
-			},
-			//"stations": {
-				//"esr_code" : {
-					//"851508": "Новосибирск-восточный",
-					//"851635": "Раздолье (3362 км)"
-				//}
-			//}
-		},
-		
-		"copyRight": {
-//"url": "https://cors-anywhere.herokuapp.com/\
-	//https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&format=json",
-			"url": "http://vbox1:8080/\
-https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&format=json",
-			"data": ""
-		},
-		"blocks": [
-
-			//{
-				//"locationID" : "block-schedule",
-				//"title" : "transport schedule", 
-				//"templateID" : "tpl-schedule",
-				//"content" : "",
-				////"visibility" : true,
-				//"buildBlock" : function(){
-////console.log(this);
-					//var html = _buldScheduleHtml();
-					//if( html && html.length > 0 ){
-						//this.content = html;
-						//_draw_buildBlock( this );
-					//}
-				//}
-			//}, //end block
-
-			//{
-				//"locationID" : "block-copyright",
-				//"title" : "copy Right!", 
-				//"templateID" : "tpl-copyright",
-				//"content" :  "",
-				//"buildBlock" : function(){
-////console.log(this);
-					//var data = webApp.vars["copyRight"]["data"];
-					//var html = _draw_wrapData({
-						//"data": data,
-						//"templateID": "tpl-copyright-content",
-					//});
-////console.log(html);
-					//if( html && html.length > 0 ){
-						//this.content = html;
-						//_draw_buildBlock( this );
-					//}
-				//}
-			//}, //end block
-
-		],//end blocks
-	}//end _vars
-
-	_vars["requestParams"]["from_code"] = _vars["requestParams"]["from"]["esr_code"];
-	_vars["requestParams"]["to_code"] = _vars["requestParams"]["to"]["esr_code"];
-	var today = func.timeStampToDateStr({
-		"format": "yyyy-mm-dd"
-	});
-//console.log(today);
-	_vars["requestParams"]["date"] = today;
-
-
-	_vars["init"] = function(){
-		
-		//set transport input fields
-		webApp.vars["transportAPI"].inputFrom = func.getById("inp-from-title");
-		webApp.vars["transportAPI"].selectFrom = func.getById("select-from-title");
-		
-		webApp.vars["transportAPI"].inputTo = func.getById("inp-to-title");
-		webApp.vars["transportAPI"].selectTo = func.getById("select-to-title");
-
-		webApp.vars["transportAPI"]["dateWidget"] = webApp.vars.App.querySelector("#date-widget");
-		webApp.vars["transportAPI"]["btnDir"] = webApp.vars.App.querySelector("a[href='#change-direction']");
-
-		initTransportFields({
-			"from_code": webApp.vars["transportAPI"]["requestParams"]["from_code"],
-			"to_code": webApp.vars["transportAPI"]["requestParams"]["to_code"],
-			"list_date": webApp.vars["transportAPI"]["requestParams"]["date"]
-		});
-		
-		webApp.vars["transportAPI"]["targetContainer"] = func.getById("response-transport-api");
-		webApp.vars["transportAPI"]["templates"] = _defineTemplates();
-		webApp.vars["transportAPI"]["dataProcess"] = _dataProcess;
-		
-		
-//------------------		
-		webApp.vars["transportAPI"]["selectFrom"].addEventListener("change", function(e){
-//console.log(e.target);
-//for(var key in e.target){
-//console.log(key, e.target[key]);	
-//}//next
-			var _selectNum = e.target["selectedIndex"];
-			var code = e.target["options"][_selectNum].value;
-			//var code = e.target.selectedOptions[0].value;
-//console.log( code );
-			
-			webApp.vars["transportAPI"].inputFrom.value = code;
-			//webApp.vars["transportAPI"]["requestParams"]["from_code"] = code;
-			
-			if( webApp.vars["transportAPI"].inputFrom.value === webApp.vars["transportAPI"].inputTo.value){
-				webApp.vars["transportAPI"].inputTo.value = "";
-				webApp.vars["transportAPI"].selectTo.selectedIndex = 0;
-			}
-		}, false);//end event
-		
-//------------------		
-		webApp.vars["transportAPI"]["selectTo"].addEventListener("change", function(e){
-			
-			//var code = e.target.selectedOptions[0].value;
-			var _selectNum = e.target["selectedIndex"];
-			var code = e.target["options"][_selectNum].value;
-			
-			webApp.vars["transportAPI"].inputTo.value = code;
-			//webApp.vars["transportAPI"]["requestParams"]["to_code"] = code;
-			
-			if( webApp.vars["transportAPI"].inputTo.value === webApp.vars["transportAPI"].inputFrom.value){
-				webApp.vars["transportAPI"].inputFrom.value = "";
-				webApp.vars["transportAPI"].selectFrom.selectedIndex = 0;
-			}
-		}, false);//end event
-		
-//------------------		
-		webApp.vars["transportAPI"]["dateWidget"].addEventListener("change", function(e){
-//console.log(e.type, e.target);
-			webApp.vars["transportAPI"]["requestParams"]["date"] = e.target.value;
-		}, false);//end event
-		
-//------------------		
-		webApp.vars["transportAPI"]["btnDir"].addEventListener("click", function(e){
-//console.log(e.type, e.target);
-			var codeFromIndex = webApp.vars["transportAPI"].selectFrom.selectedIndex;
-			
-			//var codeFrom = webApp.vars["transportAPI"].selectFrom.selectedOptions[0].value;
-			var codeFrom = webApp.vars["transportAPI"].selectFrom["options"][codeFromIndex].value;
-			
-			var codeToIndex = webApp.vars["transportAPI"].selectTo.selectedIndex;
-			//var codeTo = webApp.vars["transportAPI"].selectTo.selectedOptions[0].value;
-			var codeTo = webApp.vars["transportAPI"].selectTo["options"][codeToIndex].value;
-			
-			webApp.vars["transportAPI"].selectFrom.selectedIndex = codeToIndex;
-			webApp.vars["transportAPI"].inputFrom.value = codeTo;
-			webApp.vars["transportAPI"].selectTo.selectedIndex = codeFromIndex;
-			webApp.vars["transportAPI"].inputTo.value = codeFrom;
-		}, false);//end event
-
-	};//_transport_api()
-	
-	
-	function initTransportFields(opt){
-		var p = {
-			"from_code" : false,
-			"to_code" : false,
-			"list_date": false
-		};
-	//console.log(opt);
-
-		//extend p object
-		for(var key in opt ){
-			p[key] = opt[key];
-		}
-//console.log(p);
-		webApp.vars["transportAPI"].inputFrom.value = p.from_code;
-		for(var n =0; n < webApp.vars["transportAPI"].selectFrom.length; n++){
-			var option = webApp.vars["transportAPI"].selectFrom[n];
-//console.log(option, option.value);
-			if( parseInt(option.value) === p.from_code){
-				webApp.vars["transportAPI"].selectFrom.selectedIndex = n;
-			}
-		}//next
-		
-		webApp.vars["transportAPI"].inputTo.value = p.to_code;
-		for(var n =0; n < webApp.vars["transportAPI"].selectTo.length; n++){
-			var option = webApp.vars["transportAPI"].selectTo[n];
-//console.log(option, option.value);
-			if( parseInt(option.value) === p.to_code){
-				webApp.vars["transportAPI"].selectTo.selectedIndex = n;
-			}
-		}//next
-
-
-		webApp.vars["transportAPI"]["dateWidget"].value = p.list_date;
-	}//end initTransportFields()
-	
-	
-	var _defineTemplates = function(){
-
-		var templates = {
-			//"tpl-copyright": "",
-			//"tpl-copyright-content": "",
-			"tpl-yandex--transport": "",
-			//"tpl-schedule-table": "",
-			//"tpl-schedule-mobile": ""
-		};
-		
-		for(var key in templates){
-			templates[key] = getTpl(key);
-		}//next
-		
-		//define template keys info
-		templates["tplKeys"] = {};
-
-		var keyName = "segments";
-		var keyId = "segments-list-tpl--transport";
-		templates["tplKeys"][keyName] = {
-			"description": "array",
-			"listTpl": getTpl(keyId)
-		};
-
-		var keyName = "segments.tickets_info.et_marker";
-		templates["tplKeys"][keyName] = {
-			"clearValue": "%segments.tickets_info.et_marker%" //key name as in the template page
-		};
-		
-	
-		var keyName = "record_num";
-		templates["tplKeys"][keyName] = {
-			"description": "num_element"
-		};
-
-		var keyName = "places";//segments.tickets_info.places
-		var keyId = "tpl--segments-tickets_info-places";
-		templates["tplKeys"][keyName] = {
-			"description": "array",
-			"listTpl": getTpl(keyId),
-			"clearValue": "%places%" //key name as in the template page
-		};
-
-
-		templates["mainTpl"] = templates["tpl-yandex--transport"];
-		
-		return templates;
-	};//end _defineTemplates()
-
-	
-	var _dataProcess = function(jsonObj){
-//console.log(jsonObj);
-//https://yandex.ru/dev/rasp/doc/reference/schedule-point-point.html#format
-
-		//response API about error
-		if( jsonObj["error"] ){
-			var logMsg = "<b>response API about error</b><br>";
-			
-			for( var key in jsonObj["error"]){
-		//console.log( key +" : "+e[key] );
-				logMsg += "<b>"+key +"</b> : "+ jsonObj["error"][key]+"<br>";
-			}//next
-			
-			func.logAlert(logMsg, "error");
-			return false;
-		}	
-		
-		//correct date: departure, duration, arrival
-		for( var n = 0; n < jsonObj["segments"].length; n++){
-			
-			var record = jsonObj["segments"][n];
-			record["duration"] = Math.round( record["duration"] / 60);
-			if( record["duration"] > 60){
-				record["duration"] = record["duration"] / 60;
-			}
-			
-			//convert date ISO 8601 (YYYY-MM-DDThh:mm:ss±hh:mm) -> dd mm hh:min
-			var _d = new Date( record["departure"] );
-//console.log(_d);
-			var _d_format = func.convertDateToStr({
-				"dateObj": _d,
-				//"format": "dd full-month hh:min"
-				"format": "hh:min"
-			});
-//console.log(_d_format);			
-			record["departure"] = _d_format;
-
-			var _d = new Date( record["arrival"] );
-			var _d_format = func.convertDateToStr({
-				"dateObj": _d,
-				"format": "hh:min"
-			});
-			record["arrival"] = _d_format;
-		}//next
-		
-		return true;
-	};//end _dataProcess()
-	
-	return _vars;
-}//end _transport_api()
-*/
-
-/*
-function _yandex_api(){
-	_vars = {
-
-		"dataUrl" : "http://vbox1:8080/\
-https://api.weather.yandex.ru/v2/informers?\
-lat={{latitude}}&\
-lon={{longitude}}&\
-lang=ru_RU",
-
-		//"dataUrl" : "files/test_ya_pogoda.json",
-		
-		"requestParams" : {
-			"apiKey" : "dab03f2c-c76d-4fb6-9445-faa84fa80973",
-			"latitude": 55.038115899999994,
-			"longitude": 83.0094459,
-	//Дачная улица, 38
-	//посёлок Октябрьский, Мошковский район, Новосибирская область, Россия
-				//"latitude": 55.169005, 
-				//"longitude": 83.160846
-		},
-		"templates" : {},
-	}//end _vars
-
-	_vars["init"] = function(){
-		
-		webApp.vars["weatherAPI"]["latitudeInput"].value = _vars["requestParams"]["latitude"];
-		webApp.vars["weatherAPI"]["latitudeRange"].value = _vars["requestParams"]["latitude"];
-		webApp.vars["weatherAPI"]["longitudeInput"].value = _vars["requestParams"]["longitude"];
-		webApp.vars["weatherAPI"]["longitudeRange"].value = _vars["requestParams"]["longitude"];
-		
-		webApp.vars["weatherAPI"]["yandex"]["targetContainer"] = func.getById("response-weather-api");
-		webApp.vars["weatherAPI"]["yandex"]["templates"] = _defineTemplates();;
-		webApp.vars["weatherAPI"]["yandex"]["dataProcess"] = _dataProcess;
-		
-	};//end init()
-	
-	var _defineTemplates = function(){
-
-		var templates = {
-"tpl-yandex--weather": ""
-		};
-		
-		for(var key in templates){
-			templates[key] = getTpl(key);
-		}//next
-		
-		//define template keys info
-		templates["tplKeys"] = {};
-
-//"Код расшифровки погодного описания"
-var condition_opt = {
-"clear": "ясно",
-"partly-cloudy": "малооблачно",
-"cloudy": "облачно с прояснениями",
-"overcast": "пасмурно",
-"drizzle": "морось",
-"light-rain": "небольшой дождь",
-"rain": "дождь",
-"moderate-rain": "умеренно сильный дождь",
-"heavy-rain": "сильный дождь",
-"continuous-heavy-rain": "длительный сильный дождь",
-"showers": "ливень",
-"wet-snow": "дождь со снегом",
-"light-snow": "небольшой снег",
-"snow": "снег",
-"snow-showers": "снегопад",
-"hail": "град",
-"thunderstorm": "гроза",
-"thunderstorm-with-rain": "дождь с грозой",
-"thunderstorm-with-hail": "гроза с градом"	
-};
-
-//Направление ветра
-var wind_dir_opt = {
-"nw": "северо-западное",
-"n": "северное",
-"ne": "северо-восточное",
-"e": "восточное",
-"se": "юго-восточное",
-"s": "южное",
-"sw": "юго-западное",
-"w": "западное",
-"с": "штиль"
-};
-
-		var keyName = "fact.condition";
-		templates["tplKeys"][keyName] = {
-			"description": "select list",
-			//"listTpl": getTpl(keyId)
-			//"clearValue": ""
-			"listValue": function(selectedOption){
-				var options = condition_opt;
-				return options[selectedOption];
-			}
-		};
-
-		var keyName = "fact.wind_dir";
-		templates["tplKeys"][keyName] = {
-			"description": "select list",
-			"listValue": function(selectedOption){
-				var options = wind_dir_opt;
-				return options[selectedOption];
-			}
-		};
-
-		var keyName = "fact.daytime";
-		templates["tplKeys"][keyName] = {
-			"description": "select list",
-			"listValue": function(selectedOption){
-var options = {
-"d": "светлое время суток",
-"n": "темное время суток"
-};
-				return options[selectedOption];
-			}
-		};
-
-
-		var keyName = "fact.season";
-		templates["tplKeys"][keyName] = {
-			"description": "select list",
-			"listValue": function(selectedOption){
-var options = {
-"summer": "лето",
-"autumn": "осень",
-"winter": "зима",
-"spring": "весна"
-};
-				return options[selectedOption];
-			}
-		};
-
-		var keyName = "fact.obs_time";
-		templates["tplKeys"][keyName] = {
-			"description": "date",
-			"formatDate": function(_timestamp){
-				var timeStr = func.timeStampToDateStr({
-					"timestamp": _timestamp,
-					"format": "yyyy-mm-dd hh:min:sec"
-				});
-				return timeStr;
-			}
-		};
-
-		var keyName = "now";
-		templates["tplKeys"][keyName] = {
-			"description": "date",
-			"formatDate": function(_timestamp){
-				var timeStr = func.timeStampToDateStr({
-					"timestamp": _timestamp,
-					"format": "yyyy-mm-dd hh:min:sec"
-				});
-				return timeStr;
-			}
-		};
-		
-		var keyName = "forecast.date_ts";
-		templates["tplKeys"][keyName] = {
-			"description": "date",
-			"formatDate": function(_timestamp){
-				var timeStr = func.timeStampToDateStr({
-					"timestamp": _timestamp,
-					"format": "dd full-month yyyy",
-					"s_case": true//subjective_case, именительный падеж
-				});
-				return timeStr;
-			}
-		};
-
-		var keyName = "forecast.moon_code";
-		templates["tplKeys"][keyName] = {
-			"description": "select list",
-			"listValue": function(selectedOption){
-//код для фазы Луны
-var options = {
-"0": "полнолуние",
-"1": "убывающая луна",
-"2": "убывающая луна",
-"3": "убывающая луна",
-"4": "последняя четверть",
-"5": "убывающая луна",
-"6": "убывающая луна",
-"7": "убывающая луна",
-"8": "новолуние",
-"9": "растущая луна",
-"10": "растущая луна",
-"11": "растущая луна",
-"12": "первая четверть",
-"13": "растущая луна",
-"14": "растущая луна",
-"15": "растущая луна"
-};
-//console.log(selectedOption, typeof selectedOption, options[selectedOption]);
-				return options[selectedOption];
-			},
-			"process": function( _d ){
-//console.log( this );
-				var selectedOption = _d["moon_code"];
-				if( this["listValue"] && 
-					typeof this["listValue"] === "function" ){
-					_d["moon_code"] = this["listValue"]( selectedOption );
-				}
-			}
-		};
-
-
-		var keyName = "parts";
-		var keyId = "tpl-yandex--forecast-parts";
-		templates["tplKeys"][keyName] = {
-			"type": "array_tpl",
-			"listTpl": getTpl(keyId)
-		};
-
-
-		var keyName = "parts.daytime";
-		templates["tplKeys"][keyName] = {
-			"type": "array_tpl_item",
-			"description": "select list",
-			"listValue": function(selectedOption){
-var options = {
-"d": "светлое время суток",
-"n": "темное время суток"
-};
-				return options[selectedOption];
-			},
-			"process": function( dataArr ){
-				for(var n = 0; n < dataArr.length; n++){
-					var _d = dataArr[n];
-					var selectedOption = _d["daytime"];
-					_d["daytime"] = this["listValue"]( selectedOption );
-				}//next
-			}
-		};
-
-		var keyName = "parts.part_name";
-		templates["tplKeys"][keyName] = {
-			"type": "array_tpl_item",
-			"description": "select list",
-			"listValue": function(selectedOption){
-//Название времени суток
-var options = {
-"night": "ночь",
-"morning": "утро",
-"day": "день",
-"evening": "вечер"
-};
-				return options[selectedOption];
-			},
-			"process": function( dataArr ){
-				for(var n = 0; n < dataArr.length; n++){
-					var _d = dataArr[n];
-					var selectedOption = _d["part_name"];
-					_d["part_name"] = this["listValue"]( selectedOption );
-				}//next
-			}
-		};
-
-		var keyName = "parts.condition";
-		templates["tplKeys"][keyName] = {
-			"description": "select list",
-			"listValue": function(selectedOption){
-				var options = condition_opt;
-				return options[selectedOption];
-			},
-			"process": function( dataArr ){
-				for(var n = 0; n < dataArr.length; n++){
-					var _d = dataArr[n];
-					var selectedOption = _d["condition"];
-					_d["condition"] = this["listValue"]( selectedOption );
-				}//next
-			}
-		};
-
-
-		var keyName = "parts.wind_dir";
-		templates["tplKeys"][keyName] = {
-			"description": "select list",
-			"listValue": function(selectedOption){
-				var options = wind_dir_opt;
-				return options[selectedOption];
-			},
-			"process": function( dataArr ){
-				for(var n = 0; n < dataArr.length; n++){
-					var _d = dataArr[n];
-					var selectedOption = _d["wind_dir"];
-					_d["wind_dir"] = this["listValue"]( selectedOption );
-				}//next
-			}
-		};
-
-		templates["mainTpl"] = templates["tpl-yandex--weather"];
-		return templates;
-	};//end _defineTemplates()
-
-	
-//https://yandex.ru/dev/weather/doc/dg/concepts/forecast-info.html#resp-format	
-	var _dataProcess = function(jsonObj){
-//console.log(jsonObj)
-
-		var tplKeys = this.templates["tplKeys"];
-	//console.log(tplKeys, typeof tplKeys["fact.condition"]["listValue"] === "function");
-		if( tplKeys["fact.condition"] &&
-			typeof tplKeys["fact.condition"]["listValue"] === "function"
-		){
-			jsonObj["fact"]["condition"] = tplKeys["fact.condition"]["listValue"]( jsonObj["fact"]["condition"] );
-		}
-		
-		if( tplKeys["fact.wind_dir"] &&
-			typeof tplKeys["fact.wind_dir"]["listValue"] === "function"
-		){
-			jsonObj["fact"]["wind_dir"] = tplKeys["fact.wind_dir"]["listValue"]( jsonObj["fact"]["wind_dir"] );
-		}
-		
-		if( tplKeys["fact.daytime"] &&
-			typeof tplKeys["fact.daytime"]["listValue"] === "function"
-		){
-			jsonObj["fact"]["daytime"] = tplKeys["fact.daytime"]["listValue"]( jsonObj["fact"]["daytime"] );
-		}
-		
-		if( tplKeys["fact.season"] &&
-			typeof tplKeys["fact.season"]["listValue"] === "function"
-		){
-			jsonObj["fact"]["season"] = tplKeys["fact.season"]["listValue"]( jsonObj["fact"]["season"] );
-		}
-
-		if( tplKeys["fact.obs_time"] &&
-			typeof tplKeys["fact.obs_time"]["formatDate"] === "function"
-		){
-			jsonObj["fact"]["obs_time"] = tplKeys["fact.obs_time"]["formatDate"]( jsonObj["fact"]["obs_time"] );
-		}
-
-		if( tplKeys["now"] &&
-			typeof tplKeys["now"]["formatDate"] === "function"
-		){
-			jsonObj["now"] = tplKeys["now"]["formatDate"]( jsonObj["now"] );
-		}
-
-		if( tplKeys["forecast.date_ts"] &&
-			typeof tplKeys["forecast.date_ts"]["formatDate"] === "function"
-		){
-			jsonObj["forecast"]["date_ts"] = tplKeys["forecast.date_ts"]["formatDate"]( 
-				jsonObj["forecast"]["date_ts"] 
-			);
-		}
-
-		var tpl_keyName ="forecast.moon_code";
-		var keyDataObj = jsonObj["forecast"];
-		//var data_keyName ="moon_code";
-		//if( tplKeys[tpl_keyName] &&	typeof tplKeys[tpl_keyName]["listValue"] === "function"	){
-			//keyDataObj[data_keyName] = tplKeys[tpl_keyName]["listValue"]( keyDataObj[data_keyName] );
-	//console.log( keyDataObj );
-		//}
-		if( tplKeys[tpl_keyName] &&	typeof tplKeys[tpl_keyName]["process"] === "function"	){
-			tplKeys[tpl_keyName]["process"]( keyDataObj );
-		}
-
-		var tpl_keyName ="parts.daytime";
-		var keyDataObj = jsonObj["forecast"]["parts"];
-		if( tplKeys[tpl_keyName] &&	typeof tplKeys[tpl_keyName]["process"] === "function"	){
-			tplKeys[tpl_keyName]["process"]( keyDataObj );
-		}
-	
-		var tpl_keyName ="parts.part_name";
-		var keyDataObj = jsonObj["forecast"]["parts"];
-		if( tplKeys[tpl_keyName] &&	typeof tplKeys[tpl_keyName]["process"] === "function"	){
-			tplKeys[tpl_keyName]["process"]( keyDataObj );
-		}
-
-		var tpl_keyName ="parts.condition";
-		var keyDataObj = jsonObj["forecast"]["parts"];
-		if( tplKeys[tpl_keyName] &&	typeof tplKeys[tpl_keyName]["process"] === "function"	){
-			tplKeys[tpl_keyName]["process"]( keyDataObj );
-		}
-
-
-		var tpl_keyName ="parts.wind_dir";
-		var keyDataObj = jsonObj["forecast"]["parts"];
-		if( tplKeys[tpl_keyName] &&	typeof tplKeys[tpl_keyName]["process"] === "function"	){
-			tplKeys[tpl_keyName]["process"]( keyDataObj );
-		}
-
-		return true;
-	};//end _dataProcess()
-	
-	return _vars;
-}//end _yandex_api()
-*/
-
 function _openweathermap_api(){
-
 	_vars = {
 		"dataUrl" : "",
 /*
@@ -833,7 +100,6 @@ lat={{latitude}}\
 &appid={{apiKey}}\
 &callback=jsonp_callback",
 */
-
 		"weatherUrl" : "https://api.openweathermap.org/data/2.5/weather?\
 lat={{latitude}}\
 &lon={{longitude}}\
@@ -854,7 +120,6 @@ lat={{latitude}}\
 //&callback=jsonp_callback",
 		//"forecastUrl" : "files/openweathermap_Novosibirsk_forecast.json",
 		//"forecastUrl" : "/projects/test_code.git/test_api/files_ignore/openweathermap_Novosibirsk_forecast.json",
-		
 		"requestParams" : {
 			"apiKey" : "7440bb4eee1e2d8d92bd8ca4a926ddd6",
 			"latitude": 55.038115899999994,
@@ -872,7 +137,6 @@ lat={{latitude}}\
 		webApp.vars["weatherAPI"]["openweathermap"]["templates"] = _defineTemplates();
 		webApp.vars["weatherAPI"]["openweathermap"]["dataProcess"] = _dataProcess;
 	};
-	
 	var _defineTemplates = function(){
 		var templates = {
 "tpl-openweathermap--weather": "",
@@ -1319,7 +583,6 @@ function _urlManager( target ){
 			break;
 
 			case "send-request":
-
 //-------------------
 				var apiType = webApp.vars["GET"]["api-type"];
 				if( !apiType || apiType.length === 0
@@ -1345,8 +608,6 @@ webApp.vars["transportAPI"]["requestParams"]["to_code"] = code;
 				if( apiType === "forecast"){
 					apiObj = webApp.vars["weatherAPI"];
 				}
-
-
 //-------------------
 				var apiObjectName = webApp.vars["GET"]["api-object"];
 				if( !apiObjectName || apiObjectName.length === 0 ){
@@ -1356,7 +617,6 @@ console.log( webApp.logMsg );
 				} else{
 					apiObj = apiObj[apiObjectName];
 				}
-
 //-------------------
 //console.log(apiObj);
 if( apiObj["requestParams"]["from_code"] ){
@@ -1374,10 +634,7 @@ if( apiObj["requestParams"]["longitude"] ){
 	apiObj["requestParams"]["longitude"] = webApp.vars["weatherAPI"]["longitudeInput"].value;
 }
 //console.log(apiObj["requestParams"]);
-
-				
 				var dataUrl = apiObj["dataUrl"];
-				
 //-------------------
 				if( apiObjectName === "openweathermap")	{
 					if( apiType === "weather")	{
@@ -1447,7 +704,6 @@ var interval = setInterval(function(){
 return false;
 */
 //----------------------
-			
 console.log("-- start server request --");
 				sendRequest({
 					"dataUrl": dataUrl,
@@ -1538,12 +794,12 @@ func.logAlert(webApp.logMsg, "error");
 	try{
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET", dataUrl, true);
-		
+/*		
 		if(p.apiObjectName === "yandex"){
 			xhr.setRequestHeader("X-Yandex-API-Key", p.requestParams["apiKey"] );
 			//xhr.setRequestHeader("Access-Control-Allow-Credentials", "true");
 		}
-		
+*/		
 		xhr.onprogress = function( e ){
 				var percentComplete = 0;
 				if(e.lengthComputable) {
@@ -1564,7 +820,6 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 // console.log("event type:" + e.type);
 //console.log( this.responseText );
 //func.log( this.responseText, "response");
-
 var logMsg = "ajax load time: " + e.timeStamp + " ms, "+ (e.timeStamp / 1000)+" sec , "; 
 logMsg += "total: " + e.total + " bytes, "; 
 logMsg += "loaded: " + e.loaded + " bytes, " + (e.loaded / 1024).toFixed(2)+" Kbytes"; 
@@ -1586,7 +841,6 @@ func.logAlert( logMsg, "info");
 				p.callback(_response);
 			}
 		}//end onload
-
 		
 		xhr.onerror = function(e) {
 //console.log(arguments);		
@@ -1824,10 +1078,7 @@ func.logAlert( webApp.vars["logMsg"], "error");
 		
 		p.apiObj.targetContainer.innerHTML = html;
 	}
-
-	
 }//end drawResponse()
-
 //============================================== DATA
 /*	
 function _loadCopyRightCode( postFunc ){
@@ -2058,7 +1309,6 @@ func.logAlert(_vars["logMsg"], "warning");
 	
 	return _html;
 	
-	
 	function __processTplKeys(options){
 //console.log(p.tplKeys, _htmlRecords);
 		if( p.tplKeys["record_num"] ){
@@ -2071,7 +1321,6 @@ func.logAlert(_vars["logMsg"], "warning");
 }//end _formHtml()
 
 //=================================================
-
 function jsonp_callback(response){
 console.log("test jsonp", response);
 }
