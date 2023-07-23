@@ -20,18 +20,16 @@ console.log("end webApp initialize....");
 
 var webApp = {
 	
-	"vars" : {
+	"vars": {
 		//"transportAPI": _transport_api(),
-		
 		"weatherAPI": {
 				//"yandex": _yandex_api(),
 				"openweathermap": _openweathermap_api()
 		},
-		
 		"logMsg" : "",
 	},//end vars
-	
-	"init" : function( postFunc ){
+
+	"init": function( postFunc ){
 console.log("init webapp!");
 
 		this["vars"]["App"] = func.getById("App");
@@ -42,13 +40,11 @@ console.log("init webapp!");
 		this["vars"]["percentComplete"] = func.getById("percent-complete");
 		//this["vars"]["numTotal"] = func.getById("num-total-load");
 		this["vars"]["numLoaded"] = func.getById("num-loaded");
-		
 
 		//this["vars"]["tab-transport"] = webApp.vars.App.querySelector("#tab-transport");
 		this["vars"]["tab-weather"] = webApp.vars.App.querySelector("#tab-weather");
 		this["vars"]["tab-info"] = webApp.vars.App.querySelector("#tab-info");
 		this["vars"]["tab-buttons"] = webApp.vars.App.querySelectorAll("#tab-buttons .tab-btn");
-		
 		
 		//webApp.vars["transportAPI"].init();
 		
@@ -844,10 +840,8 @@ lat={{latitude}}\
 &units=metric\
 &appid={{apiKey}}\
 &lang=ru",
-
 		//"weatherUrl" : "files/openweathermap_Mochishche.json",
 		//"weatherUrl" : "files/openweathermap_Novosibirsk.json",
-		
 
 		//https://openweathermap.org/forecast5
 		"forecastUrl" : "https://api.openweathermap.org/data/2.5/forecast?\
@@ -1159,14 +1153,12 @@ if(jsonObj["list"]){
 			tplKeys[tpl_keyName]["process"](keyDataObj);
 		}
 }
-
 		
 		return true;
 	};//end _dataProcess()
 	
 	return _vars;
 }//end _openweathermap_api()
-
 
 function getTpl( id ){
 		//window.addEventListener("load",function(event) {		
@@ -1180,7 +1172,6 @@ function getTpl( id ){
 			}
 		//},false);		
 }//end _getTpl()
-
 
 function defineEvents(){
 	webApp.vars["App"].addEventListener("click", function(e){
@@ -1286,7 +1277,6 @@ console.log(e.type, e.target);
 
 
 }//end defineEvents()
-
 
 function _urlManager( target ){
 //console.log(target);
@@ -1509,7 +1499,6 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 		
 }//end _urlManager()
 
-
 function sendRequest( opt ){
 	var p = {
 		"dataUrl" : false,
@@ -1633,7 +1622,6 @@ console.log(e);
 	
 }//end sendRequest()
 
-
 function parseServerResponse( opt ){
 	
 	var p = {
@@ -1668,8 +1656,6 @@ console.log( webApp.vars["logMsg"] );
 	return parseData;
 }//parseServerResponse()
 
-
-
 	function _parseXML(xml){
 //console.log("function _parseXML()");
 
@@ -1697,7 +1683,6 @@ console.log( error );
 		}//end catch
 
 	}//end _parseXML()
-
 
 	function _data_formNodesObj(xmlObj){
 //console.log(xmlObj["xroot"]["children"]["database"][0]["name"]);
@@ -1769,7 +1754,6 @@ console.log( key, tagNode[key] );
 		
 	}//end _data_formNodesObj()
 
-
 	function _parseJSON( jsonStr ){
 		try{
 			var jsonObj = JSON.parse( jsonStr, function(key, value) {
@@ -1787,8 +1771,6 @@ func.logAlert( webApp.vars["logMsg"], "error");
 		}//end catch
 
 	}//end _parseJSON()
-
-	
 
 function drawResponse(opt){
 	var p = {
@@ -1845,7 +1827,6 @@ func.logAlert( webApp.vars["logMsg"], "error");
 
 	
 }//end drawResponse()
-
 
 //============================================== DATA
 /*	
@@ -1925,7 +1906,6 @@ func.logAlert( webApp.vars["logMsg"], "error");
 
 }//end _loadCopyRightCode()
 */
-
 
 //============================================== DRAW
 function wrapData( opt ){
@@ -2089,7 +2069,6 @@ func.logAlert(_vars["logMsg"], "warning");
 	}//end __processTplKeys()
 	
 }//end _formHtml()
-
 
 //=================================================
 

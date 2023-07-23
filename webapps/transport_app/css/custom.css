@@ -1,3 +1,5 @@
+.lr-tab-pane, .tab-pane {display:none;}
+.lr-tab-active, .tab-active {display:block !important;}
 
 .lr-btn-active, .btn-active {
 background-color: #1e90ff !important;
@@ -32,7 +34,6 @@ background-color: #1e90ff !important;
 body.touch {
 	background-color: #003366 !important;
 }
-
 
 .thermometer {
 	width: 25px;
@@ -91,12 +92,10 @@ height: 19.5px;
 	/* border-bottom: 5px solid #fff; */
 }
 
-
 .btn-direction-wrap {
 	line-height: 150px;
 	padding: 0 5px 0 5px;
 }	
-
 
 @media screen and (max-width:640px){
 	.lr-container {
@@ -115,17 +114,7 @@ height: 19.5px;
 }
 
 @media screen and (max-width:500px){
-
 }
 
 @media screen and (max-width:360px){
-	.lr-padding-20, .lr-padding20, .padding-20, .padding20 {
-		padding: 2px;
-	}
-	.lr-margin-20, .lr-margin20 {margin:2px;}
-	
-	.lr-panel-body {
-		padding: 5px;
-	}
 }
-

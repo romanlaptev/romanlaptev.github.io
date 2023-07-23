@@ -1666,6 +1666,23 @@ https://bootstrap-4.ru/docs/4.0/utilities/borders/
 https://cpalettes.com/color/03aea6
 https://www.omiod.com/colors/?rgb=d0ccd5
 */
+
+.color-blue-b6{color:#6082B6;}
+.bg-blue-b6{background-color:#6082B6;}
+.border-blue-b6 {border-color: #6082B6;}
+
+.color-black-23{color:#242423;}
+.bg-black-23{background-color:#242423;}
+.border-black-23{border-color:#242423}
+
+.color-white-fb{color:#FBFBFB;}
+.bg-white-fb{background-color:#FBFBFB;}
+.border-white-fb{border-color:#FBFBFB}
+
+.color-grey-7b{	color:#7D7D7B;}
+.bg-grey-7b{background-color:#7D7D7B;}
+.border-grey-7b{border-color:#7D7D7B}
+
 .bg-lightgreen-bcd{ background-color: #bcdcc8;}
 .bg-lightgreen-aab{ background-color: #aabbaa;}
 .bg-lightgreen-ccd{ background-color: #ccddcc;}
@@ -1784,8 +1801,6 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-warning2 {  background-color: #fff4ce;}
 .bg-severe-warning {  background-color: #fed9cc;}
 .bg-error {  background-color: #fde7e9;}
-
-
 
 .bg-info{  background-color: #45a3ba; }
 
