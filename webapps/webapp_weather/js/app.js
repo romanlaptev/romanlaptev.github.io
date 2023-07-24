@@ -110,6 +110,7 @@ lat={{latitude}}\
 		//"weatherUrl" : "files/openweathermap_Novosibirsk.json",
 
 		//https://openweathermap.org/forecast5
+
 		"forecastUrl" : "https://api.openweathermap.org/data/2.5/forecast?\
 lat={{latitude}}\
 &lon={{longitude}}\
@@ -118,7 +119,9 @@ lat={{latitude}}\
 &lang=ru",
 
 //&callback=jsonp_callback",
+
 		//"forecastUrl" : "files/openweathermap_Novosibirsk_forecast.json",
+		
 		//"forecastUrl" : "/projects/test_code.git/test_api/files_ignore/openweathermap_Novosibirsk_forecast.json",
 		"requestParams" : {
 			"apiKey" : "7440bb4eee1e2d8d92bd8ca4a926ddd6",
@@ -721,7 +724,8 @@ console.log("-- start server request --");
 //var logMsg = "end parse ajax response";
 //func.logAlert( logMsg, "info");
 						}
-						
+
+console.log(responseData);
 						if( responseData ){
 							drawResponse({
 								data: responseData,

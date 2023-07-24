@@ -4574,6 +4574,19 @@ https://getuikit.com/v2/docs/core.html
 .fz28{font-size:28px;}
 .fz30{font-size:30px;}
 
+.fz36 {  font-size: 36px;}
+.fz36-adaptive {font-size: calc(24px + 1 * (100vw / 1920));}
+
+.fz40 {  font-size: 40px;}
+.fz42 {  font-size: 42px;}
+.fz45 {  font-size: 45px;}
+
+.fz48 {font-size: 48px;}
+.fz48-adaptive {font-size: calc(24px + 16 * (100vw / 1920));}
+.fz64 {font-size: 64px;}
+.fz64-adaptive {font-size: calc(24px + 25 * (100vw / 1920));}
+
+
 .fz1rem{font-size:1rem}
 .fz1-125rem{font-size:1.125rem}
 .fz1-5rem{font-size:1.5rem}
