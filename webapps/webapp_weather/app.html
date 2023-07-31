@@ -41,11 +41,11 @@
 <![endif]-->
 </head>
 
-<body class="bg-grey-green">
-<div id="App" class="m-auto w80 h100 lr-radius-5">
-	<div class="lr-panel h100">
-		<div class="h100 bg-grey-green lr-radius-5">
-			<div id="tab-weather" class="h100 tab-pane tab-active lr-panel bg-snow">
+<body class="bg-grey-green _bg-lightblue-v">
+<div id="App" class="m-auto w80 _h100 lr-radius-5">
+	<div class="lr-panel _h100">
+		<div class="_h100 bg-grey-green lr-radius-5">
+			<div id="tab-weather" class="_h100 tab-pane tab-active lr-panel bg-snow">
 				<div class="tab-header p20 bg-darkblue-green lr-radius-5">
 <h1 class="color-white text-right lr-font-comfortaa">данные погоды и прогноз</h1>
 <h2 class="color-white text-right lr-font-comfortaa">OpenWeather API</h2>
@@ -142,7 +142,7 @@ class="lr-btn-blue p20 btn-send-request color-white">получить данны
 		</div><!-- end tab-content -->
 	</div><!-- end panel -->
 	
-	<div class="log-panel pos-fixed-right-bottom p10 bg-lightsteelblue5">
+	<div class="log-panel pos-fixed-left-top p10 bg-lightsteelblue5">
 		<div class="float-right">
 			<a href="?q=toggle-log" title="Toggle log" class="lr-btn bg-white">-</a>
 			<a href="?q=clear-log" title="Clear log" class="lr-btn bg-orange">x</a>
@@ -192,101 +192,6 @@ of total <span id="num-total-load"></span>
 	</div>
 </div>
 <!-- ********************** TEMPLATES ************************** -->	
-<script id="tpl-yandex--weather" type="text/template">
-	<div class="lr-flex lr-flex-wrap lr-row">
-		<div class="bg-lavender p20 lr-float-left">
-			
-<div class="lr-flex lr-flex-between lr-flex-v-top lr-flex-wrap _lr-row">
-	<h3>погодные данные на <b>%fact.obs_time%</b></small></h3>
-	<div class="_lr-float-right">
-		<a href="%info.url%">Яндекс.Погода</a>
-	</div>
-</div>
-<p class="m0">
-	<b>%fact.season%</b>, <b>%fact.daytime%</b>
-</p>
-			<div class="lr-flex lr-flex-middle lr-flex-wrap">	
-				<div class="_w50 text-center p20">
-<img class="w50" src="https://yastatic.net/weather/i/icons/blueye/color/svg/%fact.icon%.svg"
-onerror="this.onerror=console.log('error load '+this.src);this.src='img/%fact.icon%.png'"/>
-
-<br>
-<b>%fact.condition%</b>
-				</div>
-				<div class="_w50">
-<p class="m0">
-	<small>температура:</small> <b>%fact.temp%</b>°C, 
-	<small>ощущается как:</small>: <b>%fact.feels_like%</b> &#8451;<br>
-	<small>вода:</small> <b>%fact.temp_water%</b> °C
-</p>
-<p class="m0">
-	<small>направление ветра:</small> <b>%fact.wind_dir%</b><br>  
-	<small>скорость:</small>: <b>%fact.wind_speed%</b> м/с, 
-	<small>порывы</small> <b>%fact.wind_gust%</b> м/с
-</p>
-<p class="m0">
-	<small>Влажность воздуха:</small> <b>%fact.humidity%</b> %<br>  
-	<small>давление:</small> <b>%fact.pressure_mm%</b> мм рт. ст.
-</p>
-				</div>
-			</div>	
-<p class="m0">
-	<small>широта:</small> <b>%info.lat%</b>&deg;<br> 
-	<small>долгота:</small> <b>%info.lon%</b>&deg;<br>
-	<small>Время сервера: <b>%now%</b></small><br>
-</p>
-		</div>
-		<div class="bg-lightgreen p20 lr-float-left">
-<h3>данные прогноза погоды на %forecast.date_ts%</h3>
-<p>восход: <b>%forecast.sunrise%</b>, закат: <b>%forecast.sunset%</b></p>
-<!--
-<p>Код фазы Луны: <b>%forecast.moon_code%</b></p>
--->
-			<div class="lr-flex lr-flex-wrap lr-row">%parts%</div>
-		</div>
-	</div>
-</script>
-<script id="tpl-yandex--forecast-parts" type="text/template">
-<div class="bg-aliceblue m10 p20 lr-float-left">
-	<div>
-		<b>%parts.daytime%</b>,
-		<b>%parts.part_name%</b>
-	</div>
-<div class="lr-flex lr-flex-wrap">	
-	<div class="text-center p20">
-<img class="w50" src="https://yastatic.net/weather/i/icons/blueye/color/svg/%parts.icon%.svg"
-onerror="this.onerror=console.log('error load '+this.src);this.src='img/%parts.icon%.png'"/>
-<br>
-<b>%parts.condition%</b>
-	</div>
-	<div>
-<b>температура</b><br>
-от <b>%parts.temp_min%</b> °C до <b>%parts.temp_max%</b> °C;
-(<b>%parts.temp_avg%</b> °C)<br>
-<small>ощущается как</small>: <b>%parts.feels_like%</b> °C<br>
-<small>вода:</small>: <b>%parts.temp_water%</b> °C
-	</div>
-</div>	
-<p class="m0">
-	<small>направление ветра:</small> <b>%parts.wind_dir%</b><br> 
-	<small>скорость:</small>: <b>%parts.wind_speed%</b> м/с, 
-	<small>порывы</small> <b>%parts.wind_gust%</b> м/с
-</p>
-<p class="m0">
-	<small>Влажность воздуха:</small> <b>%parts.humidity%</b> %<br>  
-	<small>давление:</small> <b>%parts.pressure_mm%</b> мм рт. ст.
-</p>
-<p class="m0">
-	<small>Прогноз осадков:</small> <b>%parts.prec_mm%</b> (мм)<br>  
-<!--
-	<li>prec_period: <b>%prec_period%</b>	<small>Прогнозируемый период осадков (в минутах). 	Число</small></li>
--->
-	<small>Вероятность выпадения осадков:</small> <b>%parts.prec_prob%</b>
-</p>
-
-</div>
-</script>
-<!-- end forecast-parts -->
 <!-- templates  openweathermap (weather) 
 https://openweathermap.org/current
 -->
@@ -326,12 +231,14 @@ https://openweathermap.org/current
 -->
 </div>		
 </script>
+
 <script id="tpl-openweathermap-weather-list" type="text/template">
 <img src="http://openweathermap.org/img/w/%weather.icon%.png" 
 	onerror="this.onerror=console.log('error load '+this.src);this.src='img/%weather.icon%.png'">
 <br>
 <b>%weather.main%,</b> <b>%weather.description%</b>
 </script>
+
 <!-- templates  openweathermap (forecast) 
 https://openweathermap.org/forecast5#geo5
 -->
@@ -444,6 +351,128 @@ style="bottom:%list.temp_feels_like%px;"></div>
 	</div>
 </script>
 <script id="tpl-openweathermap-forecast--list-weather" type="text/template">
+		<div class="">
+<img src="http://openweathermap.org/img/w/%weather.icon%.png" 
+onerror="this.onerror=console.log('error load '+this.src);this.src='img/%weather.icon%.png'">
+<p class="m0"><b>%weather.description%</b></p>
+		</div>
+</script>
+
+
+<!-- 2, templates  openweathermap (forecast) 
+https://openweathermap.org/forecast5#geo5
+-->
+<script id="tpl-openweathermap--weather-2" type="text/template">
+<div class="bg-lightblue-v p20 w30">
+	<div class="">%name% (%sys.country%)</b>,
+		<small>Ш:</small><b>%coord.lat%</b>, 
+		<small>Д:</small><b>%coord.lon%</b>
+	</div>
+	<div class=""><b>%dt%</b></div>	
+	<div class="">	
+		<div class="p20">
+			<div>
+от <b>%main.temp_min%</b> &deg; до <b>%main.temp_max%</b>&deg;
+(<b>%main.temp%</b>&deg;)<br>
+<small>ощущается как</small>: <b>%main.feels_like%</b>&deg;
+			</div>	
+			<div class="text-center m0">
+%weather%
+			</div>
+		</div>
+		<div class="p20">
+			<div class="m0">давление: <b>%main.pressure%</b> hPa</div>
+			<div class="m0">влажность: <b>%main.humidity%</b> %</div>
+			<div class="m0">восход: <b>%sys.sunrise%</b>, закат: <b>%sys.sunset%</b></div>
+			<div class="m0">Облачность: <b>%clouds.all%</b>%</div>
+		</div>
+	</div>
+</div>		
+</script>
+<script id="tpl-openweathermap-weather-2-list" type="text/template">
+<img src="http://openweathermap.org/img/w/%weather.icon%.png" 
+	onerror="this.onerror=console.log('error load '+this.src);this.src='img/%weather.icon%.png'">
+<br>
+<b>%weather.main%,</b> <b>%weather.description%</b>
+</script>
+
+
+<!-- 2, templates  openweathermap (forecast) 
+https://openweathermap.org/forecast5#geo5
+-->
+<script id="tpl-openweathermap--forecast-2" type="text/template">
+	<div class="m20">
+		<h2>прогноз на 5 дней...</h2>
+	</div>
+<!--
+<p>
+cod: <b>%cod%</b>, message: <b>%message%</b>
+</p>
+-->
+	<div class="bg-lightblue-v m20 p20">
+<p class="m0">
+<b>%city.name%</b>, <b>%city.country%</b>, 
+широта: <b>%city.coord.lat%</b>, 
+долгота: <b>%city.coord.lon%</b>
+</p>
+<!--
+			<li>city.population: <b>%city.population%</b></li>
+-->
+<p class="m0">
+часовой пояс: <b>%city.timezone%</b>
+</p>
+<p class="m0">
+восход: <b>%city.sunrise%</b>, 
+закат: <b>%city.sunset%</b>
+</p>
+		<div class="lr-flex lr-flex-wrap lr-flex-middle lr-row">
+%list%
+		</div>
+	</div>
+</script>
+<script id="tpl-openweathermap-forecast-2--list" type="text/template">
+	<div class="bg-lightblue-v m5 p20 lr-float-left">
+<!-- <h3>record: %record_num%</h3> -->
+<!-- <small>Time of data forecasted, ISO, UTC</small> -->
+		<div class="lr-flex lr-flex-between lr-row">
+			<div class="lr-float-left p20">
+				<b>%list.dt%</b>, %list.sys.pod%
+%weather%		
+				<ul class="lr-list-unstyled">
+<li class="">
+	<small>температура</small>: <b>%list.main.temp%</b> &#8451;, 
+	<small>ощущается как</small>: <b>%list.main.feels_like%</b> &#8451;
+</li>
+<li class="">
+	<small>мин. т.</small>: <b>%list.main.temp_min%</b> &#8451;, 
+	<small>макс. т.</small>: <b>%list.main.temp_max%</b> &#8451;
+</li>
+<li class="">
+	<small>давление</small>: <b>%list.main.pressure%</b> hPa, <b>%list.main.grnd_level%</b> hPa
+</li>
+<li class=""><small>влажность</small>: <b>%list.main.humidity%</b>%</li>
+
+<li class=""><small>средняя видимость</small>: 	<b>%list.visibility%</b> метров</li>
+<li class="">
+	<small>облачность</small>: <b>%list.clouds.all%</b>%, 
+	<small>возможность осадков</small>: <b>%list.pop%</b>
+</li>
+<!--
+<li class="">rain: 
+	<small>Rain volume for last 3 hours (Объем дождя за последние 3 часа )</small>
+	<b>%list.rain.3h%</b>mm
+</li>
+-->
+<li class=""><h4 class="m0">ветер</h4> 
+	<small>направление</small>: <b>%list.wind.deg%</b>&deg;, 
+	<small>скорость</small>: <b>%list.wind.speed%</b> meter/sec
+</li>
+		</ul>
+			</div>	
+		</div>
+	</div>
+</script>
+<script id="tpl-openweathermap-forecast-2--list-weather" type="text/template">
 		<div class="">
 <img src="http://openweathermap.org/img/w/%weather.icon%.png" 
 onerror="this.onerror=console.log('error load '+this.src);this.src='img/%weather.icon%.png'">

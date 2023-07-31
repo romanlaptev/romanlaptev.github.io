@@ -1,3 +1,11 @@
+--------- TOP info
+https://www.weatherapi.com/pricing.aspx
+Free
+$ 0
+per month
+
+https://openweathermap.org/api
+
 ======================= OpenWeather
 
 - нужно сгруппировать ответ на запрос 5 дн. прогноза
@@ -23,6 +31,21 @@ console.log(responseData);
 
 ...может как-то можно выделить прогноз одного дня с помощью CSS-классов...
 
+--------
+	var _defineTemplates = function(){
+		var templates = {
+"tpl-openweathermap--weather": "",
+"tpl-openweathermap--forecast": ""
+		};
+		
+....сделать альт. варианты шаблонов		
+
+"tpl-openweathermap--weather-2": "",
+"tpl-openweathermap--forecast-2": ""
+
+- сделать вкладку Настройка
+
+- накапливать историю прогнозов
 
 =======================
 - на вкладку погоды добавить фото дома 25 и дома в поселке

@@ -179,13 +179,31 @@ pre {	overflow: auto;}
   min-height: 1px;
 }
 
-
-
 .lr-container {
 	margin: auto;
 	padding: 20px;
 }
+@media (max-width:980px){.lr-container{width: 90%;}}
+@media (max-width:600px){.lr-container{width: 99%;}}
+@media screen and (max-width:360px){
+	.lr-container{width:100%;padding:0;}
+}
 
+.f-container {
+/*	
+	max-width: 1158px;
+	width: 100%;
+	padding: 0 5px;
+	margin: 0 auto;
+*/
+	width: 60%;
+	margin: auto;
+}
+@media (max-width:1600px){.f-container {width: 70%;}}
+@media (max-width:1500px){.f-container {width: 80%;}}
+@media (max-width:1300px){.f-container {width: 85%;}}
+@media (max-width:1200px){.f-container {width: 90%;}}
+@media (max-width:1000px){.f-container {width: auto;}}
 
 .clearfix {	clear: both;}
 /*
@@ -676,6 +694,26 @@ margin-left: 15px;
 }
 .lr-list-striped > li {
 	padding: 10px 10px;
+}
+.mark-list {padding-left:0;}
+.mark-list li {
+ list-style-type:none;
+ display:flex;
+ padding: 5px;
+}
+.mark-list-blue li::before {
+	content: '\220E';
+	margin-right: 15px;
+	color: #6082B6;
+	font-size: 14px;
+/*	
+	content: '';
+	margin-right: 0;
+	background-image: url(assets/images/menu-marker.png);
+	padding: 15px;
+	background-repeat: no-repeat;
+	background-position: left center;
+*/	
 }
 
 
@@ -4205,6 +4243,8 @@ https://getuikit.com/v2/docs/core.html
 	.mb10-xl{margin-bottom:10px;}
 	.mr10-xl{margin-right:10px;}
 	.ml10-xl{margin-left:10px;}
+	
+	.pos-static-xl {position: static !important;}	
 }
 
 @media (max-width:1280px){
@@ -4226,9 +4266,11 @@ https://getuikit.com/v2/docs/core.html
 	.w80-lg{width:80%;}
 	.w100-lg{width:100%;}
 	.w-auto-lg{width:auto;}
+	
+	.d-none-lg{ display:none } 
+	.d-block-lg{ display:block !important } 
 }
 @media (max-width:980px){
-	.lr-container {	width: 90%;}
 	.list-group-item a {	display: block;	}
 	.lr-panel-inline {		width: auto !important;	}
 
@@ -4334,7 +4376,6 @@ https://getuikit.com/v2/docs/core.html
 }
 
 @media (max-width:600px){
-	.lr-container {		width: 99%;	}
 	.page-header h1 {		font-size: 120%;	}
 	.lr-panel-inline {		display: block;	}
 
@@ -4369,6 +4410,8 @@ https://getuikit.com/v2/docs/core.html
 	.lr-flex-auto-xs {	flex: auto;	}
 	
 	.h200px-xs {height: 200px;}
+	
+	.max-w-none-xs{max-width: none;}	
 }
 
 /* iPhone */
@@ -4383,10 +4426,6 @@ https://getuikit.com/v2/docs/core.html
 
 /* Galaxy S9 */
 @media screen and (max-width:360px){
-	.lr-container {
-		width: 100%;
-		padding: 0;
-	}
 	.p20 {padding: 2px;	}
 	.m20{margin:2px;}
 	.lr-panel-body {		padding: 5px;	}

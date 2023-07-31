@@ -100,27 +100,29 @@ lat={{latitude}}\
 &appid={{apiKey}}\
 &callback=jsonp_callback",
 */
+/*
 		"weatherUrl" : "https://api.openweathermap.org/data/2.5/weather?\
 lat={{latitude}}\
 &lon={{longitude}}\
 &units=metric\
 &appid={{apiKey}}\
 &lang=ru",
+*/
 		//"weatherUrl" : "files/openweathermap_Mochishche.json",
-		//"weatherUrl" : "files/openweathermap_Novosibirsk.json",
+		"weatherUrl" : "files/openweathermap_Novosibirsk.json",
 
 		//https://openweathermap.org/forecast5
-
+/*
 		"forecastUrl" : "https://api.openweathermap.org/data/2.5/forecast?\
 lat={{latitude}}\
 &lon={{longitude}}\
 &units=metric\
 &appid={{apiKey}}\
 &lang=ru",
-
+*/
 //&callback=jsonp_callback",
 
-		//"forecastUrl" : "files/openweathermap_Novosibirsk_forecast.json",
+		"forecastUrl" : "files/openweathermap_Novosibirsk_forecast.json",
 		
 		//"forecastUrl" : "/projects/test_code.git/test_api/files_ignore/openweathermap_Novosibirsk_forecast.json",
 		"requestParams" : {
@@ -142,34 +144,37 @@ lat={{latitude}}\
 	};
 	var _defineTemplates = function(){
 		var templates = {
-"tpl-openweathermap--weather": "",
-"tpl-openweathermap--forecast": ""
+//"tpl-openweathermap--weather": "",
+"tpl-openweathermap--weather-2": "",
+//"tpl-openweathermap--forecast": "",
+"tpl-openweathermap--forecast-2": ""
 		};
-		
 		for(var key in templates){
 			templates[key] = getTpl(key);
 		}//next
-	
 	
 		//define template keys info
 		templates["tplKeys"] = {};
 
 		var keyName = "weather";
-		var keyId = "tpl-openweathermap-weather-list";
+		//var keyId = "tpl-openweathermap-weather-list";
+		var keyId = "tpl-openweathermap-weather-2-list";
 		templates["tplKeys"][keyName] = {
 			"description": "array",
 			"listTpl": getTpl(keyId)
 		};
 		
 		var keyName = "list";
-		var keyId = "tpl-openweathermap-forecast--list";
+		//var keyId = "tpl-openweathermap-forecast--list";
+		var keyId = "tpl-openweathermap-forecast-2--list";
 		templates["tplKeys"][keyName] = {
 			"description": "array",
 			"listTpl": getTpl(keyId)
 		};
 
 		var keyName = "weather-forecast";
-		var keyId = "tpl-openweathermap-forecast--list-weather";
+		//var keyId = "tpl-openweathermap-forecast--list-weather";
+		var keyId = "tpl-openweathermap-forecast-2--list-weather";
 		templates["tplKeys"][keyName] = {
 			"description": "array",
 			"listTpl": getTpl(keyId)
@@ -434,7 +439,7 @@ function getTpl( id ){
 				return tpl.innerHTML;
 			} else {
 	var logMsg = "error, empty or undefined tpl " + id;
-	console.log(logMsg);
+	console.error(logMsg);
 				return false;
 			}
 		//},false);		
@@ -473,7 +478,7 @@ function defineEvents(){
 						webApp.vars["GET"] = func.parseGetParams( parseStr ); 
 						_urlManager( target );
 					} else {
-console.log( "Warn! error parse url in " + target.href );
+console.error( "Warn! error parse url in " + target.href );
 					}
 			}
 		}
@@ -616,7 +621,7 @@ webApp.vars["transportAPI"]["requestParams"]["to_code"] = code;
 				if( !apiObjectName || apiObjectName.length === 0 ){
 webApp.logMsg = "warning, empty or undefined API name";
 //func.logAlert(webApp.logMsg, "warning");
-console.log( webApp.logMsg );
+console.error( webApp.logMsg );
 				} else{
 					apiObj = apiObj[apiObjectName];
 				}
@@ -642,12 +647,14 @@ if( apiObj["requestParams"]["longitude"] ){
 				if( apiObjectName === "openweathermap")	{
 					if( apiType === "weather")	{
 						dataUrl = apiObj["weatherUrl"];
-						apiObj.templates["mainTpl"] = apiObj.templates["tpl-openweathermap--weather"];
+//apiObj.templates["mainTpl"] = apiObj.templates["tpl-openweathermap--weather"];
+apiObj.templates["mainTpl"] = apiObj.templates["tpl-openweathermap--weather-2"];
 					}
 				
 					if( apiType === "forecast") {
 						dataUrl = apiObj["forecastUrl"];
-						apiObj.templates["mainTpl"] = apiObj.templates["tpl-openweathermap--forecast"];
+//apiObj.templates["mainTpl"] = apiObj.templates["tpl-openweathermap--forecast"];
+apiObj.templates["mainTpl"] = apiObj.templates["tpl-openweathermap--forecast-2"];
 //console.log(apiObj);
 //fix					
 apiObj.templates["tplKeys"]["weather"]["listTpl"] = apiObj.templates["tplKeys"]["weather-forecast"]["listTpl"];
@@ -1179,11 +1186,11 @@ console.log(p);
 //console.log( p["data"].length );
 
 	if( !p["data"] || p["data"].length === 0){
-console.log("-- _wrapData(), error, incorrect data ...");
+console.error("-- _wrapData(), error, incorrect data ...");
 		return false;
 	}
-	if( !p["template"].length === 0 ){
-console.log("-- wrapData(), error, empty template ...");
+	if( !p["template"] || p["template"].length === 0 ){
+console.error("-- wrapData(), error, empty template ...");
 		return false;
 	}
 
