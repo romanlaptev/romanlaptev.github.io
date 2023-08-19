@@ -50,26 +50,15 @@ _log(msg);
 					if(!_vars["displayLog"]){
 						return false;
 					}			
-
 					var log = _getById( "log" );
 					if( !log ){
-//document.body.append("<h1>t2</h1>")
-//var textElem = document.createTextNode('test1')
-//document.body.appendChild(textElem)
-var newDiv = document.createElement("div");
-newDiv.className = "log-panel";
-newDiv.setAttribute("id", "log");
-//newDiv.innerHTML = "<h1>this is newDiv...</h1>";
-//document.body.append(newDiv);
-document.body.appendChild(newDiv);
-						//alert(msg);
+						alert(msg);
 						//document.writeln(msg);
+					} else {
+						_alert_log( msg, "info" );
 					}
-					_alert_log( msg, "info" );
-					
-				}
-			};
-		}
+				}};//end console define
+			}
 
 		//_defineEvents();
 		//function _defineEvents(){
@@ -326,7 +315,7 @@ document.onreadystatechange = function () {
 			}
 			var output = document.querySelector( p.id );
 			if( !output ){
-console.log("error, undefined log wrapper: ", output);
+console.error("error, undefined log wrapper: ", output);
 				return false;
 			}
 
@@ -1420,7 +1409,7 @@ console.log(e);
 			if( sSec < 10){
 				sSec = "0" + sSec;
 			}
-//????
+
 			var dateStr = dateStr =  sDate + "-" + sMonth + "-" + sYear + " " + sHours + ":" + sMinutes + ":" + sSec;
 			switch( p.format ){
 

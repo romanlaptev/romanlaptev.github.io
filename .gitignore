@@ -1,4 +1,20 @@
 *.*~
+~*
+*~lock*
+*.bak
+*.swp
+*.log.txt
+*.log
+
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
 projects/app1795
 projects/geolocation
 projects/bookmarks
@@ -26,10 +42,6 @@ _export_lib.xml
 */*/*/*/notes.xml
 
 files_ignore/
-#files_ignore/*
-#*/files_ignore/*
-#*/*/files_ignore/*
-#*/*/*/files_ignore/*
 
 # https://github.com/github/gitignore/blob/master/Node.gitignore
 # Logs
