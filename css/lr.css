@@ -1350,18 +1350,7 @@ padding: 10px;
 	.lr-flex-stretch {align-items: stretch;}
 	.lr-flex-1{flex:1;}
 	.lr-flex-auto {flex: auto;}
-	.lr-flex-fill{
-		flex:1 1;
-		/*flex-grow: 1;*/
-		/*flex-shrink: 1;*/
-	}
-	.lr-flex-1-children > * {
-		/*flex: 1;*/
-		flex-grow: 1;
-		flex-shrink: 1;
-		flex-basis: 100%;
-	}
-	
+
 	.lr-flex-basis100 {	flex-basis: 100%; }
 	
 	/*=== flex Direction === */
@@ -1369,55 +1358,80 @@ padding: 10px;
 	.lr-flex-row-reverse {  flex-direction: row-reverse;}
 	.lr-flex-column {  flex-direction: column;}
 	.lr-flex-column-reverse {  flex-direction: column-reverse;}
+	
+	.lr-flex-fill{
+		flex:1 1;
+		/*flex-grow: 1;*/
+		/*flex-shrink: 1;*/
+	}
+
+	.lr-flex--2col {display: flex;flex-wrap: wrap;}
+	.lr-flex--2col > * {flex-grow: 1;flex-shrink: 1;flex-basis: 50%;}
+	
+	.lr-flex--3col {display: flex;flex-wrap: wrap;}
+	.lr-flex--3col > * {flex-grow: 1;flex-shrink: 1;flex-basis: 30%;}
+	
 }
 
 
-/*====== GRID =======*/
+/* ====== GRID =======
+https://developer.mozilla.org/ru/docs/Learn/CSS/CSS_layout/Grids
+https://developer.mozilla.org/ru/docs/Web/CSS/grid-template-columns
+https://developer.mozilla.org/ru/docs/Web/CSS/grid-column
+*/
 @supports not (display: grid) {}
 @supports (display: grid) {
-   .support-grid-true {
-		display : block;
-	}
-   .support-grid-false {
-		display : none;
-	}
-	.lr-grid, .d-grid {  display: grid;}
+	.support-grid-true{display:block;}
+	.support-grid-false{display:none;}
 	
-	.lr-grid-center {place-items: center;}
-	.lr-grid-end {place-items: end;}
+	.lr-grid,.d-grid{display:grid;}
 	
-	.lr-grid-col1 { grid-template-columns:repeat(1, minmax(0, 1fr) )}
-	.lr-grid-col2 { grid-template-columns:repeat(2, minmax(0, 1fr) )}
-	.lr-grid-col3 { grid-template-columns:repeat(3, minmax(0, 1fr) )}
-	.lr-grid-col4 { grid-template-columns:repeat(4, minmax(0, 1fr) )}
-	.lr-grid-col5 { grid-template-columns:repeat(5, minmax(0, 1fr) )}
-	.lr-grid-col6 { grid-template-columns:repeat(6, minmax(0, 1fr) )}
-	.lr-grid-col7 { grid-template-columns:repeat(7, minmax(0, 1fr) )}
-	.lr-grid-col8 { grid-template-columns:repeat(8, minmax(0, 1fr) )}
-	.lr-grid-col9 { grid-template-columns:repeat(9, minmax(0, 1fr) )}
-	.lr-grid-col10 { grid-template-columns:repeat(10, minmax(0, 1fr) )}
-	.lr-grid-col11 { grid-template-columns:repeat(11, minmax(0, 1fr) )}
-	.lr-grid-col12 { grid-template-columns:repeat(12, minmax(0, 1fr) )}
-	.lr-grid-col24 { grid-template-columns:repeat(24, minmax(0, 1fr) )}
+	.lr-grid-columns2{grid-template-columns:repeat(2, 1fr);}
+	.lr-grid-columns2-12{grid-template-columns:1fr 2fr;}
+	.lr-grid-columns2-21{grid-template-columns:2fr 1fr;}
+	.lr-grid-columns2-13{grid-template-columns:1fr 3fr;}
+	.lr-grid-columns2-31,.lr-grid-columns3-4{grid-template-columns:3fr 1fr;}
 	
-	.lr-gap-0 { grid-gap:0 }
-	.lr-gap-2 { grid-gap:2px }
-	.lr-gap-4 { grid-gap:4px }
-	.lr-gap-5, .lr-gap-small { grid-gap: 5px; }
-	.lr-gap-6 { grid-gap:6px }
-	.lr-gap-8 { grid-gap:8px }
-	.lr-gap-10 { grid-gap:10px }
-	.lr-gap-12 { grid-gap:12px }
-	.lr-gap-16 { grid-gap:16px }
-	.lr-gap-24 { grid-gap:24px }
-	.lr-gap-32 { grid-gap:32px }
-	.lr-gap-48 { grid-gap:48px }
-	.lr-gap-64 { grid-gap:64px }	
+	.lr-grid-columns3{grid-template-columns:repeat(3,1fr);}
+	/*.lr-grid-columns3{grid-template-columns:repeat(3,auto);}*/
 	
-	.lr-grid-flow-col {
-		grid-auto-flow: column;
-	}
+	.lr-grid-columns3-112{grid-template-columns:1fr 1fr 2fr;}
+	.lr-grid-columns3-121{grid-template-columns:1fr 21fr 1fr;}
+	.lr-grid-columns3-211{grid-template-columns:2fr 1fr 1fr;}
+	.lr-grid-columns3-113{grid-template-columns:1fr 1fr 3fr;}
+	.lr-grid-columns3-131{grid-template-columns:1fr 3fr 1fr;}
+	.lr-grid-columns3-311,.lr-grid-columns3-5{grid-template-columns:3fr 1fr 1fr;}
+
+	.lr-grid-columns4{grid-template-columns:repeat(4,1fr);}
+	.lr-grid-columns5{grid-template-columns:repeat(5,1fr);}
+	.lr-grid-columns6{grid-template-columns:repeat(6,1fr);}
+	.lr-grid-columns12{grid-template-columns:repeat(12, 1fr);}
+
+	/*.lr-grid-col3--test{grid-template-columns:repeat(3, minmax(0, 1fr) )}*/
 	
+	.lr-gap-0{grid-gap:0}
+	.lr-gap-5,.lr-gap-small{grid-gap:5px;}
+	.lr-gap-10{grid-gap:10px}
+	.lr-gap-20{grid-gap:20px}
+	.lr-gap-30{grid-gap:30px}
+	.lr-gap-40{grid-gap:40px}
+	.lr-gap-50{grid-gap:50px}
+
+	.lr-grid-flow-col{grid-auto-flow: column;}
+	.lr-grid-center{place-items:center;}
+	.lr-grid-end{place-items:end;}
+/*
+grid-template-rows
+grid-template
+grid-template-areas
+grid-area
+grid-column
+grid-column-start
+grid-column-end
+grid-row
+grid-row-start
+grid-row-end
+*/
 }
 
 
@@ -4412,9 +4426,11 @@ body.page-green {
 .fz64 {font-size: 64px;}
 .fz64-adaptive {font-size: calc(24px + 25 * (100vw / 1920));}
 
+.fz-0d8em{font-size:0.8em}
 .fz-1d5em,.fz1-5em{font-size:1.5em}
 .fz-2em,.fz2em{font-size:2em}
 
+.fz-0d8rem{font-size:0.8rem}
 .fz-1d25rem,.fz1-125rem{font-size:1.125rem}
 .fz-1d5rem,.fz1-5rem{font-size:1.5rem}
 .fz-2rem,.fz2rem{font-size:2rem}
@@ -4513,25 +4529,25 @@ body.page-green {
 .lr-font-sans-serif{font-family: sans-serif;}
 .lr-font-signika{font-family: 'Signika';}
 .lr-font-spinnaker{font-family: 'Spinnaker';}
-.lr-font-suez{font-family: 'Suez One';}
+.lr-font-suez{font-family:'Suez One';}
 
-.lr-font-tahoma{font-family: Tahoma;}
+.lr-font-tahoma{font-family:Tahoma;}
 
-.lr-font-unica{font-family: 'Unica One';}
-.lr-font-work-sans{font-family: 'Work Sans';}
-.lr-font-google-sans{font-family: 'Google Sans Text';}
-.lr-font-ubuntu{font-family: 'Ubuntu';}
-.lr-font-yeseva{font-family: 'Yeseva One';}
-.lr-font-kurale{font-family: 'Kurale';}
+.lr-font-unica{font-family:'Unica One';}
+.lr-font-work-sans{font-family:'Work Sans';}
+.lr-font-google-sans{font-family:'Google Sans Text';}
+.lr-font-ubuntu{font-family:'Ubuntu';}
+.lr-font-yeseva{font-family:'Yeseva One';}
+.lr-font-kurale{font-family:'Kurale';}
 
 .font-dashicons, .lr-font-dashicons{font-family: dashicons;}
 
 .product-card {
 	/*width: 270px;
 	min-height: 440px;*/
-display: flex;
-flex-direction: column;
-justify-content: space-between;	
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	text-align: center;
 	padding: 10px;
 	border: 1px solid #EDEDEC;
@@ -4549,11 +4565,13 @@ textarea {resize:horizontal;}
 */
 
 .offcanvas-menu{
+	position:fixed;
+	top: 75px;
+	left:0;
 	/*width:30vw;*/
 	/*height:100vh;*/
 	width:30%;
 	height:100%;
-	top: 75px;
 	transform: translateX(-100%);
 	transition: all 0.4s ease;
 }
