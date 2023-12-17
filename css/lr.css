@@ -1936,8 +1936,8 @@ https://bootstrap-4.ru/docs/4.0/utilities/borders/
 .rounded-left-top,.rounded-top-left,.rounded-lt{border-top-left-radius:1rem;}
 .rounded-left-bottom,.rounded-bottom-left,.rounded-lb{border-bottom-left-radius:1rem}
 
-.rounded-circle{border-radius:50%!important}
-.rounded-pill{border-radius:50rem!important}
+.rounded-circle{border-radius:50%}
+.rounded-pill{border-radius:50rem}
 
 .rounded-0,.lr-rad0,.lr-radius0{border-radius:0;}
 .lr-rad4,.lr-radius4{border-radius:4px;}
