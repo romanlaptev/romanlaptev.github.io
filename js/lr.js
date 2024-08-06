@@ -60,8 +60,6 @@ _log(msg);
 				}};//end console define
 			}
 
-		//_defineEvents();
-		//function _defineEvents(){
 /*
 window.onload = function(){
 console.log("window event onload");
@@ -142,8 +140,6 @@ document.onreadystatechange = function () {
   }
 }
 */
-		//}//end _defineEvents()
-
 
 		function _getById(id){
 
@@ -1944,6 +1940,81 @@ ONLY second LEVEL !!!!!!!!!!!!
 			return result;
 		}//end
 
+		//copy code an insert to project
+/*			
+		function _defineEvents(domObj){
+			domObj.querySelectorAll(".nolink, .app-event").forEach(function(el){
+				
+				el.addEventListener("click", function(e){ 
+console.log(e.type, e); 
+//console.log(e.target.hash);
+					event = e || window.e;
+					var target = event.target || event.srcElement;
+
+					//click on child element
+					//https://learn.javascript.ru/event-delegation
+		//console.log(target.closest("a"));
+					var parent = target.closest("a");
+					if(parent){
+						target = parent;
+					}
+
+					if( target.href ){
+		//console.log(e.target.attributes["href"].value); 
+						_clickHandler(target);
+						if (event.preventDefault) { 
+							event.preventDefault();
+						} else {
+							event.returnValue = false;				
+						}
+						return false; 
+					}
+
+				}, false);//end event
+
+				//el.addEventListener("change", function(e){ 
+		//console.log(e.type); 
+				//}, false);//end event
+					
+			});//next	
+
+			function _clickHandler(target){
+				//---------
+				//if( target.hash && target.hash.indexOf("#switch-tab") !== -1 ){
+				//}
+				
+				//---------				
+				var _getParams = func.parseGetParams( target.hash ); 
+				//_testObj.getParams = func.parseGetParams( target.href ); 
+		console.log(_getParams); 
+				if( !_getParams ){
+		console.error(_getParams); 
+					return false;
+				}
+				if(_getParams["func"]){
+					var nameFunc = _getParams["func"];
+		console.log(nameFunc, typeof nameFunc);
+		//console.log( window[nameFunc], typeof window[nameFunc]);
+					if( typeof window[nameFunc] === "function"){
+						window[nameFunc]();
+					}
+					return;
+				}
+				
+				if( !_getParams["q"]) {
+		console.error(_getParams); 
+					return false;
+				}
+				if( _getParams["q"].length === 0) {
+		console.error(_getParams); 
+					return false;
+				}		
+				
+				//---------
+				
+			}//end _clickHandler()
+		}//end _defineEvents()
+*/			
 
 		// public interfaces
 		return{
@@ -1979,12 +2050,8 @@ ONLY second LEVEL !!!!!!!!!!!!
 			hashCode: _hashCode,
 			parseXmlToObj: _parseXmlToObj,
 			convertXmlToObj: _convertXmlToObj,
-
-			testSupport: _testSupport
-
-			//get_content: function( params ){
-				//return get_content( params );
-			//}
+			testSupport: _testSupport,
+			//defineEvents: _defineEvents,
 		};
 
 	};//end sharedFunc
