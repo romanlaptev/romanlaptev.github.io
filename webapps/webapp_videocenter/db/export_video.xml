@@ -74,7 +74,6 @@
 	<tag tid="103" vid="2" name="клоунада"></tag>
 	<tag tid="104" vid="2" name="Лицедеи"></tag>
 	<tag tid="105" vid="2" name="Тарковский, Андрей"></tag>
-	<tag tid="106" vid="2" name="Мамин, Юрий"></tag>
 	<tag tid="107" vid="2" name="Сухоруков, Виктор"></tag>
 	<tag tid="108" vid="2" name="Михайлов, Виктор"></tag>
 	<tag tid="109" vid="2" name="Маковецкий, Сергей"></tag>
@@ -137,7 +136,6 @@
 	<tag tid="178" vid="2" name="Юрий Никулин"></tag>
 	<tag tid="179" vid="2" name="Николай Гринько"></tag>
 	<tag tid="180" vid="2" name="Владимир Этуш"></tag>
-	<tag tid="181" vid="2" name="Пьер Ришар"></tag>
 	<tag tid="182" vid="2" name="Франсис Вебер"></tag>
 	<tag tid="183" vid="2" name="Жерар Депардье"></tag>
 	<tag tid="187" vid="2" name="Харольд Лойд"></tag>
@@ -286,6 +284,10 @@ https://ru.wikipedia.org/wiki/%D0%91%D1%80%D0%B8%D0%B4%D0%B6%D0%B5%D1%81,_%D0%9B
 	<tag tid="355" vid="1" name="Михаил Светин">https://www.kinopoisk.ru/name/269888/</tag>
 	<tag tid="356" vid="1" name="home video">Домашнее видео</tag>
 	<tag tid="357" vid="1" name="1962"></tag>
+	<tag tid="359" vid="1" name="Пьер Ришар"></tag>
+	<tag tid="360" vid="1" name="Мамин, Юрий"></tag>
+	<tag tid="362" vid="1" name="Мамин, Юрий"></tag>
+	<tag tid="363" vid="1" name="Пореченков Михаил"></tag>
 </taglist>
 
 
@@ -1848,6 +1850,7 @@ https://www.kinopoisk.ru/film/72293/</description>
 	<ul>
 		<li><a data-type="local-file" href="/video/films/D/DieFeuerzahngenbowle/Die_Feuerzangenbowle.avi">Die_Feuerzangenbowle.avi</a></li>
 		<li><a data-type="embed-video" href="https://ok.ru/videoembed/812739201537">OK.ru</a></li>
+		<li><a data-type="external-link" href="https://vk.com/video-152920238_456239166">vk.com</a></li>
 	</ul>
 
 	<tags>
@@ -1858,10 +1861,11 @@ https://www.kinopoisk.ru/film/72293/</description>
 		<item tid="22">avi</item>
 		<item tid="243">П</item>
 		<item tid="320">sub_en</item>
+		<item tid="272">online video</item>
 	</tags>
 
 	<published>11-Oct-2012 22:07:57</published>
-	<updated>12-Apr-2019 13:18:29</updated>
+	<updated>06-Aug-2024 15:20:25</updated>
 </video>
 
 <video type="video">
@@ -1914,6 +1918,7 @@ https://www.kinopoisk.ru/film/72293/</description>
 	
 
 	<ul>
+		<li><a data-type="external-link" href="https://vk.com/video-174023022_456253409">vk.com</a></li>
 		<li><a data-type="local-file" href="/video2/films/R/Russian_horror_stories/s01.mp4">s01.mp4#Гвоздь программы</a></li>
 		<li><a data-type="local-file" href="/video2/films/R/Russian_horror_stories/s02.mp4">s02.mp4#Йети со свалки</a></li>
 		<li><a data-type="local-file" href="/video2/films/R/Russian_horror_stories/s03.mp4">s03.mp4#Зомби-угонщики</a></li>
@@ -1939,16 +1944,16 @@ https://www.kinopoisk.ru/film/72293/</description>
 		<item tid="14">приключения</item>
 		<item tid="117">сериал</item>
 		<item tid="43">фантастика</item>
-		<item tid="106">Мамин, Юрий</item>
 		<item tid="68">Россия</item>
 		<item tid="24">mp4</item>
 		<item tid="244">Р</item>
+		<item tid="362">Мамин, Юрий</item>
 		<item tid="284">2003</item>
 		<item tid="285">2002</item>
 	</tags>
 
 	<published>11-Oct-2012 22:07:57</published>
-	<updated>03-Sep-2021 08:10:05</updated>
+	<updated>19-Aug-2024 14:39:37</updated>
 </video>
 
 <video type="video">
@@ -3232,13 +3237,15 @@ ichi Tsutsumi
 Постепенно память начинает возвращаться.
 
 http://en.wikipedia.org/wiki/Monday_(film)
-https://www.kinopoisk.ru/film/55152/</description>
+https://www.kinopoisk.ru/film/55152/
+https://vk.com/video-217336808_456239289</description>
 	<pictures>
 		<img src="https://st.kp.yandex.net/images/film_big/55152.jpg"/>
 	</pictures>
 
 	<ul>
 		<li><a data-type="local-file" href="/video2/films/M/Monday_2000.mp4">Monday_2000.mp4</a></li>
+		<li><a data-type="external-link" href="https://vk.com/video-217336808_456239289">vk.com</a></li>
 	</ul>
 
 	<tags>
@@ -3250,11 +3257,12 @@ https://www.kinopoisk.ru/film/55152/</description>
 		<item tid="24">mp4</item>
 		<item tid="219">M</item>
 		<item tid="243">П</item>
+		<item tid="272">online video</item>
 		<item tid="287">2000</item>
 	</tags>
 
 	<published>11-Oct-2012 22:07:57</published>
-	<updated>01-Sep-2021 19:28:24</updated>
+	<updated>06-Aug-2024 15:16:26</updated>
 </video>
 
 <video type="video">
@@ -6675,22 +6683,23 @@ https://www.youtube.com/watch?v=swMmFBvMKsI</description>
 	<ul>
 		<li><a data-type="local-file" href="/video2/films/V/Veber/Le_jouet.mp4">Le_jouet.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/swMmFBvMKsI">youtube.com</a></li>
+		<li><a data-type="external-link" href="https://vk.com/video1686056_456239436">vk.com</a></li>
 	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
-		<item tid="181">Пьер Ришар</item>
 		<item tid="182">Франсис Вебер</item>
 		<item tid="89">Франция</item>
 		<item tid="24">mp4</item>
 		<item tid="216">J</item>
 		<item tid="237">И</item>
+		<item tid="359">Пьер Ришар</item>
 		<item tid="272">online video</item>
 		<item tid="293">1976</item>
 	</tags>
 
 	<published>11-Oct-2012 22:07:57</published>
-	<updated>05-Sep-2021 08:55:16</updated>
+	<updated>17-Aug-2024 20:01:50</updated>
 </video>
 
 <video type="video">
@@ -7447,22 +7456,23 @@ https://www.kinopoisk.ru/film/20897/</description>
 	<ul>
 		<li><a data-type="local-file" href="/video2/films/V/Veber/Fugitives.mp4">Fugitives.mp4</a></li>
 		<li><a data-type="embed-video" href="https://ok.ru/videoembed/304641084098">OK.ru</a></li>
+		<li><a data-type="external-link" href="https://vk.com/video271578484_456239501">vk.com</a></li>
 	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
 		<item tid="183">Жерар Депардье</item>
-		<item tid="181">Пьер Ришар</item>
 		<item tid="182">Франсис Вебер</item>
 		<item tid="89">Франция</item>
 		<item tid="24">mp4</item>
 		<item tid="212">F</item>
 		<item tid="230">Б</item>
+		<item tid="359">Пьер Ришар</item>
 		<item tid="306">1986</item>
 	</tags>
 
 	<published>11-Oct-2012 22:07:57</published>
-	<updated>05-Sep-2021 08:54:13</updated>
+	<updated>17-Aug-2024 20:03:20</updated>
 </video>
 
 <video type="video">
@@ -7733,12 +7743,9 @@ https://www.kinopoisk.ru/film/256219/</description>
 Владлен Бирюхов
 Александр Люков
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Стремительно набирает силу только что возникшее в провинциальном городке общество пушкинистов... 
+	<description>Стремительно набирает силу только что возникшее в провинциальном городке общество пушкинистов... 
 Основное отличие каждого — это пушкинские бакенбарды и отливающий серебром 
-набалдашник элегантной трости. Они шагают, шагают и шагают... И их уже много, их не остановить...
-&amp;lt;/pre&amp;gt;
-https://www.youtube.com/watch?v=KmzKr2qaHrI</description>
+набалдашник элегантной трости. Они шагают, шагают и шагают... И их уже много, их не остановить...</description>
 	<pictures>
 		<img src="https://i.ytimg.com/vi/KmzKr2qaHrI/sddefault.jpg"/>
 	</pictures>
@@ -7746,21 +7753,22 @@ https://www.youtube.com/watch?v=KmzKr2qaHrI</description>
 	<ul>
 		<li><a data-type="local-file" href="/video2/films/M/Mamin,Yuriy/bakenbardy.mp4">bakenbardy.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/KmzKr2qaHrI">youtube.com</a></li>
+		<li><a data-type="external-link" href="https://vk.com/video-216155816_456239670">vk.com</a></li>
 	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
 		<item tid="107">Сухоруков, Виктор</item>
-		<item tid="106">Мамин, Юрий</item>
 		<item tid="73">СССР</item>
 		<item tid="22">avi</item>
 		<item tid="230">Б</item>
+		<item tid="360">Мамин, Юрий</item>
 		<item tid="272">online video</item>
 		<item tid="294">1990</item>
 	</tags>
 
 	<published>11-Oct-2012 22:07:57</published>
-	<updated>22-Aug-2021 15:51:31</updated>
+	<updated>19-Aug-2024 14:51:23</updated>
 </video>
 
 <video type="video">
@@ -7790,8 +7798,7 @@ https://www.youtube.com/watch?v=KmzKr2qaHrI</description>
 холодной зимой. Герои фильма — жильцы обычного дома, который вот-вот развалится, 
 если бы не героические усилия главного инженера ЖЭУ Лагутина. 
 Лифт давно не работает, через капитальную стену проходит опасная трещина, 
-крыша просела под тяжестью снега, но дом продолжает держаться, буквально на плечах подвижника Лагутина.
-https://www.youtube.com/watch?v=fSUYzDEIiH8</description>
+крыша просела под тяжестью снега, но дом продолжает держаться, буквально на плечах подвижника Лагутина.</description>
 	<pictures>
 		<img src="https://i.ytimg.com/vi/fSUYzDEIiH8/sddefault.jpg"/>
 	</pictures>
@@ -7799,20 +7806,22 @@ https://www.youtube.com/watch?v=fSUYzDEIiH8</description>
 	<ul>
 		<li><a data-type="local-file" href="/video2/films/M/Mamin,Yuriy/Fontan.mp4">Fontan.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/fSUYzDEIiH8">youtube.com</a></li>
+		<li><a data-type="external-link" href="https://vk.com/video-216155816_456239819">vk.com</a></li>
 	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
 		<item tid="108">Михайлов, Виктор</item>
-		<item tid="106">Мамин, Юрий</item>
 		<item tid="73">СССР</item>
 		<item tid="22">avi</item>
 		<item tid="248">Ф</item>
+		<item tid="362">Мамин, Юрий</item>
+		<item tid="360">Мамин, Юрий</item>
 		<item tid="297">1988</item>
 	</tags>
 
 	<published>11-Oct-2012 22:07:57</published>
-	<updated>22-Aug-2021 16:08:24</updated>
+	<updated>19-Aug-2024 14:48:02</updated>
 </video>
 
 <video type="video">
@@ -7854,21 +7863,22 @@ https://www.youtube.com/watch?v=fSUYzDEIiH8</description>
 	<ul>
 		<li><a data-type="local-file" href="/video2/films/M/Mamin,Yuriy/Ne dumay pro belyh obezyan.mp4">Ne dumay pro belyh obezyan.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/39xwafOHAdk">embed video on youtube.com</a></li>
+		<li><a data-type="external-link" href="https://vk.com/video-89004766_171470640">vk.com</a></li>
 	</ul>
 
 	<tags>
 		<item tid="42">трагикомедия</item>
 		<item tid="43">фантастика</item>
-		<item tid="106">Мамин, Юрий</item>
 		<item tid="68">Россия</item>
 		<item tid="22">avi</item>
 		<item tid="241">Н</item>
+		<item tid="362">Мамин, Юрий</item>
 		<item tid="272">online video</item>
 		<item tid="280">2008</item>
 	</tags>
 
 	<published>11-Oct-2012 22:07:57</published>
-	<updated>22-Aug-2021 16:08:41</updated>
+	<updated>19-Aug-2024 14:44:48</updated>
 </video>
 
 <video type="video">
@@ -7888,16 +7898,13 @@ https://www.youtube.com/watch?v=fSUYzDEIiH8</description>
 Тамара Тимофеева
 Елена Драпеко
 Жан Рюпер		</roles>
-	<description>&amp;lt;pre&amp;gt;
-Чижов - учитель музыки, проживающий в питерской коммуналке, 
+	<description>Чижов - учитель музыки, проживающий в питерской коммуналке, 
 всю жизнь мечтал попасть в свободный западный мир. 
 И вот его мечта сбывается. После изрядного подпития соседи 
 находят в пустующей и захламленной комнате, где когда-то жила 
 странная старуха, окно в Париж, прямо на левый берег Сены. 
 С этого часа начинаются периодические прогулки по городу грез, 
-а также всевозможные злоключения французских &amp;quot;гостей&amp;quot; на берегах Невы.
-&amp;lt;/pre&amp;gt;
-https://www.youtube.com/watch?v=jZt5uOWG9oU&amp;amp;list=PL2sTusldk6UiOS6SLrbUjBPslKJhV0_cf&amp;amp;index=21&amp;amp;t=0s</description>
+а также всевозможные злоключения французских &amp;quot;гостей&amp;quot; на берегах Невы.</description>
 	<pictures>
 		<img src="https://i.ytimg.com/vi/jZt5uOWG9oU/sddefault.jpg"/>
 	</pictures>
@@ -7905,19 +7912,20 @@ https://www.youtube.com/watch?v=jZt5uOWG9oU&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 	<ul>
 		<li><a data-type="local-file" href="/video2/films/M/Mamin,Yuriy/Okno_v_Parizh.mp4">Okno_v_Parizh.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/jZt5uOWG9oU">youtube.com</a></li>
+		<li><a data-type="external-link" href="https://vk.com/video-216155816_456239984">vk.com</a></li>
 	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
-		<item tid="106">Мамин, Юрий</item>
 		<item tid="68">Россия</item>
 		<item tid="89">Франция</item>
 		<item tid="22">avi</item>
 		<item tid="242">О</item>
+		<item tid="362">Мамин, Юрий</item>
 	</tags>
 
 	<published>11-Oct-2012 22:07:57</published>
-	<updated>22-Aug-2021 16:08:50</updated>
+	<updated>19-Aug-2024 14:45:21</updated>
 </video>
 
 <video type="video">
@@ -7936,12 +7944,9 @@ https://www.youtube.com/watch?v=jZt5uOWG9oU&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 Борислав Брондуков
 Татьяна Иванова
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Директор Дома культуры запланировал на 1 января праздник Нептуна с участием 150 «моржей». 
+	<description>Директор Дома культуры запланировал на 1 января праздник Нептуна с участием 150 «моржей». 
 Эта цифра настолько поразила областное начальство, что в село на праздник была направлена шведская делегация, 
-которой надо было теперь показывать праздник во всей красе...
-&amp;lt;/pre&amp;gt;
-https://www.kinopoisk.ru/film/43220/</description>
+которой надо было теперь показывать праздник во всей красе...</description>
 	<pictures>
 		<img src="https://i.ytimg.com/vi/TC9lvj4l9F4/sddefault.jpg"/>
 	</pictures>
@@ -7949,21 +7954,23 @@ https://www.kinopoisk.ru/film/43220/</description>
 	<ul>
 		<li><a data-type="local-file" href="/video2/films/M/Mamin,Yuriy/Prazdnik_Neptuna.mp4">Prazdnik_Neptuna.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/TC9lvj4l9F4">youtube.com</a></li>
+		<li><a data-type="external-link" href="https://vk.com/video-165903_456251058">vk.com</a></li>
+		<li><a data-type="external-link" href="https://www.kinopoisk.ru/film/43220/">www.kinopoisk.ru</a></li>
 	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
 		<item tid="28">короткометражный</item>
-		<item tid="106">Мамин, Юрий</item>
 		<item tid="73">СССР</item>
 		<item tid="22">avi</item>
 		<item tid="243">П</item>
+		<item tid="362">Мамин, Юрий</item>
 		<item tid="272">online video</item>
 		<item tid="306">1986</item>
 	</tags>
 
 	<published>11-Oct-2012 22:07:57</published>
-	<updated>22-Aug-2021 16:08:32</updated>
+	<updated>19-Aug-2024 14:35:23</updated>
 </video>
 
 <video type="video">
@@ -8529,6 +8536,7 @@ https://www.kinopoisk.ru/film/102245/</description>
 	<ul>
 		<li><a data-type="local-file" href="/video2/films/S/Sunshine.mp4">Sunshine.mp4</a></li>
 		<li><a data-type="embed-video" href="https://ok.ru/videoembed/25999379114">OK.ru</a></li>
+		<li><a data-type="external-link" href="https://vk.com/video-114085305_456243570">vk.com</a></li>
 	</ul>
 
 	<tags>
@@ -8544,7 +8552,7 @@ https://www.kinopoisk.ru/film/102245/</description>
 	</tags>
 
 	<published>11-Oct-2012 22:07:57</published>
-	<updated>02-Sep-2021 19:55:51</updated>
+	<updated>06-Aug-2024 15:22:48</updated>
 </video>
 
 <video type="video">
@@ -9077,6 +9085,8 @@ https://www.kinopoisk.ru/film/272612/</description>
 
 	<ul>
 		<li><a data-type="local-file" href="/video2/films/A/Abel.mp4">Abel.mp4</a></li>
+		<li><a data-type="external-link" href="https://vk.com/video-95426642_456264715">vk.com</a></li>
+		<li><a data-type="external-link" href="https://www.kinopoisk.ru/film/49833/">kinopoisk.ru/film/49833/</a></li>
 	</ul>
 
 	<tags>
@@ -9090,7 +9100,7 @@ https://www.kinopoisk.ru/film/272612/</description>
 	</tags>
 
 	<published>12-Oct-2012 22:46:08</published>
-	<updated>29-Aug-2021 09:43:42</updated>
+	<updated>23-Sep-2024 18:45:12</updated>
 </video>
 
 <video type="video">
@@ -12659,20 +12669,21 @@ http://rutracker.org/forum/viewtopic.php?t=2076068.</description>
 		<li><a data-type="local-file" href="/video2/films/C/Sancho_s_rancho/p7.mp4">p7.mp4</a></li>
 		<li><a data-type="local-file" href="/video2/films/C/Sancho_s_rancho/p8.mp4">p8.mp4</a></li>
 		<li><a data-type="local-file" href="/video2/films/C/Sancho_s_rancho/p9.mp4">p9.mp4</a></li>
+		<li><a data-type="external-link" href="https://vk.com/video-162821941_456239348">vk.com</a></li>
 	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
 		<item tid="117">сериал</item>
-		<item tid="106">Мамин, Юрий</item>
 		<item tid="68">Россия</item>
 		<item tid="24">mp4</item>
 		<item tid="245">С</item>
+		<item tid="362">Мамин, Юрий</item>
 		<item tid="295">1997</item>
 	</tags>
 
 	<published>25-Sep-2013 20:20:07</published>
-	<updated>31-Aug-2021 08:56:18</updated>
+	<updated>19-Aug-2024 14:36:02</updated>
 </video>
 
 <video type="video">
@@ -12858,6 +12869,7 @@ https://www.youtube.com/watch?v=OWB4k-YXJUM</description>
 		<li><a data-type="local-file" href="/video2/films/T/tot_samyy_myunkhgauzen/p1.mp4">p1.mp4</a></li>
 		<li><a data-type="local-file" href="/video2/films/T/tot_samyy_myunkhgauzen/p2.mp4">p2.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/OWB4k-YXJUM">youtube.com</a></li>
+		<li><a data-type="external-link" href="https://vk.com/video-177689316_456239030">vk.com</a></li>
 	</ul>
 
 	<tags>
@@ -12873,7 +12885,7 @@ https://www.youtube.com/watch?v=OWB4k-YXJUM</description>
 	</tags>
 
 	<published>13-Oct-2013 09:40:11</published>
-	<updated>05-Sep-2021 18:05:25</updated>
+	<updated>06-Aug-2024 16:13:42</updated>
 </video>
 
 <video type="video">
@@ -13720,9 +13732,7 @@ https://www.kinopoisk.ru/film/42090/</description>
 Сергей Фетисов
 Елена Нестерова
 Василий Мичков	</roles>
-	<description>http://www.kinopoisk.ru/film/656093/
-
-Рукопись молодого писателя попадает в литературное издательство и начинает влиять на жизнь любого, кто откроет её и прочтет хотя бы страницу. Четыре рассказа из рукописи — это четыре истории с непредсказуемой развязкой.</description>
+	<description>Рукопись молодого писателя попадает в литературное издательство и начинает влиять на жизнь любого, кто откроет её и прочтет хотя бы страницу. Четыре рассказа из рукописи — это четыре истории с непредсказуемой развязкой.</description>
 	<pictures>
 		<img src="/video/0_covers/656093.jpg"/>
 	</pictures>
@@ -13732,6 +13742,8 @@ https://www.kinopoisk.ru/film/42090/</description>
 		<li><a data-type="embed-video" href="https://ok.ru/videoembed/319116806870">OK.ru</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/Jc27AJLtgdQ">youtube.com</a></li>
 		<li><a data-type="embed-video" href="https://yandex.ru/efir?stream_id=4a94e588e4e7482e9505f52460cdd742">Яндекс.Эфир</a></li>
+		<li><a data-type="external-link" href="https://vk.com/video228072168_171897920">vk.com</a></li>
+		<li><a data-type="external-link" href="http://www.kinopoisk.ru/film/656093/">www.kinopoisk.ru</a></li>
 	</ul>
 
 	<tags>
@@ -13744,7 +13756,7 @@ https://www.kinopoisk.ru/film/42090/</description>
 	</tags>
 
 	<published>24-Jun-2016 20:19:31</published>
-	<updated>20-Oct-2021 08:53:34</updated>
+	<updated>19-Aug-2024 14:31:55</updated>
 </video>
 
 <video type="video">
@@ -13899,19 +13911,20 @@ https://www.kinopoisk.ru/film/22911/</description>
 
 	<ul>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/UPQrqiVaDks">youtube.com</a></li>
+		<li><a data-type="external-link" href="https://vk.com/video-75849045_171744964">vk.com</a></li>
 	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
-		<item tid="181">Пьер Ришар</item>
 		<item tid="89">Франция</item>
 		<item tid="256">Я</item>
+		<item tid="359">Пьер Ришар</item>
 		<item tid="272">online video</item>
 		<item tid="291">1978</item>
 	</tags>
 
 	<published>24-Jun-2016 21:33:03</published>
-	<updated>08-Apr-2019 12:34:26</updated>
+	<updated>17-Aug-2024 20:00:10</updated>
 </video>
 
 <video type="video">
@@ -16245,6 +16258,112 @@ http://vse-subtitri.ru/tv-shows/game-of-thrones-1492.html</description>
 
 	<published>05-Aug-2024 18:34:05</published>
 	<updated>05-Aug-2024 18:34:26</updated>
+</video>
+
+<video type="video">
+	<title>
+		<item>Высокий блондин в черном ботинке</item>
+		<item>Le Grand Blond avec une chaussure noire</item>
+</title>
+	
+	<producer>Ив Робер</producer>
+	<roles>Пьер Ришар
+Мирей Дарк
+Жан Рошфор
+Бернар Блие
+Поль ле Персон
+Жан Карме	</roles>
+	<description></description>
+	<pictures>
+		<img src="https://ru.wikipedia.org/wiki/%D0%92%D1%8B%D1%81%D0%BE%D0%BA%D0%B8%D0%B9_%D0%B1%D0%BB%D0%BE%D0%BD%D0%B4%D0%B8%D0%BD_%D0%B2_%D1%87%D1%91%D1%80%D0%BD%D0%BE%D0%BC_%D0%B1%D0%BE%D1%82%D0%B8%D0%BD%D0%BA%D0%B5#/media/%D0%A4%D0%B0%D0%B9%D0%BB:Le_gran_blond.jpg"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="external-link" href="https://vk.com/video-108355815_456255729">vk.com</a></li>
+		<li><a data-type="external-link" href="https://www.kinopoisk.ru/film/70934/">www.kinopoisk.ru</a></li>
+	</ul>
+
+	<tags>
+		<item tid="5">комедия</item>
+		<item tid="89">Франция</item>
+		<item tid="208">B</item>
+		<item tid="213">G</item>
+		<item tid="230">Б</item>
+		<item tid="359">Пьер Ришар</item>
+		<item tid="272">online video</item>
+		<item tid="300">1972</item>
+	</tags>
+
+	<published>17-Aug-2024 19:55:48</published>
+	<updated>17-Aug-2024 20:06:16</updated>
+</video>
+
+<video type="video">
+	<title>
+		<item>Горько!</item>
+</title>
+	
+	<producer>Юрий Мамин и Аркадий Тигай</producer>
+	<roles>Ирина Ракшина
+Кирилл Лавров
+Светлана Немоляева
+    Андрей Зибров
+    Михаил Пореченков
+    Анна Миклош
+    Александр Карпухов
+    Мария Мещерякова
+    Алексей Заливалов
+    Денис Синявский	</roles>
+	<description></description>
+	<pictures>
+		<img src="https://vk.com/video228072168_456239212?t=49m27s"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="external-link" href="https://vk.com/video228072168_456239212">vk.com</a></li>
+		<li><a data-type="external-link" href="https://www.kinopoisk.ru/film/94979/">www.kinopoisk.ru</a></li>
+	</ul>
+
+	<tags>
+		<item tid="5">комедия</item>
+		<item tid="68">Россия</item>
+		<item tid="362">Мамин, Юрий</item>
+		<item tid="360">Мамин, Юрий</item>
+		<item tid="363">Пореченков Михаил</item>
+		<item tid="272">online video</item>
+		<item tid="324">1998</item>
+	</tags>
+
+	<published>19-Aug-2024 14:24:46</published>
+	<updated>19-Aug-2024 14:29:30</updated>
+</video>
+
+<video type="video">
+	<title>
+		<item>Великая 2 сезон: Золотой век</item>
+</title>
+	
+	<producer> Сергей Гинзбург</producer>
+	<roles>Боярская Елизавета, Хабаров Антон, Морозов Алексей, Гордин Игорь, Филимонов Алексей, Ворожцов Павел
+Павел !: Илья Гришин	</roles>
+	<description></description>
+	<pictures>
+		<img src=" "/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="external-link" href="https://www.kinopoisk.ru/series/780306/">kinopoisk.ru</a></li>
+	</ul>
+
+	<tags>
+		<item tid="96">история</item>
+		<item tid="117">сериал</item>
+		<item tid="68">Россия</item>
+		<item tid="231">В</item>
+	</tags>
+
+	<published>19-Oct-2024 16:44:22</published>
+	<updated>19-Oct-2024 16:52:32</updated>
 </video>
 
 <video type="videoclip">
