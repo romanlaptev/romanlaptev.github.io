@@ -1071,6 +1071,7 @@ table {
 	vertical-align: middle;
 	line-height: 20px;
 }
+
 .lr-btn-blue {
 	background-color: #007bff;
 	color: #fff;
@@ -1080,7 +1081,6 @@ table {
   font-size: 14px;
   font-weight: 400;
 }
-
 .lr-btn-blue:hover {
 	background-color: #ff8c00 !important;
 	color: #000 !important;
@@ -1090,8 +1090,8 @@ table {
 	outline: 0;
 }
 .lr-btn-blue:active:focus{color: #000 !important;}
-/*.lr-btn-blue:active {}
-.lr-btn-blue:visited {}*/
+/*.lr-btn-blue:active {}*/
+.lr-btn-blue:visited{color: #e0ffff !important;}
 
 
 .lr-btn-flat{
@@ -1125,7 +1125,7 @@ table {
 	color: #000 !important;
 }
 .lr-btn-darkblue:focus {color: #fff !important;}
-
+.lr-btn-darkblue:visited{color: #e0ffff !important;}
 
 .lr-btn-greygreen2 {
 	background-color: #4986a1;
@@ -1141,6 +1141,7 @@ table {
 	color: #fff !important;
     border-color: #8c8c8c;
 }
+.lr-btn-greygreen2:visited{color: #e0ffff !important;}
 
 /*
 .lr-btn.bg-gradient-primary:hover,
