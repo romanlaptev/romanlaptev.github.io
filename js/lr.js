@@ -317,24 +317,24 @@ console.error("error, undefined log wrapper: ", output);
 
 			switch (p.level) {
 				case "info":
-					p.message = "<p class='alert alert-info'>" + p.message + "</p>";
+					p.message = "<div class='p10 alert alert-info'>" + p.message + "</div>";
 				break;
 
 				case "warning":
-					p.message = "<p class='alert alert-warning'>" + p.message + "</p>";
+					p.message = "<div class='p10 alert alert-warning'>" + p.message + "</div>";
 				break;
 
 				case "danger":
 				case "error":
-					p.message = "<p class='alert alert-danger'>" + p.message + "</p>";
+					p.message = "<div class='p10 alert alert-danger'>" + p.message + "</div>";
 				break;
 
 				case "success":
-					p.message = "<p class='alert alert-success'>" + p.message + "</p>";
+					p.message = "<div class='p10 alert alert-success'>" + p.message + "</div>";
 				break;
 
 				default:
-					p.message = "<p class='alert'>" + p.message + "</p>";
+					p.message = "<div class='p10 alert'>" + p.message + "</div>";
 				break;
 			}//end switch
 			output.innerHTML = p.message;
@@ -350,23 +350,23 @@ console.error("error, undefined log wrapper: ", output);
 			}			
 			switch (level) {
 				case "info":
-					message = "<p class='alert alert-info'>" + message + "</p>";
+					message = "<div class='p10 alert alert-info'>" + message + "</div>";
 					_log(message);
 				break;
 
 				case "warning":
-					message = "<p class='alert alert-warning'>" + message + "</p>";
+					message = "<div class='p10 alert alert-warning'>" + message + "</div>";
 					_log(message);
 				break;
 
 				case "danger":
 				case "error":
-					message = "<p class='alert alert-danger'>" + message + "</p>";
+					message = "<div class='p10 alert alert-danger'>" + message + "</div>";
 					_log(message);
 				break;
 
 				case "success":
-					message = "<p class='alert alert-success'>" + message + "</p>";
+					message = "<div class='p10 alert alert-success'>" + message + "</div>";
 					_log(message);
 				break;
 
@@ -573,7 +573,7 @@ console.log(arguments);
 			var logMsg = "";
 
 			if( !p["dataUrl"] || p["dataUrl"].lehgth === 0){
-				logMsg = "sendRequest(), error, empty dataUrl...", p["dataUrl"];
+				logMsg = "sendRequest(), error, empty dataUrl..." + p["dataUrl"];
 				this.logAlert( logMsg, "error");
 	//console.log( logMsg );
 				p["callback"]({
@@ -849,7 +849,7 @@ console.log("event type:" + e.type);
 			function _onreadystatechange(){
 //console.log("state:", xhr.readyState);
 				if( xhr.readyState === 4){
-console.log("end request, state ", xhr.readyState, ", status: ", xhr.status);
+//console.log("end request, state ", xhr.readyState, ", status: ", xhr.status);
 					if( xhr.status === 200){
 /*
 						if( typeof  p["onSuccess"] === "function"){
@@ -890,11 +890,11 @@ console.log("end request, state ", xhr.readyState, ", status: ", xhr.status);
 
 			function _onload(e){
 //console.log("event:", e);
-
 				var timeEnd = new Date();
 				var runtime = (timeEnd.getTime() - timeStart.getTime());
-				logMsg = "server AJAX request,  runtime: " + runtime + " ms, "+ (runtime / 1000)+" sec<br>";
-				logMsg += "<div class='pl20 lr-list bg-white fz12'>";
+				logMsg = "<div>server AJAX request,  runtime: " + runtime + " ms, "+ (runtime / 1000)+" sec</div>";
+				logMsg += "<div class='pl20 lr-list fz12'>";
+				logMsg += "<li><b>xhr.status: "+xhr.status+", "+xhr.statusText +"</b></li> ";
 				logMsg += "<li>url: " + decodeURIComponent( e.target.responseURL )+" </li> ";
 				//logMsg += "<li>url: " + url +" </li> ";
 				logMsg += "<li>total: " + e.total +"bytes </li>";
@@ -910,10 +910,17 @@ console.log("end request, state ", xhr.readyState, ", status: ", xhr.status);
 				}
 				//_vars["contentType"] = xhr.getResponseHeader('content-type');
 
+				var _message_status = "success";
+				//if( xhr.status === 200){}
+				if( xhr.status !== 200){
+					_message_status = "error";
+				}
+				
 				if( typeof p.callback === "function"){
 					p.callback({
 						"message" : logMsg,
-						"status" :"success",
+						"status" :_message_status,
+						"xhr": xhr,
 						"response": _response
 					});
 				}
