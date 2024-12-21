@@ -59,6 +59,49 @@ html, body{
 	--cyan-bluish-gray:#abb8c3;
 	--color-link:#007bff;
 	--color-link-hover:#ff5151;
+
+	--color-magnolia:#f7f0ff;
+	
+	--note-color-RED:#faafa8;/*Коралловый*/
+	--note-color-PEACH:#f39f76;/*Персиковый*/
+	--note-color-SAND:#fff8b8;/*Песочный*/
+	--note-color-YELLOW:#fff8b8;
+	--note-color-GREEN:#e2f6d3;/*Мятный*/
+	--note-color-TEAL:#b4ddd3;/*Серо-зеленый*/
+	--note-color-CERULEAN:#d4e4ed;/*Серо-голубой (небесно-голубой)*/
+	--note-color-GREY:#aeccdc;/*Серый*/
+	--note-color-GRAY:#efeff1;/*Светло-серый*/
+	--note-color-PURPLE:#d3bfdb;/*Темно-синий*/
+	--note-color-PINK:#f6e2dd;/*Розовый*/
+	--note-color-BROWN:#e9e3d4;/*Терракотовый*/
+	--note-color-ORANGE:#FFAC19;/*#f39f76*/
+	--note-color-DEFAULT:#FFFFFF;
+	
+	--bs-blue:#0d6efd;
+	--bs-pink:#d63384;
+	--bs-green:#198754;
+	--bs-cyan:#0dcaf0;
+	--bs-gray-100:#f8f9fa;
+	--bs-gray-200:#e9ecef;
+	--bs-gray-300:#dee2e6;
+	--bs-gray-400:#ced4da;
+	--bs-gray-500:#adb5bd;
+	--bs-gray-600:#6c757d;
+	--bs-gray-700:#495057;
+	--bs-gray-800:#343a40;
+	--bs-gray-900:#212529;
+	--bs-primary:#0d6efd;
+	--bs-success:#198754;
+	--bs-info:#0dcaf0;
+	--bs-dark:#212529;
+
+	--bs-link-color: #0d6efd;
+	--bs-link-color-rgb: 13, 110, 253;
+	--bs-link-hover-color: #0a58ca;
+	--bs-link-hover-color-rgb: 10, 88, 202;
+
+	--bs-code-color: #d63384;
+  
 	--breakpoint-xs:600px;
 	--breakpoint-sm:768px;
 	--breakpoint-md:980px;
@@ -1716,7 +1759,6 @@ https://glacier-lightning-catshark.glitch.me/demo_css/test-CSS_container_queries
 .color-darkgray, .text-darkgray {color: #a9a9a9;}
 .color-grey-d5, .text-grey-d5{color: #D5D5D5;}
 
-.color-darkgreen, .text-darkgreen {color: #006400;}
 .color-darkkhaki, .text-darkkhaki {color: #bdb76b;}
 .color-darkmagenta, .text-darkmagenta {color: #8b008b;}
 .color-darkolivegreen, .text-darkolivegreen {color: #556b2f;}
@@ -1996,6 +2038,25 @@ https://bootstrap-4.ru/docs/4.0/utilities/borders/
 https://cpalettes.com/color/03aea6
 https://www.omiod.com/colors/?rgb=d0ccd5
 */
+
+/* from Bootstrap */
+.bg-bs-blue{background-color:var(--bs-blue);}
+.bg-bs-pink{background-color:var(--bs-pink);}
+.bg-bs-green{background-color:var(--bs-green);}
+.bg-bs-cyan{background-color:var(--bs-cyan);}
+.bg-bs-gray-100{background-color:var(--bs-gray-100);}
+.bg-bs-gray-200{background-color:var(--bs-gray-200);}
+.bg-bs-gray-300{background-color:var(--bs-gray-300);}
+.bg-bs-gray-400{background-color:var(--bs-gray-400);}
+.bg-bs-gray-500{background-color:var(--bs-gray-500);}
+.bg-bs-gray-600{background-color:var(--bs-gray-600);}
+.bg-bs-gray-700{background-color:var(--bs-gray-700);}
+.bg-bs-gray-800{background-color:var(--bs-gray-800);}
+.bg-bs-gray-900{background-color:var(--bs-gray-900);}
+.bg-bs-primary{background-color:var(--bs-primary);}
+.bg-bs-success{background-color:var(--bs-success);}
+.bg-bs-info{background-color:var(--bs-info);}
+.bg-bs-dark{background-color:var(--bs-dark);}
 
 .color-light-yellow-grey{color:rgba(119, 153, 17, 0.07);}
 .bg-light-yellow-grey{background-color:#77991112;}
@@ -2659,15 +2720,12 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 .bg-darkgrey-term {background-color: #073642;}
 
-.bg-darkgreen {background-color: #006400;}
 .bg-darkkhaki {background-color: #bdb76b;}
 .bg-darkmagenta {background-color: #8b008b;}
 .bg-darkolivegreen {background-color: #556b2f;}
 .bg-darkorchid {background-color: #9932cc;}
 
-
 .bg-darksalmon {background-color: #e9967a;}
-.bg-darkseagreen {background-color: #8fbc8f;}
 
 .bg-darkslateblue {background-color: #483d8b;}
 .bg-darkslateblue2 {background-color: #3d5396;}
@@ -2832,10 +2890,27 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-blackgreen5033 { background-color:#225033;}
 .bg-blackgreen { background:#21301f;}
 
+.color-darkgreen, .text-darkgreen {color: #006400;}
+.bg-darkgreen {background-color: #006400;}
+.bg-darkgreen-1d {background-color: #0A2B1D;}
+.bg-green-goblin {background-color: #316140;}
+.bg-darkseagreen {background-color: #8fbc8f;}
+
+.bg-darkgreen-524{/* gitlab header */
+  background-color: #0d4524 !important;
+}
+.bg-darkgreen546{/* windows7 desktop */
+  background-color: #094546 !important;
+}
+.bg-darkgreen200{/* windowsXP desktop */
+  background-color: #003200 !important;
+}
+
+.bg-darkgreen4216 { background-color:#1a4216;}
+  
 .bg-very-dark-green{ background:#004000;}
 .bg-very-dark-green2{ background:#072F07;}
 
-.bg-darkgreen4216 { background-color:#1a4216;}
 .bg-green-90 { background-color:#90D389;}
 .bg-green-78 { background-color:#38d878;}
 .bg-green-de3 { background-color:#f0fde3;}
@@ -2910,15 +2985,6 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 .bg-bluegreen{  background-color: #006666;}
 .bg-bluegreen2{  background-color: #336666 !important;}
-.bg-darkgreen{/* gitlab header */
-  background-color: #0d4524 !important;
-}
-.bg-darkgreen2{/* windows7 desktop */
-  background-color: #094546 !important;
-}
-.bg-darkgreen2{/* windowsXP desktop */
-  background-color: #003200 !important;
-}
 
 .bg-green-lime{/* video.css */
   background-color: #98FB98 !important;
@@ -2994,6 +3060,9 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-lavender-h {background-color: #C9C6D3  !important;}/* lib body color*/
 .bg-lavender-bff { background-color:#cbcbff;}
 .bg-lavender-ccf { background-color:#ccf;}
+
+.color-magnolia{color:var(--color-magnolia);}
+.bg-magnolia{background-color:var(--color-magnolia);}
 
 .bg-lemonchiffon {background-color: #fffacd;}
 .bg-lightblue {background-color: #add8e6;}
@@ -3198,6 +3267,20 @@ https://www.omiod.com/colors/?rgb=d0ccd5
     color: #fff;
 }
 
+.bg-RED{background-color:var(--note-color-RED);}
+.bg-PEACH{background-color:var(--note-color-PEACH);}
+.bg-SAND{background-color:var(--note-color-SAND);}
+.bg-YELLOW{background-color:var(--note-color-YELLOW);}
+.bg-GREEN{background-color:var(--note-color-GREEN);}
+.bg-TEAL{background-color:var(--note-color-TEAL);}
+.bg-BLUE,.bg-CERULEAN{background-color:var(--note-color-CERULEAN);}
+.bg-GREY{background-color:var(--note-color-GREY);}
+.bg-GRAY{background-color:var(--note-color-GRAY);}
+.bg-PURPLE{background-color:var(--note-color-PURPLE);}
+.bg-PINK{background-color:var(--note-color-PINK);}
+.bg-BROWN{background-color:var(--note-color-BROWN);}
+.bg-ORANGE{background-color:var(--note-color-ORANGE);}
+.bg-DEFAULT{background-color:var(--note-color-DEFAULT);}
 
 .bg-darkred {background-color: #8b0000;}
 .bg-very-darkred {background-color: #2F0709;}
@@ -3398,6 +3481,12 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-corn{background-color:#fbec5d;}
 .bg-lemon{background-color:#fde910;}
 .bg-yellow-d800{background-color:#ffd800;}
+
+.bg-wine{background-color:#722f37;}
+.bg-brown964{background-color:#964b00;}/*Коричневый*/
+.bg-brown3324{background-color:#8a3324;}/*Коричневый, умбра жжёная*/
+.bg-brownf00{background-color:#7b3f00;}/*Коричный*/
+.bg-brown755{background-color:#755a57;}/*Красновато-коричневый*/
 
 .bg-deeporange { background:#CCA96E; }
 

@@ -41,10 +41,21 @@ _log(msg);
 			('ontouchstart' in window) ){
 
 			window.console = {"log" : function( msg ){
+//console.log(arguments);
+					if(arguments.length > 1){
+						var out = "";
+						for(var n=0; n < arguments.length; n++){
+							if( n> 0){
+								out += ",";
+							}
+							out += arguments[n];
+						}//next
+						msg = out;
+					}
 					if( typeof msg === "string"){
-						msg = "console.log ("+ msg + ")";
+						msg = "console.log('"+ msg + "')";
 					} else {
-						msg = "console.log (  "+ typeof msg  + ")";
+						msg = "console.log("+ typeof msg  + ")";
 					}
 //alert( _vars["displayLog"] );
 					if(!_vars["displayLog"]){
@@ -920,8 +931,12 @@ console.log("event type:" + e.type);
 					p.callback({
 						"message" : logMsg,
 						"status" :_message_status,
+						"response": _response,
 						"xhr": xhr,
-						"response": _response
+						//"event": e,
+						"loaded": e.loaded,
+						"total": e.total,
+						"timeStamp": e.timeStamp
 					});
 				}
 
@@ -1466,7 +1481,7 @@ console.log(e);
 
 //================================
 //Usage :  var today = func.timeStampToDateStr({
-//timestamp : ....timestamp string....,
+//timestamp : ....timestamp string....,// upDate_ms/1000!!!!!
 //format : "yyyy-mm-dd hh:min"
 //});
 //1331352390 --> 10-Mar-2012 12:06:30
@@ -1844,9 +1859,49 @@ ONLY second LEVEL !!!!!!!!!!!!
 
 		function _testSupport() {
 			return {
+				
+				//Test ECMAScript 1,  1997 (JavaScript 1.2-1.3)
+				"ES1" : Array.prototype.concat ? true : false,
+				
+				//Test ECMAScript 2,  1998 (JavaScript 1.3)
+				"ES2" : Date.prototype.getFullYear ? true : false,
+				
+				//Test ECMAScript 3,  1999 (JavaScript 1.5 - 1.8)
+				"ES3" : Number.prototype.toFixed ? true : false,
+				
+				//Test ECMAScript 5,  2009 (JavaScript 1.8.1 - 1.8.5)
+				"ES5" : JSON ? true : false,
+				
+				//Test ECMAScript 6,  2015 (ES2015)
+				"ES6" : typeof Map === "function" ? true : false,
+				
+				//Test ECMAScript 7,  2016 (ES2016)
+				"ES7" : Array.prototype.includes ? true : false,
+				
+				//Test ECMAScript 8,  2017 (ES2017)
+				"ES8" : typeof Object.entries === "function" ? true : false,
+
+				//Test ES2018 (06-2018)
+				"ES9" : Promise.prototype.finally ? true : false,
+
+				//Test ES2019 (06-2019)
+				"ES10" : Array.prototype.flat ? true : false,
+
+				//Test ES2020 (06-2020)
+				"ES11" : String.prototype.matchAll ? true : false,
+
+				//Test ES2021 (06-2021)
+				"ES12" : String.prototype.replaceAll  ? true : false,
+
+				//Test ES2022 (06-2022)
+				"ES13" : String.prototype.at  ? true : false,
+
+				//ES14 (06-2023)
+				"ES14" : Array.prototype.toSorted  ? true : false,
+				
 				"jsonSupport" : JSON ? true : false,
 				"Promise": window.Promise  ? true : false,
-				"caches" : window.caches ? true : false,
+				"caches" : window.caches ? true : false,// CacheStorage API
 				"applicationCache": window.applicationCache ? true : false,
 				"serviceWorker" : navigator.serviceWorker ? true : false,
 				"Worker": window.Worker  ? true : false,
