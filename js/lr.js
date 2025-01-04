@@ -21,6 +21,7 @@ use module:
 		var _vars = {
 			"logOrderBy": "DESC", //"ASC"
 			"displayLog": true,
+			"showHiddenLog" : false,
 			"support": _testSupport()//,
 		};//end _vars
 
@@ -29,11 +30,136 @@ use module:
 var msg = 'You are running jQuery version: ' + jQuery.fn.jquery;
 _log(msg);
 
-			//$(document).ready(function(){
-//....
-			//});//end ready
-		}
+			$(document).ready(function(){
+				
+				//---------
+				if( typeof $.fn.fancybox === "function"){
+					$(".fancybox").fancybox({
+						helpers : {
+							overlay : {
+								locked : false
+							}
+						}
+					});
+				}
 
+				//------------ Sliders
+				//https://www.npmjs.com/package/slick-carousel
+				//http://kenwheeler.github.io/slick/
+				if($.fn.slick){
+console.log($.fn.slick());
+/*					
+					$("#slider-front-programs").on("init", function(e, slick){
+			console.log(e.type, e.target.id, slick);
+					});
+					$("#slider-front-programs").on(
+						"beforeChange", 
+						function(e, slick, currentSlide, nextSlide){
+			//console.log(e.type, slick);
+							var num = nextSlide+1;
+							if(num < 10){
+								num = "0"+num;
+							}
+							$(".section-programs .currentSlide").text(num);
+					});
+					$("#slider-front-programs").slick({
+						infinite: true,
+						speed: 300,
+						slidesToShow: 3,
+						slidesToScroll: 1,
+						//dots: true,
+						//appendArrows: '.section-programs .slick-arrows',
+						prevArrow: '.section-programs .nav-arrow-left',
+						nextArrow: '.section-programs .nav-arrow-right',
+						centerMode: true,
+						centerPadding: '0',
+					});
+*/
+				}//end sliders init
+	
+//------------------------------ Image load error
+				$("img").on("load", function( e ){
+		console.log("-- image load event....", e.target.src);
+				});
+
+				$("img").on("error", function( e ){
+		console.log("-- image load error", e.target.src);
+					//var src = $(this).attr("src");
+					//var new_src = sitecontent + src;
+		//console.log("fixing image source = " + new_src);
+					//$(this).attr("src", new_src);
+					//$("body").attr("data-image-load-error","1");
+					//load_img_error( $(this)[0] );
+				});
+
+				//--------
+				//$(window).scroll(function() {
+			//var st = $(window).scrollTop();
+			//document.title = st;
+			//console.log ("scrollTop = " + st );
+
+						//if ( $(this).scrollTop() > start_scroll_pos  ) {
+							//$("#btn-scroll-to-top").show();
+						//}
+
+						//if ( $(this).scrollTop() < end_scroll_pos ) {
+							//$("#btn-scroll-to-top").hide();
+						//}
+				//});//end scroll
+
+				//ввод только цифр
+				$('.only-numbers').on('keydown', function(event) {
+//console.log("event.keyCode = " + event.keyCode );
+					if (event.keyCode == 13) {
+						return;
+					}
+					if ( event.keyCode == 46 ||
+						event.keyCode == 8 ||
+						event.keyCode == 9 ||
+						event.keyCode == 27 ||
+							(event.keyCode == 65 && event.ctrlKey === true) ||
+								(event.keyCode >= 35 && event.keyCode <= 39)
+					) {
+						return;
+					} else {
+						if ( (event.keyCode < 48 || event.keyCode > 57) &&
+							(event.keyCode < 96 || event.keyCode > 105 )
+						) {
+							event.preventDefault();
+						}
+					}
+				});
+/*
+				//------------------------- scroll to top
+				$("#scroll-to-top").click(function(e) {
+					e.preventDefault;
+					$('html,body').animate({
+						scrollTop: 0
+						}, 500);
+					return false;
+				});
+
+				$(".scroll-to").addClass("nolink").on("click", function(){
+					if($(this).attr("href")){
+						var id = $(this).attr("href");
+					} else {
+						var id = "#" + $(this).attr("data-target");
+					}
+		//console.log("id: " , id);
+
+					//$('body').scrollTo( elem, 800, {offset: -50});//need jquery.scrollTo-1.4.3.1-min.js!!!!
+
+					var start_scroll_pos = $(id).offset().top;// Get  start position for scroll block
+		//console.log("start_scroll_pos: " , start_scroll_pos);
+
+					$('html,body').animate({
+						scrollTop: start_scroll_pos
+						}, 500);
+					return false;
+				});
+*/					
+			});//end ready
+		}
 
 //---------------------- replace console.log for old IE
 //---------------------- replace console.log for mobile browsers
@@ -180,7 +306,6 @@ document.onreadystatechange = function () {
 			return false;
 		}//end _getById()
 
-
 		//USAGE: var groupBtnDelete = func.getByClass("child-nodes li");
 		function _getByClass(className){
 
@@ -209,7 +334,6 @@ document.onreadystatechange = function () {
 			return false;
 		}//end _getByClass()
 
-
 		function _push( ar, item){
 			if( ar.push ){
 				ar.push(item);
@@ -218,7 +342,6 @@ document.onreadystatechange = function () {
 				ar[num] = item;
 			}
 		}// end _push()
-
 
 		var _timer = {};
 		var _set_timer = function (){
@@ -235,7 +358,6 @@ document.onreadystatechange = function () {
 			return ( timer.end.getTime() - timer.start.getTime() ) / 1000;
 		}
 
-
 		function _get_attr_to_obj( attr ){
 			if( attr.length === 0){
 				return false;
@@ -246,7 +368,6 @@ document.onreadystatechange = function () {
 			}
 			return item_attr;
 		}//end _get_attr_to_obj()
-
 
 		function _log( msg, id){
 			if(!_vars["displayLog"]){
@@ -290,9 +411,12 @@ document.onreadystatechange = function () {
 		//console.log(_showHiddenLog);
 				//_showHiddenLog();
 			//}
-			if( output && output.style.display !== "none"){
-				output.style.display = "block";
-			}
+			
+			if(_vars["showHiddenLog"]){
+				if( output && output.style.display !== "none"){
+					output.style.display = "block";
+				}
+			}			
 		}//end _log()
 
 		function _alert(opt){
@@ -418,7 +542,6 @@ console.error("error, undefined log wrapper: ", output);
 
 		}//end _wrapLogMsg()
 
-
 		function _addEvent( element, eventName, func ) {
 			if ( element.addEventListener ) {
 				return element.addEventListener(eventName, func, false);
@@ -426,8 +549,6 @@ console.error("error, undefined log wrapper: ", output);
 				return element.attachEvent("on" + eventName, func);
 			}
 		};//end _addEvent()
-
-
 
 		// SORT by key, alphabetical sorting
 		function _sortRecords(opt){
@@ -488,7 +609,6 @@ console.log( logMsg );
 
 		}//end _sortRecords()
 
-
 		//**************************************
 		//musFM.html?dirname=/music/A&pls=/music/0_playlists/russian.json
 		//$_GET = parseGetParams();
@@ -522,8 +642,6 @@ console.log( logMsg );
 			return $_GET;
 		}//end _parseGetParams()
 
-
-
 		function _parseHashParams( parseStr ) {
 //console.log(parseStr);
 //console.log(window.hash);
@@ -548,8 +666,8 @@ console.log( logMsg );
 			return $_GET;
 		}//end _parseHashParams()
 
-
 //-------------------------
+
 		function _sendRequest( opt ){
 			var p = {
 				"useFetch": false,
@@ -575,7 +693,7 @@ console.log(arguments);
 			};
 //console.log(opt);
 
-	//extend p object
+			//extend p object
 			for(var key in opt ){
 				p[key] = opt[key];
 			}
@@ -612,11 +730,20 @@ console.log(arguments);
 
 		}//end sendRequest()
 
-
-		function _fetchRequest(dataUrl, opt){
-//console.log("function _fetchRequest()");
-
+/*
+func.fetchRequest( 
+	"https://api.github.com/users/romanlaptev", 
+	{ 
+		method:"GET", 
+		callback: function(res){ console.log(res); }
+	}
+	 
+);
+//https://developer.mozilla.org/ru/docs/Web/API/Fetch_API
+*/
+		function _fetchRequest(url, opt){
 			var p = {
+				responseType : "json",
 				method : opt.requestMethod//,
 				//body: JSON.stringify({ items: obj, name: n.name.value, phone: n.phone.value, code: n.code.value }),
 				//referrer: "about:client",
@@ -632,8 +759,9 @@ console.log(arguments);
 				//window: window // null
 			};
 
-			if(opt.headers){
-				p.headers = opt.headers
+			//extend p object
+			for(var key in opt ){
+				p[key] = opt[key];
 			}
 //console.log(p);
 
@@ -641,31 +769,41 @@ console.log(arguments);
 /*@
 	@if (@_jscript_version >=10)
 @*/
-			fetch( dataUrl, p)
+			fetch( url, p)
 				.then( thenFunc )
 				.then( thenFunc2 )
 				.catch(catchFunc);
 /*@
 	@end 
 @*/
-
 			function thenFunc(response){
-console.log( response);
+//console.log( response);
 //Content-Type	application/xml
-				return response.text();
-				//return response.json();
+				if (!response.ok) {
+					throw new Error("HTTP error, status: " + response.status);
+				}
+				if(p.responseType == "json"){
+					return response.json();
+				} else {
+					return response.text();
+				}
+				//response.blob()
+				//response.formData()
+				
+				//https://developer.mozilla.org/en-US/docs/Web/API/Response/arrayBuffer
+				//return response.arrayBuffer();
 			}
 
 			function thenFunc2(res){
-console.log('Request successful', res);
+//console.log('Request successful', res);
 				if( typeof opt.callback === "function"){
 					opt.callback(res);
 					return;
 				}
 			}
 
-			function catchFunc(err) {
-console.log('Fetch Error : ', err);
+			function catchFunc(error) {
+console.error('fetch request failed : ', error);
 				if( typeof  opt["onError"] === "function"){
 					opt["onError"]({
 						"msg" : "Fetch Error: " + err,
@@ -673,11 +811,68 @@ console.log('Fetch Error : ', err);
 						//"errorObj" : err
 					});
 				}
-
 			}
 
 		}//end fetchRequest()
 
+/*
+func.makeRequestPromise({url:"https://api.github.com/users/romanlaptev"})
+.then(
+	function(res){
+		console.log( "-- THEN, promise resolve, res: ", res );
+	}, 
+	function(res){
+console.log( "-- THEN, promise reject, reason: ",res);
+	});
+*/
+		function _makeRequestPromise(opt){
+			var p = {
+				"requestMethod" : "GET", //"HEAD", PUT, DELETE
+				"url" : false,
+				"responseType" : "json"
+			};
+//console.log(opt);
+
+			//extend p object
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+//console.log(p);
+
+			return new Promise(function(resolve, reject){
+				
+				if( !p["url"] || p["url"].lehgth === 0){
+					var logMsg = "makeRequestPromise(), empty url...";
+	console.error( logMsg );
+					var errorObj = new Error(logMsg);
+					reject(errorObj);
+					return false;
+				}
+				
+				const xhr = new XMLHttpRequest();
+				xhr.open(p.requestMethod, p.url);
+				xhr.responseType = p["responseType"];
+//console.log(xhr.responseType);
+				xhr.onload = function(e){
+//console.log(e);
+//console.log(xhr);
+					var _response = false;
+					if( "response" in xhr){
+						var _response = xhr.response;
+					} else {
+						var _response = xhr.responseText;
+					}
+					resolve(_response);
+				};
+				
+				xhr.onerror = function(e){
+console.error(e);
+					reject(xhr.statusText);
+				};
+				xhr.send();
+				
+			});//end promise
+		}// end _makeRequestPromise()
 
 		function _xmlHttpRequest(p){
 //console.log("function _xmlHttpRequest()", p);
@@ -738,7 +933,7 @@ console.log( logMsg, xhr );
 
 //xhr.abort();
 
-			//set responce type
+			//set response type
 			//Check responseType support:
 //https://msdn.microsoft.com/ru-ru/library/hh872882(v=vs.85).aspx
 //https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseType
@@ -943,7 +1138,6 @@ console.log("event type:" + e.type);
 			}//end onload
 
 		}//end _xmlHttpRequest()
-
 
 		/*
 			runAjax( {
@@ -1363,8 +1557,6 @@ console.log(e);
 
 		}//end _runAjax()
 
-
-
 //-------------------------
 		function _createRequestObject() {
 			var request = false;
@@ -1386,7 +1578,6 @@ console.log(e);
 
 			return request;
 		}//end _createRequestObject()
-
 
 //-------------------------
 		function _convertDateToStr( opt ){
@@ -1477,8 +1668,6 @@ console.log(e);
 			return dateStr;
 		}//end _convertDateToStr()
 
-
-
 //================================
 //Usage :  var today = func.timeStampToDateStr({
 //timestamp : ....timestamp string....,// upDate_ms/1000!!!!!
@@ -1567,7 +1756,6 @@ console.log(e);
 			return timeStamp;
 		}//end _getTimeStampFromDateStr()
 
-
 		function _getMonthNameByNum(
 				num,
 				lang,
@@ -1623,7 +1811,6 @@ sMonth = [
 			return sMonth[num];
 		}//end _getMonthNameByNum()
 
-
 		function _getNumMonthByName( monthName, lang ){
 			var sMonth = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 			if( lang ){
@@ -1634,7 +1821,6 @@ sMonth = [
 			var num = sMonth.indexOf(monthName);
 			return num;
 		}//end _getNumMonthByName()
-
 
 		//Convert str to Hash code
 		var _hashCode = function(str){
@@ -1647,7 +1833,6 @@ sMonth = [
 			}
 			return hash;
 		};//_hashCode
-
 
 		function _convertXmlToObj(xml){
 //console.log( xml.childNodes.item(0).nodeName );
@@ -1793,7 +1978,6 @@ OUT:
 { name: "attr value", html_code: "......" }]
 ONLY second LEVEL !!!!!!!!!!!!
 */
-
 		function _parseXmlToObj(_func, xml){
 		//console.log( xml.childNodes.item(0).nodeName );
 		//console.log( xml.firstChild.nodeName );
@@ -1854,8 +2038,6 @@ ONLY second LEVEL !!!!!!!!!!!!
 			}//end __parseChildNode()
 
 		}//end _parseXmlToObj()
-
-
 
 		function _testSupport() {
 			return {
@@ -2002,82 +2184,6 @@ ONLY second LEVEL !!!!!!!!!!!!
 			return result;
 		}//end
 
-		//copy code an insert to project
-/*			
-		function _defineEvents(domObj){
-			domObj.querySelectorAll(".nolink, .app-event").forEach(function(el){
-				
-				el.addEventListener("click", function(e){ 
-console.log(e.type, e); 
-//console.log(e.target.hash);
-					event = e || window.e;
-					var target = event.target || event.srcElement;
-
-					//click on child element
-					//https://learn.javascript.ru/event-delegation
-		//console.log(target.closest("a"));
-					var parent = target.closest("a");
-					if(parent){
-						target = parent;
-					}
-
-					if( target.href ){
-		//console.log(e.target.attributes["href"].value); 
-						_clickHandler(target);
-						if (event.preventDefault) { 
-							event.preventDefault();
-						} else {
-							event.returnValue = false;				
-						}
-						return false; 
-					}
-
-				}, false);//end event
-
-				//el.addEventListener("change", function(e){ 
-		//console.log(e.type); 
-				//}, false);//end event
-					
-			});//next	
-
-			function _clickHandler(target){
-				//---------
-				//if( target.hash && target.hash.indexOf("#switch-tab") !== -1 ){
-				//}
-				
-				//---------				
-				var _getParams = func.parseGetParams( target.hash ); 
-				//_testObj.getParams = func.parseGetParams( target.href ); 
-		console.log(_getParams); 
-				if( !_getParams ){
-		console.error(_getParams); 
-					return false;
-				}
-				if(_getParams["func"]){
-					var nameFunc = _getParams["func"];
-		console.log(nameFunc, typeof nameFunc);
-		//console.log( window[nameFunc], typeof window[nameFunc]);
-					if( typeof window[nameFunc] === "function"){
-						window[nameFunc]();
-					}
-					return;
-				}
-				
-				if( !_getParams["q"]) {
-		console.error(_getParams); 
-					return false;
-				}
-				if( _getParams["q"].length === 0) {
-		console.error(_getParams); 
-					return false;
-				}		
-				
-				//---------
-				
-			}//end _clickHandler()
-		}//end _defineEvents()
-*/			
-
 		// public interfaces
 		return{
 			vars : _vars,
@@ -2102,6 +2208,8 @@ console.log(e.type, e);
 
 			runAjax: _runAjax,
 			sendRequest: _sendRequest,
+			fetchRequest: _fetchRequest,
+			makeRequestPromise: _makeRequestPromise,
 
 			convertDateToStr: _convertDateToStr,
 			timeStampToDateStr: _timeStampToDateStr,
@@ -2170,6 +2278,11 @@ function delCookie(name){
 
 //================
 function runAjaxJQuery( params ) {
+	
+	if( typeof window.jQuery !== "function"){
+console.error("error, jQuery not found...");
+		return false;
+	}
 
 	var timeStart = new Date();
 
@@ -2405,123 +2518,92 @@ console.log("textStatus:" + textStatus);
 }//end
 */
 
-
-if( typeof window.jQuery === "function"){
-//var msg = 'You are running jQuery version: ' + jQuery.fn.jquery;
-//_log(msg);
-	$(document).ready(function(){
-//console.log("-- document.readyState = " + document.readyState);
-
-		//ввод только цифр
-		$('.only-numbers').on('keydown', function(event) {
-//console.log("event.keyCode = " + event.keyCode );
-			if (event.keyCode == 13) {
-				return;
-			}
-
-			if ( event.keyCode == 46 ||
-				event.keyCode == 8 ||
-				event.keyCode == 9 ||
-				event.keyCode == 27 ||
-					(event.keyCode == 65 && event.ctrlKey === true) ||
-						(event.keyCode >= 35 && event.keyCode <= 39)
-			) {
-				return;
-			} else {
-				if ( (event.keyCode < 48 || event.keyCode > 57) &&
-					(event.keyCode < 96 || event.keyCode > 105 )
-				) {
-					event.preventDefault();
-				}
-			}
-		});
-
-		//------------------------- scroll to top
-		$("#scroll-to-top").click(function(e) {
-			e.preventDefault;
-			$('html,body').animate({
-				scrollTop: 0
-				}, 500);
-			return false;
-		});
-
-		$(".scroll-to").addClass("nolink").on("click", function(){
-			if($(this).attr("href")){
-				var id = $(this).attr("href");
-			} else {
-				var id = "#" + $(this).attr("data-target");
-			}
-//console.log("id: " , id);
-
-			//$('body').scrollTo( elem, 800, {offset: -50});//need jquery.scrollTo-1.4.3.1-min.js!!!!
-
-			var start_scroll_pos = $(id).offset().top;// Get  start position for scroll block
-//console.log("start_scroll_pos: " , start_scroll_pos);
-
-			$('html,body').animate({
-				scrollTop: start_scroll_pos
-				}, 500);
-			return false;
-		});
-
-	/*
-		$(".fancybox").fancybox({
-			helpers : {
-				overlay : {
-					locked : false
-				}
-			}
-		});
-*/
-//------------------------------ Image load error
-		$("img").on("load", function( e ){
-console.log("-- image load event....", e.target.src);
-		});
-
-		$("img").on("error", function( e ){
-console.log("-- image load error", e.target.src);
-			//var src = $(this).attr("src");
-			//var new_src = sitecontent + src;
-//console.log("fixing image source = " + new_src);
-			//$(this).attr("src", new_src);
-			//$("body").attr("data-image-load-error","1");
-			//load_img_error( $(this)[0] );
-		});
-
-/*
-	$("img").on("load", "#insert-json", function( e ){
-console.log("image load event", e);
-	});
-
-	$("img").on("error", "#insert-json", function( e ){
-console.log("image load error", e);
-		//var src = $(this).attr("src");
-		//var new_src = sitecontent + src;
-//console.log("fixing image source = " + new_src);
-		//$(this).attr("src", new_src);
-	});
-*/
-//---------------------- load images handlers
-
-
-	});//end ready
-
-	$(window).scroll(function() {
-//var st = $(window).scrollTop();
-//document.title = st;
-//console.log ("scrollTop = " + st );
-
-			//if ( $(this).scrollTop() > start_scroll_pos  ) {
-				//$("#btn-scroll-to-top").show();
-			//}
-
-			//if ( $(this).scrollTop() < end_scroll_pos ) {
-				//$("#btn-scroll-to-top").hide();
-			//}
-	});//end scroll
-
-}
-
 //IE javascript  version
 //var jscriptVersion = new Function("/*@cc_on return @_jscript_version; @*/")();
 //alert(jscriptVersion);
+
+//copy code an insert to project
+/*			
+		function _defineEvents(domObj){
+//console.log("_defineEvents()", domObj);
+			if( !domObj ){
+				_vars["logMsg"] = "_defineEvents(), error,  domObj: ", domObj;
+				//func.logAlert(
+					//_vars["logMsg"], 
+					//"error"
+				//);
+				console.error( _vars["logMsg"] );
+				return false;
+			}		 
+			domObj.querySelectorAll(".nolink, .app-event").forEach(function(el,num){
+				
+				el.addEventListener("click", function(e){ 
+console.log(e.type, e); 
+//console.log(e.target.hash);
+					event = e || window.e;
+					var target = event.target || event.srcElement;
+
+					//click on child element
+					//https://learn.javascript.ru/event-delegation
+		//console.log(target.closest("a"));
+					var parent = target.closest("a");
+					if(parent){
+						target = parent;
+					}
+
+					if( target.href ){
+		//console.log(e.target.attributes["href"].value); 
+						_clickHandler(target);
+						if (event.preventDefault) { 
+							event.preventDefault();
+						} else {
+							event.returnValue = false;				
+						}
+						return false; 
+					}
+
+				}, false);//end event
+
+				//el.addEventListener("change", function(e){ 
+		//console.log(e.type); 
+				//}, false);//end event
+					
+			});//next	
+
+			function _clickHandler(target){
+				//---------
+				//if( target.hash && target.hash.indexOf("#switch-tab") !== -1 ){
+				//}
+				
+				//---------				
+				var _getParams = func.parseGetParams( target.hash ); 
+				//_testObj.getParams = func.parseGetParams( target.href ); 
+		console.log(_getParams); 
+				if( !_getParams ){
+		console.error(_getParams); 
+					return false;
+				}
+				if(_getParams["func"]){
+					var nameFunc = _getParams["func"];
+		console.log(nameFunc, typeof nameFunc);
+		//console.log( window[nameFunc], typeof window[nameFunc]);
+					if( typeof window[nameFunc] === "function"){
+						window[nameFunc]();
+					}
+					return;
+				}
+				
+				if( !_getParams["q"]) {
+		console.error(_getParams); 
+					return false;
+				}
+				if( _getParams["q"].length === 0) {
+		console.error(_getParams); 
+					return false;
+				}		
+				
+				//---------
+				
+			}//end _clickHandler()
+		}//end _defineEvents()
+*/			
