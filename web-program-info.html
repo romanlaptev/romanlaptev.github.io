@@ -1,0 +1,4964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="icon" href="favicon.ico" />
+	<title>projects, demo tests</title>
+	<link rel="stylesheet" href="https://romanlaptev.github.io/css/lr.css" />
+	<link rel="stylesheet" href="css/lr.css" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<script src="https://romanlaptev.github.io/js/lr.js?banner=off"></script>
+	<script>
+		var func = sharedFunc();
+console.log("func:", func);
+	</script>
+	<style>
+code {
+  font-size: 0.875em;
+  /*color: var(--bs-code-color);*/
+  word-wrap: break-word;
+}
+code > pre {
+  margin:5px;padding:5px;
+  background-color: var(--bs-gray-100);
+}
+pre{font-size:1rem}
+	</style>	
+</head>
+
+<body class="_bg-prussian-blue bg-darkblue-sea _bg-darkgrey-term t1">
+
+<a id="top"></a>        
+<div class="w80 m-auto color-white lr-flex lr-flex-wrap lr-flex-between">
+	<div class="pt5 pr20 pb5 pl20 mt5 mr5 _lr-panel-grey pos-fixed-right-top pos-static-xs _bg-nero bg-teal">
+		<a class="color-gold" href="#top">top</a>
+		<ul class="p0 lr-list-unstyled lr-list-inline-xs lr-nav lr-nav-amber darkBg lr-list-border lr-border-white lr-text-center">
+			<li><a href="#panel-js">JS</a></li>
+			<li><a href="#panel-php">PHP</a></li>
+			<li><a href="#panel-html">HTML,SVG</a></li>
+			<li><a href="#panel-css">CSS</a></li>
+			<li><a href="#panel-bookmarks">Bookmarks</a></li>
+		</ul>
+	</div>
+</div><!-- end container -->
+
+<div class="f-container">
+	<div class="lr-flex lr-flex-between">
+		<h3 class="m0 fz-2rem color-white">Demo, code snippets, tests</h3>
+	</div>
+<style>
+	#toggle:checked + div {display:none;}	
+</style>
+	<div class="text-right color-white">toggle<input type="checkbox" id="toggle"/>
+		<div><ul class="lr-list-inline p10 fz12 bg-white text-left">
+<li><a href="https://keep.google.com/" class="p20 m5 bg-teal color-gold" target="_blank">Google keep</a></li>
+<li><a href="https://disk.yandex.ru/notes" class="p20 m5 bg-teal color-gold" target="_blank">disk.yandex.ru/notes</a></li>
+
+<li class="m5 p10">
+	<a href="https://github.com/romanlaptev/" class="lr-btn lr-btn-default" title="GitHub repository" target="_blank">
+<img src="img/icons/github.png" onerror="this.onerror=null; this.src='img/icons/github.png'" alt="GitHub">
+	</a>
+</li>
+<li class="lr-border-box lr-border-round-small lr-border-silver m5 p10 z-depth-1">
+	<a href="https://jsfiddle.net/user/fiddles/all/" class="color-black" target="_blank">
+jsfiddle.net</a>
+</li>
+<li class="lr-border-box lr-border-round-small lr-border-silver m5 p10 z-depth-1-half">
+	<a class="color-black" href="https://codepen.io/romanlaptev/" target="_blank">codepen.io</a>
+</li>
+<li class="lr-border-box lr-border-round-small lr-border-silver m5 p10 z-depth-2">
+	<a target="_blank" href="https://glitch.com/">glitch.com</a>
+</li>
+<li class="lr-border-box lr-border-round-small lr-border-silver m5 p10 z-depth-3">
+	<a target="_blank" href="https://dashboard.heroku.com/apps/">heroku.com</a>
+</li>
+<li class="lr-border-box lr-border-round-small lr-border-grey m5 p10 z-depth-3">
+	<a target="_blank" href="https://plnkr.co/users/romanlaptev/plunks">romanlaptev/plunks</a>
+</li>
+<!--
+<li class="lr-border-box lr-border-grey-suva p5 m5">
+	<a class="lr-btn lr-btn-default" title="glitch.me" target="_blank" href="https://glacier-lightning-catshark.glitch.me/">glitch.me</a>
+</li>
+-->
+		</ul></div>
+	</div>
+</div><!-- end container -->
+
+<a id="panel-js"></a>
+<div class="lr-container w80 mt20 bg-grey-green _bg-antiquewhite lr-border-round">
+	<div class="lr-flex lr-flex-between lr-flex-top">
+		<a class="d-none d-block-sm" href="#top">top</a>
+		<h3 class="m0 p0">JS code</h3>
+	</div>	
+	
+	<section class="m-d25rem p-d25rem">
+		<div class="bg-white p10">
+			<ul class="p0 m0 m5-children lr-list-inline lr-nav lr-nav-blue _darkBg lr-list-border lr-border-black">
+				<li><a href="#panel-js-object">Object methods</a></li>
+				<li><a href="#panel-js-array">Array methods</a></li>
+				<li><a href="#panel-js-constructor">Constructor</a></li>
+				<li><a href="#panel-js-prototype">Prototype</a></li>
+				<li><a href="#panel-js-classes">Classes</a></li>
+				<li><a href="#panel-js-closures">Closures / Замыкания</a></li>
+				<li><a href="#panel-js-promise">Promise, async/await, fetch</a></li>
+				<li><a href="#panel-js-modules">Modules</a></li>
+				<li><a href="#panel-js-code">code</a></li>
+			</ul>
+		</div>	
+		
+		<div class="bg-white color-black">
+			<section class="bg-brown-e2 p10 m10 lr-radius5">
+	<pre>
+	https://habr.com/ru/articles/740934/
+	ECMAScript 2015, 2016, 2017, 2018, 2019, 2020, 2021
+
+	https://habr.com/ru/articles/741372/
+	Новые возможности ECMAScript 2021-2023
+
+	https://www.dev-notes.ru/articles/javascript/five-new-features-ecmascript-2024/
+	Пять новых возможностей JavaScript в 2024 году
+
+	https://rutube.ru/video/28b61af0943e83f522c4525167f0dd3d/
+	JavaScript объекты — сравнение, копирование, объединение, деструктуризация, остаточные параметры.
+	</pre>
+			</section>
+			<section class="bg-lavender p10 m10 lr-radius5">
+	<pre>
+	Генераторы – новый вид функций в современном JavaScript. 
+	Они отличаются от обычных тем, что могут приостанавливать своё выполнение, 
+	возвращать промежуточный результат и далее возобновлять его позже, 
+	в произвольный момент времени.
+
+	https://learn.javascript.ru/generator
+	------
+	https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Iterators_and_Generators
+
+	http://qaru.site/questions/183/how-do-i-return-the-response-from-an-asynchronous-call
+	Как вернуть ответ от асинхронного вызова?
+
+	https://javascript.ru/forum/misc/69563-asinkhronnyjj-vyzov-v-sinkhronnyjj.html
+	Асинхронный вызов в синхронный
+	</pre>
+			</section>
+			<section class="bg-antiquewhite p10 m10 lr-radius5">
+	<pre>
+	https://youtu.be/M_pclb-58ZY?list=WL&t=4245
+
+	const person = {
+		surname: "Ivanov",
+		fullname: function( name ){
+
+	console.log( "Name:" + name + ", Surname: " + this.surname);
+
+	<b>//использование шаблона для строки в апострофах</b>
+	console.log( `Name: ${name} , Surname: ${this.surname}`);
+		}
+	};
+	person.fullname( name: "John");
+
+	<b>// вызов метода объекта person с контекстом объекта person2</b>
+	const person2 = {
+		surname: "Petrov"
+	};
+
+	person.fullname.call ( person2, "Peter");
+	person.fullname.apply ( person2, ["Peter"]);
+
+	const func = person.fullname.bind ( person2, "Peter");
+	func();
+
+	</pre>
+			</section>
+		</div>
+
+<a id="panel-js-object"></a>
+		<div class="mt10 bg-white color-black">
+			<h2>Object methods</h2>
+			<pre>
+https://learn.javascript.ru/object
+
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object
+Свойства конструктора Object
+
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
+
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf
+
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/values
+	
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
+Object.entries()
+
+Object.fromEntries()
+
+</pre>	
+			<section class="bg-brown-c3 p10 m10 lr-radius5">
+		<h2><a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/create" target="_blank">Object.create()</a></h2>
+создаёт новый объект с указанными объектом прототипа и свойствами.
+	</section>
+			<section class="bg-brown-c3 p10 m10 lr-radius5">
+		<h2><a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze" target="_blank">Object.freeze()</a></h2>
+замораживает объект: это значит, что он предотвращает добавление новых свойств к объекту, удаление старых свойств из объекта и изменение существующих свойств или значения их атрибутов перечисляемости, настраиваемости и записываемости. В сущности, объект становится эффективно неизменным. Метод возвращает замороженный объект.
+<br>
+	</section>
+			<section class="bg-brown-c3 p10 m10 lr-radius5">
+		<h2><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys" target="_blank">Object.keys()</a></h2>
+возвращает массив из собственных перечисляемых свойств переданного объекта, в том же порядке, в котором они бы обходились циклом for...in (разница между циклом и методом в том, что цикл перечисляет свойства и из цепочки прототипов).
+<br>
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/keys
+<pre>
+Object.keys(location)
+
+0: "href"
+​1: "origin"
+​2: "protocol"
+​3: "host"
+​4: "hostname"
+​5: "port"
+​6: "pathname"
+​7: "search"
+​8: "hash"
+​9: "assign"
+​10: "replace"
+​11: "reload"
+​			12: "toString"
+
+​length: 13
+</pre>
+	</section>
+			<section class="bg-brown-c3 p10 m10 lr-radius5">
+		<h2><a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames" target="_blank">Object.getOwnPropertyNames()</a></h2>
+возвращает массив со всеми свойствами (независимо от того, перечисляемые они или нет), найденными непосредственно в переданном объекте.
+<pre>
+//https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames
+...
+Object.getOwnPropertyNames(localStorage)
+...
+var props = Object.getOwnPropertyNames( location );
+console.log(props);
+
+0: "href"
+​1: "origin"
+​2: "protocol"
+​3: "host"
+​4: "hostname"
+​5: "port"
+​6: "pathname"
+​7: "search"
+​8: "hash"
+​9: "assign"
+​10: "replace"
+​11: "reload"
+​				12: "toString"
+				​13: "valueOf"
+​
+length: 14
+​</pre>
+	</section>
+			<section class="bg-brown-c3 p10 m10 lr-radius5">
+		<h2><a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/assign" target="_blank">Object.assign()</a></h2>
+<code><pre>
+var obj1 = {
+	"a":{"a1":1}
+};
+var obj2 = {"b":2};
+var obj3= {};
+
+Object.assign(obj3, obj1, obj2);
+console.log(obj3);
+
+//----------------------
+var obj = { a: 1 };
+var copy = Object.assign({}, obj);
+console.log(copy); // { a: 1 }
+
+//extend object obj1
+var obj1 = {
+  "a" : 1,
+  "b" : 2,
+  "c" : 3
+};
+
+var obj2 = {
+  "b" : 12,
+  "c" : 13,
+  "d" : 4
+};
+
+//obj1=obj2;//+++++replace obj
+for(var key in obj2 ){
+   obj1[key] = obj2[key];
+}
+
+console.log(obj1);
+
+</pre></code>
+	</section>
+		</div>
+<!-- end #panel-js-object -->
+
+<a id="panel-js-array"></a>
+		<div class="mt10 bg-almond color-black">
+			<h2>Array methods</h2>
+<pre class="bg-vanilla color-black m10 p10">
+arr.indexOf()
+arr.findIndex()
+arr.includes()
+arr.some()
+arr.every()
+arr.find()
+arr.filter()
+arr.map()
+arr.reduce()
+arr.reverse()
+arr.sort()
+
+
+https://rutube.ru/video/369888e58e9edd078806bb922a242af0/?playlist=442452
+Методы массивов JavaScript — forEach, map, filter, reduce, some, every, sort, includes, indexOf
+	
+http://javascript.ru/Array
+
+http://learn.javascript.ru/array
+Массивы с числовыми индексами
+
+https://learn.javascript.ru/array-iteration
+Массив: перебирающие методы
+
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/slice
+
+https://zlob.in/2014/06/vsyo-chto-vy-xoteli-znat-o-massivax-v-javascript/
+
+http://javascript.ru/String/indexOf
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray
+
+http://javascript.ru/array/concat
+https://www.w3schools.com/jsref/jsref_concat_array.asp
+
+$.merge()
+http://jquery.page2page.ru/index.php5/%D0%9E%D0%B1%D1%8A%D0%B5%D0%B4%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5_%D0%BC%D0%B0%D1%81%D1%81%D0%B8%D0%B2%D0%BE%D0%B2
+</pre>
+			<section class="bg-matte-white _bg-magnolia color-black p10 m10 lr-radius5">
+		<h2><a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank">Array.map()</a></h2>
+		<pre>
+//http://learn.javascript.ru/array-iteration
+
+//copy all values from arr1 to arr2
+var arr1 = [{"key": "value1"}, {"key": "value2"}, {"key": "value3"}];
+
+var arr2 = arr1.map( function( element, index){
+console.log(element, index);
+  return element["key"];
+});
+
+console.log(arr2);
+//Array(3) [ "value1", "value2", "value3" ]
+		</pre>
+	</section>
+			<section class="bg-magnolia color-black p10 m10 lr-radius5">
+		<h2><a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" target="_blank">Array.forEach()</a></h2>
+		<pre>
+&lt;script&gt;
+console.log(typeof Array.prototype.forEach);
+
+var testArr = ["One", "Two", "Three"];
+	testArr.forEach(function(el, num){
+console.log(el, num);
+	});//next
+&lt;/script&gt;
+
+http://javascript.ru/php/in_array
+http://www.w3schools.com/jsref/jsref_indexof_array.asp
+https://learn.javascript.ru/array-iteration
+		</pre>
+	</section>
+			<section class="bg-magnolia color-black p10 m10 lr-radius5">
+		<h2><a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank">Array.filter()</a></h2>
+		<pre>
+
+var arr = [ 1, 2, 3 ];
+var arr2 = arr.filter( function(element, index){
+//console.log(arguments);
+  if( element === 2){
+      return element;
+  }
+});
+console.log(arr2);// arr2 = [2]
+
+=================
+var arr = [
+  {"a":1},
+  {"b":2},
+  {"c":3},
+];
+
+var arr2 = arr.filter( function(element, index){
+//console.log(arguments);
+  for( var key in element){
+//console.log( key, element[key]);
+
+    if( key === "b"){
+        return element;
+    }
+
+  }
+});
+console.log(arr2);// arr2 = [2]
+		</pre>
+	</section>
+			<section class="bg-magnolia color-black p10 m10 lr-radius5">
+		<h2><a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/slice" target="_blank">Array.slice()</a>,copy array to another....</h2>
+		<pre>
+var arr = [
+"DAUGAVPILS",//1
+"JELGAVA",//1
+"JĒKABPILS",//1
+"JŪRMALA",//1
+"LIEPĀJA",//1
+"RĒZEKNE",//1
+"RĪGA",//1
+"VALMIERA",//1
+"VENTSPILS",//1
+"AIZKRAUKLES NOVADS, AIZKRAUKLE",//2
+"LĪGATNES NOVADS, LĪGATNE",//2
+"VARAKĻĀNU NOVADS, VARAKĻĀNI"//2
+];
+var arr2 = arr.slice(0, 9);
+console.log( arr2 );
+		</pre>
+	</section>
+			<section class="bg-magnolia color-black p10 m10 lr-radius5">
+		<pre>
+https://learn.javascript.ru/array-methods
+получение уникальных значений
+
+function unique(arr) {
+  var obj = {};
+
+  for(var n = 0; n &lt; arr.length; n++){
+    var str = arr[n];
+    obj[str] = true; // запомнить строку в виде свойства объекта
+  }
+  return Object.keys(obj);
+}
+
+var strings = ["кришна", "кришна", "харе", "харе",
+  "харе", "харе", "кришна", "кришна", "8-()"
+];
+
+console.log( unique(strings) );
+		</pre>
+	</section>
+			<code><pre>
+//test
+var ar1 = [];
+var ar2 = [];
+
+var rec1 = {"a" : 1};
+var rec2 = {"b" : 2};
+var rec3 = {"c" : 3};
+
+ar1.push(rec1);
+ar1.push(rec2);
+ar1.push(rec3);
+
+var rec11 = {"a" : 11};
+var rec12 = {"b" : 12};
+var rec13 = {"c" : 13};
+var rec4 = {"d" : 4};
+
+//ar2.push(rec11);
+ar2.push(rec12);
+ar2.push(rec13);
+ar2.push(rec4);
+
+
+ar1=ar2;
+console.log(ar1);
+</pre></code>
+		</div>
+<!-- end #panel-js-array -->
+
+<a id="panel-js-closures"></a>
+		<div class="mt10 bg-silver color-black">
+			<h2>Замыкания</h2>
+			<section class="bg-whitesmoke2 color-black p10 m10 lr-radius5">
+<pre>
+http://javascript.ru/basic/closure
+https://learn.javascript.ru/functions-closures
+http://myrusakov.ru/javascript-anonym-and-callback-functions.html
+http://www.codehint.ru/articles/2014-07-27_javascript-self-invoking-functions
+http://habrahabr.ru/post/117069/
+</pre>
+	</section>
+			<section class="bg-magnolia color-black p10 m10 lr-radius5">
+		<h2>замыкание</h2>
+<pre>
+// вызов counter(), увеличивается переменная уже отработавшей функции test_closure()
+// т.е. через внутреннюю функцию func() остался доступ к currentCount
+function test_closure() {
+	var currentCount = 1;
+	var func = function(){
+		return currentCount++;
+	}
+	return func
+}
+var counter = test_closure();
+console.log ("counter - " + counter() );//1
+console.log ("counter - " + counter() );//2
+console.log ("counter - " + counter() );//3
+
+--------------
+//замыкание2
+//Илья Кантор - Современный учебник JavaScript - 2015/1. Язык JavaScript.pdf, c.294
+function makeCounter()
+{
+  var currentCounter = 1;
+  return function(){
+    return currentCounter++;
+  };
+}
+
+var counter1 = makeCounter();
+console.log( counter1() );
+console.log( counter1() );
+console.log( counter1() );
+
+--------------
+function makeBuffer() {
+/*вашкод*/
+}
+
+var buffer=makeBuffer();//добавить значения к буферу
+buffer('Замыкания');
+buffer('Использовать');
+buffer('Нужно!');//получить текущее значение
+alert(buffer());//Замыкания Использовать Нужно!
+//===================================
+function makeBuffer() {
+	var counter = "";
+	return function(v){
+		if(typeof v !== "undefined")
+		{
+			counter += v;
+		}
+		else
+		{
+			return counter;
+		}
+	};
+}
+
+var buffer = makeBuffer();
+buffer("a"); buffer("b"); buffer("c");
+console.log( buffer() );
+</pre>
+	</section>
+			<section class="bg-magnolia color-black p10 m10 lr-radius5">
+		<h2>Область видимости Замыкания</h2>
+<pre>
+https://docs.google.com/presentation/d/1kiP65zcwktVGPloqLCCS9TEsp94YIVS20600KLSCwv4/edit?usp=sharing
+
+//var num = 0;
+
+function fcount(x){
+  return function(){
+console.log(x);
+   x++;
+  }
+}
+
+var count = fcount(3);
+count();//3
+count();//4
+count();//5
+</pre>
+
+<pre>1.
+	for(var n = 0; n&lt;10; n++){
+
+		//closures
+		(function(num){
+			setTimeout(function(){
+				console.log( num );
+			}, 1000);
+		})(n);//end closure
+
+	}//next
+	//0 1 2 3 4 5 6 7 8 9
+</pre>
+
+<pre>2.
+	function myFunc(num){
+		setTimeout(function(){
+console.log( num );
+			}, 1000);
+	}//end myFunc()
+
+	for(var n = 1; n&lt;=5; n++){
+		myFunc(n);
+	}//next
+
+	//1 2 3 4 5
+</pre>
+
+	</section>
+		</div>
+<!-- end #panel-js-closures -->
+
+<a id="panel-js-constructor"></a>
+		<div class="mt10 bg-silver color-black">
+			<h2>Конструкторы</h2>
+			<section class="bg-whitesmoke2 color-black p10 m10 lr-radius5">
+<pre class="">
+function MyConstructor(a,b){
+	this.a = a;
+	this.b = b;
+	this.sum = a + b;
+
+	function private_method()
+	{
+		return "частный метод, недоступен для вызова в потомках MyConstructor";
+	}
+
+	//привилегированный метод (доступен публично и может использовать внутренние св-ва и методы)
+	var x = 5;
+	var y = 6;
+	this.priv_method_get = function(){
+		return x + y;
+	}
+}
+
+obj1 = new MyConstructor(2, 2);
+console.log("obj1.sum = ", obj1.sum);
+console.log("obj1.constructor = ", obj1.constructor);
+console.log( obj1.x );
+console.log( obj1.priv_method_get() );
+
+obj2 = new MyConstructor(20, 20);
+console.log("obj2.sum = ", obj2.sum);
+console.log("obj2.constructor = ", obj2.constructor);
+
+
+// prototype function (for all children obj)
+// объявление функции test_prototype в прототипе объекта MyConstructor
+// эта функция будет доступна всем потомкам MyConstructor (obj1, obj2)
+MyConstructor.prototype.test_prototype = function()
+{
+	console.log( "test_prototype say - " +this.sum );
+}
+
+obj1.test_prototype();
+
+//===========================================================
+function test_constructor()
+{
+  this.a = "A";
+  this.b = 2+3;
+  this.c = function myFunc()//привилегированный метод (доступен публично и может использовать внутренние св-ва и методы)
+  {
+return "function myFunc, " + (this.a+this.b)
+  }
+
+}
+
+var test = new test_constructor();
+
+console.log( test.a );
+console.log( test.b );
+test.c();
+</pre>
+	</section>
+<!--
+	<section class="bg-magnolia color-black p10 m10 lr-radius5">
+		<h2></h2>
+		<pre>
+		</pre>
+	</section>
+-->
+
+		</div>
+<!-- end #panel-js-constructor -->
+
+		<div class="mt10 bg-silver color-black">
+			<section class="bg-magnolia color-black p10 m10 lr-radius5">
+		<pre>
+//========================================
+//Илья Кантор - Современный учебник JavaScript - 2015
+//Свойство-константа
+
+"use strict"//!!!!
+
+var user = {};
+
+Object.defineProperty(
+	user,
+	"name",{
+		value:"User Name",
+		writable:false,
+		configurable:false
+	}
+);
+
+user.name = "new User Name";//error TypeError: "name" is read-only
+
+
+//==================================== OOP
+function CoffeeMachine( power )
+{
+alert("Create Coffee Machine with power:" + power +"Vt");
+
+	this.test_waterAmount = 0;//public property
+	var waterAmount = 0;//private property
+
+	var WATER_HEAT_CAPACITY = 4200;
+	var COFFEE_MACHINE_CAPACITY = 500;
+	var WATER_TEMPERATURE = 80;
+
+	var self = this;
+	var timer;
+
+	function getBoilTime()
+	{
+		return self.waterAmount * WATER_HEAT_CAPACITY * WATER_TEMPERATURE;
+	}
+
+	function onReady()
+	{
+		alert("Coffee is ready!");
+	}
+
+	this.run = function(){
+		timer = setTimeout( onReady, getBoilTime() );
+	}
+
+	this.stop = function(){
+		clearTimeout( timer );
+	}
+
+	//setter method
+	this.setWaterAmount = function(amount){
+		if( amount &lt; 0 )
+		{
+			throw new Error("error! value could not be &lt; 0");
+		}
+		if( amount &gt; COFFEE_MACHINE_CAPACITY )
+		{
+			throw new Error("error! amount could not be &gt; " + COFFEE_MACHINE_CAPACITY);
+		}
+		waterAmount = amount;
+	}
+
+	//getter method
+	this.getWaterAmount = function(){
+		return waterAmount;
+	}
+}
+
+var coffeeMachine = new CoffeeMachine(100);
+
+//cofeeMachine.waterAmount = 200;
+cofeeMachine.setWaterAmount = 600;//use setter, method with test on error
+
+cofeeMachine.run();
+cofeeMachine.stop();
+		</pre>
+	</section>
+		</div>
+<!-- end -->
+
+<a id="panel-js-prototype"></a>
+		<div class="bg-white color-black">
+			<h2>Прототипы</h2>
+			<pre>
+https://learn.javascript.ru/prototypes
+https://learn.javascript.ru/prototype-inheritance	
+https://learn.javascript.ru/prototype
+</pre>	
+			<section class="bg-magnolia _bg-brown-c2 p10 m10 lr-radius5">
+		<h2>создание связи объектов (прототипирование), способы</h2>
+		<h3>1.Свойство "prototype"</h3>
+<pre>
+function Foo() { 
+	console.log("This is a test function....");
+};
+var a = new Foo(); // родит. объект обязательно типа function
+console.log( Foo.prototype ); 
+
+Foo.prototype.b = 7; // создание св-ва b для всех прототипов
+for(var key in a){ 
+console.log( key, a[key])
+}
+//b 7
+
+//---------------
+console.log ( a.constructor); // function Foo()
+console.log( a instanceof Foo ); //instanceof годится только чтобы узнать связь между объектом и функцией!
+</pre>
+
+		<h3>2."Object.create"</h3>
+<pre>		
+var anotherObject = {
+	a: 2
+};
+var myObject = Object.create( anotherObject );
+console.log( myObject.a ); //2
+
+console.log( Object.getPrototypeOf( myObject ) ); 
+console.log( myObject.prototype); //undefined
+console.log ( myObject.constructor); //undefined
+
+console.log( anotherObject.isPrototypeOf( myObject ) ); //true
+</pre>
+
+		<h3>3. "setPrototypeOf"</h3>
+<pre>
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf
+
+
+Object.setPrototypeOf(obj, prototype);
+
+var obj1 = {
+	a: 1
+};
+var obj2 = {};
+Object.setPrototypeOf( obj2, obj1);
+
+console.log(obj1.isPrototypeOf( obj2 ) );//true
+
+console.log( obj2.a );// 1
+
+obj1.a = 100;
+console.log( obj2.a ); //100
+</pre>
+
+		<h3>4. "__proto__"</h3>
+<pre>
+https://learn.javascript.ru/prototype
+
+var animal = {
+  eats: true
+};
+var rabbit = {
+  jumps: true
+};
+
+rabbit.__proto__ = animal;
+
+// в rabbit можно найти оба свойства
+console.log ( rabbit.jumps ); // true
+console.log ( rabbit.eats ); // true
+
+console.log ( Object.getPrototypeOf( rabbit ) ); // Object { eats: true }
+-----------
+ способ допускается, но так делать не следует. 
+ Ссылка __proto__ была документирована только в стандарте ES6, 
+ и преимущественно используется только для чтения.
+	
+</pre>
+
+	</section>
+			<section class="bg-brown-c3 p10 m10 lr-radius5">
+		<h2>затенение свойства</h2>
+<p>Если a находится выше по цепочке [[Prototype]], но отмечено как только для чтения (writable:false), то установка значения этого существующего свойства, равно как и создание затененного свойства у myObject, запрещены. Если код выполняется в strict mode, то будет выброшена ошибка, если нет, то попытка установить значение свойства будет проигнорирована. В любом случае, затенения не происходит.</p>
+<pre>
+var anotherObject = {};
+Object.defineProperty(anotherObject, "a", {
+	value:2,
+	writeble:false
+});
+
+var myObject = Object.create(anotherObject);
+myObject.a = 4; // создание св-ва невозможно, т.к. у родителя одноименное св-во readonly !!!!!!!!!
+
+console.log( anotherObject.a ); //2
+console.log( myObject.a ); // 2 значение получено из свойства родителя - anotherObject.a !!!!!
+
+console.log(anotherObject.hasOwnProperty("a"));
+console.log(myObject.hasOwnProperty("a"));
+</pre>
+		
+	</section>
+			<section class="bg-brown-c2 p10 m10 lr-radius5">
+<pre>
+-- Свойства [[Prototype]], [[Get]], [[Put]]
+-- "Классы", "конструкторы", "наследование", 
+-- Проверка экземпляров класса"
+-- Создание прототипной связи между двумя объектами
+-- Классы ES6
+
+паттерны делегирование и стратегию на чистых прототипах
+</pre>
+<p>Доклад: https://docs.google.com/presentation/d/1-Wg8Zu4rz1oMqgyzlOrIUNeIrOOIedL3Y3qCDhmSTmM/edit?usp=sharing</p>
+<p>тест по прототипам 
+https://docs.google.com/forms/d/e/1FAIpQLSfFpdGga0vgtYRHzEEYnJ8UQXb9zIeRR--R9FyZfMg10sl9Sg/viewform</p>	
+	</section>
+		</div>
+<!-- end #panel-js-prototype -->
+	
+<a id="panel-js-classes"></a>
+		<div class="bg-white color-black">
+			<h2>Classes</h2>
+	<section class="bg-rosy-af p10 m10 lr-radius5">
+<pre>
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Classes
+
+https://learn.javascript.ru/classes
+
+https://rutube.ru/video/3a94ebab1346048749ff2501a9035544/
+Классы в JavaScript — объявление, конструктор, наследование, экземпляр, геттеры и сеттеры
+</pre>
+<div class="p10 lr-flex lr-flex-wrap">
+
+<code>
+	<h1>class declaration</h1>
+	<pre>
+class Class1{
+  constructor(name){
+console.log("...create object of Class1...");
+    this.name = name;
+  }
+  
+  method1(){
+console.log("method1, name:", this.name);
+  }//
+  
+}//end class
+let firstObj = new Class1("test");
+firstObj.method1();
+</pre></code>
+
+<code>
+	<h1>class expression</h1>
+	<pre>
+var Class1 = class {
+  constructor(name){
+console.log("...create object of Class1...");
+    this.name = name;
+  }
+  
+  method1(){
+console.log("method1, name:", this.name);
+  }//
+  
+}//end class
+let firstObj = new Class1("test");
+firstObj.method1();
+</pre></code>
+
+<code>
+	<h1>Prototype variant</h1>
+	<pre>
+function Class1(name){
+    this.name = name;
+}
+  
+Class1.prototype.method1 = function(){
+console.log("method1, name:", this.name);
+}//
+  
+let firstObj = new Class1("test");
+firstObj.method1();
+</pre></code>
+
+<code>
+<h2>setter / getter</h2>
+<pre>
+class Class1{
+
+	//replace standart setter
+	set oneProp (value){
+		this._oneProp = value.toUpperCase();
+	}
+
+	//replace standart getter
+	get oneProp(){
+		return this._oneProp;
+	}
+	
+}//end class
+
+let firstObj = new Class1();
+
+firstObj.oneProp = "some value";
+console.log( firstObj.oneProp );
+
+</pre>
+</code>
+
+<code>
+<h2>extends, children class</h2>
+<pre>
+class Class1{
+  constructor(name){
+console.log("...constructor Class1...");
+    this.name = name;
+  }
+  
+  method1(){
+console.log("method1");
+  }//
+	
+}//end class
+
+class Class2 extends Class1 {
+  constructor(){
+	super();
+console.log("...constructor Class2...");
+  }
+  method2(){
+	super.method1();
+console.log("method2");
+  }//
+
+}
+let secondObj = new Class2();
+secondObj.method2();
+
+</pre>
+</code>
+
+<code>
+	<h1>public / private</h1>
+	<pre>
+class Class1 {
+	publicProp = null;
+	#privateProp = null;
+
+	constructor(){
+		this.#privateMethod()
+	}//
+  
+	publicMethod(){
+		this.publicProp = "123";
+		this.#privateProp = "456";
+console.log("use privateProp:", this.#privateProp);
+	}//
+	
+	#privateMethod(){
+console.log("...this is privateMethod()");
+	}//
+	
+}//end class
+
+let firstObj = new Class1();
+firstObj.publicMethod();
+
+console.log(firstObj.publicProp);
+
+//console.log(firstObj.#privateProp);
+//Uncaught SyntaxError: reference to undeclared private field or method #privateProp
+
+//firstObj.#privateMethod();
+//Uncaught SyntaxError: reference to undeclared private field or method #privateMethod
+</pre></code>
+
+<code>
+	<h1>static properties and methods</h1>
+	<pre>
+class Class1 {
+	prop1 = "abc";
+	static prop2 = "def";
+	
+	method1(){
+console.log("...this is method1()");
+	}//
+	
+	static method2(){
+console.log("...this is method2()");
+	}//
+	
+}//end class
+
+//Class1.method1();//Uncaught TypeError: Class1.method1 is not a function
+Class1.method2();//ok
+
+console.log(Class1.prop1);//undefined
+console.log(Class1.prop2);//ok
+
+</pre></code>
+
+		</div>
+	</section>
+		</div>
+<!-- end #panel-js-classes -->
+
+<a id="panel-js-promise"></a>
+		<div class="mt10 bg-white color-black">
+			<h1>Promise, async/await</h1>
+	<section class="bg-magnolia color-black p10 m10 lr-radius5">
+		<h2>Promise info</h2>
+		<pre>
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise
+https://learn.javascript.ru/promise
+https://www.sitepoint.com/overview-javascript-promises/
+
+https://rutube.ru/video/e2045bd9d66876ee02a2867f550cf732/?playlist=442452
+JavaScript событийный цикл Event Loop, асинхронный код, промисы (Promise), async / await
+
+https://habrahabr.ru/post/193598/
+Ещё раз о Deferred/Promise
+
+https://www.npmjs.com/package/promise-polyfill
+Promise Polyfill
+
+npm install promise-polyfill --save-exact
+&lt;script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"&gt;&lt;/script&gt;
+		</pre>
+<code><pre>
+function asyncFunc(){
+	return new Promise(function(resolve, reject){//executor function
+		setTimeout(function(){
+			var num = Math.random();
+			if(num > 0.5){
+				resolve(num);
+			} else {
+				reject(num);
+			}
+		}, 3000);
+console.log("set promise asyncFunc()...");
+	});//end promise
+}
+
+function onFulFilled(res){
+console.log( "-- THEN, promise resolve, res: "+ res );
+}
+
+function onRejected(res){
+console.log( "-- THEN, promise reject, reason: "+res+" &lt; 0.5..."  );
+}
+
+asyncFunc().then(onFulFilled, onRejected);
+</pre></code>
+
+<code><pre class="p10">
+2.Chaining
+
+function asyncFunc1(){
+	return new Promise(function(resolve, reject){
+		setTimeout(function(){
+			var num = Math.random();
+			if(num > 0.5){
+				resolve(1);
+			} else {
+				reject(num);
+			}			
+		}, 3000);
+	});//end promise
+}
+
+function asyncFunc2(){
+	return new Promise(function(resolve, reject){
+		setTimeout(function(){
+			var num = Math.random();
+			if(num > 0.5){
+				resolve(2);
+			} else {
+				reject(num);
+			}			
+		}, 3000);
+	});//end promise
+}
+
+asyncFunc1()
+.then(function(res){
+		return res
+	})
+.then(function(res){
+console.log( res );
+		return asyncFunc2();
+	})
+.then(function(res){
+console.log( res );
+	})
+.catch(function(res){
+console.log( "-- CATCH, promise reject, res: "+res);
+})
+.finally(function(){
+console.log( "-- FINALLY, end promise chain.", arguments);
+});
+</pre></code>
+
+<code><pre class="p10">
+3.
+
+function makeRequest(url){
+	return new Promise(function(resolve, reject){
+		const xhr = new XMLHttpRequest();
+		
+		xhr.open("GET", url);
+		xhr.onload = function(e){
+			resolve(xhr.responseText);
+		};
+		xhr.onerror = function(e){
+			reject(xhr.statusText);
+		};
+		xhr.send();
+		
+	});//end promise
+}// end makeRequest()
+
+
+var url = "https://api.github.com/users/romanlaptev";
+//https://jsonplaceholder.typicode.com/photos/
+//https://jsonplaceholder.typicode.com/todos/
+//https://catfact.ninja/fact
+//https://catfact.ninja/facts
+//https://catfact.ninja/breeds
+
+makeRequest(url)
+.then(
+	function(res){
+		console.log( "-- THEN, promise resolve, res: ", res );
+	}, 
+	function(res){
+console.log( "-- THEN, promise reject, res: ",res);
+	});
+
+</pre></code>
+	</section>
+	<section class="bg-magnolia color-black p10 m10 lr-radius5">
+		<h2>Async info</h2>
+		<pre>
+Node.js >= 7.6
+https://caniuse.com/#feat=async-functions
+
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Statements/async_function
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/await
+
+https://habrahabr.ru/company/ruvds/blog/326074/
+Async/await: 6 причин забыть о промисах
+
+https://medium.com/@derzunov/%D0%B7%D0%B0%D1%87%D0%B5%D0%BC-%D0%BC%D0%BD%D0%B5-async-await-%D0%B2-javascript-fb0eadf46f35
+Зачем мне async/await в JavaScript?
+		</pre>
+	</section>
+	<section class="bg-magnolia color-black p10 m10 lr-radius5">
+		<h2>Fetch info</h2>
+		<pre>
+https://developer.mozilla.org/ru/docs/Web/API/Fetch_API
+https://developer.mozilla.org/ru/docs/Web/API/Response
+https://learn.javascript.ru/fetch
+https://learn.javascript.ru/fetch-api
+
+https://habr.com/ru/post/252941/
+Введение в fetch
+
+https://github.com/github/fetch
+window.fetch polyfill
+		
+		</pre>
+
+<code><pre class="p10">
+function sendForm(n) {
+	let obj = Object.fromEntries(calculatorMap);
+
+	fetch("/calculator/mail.php", {
+		method: 'post',
+		body: JSON.stringify({ items: obj, name: n.name.value, phone: n.phone.value, code: n.code.value }),
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	}).then(function (response) {
+		return response.text();
+	}).then(function (text) {
+		if (text === 'ok') {
+			ym(51755942, 'reachGoal', 'calculator');
+			alert('Спасибо! Ваша заявка получена, мы свяжемся с Вами в ближайшее время.');
+			n.classList.remove('codesent');
+			n.reset();
+
+		} else {
+			alert(text);
+		}
+	}).catch(function (error) {
+		log('Request failed', error)
+	});
+}		
+</pre></code>
+
+	</section>
+		</div>
+<!-- end #panel-js-promise -->
+
+<a id="panel-js-modules"></a>
+		<div class="mt10 bg-white color-black">
+	<h1>Modules</h1>
+	<section class="bg-brown-c3 _bg-magnolia _color-black p10 m10 lr-radius5">
+		<h2>info</h2>
+		<pre>
+https://learn.javascript.ru/modules-intro			
+
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Statements/import
+https://learn.javascript.ru/modules
+
+			
+https://rutube.ru/video/061214c1fcc37f92e078b1f9b198c170/?playlist=442452
+Модули в JavaScript, import и export, декомпозиция кода
+
+http://largescalejs.ru/
+
+Модули не работают локально. Только через HTTP(s) !!!!!!!!
+		</pre>
+<code><pre>
+Шаблон Модуль
+---------------
+
+var test_module = function(){
+  var version = "1.0";
+
+  function _get_version(){
+    return "Module version is " + version;
+  }
+  
+  return {
+    get_version : function(){
+      return _get_version();
+    }
+  };
+  
+}();
+test_module.get_version();
+
+=========================================
+(function(){
+    function my_module(){
+  console.log("my_module");
+    }
+    window.m = my_module();
+  }()
+);
+
+m;
+</pre></code>
+
+<code><pre>
+var config;
+var MyModule = {
+	settings: {
+		num: 10,
+		title: "My Module",
+		description: "this is a test"
+	},
+	init: function() {
+		config = this.settings;
+	}
+	
+};
+
+(function(){
+	MyModule.init();
+console.log(config);		
+})();
+</pre></code>
+
+<code><pre>
+(function(){
+	var ZList = ZList || function(options){
+
+		//обязательный элемент здесь будет автоматически хранится версия
+		// из version control
+		var _repositoryRevision = "$Rev$"; 
+
+		// private variables and functions
+		var _init = function(){
+		};
+
+		
+		var _build = function(target){
+			var html = "Table " + target + " is building....";
+			return html;
+		};
+		
+		// public interfaces
+		return{
+			revision:_repositoryRevision,
+			build:	function(target){ 
+				return _build(target); 
+			}
+		};
+	};
+	window.ZList = ZList;
+})();
+
+
+var table = ZList();
+var html = table.build( "table1" );
+//$("#insert_data").html( html );
+
+window.onload = function(){
+	document.getElementById("insert_data").innerHTML = "<p>Test module: " + html +"</p>";
+}
+</pre></code>
+
+<code><pre>
+&lt;script src="js/numbers.js" type="module"&gt;&lt;/script&gt;
+
+-------- main.js
+//import {one, two} from "./numbers";
+//console.log( one, two );	
+
+import {one as item1, two as item2} from "./numbers";
+console.log( item1, item2 );	
+
+import { sayHi as _func1} from "./numbers";
+console.log( _func1 );
+
+import * as module1 from "./numbers";
+console.log( module1 );
+
+------ numbers.js
+export let one = 1;
+export let two = 2;
+
+export function sayHi() {
+  alert("Hello!");
+};
+</pre></code>
+
+<code><pre>
+&lt;!-- test export default, export consructor from module_user.js --&gt;
+&lt;script src="login.js" type="module"&gt;&lt;/script&gt;
+
+&lt;script type="module"&gt;
+import { _user as newUser } from "./login"
+console.log( "Login new user with name: " + newUser.name );
+
+&lt;/script&gt;
+
+------ login.js
+import User from './module_user';
+
+var _user = new User("Vasya");
+//console.log(_user);
+
+export {_user};
+
+------ module_user.js
+export default class User {
+  constructor(name) {
+    this.name = name;
+  }
+};
+
+</pre></code>
+
+<code><pre>
+// Пример jQuery плагина	
+(function( $ ){
+
+	$.fn.maxHeight = function(){
+		var max = 0;
+		this.each(function(){
+			max = Math.max ( max, $(this).height() );
+		});
+		return max;
+	};
+	
+})(jQuery);
+
+$().ready(function(){
+	$("#info").html("Test jQuery plugin: max height = " + $(".test").maxHeight() );
+	
+});
+</pre></code>
+
+	</section>
+	<section class="bg-magnolia color-black p10 m10 lr-radius5">
+(function(){
+	var ZList = ZList || function(options){
+
+		//обязательный элемент здесь будет автоматически хранится версия
+		// из version control
+		var _repositoryRevision = "$Rev$"; 
+
+		// private variables and functions
+		var _init = function(){
+		};
+
+		
+		var _build = function(target){
+			var html = target + " is building....";
+			return html;
+		};
+		
+		// public interfaces
+		return{
+			revision:_repositoryRevision,
+			build:	function(target){ 
+				return _build(target); 
+			}
+		};
+	};
+	window.ZList = ZList;
+})();
+
+var mod1 = ZList();
+var html = mod1.build( "table1" );
+//$("#insert_data").html( html );
+
+window.onload = function(){
+	document.getElementById("insert_data").innerHTML = "<p>mod1: " + html +"</p>";
+}
+	</section>
+	
+		</div>
+<!-- end  #panel-js-modules -->
+
+<a id="panel-js-code"></a>
+		<div class="mt10 bg-greentea color-black">
+			<h1>JS code</h1>
+		<section class="bg-magnolia color-black p10 m10 lr-radius5">
+		<h2>Module template</h2>
+			<div class="">
+<code>
+<pre>
+	var sharedFunc =  sharedFunc || function(){
+	
+		// private variables and functions
+		var _vars = {
+			"logOrderBy": "DESC", //"ASC"
+			"displayLog": true,
+			"support": _testSupport()//,
+		};//end _vars
+
+		// private methods
+		function _getById(id){
+....
+			return false;
+		}//end _getById()
+
+
+		// public interfaces
+		return{
+			vars : _vars,
+			getById: _getById,
+			init: function(){
+				return _init();
+			}
+....
+		};
+
+	};//end sharedFunc
+
+	//window.func = sharedFunc;
+//})();
+		
+/*
+use module:
+//console.log("module sharedFunc:", typeof sharedFunc, sharedFunc);
+
+	var func = sharedFunc();
+//console.log("func:", func);
+
+	func.vars["logOrderBy"] = "DESC";
+
+	func.sortRecords({
+		"records" : terminNodes,
+		"sortOrder": "asc", //desc
+		"sortByKey": "author"
+	});
+*/
+		
+</pre>
+</code>
+			</div>
+	</section>
+		<section class="bg-magnolia color-black p10 m10 lr-radius5">
+		<h2>переназначение функции по условию</h2>
+		<pre>
+var filelist_url;
+function test( test_param )
+{
+	if ( test_param == "php")
+	{
+		var get_filelist = get_filelist_php;
+	}
+
+	if ( test_param == "aspx")
+	{
+		var get_filelist = get_filelist_aspx;
+	}
+
+	return get_filelist();
+}
+
+var get_filelist_php = function(){
+	filelist_url = "include/filelist.php";
+	return filelist_url;
+}
+
+var get_filelist_aspx = function(){
+	filelist_url = "include/aspx/filelist.aspx";
+	return filelist_url;
+}
+
+//console.log( test("php") );
+console.log( test("aspx") );
+		</pre>
+	</section>
+		<section class="bg-magnolia color-black p10 m10 lr-radius5">
+		<h2>Самовызывающиеся функции</h2>
+		<pre>
+	var my_func = (
+		function( name ){
+console.log("Hello " + name + " world!");
+		}
+	)("js");
+
+	(function() {
+console.log("Init !");
+		}()
+	);
+
+	(function(){
+console.log("Init 2");
+	})();
+
+//------------------------------
+var a=1;
+
+(function(){
+var a = "i am self-invoke function";
+console.log(a);
+}())
+
+var f1 = function(){
+  var a = 3;
+  console.log(a);
+}
+f1();
+
+var f2 = function(){
+  var a = 4;
+  console.log(a);
+}();
+
+console.log(a);
+		</pre>
+	</section>
+		<section class="bg-magnolia color-black p10 m10 lr-radius5">
+		<h2>Функции обратного вызова</h2>
+		<pre>
+	var test = function( callback ){
+		var name = "Roman";
+		callback (name);
+	}
+
+	test( function(n) {
+console.log("Hello " + n);
+	});
+
+//"Стоян Стефанов. JavaScript. Шаблоны , c.96"
+var setup = function(){
+console.log( 1 );
+	return function(){
+		console.log( 2 );
+	}
+}
+
+var f1 = setup();//1
+f1();//2
+
+		</pre>
+	</section>
+		<section class="bg-magnolia color-black p10 m10 lr-radius5">
+<code><pre>
+//-------------------------
+function _createRequestObject() {
+	var request = false;
+
+	if (window.XMLHttpRequest) { // Mozilla, Safari, Opera ...
+//console.log("try use XMLHttpRequest");
+		request = new XMLHttpRequest();
+	}
+
+	if(!request){ // IE
+//console.log("try use Microsoft.XMLHTTP");
+		request = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+
+	if(!request){
+//console.log("try use Msxml2.XMLHTTP");
+		request=new ActiveXObject('Msxml2.XMLHTTP');
+	}
+
+	return request;
+}//end _createRequestObject()
+
+//**************************************
+//  создать объект XMLHttpRequest
+//**************************************
+function getXMLDocument(url)  {  
+	var xml;  
+	if(window.XMLHttpRequest) {  
+		xml=new window.XMLHttpRequest();  
+		xml.open("GET", url, false);  
+		xml.send("");  
+		//alert (xml.responseText);
+		return xml.responseXML;  
+	}  else  {
+		if(window.ActiveXObject) {  
+			xml=new ActiveXObject("Microsoft.XMLDOM");  
+			xml.async=false;  
+			xml.load(url);  
+			return xml;  
+		}  else  {  
+			alert("XML download is not supported in this browser");  
+			return null;  
+		}  
+	}
+}//end getXMLDocument
+
+//============ create xmlhttprequest
+var request = false;
+try {
+	request = new XMLHttpRequest();
+} catch (trymicrosoft) {
+	try {
+   		request = new ActiveXObject("Msxml2.XMLHTTP");
+ 	} catch (othermicrosoft) {
+   		try {
+     		request = new ActiveXObject("Microsoft.XMLHTTP");
+   		} catch (failed) {
+    		request = false;
+   		}  
+ 	}
+}
+return request;
+</pre></code>
+	</section>
+		<section class="bg-brown-c3 p10 m10 lr-radius5">
+		<h2>is Array, is Object</h2>
+<code><pre>
+var data = {key1:"a", key2:"b"}
+
+>data instanceof Object
+true
+
+>data instanceof Array
+false
+
+if( data instanceof Object ){
+	if( !(data instanceof Array) ){
+console.log("data type is Object");
+	}	
+}
+	
+-------
+var data = [1,2,3]
+>data instanceof Array
+true
+
+>data instanceof Object
+true
+
+1.
+if( data instanceof Object ){
+	if( data instanceof Array ){
+console.log("data type is Array");
+	}	
+}
+
+2.
+if( data instanceof Array ){
+	if( data.lenght > 0 ){
+console.log("data type is non-empty Array");
+	}
+}
+
+</pre></code>
+
+<code><pre>
+//https://forms.amocrm.ru/forms/assets/js/moment/moment.js
+function isArray(input) {
+    return input instanceof Array || Object.prototype.toString.call(input) === '[object Array]';
+}
+
+function isObject(input) {
+    // IE8 will treat undefined and null as object if it wasn't for
+    // input != null
+    return input != null && Object.prototype.toString.call(input) === '[object Object]';
+}
+</pre></code>
+
+	</section>
+	</div>
+<!-- end #panel-js-code -->
+	
+<!--
+	<section class="bg-magnolia color-black p10 m10 lr-radius5">
+		<h2></h2>
+		<pre>
+		</pre>
+	</section>
+
+	<section class="bg-brown-c3 _bg-magnolia _color-black p10 m10 lr-radius5">
+		<h2></h2>
+<br>
+	</section>
+
+http://localhost/projects/sources.git/test_code/js/test_SET.html
+Set, Map, WeakSet и WeakMap methods
+https://rutube.ru/video/98b1c754c5439f6b1628c6610421e032/?playlist=442452
+Перебор объекта в JavaScript. Коллекции Map и Set
+for...of
+
+
+JS_codebase.html
+http://localhost/projects/sources.git/test_code/js/throw.html
+http://localhost/projects/sources.git/test_code/js/test_Generators.html
+http://localhost/projects/sources.git/test_code/js/test_date.html	
+-->
+	
+	</section>
+
+	<section class="m-d25rem p-d25rem">
+<!--  
+	<div class="lr-panel lr-panel-inline">
+		<div class="p10 bg-teal-b _bg-blue-800 color-white">
+			<h3>js plugins, photobox</h3>
+		</div>	
+		<div class="p5 bg-white">
+			<ul class="lr-list-group lr-nav m0 p5 text-left">
+<li><a href="demo/test_image_zoom.html" target="_blank">
+test_image_zoom.html</a></li>
+				
+<li><a href="demo_js_plugins/zoomify/febr_js.html" target="_blank">zoomify/febr_js.html</a></li>
+<li><a href="demo_js_plugins/fancybox_AdmirorGallery.html" target="_blank">fancybox_AdmirorGallery.html</a>	</li>
+<li><a href="demo_js_plugins/test_fancybox1.html" target="_blank">test_fancybox1.html</a></li>
+<li><a href="demo_js_plugins/test_fancybox3.html" target="_blank">test_fancybox3.html</a></li>
+<li><a href="demo_js_plugins/test_highslide.html" target="_blank">test_highslide.html</a></li>
+<li><a href="demo_js_plugins/thickbox_test.html" target="_blank">thickbox_test.html</a></li>
+<li><a href="demo_js_plugins/test_kwicks.html" target="_blank">test_kwicks.html</a>
+</li>
+			</ul>
+		</div>
+
+	</div>
+  
+	<div class="lr-panel lr-panel-inline">
+		<div class="p10 bg-powder-700 _bg-blue-700">
+			<h3 class="text-white">JS plugins, carousel, slider</h3>
+		</div>	
+		<div class="p5 bg-white">
+			<ul class="lr-list-group lr-nav lr-nav-lightblue m0 p5 lr-border-cyan3 text-left">
+<li><a class="" href="demo_js_plugins/test_flickity.html" target="_blank">test_flickity</a></li>
+<li><a class="" href="demo_js_plugins/test_bxslider.html" target="_blank">test_bxslider</a></li>
+<li><a class="" href="demo_js_plugins/test_OwlCarousel.html" target="_blank">test_OwlCarousel.html, Owl Carousel 2.3.4</a></li>
+<li><a class="" href="demo_js_plugins/test_slidesjs.html" target="_blank">test_slidesjs_v1.html, Slides v1.2</a>	</li>
+<li><a class="" href="demo_js_plugins/test_sliderjs.html" target="_blank">test_sliderjs.html</a></li>
+<li><a class="" href="demo_js_plugins/test_flexslider.html" target="_blank">test_flexslider.html</a></li>
+<li><a class="" href="demo_js_plugins/test_nivo_slider.html" target="_blank">test_nivo_slider.html</a></li>
+<li><a class="" href="demo_js_plugins/test_slick-carousel.html" target="_blank">test_slick-carousel.html</a></li>
+<li><a class="" href="demo_js_plugins/Killer_Carousel/demo.html" target="_blank">Killer_Carousel/demo.html</a></li>
+<li><a class="" href="demo_js_plugins/Killer_Carousel/killer_carousel.html" target="_blank">Killer_Carousel/killer_carousel.html</a></li>
+<li><a class="" href="demo_js_plugins/test_jcarousellite.html" target="_blank">test_jcarousellite.html</a></li>
+<li><a class="" href="demo_js_plugins/page_jcarousel.html" target="_blank">page_jcarousel.html</a></li>
+			</ul>
+		</div>
+	</div>
+  
+	<div class="lr-panel lr-panel-inline">
+		<div class="p10 bg-teal-b color-white">
+			<h3>JS, CSS frameworks</h3>
+		</div>	
+		<div class="p5 bg-white">
+			<ul class="lr-list-group lr-nav lr-nav-lightblue m0 p5 lr-border-cyan3 text-left">
+<li><a href="demo_js_plugins/test_materializecss_Carousel.html" target="_blank">test_materializecss_Carousel.html</a></li>
+<li><a href="demo_js_plugins/test_materializecss_Slider.html" target="_blank">test_materializecss_Slider.html</a></li>
+<li><a href="demo_js_plugins/test_uikit_Slider.html" target="_blank">test_uikit_Slider.html</a></li>
+<li><a href="demo_js_plugins/test_bootstrap.html" target="_blank">test Bootstrap JS plugins</a></li>
+		</ul></div>
+	</div>
+-->
+		<div class="mt10 p20 lr-border-box bg-white">
+<h3>JS demo test</h3>			
+			<ul class="lr-list-group lr-nav m0 p5 m5-children lr-border-cyan3 lr-flex lr-flex-wrap">
+<li><a href="https://glacier-lightning-catshark.glitch.me/demo_js/test_browser_storages.html" target="_blank">test_browser_storages.html</a></li>
+<li><a href="https://glacier-lightning-catshark.glitch.me/demo_js/test_template_parsing.html" target="_blank">test_template_parsing.html</a></li>
+<li><a href="https://glacier-lightning-catshark.glitch.me/demo_js/test_scroll.html" target="_blank">test_scroll.html</a></li>
+
+<li><a href="https://glacier-lightning-catshark.glitch.me/demo_js/test_media/test_audio_video.html" target="_blank">test_audio_video.html</a></li>
+<li><a href="https://glacier-lightning-catshark.glitch.me/demo_js/test_media/test_events.html" target="_blank">test_events.html</a></li>
+<li><a href="https://glacier-lightning-catshark.glitch.me/demo_js/test_media/test_subtitles.html" target="_blank">test_subtitles.html</a></li>
+<li><a href="https://glacier-lightning-catshark.glitch.me/demo_js/test-JS_animate/test.html" target="_blank">test-JS_animate</a></li>
+			</ul>
+		</div>
+	</section>			
+</div><!-- end container -->
+
+<a id="panel-php"></a>
+<div class="lr-container w80 mt20 bg-grey-green lr-border-round">
+	<div class="lr-flex lr-flex-between lr-flex-top">
+		<a class="d-none d-block-sm" href="#top">top</a>
+		<h3 class="m0 p0">PHP info</h3>
+	</div>	
+	<div class="lr-flex lr-flex-wrap m10-children bg-white">
+		<a href="#section-php-array">Array</a>
+		<a href="#section-php-date">Date</a>
+<!--
+		<a href="#section-php-string">String</a>
+-->
+		<a href="#section-php-functions">Functions</a>
+		<a href="#section-php-oop">OOP</a>
+		<a href="#section-php-db">Databases</a>
+		<a href="#section-php-curl">Curl</a>
+		<a href="#section-php-service">Service functions</a>
+	</div>	
+<pre>		
+https://www.php.net/		
+https://www.php.net/manual/ru/function.array-combine.php
+</pre>		
+	<div class="bg-yellow-100 p10">
+		<code><pre>
+error_reporting(E_ALL|E_STRICT);
+ini_set('display_errors', 1);
+echo "Your PHP version: ". PHP_VERSION;
+//echo phpversion();
+
+$sapi_type = php_sapi_name();
+
+$_vars["runType"] = "";
+if ( $sapi_type == 'apache2handler' || $sapi_type == 'cli-server') {
+	$_vars["runType"] = "web";
+	formPageHeader();
+}
+if ( $sapi_type == 'cli') {
+	$_vars["runType"] = "console";
+}
+if ( $sapi_type == 'cgi') {
+	$_vars["runType"] = "console";
+}
+$msg = "Run method (php_sapi_name): ". $sapi_type;
+echo logAlert($msg, "info");
+
+		</pre></code>
+	</div>
+
+	<a id="section-php-array"></a>
+	<h3>Array</h3>
+	<section class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap">
+		<div class="bg-yellow-050 p10">
+------- test_array.php
+			<h3> array_combine </h3>
+			<code><pre>
+$field_arr_keys[] = "key1";
+$field_arr_values[] = "value1";
+
+$arr1 = array_combine($field_arr_keys, $field_arr_values);
+print_r($arr1);
+
+Array
+(
+    [key1] => value1
+)
+		</pre></code></div>
+		<div class="bg-bs-gray-100 p10"><code><pre>// test var, create link
+$first = 5;
+$link = &$first;
+echo $first;
+5
+
+php > $first = 6;
+php > echo $link;
+6
+		</pre></code></div>
+		<div class="bg-yellow-050 p10"><code><pre>
+$some_var = "Hello PHP!";
+$arr1 = (array)$some_var;
+
+php > var_dump($arr1);
+array(1) {
+  [0]=>
+  string(10) "hello PHP!"
+}
+		</pre></code></div>
+		<div class="bg-green-cfd p10">https://www.php.net/manual/ru/function.array-merge.php
+			<code><pre>
+$arr1 = [ 1 => "one", 2 => "two", 3 => "three" ];
+$arr2 = [4 => "four", 5 => "five", 1 => "oNNE"];
+
+$arr3 = $arr1 + $arr2;
+print_r( $arr3 );
+
+php > var_dump($arr3);
+array(5) {
+  [1]=>  string(3) "one" //!!!!!!
+  [2]=>  string(3) "two"
+  [3]=>  string(5) "three"
+  [4]=>  string(4) "four"
+  [5]=>  string(4) "five"
+}
+
+$arr4 = array_merge ($arr1, $arr2);
+php > var_dump($arr4);
+array(6) {
+  [0]=>  string(3) "one" //!!!!!!!
+  [1]=>  string(3) "two"
+  [2]=>  string(5) "three"
+  [3]=>  string(4) "four"
+  [4]=>  string(4) "five"
+  [5]=>  string(4) "oNNE" //!!!!!!
+}
+		</pre></code></div>
+		<div class="bg-lavender p10"><code><pre>
+//=======================
+php > $arr1 = [1 => "one", 2 => "two", 3 => "three"];
+php > $arr2 = [1 => "one", 2 => "two", 3 => "three"];
+php > $arr1 === $arr2;
+php > var_dump($arr1 === $arr2);
+bool(true)
+
+//=======================
+php > var_dump( is_array($arr1) );
+bool(true)
+
+php > var_dump( in_array( "two", $arr1) );
+bool(true)
+
+php > var_dump( in_array( "four", $arr1) );
+bool(false)
+
+//=======================
+//элементы массива будут расположены в порядке возрастания.
+//sort($files);
+
+//сортирует массив в обратном порядке
+//rsort($files);
+
+		</pre></code></div>
+	</section>			
+
+	<a id="section-php-date"></a>
+	<h3>Date</h3>
+<pre>
+https://www.php.net/manual/ru/function.date.php
+https://www.php.net/manual/ru/function.getdate.php
+https://www.phptutorial.net/php-oop/php-datetime/
+
+https://www.php.net/manual/ru/datetimezone.getoffset.php
+https://habr.com/ru/post/19838/#20
+
+</pre>	
+	<section class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap">
+		<div class="bg-green-de3 p10">
+			<code><pre>
+date_default_timezone_set('Asia/Novosibirsk');
+
+echo "Last modified: " . date ("F d Y H:i:s.");
+//Last modified: March 31 2020 22:21:09.
+
+$today = date("H:i:s, d.m.Y");
+echo "Last modified: " . $today;
+//Last modified: 22:21:09, 31.03.2020
+
+$today = date("d-m-Y_H-i");
+echo "Last modified: " . $today;
+//Last modified: 31-03-2020_22-21
+
+echo date("Y M j H:i:s");//current date
+//2020 Mar 31 22:21:09
+
+$time_stamp1 = 1682990400;
+echo date("Y M j H:i:s", $time_stamp1);
+//2023 May 2 08:20:00
+
+$time_stamp2 = 1436972400;
+echo date("Y M j H:i:s", $time_stamp2);
+//2015 Jul 15 22:00:00
+			</pre></code>
+		</div>
+		<div class="bg-yellow-050 p10">
+			<code><pre>
+php > $toDay = new DateTime("now", new DateTimeZone("Asia/Novosibirsk") );
+php > var_dump($toDay);
+object(DateTime)#1 (3) {
+  ["date"]=>
+  string(26) "2025-01-07 10:25:25.862305"
+  ["timezone_type"]=>
+  int(3)
+  ["timezone"]=>
+  string(16) "Asia/Novosibirsk"
+}
+php > var_dump($toDay->format('d.m.Y H:i'));
+string(16) "07.01.2025 10:25
+
+//--------
+php > $timeStamp_now = $toDay->getTimestamp();
+php > var_dump($timeStamp_now);
+int(1736220325)
+		</pre></code></div>
+		<div class="bg-green-cfd p10">
+			<code><pre>
+$room_time_must_end ="16.03.2023 15:11";
+$timeStamp_end = strtotime($room_time_must_end);
+php > var_dump($timeStamp_end);
+int(1678954260)
+
+$roomEnd = new DateTime(
+	$room_time_must_end,  
+	new DateTimeZone('Asia/Novosibirsk') 
+);
+var_dump($roomEnd->format('d.m.Y H:i'));
+
+$timeStamp_end = $roomEnd->getTimestamp();
+var_dump($timeStamp_end);
+
+//....
+$test = $timeStamp_now > $timeStamp_end;
+var_dump($test);
+
+		</pre></code></div>
+		<div class="bg-lavenderblush p10">
+			<code><pre>
+$now_str = date("d.m.Y H:i:s");
+var_dump($now_str);
+
+$now = time();
+var_dump($now);
+
+$now_str2 = date("d.m.Y H:i:s", $now);
+var_dump($now_str2);
+
+//$datetime = new DateTime("now",  new DateTimeZone('Asia/Novosibirsk') );
+//$datetime->setTimezone($timezone);
+//echo $datetime->format('d.m.Y H:i:s');
+
+//=========================
+$date_end_action = "24.08.2022";
+
+$time1 = strtotime( date("d.m.Y") ); 
+$time2 = strtotime( $date_end_action );
+
+echo $time1, "\n";
+echo $time2, "\n";
+
+var_dump( $time1 &lt;= $time2 );
+				
+			</pre></code>
+		</div>
+		<div class="bg-green-d8 p10">
+			<code><pre>
+//--------------
+https://www.phptutorial.net/php-oop/php-datetime/
+
+$datetime = new DateTime();
+
+$timezone = new DateTimeZone('America/Los_Angeles');
+$datetime->setTimezone($timezone);
+
+var_dump($datetime);
+
+object(DateTime)#1 (3) {
+    ["date"]=> string(26) "2021-07-14 21:33:27.986925"
+    ["timezone_type"]=> int(3)
+    ["timezone"]=> string(19) "America/Los_Angeles"
+}
+
+//---------
+var_dump( date("d.m.Y H:i:s") );
+
+$datetime = new DateTime();
+$timezone = new DateTimeZone('Asia/Novosibirsk');
+$datetime->setTimezone($timezone);
+echo $date->format('d.m.Y H:i:s');
+		
+$datetime = new DateTime("now",  new DateTimeZone('Asia/Novosibirsk') );
+//$datetime->setTimezone($timezone);
+echo $datetime->format('d.m.Y H:i:s');
+			</pre></code>
+		</div>
+		<div class="bg-powderblue-light p10">
+			<code><pre>
+//https://www.php.net/manual/ru/datetimezone.getoffset.php
+//https://habr.com/ru/post/19838/#20
+
+$timeStamp1 = 1631592258;
+echo date("Y-m-d H:i:s", $timeStamp1);
+exit;
+
+$dt = new DateTime("now");
+var_dump($dt);
+
+$timeOffset = $dt->getOffset();
+var_dump($timeOffset);
+
+$timeZoneStr = date_default_timezone_get();
+echo $timeZoneStr;
+
+$timeStamp = time();
+$now = date("Y-m-d H:i:s", $timeStamp);
+echo $now;
+
+if( $timeZoneStr == "Europe/Moscow"){
+	$timeStamp = time() + ( (60*60) * 4);//+4hour
+	$nskDate = date("Y-m-d H:i:s", $timeStamp);
+echo "nskDate: ". $nskDate;
+}
+			</pre></code>
+		</div>
+		<div class="bg-lightblue-grey p10">
+			<code><pre>
+$timeStamp1 = 1613891608;
+//$time_stamp1 = 1579157124;
+echo date("Y-m-d H:i:s", $timeStamp1);
+
+//2020-01-16 06:45:00
+$dateStr = "2021-02-09 05:04:16";
+$timeStamp2 = strtotime($dateStr);
+echo $timeStamp2;//1612821856
+
+$imageUpdate = false;
+if( $timeStamp1 >= $timeStamp2 ){
+	$imageUpdate = true;
+}
+var_dump($imageUpdate);
+			</pre></code>
+		</div>
+	</section>			
+
+	<a id="section-php-functions"></a>
+	<h2>Functions</h2>
+	<section class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap">
+		<div class="bg-yellow-pre p10">
+			<code><pre>
+//========= default parameters
+function getSum($left = 10, $right = 5)
+{
+    $sum = $left + $right;
+    return $sum;
+}
+echo getSum();     //15
+echo getSum(5);    //10
+echo getSum(5, 0); //5
+
+//=============== STATIC variable
+function counter()
+{
+    static $counter = 0;//!!!
+    return ++$counter;
+}
+
+echo counter();//1
+echo counter();//2
+
+//=============== Dynamic function
+function hello()
+{
+    return 'Hello!';
+}
+function bye()
+{
+    return 'Bye!';
+}
+
+$var = rand(0, 1) ? 'hello' : 'bye';
+echo $var();
+			</pre></code>
+		</div>
+		<div class="bg-ivory p10">
+			<code><pre>
+//send variable $a to the function as link
+$a = 1;
+$d = 100;
+
+$b = func1( $a );
+
+echo "a = ".$a;//2, function func1( &amp;$a )!!!!!
+echo "b = ".$b;//2
+echo "d = ".$d;//101
+echo "e = ".$e;
+
+function func1( &amp;$a ){//!!!!!
+	global $d;//use global variable
+	$d += $a;
+
+	global $e;//define new global variable
+	$e = 200;
+
+	return ++$a;
+}
+
+//========================
+$arr1 = array(1, 2, 3);//PHP &lt;= 5.2.9
+//$arr1 = [1, 2, 3];//PHP &gt; 5.2.9
+
+func2( $arr1 );
+print_r( $arr1 );
+
+//function func2( array &amp;$arr1 ){
+function func2( &amp;$arr1 ){
+	$arr1[0] = 4;
+	$arr1[1] = 5;
+	$arr1[2] = 6;
+}//end
+
+//========================
+$c = func3();
+echo "c = ".$c;
+
+//function func3() : int //PHP 7
+function func3()
+{
+	$_a = 8;
+	return ++$_a;
+}//end
+			</pre></code>
+		</div>
+		<div class="bg-beige p10">
+			<code><pre>
+$arg = array(
+	"q" => "note/view",
+	"nid" => 11
+);
+viewNote($arg);
+
+function viewNote($params){
+	$p = array(
+		"nid" => false,
+		"title" => false
+	);
+	//check input params object 
+	//( select only 'nid' or 'title'  values )
+	$_search_keys = array();
+	foreach( $p as $key=>$value ){
+		if( !empty($params[ $key ]) ){
+			$_search_keys[ $key ] = $params[ $key ];
+		}
+	}//next
+print_r( $_search_keys );
+}//end
+			</pre></code>
+		</div>
+		<div class="bg-lavender p10">
+			<h3>anonymous function</h3>
+			<code><pre>
+$noticeEvents = array(
+"site_down" => function($n1){
+	$test = $n1*2;
+	return $test;
+},
+"site_restored" => "",
+"site_regular_test" => "",
+"cert_expiried" => "",
+"cert_expiried_warning" => "",
+"cert_restored" => "",
+"cert_regular_test" => "",
+"task_runtime_error" => "",
+);
+
+echo $noticeEvents["site_down"](5);
+			</pre></code>
+		</div>
+		<div class="bg-seashell p10">
+			<h3>default function parameters, extend...</h3>
+			<code><pre>
+//========= default parameters
+function getSum($left = 10, $right = 5)
+{
+    $sum = $left + $right;
+    return $sum;
+}
+echo getSum();     // 15
+echo getSum(5);    //10
+echo getSum(5, 0); //5
+				
+<h3>1.array_merge</h3>
+//https://www.php.net/manual/ru/function.array-merge.php
+function getStatusCode( $params=array() ) {
+	$defaultOpt = array(
+		"task_name" => null, //"availability" or "checkSSL"
+		"current_status" => null, // 0/1
+		"prev_status" => null,// 0/1
+		"check_interval" => null,// "1h"
+		"cert_end_date" => null,
+		"SSL_warning_day" => null,// "5"
+		"date_check" => null,
+		"date_prev_check" => null,
+	);
+	$p = array_merge($defaultOpt, $params);
+print_r( $p );
+}//getStatusCode()
+
+$arg = array(
+	"task_name" => "availability",
+	"current_status" => 1,
+	"prev_status" => 0,
+	"check_interval" => "1h",
+	"date_check" => time(),
+	"date_prev_check" => time(),
+);
+getStatusCode($arg);
+			</pre></code>
+		</div>
+		<div class="bg-light-orange4 p10">
+			<h3>default function parameters, extend...</h3>
+			<code><pre>
+<h3>2.foreach..</h3>
+//==== send OPTIONS array
+//$arguments = [
+$arguments = array(
+	//"data" => [ "a" => 1, "b" => 2, "c" => 3],
+	"data" => array( "a" => 1, "b" => 2, "c" => 3),
+	"wrapType" => "menu2",
+	"templateID" =>  "tpl-copyright",
+	"templateListItemID" => "tpl-schedule-table--tr"
+);
+//];
+
+func4( $arguments );
+
+function func4( $params ) {
+	//$p = [
+	$p = array(
+		"data" => null,
+		"type"  =>  "list",
+		"wrapType" => "menu",
+		"templateID" =>  false,
+		"templateListItemID" => false
+	);
+//	];
+
+	//extend options object $p
+	foreach( $params as $key=>$item ){
+		$p[ $key ] = $item;
+	}//next
+
+print_r( $p );
+}//end						
+			</pre></code>
+		</div>
+		<div class="bg--bronze-lighter p10">
+			<code><pre>
+//====== Return array
+function formatSize($bytes)
+{
+    $kbytes = $bytes / 1024;
+    $mbytes = $kbytes / 1024;
+    $gbytes = $mbytes / 1024;
+
+	//return ["bytes" => $bytes, "kbytes" => $kbytes, "mbytes" => $mbytes, "gbytes" => $gbytes];
+	//return [$bytes, $kbytes, $mbytes, $gbytes];
+    return array( $bytes, $kbytes, $mbytes, $gbytes );
+}
+//-------- dynamic creation of variables
+list ($bytes, $kbytes, $mbytes, $gbytes) = formatSize(18642678);
+echo "Mbytes: " . $mbytes;
+echo "<br/>\n";
+
+//--------
+function formatSize2($bytes)
+{
+	list ($bytes, $kbytes, $mbytes, $gbytes) = formatSize($bytes);
+	//return ["bytes" => $bytes, "kbytes" => $kbytes, "mbytes" => $mbytes, "gbytes" => $gbytes];
+	return array("bytes" => $bytes, "kbytes" => $kbytes, "mbytes" => $mbytes, "gbytes" => $gbytes );
+}
+
+echo "File size:";
+print_r( formatSize2( 2097152 ) );
+			</pre></code>
+		</div>
+		<div class="bg-bs-gray-200 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-CERULEAN p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-BROWN p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-almond p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-azure p10">
+			<code><pre>
+			</pre></code>
+		</div>
+	</section>			
+
+	<a id="section-php-oop"></a>
+	<h2>Object Oriented Programming, classes</h2>
+	<section class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap">
+<pre class="bg-yellow-pre">
+// run local web-server
+php -S localhost:8000 -t test_code/php
+
+Мэтт Зандстра, PHP. Объекты, шаблоны и методики программирования (2-е издание)
+php._obekty_shablony_i_metodiki_programmirovaniya.djvu
+p82
+
+https://www.php.net/manual/ru/language.oop5.php
+Классы и объекты
+
+https://www.php.net/manual/ru/language.oop5.overloading.php
+Перегрузка 
+
+https://www.youtube.com/watch?v=ZamZAhczTzQ&list=PLD-piGJ3Dtl06_K36ABZRwLa3Q3b3JoHk&index=3
+https://www.youtube.com/watch?v=ph4K1XlOSGg&list=PLVfMKQXDAhGV1kj1gEGTgdzXt2jHwg-if&index=11
+
+https://weburoki.pro/klonirovanie-obektov-v-php
+https://www.php.net/manual/ru/language.oop5.cloning.php#object.clone
+
+https://ru.hexlet.io/courses/php-object-oriented-design/lessons/stdclass/theory_unit
+Класс stdClass
+
+https://www.php.net/manual/ru/language.namespaces.rationale.php
+
+https://www.youtube.com/watch?v=vJAt-7VCz80
+Реализация паттернов ООП в PHP
+
+--------
+http://www.php.su/get_object_vars
+get_object_vars -- Возвращает ассоциативный массив свойств и значений объекта
+
+$product = get_object_vars( $post );
+Array
+(
+    [0] => WP_Post Object
+        (
+            [ID] => 1959
+            [post_author] => 1
+            
+array(25) {
+  ["ID"]=>  int(1959)
+  ["post_author"]=>
+....
+</pre>
+
+		<div class="bg-yellow-pre p10 mt20">
+			<code><pre>
+class FirstClass {
+	public	$name;
+	private $age;
+	private $className;
+	private $greeting;
+
+	//public function FirstClass(){//PHP4
+	function __construct($argv){//PHP5
+
+		$this->className = get_class( $this);
+		$msg = "Object of class ".$this->className." was created.";
+//echo logAlert($msg, "success");
+
+		$this->greeting = $argv;
+		$this->name = "Roman";
+		$this->age = 49;
+
+//$msg = "List of THIS: ";
+//echo logAlert($msg, "");
+//print_r($this);
+
+	}//end constructor
+
+	function __toString(){
+		return "method __toString() for print object.."."\n";
+	}//end 
+	
+	public function getName(){
+		$msg = $this->greeting;
+		$msg .= $this->name.", ";
+		$msg .= "my age: ".$this->age;
+		return $msg;
+//echo logAlert($msg, "info");
+	}//end
+
+	function __get( $property){
+		$msg = "__get(), error, property by name ".$property." not defined ";
+		echo logAlert($msg, "error");
+	}//end
+
+	function __set( $property, $value){
+		$msg = "__set(), error, ";
+		$msg .= "do not set ".$property." with value ".$value;
+		echo logAlert($msg, "error");
+	}//end
+
+	function __call( $method, $arg_arr){
+		$msg = "__call(), error, ";
+		$msg .= "method by name &lt;b&gt;".$method."&lt;/b&gt; not defined ";
+echo logAlert($msg, "error");
+echo "arguments: &lt;pre&gt;";
+print_r( $arg_arr );
+echo "&lt;/pre&gt;";
+	}//end
+
+	function __isset( $property ){
+		$msg = "__isset(), error, ";
+		$msg .= "property by name &lt;b&gt;".$property."&lt;/b&gt; not defined ";
+		echo logAlert($msg, "error");
+	}//end
+
+	function __unset( $property ){
+		$msg = "__unset(), error, ";
+		$msg .= "do not destroy &lt;b&gt;".$property."&gt;/b&gt;";
+		echo logAlert($msg, "error");
+	}//end
+
+	function __destruct(){
+		global $_vars;
+		$msg = "Object of class ".$this->className." was destroyed. ";
+		echo logAlert($msg, "info");
+if ( $_vars["runType"] == "web") {
+		formPageFooter();
+}
+	}//end
+
+}//end class
+
+$object1 = new FirstClass("Hello, I am ");
+echo $object1->getName();
+
+echo $object1->someProp;
+$object1->someProp = 123;
+$object1->someMethod('1',"two", "C");
+
+if( isset($object1->someProp) ){
+	$object1->someProp = 456;
+}
+unset($object1->someProp);
+
+//---------
+$obj1 = new FirstClass();
+print_r( $obj1);
+if( is_object($obj1) ){
+	echo "OBJ1 is an object......!!!!!!!"."\n";
+}
+
+$obj2 = clone $obj1;
+print_r( $obj2);
+
+echo $obj1;
+unset($obj1);
+			</pre></code>
+		</div>
+
+		<div class="bg-almond p10">
+			<h3>Redefine, overrride method __clone()</h3>
+<pre>
+https://weburoki.pro/klonirovanie-obektov-v-php
+https://www.php.net/manual/ru/language.oop5.cloning.php#object.clone
+</pre>			
+			<code><pre>
+class Class2 {
+	private $name;
+
+	function __construct(){
+		$this->name = "Roman";
+	}//end constructor
+
+	public function __clone(){
+echo "Cloning object of class ".get_class($this)."\n";
+		$this->name = "noname";
+	}//end
+
+}//end class
+
+$obj3 = new Class2();
+print_r( $obj3);
+
+$obj4 = clone $obj3;
+print_r( $obj4);
+			</pre></code>
+			
+			<h3>Disable clone</h3>
+			<code><pre>
+class Class3 {
+	private $name;
+
+	function __construct(){
+		$this->name = "Roman";
+	}//end constructor
+
+	private function __clone(){//!!!!
+echo "Cloning object of class ".get_class($this)."\n";
+	}//end
+
+}//end class
+
+$obj5 = new Class3();
+print_r( $obj5);
+
+$obj6 = clone $obj5;//error cloning!!!
+print_r( $obj6);
+			</pre></code>
+		</div>
+
+		<div class="bg-ivory p10">
+			<code><pre>
+class parentClass {
+
+	private $prop1 = "This is public text!!!";	
+	private $prop2 = "This is secret PRIVATE text!!!";	
+	public static $prop3 = 10;
+
+	public function func_public(){//GETTER for private property
+		print( $this->prop1."\n");
+	}//end
+
+	//private function func_test(){// Access error!!!!!
+	protected function func_test(){
+		print( $this->prop2 );
+	}//end
+
+	public static function func_static(){
+		$msg = "public static function func_static()";
+		echo logAlert($msg, "info");
+	}//end
+
+	function __construct(){
+		$msg = "Object of class ".get_class( $this)." was created. ";
+		echo logAlert($msg, "success");
+	}//end constructor
+
+	function method1(){
+		$msg = "Running method of class 'parentClass'";
+		echo logAlert($msg, "info");
+	}//end
+
+	function __destruct(){
+		$msg = "Object of class ".get_class( $this)." was destroyed. ";
+		echo logAlert($msg, "info");
+	}//end
+
+}//end class
+
+class childClass extends parentClass {
+
+	const GOOD = 1;
+	const BAD = 0;
+
+	function __construct(){
+		parent::__construct();
+
+		//try{
+			parent::func_public();
+		//} catch ( Exception $e ){
+//echo "Exception: ",  $e->getMessage(), "\n";
+		//}
+
+	}//end constructor
+
+	function __destruct(){
+		parent::method1();
+		parent::__destruct();
+	}//end
+
+}//end class
+
+class thirdClass extends parentClass {
+	public function method3(){
+		$this->func_test();
+	}//end
+}//end class
+
+$obj = new childClass();
+
+//------------------
+$obj3 = new thirdClass();
+$obj3->method3();
+
+//------------------
+parentClass::func_static();
+parentClass::$prop3++;//access to the static property, only :: syntax!!!!
+$msg = "Static property: ".parentClass::$prop3;
+echo logAlert($msg, "info");				
+			</pre></code>
+		</div>
+
+		<div class="bg-beige p10">
+			<h3>Abstract class</h3>
+			<code><pre>
+abstract class Class4 {
+	public function method1(){
+	}//end
+
+	abstract public function method2();
+}//end class
+
+class Class5 extends Class4 {
+	public function method2(){
+echo "A realize(Implementation) of the abstact method from Class4"."\n";
+	}//end
+
+}//end class
+			</pre></code>
+		</div>
+
+		<div class="bg-lavender p10">
+			<h3>Interfaces</h3>
+			<code><pre>
+1.				
+interface _InterFace1 {
+	public function method2();
+}//end 
+
+interface _InterFace2 {
+	public function getStatus();
+}//end 
+
+interface _InterFace3 extends _InterFace1, _InterFace2 {}
+
+//-------
+class Class6 implements _InterFace1 {
+	public function method2(){
+echo "A Implementation of the method from  _InterFace1"."\n";
+	}//end
+}//end class
+
+
+class Class61 implements _InterFace3 {
+
+	public function method2(){
+echo "A Implementation of the method from  _InterFace1"."\n";
+	}//end
+
+	public function getStatus(){
+echo "A Implementation of the method from  _InterFace2"."\n";
+	}//end
+
+}//end class
+			</pre></code>
+
+			<code><pre>
+//============================
+2.
+interface interface1 {
+	public function method1();
+	public function method2();
+}//end
+
+abstract class abstractClass1 {
+	abstract public function method1();//realized in children class
+	abstract public function method2();
+	public function method3(){
+		return 5+5;
+	}
+}//end class
+
+class FirstClass implements interface1{
+	private $name;
+	private $age;
+
+	function __construct(){
+echo "Object of class ".__CLASS__." was created. "."<br>\n";
+		$this->name = "Roman";
+		$this->age = 44;
+	}//end constructor
+	
+	public function method1(){
+		return 1;
+	}//end
+
+	public function method2(){
+		return 2;
+	}//end
+	
+}//end class
+
+$obj1 = new FirstClass();
+print_r( $obj1);
+
+//============================
+
+class Class2 implements interface1 {
+	public function method1(){
+		return 3;
+	}//end
+
+	public function method2(){
+		return 4;
+	}//end
+}//end class
+
+$obj2 = new Class2();
+print_r( $obj2);
+
+//============================
+
+class Class3 extends abstractClass1 {
+	public function method1(){
+		return 30;
+	}//end
+
+	public function method2(){
+		return 40;
+	}//end
+}//end class
+
+$obj3 = new Class3();
+echo $obj3->method1();
+echo "\n";
+
+echo $obj3->method2();
+echo "\n";
+
+echo $obj3->method3();
+echo "\n";
+			</pre></code>
+			
+		</div>
+		<div class="bg-seashell p10">
+			<h3>final, end of inheritance</h3>
+			<code><pre>
+final class finalClass {
+	public function method(){
+	}//end
+}//end class
+
+class testChildClass extends finalClass {
+}//end class
+
+//error, do not inherit from final class!!!
+			</pre></code>
+		</div>
+		<div class="bg-light-orange4 p10">
+			<h3>Check object type</h3>
+			<code><pre>
+//https://www.php.net/manual/ru/language.operators.type.php
+
+$msg = "Object1 instanceof  of class FirstClass: ";
+echo $msg;
+var_dump( $object1 instanceof FirstClass );
+
+$msg = "Object1 instanceof  of class Class4: ";
+echo $msg;
+var_dump( $object1 instanceof Class4 );
+			</pre></code>
+		</div>
+		<div class="bg--bronze-lighter p10">
+			<h3>Polymorphism</h3>
+			<code><pre>
+//https://www.youtube.com/watch?v=ZamZAhczTzQ
+class Page {
+	public $title;
+	public $content;
+
+	public function __construct( $title, $content ) {
+		$this->slide = $slide;
+		$this->news = $news;
+	}
+
+	public function render_body() {
+		$str = "&lt;h1&gt;". $this->title ."&lt;/h1&gt;";
+		$str .= "&lt;p&gt;". $this->content ."&lt;/p&gt;";
+		return $str;
+	}
+
+	public function test() {
+		echo $this->render_body();
+	}
+
+}//end class
+
+class IndexPage extends Page {
+	public $slide;
+	public $news;
+
+	public function __construct($title, $content,  $slide, $news) {
+		parent::construct( $title, $content );
+		$this->slide = $slide;
+		$this->news = $news;
+	}
+
+	public function render_body() {
+		$str = parent::render_body();
+		$str .= "&lt;p&gt;". $this->slide ."&lt;/p&gt;";
+		$str .= "&lt;p&gt;". $this->news ."&lt;/p&gt;";
+		return $str;
+	}
+
+}//end class
+
+class Poly {
+	public $ob;
+	public function save_obj ($Page $_var){
+		$this->ob[] = $_var;	
+	}
+
+	public function get_result(){
+		foreach( $this->ob as $item){
+			$item->test();
+		}//next
+	}
+
+}//end class
+
+$page = new Page("title1","content1");
+$index_page = new IndexPage("title2","content2", "slide show", "news");
+
+//$page->render_body();
+//$index_page->render_body();
+
+$obj_poly = new Poly();
+$obj_poly->save_obj( $page );
+$obj_poly->save_obj( $index_page );
+			</pre></code>
+		</div>
+		<div class="bg-bs-gray-200 p10">
+			<h3>Polymorphism</h3>
+			<code><pre>
+class X {
+	public function get(){
+		echo "This is object of class X";
+	}
+	
+	public function render(){
+		$this->get();
+	}
+
+}//end class
+
+class Y extends X {
+	public function get(){
+		echo "This is object of class Y";
+	}
+}//end class
+
+$obj_x = new X();
+$obj_y = new Y();
+
+$obj_x->render();//This is object of class X
+$obj_y->render();//This is object of class Y 
+//poliymorphism, call function through $this
+			</pre></code>
+		</div>
+		<div class="bg-CERULEAN p10">
+			<h3>TRAIT</h3>
+			<code><pre>
+//https://www.youtube.com/watch?v=HkvfyY_NeAQ&list=PLVfMKQXDAhGV1kj1gEGTgdzXt2jHwg-if
+class Base {
+	public function sayHello(){
+		echo "Hello ";
+	}//end
+}//end class
+
+trait sayWorld {
+	public function sayHello(){
+		parent::sayHello();
+		echo "World!!! ";
+	}//end
+}//end trait
+
+class myHelloWorld extends Base {
+	use sayWorld;
+}//end class
+
+$obj99 = new myHelloWorld();
+$obj99->sayHello();
+			</pre></code>
+		</div>
+		<div class="bg-BROWN p10">
+			<h3>TRAIT</h3>
+			<code><pre>
+//(PHP 5 >= 5.4.0)
+//https://www.php.net/manual/ru/language.oop5.traits.php
+//https://www.youtube.com/watch?v=UKO281qhhKQ
+
+trait BaseModel {
+
+	public $sql;
+
+	public function executeSql() {
+		return $this->sql;
+	}
+
+}//end trait
+
+class Article {
+	use BaseModel;
+
+	public function setSql() {
+		$this->sql = "SELECT * FROM arcticles";
+	}
+
+}//end class
+
+class User {
+	use BaseModel;
+
+	public function setSql() {
+		$this->sql = "SELECT * FROM users";
+	}
+
+}//end class
+
+$articles = new Article();
+$articles->setSql();
+echo $articles->executeSql()."\n";
+
+$users = new User();
+$users->setSql();
+echo $users->executeSql()."\n";
+
+			</pre></code>
+		</div>
+		
+		<div class="bg-azure p10">
+			<h3>test __autoload function</h3>
+			<p>if not load file before using</p>
+			<code><pre>
+function __autoload( $className ){
+	require_once("classes/$className.php");
+}//end
+$obj88 = new Class88();
+			</pre></code>
+		</div>
+		
+		<div class="bg-yellow-pre p10">
+			<h3>create standart class</h3>
+			<code><pre>
+$courses = array();
+
+$course_a = new stdClass();
+$course_a->course_id = 1;
+$course_a->title = "First course";
+$course_a->description = "the most difficult of courses";
+		
+$courses[]=$course_a;
+
+$course_b = new stdClass();
+$course_b->course_id = 2;
+$course_b->title = "Second course";
+$course_b->description = "easiest of courses";
+
+$courses[]=$course_b;
+
+print_r( $courses );
+			</pre></code>
+		</div>
+		
+		<div class="bg-lightblue-grey p10">
+			<code><pre>
+class Course {
+	public $course_id;
+	public $title;
+	public $description;
+
+	public function __construct( $id, $title, $description ){
+		$this->course_id = $id;
+		$this->title = $title;
+		$this->description = $description;
+	}
+}//end class
+
+$arr2 = array();
+
+$course1 = new Course(3, "course 3", "the most difficult of courses....");
+$course2 = new Course(4, "course 4", "...easiest of courses");
+
+$arr2[]=$course1;
+$arr2[]=$course2;
+
+print_r( $arr2 );
+
+//-----------------
+$arr3 = array(
+	new Course(5, "Course5", "the most difficult of courses...."),
+	new Course(6, "Course6", "...easiest of courses")
+);
+print_r( $arr3 );
+
+//================
+$arr4 = array(
+	[ "course_id" => 7, "title" => "Course7", "description" => "the most difficult of courses...."],
+	[ "course_id" => 8, "title" => "Course8", "description" => "...easiest of courses"]
+);
+//print_r($arr4 );
+echo $arr4[0]["title"];
+
+$testObj = (object)$arr4;
+print_r( $testObj );
+			</pre></code>
+		</div>
+		
+		<div class="bg-powderblue-light p10">
+			<h3>Test namespace</h3>
+			<code><pre>
+//https://www.php.net/manual/ru/language.namespaces.rationale.php
+//(PHP 5 >= 5.3.0, PHP 7)
+
+namespace  {//global_space
+	$global_var = "this is GLOBAL variable...";
+
+	//echo space2\get_var()."\n";
+	echo namespace\space2\get_var()."\n";
+
+	$obj_space1 = new space1\Class1("obj_space1");
+//print_r( $obj_space1 );
+	$obj_space2 = new space2\Class1("obj_space2");
+	$obj_subSpace2 = new space2\subspace1\Class1("obj_subSpace2");
+
+}//end namespace
+
+namespace space1 {
+
+	class Class1 {
+		private $msg="";
+		public $object_ns = "object_ns, this variable from space1";
+
+		public function __construct($name) {
+			$this->msg = "Object '$".$name."' of the ". __CLASS__ ." was created.";
+	echo $this->msg."\n";
+		}//end
+
+	}//end class
+
+	$obj1 = new Class1("obj1");
+//-----------------
+	
+	$some_var = 123;
+	const CONST1 = 3.14;
+
+	function func1( $n ){
+		$n++;
+		return $n;
+	}//end
+
+	function test(){
+		return "\space1\\test()";
+	}//end
+
+	echo "Test namespace ".__NAMESPACE__."\n";
+	echo "-- change uniquie variable 'some_var': ".func1( $some_var )."\n";
+
+	echo "-- global variable avaible here: ".$global_var."\n";
+	$global_var = 0;
+	echo \space2\subspace1\test()."\n";
+
+}//end space 1
+
+namespace space2 {
+	class Class1 {
+
+		private $msg="";
+		public $object_ns = "object_ns, this variable from space2";
+
+		public function __construct($name) {
+			$this->msg = "Object '$".$name."' of the ". __CLASS__ ." was created.";
+	echo $this->msg."\n";
+		}//end
+
+	}//end class
+
+	$obj1 = new Class1("obj1");
+//print_r( $obj1 );
+
+	$some_var = 456;
+
+	function get_var(){
+		//global $some_var;
+//echo $some_var;
+		return "test,  \space2\get_var()";
+	}//end
+
+	function func1( $n ){
+		$n++;
+		return $n;
+	}//end
+
+	echo "Test namespace ".__NAMESPACE__."\n";
+	echo "-- change uniquie variable 'some_var': ".func1( $some_var )."\n";
+	echo "-- global variable avaible here: ".$global_var."\n";
+
+	echo "-- constant from another namespace: ".\space1\CONST1 ."\n";
+}//end space 2
+
+namespace space2\subspace1 {
+	class Class1 {
+		private $msg;
+
+		public function __construct($name) {
+			$this->msg = "Object '$".$name."' of the ". __CLASS__ ." was created.";
+echo $this->msg."\n";
+		}//end
+
+	}//end class
+
+	$obj1 = new Class1("obj1");
+//print_r( $obj1 );
+//echo \space2\$some_var."\n";
+
+	$some_var = 789;
+
+	echo "Test namespace ".__NAMESPACE__."\n";
+	echo \space2\get_var()."\n";
+	echo \space1\test()."\n";
+
+	function test(){
+		$t1= 102030;
+		return "\space2\subspace1\\test()".$t1;
+	}//end
+
+}//end namespace				
+			</pre></code>
+		</div>
+		<div class="bg-green-d8 p10">
+			<h3>Pattern Singleton</h3>
+			<code><pre>
+//https://www.youtube.com/watch?v=vJAt-7VCz80
+//Реализация паттернов ООП в PHP
+
+class Config {
+
+	public $data;
+	private	static $instance = null;
+
+	private function __construct() {
+		$this->data = rand();
+	}
+
+	public static function getInstance() {
+		if( is_null( self::$instance ) ) {
+			self::$instance = new self;
+		}
+		return self::$instance;
+	}
+	
+	private function __clone(){} //Do not use this for creating object......
+	private function __wakeup(){}//Do not use this for creating object......
+
+}//end class
+
+//$config = new Config();// ERROR!!!! Do not use new for creating object......
+$config = Config::getInstance();
+echo $config->data."\n";
+
+$config2 = Config::getInstance();
+echo $config2->data."\n";
+			</pre></code>
+		</div>
+		<div class="bg-lavenderblush p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-green-cfd p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-green-de3 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-bs-gray-100 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-yellow-050 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-antiquewhite p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-brown-c3 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-brown-c2 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-almond p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-vanilla p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-whitesmoke2 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-rosy-af p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-greentea p10">
+			<code><pre>
+			</pre></code>
+		</div>
+	</section>
+	
+	<a id="section-php-db"></a>
+	<h2>Databases</h2>
+	<section class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap">
+
+		<div class="bg-yellow-pre p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		
+		<div class="bg-ivory p10">
+			<code><pre>
+			</pre></code>
+		</div>
+
+		<div class="bg-beige p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		
+		<div class="bg-lavender p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-seashell p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-light-orange4 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg--bronze-lighter p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-bs-gray-200 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-CERULEAN p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-BROWN p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-almond p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-azure p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		
+		<div class="bg-yellow-pre p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-lightblue-grey p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-powderblue-light p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-green-d8 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-lavenderblush p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-green-cfd p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-green-de3 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-bs-gray-100 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-yellow-050 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-antiquewhite p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-brown-c3 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-brown-c2 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-almond p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-vanilla p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-whitesmoke2 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-rosy-af p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-greentea p10">
+			<code><pre>
+			</pre></code>
+		</div>
+	</section>			
+
+	<a id="section-php-curl"></a>
+	<h2>Curl</h2>
+	<section class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap">
+
+		<div class="bg-yellow-pre p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		
+		<div class="bg-ivory p10">
+			<code><pre>
+			</pre></code>
+		</div>
+
+		<div class="bg-beige p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		
+		<div class="bg-lavender p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-seashell p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-light-orange4 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg--bronze-lighter p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-bs-gray-200 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-CERULEAN p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-BROWN p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-almond p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-azure p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		
+		<div class="bg-yellow-pre p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-lightblue-grey p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-powderblue-light p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-green-d8 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-lavenderblush p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-green-cfd p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-green-de3 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-bs-gray-100 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-yellow-050 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-antiquewhite p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-brown-c3 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-brown-c2 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-almond p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-vanilla p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-whitesmoke2 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-rosy-af p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-greentea p10">
+			<code><pre>
+			</pre></code>
+		</div>
+	</section>			
+
+	<a id="section-php-service"></a>
+	<h2>Service functions</h2>
+	<section class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap">
+		<div class="bg-yellow-pre p10">
+			<code><pre>
+function logAlert( $msg, $level){
+	
+	//global $sapi_type;
+	global $_vars;
+	
+	switch ($level) {
+		case "info":
+			if ( $_vars["runType"] == "web" ) {
+				return "&lt;div class='alert alert-info'&gt;".$msg."&lt;/div&gt;";
+			}
+			if ( $_vars["runType"] == "console" ) {
+				return $msg."\n";
+			}
+		break;
+		
+		case "warning":
+			if ( $_vars["runType"] == "web" ) {
+				return "&lt;div class='alert alert-warning'&gt;".$msg. "&lt;/div&gt;";
+			}
+			if ( $_vars["runType"] == "console" ) {
+				return $msg."\n";
+			}
+		break;
+		
+		case "danger":
+		case "error":
+			if ( $_vars["runType"] == "web" ) {
+				return "&lt;div class='alert alert-danger'&gt;".$msg. "&lt;/div&gt;";
+			}
+			if ( $_vars["runType"] == "console" ) {
+				return $msg."\n";
+			}
+		break;
+		
+		case "success":
+			if ( $_vars["runType"] == "web" ) {
+				return "&lt;div class='alert alert-success'&gt;".$msg. "&lt;/div&gt;";
+			}
+			if ( $_vars["runType"] == "console" ) {
+				return $msg."\n";
+			}
+		break;
+		
+		default:
+			if ( $_vars["runType"] == "web" ) {
+				return $msg. "&lt;br/&gt;";
+			}
+			if ( $_vars["runType"] == "console" ) {
+				return $msg."\n";
+			}
+		break;
+	}//end switch
+
+}//end logAlert()
+			</pre></code>
+		</div>
+		
+		<div class="bg-ivory p10">
+			<code><pre>
+function _logWrap( $msg, $level = "info" ){
+
+	// check API type
+	$sapi_type = php_sapi_name();
+//echo "php_sapi_name: ". $sapi_type;
+//echo "&lt;br/&gt;\n";
+//echo "type: ". gettype( $msg);
+//echo "&lt;br/&gt;\n";
+
+//-------------
+	//$runType = "";
+	//if ( $sapi_type == 'apache2handler' ||
+	//		$sapi_type == 'cli-server'
+		//) {
+		$runType = "web";
+	//}
+
+	if ( $sapi_type == "cli" ) { $runType = "console"; }
+	if ( $sapi_type == "cgi" ) { $runType = "console"; }
+
+//-------------
+	if( gettype( $msg) === "array" ||
+		gettype( $msg) === "object"
+	){
+			if ( $runType == "web" ) {
+				$out = "&lt;pre&gt;".print_r($msg,1)."&lt;/pre&gt;";
+				return "&lt;div class='alert alert-info'&gt;".$out."&lt;/div&gt;";
+			} else {
+				$out = print_r($msg,1)."\n";
+				return $out;
+			}
+	}
+
+	//if( gettype( $msg) !== "string"){
+		//return false;
+	//}
+
+//-------------
+	switch ($level) {
+		case "info":
+			if ( $runType == "web" ) {
+				return "&lt;div class='alert alert-info'&gt;".$msg."&lt;/div&gt;";
+			}
+			if ( $runType == "console" ) {
+				return $msg."\n";
+			}
+		break;
+
+		case "warning":
+			if ( $runType == "web" ) {
+				return "&lt;div class='alert alert-warning'&gt;".$msg. "&lt;/div&gt;";
+			}
+			if ( $runType == "console" ) {
+				return $msg."\n";
+			}
+		break;
+
+		case "danger":
+		case "error":
+			if ( $runType == "web" ) {
+				return "&lt;div class='alert alert-danger'&gt;".$msg. "&lt;/div&gt;";
+			}
+			if ( $runType == "console" ) {
+				return $msg."\n";
+			}
+		break;
+
+		case "success":
+			if ( $runType == "web" ) {
+				return "&lt;div class='alert alert-success'&gt;".$msg. "&lt;/div&gt;";
+			}
+			if ( $runType == "console" ) {
+				return $msg."\n";
+			}
+		break;
+
+		default:
+			if ( $runType == "web" ) {
+				return $msg. "&lt;br/&gt;";
+			}
+			if ( $runType == "console" ) {
+				return $msg."\n";
+			}
+		break;
+	}//end switch
+
+}//end _logWrap()
+				
+			</pre></code>
+		</div>
+
+		<div class="bg-beige p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		
+		<div class="bg-lavender p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-seashell p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-light-orange4 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg--bronze-lighter p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-bs-gray-200 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-CERULEAN p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-BROWN p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-almond p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-azure p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		
+		<div class="bg-yellow-pre p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-lightblue-grey p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-powderblue-light p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-green-d8 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-lavenderblush p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-green-cfd p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-green-de3 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-bs-gray-100 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-yellow-050 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-antiquewhite p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-brown-c3 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-brown-c2 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-almond p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-vanilla p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-whitesmoke2 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-rosy-af p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-greentea p10">
+			<code><pre>
+			</pre></code>
+		</div>
+	</section>			
+	
+<!--
+	<a id="section-php-curl"></a>
+	<h2>Curl</h2>
+	<section class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap">
+
+		<div class="bg-yellow-pre p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		
+		<div class="bg-ivory p10">
+			<code><pre>
+			</pre></code>
+		</div>
+
+		<div class="bg-beige p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		
+		<div class="bg-lavender p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-seashell p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-light-orange4 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg--bronze-lighter p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-bs-gray-200 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-CERULEAN p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-BROWN p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-almond p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-azure p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		
+		<div class="bg-yellow-pre p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-lightblue-grey p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-powderblue-light p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-green-d8 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-lavenderblush p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-green-cfd p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-green-de3 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-bs-gray-100 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-yellow-050 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-antiquewhite p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-brown-c3 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-brown-c2 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-almond p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-vanilla p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-whitesmoke2 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-rosy-af p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-greentea p10">
+			<code><pre>
+			</pre></code>
+		</div>
+	</section>			
+-->
+
+</div><!-- end container -->
+
+<a id="panel-html"></a>
+<section>			
+	<div class="f-container mt20 p10 _bg-grey-green bg-lightsteelblue lr-border-round">
+		<div class="lr-flex lr-flex-between lr-flex-top">
+			<h3 class="m0 p0">HTML, SVG</h3>
+		</div>	
+		<div class="mt10 p20 lr-border-box bg-white">
+			<ul class="lr-list-group lr-nav m0 p5 m5-children lr-border-cyan3 lr-flex lr-flex-wrap">
+<li><a href="demo/svg/svg_samples.html" target="_blank">svg_samples.html</a></li>
+<li><a href="demo/svg/test_svg.html" target="_blank">test_svg.html</a></li>
+<li><a href="demo/svg/test_svg_crop_images.html" target="_blank">test_svg_crop_images.html</a></li>
+			</ul>
+		</div>
+		<div class="bg-green-025 p20 m10">
+<pre>
+https://tpverstak.ru/cropping-images-css-svg/
+Магия CSS: Методы обрезки изображений при помощи CSS и SVG
+
+&lt;svg width="250" height="250"&gt;
+   &lt;pattern id="pattern" width="100%" height="100%"&gt;
+	  &lt;image xlink:href="https://omiliya.org/sites/default/files/img_articles/5_2.jpeg" width="250" height="250" preserveAspectRatio="xMidYMin slice"&gt;&lt;/image&gt;
+   &lt;/pattern&gt;
+   &lt;circle cx="125" cy="125" r="100" fill="url(#pattern)"&gt;&lt;/circle&gt;
+&lt;/svg&gt;
+
+</pre>			
+		</div>
+
+	</div><!-- end container -->
+</section>			
+
+<a id="panel-css"></a>
+<div class="clamp-container mt20 p20 bg-grey-green lr-border-round">
+	<div class="lr-flex lr-flex-between lr-flex-top">
+		<a class="d-none d-block-sm" href="#top">top</a>
+		<h3 class="m0 p0">CSS code</h3>
+	</div>	
+	<section class="m-d25rem p-d25rem">
+		<div class="lr-border-box bg-whitesmoke2">
+			<div class="p10 bg-blue-b6 color-white">
+				<h4>CSS demo, tests</h4>
+			</div>
+			<ul class="lr-list-group lr-nav m0 p5 lr-border-cyan3 lr-flex lr-flex-wrap">
+<li><a href="demo_css/demo-lr_colors.html" target="_blank">demo-lr_colors.html</a></li>
+<li><a href="demo_css/demo-lr_position.html" target="_blank">demo-lr_position.html</a></li>
+			</ul>
+			<ul class="lr-list-group lr-nav m0 p5 m5-children lr-border-cyan3 lr-flex lr-flex-wrap">
+<li><a href="demo/demo_fonts.html" target="_blank">demo_fonts.html</a></li>
+<li><a href="demo_css/test-CSS_filters.html" target="_blank">test-CSS_filters.html</a></li>
+<li><a href="demo_css/test-CSS_container_queries.html" target="_blank"> test-CSS_container_queries.html</a></li>
+<li><a href="demo_css/test-CSS_calc_fixed_header.html" target="_blank">test-CSS_calc_fixed_header.html</a></li>
+
+<li><a href="demo_css/test-CSS_functions.html" target="_blank">test-CSS_functions.html</a></li>
+<li><a href="demo_css/test-CSS_animation.html" target="_blank">test-CSS_animation.html</a></li>
+<li><a href="demo_css/test-CSS_transform.html" target="_blank">test-CSS_transform.html</a></li>
+<li><a href="demo_css/test-CSS_flex_float.html" target="_blank">test-CSS_flex_float.html</a></li>
+<li><a href="demo_css/test-CSS_flex.html" target="_blank">test-CSS_flex.html</a></li>
+<li><a href="demo_css/test-CSS_grid.html" target="_blank">test-CSS_grid.html</a></li>
+<li><a href="demo_css/giselle/header_footer.html" target="_blank" class="color-gold gradient-gold-teal">giselle/header_footer.html</a></li>
+<li><a href="demo_css/test-CSS_GRID_systems.html" target="_blank">
+test-CSS_GRID_systems.html</a></li>
+<li><a href="demo_css/test-CSS_custom_elements.html" target="_blank">
+test-CSS_custom_elements.html</a></li>
+<li><a href="demo_css/test-CSS_page.html" target="_blank">
+test-CSS_page.html</a></li>
+<li><a href="demo_css/test-CSS_transition.html" target="_blank">
+test-CSS_transition.html</a></li>
+<li><a href="demo_css/404-error-template/index.html" target="_blank">404-error-template</a></li>
+<li><a href="demo_css/honey_page.html" target="_blank">honey_page.html</a></li>
+			</ul>
+		</div>
+			
+		<div class="lr-border-box bg-yellow-050 mt20">
+<section>
+	<div class="p10 bg-blue-b6 color-white">
+		<h3>lr.css, Flex classes</h3>
+	</div>
+	
+	<div><pre class="fz-12">
+.lr-flex, .df{
+	display:flex;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;	
+}
+.lr-flex-wrap {flex-wrap: wrap;}
+</pre>
+	</div>
+
+	<div class="_mt20 lr-border-box lr-border-silver lr-border-medium p5">
+		<div>.lr-flex-center {-ms-flex-pack: center !important;justify-content: center;}</div>
+		<div>.lr-flex-row-reverse {flex-direction: row-reverse;}</div>
+		<div class="lr-flex lr-flex-center lr-flex-wrap lr-flex-row-reverse color-black">
+			<div class="p30 lr-border-box lr-border-white bg-orange">1</div>
+			<div class="p30 lr-border-box lr-border-white bg-orange">2</div>
+			<div class="p30 lr-border-box lr-border-white bg-orange">3</div>
+			<div class="p30 lr-border-box lr-border-white bg-orange">4</div>
+			<div class="p30 lr-border-box lr-border-white bg-orange">5</div>
+		</div>
+	</div>
+	
+	<div class="mt20 lr-border-box lr-border-silver lr-border-medium p5">
+		<div>.lr-flex-content-end,.justify-content-end{justify-content:end;}</div>
+		<div>.lr-flex-middle,.align-items-center{ align-items: center}</div>
+		<div class="lr-flex lr-flex-wrap lr-flex-content-end lr-flex-middle color-black bg-aqua vh30">
+			<div class="w100px h100px lr-border-box lr-border-white bg-orange">1</div>
+			<div class="w100px h100px lr-border-box lr-border-white bg-orange">2</div>
+			<div class="w100px h100px lr-border-box lr-border-white bg-orange">3</div>
+			<div class="w100px h100px lr-border-box lr-border-white bg-orange">4</div>
+			<div class="w100px h100px lr-border-box lr-border-white bg-orange">5</div>
+		</div>
+	</div>
+	
+	<div class="mt20 lr-border-box lr-border-silver lr-border-medium p5">
+		<div>.lr-flex-right{justify-content:flex-end;}</div>
+		<div class="lr-flex lr-flex-wrap lr-flex-right color-black">
+			<div class="p30 lr-border-box lr-border-white bg-orange">1</div>
+			<div class="p30 lr-border-box lr-border-white bg-orange">2</div>
+			<div class="p30 lr-border-box lr-border-white bg-orange">3</div>
+			<div class="p30 lr-border-box lr-border-white bg-orange">4</div>
+			<div class="p30 lr-border-box lr-border-white bg-orange">5</div>
+		</div>
+	</div>
+	
+	<div class="mt20 lr-border-box lr-border-silver lr-border-medium p5">
+		<div>.lr-flex-between{justify-content:space-between;}</div>
+		<div class="lr-flex lr-flex-wrap lr-flex-between color-black">
+			<div class="p30 lr-border-box lr-border-white bg-orange">1</div>
+			<div class="p30 lr-border-box lr-border-white bg-orange">2</div>
+			<div class="p30 lr-border-box lr-border-white bg-orange">3</div>
+			<div class="p30 lr-border-box lr-border-white bg-orange">4</div>
+			<div class="p30 lr-border-box lr-border-white bg-orange">5</div>
+		</div>
+	</div>
+	
+	<div class="mt20 lr-border-box lr-border-silver lr-border-medium p5">
+		<div>.lr-flex-around{justify-content:space-around;}</div>
+		<div class="lr-flex lr-flex-wrap lr-flex-around color-black">
+			<div class="p30 lr-border-box lr-border-white bg-orange">1</div>
+			<div class="p30 lr-border-box lr-border-white bg-orange">2</div>
+			<div class="p30 lr-border-box lr-border-white bg-orange">3</div>
+			<div class="p30 lr-border-box lr-border-white bg-orange">4</div>
+			<div class="p30 lr-border-box lr-border-white bg-orange">5</div>
+		</div>
+	</div>
+	
+	<div class="mt20 lr-border-box lr-border-silver lr-border-medium p5">
+		<div>.lr-flex--2col {display: flex;flex-wrap: wrap;}</div>
+		<div>.lr-flex--2col > * {flex-grow: 1;flex-shrink: 1;flex-basis: 50%;}</div>
+		<div class="lr-flex--2col color-black">
+			<div class="p30 lr-border-box lr-border-white bg-orange">1</div>
+			<div class="p30 lr-border-box lr-border-white bg-orange">2</div>
+			<div class="p30 lr-border-box lr-border-white bg-orange">3</div>
+			<div class="p30 lr-border-box lr-border-white bg-orange">4</div>
+			<div class="p30 lr-border-box lr-border-white bg-orange">5</div>
+		</div>
+	</div>
+
+	<div class="mt20 lr-border-box lr-border-silver lr-border-medium p5">
+		<div>.lr-flex--3col {display: flex;flex-wrap: wrap;}</div>
+		<div>.lr-flex--3col > * {flex-grow: 1;flex-shrink: 1;flex-basis: 30%;}</div>
+		<div class="lr-flex--3col color-black">
+			<div class="p30 lr-border-box lr-border-white bg-orange">1</div>
+			<div class="p30 lr-border-box lr-border-white bg-orange">2</div>
+			<div class="p30 lr-border-box lr-border-white bg-orange">3</div>
+			<div class="p30 lr-border-box lr-border-white bg-orange">4</div>
+			<div class="p30 lr-border-box lr-border-white bg-orange">5</div>
+		</div>
+	</div>
+
+	<div class="mt20 lr-border-box lr-border-silver lr-border-medium p5">
+		<div>.lr-flex--4col {display: flex;flex-wrap: wrap;}</div>
+		<div>.lr-flex--4col > * {flex-grow: inherit;flex-shrink: 1;flex-basis: 25%;}</div>
+		<div class="lr-flex--4col color-black">
+			<div class="p30 lr-border-box lr-border-white bg-orange">1</div>
+			<div class="p30 lr-border-box lr-border-white bg-orange">2</div>
+			<div class="p30 lr-border-box lr-border-white bg-orange">3</div>
+			<div class="p30 lr-border-box lr-border-white bg-orange">4</div>
+			<div class="p30 lr-border-box lr-border-white bg-orange">5</div>
+		</div>
+	</div>
+</section>
+<section>
+	<div class="p10 bg-blue-b6 color-white">
+		<h3>lr.css, Grid classes</h3>
+	</div>
+
+	<div class="mt20 lr-border-box lr-border-silver p5">
+		<div>.lr-grid,.d-grid{display:grid;}</div>
+		<div>.lr-grid-2col,.lr-grid--2col,.lr-grid-columns2{grid-template-columns:repeat(2, 1fr);}</div>
+		<div class="lr-grid lr-grid-columns2">
+			<div class="p40 lr-border-box color-white bg-maroon">1</div>
+			<div class="p40 lr-border-box color-white bg-maroon">2</div>
+			<div class="p40 lr-border-box color-white bg-maroon">3</div>
+			<div class="p40 lr-border-box color-white bg-maroon">4</div>
+			<div class="p40 lr-border-box color-white bg-maroon">5</div>
+		</div>
+	</div>
+	
+	<div class="mt20 lr-border-box lr-border-silver p5">
+		<div>.lr-grid,.d-grid{display:grid;}</div>
+		<div>.lr-grid-columns2-12{grid-template-columns:1fr 2fr;}</div>
+		<div class="lr-grid lr-grid-columns2-12">
+			<div class="p40 lr-border-box color-white bg-maroon">1</div>
+			<div class="p40 lr-border-box color-white bg-maroon">2</div>
+			<div class="p40 lr-border-box color-white bg-maroon">3</div>
+			<div class="p40 lr-border-box color-white bg-maroon">4</div>
+			<div class="p40 lr-border-box color-white bg-maroon">5</div>
+		</div>
+	</div>
+	<div class="mt20 lr-border-box lr-border-grey lr-border-medium p5">
+		<div>.lr-grid,.d-grid{display:grid;}</div>
+		<div>.lr-grid-columns2-21{grid-template-columns:2fr 1fr;}</div>
+		<div class="lr-grid lr-grid-columns2-21">
+			<div class="p40 lr-border-box color-white bg-maroon">1</div>
+			<div class="p40 lr-border-box color-white bg-maroon">2</div>
+			<div class="p40 lr-border-box color-white bg-maroon">3</div>
+			<div class="p40 lr-border-box color-white bg-maroon">4</div>
+			<div class="p40 lr-border-box color-white bg-maroon">5</div>
+		</div>
+	</div>
+	<div class="mt20 lr-border-box lr-border-cyan lr-border-medium p5">
+		<div>.lr-grid,.d-grid{display:grid;}</div>
+		<div>.lr-grid-columns2-13{grid-template-columns:1fr 3fr;}</div>
+		<div class="lr-grid lr-grid-columns2-13">
+			<div class="p40 lr-border-box color-white bg-maroon">1</div>
+			<div class="p40 lr-border-box color-white bg-maroon">2</div>
+			<div class="p40 lr-border-box color-white bg-maroon">3</div>
+			<div class="p40 lr-border-box color-white bg-maroon">4</div>
+			<div class="p40 lr-border-box color-white bg-maroon">5</div>
+		</div>
+	</div>
+	<div class="mt20 lr-border-box lr-border-cyan3 lr-border-medium p5">
+		<div>.lr-grid,.d-grid{display:grid;}</div>
+		<div>.lr-grid-columns2-31{grid-template-columns:3fr 1fr;}</div>
+		<div class="lr-grid lr-grid-columns2-31">
+			<div class="p40 lr-border-box color-white bg-maroon">1</div>
+			<div class="p40 lr-border-box color-white bg-maroon">2</div>
+			<div class="p40 lr-border-box color-white bg-maroon">3</div>
+			<div class="p40 lr-border-box color-white bg-maroon">4</div>
+			<div class="p40 lr-border-box color-white bg-maroon">5</div>
+		</div>
+	</div>
+
+	<div class="mt20 lr-border-box lr-border-silver lr-border-medium p5">
+		<div>.lr-grid,.d-grid{display:grid;}</div>
+		<div>.lr-grid-columns3,.lr-grid-3col{grid-template-columns:repeat(3,1fr);}</div>
+		<div class="lr-grid lr-grid-columns3">
+			<div class="p40 lr-border-box color-white bg-maroon">1</div>
+			<div class="p40 lr-border-box color-white bg-maroon">2</div>
+			<div class="p40 lr-border-box color-white bg-maroon">3</div>
+			<div class="p40 lr-border-box color-white bg-maroon">4</div>
+			<div class="p40 lr-border-box color-white bg-maroon">5</div>
+			<div class="p40 lr-border-box color-white bg-maroon">6</div>
+			<div class="p40 lr-border-box color-white bg-maroon">7</div>
+			<div class="p40 lr-border-box color-white bg-maroon">8</div>
+			<div class="p40 lr-border-box color-white bg-maroon">9</div>
+		</div>
+	</div>
+
+	<div class="mt20 lr-border-box lr-border-silver lr-border-medium p5">
+		<div>.lr-grid,.d-grid{display:grid;}</div>
+		<div>.lr-grid-columns4,.lr-grid-4col{grid-template-columns:repeat(4,1fr);}</div>
+		<div class="lr-grid lr-grid-columns4">
+			<div class="p40 lr-border-box color-white bg-maroon">1</div>
+			<div class="p40 lr-border-box color-white bg-maroon">2</div>
+			<div class="p40 lr-border-box color-white bg-maroon">3</div>
+			<div class="p40 lr-border-box color-white bg-maroon">4</div>
+			<div class="p40 lr-border-box color-white bg-maroon">5</div>
+			<div class="p40 lr-border-box color-white bg-maroon">6</div>
+			<div class="p40 lr-border-box color-white bg-maroon">7</div>
+			<div class="p40 lr-border-box color-white bg-maroon">8</div>
+			<div class="p40 lr-border-box color-white bg-maroon">9</div>
+		</div>
+	</div>
+	
+	<div class="mt20 lr-border-box lr-border-silver lr-border-medium p5">
+		<div>.lr-grid,.d-grid{display:grid;}</div>
+		<div>.lr-grid-columns5,.lr-grid-5col{grid-template-columns:repeat(5,1fr);}</div>
+		<div class="lr-grid lr-grid-columns5">
+			<div class="p40 lr-border-box color-white bg-maroon">1</div>
+			<div class="p40 lr-border-box color-white bg-maroon">2</div>
+			<div class="p40 lr-border-box color-white bg-maroon">3</div>
+			<div class="p40 lr-border-box color-white bg-maroon">4</div>
+			<div class="p40 lr-border-box color-white bg-maroon">5</div>
+			<div class="p40 lr-border-box color-white bg-maroon">6</div>
+			<div class="p40 lr-border-box color-white bg-maroon">7</div>
+			<div class="p40 lr-border-box color-white bg-maroon">8</div>
+			<div class="p40 lr-border-box color-white bg-maroon">9</div>
+		</div>
+	</div>
+
+	<div class="mt20 lr-border-box lr-border-silver lr-border-medium p5">
+		<div>.lr-grid,.d-grid{display:grid;}</div>
+		<div>.lr-grid-columns6,.lr-grid-6col{grid-template-columns:repeat(6,1fr);}</div>
+		<div class="lr-grid lr-grid-columns6">
+			<div class="p30 lr-border-box color-white bg-maroon">1</div>
+			<div class="p30 lr-border-box color-white bg-maroon">2</div>
+			<div class="p30 lr-border-box color-white bg-maroon">3</div>
+			<div class="p30 lr-border-box color-white bg-maroon">4</div>
+			<div class="p30 lr-border-box color-white bg-maroon">5</div>
+			<div class="p30 lr-border-box color-white bg-maroon">6</div>
+			<div class="p30 lr-border-box color-white bg-maroon">7</div>
+			<div class="p30 lr-border-box color-white bg-maroon">8</div>
+			<div class="p30 lr-border-box color-white bg-maroon">9</div>
+		</div>
+	</div>
+
+	<div class="mt20 lr-border-box lr-border-silver lr-border-medium p5">
+		<div>.lr-grid,.d-grid{display:grid;}</div>
+		<div>.lr-grid-columns12,.lr-grid-12col{grid-template-columns:repeat(12,1fr);}</div>
+		<div class="lr-grid lr-grid-columns6">
+			<div class="p20 lr-border-box color-white bg-maroon">1</div>
+			<div class="p20 lr-border-box color-white bg-maroon">2</div>
+			<div class="p20 lr-border-box color-white bg-maroon">3</div>
+			<div class="p20 lr-border-box color-white bg-maroon">4</div>
+			<div class="p20 lr-border-box color-white bg-maroon">5</div>
+			<div class="p20 lr-border-box color-white bg-maroon">6</div>
+			<div class="p20 lr-border-box color-white bg-maroon">7</div>
+			<div class="p20 lr-border-box color-white bg-maroon">8</div>
+			<div class="p20 lr-border-box color-white bg-maroon">9</div>
+			<div class="p20 lr-border-box color-white bg-maroon">10</div>
+			<div class="p20 lr-border-box color-white bg-maroon">11</div>
+			<div class="p20 lr-border-box color-white bg-maroon">12</div>
+			<div class="p20 lr-border-box color-white bg-maroon">13</div>
+			<div class="p20 lr-border-box color-white bg-maroon">14</div>
+			<div class="p20 lr-border-box color-white bg-maroon">15</div>
+		</div>
+	</div>
+	
+</section>
+		</div><!-- end panel -->
+	
+		<div class="lr-border-box bg-white mt20">
+			<div class="lr-flex d-block-md mt40">
+				<div class="demo-lr p10 bg-white">
+					<div class="p10 text-center">.lr-list-unstyled, .lr-list-striped</div>
+					<ul class="lr-list-unstyled lr-list-striped lr-list-border">
+						<li><a href="#">one</a></li>
+						<li><a href="#">two</a></li>
+						<li><a href="#">three</a></li>
+						<li><a href="#">one</a></li>
+						<li><a href="#">two</a></li>
+						<li><a href="#">three</a></li>
+					</ul>		
+				</div>
+				<div class="demo-lr p10 bg-white">
+					<div class="fz-2rem text-center">.mark-list .mark-list-blue</div>
+					<ul class="mark-list mark-list-blue">
+						<li><a href="#">one</a></li>
+						<li><a href="#">two</a></li>
+						<li><a href="#">three</a></li>
+						<li><a href="#">one</a></li>
+						<li><a href="#">two</a></li>
+						<li><a href="#">three</a></li>
+					</ul>		
+				</div>
+				<div class="demo-lr p10 bg-white">
+					<div class="fz-2rem text-center">.lr-popup</div>
+					<ul class="lr-list-group lr-nav lr-nav-lightblue m0 p5 lr-border-cyan3">
+						<li class="lr-popup"><a href="#">one</a></li>
+						<li class="lr-popup"><a href="#">two</a></li>
+						<li class="lr-popup"><a href="#">three</a></li>
+						<li class="lr-popup"><a href="#">one</a></li>
+						<li class="lr-popup"><a href="#">two</a></li>
+						<li class="lr-popup"><a href="#">three</a></li>
+					</ul>		
+				</div>
+			</div>
+			
+			<div class="lr-flex d-block-md">
+				<div class="p10 text-center">.lr-nav-amber</div>
+				<div class="demo-lr-1 m10 p10 bg-black color-white">
+					<div>Dark background, classlist: .lr-nav, .lr-nav-amber, .darkBg, .lr-list-border, .lr-border-white</div>
+					<ul class="lr-list-inline lr-nav lr-nav-amber darkBg lr-list-border lr-border-white">
+						<li><a href="#">one</a></li>
+						<li><a href="#">two</a></li>
+						<li><a href="#">three</a></li>
+					</ul>
+				</div>
+				<div class="demo-lr-1a m10 p10 bg-white color-balck">
+					<div>Light background, classlist: .lr-nav, .lr-nav-amber, .lr-list-border</div>
+					<ul class="lr-list-inline lr-nav lr-nav-amber lr-list-border">
+						<li><a href="#">one</a></li>
+						<li><a href="#">two</a></li>
+						<li><a href="#">three</a></li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="lr-flex d-block-md">
+				<div class="p10 text-center">.lr-nav-red</div>
+				<div class="demo-lr-2 m10 p10 bg-black-100 color-black">
+					<div>Dark background, classlist: .lr-nav, .lr-nav-red, .darkBg .lr-list-border, .lr-border-white</div>
+					<ul class="lr-list-unstyled lr-nav lr-nav-red darkBg lr-list-border lr-border-white bg-black-900">
+						<li><a href="#">one</a></li>
+						<li><a href="#">two</a></li>
+						<li><a href="#">three</a></li>
+					</ul>
+				</div>
+				<div class="demo-lr-2a m10 p10 _bg-black-100 color-black">
+					<div>Light background, classlist: .lr-nav, .lr-nav-red, .lr-list-border</div>
+						<ul class="lr-list-inline lr-nav lr-nav-red lr-list-border">
+							<li><a href="#">one</a></li>
+							<li><a href="#">two</a></li>
+							<li><a href="#">three</a></li>
+						</ul>
+					</div>
+			</div>
+
+			<div class="lr-flex d-block-md">
+				<div class="p10 text-center">.lr-nav-lightblue</div>
+				<div class="demo-lr-3 m10 p10 bg-black-200 color-black">
+					<div>Dark background, classlist: .lr-nav, .lr-nav-lightblue, .darkBg, .lr-list-border, .lr-border-white</div>
+					<ul class="lr-list-unstyled lr-nav lr-nav-lightblue darkBg lr-list-border lr-border-white bg-black-900">
+						<li><a href="#">one</a></li>
+						<li><a href="#">two</a></li>
+						<li><a href="#">three</a></li>
+					</ul>
+				</div>
+				<div class="demo-lr-3a m10 p10 _bg-black-200 color-black">
+					<div>Light background, classlist: .lr-nav, lr-nav-lightblue, .lr-list-border</div>
+					<ul class="lr-list-inline lr-nav lr-nav-lightblue lr-list-border">
+						<li><a href="#">one</a></li>
+						<li><a href="#">two</a></li>
+						<li><a href="#">three</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="lr-flex d-block-md">
+				<div class="text-center p10">.lr-nav-teal</div>
+				<div class="demo-lr-4 m10 p10 bg-black-200 color-black">
+					<div>Dark background, classlist: .lr-nav, .lr-nav-teal, .darkBg, .lr-list-border, .lr-border-white</div>
+					<ul class="lr-list-inline lr-nav lr-nav-teal darkBg lr-list-border lr-border-white bg-black-800">
+						<li><a href="#">one</a></li>
+						<li><a href="#">two</a></li>
+						<li><a href="#">three</a></li>
+					</ul>
+				</div>
+				<div class="demo-lr-4a m10 p10 _bg-black-200 color-black">
+					<div>Light background, classlist: .lr-nav, lr-nav-teal, .lr-list-border</div>
+					<ul class="lr-list-inline lr-nav lr-nav-teal lr-list-border">
+						<li><a href="#">one</a></li>
+						<li><a href="#">two</a></li>
+						<li><a href="#">three</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="lr-flex d-block-md">
+				<div class="text-center p10">.lr-nav-yellowgreen</div>
+				<div class="demo-lr-5 m10 p10 bg-black-200 color-black">
+					<div>Dark background, classlist: .lr-nav, .lr-nav-yellowgeen, .darkBg, .lr-list-border, .lr-border-white</div>
+					<ul class="lr-list-inline lr-nav lr-nav-yellowgreen darkBg lr-list-border lr-border-white bg-black-800">
+						<li><a href="#">one</a></li>
+						<li><a href="#">two</a></li>
+						<li><a href="#">three</a></li>
+					</ul>
+				</div>
+				<div class="demo-lr-5a m10 p10 _bg-black-200 color-black">
+					<div>Light background, classlist: .lr-nav, lr-nav-yellowgreen, .lr-list-border</div>
+					<ul class="lr-list-inline lr-nav lr-nav-yellowgreen lr-list-border">
+						<li><a href="#">one</a></li>
+						<li><a href="#">two</a></li>
+						<li><a href="#">three</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="lr-flex lr-flex-wrap d-block-md">
+				<div class="text-center">.lr-nav-black</div>
+				<div class="demo-lr-6 m10 p10 color-black">
+					<div>Light background, classlist: .lr-nav, lr-nav-black, .lr-list-border</div>
+					<ul class="lr-list-inline lr-nav lr-nav-black lr-list-border">
+						<li><a href="#">one</a></li>
+						<li><a href="#">two</a></li>
+						<li><a href="#">three</a></li>
+					</ul>
+				</div>
+			</div>			
+		</div><!-- end panel -->
+	
+		<div class="panel mt10 lr-border-box bg-white">
+			<div class="lr-flex lr-flex--3col d-block-md">
+				<div class="demo-lr m10 p10">
+					<div class="w200px h200px bg-lavender lr-card anim-blink">.lr-card, .anim-blink</div>
+				</div>
+				<div class="demo-lr m10 p10">
+					<div class="w200px h200px bg-indigo color-white lr-tile lr-shadow-box">.lr-tile (.lr-popup)</div>
+				</div>
+				<div class="demo-lr m10 p10">
+					<div class="">.lr-hover-scale, .lr-hover-scale-1d5, .lr-hover-scale-2</div>
+					<ul class="lr-list-inline lr-nav lr-list-border">
+						<li class="lr-hover-scale"><a href="#">one</a></li>
+						<li class="lr-hover-scale-1d5"><a href="#">two</a></li>
+						<li class="lr-hover-scale-2"><a href="#">three</a></li>
+						<li class="lr-hover-scale-1d5"><a href="#">two</a></li>
+						<li class="lr-hover-scale"><a href="#">one</a></li>
+					</ul>
+				</div>
+			</div>
+		</div><!-- end panel -->
+		
+		<div class="panel mt10 lr-border-box bg-white">
+			<div class="lr-flex lr-flex--3col d-block-md">
+				<div class="demo-lr m10 p10">
+					<div class="fz-1d5rem text-center">.spinner-border</div>
+					<div class="w200px h200px bg-red color-blue spinner-border">spinner-border, color-blue</div>
+					<div class="w200px h200px bg-green color-orange spinner-border">spinner-border, color-orange</div>
+				</div>
+				<div class="demo-lr m10 p10">
+					<div class="fz-1d5rem text-center">.spinner-grow</div>
+					<div class="w200px h200px spinner-grow"></div>
+					<div class="w200px h200px bg-red spinner-grow"></div>
+				</div>
+			</div>
+		</div><!-- end panel -->
+
+		<div class="panel mt10 lr-border-box bg-white">
+			<div class="lr-flex lr-flex-wrap d-block-md">
+				<div class="demo-lr m5 p10">
+<a href="#" class="lr-btn lr-btn-default">lr-btn-default</a>
+				</div>
+				<div class="demo-lr m5 p10">
+<a href="#" class="lr-btn lr-btn-primary">lr-btn-primary</a>
+				</div>
+				<div class="demo-lr m5 p10">
+					<div class="fz12">lr-btn lr-btn-flat lr-hover-scale-1d5</div>
+<a href="#" class="lr-btn lr-btn-flat lr-hover-scale-1d5 lr-transition-05">lr-btn-flat</a>
+				</div>
+				<div class="demo-lr m5 p10">
+<a href="#" class="lr-btn lr-btn-blue _lr-transition">lr-btn-blue</a>
+				</div>
+				<div class="demo-lr m5 p10">
+<a href="#" class="lr-btn lr-btn-small lr-btn-darkblue lr-transition">lr-btn-darkblue</a>
+				</div>
+				<div class="demo-lr m5 p10">
+<a href="#" class="lr-btn lr-btn-violet-fb lr-transition">lr-btn-violet-fb</a>
+				</div>
+				<div class="demo-lr m5 p10">
+<a href="#" class="lr-btn lr-btn-orange lr-transition">lr-btn-orange</a>
+				</div>
+				<div class="demo-lr m5 p10">
+<a href="#" class="lr-btn lr-btn-orange-m lr-transition">lr-btn-orange-m</a>
+				</div>
+				<div class="demo-lr m5 p10">
+<a href="#" class="lr-btn lr-btn-red lr-transition">lr-btn-red</a>
+				</div>
+				<div class="demo-lr m5 p10">
+<a href="#" class="lr-btn lr-btn-red2 lr-transition">lr-btn-red2</a>
+				</div>
+
+				<div class="demo-lr m5 p10">
+<a href="#" class="lr-btn lr-btn-green lr-transition">lr-btn-green</a>
+				</div>
+				<div class="demo-lr m5 p10">
+<a href="#" class="lr-btn lr-btn-green2 lr-transition color-white">lr-btn-green2</a>
+				</div>
+				<div class="demo-lr m5 p10">
+<a href="#" class="lr-btn lr-btn-green-shadow lr-transition color-white">lr-btn-green-shadow</a>
+				</div>
+				<div class="demo-lr m5 p10">
+<a href="#" class="lr-btn lr-btn-teal lr-transition">lr-btn-teal</a>
+				</div>
+				<div class="demo-lr m5 p10">
+<a href="#" class="lr-btn lr-btn-blue-green lr-transition">lr-btn-blue-green</a>
+				</div>
+				<div class="demo-lr m5 p10">
+<a href="#" class="lr-btn lr-btn-greygreen lr-transition">lr-btn-greygreen</a>
+				</div>
+				<div class="demo-lr m5 p10">
+<a href="#" class="lr-btn lr-btn-greygreen2 lr-transition">lr-btn-greygreen2</a>
+				</div>
+				
+			</div>
+		</div><!-- end panel -->
+
+		<div class="panel mt10 p20 lr-border-box bg-white">
+			<div class="lr-flex lr-flex-wrap d-block-md m20">
+				
+				<div class="w100px h100px bg-green lr-rotate-3">lr-rotate-3</div>
+				<div class="w100px h100px bg-orange"></div>
+				<div class="w100px h100px bg-red lr-rotate3 mr40 mb40">lr-rotate3</div>
+
+				<div class="w100px h100px bg-green lr-rotate-5">lr-rotate-5</div>
+				<div class="w100px h100px bg-orange"></div>
+				<div class="w100px h100px bg-red lr-rotate5 mr40 mb40">lr-rotate5</div>
+
+				<div class="w100px h100px bg-greentea lr-rotate-10">lr-rotate-10</div>
+				<div class="w100px h100px bg-orange"></div>
+				<div class="w100px h100px bg-red lr-rotate10 mr40 mb40">lr-rotate10</div>
+				
+				<div class="w100px h100px bg-green-100 lr-rotate-15">lr-rotate-15</div>
+				<div class="w100px h100px bg-orange"></div>
+				<div class="w100px h100px bg-red lr-rotate15 mr40 mb40">lr-rotate15</div>
+
+				<div class="w100px h100px bg-teal-ms lr-rotate-20">lr-rotate-20</div>
+				<div class="w100px h100px bg-orange"></div>
+				<div class="w100px h100px bg-red lr-rotate20 mr40 mb40">lr-rotate20</div>
+				
+				<div class="w100px h100px bg-teal lr-rotate-25">lr-rotate-25</div>
+				<div class="w100px h100px bg-orange"></div>
+				<div class="w100px h100px bg-red lr-rotate25 mr40 mb40">lr-rotate25</div>
+
+				<div class="w100px h100px bg-greencyan lr-rotate-45">lr-rotate-45</div>
+				<div class="w100px h100px bg-orange"></div>
+				<div class="w100px h100px bg-red lr-rotate45 mr40 mb40">lr-rotate45</div>
+				
+				<div class="w50px h100px bg-green-300 lr-rotate-90">lr-rotate-90</div>
+				<div class="w50px h100px bg-orange"></div>
+				<div class="w50px h100px bg-red lr-rotate90 mr40 mb40">lr-rotate90</div>
+
+				<div class="w100px h100px bg-green-slack lr-rotate-180">lr-rotate-180</div>
+				<div class="w100px h100px bg-orange"></div>
+				<div class="w100px h100px bg-red lr-rotate180 mr40 mb40">lr-rotate180</div>
+				
+				<div class="w50px h100px bg-green-light lr-rotate-270">lr-rotate-270</div>
+				<div class="w50px h100px bg-orange"></div>
+				<div class="w50px h100px bg-red lr-rotate270 mr20 mb20">lr-rotate270</div>
+			</div>
+		</div>
+
+		<div class="panel mt10 p20 lr-border-box bg-white">
+			<div class="lr-flex lr-flex-wrap d-block-md m20">
+				<div class="w200px h200px bg-green-6d lr-slide-right">lr-slide-right</div>
+				<div class="w200px h200px bg-luminous-vivid-amber lr-slide-down">lr-slide-down</div>
+				<div class="w200px h200px bg-pale-cyan-blue lr-slide-down2">lr-slide-down2</div>
+			</div>
+		</div>
+
+		<div class="panel mt10 p20 lr-border-box bg-white">
+			<div class="lr-flex lr-flex-wrap d-block-md m10">
+				<div class="w100px h100px bg-green-400 lr-shadow-box p10 m10">lr-shadow-box</div>
+				<div class="w100px h100px bg-luminous-vivid-amber lr-shadow-1 p10 m10">lr-shadow-1</div>
+				<div class="w100px h100px bg-pale-cyan-blue lr-shadow-2 p10 m10">lr-shadow-2</div>
+				<div class="w100px h100px bg-green-500 lr-shadow-3 p10 m10">lr-shadow-3</div>
+				<div class="w100px h100px bg-blue-magenta10 color-white lr-shadow-bamb p10 m10">lr-shadow-bamb</div>
+				<div class="w100px h100px bg-green-600 lr-shadow-4 p10 m10">lr-shadow-4</div>
+				<div class="w100px h100px bg-green-700 color-white lr-shadow-5 p10 m10">lr-shadow-5</div>
+
+				<div class="p10 bg-whitesmoke lr-flex lr-flex-wrap">
+					<div class="w100px h100px bg-cyan10 color-white lr-shadow-1-flip p10 m10">lr-shadow-1-flip</div>
+
+					<div class="w100px h100px bg-cyan20 color-white lr-shadow-1-inset p10 m10">lr-shadow-1-inset</div>
+
+					<div class="w100px h100px bg-cyan10 color-white lr-shadow-5-inset p10 m10">lr-shadow-5-inset</div>
+
+					<div class="w100px h100px bg-green-300 z-depth-1 p10 m10">z-depth-1</div>
+					
+					<div class="w100px h100px bg-green-300 z-depth-1-half p10 m10">z-depth-1-half</div>
+					<div class="w100px h100px bg-ghostwhite z-depth-2 p10 m10">z-depth-2</div>
+					<div class="w100px h100px bg-floralwhite z-depth-3 p10 m10">z-depth-3</div>
+					<div class="w100px h100px bg-floralwhite z-depth-4 p10 m10">z-depth-4</div>
+					<div class="w100px h100px bg-floralwhite z-depth-5 p10 m10">z-depth-5</div>
+					
+<div class="w100px h100px bg-lavender lr-card p10 m10">lr-card</div>
+<div class="w100px h100px bg-lavender lr-shadow-inset color-blue p10 m10 fz12">.lr-shadow-inset, .color-blue</div>
+<div class="w100px h100px bg-azure lr-shadow-inset-black p10 m10">lr-shadow-inset-black</div>
+<div class="w100px h100px bg-pearl lr-drop-shadow p10 m10">lr-drop-shadow</div>
+<div class="w100px h100px bg-pearl lr-drop-shadow color-green p10 m10 fz12">.lr-drop-shadow, .color-green</div>
+				</div>
+<div>
+/* bootstrap441.css  */
+				<div class="p10 bg-whitesmoke lr-flex lr-flex-wrap">
+					<div class="w100px h100px bg-red-100 b--shadow-sm p10 m10">b--shadow-sm</div>
+					<div class="w100px h100px bg-red-200 b--shadow p10 m10">b--shadow</div>
+					<div class="w100px h100px bg-red-300 b--shadow-lg p10 m10">b--shadow-lg</div>
+				</div>
+b--shadow-none				
+</div>
+
+<div>
+/*
+ Box-shadow, UIKit
+ https://3uikit.ru/utility
+ */
+				<div class="p10 bg-whitesmoke lr-flex lr-flex-wrap">
+					<div class="w100px h100px bg-red-400 uk-box-shadow-small p10 m10">uk-box-shadow-small</div>
+					<div class="w100px h100px bg-red-500 uk-box-shadow-medium p10 m10">uk-box-shadow-medium</div>
+					<div class="w100px h100px bg-red-600 uk-box-shadow-large p10 m10">uk-box-shadow-large</div>
+					<div class="w100px h100px bg-red-600 uk-box-shadow-xlarge p10 m10">uk-box-shadow-xlarge</div>
+					<div class="w100px h100px bg-red-100 uk-box-shadow-bottom p10 m10">uk-box-shadow-bottom</div>
+				</div>
+</div>
+				<div class="w100px h100px bg-cyan lr-text-shadow p10 m10">lr-text-shadow</div>
+
+<div>
+				<div class="p10 lr-flex lr-flex-wrap">
+					<div class="w100px h100px bg-lilac lr-shadow--natural p10 m10">lr-shadow--natural</div>
+					<div class="w100px h100px bg-thistle lr-shadow--deep p10 m10">lr-shadow--deep</div>
+					<div class="w100px h100px bg-pink lr-shadow--sharp p10 m10">lr-shadow--sharp</div>
+					<div class="w100px h100px bg-lavender-h lr-shadow--outlined p10 m10">lr-shadow--outlined</div>
+					<div class="w100px h100px bg-lavender lr-shadow--crisp p10 m10">lr-shadow--crisp</div>
+				</div>
+</div>
+				
+			</div>
+			
+				<div class="p10 bg-light-grey-blue lr-flex lr-flex-wrap fz14">
+<div class="w150px h200px gradient--midnight color-white p10 m10">gradient--midnight</div>
+
+<div class="w150px h200px gradient--vivid-cyan-blue-to-vivid-purple color-white p10 m10">
+gradient--vivid-cyan-blue-to-vivid-purple</div>
+
+<div class="w150px h200px gradient--light-green-cyan-to-vivid-green-cyan p10 m10">
+gradient--light-green-cyan-to-vivid-green-cyan</div>
+
+<div class="w150px h200px gradient--luminous-vivid-amber-to-luminous-vivid-orange p10 m10">
+gradient--luminous-vivid-amber-to-luminous-vivid-orange</div>
+
+<div class="w150px h200px gradient--luminous-vivid-orange-to-vivid-red p10 m10">
+gradient--luminous-vivid-orange-to-vivid-red</div>
+
+<div class="w150px h200px gradient--very-light-gray-to-cyan-bluish-gray p10 m10">gradient--very-light-gray-to-cyan-bluish-gray</div>
+
+<div class="w150px h200px gradient--cool-to-warm-spectrum p10 m10">
+gradient--cool-to-warm-spectrum</div>
+
+<div class="w150px h200px gradient--blush-light-purple p10 m10">
+gradient--blush-light-purple</div>
+
+<div class="w150px h200px gradient--blush-bordeaux p10 m10">gradient--blush-bordeaux</div>
+
+<div class="w150px h200px gradient--luminous-dusk p10 m10">
+gradient--luminous-dusk</div>
+
+<div class="w150px h200px gradient--pale-ocean p10 m10">
+gradient--pale-ocean</div>
+
+<div class="w150px h200px gradient--electric-grass p10 m10">
+gradient--electric-grass</div>
+				</div>
+
+		</div>
+
+		<div class="panel mt10 p20 lr-border-box bg-mintcream">
+<h2>test margin negative</h2>
+<pre>
+https://webformyself.com/otricatelnye-polya-v-css/	
+https://webformyself.com/category/verstka-2/css3-verstka-2/
+https://learn.javascript.ru/margin
+</pre>
+<div class="lr-flex lr-flex-center fz-0d8rem">
+			<div class="lr-border-box p20">
+<div class="w100px h50px bg-green-100 p10"></div>
+<div class="w100px h50px bg-green-200 p10 ml20-negative">.ml20-negative</div>
+<div class="w100px h50px bg-green-200 p10 ml30-negative">.ml30-negative</div>
+<div class="w100px h50px bg-green-300 p10 ml40-negative">.ml40-negative</div>
+<div class="w100px h50px bg-green-400 p10 ml50-negative">.ml50-negative</div>
+<div class="w100px h50px bg-green-500 p10 ml60-negative">.ml60-negative</div>
+<div class="w100px h50px bg-green-600 p10 ml80-negative">.ml80-negative</div>
+<div class="w100px h50px bg-green-700 color-white p10 ml100-negative">.ml100-negative</div>
+			</div>
+			<div class="lr-border-box p20">
+<div class="w100px h50px bg-turquoise4 p10 ml40 mt40-negative">.mt40-negative</div>
+<div class="w100px h50px bg-magenta20 color-white p10 ml30 mt30-negative">.mt30-negative</div>
+<div class="w100px h50px bg-magenta10 p10 ml20 mt20-negative">.mt20-negative</div>
+<div class="w100px h50px bg-turquoise p10"></div>
+			</div>
+		</div>
+</div>
+
+		<div class="mt10 p20 lr-border-box bg-white">
+	<h3>CSS rounded classes</h3>			
+	<div class="m-auto p10 bg-white w80 lr-flex lr-flex-wrap lr-gap-10">
+		<div class="m-auto p30 bg-white rounded lr-border-box">.rounded</div>
+		<div class="rounded-sm p30 bg-gray220 color-white">.rounded-sm</div>
+		<div class="rounded-md p30 bg-gray100 color-white">.rounded-md</div>
+		<div class="rounded-lg p30 bg-gray110 color-white">.rounded-lg</div>
+		<div class="rounded-top p30 bg-gray120 color-white">.rounded-top</div>
+		<div class="rounded-bottom p30 bg-gray130 color-white">.rounded-bottom</div>
+		<div class="rounded-right p30 bg-gray140 color-white">.rounded-right</div>
+		<div class="rounded-left p30 bg-gray150 color-white">.rounded-left</div>
+	</div>
+
+	<div class="m-auto p10 bg-ghostwhite w80 lr-flex lr-flex--2col">
+		<div class="rounded-lt p20 bg-gray110 color-white">.rounded-left-top,.rounded-top-left,.rounded-lt</div>
+		<div class="rounded-rt p20 bg-gray100 color-white">.rounded-right-top,.rounded-top-right,.rounded-rt</div>
+		<div class="rounded-lb p20 bg-gray120 color-white">.rounded-left-bottom,.rounded-bottom-left,.rounded-lb</div>
+		<div class="rounded-rb p20 bg-gray130 color-white">.rounded-right-bottom,.rounded-bottom-right,.rounded-rb</div>
+	</div>
+
+	<div class="p10 bg-ghostwhite lr-flex lr-flex-wrap">
+		<div class="rounded-circle w100px h100px bg-gray160 color-white text-center ">
+			<div class="pos-rel-center">.rounded-circle</div>
+		</div>
+		<div class="rounded-pill w100px h100px bg-gray160 color-white text-center ">
+			<div class="pos-rel-center">.rounded-pill</div>
+		</div>
+		<div class="rounded-small w200px h100px bg-gray150 color-white text-center ml20">
+			<div class="pos-rel-center">.rounded-small,.lr-rad5,.lr-radius5,.lr-border-radius5</div>
+		</div>
+		<div class="lr-radius-top-small w200px h100px bg-gray140 color-white text-center ml20">
+			<div class="pos-rel-center">.lr-radius-top-small</div>
+		</div>
+				
+	</div>
+
+	<div class="container m20 bg-white">
+<pre>		
+		.rounded{border-radius:.5rem!important}
+		.rounded-sm{border-radius:1rem!important}
+		.rounded-md{border-radius:2rem!important}
+		.rounded-lg{border-radius:3rem!important}
+		
+		.rounded-top{border-top-left-radius:1rem;border-top-right-radius:1rem}
+		.rounded-bottom {border-bottom-right-radius:1rem;border-bottom-left-radius:.1rem}
+		.rounded-right{border-top-right-radius:1rem;border-bottom-right-radius:1rem}
+		.rounded-left{border-top-left-radius:1rem;border-bottom-left-radius:1rem}
+		
+		.rounded-right-top,.rounded-top-right,.rounded-rt{border-top-right-radius:1rem;}
+		.rounded-right-bottom,.rounded-bottom-right,.rounded-rb{border-bottom-right-radius:1rem}
+		
+		.rounded-left-top,.rounded-top-left,.rounded-lt{border-top-left-radius:1rem;}
+		.rounded-left-bottom,.rounded-bottom-left,.rounded-lb{border-bottom-left-radius:1rem}
+		
+		.rounded-circle{border-radius:50%}
+		.rounded-pill{border-radius:50rem}
+		
+		.rounded-0,.lr-rad0,.lr-radius0{border-radius:0;}
+		.lr-rad4,.lr-radius4{border-radius:4px;}
+		.rounded-small,.lr-rad5,.lr-radius5,.lr-border-radius5{border-radius:5px;}
+		.lr-radius-top-small{ 
+			border-top-left-radius:10px!important;
+			border-top-right-radius:10px!important
+		}
+		.lr-radius-6{border-radius:6px;}
+		.lr-radius-8{border-radius:8px;}
+		.lr-radius-10,.lr-border-round{border-radius:10px;}
+		.lr-radius-15{border-radius:15px;}
+		.lr-radius-20{border-radius:20px;}
+		.lr-radius-30{border-radius:30px;}
+</pre>
+
+	</div>
+</div>
+		
+		<div class="mt10 p20 lr-border-box bg-white d-none-sm">
+<table border=1 bordercolor="#555555" bgcolor="#E4FEE0">
+<tr>
+<td align=center style=CURSOR:crosshair; >cursor:crosshair</td>
+<td align=center>cursor:pointer</td>
+<td align=center style=CURSOR:move;>cursor:move</td>
+<td align=center style=CURSOR:e-resize;>cursor:e-resize</td>
+</tr>
+<tr>
+<td align=center style=CURSOR:ne-resize;>cursor:ne-resize</td>
+<td align=center style=CURSOR:nw-resize;>cursor:nw-resize</td>
+<td align=center style=CURSOR:n-resize;>cursor:n-resize</td>
+<td align=center style=CURSOR:sw-resize;>cursor:sw-resize</td>
+</tr>
+<tr>
+<td align=center style=CURSOR:se-resize;>cursor:se-resize</td>
+<td align=center style=CURSOR:s-resize;>cursor:s-resize</td>
+<td align=center style=CURSOR:w-resize;>cursor:w-resize</td>
+<td align=center style=CURSOR:text;>cursor:text</td>
+</tr>
+<tr>
+<td align=center style=CURSOR:wait;>cursor:wait</td>
+<td align=center style=CURSOR:help;>cursor:help</td>
+<td align=center style=CURSOR:auto;>cursor:auto</td>
+<td align=center style=CURSOR:auto;>&nbsp;</td>
+</tr>
+</table>			
+		</div>	
+	</section>			
+</div><!-- end container -->
+
+
+<a id="panel-bookmarks"></a>
+<section>			
+	<div class="lr-container w80 mt20 bg-grey-green lr-border-round">
+		<div class="lr-flex lr-flex-between lr-flex-top">
+			<h3 class="m0 p0">Bookmarks</h3>
+		</div>	
+<pre>
+http://i5/webdisc/codebase/js/demo_js_plugins/
+http://i5/webdisc/codebase/js/js_plugins_libs/
+
+------ CDN
+https://code.jquery.com/
+https://code.jquery.com/jquery-3.5.1.min.js
+https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js
+https://yastatic.net/jquery/1.8.3/jquery.min.js
+
+https://cdnjs.com/libraries
+https://f.vimeocdn.com/js_opt/modules/utils/vuid.min.js
+
+https://cdnjs.com/libraries/twitter-bootstrap
+
+https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js
+https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css
+
+https://www.bootstrapcdn.com/
+https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css
+https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js	
+
+-- Owl Carousel
+https://owlcarousel2.github.io/OwlCarousel2/
+
+https://owlcarousel2.github.io/OwlCarousel2/docs/started-welcome.html
+Welcome | Owl Carousel | 2.3.4
+
+https://mel0ne.ru/2016/09/16/owl-carousel-2/
+
+https://cdnjs.com/libraries/OwlCarousel2
+https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js
+https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css 
+
+--------------
+https://3uikit.ru/javascript
+https://3uikit.ru/slider
+https://getuikit.com/v2/docs/components.html
+
+https://materializecss.com/carousel.html
+
+</pre>
+	</div><!-- end container -->
+</section>			
+
+</body>
+</html>

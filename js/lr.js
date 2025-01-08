@@ -2554,6 +2554,16 @@ console.log(e.type, e);
 					if( target.href ){
 		//console.log(e.target.attributes["href"].value); 
 						_clickHandler(target);
+						
+						//cancel bubbling
+						//if (event.stopPropagation) { 
+							//event.stopPropagation();
+						//}
+						
+//cancel bubbling and other event handlers
+//https://developer.mozilla.org/en-US/docs/Web/API/Event/stopImmediatePropagation
+//event.stopImmediatePropagation();
+							
 						if (event.preventDefault) { 
 							event.preventDefault();
 						} else {
@@ -2569,7 +2579,38 @@ console.log(e.type, e);
 				//}, false);//end event
 					
 			});//next	
-
+			
+			domObj.querySelectorAll(".no-click, .noclick").forEach(function(el, num){
+				el.addEventListener("click", function(e){ 
+					event = e || window.e;
+//console.log(event); 
+//console.log(event.target.dataset); 
+					var cancelEvent = true;
+					if( event.target.dataset.typeLink ){
+						if( event.target.dataset.typeLink === "external"){
+							cancelEvent = false;
+						}
+					}
+					if(cancelEvent){
+						//cancel bubbling
+						if (event.stopPropagation) { 
+							event.stopPropagation();
+						}
+						
+//cancel bubbling and other event handlers
+//https://developer.mozilla.org/en-US/docs/Web/API/Event/stopImmediatePropagation
+//event.stopImmediatePropagation();
+						
+						if (event.preventDefault) { 
+							event.preventDefault();
+						} else {
+							event.returnValue = false;				
+						}
+						return false;
+					}
+				}, false);//end event
+			});//next
+		
 			function _clickHandler(target){
 				//---------
 				//if( target.hash && target.hash.indexOf("#switch-tab") !== -1 ){

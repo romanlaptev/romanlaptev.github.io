@@ -313,15 +313,42 @@ pre{overflow: auto;}
 	.lr-container{width:100%;}
 }
 .f-container {
-	width:60%;
+	width:90%;
 	margin:auto;
 	max-width: 1250px;
+	min-width: 240px;
 }
+/*
 @media(max-width:1600px){.f-container {width: 70%;}}
 @media(max-width:1500px){.f-container {width: 80%;}}
 @media(max-width:1300px){.f-container {width: 85%;}}
 @media(max-width:1200px){.f-container {width: 90%;}}
 @media(max-width:1000px){.f-container {width: auto;}}
+*/
+.clamp-container{
+	width:clamp(240px, 90%, 1250px);
+	margin: auto;
+}
+
+/*
+:root {
+	--container-max-width:1170px;
+	--container-padding-x:15px;
+}
+.test-container{
+	max-width: calc( var(--container-max-width) + var(--container-padding-x) * 2);
+	padding-inline: var(--container-padding-x);
+	margin-inline: auto;
+}
+.s-container{// ?????
+	margin-left: auto;
+	margin-right: auto;
+	max-width: calc( var(--gridWidth) + var(--gridPadding)*2);
+	padding-left: var(--gridPadding);
+	padding-right: var(--gridPadding);
+	width: 100%;
+}
+*/
 
 .lr-row {
   margin-left: auto;
@@ -1641,17 +1668,16 @@ https://developer.mozilla.org/ru/docs/Web/CSS/grid-column
 	
 	.lr-grid-columns-auto{grid-template-columns:auto !important;}
 	
-	.lr-gap-0{grid-gap:0}
-	.lr-gap-5,.lr-gap-small{grid-gap:5px;}
-	.lr-gap-10{grid-gap:10px}
-	.lr-gap-20{grid-gap:20px}
-	.lr-gap-30{grid-gap:30px}
-	.lr-gap-40{grid-gap:40px}
-	.lr-gap-50{grid-gap:50px}
+	.lr-gap0,.lr-gap-0{grid-gap:0;gap:0}
+	.lr-gap5,.lr-gap-5,.lr-gap-small{grid-gap:5px;gap:5px}
+	.lr-gap10,.lr-gap-10{grid-gap:10px;gap:10px}
+	.lr-gap20,.lr-gap-20{grid-gap:20px;gap:20px}
+	.lr-gap30,.lr-gap-30{grid-gap:30px;gap:30px}
+	.lr-gap40,.lr-gap-40{grid-gap:40px;gap:40px}
+	.lr-gap50,.lr-gap-50{grid-gap:50px;gap:50px}
 
 	.lr-grid-flow-col{grid-auto-flow: column;}
 	
-
 	.lr-grid-left{justify-content:start;}
 	.lr-grid-center{justify-content:center;}
 	.lr-grid-right{justify-content:end;}
