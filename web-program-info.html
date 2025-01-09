@@ -149,6 +149,9 @@ https://dzen.ru/video/watch/66bc5fe013b61c70cf729b96
 https://plvideo.ru/@wpruse/videos
 https://rutube.ru/channel/23970778/videos/
 Финты WordPress	
+
+https://misha.agency/blog
+Студия Миши Рудрастых
 		</pre>
 	</div>	
 	
@@ -198,7 +201,9 @@ https://getuikit.com/v2/docs/components.html
 https://materializecss.com/carousel.html
 
 </pre>
-	</div><!-- end container -->
+</div>
+	</div>
+	<!-- end #panel-bookmarks -->
 </section>			
 
 <a id="panel-js"></a>
@@ -218,6 +223,7 @@ https://materializecss.com/carousel.html
 				<li><a href="#panel-js-closures">Closures / Замыкания</a></li>
 				<li><a href="#panel-js-promise">Promise, async/await, fetch</a></li>
 				<li><a href="#panel-js-modules">Modules</a></li>
+				<li><a href="#section-js-jQuery">jQuery</a></li>
 				<li><a href="#panel-js-code">code</a></li>
 			</ul>
 		</div>	
@@ -1623,6 +1629,267 @@ window.onload = function(){
 		</div>
 <!-- end  #panel-js-modules -->
 
+<a id="section-js-jQuery"></a>
+	<h2>jQuery</h2>
+	<section class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap d-block-sm">
+		<pre>
+------ CDN
+https://code.jquery.com/
+https://code.jquery.com/jquery-3.5.1.min.js
+https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js
+https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js
+https://yastatic.net/jquery/1.8.3/jquery.min.js
+
+&lt;script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"&gt;&lt;/script&gt;
+
+
+--------
+http://www.wisdomweb.ru/JQ/plugin.php
+http://jquery.page2page.ru/index.php5/%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5_%D0%BF%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%D0%B0_jQuery
+https://habrahabr.ru/post/158235/
+http://anton.shevchuk.name/javascript/jquery-for-beginners-write-plugins/
+http://jquerylist.ru/tutorials/writing-your-own-plugins.html
+		</pre>
+
+		<div class="bg-beige p10">
+			<code><pre>
+//for no conflict
+(function( $ ) {
+//....
+})(jQuery);
+
+$(document).ready( function(){
+	var version = "lib version: " + $.fn.jquery;
+	$("#ver").html( version );
+//....
+});
+			</pre></code>
+		</div>
+		
+		<div class="bg-yellow-pre p10">
+			<code><pre>
+$(document).ready(function(){
+//alert ('Ready!');
+		$('.block-1').addClass('hl');
+
+		$("#remove_bg").bind('click',
+		function(){
+				$('.block-1').removeClass('block-1');
+			}
+		);
+
+		$('#switcher').toggle(
+			function(){
+				$('#news').addClass('hidden');
+				$('#switcher').val('view news');
+			},
+			function(){
+				$('#news').removeClass('hidden');
+				$('#switcher').val('hide news');
+			}
+		);
+
+		$('#switcher').hover(
+			function(){
+				$(this).addClass("hover");
+			},
+			function()
+			{
+				$(this).removeClass("hover");
+			}
+		);
+
+		$('#switcher').click();
+
+//----------------------------------------------------------------
+		$(document).keyup(function(event){
+//alert(String.fromCharCode(event.keyCode));
+			var result = document.getElementById('result');
+			result.innerHTML = event.keyCode;
+		});
+	}
+);				
+			</pre></code>
+		</div>
+		
+		<div class="bg-ivory p10">
+			<code><pre>
+....				
+var formValues = $(p.form).serialize();
+console.log( formValues );
+
+//https://api.jquery.com/jquery.post/
+var dataType = "json";//xml, json, script, text, html
+$.post(	
+	p.url, 
+	formValues, 
+	function(data, textStatus, jqXHR){
+console.log(response);
+	}//,
+	//dataType
+);
+			</pre></code>
+		</div>
+
+		<div class="bg-lavender p10">
+			<code><pre>
+// фильтрация ввода в поля, только цифры
+jQuery('.only-numbers').keypress(function(event){
+	var key, keyChar;
+	if(!event) var event = window.event;
+
+	if (event.keyCode) key = event.keyCode;
+	else if(event.which) key = event.which;
+
+	if(key==null || 
+		key==0 || 
+			key==8 || 
+				key==13 || 
+					key==9 || 
+						key==46 || 
+							key==37 || 
+								key==39 
+	){ 
+		return true;
+	}
+	keyChar=String.fromCharCode(key);
+
+	if(!/\d/.test(keyChar)){
+		return false;
+	}
+
+});
+//--------
+//ввод только цифр
+$('.only-numbers').on('keydown', function(event) {
+//console.log("event.keyCode = " + event.keyCode );
+	if (event.keyCode == 13) {
+		return;
+	}
+	if ( event.keyCode == 46 ||
+		event.keyCode == 8 ||
+		event.keyCode == 9 ||
+		event.keyCode == 27 ||
+			(event.keyCode == 65 &amp;&amp; event.ctrlKey === true) ||
+				(event.keyCode >= 35 &amp;&amp; event.keyCode &lt;= 39)
+	) {
+		return;
+	} else {
+		if ( (event.keyCode &lt; 48 || event.keyCode > 57) &amp;&amp;
+			(event.keyCode &lt; 96 || event.keyCode > 105 )
+		) {
+			event.preventDefault();
+		}
+	}
+});
+
+			</pre></code>
+		</div>
+		<div class="bg-seashell p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-light-orange4 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg--bronze-lighter p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-bs-gray-200 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-CERULEAN p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-BROWN p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-almond p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-azure p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		
+		<div class="bg-yellow-pre p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-lightblue-grey p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-powderblue-light p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-green-d8 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-lavenderblush p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-green-cfd p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-green-de3 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-bs-gray-100 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-yellow-050 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-antiquewhite p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-brown-c3 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-brown-c2 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-almond p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-vanilla p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-whitesmoke2 p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-rosy-af p10">
+			<code><pre>
+			</pre></code>
+		</div>
+		<div class="bg-greentea p10">
+			<code><pre>
+			</pre></code>
+		</div>
+	</section>			
+<!-- end section-js-jQuery -->
+
 <a id="panel-js-code"></a>
 		<div class="mt10 bg-greentea color-black">
 			<h1>JS code</h1>
@@ -1992,6 +2259,97 @@ if ( $sapi_type == 'cgi') {
 }
 $msg = "Run method (php_sapi_name): ". $sapi_type;
 echo logAlert($msg, "info");
+		</pre></code>
+
+		<code><pre>
+<h3>Check loadeded PHP-extentsion</h3>
+
+$_vars=array();
+
+.......
+
+$loadedExt = get_loaded_extensions();
+
+$module_name = "curl";
+//$module_name = "mysql";
+//$module_name = "mysqli";
+//$module_name = "PDO";
+//$module_name = "pdo_mysql";
+
+$_vars["support"][$module_name] = check_module( $module_name, $loadedExt);
+if ( !in_array( $module_name, $loadedExt ) ) {
+	$msg = "&lt;p&gt;-- error, &lt;b&gt;".$module_name."&lt;/b&gt; module  is not in the list of loaded extensions...&lt;/p&gt;";
+	echo $msg;
+echo "loaded extensions: &lt;pre&gt;";
+print_r( $loadedExt );
+echo "&lt;/pre&gt;";
+	exit;
+}
+....
+$msg = "&lt;p&gt;-- success, module &lt;b&gt;".$module_name."&lt;/b&gt; available...&lt;/p&gt;";
+echo $msg;
+
+//https://www.php.net/manual/ru/function.get-extension-funcs.php
+echo "list of functions in module &lt;b&gt;".$module_name."&lt;/b&gt;:&lt;pre&gt;";
+print_r(get_extension_funcs( $module_name ));
+echo "&lt;/pre&gt;";
+...
+
+runTest();
+....
+
+
+//=================================================
+function check_module( $module_name, $loadedExt){
+	if ( !in_array( $module_name, $loadedExt ) ) {
+		$msg = "-- error, module &lt;b&gt;".$module_name."&lt;/b&gt;  not loaded...";
+		echo $msg;
+		echo "&lt;br/&gt;\n";
+		return false;
+	} else {
+		$msg = "-- ok, module &lt;b&gt;".$module_name."&lt;/b&gt; is available...";
+		echo $msg;
+		echo "&lt;br/&gt;\n";
+		
+//echo "list of functions in module &lt;b&gt;".$module_name."&lt;/b&gt;:&lt;pre&gt;";
+//print_r(get_extension_funcs( $module_name ));
+//echo "&lt;/pre&gt;";
+		return true;
+	}
+}//end check_module()
+
+		</pre></code>
+	</div>
+
+	<div class="bg-yellow-100 p10">
+		<h3>Dynamic load module</h3>
+		<code><pre>
+....
+if (!extension_loaded( $module_name ) ) {
+	
+	if ( function_exists("dl") ){
+		
+		//https://www.php.net/manual/ru/function.dl.php
+		if ( dl("curl.so") ) {//try dynamic load module
+			//$msg = "&lt;p&gt;-- success, module ".$module_name." available...&lt;/p&gt;";
+			//echo $msg;
+			runApp();
+		} else {
+			$msg = "&lt;p&gt;-- error, module &lt;b&gt;".$module_name."&lt;/b&gt; not loaded...&lt;/p&gt;";
+			$msg .= "&lt;p&gt;-- failed load curl.so..&lt;/p&gt;";
+			echo $msg;
+			exit;
+		}
+		
+	} else {
+		$msg = "&lt;p&gt;-- error, module &lt;b&gt;".$module_name."&lt;/b&gt; not loaded...&lt;/p&gt;";
+		$msg .= "&lt;p&gt;-- failed load curl.so, not function dl()&lt;/p&gt;";
+		echo $msg;
+		exit;
+	}
+	
+}
+....			
 		</pre></code>
 	</div>
 
@@ -3451,128 +3809,490 @@ echo $config2->data."\n";
 	</section>
 	
 	<a id="section-php-db"></a>
+	<section>
 	<h2>Databases</h2>
-	<section class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap d-block-sm">
+		<div class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap d-block-sm">
+<pre>
+================================================== 
+PHP: увеличить размер загружаемого файла для импорта в базу данных
+================================================== 
+mcedit /etc/php5/apache2/php.ini
+ 
+; Maximum size of POST data that PHP will accept.
+post_max_size = 20M
+; Maximum allowed size for uploaded files.
+upload_max_filesize = 20M
+	
+</pre>		
+			<div class="bg-yellow-pre p10">
+				<h3>mySQL_connect (old API)</h3>				
+				<code><pre>
+	function runTest(){
+		global $_vars;
 
-		<div class="bg-yellow-pre p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		
-		<div class="bg-ivory p10">
-			<code><pre>
-			</pre></code>
-		</div>
+		$host = $_vars["config"]["mysql"]["dbHost"];
+	//	$dbPort = $_vars["config"]["mysql"]["dbPort"];
+		$user = $_vars["config"]["mysql"]["dbUser"];
+		$password = $_vars["config"]["mysql"]["dbPassword"];
+	//	$dbName = $_vars["config"]["mysql"]["dbName"];
 
-		<div class="bg-beige p10">
-			<code><pre>
-			</pre></code>
-		</div>
+		$link = mysql_connect(
+			$host, 
+			$user, 
+			$password);
+		if(!$link){
+			$msg = "&lt;b&gt;Connection error: &lt;/b&gt;".mysql_error();
+			exit($msg);
+		}
 		
-		<div class="bg-lavender p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-seashell p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-light-orange4 p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg--bronze-lighter p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-bs-gray-200 p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-CERULEAN p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-BROWN p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-almond p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-azure p10">
-			<code><pre>
-			</pre></code>
-		</div>
+	//mysql_query('SET NAMES utf8');
+	//mysql_set_charset("utf8", $link);
+		echo "-- ok, connected to the server &lt;b&gt;".$host."&lt;/b&gt; as ";
+		echo "&lt;b&gt; ".$user."&lt;/b&gt;";
+		echo "&lt;br/&gt;\n";
+
+	//-----------------------------------------------------------
+		$db_info = "MySQL info:&lt;ul&gt;\n";
+		$db_info .= "&lt;li&gt;server version: " . mysql_get_server_info() ."&lt;/li&gt;\n";
+		$db_info .= "&lt;li&gt;client info: " . mysql_get_client_info() ."&lt;/li&gt;\n";
+		$db_info .= "&lt;li&gt;host info: " . mysql_get_host_info() ."&lt;/li&gt;\n";
+		$db_info .= "&lt;li&gt;protocol version: " . mysql_get_proto_info() ."&lt;/li&gt;\n";
+		$db_info .= "&lt;li&gt;mysql_client_encoding: " . mysql_client_encoding( $link ) ."&lt;/li&gt;\n";
+		$db_info .= "&lt;/ul&gt;\n";
+		echo $db_info;
 		
-		<div class="bg-yellow-pre p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-lightblue-grey p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-powderblue-light p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-green-d8 p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-lavenderblush p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-green-cfd p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-green-de3 p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-bs-gray-100 p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-yellow-050 p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-antiquewhite p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-brown-c3 p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-brown-c2 p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-almond p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-vanilla p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-whitesmoke2 p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-rosy-af p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-greentea p10">
-			<code><pre>
-			</pre></code>
+	//-----------------------------------------------------------
+		$list = "Database list:&lt;ol&gt;\n";
+		$db_list = mysql_list_dbs ($link);
+		while ($row = mysql_fetch_object($db_list)){
+	//echo "&lt;pre&gt;";	
+	//print_r($row);
+	//echo "&lt;/pre&gt;";	
+			$list .= "&lt;li&gt;".$row-&gt;Database."&lt;/li&gt;\n";
+		}//next
+		$list .= "&lt;/ol&gt;\n";
+		echo $list;
+
+	//-----------------------------------------------------------
+		mysql_close( $link );
+
+	}//end runTest()				
+				</pre></code>
+			</div>
+			
+			<div class="bg-ivory p10">
+				<h3>mySQL PDO connect</h3>				
+				<code><pre>
+	function runTest(){
+		global $_vars;
+
+		$dbHost = $_vars["config"]["mysql"]["dbHost"];
+		$dbUser = $_vars["config"]["mysql"]["dbUser"];
+		$dbPassword = $_vars["config"]["mysql"]["dbPassword"];
+		//$dbName = $_vars["config"]["mysql"]["dbName"];
+		$dbPort = $_vars["config"]["mysql"]["dbPort"];
+
+	//https://www.php.net/manual/en/ref.pdo-mysql.connection.php
+	//mysql:host=localhost;port=3307;dbname=testdb
+	//mysql:unix_socket=/tmp/mysql.sock;dbname=testdb
+
+		//$dsn = "mysql:host={$dbHost};dbname={$dbName}";
+		$dsn = "mysql:host={$dbHost};port={$dbPort}";
+	echo "--- DSN: &lt;pre&gt;";
+	var_dump($dsn);
+	echo "&lt;/pre&gt;";
+
+		try{
+			$connection = new PDO( $dsn, $dbUser, $dbPassword );
+
+			echo "-- ok, connected to the server &lt;b&gt;".$dbHost."&lt;/b&gt; as ";
+			echo "&lt;b&gt; ".$dbUser."&lt;/b&gt;";
+			echo "&lt;br/&gt;\n";
+
+	//----------------------------------------------
+	// echo "PDOdrivers: &lt;pre&gt;";
+	// print_r($connection-&gt;getAvailableDrivers());
+	// echo "&lt;/pre&gt;";
+	// echo "&lt;br/&gt;\n";
+
+			$out = "&lt;ul&gt;\n";
+
+			$sql_query = "SELECT VERSION()";
+			$result  = $connection-&gt;query( $sql_query );
+			if( !$result ){
+				echo "-- error, query: ".$sql_query;
+				echo "&lt;br/&gt;\n";
+	echo "error info: &lt;pre&gt;";
+	print_r( $connection-&gt;errorInfo() );
+	echo "&lt;/pre&gt;";
+			} else {
+				$row = $result-&gt;fetch( PDO::FETCH_NUM );
+				$out .= "&lt;li&gt;server version: " .$row[0] ."&lt;/li&gt;\n";
+			}
+	//----------------------------------------------
+
+			//$coll = $connection-&gt;query( "SELECT COLLATION('$dbName')" )-&gt;fetchColumn();
+			//echo $coll-&gt;fetch(PDO::FETCH_NUM)[0];
+			//echo $coll;
+			//$_vars["dbInfo"] .= "&lt;li&gt;database '$dbName', collation_connection : " . $coll ."&lt;/li&gt;";
+
+			$sql_query = "SELECT CHARSET('')";
+			$charset = $connection-&gt;query( $sql_query )-&gt;fetchColumn();
+			$out .= "&lt;li&gt;Charset : " . $charset ."&lt;/li&gt;\n";
+
+			$out .= "&lt;/ul&gt;\n";
+			echo $out;
+
+	//----------------------------------------------
+			$sql_query = "SHOW DATABASES";
+			$result  = $connection-&gt;query( $sql_query );
+			if( !$result ){
+				echo "-- error, query: ".$sql_query;
+				echo "&lt;br/&gt;\n";
+	echo "error info: &lt;pre&gt;";
+	print_r( $connection-&gt;errorInfo() );
+	echo "&lt;/pre&gt;";
+			} else {
+				$out = "Database list: &lt;ol&gt;\n";
+				//$row = $result-&gt;fetch( PDO::FETCH_NUM );
+				//$totRows = $stmt-&gt;rowCount();
+				$rows  = $result-&gt;fetchAll( PDO::FETCH_NUM );
+	// echo "&lt;pre&gt;";
+	// print_r($rows);
+	// echo "&lt;/pre&gt;";
+				for( $n = 0; $n &lt; count($rows); $n++){
+					$out .= "&lt;li&gt;" . $rows[$n][0] ."&lt;/li&gt;\n";
+				}//next
+				$out .= "&lt;/ol&gt;\n";
+				echo $out;
+			}
+
+	//----------------------------------------------
+			unset ($connection);
+		} catch( PDOException $exception ) {
+			echo "-- error connection, ".$exception-&gt;getMessage();
+			echo "&lt;br/&gt;\n";
+		}
+
+	}//end runTest()
+				</pre></code>
+			</div>
+
+			<div class="bg-beige p10">
+				<h3>SQLITE connect</h3>				
+				<code><pre>
+		// //$db = new SQLite3("test.db");
+	// if ($db = sqlite_open('db1.db', 0666, $sqliteerror)){ 
+		// sqlite_query($db, 'CREATE TABLE notes (author varchar(20))');
+		// sqlite_query($db, "INSERT INTO author VALUES ('test')");
+		// $result = sqlite_query($db, 'select * from notes');
+	// print_r (sqlite_fetch_array($result));
+	// } else {
+		// echo "failed to open/create the database"; 
+		// die($sqliteerror);
+	// }
+
+		
+	$_vars=array();
+	$_vars["config"]["tableName"] = "notes";
+
+	$_vars["sql"]["createTable"] = "CREATE TABLE IF NOT EXISTS `".$_vars["config"]["tableName"]."` (
+	`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+	`author` VARCHAR NOT NULL,
+	`title` VARCHAR DEFAULT 'no title',
+	`text_message` text NOT NULL,
+	`client_date` DATETIME NULL,
+	`server_date` DATETIME NULL,
+	`ip` VARCHAR
+	);";
+
+	$sqlite_path = "sqlite:./db1.sqlite";
+	//$db = new PDO($sqlite_path) or die("Could not open database");
+	$query = $_vars["sql"]["createTable"];
+	$tableName = $_vars["config"]["tableName"];
+
+	try {
+		
+		$db = new PDO($sqlite_path);
+		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$db->query($query);
+		$msg_success = "$tableName created succesfully, ". "SQL: " . $query;
+		echo $msg_success;
+		
+	} catch (Exception $e) {
+	print_r ($e);
+		exit();
+	}				
+				</pre></code>
+			</div>
+			
+			<div class="bg-lavender p10">
+				<h3>test_sqlite_PDO.php</h3>
+				<code><pre>
+
+	$_vars=array();
+	$_vars["config"]["dsn"] = "sqlite:".dirname(__FILE__)."/db1.sqlite";
+
+	$_vars["config"]["tableName"] = "taxonomy_index";
+
+	$_vars["sql"]["createTable"] = "CREATE TABLE IF NOT EXISTS `".$_vars["config"]["tableName"]."` (
+	`content_id` INTEGER  NOT NULL CHECK (content_id>= 0) DEFAULT 0,
+	`term_id` INTEGER NOT NULL CHECK (term_id>= 0) DEFAULT 0
+	);";
+
+	$_vars["sql"]["insertData"] = "REPLACE INTO `taxonomy_index` (`content_id`,`term_id`)VALUES ('724','137');";
+	$_vars["sql"]["insertData"] .= "REPLACE INTO `taxonomy_index` (`content_id`,`term_id`)VALUES ('726','137');";
+	$_vars["sql"]["insertData"] .= "REPLACE INTO `taxonomy_index` (`content_id`,`term_id`)VALUES ('727','137');";
+
+
+	//------------------------------ create table
+	$arg = array(
+		//"connection" => $connection,
+		"sql_query" => $_vars["sql"]["createTable"]
+	);
+	$response = runDBquery($arg);
+	//echo _logWrap($response);
+	if( $response["status"] ){
+			$msg = "table ".$_vars["config"]["tableName"]." was created.";
+			$_vars["log"][] = array("message" => $msg, "type" => "error");
+	} else {
+			$msg = "error: table ".$_vars["config"]["tableName"]." was NOT created.";
+			$_vars["log"][] = array("message" => $msg, "type" => "error");
+	}
+
+	//------------------------------ insert data
+	$arg = array(
+		"sql_query" => $_vars["sql"]["insertData"],
+		"query_type" => "exec"
+	);
+	$response = runDBquery($arg);
+	//echo _logWrap($response);
+	if( $response["status"] ){
+			$msg = "data records inserted....";
+			$_vars["log"][] = array("message" => $msg, "type" => "error");
+	} else {
+			$msg = "error: data records NOT added.";
+			$_vars["log"][] = array("message" => $msg, "type" => "error");
+	}
+
+
+	// LOG
+	if ( !empty( $_vars["log"] ) ) {
+		for( $n = 0; $n &lt; count( $_vars["log"] ); $n++){
+		//for( $n = count( $_vars["log"] ) - 1; $n >= 0; $n--){
+			$record = $_vars["log"][$n];
+			echo _logWrap( $record["message"], $record["type"] );
+		}//next
+	}
+
+	//======================================
+	function db_connect( $dsn ){
+			global $_vars;
+			try {
+				$connection = new PDO( $dsn );
+				$connection->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+				return $connection;
+			} catch (Exception $e) {
+				$_vars["log"][] = array("message" => $e, "type" => "error");
+				return false;
+			}	
+	}//end db_connect()
+
+
+	function runDBquery( $params=array() ){
+		global $_vars;
+
+		$p = array(
+			"connection" => false,
+			"sql_query" => "",
+			"query_type" => "query" //"exec"
+		);
+		//extend options object $p
+		foreach( $params as $key=>$item ){
+			$p[ $key ] = $item;
+		}//next
+	//echo _logWrap($p);
+
+		$connection = $p["connection"];
+		if( !$connection ){
+			echo _logWrap("try connect to ".$_vars["config"]["dsn"] );
+			//------------------------------ connect to DB
+			$connection = db_connect( $_vars["config"]["dsn"] );
+			if( !$connection){
+				$msg = "error:  not connected to  ".$_vars["config"]["dsn"];
+				$_vars["log"][] = array("message" => $msg, "type" => "error");
+				//exit();
+				return false;
+			}
+		}
+	//echo _logWrap($connection);
+
+		if( empty( $p["sql_query"] ) ){
+			echo _logWrap("wrong sql query");
+			return false;
+		} else {
+			$sql_query = $p["sql_query"];
+		}
+
+		$result=false;
+		switch ( $p["query_type"] ) {
+			case "query":
+				try{
+					$result  = $connection->query( $sql_query );
+				} catch( PDOException $e ) {
+					//echo "Exception:". _logWrap($e);
+					$msg =  "error info: ". $e->getMessage();
+					$_vars["log"][] = array("message" => $msg, "type" => "error");
+				}
+			break;
+
+			case "exec":
+				try{
+					$result  = $connection->exec( $sql_query );
+				} catch( PDOException $e ) {
+					//echo "Exception:". _logWrap($e);
+					$msg =  "error info: ". $e->getMessage();
+					$_vars["log"][] = array("message" => $msg, "type" => "error");
+				}
+			break;
+			
+		}//end switch
+
+		if( !$result ){
+			$msg =  "error, query: ".$sql_query;
+			$_vars["log"][] = array("message" => $msg, "type" => "error");
+
+			$msg =  "error info: ". _logWrap( $connection->errorInfo() );
+			$_vars["log"][] = array("message" => $msg, "type" => "error");
+
+			$arr = $connection->errorInfo();
+			$desc = $arr[2];
+			return array(
+				"status" => false,
+				"type" => "error",
+				"description" => $desc
+			);
+		}
+
+		$response = array(
+			"status" => true,
+			"type" => "success",
+		);
+
+		if( $p["query_type"] == "query" ){
+			//$rows  = $result->fetchAll( PDO::FETCH_NUM );
+			$rows  = $result->fetchAll( PDO::FETCH_ASSOC );
+	//echo count( $rows );
+			if( count( $rows ) > 0 ){
+				$response["data"] = $rows;
+			}
+		}
+
+		return $response;
+	}//end runDBquery()				
+				</pre></code>
+			</div>
+			<div class="bg-seashell p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-light-orange4 p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg--bronze-lighter p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-bs-gray-200 p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-CERULEAN p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-BROWN p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-almond p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-azure p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			
+			<div class="bg-yellow-pre p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-lightblue-grey p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-powderblue-light p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-green-d8 p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-lavenderblush p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-green-cfd p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-green-de3 p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-bs-gray-100 p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-yellow-050 p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-antiquewhite p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-brown-c3 p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-brown-c2 p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-almond p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-vanilla p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-whitesmoke2 p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-rosy-af p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-greentea p10">
+				<code><pre>
+				</pre></code>
+			</div>
 		</div>
 	</section>			
 
@@ -3581,17 +4301,190 @@ echo $config2->data."\n";
 	<section class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap d-block-sm">
 
 		<div class="bg-yellow-pre p10">
+			<h3>Test CURL</h3>
 			<code><pre>
+function runTest(){
+	global $url;
+	
+	if (function_exists("curl_init") ) {
+// echo "&lt;pre&gt;";
+// print_r( curl_version() );
+// echo "&lt;/pre&gt;";
+
+		$curlVersion = curl_version();
+echo "CURL enabled, version - ".$curlVersion["version"];
+echo "&lt;br&gt;";	
+
+		$curl = curl_init();
+var_dump($curl);
+
+		if( !$curl ) {
+echo "curl_init error!!!";
+echo "&lt;br&gt;";
+			
+echo curl_error( $curl );
+echo "&lt;br&gt;";
+			
+echo curl_errno( $curl );
+echo "&lt;br&gt;";
+	
+echo curl_getinfo( $curl, CURLINFO_HTTP_CODE);
+echo "&lt;br&gt;";
+			return false;
+		}
+			
+		//curl_setopt( $curl, CURLOPT_POST, true);
+		curl_setopt( $curl, CURLOPT_URL, $url); 
+		//curl_setopt($curl, CURLOPT_CONNECTTIMEOUT ,5);
+		//curl_setopt($curl, CURLOPT_TIMEOUT, 5);
+	
+		curl_setopt( $curl, CURLOPT_RETURNTRANSFER, 1); 
+		curl_setopt( $curl, CURLOPT_HEADER, 0);
+		
+		$result = curl_exec( $curl );
+		//if ($result === FALSE) {
+			//echo "cURL Error: " . curl_error($ch);
+		//}
+echo "&lt;b&gt;Result of request to &lt;/b&gt; ".$url.": &lt;pre&gt;";
+print_r( $result );
+echo "&lt;/pre&gt;";
+
+		$curlError = curl_error($curl);
+echo "&lt;b&gt;curlError&lt;/b&gt;: ".$curlError;
+echo "&lt;br&gt;";
+
+		$curlErrorNo = curl_errno($curl);
+echo "&lt;b&gt;curlErrorNo&lt;/b&gt;: ".$curlErrorNo;
+echo "&lt;br&gt;";
+		
+		$httpCode  = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+echo "&lt;b&gt;httpCode&lt;/b&gt;: ".$httpCode;
+echo "&lt;br&gt;";
+
+		$info = curl_getinfo($curl);
+echo "&lt;b&gt;curl_getinfo:&lt;/b&gt; &lt;pre&gt;";
+print_r( curl_version() );
+echo "&lt;/pre&gt;";
+
+		curl_close( $curl );
+
+	} else {
+		echo "no CURL support...";
+		echo "&lt;br&gt;";	
+	}
+	
+}//end runTest()				
 			</pre></code>
 		</div>
 		
 		<div class="bg-ivory p10">
+			<h3>site_inspector, sendPost();</h3>
 			<code><pre>
+//$url = "http://vhost2.vbox2.vm/site_inspector/app.php?q=remove-site";
+//$post_data["site_domain"] = "vbox1";
+
+//$url = "http://site.test/site_inspector/app.php?q=run-tasks";
+$url = "http://vhost2.vbox2.vm/site_inspector/app.php?q=run-tasks";
+
+$res = sendPost( $url, $post_data );
+echo _logWrap($res);
+
+
+function sendPost( $url, $post_data ) {
+	if( !filter_var($url, FILTER_VALIDATE_URL) ){
+		$info = array(
+			"status" =&gt; false,
+			"message" =&gt; "wrong url: ".$url
+		);
+		return $info;
+	}
+
+	$ch = curl_init( $url );
+//$info = curl_getinfo($ch);
+//echo "&lt;b&gt;curl_getinfo:&lt;/b&gt; &lt;pre&gt;";
+//print_r( curl_version() );
+//echo "&lt;/pre&gt;";
+
+	curl_setopt($ch, CURLOPT_URL, $url);
+
+	curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post_data, '', '&'));
+    //curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+
+	//curl_setopt( $ch, CURLOPT_HEADER, true );
+	//curl_setopt( $ch, CURLOPT_NOBODY, true );
+
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	curl_setopt( $ch, CURLOPT_CONNECTTIMEOUT, 10 );
+	//curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+
+	//curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+
+	$response = curl_exec($ch);
+//echo "&lt;b&gt;Response from &lt;/b&gt; ".$url.": &lt;pre&gt;";
+//print_r( $response );
+//var_dump($response);
+//echo "&lt;/pre&gt;";
+	$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+	$info = array(
+		"status" =&gt; false,
+		"httpCode" =&gt; $httpCode,
+		"curl_response" =&gt; $response,
+	);
+
+	$curlError = curl_error($ch);
+	if ( $curlError ){
+		$info["message"] = "curl error: ".$curlError;
+		$info["curlErrorNo"] = curl_errno($ch);
+		return $info;
+	}
+
+	curl_close($ch);
+
+	$info["headers"] = get_headers($url, 1);
+
+	if ( $httpCode &gt;= 200){//if 302 redirect - site available....
+	//if( $httpCode &gt;= 200 &amp;&amp; $httpCode &lt; 300 ){
+		$info["status"] = true;
+	}
+
+	return $info;
+}//end
+				
 			</pre></code>
 		</div>
 
 		<div class="bg-beige p10">
 			<code><pre>
+    static function post_request( $url, $data )
+    {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT ,5);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $result = curl_exec($ch);
+
+        $curlError = curl_error($ch);
+        $curlErrorNo = curl_errno($ch);
+        $httpCode  = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+        curl_close ($ch);
+
+        $response = array(
+            'error'    => $curlError,
+            'errno'    => $curlErrorNo,
+            'httpCode' => $httpCode,
+            'result'   => $result,
+        );
+
+        return $response;
+    }				
 			</pre></code>
 		</div>
 		
@@ -3707,77 +4600,20 @@ echo $config2->data."\n";
 	<section class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap d-block-sm">
 		<div class="bg-yellow-pre p10">
 			<code><pre>
-function logAlert( $msg, $level){
-	
-	//global $sapi_type;
-	global $_vars;
-	
-	switch ($level) {
-		case "info":
-			if ( $_vars["runType"] == "web" ) {
-				return "&lt;div class='alert alert-info'&gt;".$msg."&lt;/div&gt;";
-			}
-			if ( $_vars["runType"] == "console" ) {
-				return $msg."\n";
-			}
-		break;
-		
-		case "warning":
-			if ( $_vars["runType"] == "web" ) {
-				return "&lt;div class='alert alert-warning'&gt;".$msg. "&lt;/div&gt;";
-			}
-			if ( $_vars["runType"] == "console" ) {
-				return $msg."\n";
-			}
-		break;
-		
-		case "danger":
-		case "error":
-			if ( $_vars["runType"] == "web" ) {
-				return "&lt;div class='alert alert-danger'&gt;".$msg. "&lt;/div&gt;";
-			}
-			if ( $_vars["runType"] == "console" ) {
-				return $msg."\n";
-			}
-		break;
-		
-		case "success":
-			if ( $_vars["runType"] == "web" ) {
-				return "&lt;div class='alert alert-success'&gt;".$msg. "&lt;/div&gt;";
-			}
-			if ( $_vars["runType"] == "console" ) {
-				return $msg."\n";
-			}
-		break;
-		
-		default:
-			if ( $_vars["runType"] == "web" ) {
-				return $msg. "&lt;br/&gt;";
-			}
-			if ( $_vars["runType"] == "console" ) {
-				return $msg."\n";
-			}
-		break;
-	}//end switch
-
-}//end logAlert()
-			</pre></code>
-		</div>
-		
-		<div class="bg-ivory p10">
-			<code><pre>
+//function logAlert( $msg, $level){
 function _logWrap( $msg, $level = "info" ){
 
 	// check API type
 	$sapi_type = php_sapi_name();
 //echo "php_sapi_name: ". $sapi_type;
 //echo "&lt;br/&gt;\n";
+
 //echo "type: ". gettype( $msg);
 //echo "&lt;br/&gt;\n";
 
 //-------------
 	//$runType = "";
-	//if ( $sapi_type == 'apache2handler' ||
+	//if ( $sapi_type == 'apache2handler' || 
 	//		$sapi_type == 'cli-server'
 		//) {
 		$runType = "web";
@@ -3787,12 +4623,12 @@ function _logWrap( $msg, $level = "info" ){
 	if ( $sapi_type == "cgi" ) { $runType = "console"; }
 
 //-------------
-	if( gettype( $msg) === "array" ||
+	if( gettype( $msg) === "array" || 
 		gettype( $msg) === "object"
 	){
 			if ( $runType == "web" ) {
 				$out = "&lt;pre&gt;".print_r($msg,1)."&lt;/pre&gt;";
-				return "&lt;div class='alert alert-info'&gt;".$out."&lt;/div&gt;";
+				return $out;
 			} else {
 				$out = print_r($msg,1)."\n";
 				return $out;
@@ -3813,7 +4649,7 @@ function _logWrap( $msg, $level = "info" ){
 				return $msg."\n";
 			}
 		break;
-
+		
 		case "warning":
 			if ( $runType == "web" ) {
 				return "&lt;div class='alert alert-warning'&gt;".$msg. "&lt;/div&gt;";
@@ -3822,7 +4658,7 @@ function _logWrap( $msg, $level = "info" ){
 				return $msg."\n";
 			}
 		break;
-
+		
 		case "danger":
 		case "error":
 			if ( $runType == "web" ) {
@@ -3832,7 +4668,7 @@ function _logWrap( $msg, $level = "info" ){
 				return $msg."\n";
 			}
 		break;
-
+		
 		case "success":
 			if ( $runType == "web" ) {
 				return "&lt;div class='alert alert-success'&gt;".$msg. "&lt;/div&gt;";
@@ -3841,7 +4677,7 @@ function _logWrap( $msg, $level = "info" ){
 				return $msg."\n";
 			}
 		break;
-
+		
 		default:
 			if ( $runType == "web" ) {
 				return $msg. "&lt;br/&gt;";
@@ -3853,7 +4689,11 @@ function _logWrap( $msg, $level = "info" ){
 	}//end switch
 
 }//end _logWrap()
-				
+			</pre></code>
+		</div>
+		
+		<div class="bg-ivory p10">
+			<code><pre>
 			</pre></code>
 		</div>
 
@@ -4097,7 +4937,8 @@ function _logWrap( $msg, $level = "info" ){
 	</section>			
 -->
 
-</div><!-- end container -->
+</div>
+<!-- end #panel-php -->
 
 
 <a id="panel-CMS"></a>
@@ -4247,9 +5088,23 @@ function _logWrap( $msg, $level = "info" ){
 	<section class="">
 		<h2>Joomla</h2>
 		<div class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap d-block-sm">
-
 			<div class="bg-yellow-pre p10">
+				<h3>Joomla: connect DB</h3>
 				<code><pre>
+define( '_VALID_MOS', 1 );
+
+require( '../../configuration.php' );
+require_once( '../../includes/joomla.php' );
+//----------------------------------
+$query = "SELECT * FROM #__menu";
+$database->setQuery( $query );
+$rows = $database->loadObjectList();
+foreach ( $rows as $row ) 
+{
+echo "<pre>";
+print_r($row);
+echo "</pre>";
+}
 				</pre></code>
 			</div>
 			
