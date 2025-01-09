@@ -2222,6 +2222,7 @@ http://localhost/projects/sources.git/test_code/js/test_date.html
 		<h3 class="m0 p0">PHP info</h3>
 	</div>	
 	<div class="lr-flex lr-flex-wrap m10-children bg-white">
+		<a href="#section-php-config">install, configuration</a>
 		<a href="#section-php-array">Array</a>
 		<a href="#section-php-date">Date</a>
 <!--
@@ -2232,11 +2233,17 @@ http://localhost/projects/sources.git/test_code/js/test_date.html
 		<a href="#section-php-db">Databases</a>
 		<a href="#section-php-curl">Curl</a>
 		<a href="#section-php-service">Service functions</a>
+		<a href="#section-php-Laravel">Laravel</a>
 	</div>	
 <pre>		
+</pre>	
+	<div class="lr-border-box p10 bg-darkslateblue color-white bookmark-php">
+		<pre>
 https://www.php.net/		
 https://www.php.net/manual/ru/function.array-combine.php
-</pre>		
+		</pre>
+	</div>	
+		
 	<div class="bg-yellow-100 p10">
 		<code><pre>
 error_reporting(E_ALL|E_STRICT);
@@ -2353,6 +2360,224 @@ if (!extension_loaded( $module_name ) ) {
 		</pre></code>
 	</div>
 
+	<a id="section-php-config"></a>
+	<h2>PHP install, configuration</h2>
+	<section>
+		<div class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap d-block-sm">
+
+			<div class="bg-yellow-pre p10">
+				<h3>install composer</h3>
+				<code><pre>
+//https://getcomposer.org/download/
+
+php -r copy('https://getcomposer.org/installer', 'composer-setup.php');
+php -r "if (hash_file('sha384', 'composer-setup.php') === 'e0012edf3e80b6978849f5eff0d4b4e4c79ff1609dd1e613307e16318854d24ae64f26d17af3ef0bf7cfb710ca74755a') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+
+//copy composer.phar to the /home/..../bin
+//mv composer.phar composer
+composer -V
+
+/home/bin/composer -V
+/home/bin/composer require maatwebsite/excel
+/home/bin/composer show --installed
+
+Warning from https://repo.packagist.org: Support for Composer 1 will be shutdown on August 1st 2025. You should upgrade to Composer 2. See https://blog.packagist.com/shutting-down-packagist-org-support-for-composer-1-x/
+
+composer self-update
+
+https://getcomposer.org/basic-usage
+
+				</pre></code>
+			</div>
+			
+			<div class="bg-ivory p10">
+				<h3>install composer</h3>
+				<code><pre>
+#https://getcomposer.org/download/
+#https://unixhow.com/3527/kak-ustanovit-php-composer-na-debian
+
+//download installer
+cd /mnt/d2/temp
+php -r copy('https://getcomposer.org/installer','composer-setup.php');
+
+//check
+php -r "if (hash_file('sha384', 'composer-setup.php') === 'e0012edf3e80b6978849f5eff0d4b4e4c79ff1609dd1e613307e16318854d24ae64f26d17af3ef0bf7cfb710ca74755a') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+
+//install composer
+php composer-setup.php --install-dir=/home/roman/bin --filename=composer
+
+roman@desktop:~$ composer -V
+Composer version 1.10.0 2020-03-10 14:08:05
+				</pre></code>
+			</div>
+
+			<div class="bg-beige p10">
+				<h3>install Laravel</h3>
+				<code><pre>
+//https://laravel.ru/docs/v5/installation
+
+composer require laravel/installer
++./vendor/bin/laravel new app1
+composer create-project --prefer-dist laravel/laravel app1 "5.3.*"
+
+php artisan serve
+				</pre></code>
+			</div>
+			
+			<div class="bg-lavender p10">
+				<h3>install Memcached</h3>
+				<code><pre>
+//https://www.php.net/manual/ru/memcached.installation.php
+
+apt-get install memcached
+apt-get install php5-memcached
+/etc/init.d/apache2 restart
+
+What about some test?
+
+error_reporting(E_ALL &amp; ~E_NOTICE);
+
+$mc = new Memcached();
+$mc->addServer("localhost", 11211);
+
+$mc->set("foo", "Hello!");
+$mc->set("bar", "Memcached...");
+
+$arr = array(
+    $mc->get("foo"),
+    $mc->get("bar")
+);
+var_dump($arr);
+
+===========================
+for from-vanessa.vm install:
+apt-get install php5-memcache
+				</pre></code>
+			</div>
+			<div class="bg-seashell p10">
+				<h3>install Yii2</h3>
+				<code><pre>
+//wget http://getcomposer.org/installer
+//php installer
+
+composer global require "fxp/composer-asset-plugin:1.*"
+composer require yiisoft/yii2
+				</pre></code>
+			</div>
+			<div class="bg-light-orange4 p10">
+				<h3>Yii, generate web-application</h3>
+				<code><pre>
+yiiroot=/home/www/php/frameworks/yii
+
+app_dest=/home/www/php/Yii
+webapp=app1
+#webapp=learn_yii
+#webapp=albums_yii
+#webapp=sec_yii_app
+
+cd $app_dest
+php $yiiroot/framework/yiic.php webapp $webapp					
+				</pre></code>
+			</div>
+			<div class="bg--bronze-lighter p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-bs-gray-200 p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-CERULEAN p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-BROWN p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-almond p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-azure p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			
+			<div class="bg-yellow-pre p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-lightblue-grey p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-powderblue-light p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-green-d8 p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-lavenderblush p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-green-cfd p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-green-de3 p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-bs-gray-100 p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-yellow-050 p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-antiquewhite p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-brown-c3 p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-brown-c2 p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-almond p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-vanilla p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-whitesmoke2 p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-rosy-af p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-greentea p10">
+				<code><pre>
+				</pre></code>
+			</div>
+		</div>
+	</section>
+<!-- end section-php-config -->
+
 	<a id="section-php-array"></a>
 	<h3>Array</h3>
 	<section class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap d-block-sm">
@@ -2449,15 +2674,18 @@ bool(false)
 
 	<a id="section-php-date"></a>
 	<h3>Date</h3>
-<pre>
+	
+	<div class="lr-border-box p10 bg-darkslateblue color-white bookmark-php">
+		<pre>
 https://www.php.net/manual/ru/function.date.php
 https://www.php.net/manual/ru/function.getdate.php
 https://www.phptutorial.net/php-oop/php-datetime/
 
 https://www.php.net/manual/ru/datetimezone.getoffset.php
 https://habr.com/ru/post/19838/#20
+		</pre>
+	</div>	
 
-</pre>	
 	<section class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap d-block-sm">
 		<div class="bg-green-de3 p10">
 			<code><pre>
@@ -3823,7 +4051,13 @@ post_max_size = 20M
 ; Maximum allowed size for uploaded files.
 upload_max_filesize = 20M
 	
-</pre>		
+</pre>
+	<div class="lr-border-box p10 bg-darkslateblue color-white bookmark-php">
+		<pre>
+https://www.php.net/manual/en/ref.pdo-mysql.connection.php			
+		</pre>
+	</div>	
+
 			<div class="bg-yellow-pre p10">
 				<h3>mySQL_connect (old API)</h3>				
 				<code><pre>
@@ -4809,182 +5043,161 @@ function _logWrap( $msg, $level = "info" ){
 		</div>
 	</section>			
 	
-<!--
-	<a id="section-php-curl"></a>
-	<h2>Curl</h2>
-	<section class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap d-block-sm">
-
-		<div class="bg-yellow-pre p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		
-		<div class="bg-ivory p10">
-			<code><pre>
-			</pre></code>
-		</div>
-
-		<div class="bg-beige p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		
-		<div class="bg-lavender p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-seashell p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-light-orange4 p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg--bronze-lighter p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-bs-gray-200 p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-CERULEAN p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-BROWN p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-almond p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-azure p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		
-		<div class="bg-yellow-pre p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-lightblue-grey p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-powderblue-light p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-green-d8 p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-lavenderblush p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-green-cfd p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-green-de3 p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-bs-gray-100 p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-yellow-050 p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-antiquewhite p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-brown-c3 p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-brown-c2 p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-almond p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-vanilla p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-whitesmoke2 p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-rosy-af p10">
-			<code><pre>
-			</pre></code>
-		</div>
-		<div class="bg-greentea p10">
-			<code><pre>
-			</pre></code>
-		</div>
-	</section>			
--->
-
-</div>
-<!-- end #panel-php -->
-
-
-<a id="panel-CMS"></a>
-<div class="lr-container w80 mt20 bg-grey-green lr-border-round">
-	<div class="lr-flex lr-flex-between lr-flex-top">
-		<a class="d-none d-block-sm" href="#top">top</a>
-		<h3 class="m0 p0">CMS info</h3>
-	</div>	
-	<div class="lr-flex lr-flex-wrap m10-children bg-white">
-		<a href="#section-CMS-Wp">Wordpress</a>
-		<a href="#section-CMS-Joomla">Joomla</a>
-		<a href="#section-CMS-Bitrix">Bitrix</a>
-		<a href="#section-CMS-Drupal">Drupal</a>
-	</div>	
-<pre>		
-</pre>		
-<a id="section-CMS-Wp"></a>
-	<section class="">
-		<h2>Wordpress</h2>
+	<a id="section-php-Laravel"></a>
+	<h2>Laravel</h2>
+	<section>
 		<div class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap d-block-sm">
+			<div class="bg-beige p10">
+				<h3>install Laravel</h3>
+				<code><pre>
+//https://laravel.ru/docs/v5/installation
+
+composer require laravel/installer
++./vendor/bin/laravel new app1
+composer create-project --prefer-dist laravel/laravel app1 "5.3.*"
+
+php artisan serve
+				</pre></code>
+			</div>
 
 			<div class="bg-yellow-pre p10">
+				<h3>Laravel application root</h3>
 				<code><pre>
+https://www.itsolutionstuff.com/post/how-can-i-get-the-path-from-laravel-application-rootexample.html
+
+public_path(); // Path of public/
+base_path(); // Path of application root
+storage_path(); // Path of storage/
+app_path(); // Path of app/
+
+$request->root();//get the root domain in laravel
 				</pre></code>
 			</div>
 			
 			<div class="bg-ivory p10">
+				<h3>DB, migrations</h3>
 				<code><pre>
+#https://laravel.ru/docs/v5/migrations
+
+- создать файл миграции
+#php artisan make:migration update_products
+
+- выполнить миграцию добавления полей в products
+/site/database/migrations/2021_06_17_145435_update_products.php
+# php artisan migrate	
 				</pre></code>
 			</div>
 
 			<div class="bg-beige p10">
+				<h3>Config</h3>
 				<code><pre>
+//------ убрать Whoops
+/site/bootstrap/cache/config.php
+  array (
+    'name' => 'Kupalnikshop',
+    'env' => 'local',
+    //'debug' => true,
+    'debug' => false,
+    
+/test.site/site/.env????
+APP_DEBUG=false
 				</pre></code>
 			</div>
 			
 			<div class="bg-lavender p10">
+				<h3>CRON</h3>
 				<code><pre>
+https://laravel.ru/docs/v5/scheduling
+Вы можете определить все свои запланированные задачи в методе schedule() класса App\Console\Kernel
+
+Kupalnikshop54
+/pictures.8-points.ru/public_html/cron.sh
+Каждую минуту
+
+points8@bitrix306:~$ crontab -l                                                                                                                                                                                 
+05 05 * * * /usr/local/bin/php /home/p/points8/pictures.8-points.ru/public_html/crypt/generate_24v_set.php
+01 01 01 01 * /usr/local/bin/php /home/p/points8/pictures.8-points.ru/public_html/crypt/set.php
+* * * * * /bin/sh /home/p/points8/pictures.8-points.ru/public_html/cron.sh
+
+----- /pictures.8-points.ru/public_html/cron.sh
+php /home/p/points8/pictures.8-points.ru/public_html/artisan schedule:run;
+
+
+------
+root@vbox2-debian:/home/www/network/vbox1/serv_d2/www/sites/test.site/site# crontab -l
+
+#*/5 * * * * /home/www/cron.sh
+#* * * * * php /home/www/network/vbox1/serv_d2/www/sites/test.site/site/artisan schedule:run
+
+---/site/cron.sh
+php /home/p/points8/pictures.8-points.ru/public_html/artisan schedule:run;
+
+
+------ App\Console\Kernel
+        //Parser at 5 p.m.
+        $schedule->call(function(){
+
+            $sites = Site::all();
+
+            //Parser
+            foreach($sites as $site){
+                try {
+                    Parser::parseProducts($site->id);
+                } catch (Exception $e) {
+                    Log::error($e);
+                }
+            }
+
+
+        })->cron('0 5 * * *');
+каждые 5 часов
+
+        //$schedule->exec("date >> /home/test1.txt")->cron('* * * * *');
+
+        //Every 5 minute
+        $schedule->call(function(){
+			$msg = "Kernel.php, schedule->call, ".date("d:m:Y H:i:s");
+			Log::info( $msg );
+        })->cron('*/5 * * * *');
+
+-------------
+cat /var/log/syslog | grep CRON
+
+Re: Гже хранится crontab файл юзера?
+/var/spool/cron/
+
 				</pre></code>
 			</div>
 			<div class="bg-seashell p10">
+				<h3>SQL</h3>
 				<code><pre>
+Product::whereIn('product_id', $delete)->delete();
+
+
+---- Laravel, Отображение sql-запросов к БД в Laravel
+https://evilinside.ru/otobrazhenie-sql-zaprosov-k-bd-v-laravel/
+
+-------------- (routes.php, routes/web.php)
+-------------- display SQL code
+echo "&lt;pre&gt;";
+DB::listen(function($query) {
+    //var_dump($query-&gt;sql, $query-&gt;bindings);
+    print_r($query-&gt;sql);
+});
+echo "&lt;/pre&gt;";
 				</pre></code>
 			</div>
 			<div class="bg-light-orange4 p10">
+				<h3>PHP, Laravel, атрибуты в моделях</h3>
 				<code><pre>
+@foreach($model->getAttributes() as $key => $value)
+    // use $attribute
+@endforeach
+
+	<div class="lr-border-box p10 bg-darkslateblue color-white bookmark-php">
+<a class="color-gold" href="https://coderoad.ru/49137952/%D0%9A%D0%B0%D0%BA-%D1%8F-%D0%BC%D0%BE%D0%B3%D1%83-%D0%BF%D0%B5%D1%80%D0%B5%D0%B1%D0%B8%D1%80%D0%B0%D1%82%D1%8C-%D0%B0%D1%82%D1%80%D0%B8%D0%B1%D1%83%D1%82%D1%8B-%D0%B2-%D0%BC%D0%BE%D0%B4%D0%B5%D0%BB%D1%8F%D1%85-laravel" target="_blank">
+Как я могу перебирать атрибуты в моделях Laravel</a>
+	</div>	
 				</pre></code>
 			</div>
 			<div class="bg--bronze-lighter p10">
@@ -5062,6 +5275,1065 @@ function _logWrap( $msg, $level = "info" ){
 			</div>
 			<div class="bg-almond p10">
 				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-vanilla p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-whitesmoke2 p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-rosy-af p10">
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-greentea p10">
+				<code><pre>
+				</pre></code>
+			</div>
+		</div>
+	</section>			
+
+</div>
+<!-- end #panel-php -->
+
+<a id="panel-CMS"></a>
+<div class="lr-container w80 mt20 bg-grey-green lr-border-round">
+	<div class="lr-flex lr-flex-between lr-flex-top">
+		<a class="d-none d-block-sm" href="#top">top</a>
+		<h3 class="m0 p0">CMS info</h3>
+	</div>	
+	<div class="lr-flex lr-flex-wrap m10-children bg-white">
+		<a href="#section-CMS-Wp">Wordpress</a>
+		<a href="#section-CMS-Joomla">Joomla</a>
+		<a href="#section-CMS-Bitrix">Bitrix</a>
+		<a href="#section-CMS-Drupal">Drupal</a>
+	</div>	
+<pre>		
+</pre>		
+<a id="section-CMS-Wp"></a>
+	<section>
+		<h2>Wordpress</h2>
+		<div class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap d-block-sm">
+
+			<div class="bg-lavender p10 wp-config">
+				<h3>WP, config</h3>
+				<code><pre>
+//wp-config.php, rewrite DB site path variables
+
+define('WP_SITEURL', 'http://'.$_SERVER['HTTP_HOST']);
+define('WP_HOME', 'http://'.$_SERVER['HTTP_HOST']);
+
+define('WP_SITEURL', 'http://'.$_SERVER['HTTP_HOST'].$_SERVER["REQUEST_URI"]);
+define('WP_HOME', 'http://'.$_SERVER['HTTP_HOST'].$_SERVER["REQUEST_URI"]);
+
+
+//https://ipipe.ru/info/wordpress-logi-oshibok
+//Как включить/выключить логирование
+define( 'WP_DEBUG', true );
+define( 'WP_DEBUG_DISPLAY', false );
+define( 'WP_DEBUG_LOG', true );
+				</pre></code>
+			</div>
+			<div class="bg-yellow-pre p10">
+				<h3>WP templates</h3>
+				<code><pre>
+	<div class="lr-border-box p10 bg-darkslateblue color-white bookmark-php">
+<a class="color-gold" href="https://n-wp.ru/poryadok-zagruzki-faylov-pri-otobrazhenii-stranits-bloga-na-wordpress-sistema-shablonov/" target="_blank">WordPress — система шаблонов</a>
+	</div>	
+
+--- главная страница
+1 front-page.php
+2 home.php
+3 index.php
+
+--- Шаблоны для вывода постов
+1 single-[post-type].php
+2 single.php
+3 index.php
+
+---  индивидуальное оформление постам
+1 custom-template].php
+2 page-[slug].php
+3 page-[id].php
+4 page.php
+	singular.php?
+5 index.php
+
+---- индивидуальный шаблон
+page-contacts.php
+&lt;?php
+/*
+*	Template Name: Contacts page
+ */
+?&gt;
+
+---  страницы постов категории
+1 category-[slug].php
+2 category-[id].php
+3 category.php
+4 archive.php
+5 index.php
+
+---  шаблоны  меток
+1 tag-[slug].php
+2 tag-[id].php
+3 tag.php
+4 archive.php
+5 index.php
+
+--- Таксономии
+1 taxonomy-[tax]-[term].php
+2 taxonomy-[tax].php
+3 taxonomy.php
+4 archive.php
+5 index.php
+
+---- вывод постов определенного автора
+1 author-[author-nicname].php
+2 author-[author-id].php
+3 author.php
+4 archive.php
+5 index.php
+
+--- шаблон для отображения прикрепленного к посту файла
+1 [mime-type].php
+2 attachment.php
+3 single.php
+4 index.php
+
+--- индивидуальный вид страницы постов за определенную дату
+1 date.php
+2 archive.php
+3 index.php
+
+--- для страницы поиска
+1 search.php
+2 index.php
+
+--- шаблон 404
+1 404.php
+2 index.php
+				</pre></code>
+			</div>
+			<div class="bg-ivory p10 wp-api">
+				<h3>WP API, filters</h3>
+<p>mfcalmaz.ru/files_ignore/site_files/wp-content/themes/Goodini/functions/functions-base.php
+</p>
+				<code><pre>
+//	Поддержка изображений webp
+function webp_upload_mimes( $existing_mimes ) {
+	$existing_mimes['webp'] = 'image/webp';
+	return $existing_mimes;
+}
+add_filter( 'mime_types', 'webp_upload_mimes' );
+				</pre></code>
+				<code><pre>
+----
+https://coderoad.ru/45256142/WordPress-%D0%BE%D0%B3%D1%80%D0%B0%D0%BD%D0%B8%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D1%80%D0%B5%D0%B7%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%82%D0%B0-%D0%BF%D0%BE%D0%B8%D1%81%D0%BA%D0%B0
+
+Изменение Количества Результатов На Странице
+
+По умолчанию WordPress использует число, определенное в разделе 
+Настройки > чтение (страницы блога показывают не более...), 
+чтобы определить, сколько результатов появляется на странице результатов поиска. 
+Если вы хотите показать больше, меньше или бесконечное количество результатов 
+на странице поиска, вы можете сделать это с помощью следующего кода:
+
+// Alter search posts per page
+function pd_search_posts_per_page($query) {
+    if ( $query->is_search ) {
+        $query->set( 'posts_per_page', '10' );
+    }
+    return $query;
+}
+add_filter( 'pre_get_posts','pd_search_posts_per_page' );
+				</pre></code>
+				
+			</div>
+			<div class="bg-lavenderblush p10">
+				<h3>WP API, FILTER PAGINATION</h3>
+				<code><pre>
+add_filter( 'woocommerce_pagination_args', '_pagination_args' );
+function _pagination_args( $array ){
+//echo "&lt;div style='display:none'&gt;";
+//echo "&lt;pre&gt;";	
+//print_r($array);
+//echo "&lt;/pre&gt;";
+$array["prev_text"] = str_replace("Prev","Назад", $array["prev_text"]);
+$array["next_text"] = str_replace("Next","Далее", $array["next_text"]);
+//echo htmlspecialchars($array["prev_text"]);
+//echo "&lt;/div&gt;";	
+	return $array;
+}
+//&lt;span class="btn btn-link"&gt;&lt;i class="ion-left ion ion-ios-arrow-back"&gt;&lt;/i&gt; Prev&lt;/span&gt;	
+				&lt;/pre&gt;&lt;/code&gt;
+				</pre></code>
+			</div>
+			
+			<div class="bg-ivory p10 wp-api">
+				<h3>WP API, HOOKS, add_action</h3>
+				<code><pre>
+//add_filter( 'get_search_form', 'keyhole_search_form' );
+//add_action( 'after_setup_theme', 'keyhole_after_setup' );
+//add_action( 'wp_footer', 'keyhole_footer' );
+
+//https://wp-kama.ru/hook/wp_head
+//add_action( 'wp_head', 'chld_thm_cfg_add_parent_dep', 2 );
+//add_action( 'wp_head', 'action_function_name_11' );
+//function action_function_name_11(){
+	// action...
+//}
+
+add_action("init", function () { });
+
+//add_filter( 'woocommerce_before_output_product_categories', '_before_output_product_categories' );
+//add_filter( 'woocommerce_after_output_product_categories', '_after_output_product_categories' );
+
+//add_action( 'woocommerce_before_subcategory', 'change_product_category_view' );
+//add_action( 'woocommerce_before_subcategory_title', 'test' );
+
+//add_filter( 'woocommerce_shop_loop_subcategory_title', 'test' );
+//wc-template-hooks.php, 
+//add_action( 'woocommerce_shop_loop_subcategory_title', 'woocommerce_template_loop_category_title', 10 );
+// /wp-content/plugins/woocommerce/includes/wc-template-functions.php:		&lt;h2 class="woocommerce-loop-category__title"&gt;
+
+//'woocommerce_after_subcategory_title'
+//'woocommerce_after_subcategory'
+
+//add_action( 'wp_ajax_product_quickview', '_product_quickview' );
+//add_action( 'wp_ajax_nopriv_product_quickview', '_product_quickview' );
+
+//add_filter( 'woocommerce_product_categories_widget_args', '_product_categories_widget_args' );
+
+//add_filter( 'woocommerce_product_categories', '_product_categories' );
+//function _product_categories( $terms ){
+//echo "terms:&lt;pre&gt;";	
+//print_r($terms);
+//echo "&lt;/pre&gt;";
+	//return $terms;
+//}
+
+//================== //hook, filter template
+add_filter("template_include", function( $path ){
+echo "include template: ".$path;
+echo "&lt;br&gt;";
+  return $path;
+});
+
+
+//================== hook, filter content
+//https://wp-kama.ru/hook/the_title
+add_filter( 'the_title', '_filter_title' );
+
+//https://wp-kama.ru/hook/the_content
+add_filter( 'the_content', '_filter_content' );
+
+function _filter_title( $title ) {
+	return "&lt;div&gt;".htmlspecialchars( "---".$title."---" )."&lt;/div&gt;";
+	//return $title;
+}//end
+
+function _filter_content( $content ) {
+	return "&lt;dv&gt;".htmlspecialchars( $content )."&lt;/div&gt;";
+	//return $content;
+}//end
+
+
+
+//================== //Переопределяем папку загрузки
+add_filter('upload_dir', 'custom_multisit_upload_dir_function');
+function custom_multisit_upload_dir_function( $dirs ) {
+    $dirs['baseurl'] = network_site_url( '/wp-content/uploads' );
+    $dirs['basedir'] = ABSPATH . 'wp-content/uploads';
+    $dirs['path'] = $dirs['basedir'] . $dirs['subdir'];
+    $dirs['url'] = $dirs['baseurl'] . $dirs['subdir'];
+
+    return $dirs;
+}
+				</pre></code>
+			</div>
+			<div class="bg-green-d8 p10">
+				<h3>WP API, hook, include theme styles, scripts</h3>
+				<code><pre>
+add_action( 'wp_enqueue_scripts', '_register_css_js' );
+function _register_css_js() {
+    wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
+	wp_enqueue_style( 'child-style',
+        get_stylesheet_directory_uri() . '/style.css',
+        array( 'parent-style' ),
+        wp_get_theme()->get('Version')
+    );
+
+	$handle = "script";
+	$src = get_stylesheet_directory_uri() . "/js/script.js";
+	wp_enqueue_script( $handle, $src);
+}//end
+
+function twentytwenty_register_styles() {
+
+	$theme_version = wp_get_theme()->get( 'Version' );
+
+	wp_enqueue_style( 'twentytwenty-style', get_stylesheet_uri(), array(), $theme_version );
+	wp_style_add_data( 'twentytwenty-style', 'rtl', 'replace' );
+
+	// Add output of Customizer settings as inline style.
+	wp_add_inline_style( 'twentytwenty-style', twentytwenty_get_customizer_css( 'front-end' ) );
+
+	// Add print CSS.
+	wp_enqueue_style( 'twentytwenty-print-style', get_template_directory_uri() . '/print.css', null, $theme_version, 'print' );
+
+}
+
+add_action( 'wp_enqueue_scripts', 'twentytwenty_register_styles' );
+				</pre></code>
+			</div>
+			<div class="bg-seashell p10 wp-api">
+				<h3>WP API, error_log()</h3>
+				<code><pre>
+$out = "&lt;pre&gt;".print_r($categoryInfo, 1)."&lt;/pre&gt;";
+error_log( 	
+	date("Y-m-d H:i:s") . " - categoryInfo = ".$out."\n", 
+	3, 	
+	dirname(__FILE__)."/log.txt"
+);
+
+$d = date("Y-m-d H:i:s");
+$msg = "--------------------".$d."\n";
+$msg .= "post id:".$post_ID."\n";
+$msg .= "branch_sample_id:".$branch_sample_id."\n";
+
+$logFile = dirname(__FILE__)."/log.txt";
+if( file_exists($logFile) ){
+	unlink($logFile);
+}
+error_log( $msg."\n", 3, $logFile );
+
+//----------------- MAIL
+https://wp-kama.ru/hook/phpmailer_init
+
+//------------ log mail errors
+add_action('wp_mail_failed', 'log_mailer_errors', 10, 1);
+function log_mailer_errors( $wp_error ){
+	error_log( "- wp_mail_failed: ".$wp_error->get_error_message()."\n", 3,	dirname(__FILE__)."/log_mailer_errors.log");
+}//
+
+Could not instantiate mail function.
+
+				</pre></code>
+			</div>
+			<div class="bg-beige p10 wp-api">
+				<h3>WP API, get_page_by_path()</h3>
+				<code><pre>
+https://wp-kama.ru/function/get_page_by_path
+Получает запись по указанному пути этой страницы
+
+$test = get_page_by_path( 
+	"/centr-razvitiya/", OBJECT, ['post', 'page'] 
+);
+echo "&lt;pre&gt;";
+var_dump($test);
+echo "&lt;/pre&gt;";
+exit;
+				</pre></code>
+			</div>
+			<div class="bg-light-orange4 p10 wp-api">
+				<h3>WP API, Shortcodes</h3>
+				<code><pre>
+//https://wp-kama.ru/function/do_shortcode
+
+if($post->post_name == "lestnichnye-ograzhdeniya-iz-trub"){
+	echo do_shortcode("[masterslider id='2']");
+}
+
+//------------ get theme url for post, widgets
+add_shortcode('theme_url', function(){
+	return get_template_directory_uri();
+});
+add_filter( 'widget_text', 'do_shortcode' );
+
+//------------
+https://www.youtube.com/watch?v=NPlJkphom5w
+
+http://testpoint.beget.tech/test-page/
+[products limit="3" columns="2"]
+[products limit="3" columns="2" class="class-1" attribute="product_type" terms="video"]
+
+[product_categories number="0" parent="0"]
+
+[recent_products]
+				</pre></code>
+			</div>
+			<div class="bg--bronze-lighter p10 wp-api">
+				<h3>WP API, Remove and replace hook</h3>
+				<code><pre>
+add_action( 'after_setup_theme', function(){
+	if( remove_action( 'widgets_init', 'infinity_widgets_init' ) ){
+		echo "-- remove hook widgets_init";
+	} else {
+		echo "-- fail remove hook widgets_init";
+	}
+});
+
+add_action( 'widgets_init', '_widgets_init' );
+function _widgets_init(){
+...
+}
+				</pre></code>
+			</div>
+			<div class="bg-bs-gray-200 p10">
+				<h3>WP API, get_the_privacy_policy_link()</h3>
+				<code><pre>
+//https://wp-kama.ru/function/get_the_privacy_policy_link
+//https://misha.agency/wordpress/shortcodes.html
+//https://wp-kama.ru/plugin/contact-form-7/sozdanie-tegov-formy
+//https://wp-kama.ru/hook/the_privacy_policy_link
+
+//add_shortcode('privacy_policy_link', function(){
+//	return get_the_privacy_policy_link();
+//});
+//
+
+add_filter( 'the_privacy_policy_link', '_filter_privacy_policy_link', 10, 2 );
+function _filter_privacy_policy_link( $link, $privacy_policy_url ){
+	$link = str_replace("Политика конфиденциальности", "Я согласен на обработку персональных данных", $link);
+	return $link;
+}
+
+add_filter( 'wpcf7_form_elements', 'do_shortcode' );
+add_shortcode('privacy_policy_link', function(){
+	return get_the_privacy_policy_link();
+});
+				</pre></code>
+			</div>
+			<div class="bg-CERULEAN p10">
+				<h3>WP API, WIDGETS</h3>
+				<code><pre>
+https://wp-kama.ru/function/the_widget
+https://wpincode.com/kak-dobavit-podderzhku-vidzhetov-v-temu-wordpress-v-3-shaga/
+https://misha.agency/wordpress/sidebars.html
+
+function.php
+//======================
+add_action( 'widgets_init', '_register_wp_sidebars' );
+function _register_wp_sidebars() {
+ 
+	register_sidebar(
+		array(
+			'id' =&gt; 'footer-widgets',
+			'name' =&gt; 'Footer',
+			'description' =&gt; 'Перетащите сюда виджеты, чтобы добавить их в футер.',
+			'before_widget' =&gt; '&lt;div id="%1$s" class="foot widget %2$s"&gt;',
+			'after_widget' =&gt; '&lt;/div&gt;',
+			'before_title' =&gt; '&lt;h4 class="widget-title"&gt;',
+			'after_title' =&gt; '&lt;/h4&gt;'
+		)
+	);
+	
+}//end
+
+footer.php
+&lt;?php 
+$display = true;
+
+if( strpos($_SERVER['REQUEST_URI'], "contacts") ){
+	$display = false;
+}
+
+if( $display ){
+	dynamic_sidebar( 'footer-widgets' ); 
+}
+
+?&gt;
+
+HTML-widget
+&lt;div style='display:none'&gt;test&lt;/div&gt;
+
+------------- Как убрать заголовок виджета в WordPress
+http://gruz0.ru/zagolovok-vidzheta-wordpress/
+
+add_filter( 'widget_title', 'hide_widget_title' );
+function hide_widget_title( $title ) {
+    if ( empty( $title ) ){
+		return '';
+	}
+    if ( $title[0] == '!' ){
+		return '';
+	}
+    return $title;
+}
+				</pre></code>
+			</div>
+			<div class="bg-BROWN p10">
+				<h3>custom H1 (only pages and posts, no menu)</h3>
+				<code><pre>
+tu-na-produkti.ru
+
+https://www.it-swarm.com.ru/ru/posts/primenite-filtr-the-title-k-zagolovku-posta-i-stranicy-no-ne-k-zagolovku-menyu/963585551/
+
+add_filter( 'the_title', '_title_update', 10, 2 );
+function _title_update( $title, $id = null ) {
+    if ( !is_admin() && !is_null( $id ) ) {
+        $post = get_post( $id );
+        if ( $post instanceof WP_Post && 
+				( $post->post_type == 'post' || $post->post_type == 'page' ) 
+		) {
+            $new_titile = get_post_meta( $id, 'custom_h1', true );
+            if( ! empty( $new_titile ) ) {
+                return $new_titile;
+            }
+        }
+    }
+
+    return $title;
+}
+
+// this filter fires just before the nav menu item creation process
+add_filter( 'pre_wp_nav_menu', '_remove_title_filter_nav_menu', 10, 2 );
+function _remove_title_filter_nav_menu( $nav_menu, $args ) {
+    // we are working with menu, so remove the title filter
+    remove_filter( 'the_title', '_title_update', 10, 2 );
+    return $nav_menu;
+}
+
+// this filter fires after nav menu item creation is done
+add_filter( 'wp_nav_menu_items', '_add_title_filter_non_menu', 10, 2 );
+function _add_title_filter_non_menu( $items, $args ) {
+    // we are done working with menu, so add the title filter back
+    add_filter( 'the_title', '_title_update', 10, 2 );
+    return $items;
+}
+				</pre></code>
+			</div>
+			<div class="bg-almond p10">
+				<h3>WP API, CUSTOM FIELDS, get_post_meta()</h3>
+				<code><pre>
+//================== 
+//https://wp-kama.ru/function-cat/proizvolnyie-polya
+//https://wp-kama.ru/function/get_post_custom_values
+
+$field_preview_img = get_post_custom_values('field_preview_img_value');
+//var_dump($field_preview_img);
+
+//https://wp-kama.ru/function/get_post_meta
+//$test = get_post_meta( $post->ID);
+//echo "<pre>";
+//print_r($test);
+//echo "</pre>";
+
+//https://wp-kama.ru/function/the_meta
+//the_meta();
+
+----------------------------
+https://misha.blog/wordpress/custom-fields.html
+Произвольные поля
+
+//if not exists menu SCREEN settings / CUSTOM FIELDS
+add_action("init", function () {
+	//https://misha.blog/wordpress/custom-fields.html
+	//add_post_type_support( 'page', 'custom-fields');
+});
+				</pre></code>
+			</div>
+			<div class="bg-azure p10">
+				<h3>WP API, CUSTOM FIELDS, agropit. custom H1</h3>
+				<code><pre>
+//add meta field for page
+add_action('admin_init', '_page_custom_fields', 1);
+function _page_custom_fields() {
+	add_meta_box(
+		'extra_fields', 
+		'дополнительные параметры документа', 
+		'_page_custom_fields_func', 
+		'page'//,
+		//'normal', 
+		//'high'
+	);
+} 
+function _page_custom_fields_func( $page ){
+//echo "&lt;pre&gt;";	
+//print_r($page);
+//echo "&lt;/pre&gt;";	
+	$custom_H1_value = get_post_meta( $page-&gt;ID, 'custom_H1', 1 );	
+	$html = "";
+	$html .= "&lt;p&gt;
+&lt;label&gt;заголовок H1:
+&lt;input type='text' size='80' name='custom_H1' value='";
+	$html .= $custom_H1_value;
+	$html .= "'/&gt;&lt;/label&gt;&lt;/p&gt;";
+	echo $html;
+}
+
+add_action('save_post', '_page_custom_fields_update', 1);
+function _page_custom_fields_update( $post_id ){
+//echo "&lt;pre&gt;";	
+//print_r($_POST);
+//echo "&lt;/pre&gt;";
+//exit;
+	if ( !current_user_can( 'edit_post', $post_id ) ) {
+		return false; 
+	}
+	if ( defined( 'DOING_AUTOSAVE' ) 
+		&& DOING_AUTOSAVE ) {
+		return false;
+	}
+	
+	if( $_POST['post_type'] != "page"){
+		return;
+	}
+	
+	$fieldName = "custom_H1";
+	
+	if( !isset( $_POST[$fieldName] ) ) {
+		return false;
+	}
+	
+	if( empty( $_POST[$fieldName] ) ){
+		delete_post_meta( $post_id, $fieldName );
+		return;
+	}
+	
+	update_post_meta( $post_id, $fieldName, $_POST[$fieldName] );
+} 
+				</pre></code>
+			</div>
+			<div class="bg-yellow-pre p10">
+				<h3>WP API, MAIL</h3>
+				<code><pre>
+//----------------- 
+https://wp-kama.ru/hook/phpmailer_init
+
+//------------ log mail errors
+add_action('wp_mail_failed', 'log_mailer_errors', 10, 1);
+function log_mailer_errors( $wp_error ){
+	error_log( "- wp_mail_failed: ".$wp_error->get_error_message()."\n", 3,	dirname(__FILE__)."/log_mailer_errors.log");
+}//
+
+Could not instantiate mail function.
+
+//================ custom Contact form validation
+//доп. валидация в Contact form 7 WP
+//https://qna.habr.com/q/352060
+//https://wp-kama.ru/plugin/contact-form-7/hook/wpcf7_validate_(type)
+//add_filter('wpcf7_validate_tel*', 'dco_wpcf7_validate', 10, 2);
+//add_filter('wpcf7_validate_email*', 'dco_wpcf7_validate', 10, 2);
+//add_filter('wpcf7_validate_text*', 'dco_wpcf7_validate', 10, 2);
+//add_filter('wpcf7_validate_textarea*', 'dco_wpcf7_validate', 10, 2);
+
+
+add_filter("wpcf7_validate_tel", "_wpcf7_validate", 10, 2);
+add_filter("wpcf7_validate_email", "_wpcf7_validate", 10, 2);
+
+function _wpcf7_validate( $result, $tag ){
+	$name = $tag->name;
+	$value = "";
+	if( isset( $_POST[ $name] ) ){
+		$value = trim( wp_unslash( strtr( (string) $_POST[$name], "\n", " " ) ) );
+	}
+
+	if ( $tag->basetype == "tel" ) {
+		if(!empty( $_POST[ "your-email" ] ) ){
+			return $result;
+		}
+
+		if ( empty($value) ) {
+			$result->invalidate( $tag, wpcf7_get_message( "invalid_required" ) );
+			return $result;
+		} 
+
+	}
+
+	if ( $tag->basetype == "email" ) {
+		if(!empty( $_POST[ "tel-713" ] ) ){
+			return $result;
+		}
+
+		if ( empty($value) ) {
+			$result->invalidate( $tag, wpcf7_get_message( "invalid_required" ) );
+			return $result;
+		} 
+
+		if ( ! is_email( $value ) ) {
+			$result->invalidate( $tag, wpcf7_get_message( "invalid_email" ) );
+			return $result;
+		}
+	}
+	
+	return $result;
+}//end _wpcf7_validate()
+
+//Хук, заменяющий e-mail получателя
+add_action("wpcf7_before_send_mail", "custom_multisite_wpcf7_before_send_mail");
+function custom_multisite_wpcf7_before_send_mail($contact_form) {
+
+//error_log( " - TEST\n", 3,	dirname(__FILE__)."/log.log");
+error_log( " - POST: ".print_r($_POST,1)."\n", 3,	dirname(__FILE__)."/log.log");
+error_log( " - SESSION: ".print_r($_SESSION,1)."\n", 3,	dirname(__FILE__)."/log.log");
+
+	//$branch_id = $_POST['branch'];
+
+	//if (empty($branch_id)){
+		//$branch_id = $_POST['branch_id'];
+	//}
+
+	$branch_id = $_SESSION['current_branch_id'];
+	$city_id = $_POST['city_id'];
+
+	if (empty($branch_id) || empty($city_id)){
+		return;
+	}
+
+	$new_email = MultiSite::getBranchOption('email', $branch_id, $city_id);
+error_log( " - new_email: ".$new_email."\n", 3,	dirname(__FILE__)."/log.log");
+  
+	$address = MultiSite::getBranchOption('address', $branch_id, $city_id);
+error_log( " - address: ".$address."\n", 3,	dirname(__FILE__)."/log.log");
+
+	if (!empty($new_email)){
+		$mail = $contact_form->prop('mail');
+		$mail['recipient'] = $new_email;
+error_log( " - mail: ".print_r($mail,1)."\n", 3,	dirname(__FILE__)."/log.log");
+      
+		$contact_form->set_properties(array('mail'=>$mail));
+	}
+}
+
+				</pre></code>
+			</div>
+			<div class="bg-lightblue-grey p10">
+				<h3>WP API, MENU</h3>
+				<code><pre>
+//https://wp-kama.ru/function/wp_get_nav_menus
+//Возвращает массив (объектов) всех сохранённых меню в базе данных.
+
+$menus = wp_get_nav_menus();
+echo "&lt;pre&gt;";
+var_dump($menus);
+echo "&lt;/pre&gt;";
+exit;
+---------------
+add_filter( 'wp_nav_menu_args', '_nav_args',3000001);
+add_filter( 'wp_nav_menu_items', '_nav_search',9999);
+
+//https://wp-kama.ru/hook/nav_menu_item_args
+add_filter( 'nav_menu_item_args', '_change_menu_item_args', 10, 2 );
+
+//https://wp-kama.ru/hook/wp_nav_menu_objects
+add_filter( 'wp_nav_menu_objects', '_menu_objects' );
+function _menu_objects( $items ) {
+echo "&lt;pre&gt;";
+print_r($items);
+echo "&lt;/pre&gt;";
+	return $items;
+}
+
+function _change_menu_item_args( $args, $item ) {
+	//if ( $item-&gt;object == 'page' ) {
+		//$args-&gt;link_before = '&lt;span class="dashicons dashicons-admin-links"&gt;&lt;/span&gt;';
+	//}
+	
+	//if ( $item-&gt;object == 'product_cat' ) {
+//print_r($args);
+//print_r($item);
+	//}
+
+	//$args-&gt;link_before = $item-&gt;object;
+	return $args;
+}
+
+//----------- menu info
+$menu_object = wp_get_nav_menu_object( 'Производители' ); 
+echo "&lt;pre&gt;";
+print_r($menu_object);
+echo "&lt;/pre&gt;";
+//$menu_slug = $menu_object-&gt;slug;
+
+wp_nav_menu(
+	array(
+		'menu' =&gt; 'Производители',
+		'menu_class'     =&gt; 'menu-brand',
+		'items_wrap'     =&gt; '&lt;ul id="%1$s" class="%2$s"&gt;%3$s&lt;/ul&gt;',
+	)
+);
+				</pre></code>
+			</div>
+			<div class="bg-powderblue-light p10">
+				<h3>WP API, taxonomy</h3>
+				<code><pre>
+//================== //hook, get_terms, filter categories....
+add_filter( 'get_term', '_get_term', 10, 2 );
+
+function _get_term( $_term, $taxonomy ){
+echo "function _get_term()";
+echo "&lt;br&gt;";
+	if( $taxonomy == "product_cat"){
+		$_term-&gt;name = $_term-&gt;name." (".$_term-&gt;count.")";
+	}
+	return $_term;
+}
+
+
+//================== //hook, get_terms, filter categories....
+add_filter( 'get_terms', '_filter_terms', 10, 4 );
+
+....
+function _filter_terms($terms, $taxonomies, $args, $term_query){
+......
+    return $terms;
+}//end
+				</pre></code>
+			</div>
+			<div class="bg-green-cfd p10">
+				<h3>WP API, CATEGORY</h3>
+				<code><pre>
+//https://wp-kama.ru/function/get_categories
+		$categories = get_categories(array(
+			'taxonomy' =&gt; 'category',
+			'hide_empty' =&gt; false
+		));
+echo "categories:&lt;pre&gt;";	
+print_r($categories);
+echo "&lt;/pre&gt;";	
+
+//https://wp-kama.ru/function/wp_list_categories
+$args = array(
+	'taxonomy'           =&gt; 'category',
+);
+echo '&lt;ul&gt;';
+	wp_list_categories( $args );
+echo '&lt;/ul&gt;';
+
+
+----------------------
+//https://wp-kama.ru/function/wp_get_post_categories
+$test = wp_get_post_categories( $post-&gt;ID, array('fields' =&gt; 'all') );
+echo "&lt;div&gt;";	
+echo "post: &lt;pre&gt;";
+print_r( $test );
+echo "&lt;/pre&gt;";
+echo "&lt;/div&gt;";	
+
+
+----------------------
+//https://misha.agency/wordpress/in_category.html
+принадлежит ли пост с указанным ID к рубрикам «WordPress» или «HTML»:
+if ( in_category( array('WordPress', 'HTML'), $post-&gt;ID )) {
+	// действия в случае, если принадлежит категориям
+}
+
+----------------------
+//https://wp-kama.ru/function/get_category_by_slug
+get_category_by_slug() WP 2.3.0	
+Получает данные категории по её альтернативному названию (слагу).
+
+$cat = get_category_by_slug( "kofe" );
+echo "&lt;pre&gt;";	
+print_r($cat);
+echo "&lt;/pre&gt;";
+				</pre></code>
+			</div>
+			<div class="bg-green-de3 p10">
+				<h3>WP API, CATEGORY</h3>
+				<code><pre>
+----------------------
+//https://wp-kama.ru/function/get_term_children
+get_term_children
+Получает все дочерние элементы указанного элемента таксономии (категории) в виде массива.
+
+		$termID = $cat-&gt;term_id;
+		$taxonomyName = "category";
+		$termchildren = get_term_children( $termID, $taxonomyName );
+echo "&lt;pre&gt;";	
+print_r($termchildren);
+echo "&lt;/pre&gt;";
+
+---------- functions.php
+//------------------ add new categories
+add_action( 'init', function(){
+	
+	//https://wp-kama.ru/function/wp_insert_category
+	//https://wp-kama.ru/function/category_exists
+	//https://misha.agency/wordpress/wp_insert_category.html
+	require_once ABSPATH . '/wp-admin/includes/taxonomy.php';
+
+	$category_name="Блог";
+	$id = category_exists( $category_name );
+	if( is_null($id) ){
+		$args = array(
+			'cat_name'=&gt;$category_name,
+			'taxonomy'=&gt;'category',
+		);
+		$cat_id = wp_insert_category( $args );
+	}
+});//end init
+				</pre></code>
+			</div>
+			<div class="bg-bs-gray-100 p10">
+				<h3>WP API, WP_Query</h3>
+				<code><pre>
+//https://wp-kama.ru/function/wp_query
+
+//получить все посты из рубрики portfolio
+$query_obj = new WP_Query;
+$args = array(
+//	'post_type' =&gt; 'post',
+	//'cat' =&gt; 1,
+	'category_name' =&gt; 'portfolio',
+	'posts_per_page'   =&gt; -1,
+);
+$portfolio_posts = $query_obj-&gt;query($args);
+echo "portfolio_posts:". count($portfolio_posts);	
+
+foreach( $portfolio_posts as $_post ){
+	echo "&lt;li&gt;".$_post-&gt;post_title."&lt;/li&gt;";
+}
+				</pre></code>
+			</div>
+			<div class="bg-yellow-050 p10">
+				<h3>WP API, filter pre_get_posts</h3>
+				<code><pre>
+-----
+https://wp-kama.ru/hook/pre_get_posts
+Событие срабатывает перед каждым запросом WP_Query. До того, как был сделан запрос в базу. 
+
+// Исключить категории
+function exclude_cat($query) {
+	if ($query->is_feed || ($query->is_search) || ($query->is_archive)) {
+		$query->set('cat','-2');
+	}
+	return $query;
+}
+add_filter('pre_get_posts','exclude_cat');					
+				</pre></code>
+			</div>
+			<div class="bg-antiquewhite p10">
+				<h3>WP API, CATEGORY (получить посты портфолио определенной категории)</h3>
+				<code><pre>
+https://wp-kama.ru/function/get_posts
+https://8-points.ru/wp-admin/theme-editor.php?file=page-portfolio.php&theme=8points
+
+		$args = array(
+			'post_type' =&gt; 'portfolio',
+			'numberposts' =&gt; -1,
+		);
+
+		if ($portfolio_category){
+			$args = array_merge($args, array(
+				'tax_query' =&gt; array(
+					array(
+						'taxonomy' =&gt; 'portfolio_category',
+						'field' =&gt; 'id',
+						//'terms' =&gt; $portfolio_category-&gt;term_id,
+						'terms' =&gt; 7,//sajty-pod-klyuch
+					)
+				)
+			));
+		}
+
+		$cases = get_posts($args);
+echo "test&lt;pre&gt;";
+print_r($cases);
+echo "&lt;/pre&gt;";
+exit;
+
+----------------- вывести дочерние страницы в виде подменю
+https://wp-kama.ru/function/wp_list_pages
+https://wp-kama.ru/function/get_pages
+https://qna.habr.com/q/64186
+
+---
+$childPages = get_pages( 
+    array(
+        'title_li' =&gt; '',
+        'child_of' =&gt; $post-&gt;ID,
+        'depth' =&gt; 1,
+    ) 
+);
+echo "&lt;pre&gt;";
+print_r($childPages);
+echo "&lt;/pre&gt;";
+
+---
+$args = array(
+	'depth'        =&gt; 0,
+	'show_date'    =&gt; 'created',
+	//'date_format'  =&gt; get_option('date_format'),
+	'child_of'     =&gt; $post-&gt;ID,
+	'exclude'      =&gt; '',
+	'exclude_tree' =&gt; '',
+	'include'      =&gt; '',
+	'title_li'     =&gt; __('Pages'),
+	'echo'         =&gt; 1,
+	'authors'      =&gt; '',
+	'sort_column'  =&gt; 'menu_order, post_title',
+	'sort_order'   =&gt; 'ASC',
+	'link_before'  =&gt; '',
+	'link_after'   =&gt; '',
+	'meta_key'     =&gt; '',
+	'meta_value'   =&gt; '',
+	'number'       =&gt; '',
+	'offset'       =&gt; '',
+	'walker'       =&gt; '',
+	'post_type'    =&gt; 'page', 
+); 
+wp_list_pages( $args );
+				</pre></code>
+			</div>
+			<div class="bg-brown-c3 p10">
+				<h3>WP API, filter, remove non-valid attributes</h3>
+				<code><pre>
+https://wp-kama.ru/hook/style_loader_tag    
+https://ru.wordpress.org/support/topic/%D1%83%D0%B1%D0%B8%D1%80%D0%B0%D0%B5%D0%BC-%D0%B0%D1%82%D1%80%D0%B8%D0%B1%D1%83%D1%82%D1%8B-css-%D0%B8-js/
+
+add_filter('style_loader_tag', 'clean_style_tag');
+function clean_style_tag($src) {
+//echo "debug, function clean_style_tag".htmlspecialchars($src);
+    return str_replace("type='text/css'", '', $src);
+}
+add_filter('script_loader_tag', 'clean_script_tag');
+function clean_script_tag($src) {
+//echo "debug, function script_style_tag".htmlspecialchars($src);
+    return str_replace("type='text/javascript'", '', $src);
+}
+				</pre></code>
+			</div>
+			<div class="bg-brown-c2 p10">
+				<h3>WP API, filter, remove inserting paragraphs</h3>
+				<code><pre>
+remove_filter( 'the_content', 'wpautop' );
+remove_filter( 'the_excerpt', 'wpautop' );
+				</pre></code>
+			</div>
+			<div class="bg-almond p10">
+				<h3>WP API, THEME, Подключение стилевого файла CSS и кастомного JS</h3>
+				<code><pre>
+define('THEME_URI', get_stylesheet_directory_uri());
+define('THEME_CSS', THEME_URI . '/css');
+define('THEME_JS', THEME_URI . '/js');
+
+add_action( 'wp_enqueue_scripts', 'enqueue_scripts' );
+function enqueue_scripts() {
+....
+//-----------	
+	wp_enqueue_style( "custom-lr-css", THEME_JS."/custom-lr.css");	
+	wp_enqueue_script('custom-lr-js', THEME_JS. '/custom-lr.js', array());
+//-----------	  
+}
+
+add_action('wp_enqueue_scripts', 'theme_name_scripts');
+function theme_name_scripts()
+{
+
+	wp_enqueue_style('custom', THEME_CSS. '/custom.css', array());
+	wp_enqueue_script('custom', THEME_JS. '/custom.js', array(),false, true);
+	
+	wp_enqueue_script('lazyload', THEME_JS . '/lazyload.min.js', array(), '', true);
+
+	wp_enqueue_style('custom-lr', THEME_CSS. '/custom-lr.css', array());
+	wp_enqueue_script('custom-lr-js', THEME_JS. '/custom-lr.js', array());
+}
 				</pre></code>
 			</div>
 			<div class="bg-vanilla p10">
@@ -6326,5 +7598,176 @@ https://learn.javascript.ru/margin
 		</div>	
 	</section>			
 </div><!-- end container -->
+
+
+<!--
+	<a id="section-php-curl"></a>
+	<h2>Curl</h2>
+	<section>
+		<div class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap d-block-sm">
+
+			<div class="bg-yellow-pre p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			
+			<div class="bg-ivory p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+
+			<div class="bg-beige p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			
+			<div class="bg-lavender p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-seashell p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-light-orange4 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg--bronze-lighter p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-bs-gray-200 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-CERULEAN p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-BROWN p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-almond p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-azure p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			
+			<div class="bg-yellow-pre p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-lightblue-grey p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-powderblue-light p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-green-d8 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-lavenderblush p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-green-cfd p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-green-de3 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-bs-gray-100 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-yellow-050 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-antiquewhite p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-brown-c3 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-brown-c2 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-almond p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-vanilla p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-whitesmoke2 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-rosy-af p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-greentea p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+		</div>
+	</section>
+	
+	<div class="lr-border-box p10 bg-darkslateblue color-white bookmark-php">
+<a class="color-gold" href="#" target="_blank">Как я могу перебирать атрибуты в моделях Laravel</a>
+		<pre>
+https://plvideo.ru/watch?v=ptHo4UexjJth	
+Курс Php 2024. Урок 8. ООП
+Вячеслав Терентьев
+		</pre>
+	</div>	
+	
+-->
+
 </body>
 </html>
