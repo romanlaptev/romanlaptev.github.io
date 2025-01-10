@@ -86,7 +86,6 @@ jsfiddle.net</a>
 		</div>
 		</div>
 </div><!-- end container -->
-
 <a id="panel-bookmarks"></a>
 <section>			
 	<div class="lr-container w80 mt20 bg-grey-green lr-border-round">
@@ -7292,10 +7291,11 @@ var_dump(get_defined_vars());
 <div class="lr-container mt20 p20 bg-grey-green lr-border-round">
 	<div class="lr-flex lr-flex-between lr-flex-top">
 		<a class="d-none d-block-sm" href="#top">top</a>
-		<h3 class="m0 p0">Database info, SQL</h3>
+		<h3 class="m0 p0">Database info</h3>
 	</div>
 	<div class="lr-flex lr-flex-wrap m10-children bg-white">
 		<a href="#section-DB-commands">DB commands</a>
+		<a href="#section-SQL">SQL code</a>
 	</div>	
 	
 	<a id="section-DB-commands"></a>
@@ -7359,54 +7359,253 @@ MySQL&gt; describe db2.users;
 				</pre></code>
 			</div>
 			<div class="bg-light-orange4 p10">
-<h3></h3>
+				<h3>MySQL: проверить все базы данных</h3>
 				<code><pre>
+MySQLcheck -u root -p --check-upgrade --all-databases --auto-repair
+				</pre></code>
+			</div>
+			<div class="bg-light-orange4 p10">
+				<h3>MySQL: создать БД</h3>
+				<code><pre>
+MySQLadmin -u root --password=toor create db1
+/etc/MySQLmanager.passwd
+MySQLmanager --user=root --add-user --username roman --password=super
+MySQLmanager --list-users
+
+MySQLshow --host=localhost --user=root --password=toor
+MySQL --user=root --password=toor &gt; export.sql - выполнить SQL-запрос
 				</pre></code>
 			</div>
 			<div class="bg--bronze-lighter p10">
-<h3></h3>
+				<h3>MySQL: установка пароля root</h3>
 				<code><pre>
+http://www.MySQL.ru/docs/man/Default_privileges.html
+shell> MySQLadmin -u root password new_password
 				</pre></code>
 			</div>
 			<div class="bg-bs-gray-200 p10">
-<h3></h3>
+				<h3>MySQL: MariaDB root пароль</h3>
 				<code><pre>
+https://www.linux.org.ru/forum/admin/13554233
+
+что надо сделать, чтобы ввод пароля работал .
+# MySQL -u root
+MariaDB [(none)]> use MySQL;
+Database changed
+MariaDB [MySQL]> update user set password=PASSWORD("my-new-cool-password") where User='root';
+MariaDB [MySQL]> flush privileges;
+MariaDB [MySQL]> update user set plugin='' where User='root';
+MariaDB [MySQL]> quit;
+Bye
+# systemctl restart mariadb
+
+Вернуть обратно так:
+# MySQL -u root -p
+Enter password:
+( вводим пароль my-new-cool-password )
+MariaDB [(none)]> use MySQL;
+Database changed
+MariaDB [MySQL]> update user set plugin='unix_socket' where User='root';
+MariaDB [MySQL]> quit;
+Bye
+# systemctl restart mariadb
+Проверяем вход root без пароля:
+# MySQL -u root
+MariaDB [(none)]> quit;
+Bye
 				</pre></code>
 			</div>
 			<div class="bg-CERULEAN p10">
-<h3></h3>
+				<h3>MySQL: Создание нового пользователя</h3>
 				<code><pre>
+> MySQL -u root -pmaster
+
+MySQL> GRANT ALL PRIVILEGES ON *.* TO roman@localhost IDENTIFIED BY 'master' WITH GRANT OPTION;
+MySQL> \q
 				</pre></code>
 			</div>
 			<div class="bg-BROWN p10">
-<h3></h3>
+				<h3>MySQL: создать пользователя БД</h3>
 				<code><pre>
+> MySQL -u root -pmaster
+
+-- MySQL => 5.0.2
+CREATE USER 'zelenyidom'@'%' IDENTIFIED BY '***';
+
+CREATE USER 'zelenyidom'@'%' IDENTIFIED BY PASSWORD '123456';
+CREATE USER 'zelenyidom' IDENTIFIED BY PASSWORD '123456';
+
+CREATE USER 'zelenyidom'@'localhost' IDENTIFIED BY PASSWORD '123456';
+
+
+GRANT ALL PRIVILEGES ON * . * TO 'zelenyidom'@'%'
+IDENTIFIED BY '***'
+WITH GRANT
+OPTION MAX_QUERIES_PER_HOUR 0
+MAX_CONNECTIONS_PER_HOUR 0
+MAX_UPDATES_PER_HOUR 0
+MAX_USER_CONNECTIONS 0 ;
+
+--------------------
+CREATE USER 'toool'@'%' IDENTIFIED BY  '***';
+GRANT ALL PRIVILEGES ON * . * TO  'toool'@'%' IDENTIFIED BY  '***' WITH GRANT OPTION MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
+
+GRANT ALL PRIVILEGES ON  `toool` . * TO  'toool'@'%';
+
+------------------
+SET PASSWORD = PASSWORD('pass');
+SET PASSWORD FOR 'toool'@'%' = PASSWORD('pass');
+
+or
+UPDATE MySQL.user SET Password = PASSWORD('pass') WHERE User = 'toool' AND Host = '%;
+FLUSH PRIVILEGES;'
+------------------
+
+MySQL> GRANT ALL PRIVILEGES ON *.* TO roman@localhost IDENTIFIED BY 'master' WITH GRANT OPTION;
+MySQL> \q
+
+show databases;
+grant all privileges on *.* to 'phpmyadmin'@'localhost' with grant option;
+flush privileges;
 				</pre></code>
 			</div>
 			<div class="bg-almond p10">
-<h3></h3>
+				<h3>MySQL: variables</h3>
 				<code><pre>
+SHOW STATUS
+предоставляет информацию по состоянию сервера (как MySQLadmin extended-status)
+
+	SHOW VARIABLES
+узнать значения переменных MySQL
+
+	SHOW ENGINES
+Получить список поддерживаемых движков вашего сервера
+
+	SHOW CHARSET
+
+	SHOW INDEX FROM table
+	SHOW KEYS FROM table
+список индексов таблицы
+
+	SHOW COLUMNS FROM ".$table;
+	SHOW FIELDS FROM ".$table;
+
+	SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES
+WHERE TABLE_SCHEMA = 'drupal_magazin' AND TABLE_NAME = 'blocks'
+	узнать следующий Autoindex таблицы?????
+
+SHOW VARIABLES LIKE 'query_cache%'
+reset query cache;
+
+- Что бы указать размер памяти для кеширования, внесите в my.cnf:
+query_cache_size=32M
+
+- для того, что бы увидеть, как используется наш кеш, можно выполнить запрос:
+show global status like 'Qcache%';
+
+- Для включения кеша «на лету» можно залогинившись в базу с правами root пользователя дать комманду
+set @@global.query_cache_size=256*1024*1024;
+для указания 256М кеша.
+
+- при выборке запретить использование кеша, в запрос добавляем флаг SQL_NO_CACHE, пример:
+SELECT SQL_NO_CACHE * FROM table WHERE id = 1;
+
+- Пример с кешированием, когда конфигурационная переменная query_cache_type = 2:
+SELECT SQL_CACHE * FROM table WHERE id = 1;
 				</pre></code>
 			</div>
 			<div class="bg-azure p10">
-<h3></h3>
+<h3>INSTALL DB</h3>
 				<code><pre>
+MySQLadmin -u username -p create databasename
+MySQL -u username -p
+
+  GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER
+  ON databasename.*
+  TO 'username'@'localhost' IDENTIFIED BY 'password';
+
+-------------------------------------
+INSTALL DB Joomla
+First, you must create a new database for your Joomla! site e.g.
+
+$ MySQLadmin -u db_user -p create Joomla
+
+MySQL will prompt for the 'db_user' database password and then create
+the initial database files.  Next you must login and set the access
+database rights e.g.
+
+$ MySQL -u db_user -p
+
+Again, you will be asked for the 'db_user' database password.  At the
+MySQL prompt, enter following command:
+
+GRANT ALL PRIVILEGES ON Joomla.*
+	TO nobody@localhost IDENTIFIED BY 'password';
+					
 				</pre></code>
 			</div>
-			
 			<div class="bg-yellow-pre p10">
-<h3></h3>
+				<h3>MySQL: charset</h3>
 				<code><pre>
+SHOW GLOBAL VARIABLES LIKE 'char%';
+192.168.0.11
+Variable_name 	Value
+character_set_client 	latin1
+character_set_connection 	latin1
+character_set_database 	latin1
+character_set_filesystem 	binary
+character_set_results 	latin1
+character_set_server 	latin1
+character_set_system 	utf8
+character_sets_dir 	/usr/share/MySQL/charsets/
+--------------------------
+sibhoster.ru
+Variable_name 	Value
+character_set_client 	cp1251
+character_set_connection 	cp1251
+character_set_database 	cp1251
+character_set_filesystem 	binary
+character_set_results 	cp1251
+character_set_server 	cp1251
+character_set_system 	utf8
+character_sets_dir 	/usr/share/MySQL/charsets/
+
+MySQL_query("SET NAMES 'cp1251'");
+
+[MySQL]
+default-character-set=cp1251
+[MySQLd]
+init-connect="SET NAMES cp1251"
+default-character-set=cp1251
 				</pre></code>
 			</div>
 			<div class="bg-lightblue-grey p10">
-<h3></h3>
+				<h3>MySQL: меняем datadir</h3>
 				<code><pre>
-				</pre></code>
-			</div>
-			<div class="bg-powderblue-light p10">
-<h3></h3>
-				<code><pre>
+1.
+  - создать символьную ссылку для datadir (/var/lib/MySQL) (ln -s /mnt/disk2/MySQL_db /var/lib/MySQL)
+
+  - отключить сервис /etc/rcS.d/K37apparmor
+  - если базы лежат в сети, то подключить сетевой диск с доступом для
+пользователя MySQL (добавить в группу юзер) и без запроса пароля
+/etc/fstab
+//192.168.0.4/public	/mnt/nas	cifs	iocharset=utf8,gid=users,noperm,guest	0	0
+  - если необходимо, перенести старт сервера, после монтирования ресурса с базами в fstab
+mv /etc/rc2.d/S19MySQL /etc/rc2.d/S97MySQL
+
+----------------------------------
+2.
+в файле /etc/MySQL/my.cnf
+[MySQLd]
+#datadir		= /var/lib/MySQL
+#datadir		= /home/MySQL
+datadir		= /mnt/disk2/documents/0_sites/0_db/MySQL
+.....
+в файле /etc//etc/apparmor.d/usr.sbin.MySQLd исправить /var/lib/MySQL на новый путь
+.....
+  /mnt/disk2/documents/0_sites/0_db/MySQL/ r,
+  /mnt/disk2/documents/0_sites/0_db/MySQL/** rwk,
+...
 				</pre></code>
 			</div>
 			<div class="bg-green-d8 p10">
@@ -7481,6 +7680,656 @@ MySQL&gt; describe db2.users;
 			</div>
 		</div>
 	</section>
+
+	<a id="section-SQL"></a>
+	<h2>section-SQL</h2>
+	<section>
+		<div class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap d-block-sm">
+			<div class="bg-powderblue-light p10">
+				<h3>MSSQL</h3>
+				<code><pre>
+//https://stackoverflow.com/questions/7739444/declare-variable-in-sqlite-and-use-it
+declare @name as varchar(10)
+set name = 'name'
+select * from table where name = @name
+				</pre></code>
+			</div>
+			<div class="bg-yellow-pre p10">
+				<h3>create_table.sql</h3>
+				<code><pre>
+CREATE TABLE `table2` (
+`num` int( 11 ) NOT NULL AUTO_INCREMENT ,
+`month` varchar( 3 ) NOT NULL default "",
+`date` varchar( 2 ) NOT NULL default "",
+`time` varchar( 8 ) NOT NULL default "",
+`hour` varchar( 2 ) NOT NULL default "",
+`min` varchar( 2 ) NOT NULL default "",
+`sec` varchar( 2 ) NOT NULL default "",
+`hostname` varchar( 20 ) NOT NULL default "",
+`prefix` varchar( 50 ) NOT NULL default "",
+`interface_in` varchar( 8 ) NOT NULL default "",
+`interface_out` varchar( 8 ) NOT NULL default "",
+`source` varchar( 30 ) NOT NULL default "",
+`dest` varchar( 30 ) NOT NULL default "",
+`len_packet` int( 12 ) NOT NULL ,
+`protocol` varchar( 5 ) NOT NULL default "",
+`source_port` varchar( 5 ) NOT NULL default "",
+`dest_port` varchar( 5 ) NOT NULL default "",
+PRIMARY KEY ( `num` )
+) TYPE = MYISAM
+
+---
+CREATE TABLE IF NOT EXISTS test_tbl
+(
+	id int(10) not null primary key auto_increment,
+	name varchar(255) default null,
+	price decimal(9,2) not null default '0.00'
+) default charset=utf8 collate=utf8_unicode_ci;
+
+
+insert into test_tbl (name,price) values ('product1','101');
+insert into test_tbl (name,price) values ('product2','102');
+insert into test_tbl (name,price) values ('product3','100');
+
+SELECT LAST_INSERT_ID();//3
+
+(
+	select id,name,price,'much'as res 
+	from test_tbl 
+	where price&lt;100
+) union all (
+	select id,name,price,'little'as res 
+	from test_tbl 
+	where price&gt;100
+)
+					
+				</pre></code>
+			</div>
+			
+			<div class="bg-ivory p10">
+				<h3>REPLACE: выполнить вставку новой записи</h3>
+				<h5>если уже существует,  то удалить старую версию</h5>
+				<code><pre>
+sqlite
+INSERT OR REPLACE INTO `content_categories` (`content_id`,`parent_id`) VALUES ('37','59'); 
+https://www.w3resource.com/sqlite/sqlite-insert-into.php
+
+mysql>REPLACE INTO table1(id,name) VALUES(13,'S');
+http://www.mysql.ru/docs/man/REPLACE.html
+				</pre></code>
+			</div>
+
+			<div class="bg-beige p10">
+				<h3>Вложенные запросы</h3>
+				<code><pre>
+SELECT * FROM menu_links WHERE menu_links.plid IN 
+(SELECT 
+	menu_links.mlid 
+FROM menu_links 
+WHERE menu_links.module='book' 
+AND 
+	menu_links.depth=1
+);
+				</pre></code>
+			</div>
+			
+			<div class="bg-lavender p10">
+				<h3>выборка уникальных значений</h3>
+				<code><pre>
+SELECT DISTINCT (number_group) FROM `iblock`
+				</pre></code>
+			</div>
+			<div class="bg-seashell p10">
+				<h3>summa.sql</h3>
+				<code><pre>
+SELECT (sum(len_packet))/ (1024*1024) FROM traffic.table1;
+				</pre></code>
+			</div>
+			<div class="bg-light-orange4 p10">
+				<h3>Traffic count</h3>
+				<code><pre>
+SELECT * FROM calls WHERE Dial_Number like "810%"
+
+SELECT * FROM calls WHERE (
+	Dial_Number NOT BETWEEN "8901%" AND "8960%"
+) AND (
+	Dial_Number like "8%"
+)
+
+SELECT * FROM calls WHERE (
+	Dial_Number NOT BETWEEN "8901%" AND "8960%") 
+AND (
+	Dial_Number NOT like "810%"
+	) 
+AND 
+	(Dial_Number like "8%")
+	
+SELECT * FROM calls where 
+	date like "2005-04%" 
+and 
+	CO IN ("10","11")  
+and 
+	Dial_Number like "8%"
+
+SELECT distinct(src_ip) FROM 
+	lan_packets 
+where 
+	lDate="2005-09-21"
+	
+SELECT (sum(sent)+sum(recv))/ (1024*1024)  FROM 
+	lan_packets 
+where 
+	ldate="2005-09-22" 
+and 
+	src_ip="192.168.0.39"
+
+SELECT * FROM calls 
+WHERE 
+	Dial_Number BETWEEN "8901%" 
+AND 
+	"8960%"
+
+SELECT * FROM calls where 
+	date like "2005-04%" 
+and 
+	CO="01"  
+and 
+	Dial_Number like "8%"
+	
+SELECT * FROM calls 
+where 
+	date like "2005-04%" 
+and 
+	Dial_Number IN ("80952322573","80952322583")
+
+SELECT sum(Incoming)+sum(Out) 
+FROM traffic 
+where date like "2005-04%" and PortP ="80"
+
+SELECT sum(Incoming)+sum(Out) 
+FROM traffic 
+where date="2005-05-16"
+
+SELECT sum(Incoming)+sum(Out) 
+FROM traffic 
+where date="2005-05-01"
+
+-- traffic_days (mb).sql
+SELECT (sum(Incoming)+sum(Out))/ (1024*1024) 
+FROM traffic 
+where date="2005-05-01"
+				</pre></code>
+			</div>
+			<div class="bg--bronze-lighter p10">
+				<h3>заменить фрагмент текста</h3>
+				<code><pre>
+UPDATE `field_data_body` SET 
+	`body_value` = REPLACE( body_value, 'mnt/d2', 'mnt/terra' ) ;
+	
+UPDATE `field_data_field_small_img` SET 
+	`field_small_img_value` = REPLACE( 
+		field_small_img_value, 
+		'/content', 
+		'/site-content' 
+	) ;
+
+UPDATE `field_data_field_preview_gallery_img` SET 
+	`field_preview_gallery_img_value` = REPLACE( 
+		field_preview_gallery_img_value, 
+		'/content', 
+		'/site-content' 
+	) ;
+
+UPDATE `field_data_field_medium_img` SET 
+	`field_medium_img_value` = REPLACE( 
+		field_medium_img_value, 
+		'/content', 
+		'/site-content' 
+	);
+
+UPDATE `field_data_field_large_img` SET 
+	`field_large_img_value` = REPLACE( 
+		field_large_img_value, 
+		'/content', 
+		'/site-content' 
+	);
+
+UPDATE `field_data_field_original_img` SET 
+	`field_original_img_value` = REPLACE( 
+		field_original_img_value, 
+		'/content', 
+		'/site-content' 
+	);
+
+UPDATE `field_data_body` SET 
+	`body_value` = REPLACE( 
+		body_value, 
+		'/content', 
+		'/site-content' 
+	);
+				</pre></code>
+			</div>
+			<div class="bg-bs-gray-200 p10">
+				<h3>REGEXP</h3>
+				<code><pre>
+-- выбрать заголовки, к-рые оканчиваются на 'ние'
+SELECT title FROM `node` WHERE title REGEXP "ние$";
+
+Результат:
+
+title
+ASP.NET 2.0 Углубленное изучение
+Введение
+Заключение
+Нотомб Амели. Дрожь и оцепенение
+программирование
+Разработка Web-приложений в среде ASP.NET 2.0: задача - проект - решение
+Св. Бернар, благоговейно читающий Священное писание
+
+---
+-- выбрать заголовки, к-рые начинаются на 'прог'
+SELECT title FROM `node` WHERE title REGEXP "^прог";
+
+Результат:
+
+title
+программирование
+
+---
+-- получить все товары с заданной характеристикой
+SELECT * FROM iblock_elements
+WHERE desc_short REGEXP "Диаметр диска, мм : 270"
+
+---
+Автоматический подбор сопутствующих товаров
+
+catalogue.php
+//---------- Автоматический подбор сопутствующих  товаров
+    public function getRelatedElements2($element_desc_short)
+    {
+		$test_param_arr=explode("#",$element_desc_short);
+//echo "&lt;pre&gt;";
+//print_r($this);
+//print_r($test_param_arr);
+//echo "&lt;/pre&gt;";
+		$rel_elem2 = array();
+		for ($n1=0;$n1&lt;count($test_param_arr);$n1++)
+		{
+			if (!empty($test_param_arr[$n1]))
+			{
+				$query = "
+-- получить все товары из сопутствующих категорий
+SELECT 
+iblock_elements.id, 
+iblock_elements.iblock_id, 
+-- iblock.name as iblock_name, 
+iblock_elements.name, 
+iblock_elements.code, 
+iblock_elements.desc_short,  
+iblock_price.price, 
+iblock_gallery.img_big 
+FROM iblock_elements 
+LEFT JOIN iblock_related_elements ON iblock_related_elements.element_id = ".(int) $this-&gt;element_id." 
+LEFT JOIN iblock_price ON iblock_price.element_id = iblock_elements.id 
+LEFT JOIN iblock_gallery ON iblock_gallery.element_id = iblock_elements.id 
+-- LEFT JOIN iblock ON iblock.id = iblock_elements.iblock_id 
+WHERE 
+iblock_elements.iblock_id = iblock_related_elements.related_category_id AND 
+iblock_elements.desc_short !=''  AND 
+iblock_gallery.img_big !=''  AND 
+-- iblock_elements.desc_short REGEXP 'Диаметр диска, мм : 190'
+iblock_elements.desc_short REGEXP '".$test_param_arr[$n1]."' 
+LIMIT 0,20
+;";
+//echo $query;
+//echo "&lt;br&gt;";
+
+				</pre></code>
+			</div>
+			<div class="bg-CERULEAN p10">
+				<h3>многотабличный запрос</h3>
+				<code><pre>
+--- Join дополнит. таблицы заголовков
+SELECT
+book.nid,
+node.title
+FROM book
+LEFT JOIN node ON node.nid=book.nid
+WHERE
+book.nid=936
+
+или
+--- многотабличный запрос
+SELECT
+	book.nid,
+	node.title
+FROM
+	book, node
+WHERE
+	book.nid=936 AND
+	node.nid=book.nid
+				</pre></code>
+			</div>
+			<div class="bg-BROWN p10">
+				<h3>ORDER BY, несколько столбцов</h3>
+				<code><pre>
+SELECT field1, field2 FROM table1 WHERE
+field1 BETWEEN 4 AND 8
+ORDER BY field1, field2;
+
+записи сортируются по field1,
+если встречается несколько записей с совпадающим значением в field1, то
+они сортируются по field2
+
+field1	field2
+4			3.9
+4			3.9
+4			4.0
+5			3.6
+5			3.8
+				</pre></code>
+			</div>
+			<div class="bg-almond p10">
+				<h3>UNION, ОБЪЕДИНЕННЫЕ ЗАПРОСЫ</h3>
+				<code><pre>
+-- объединение запросов
+SELECT * FROM _iblock_elements WHERE 
+	iblock_id=9 
+AND 
+	active=1 
+AND 
+	section_id REGEXP "(^|;)43($|;)" 
+ORDER BY 
+	timestamp
+
+SELECT * FROM _iblock_elements 
+WHERE 
+	iblock_id=9 
+AND 
+	active=1 
+ORDER BY 
+	timestamp;
+
+-------
+(SELECT * FROM _iblock_elements WHERE 
+	iblock_id=9 
+AND 
+	active=1 
+AND 
+	section_id  REGEXP "(^|;)43($|;)"
+ORDER BY 
+	timestamp
+)
+UNION ALL
+(
+SELECT * FROM _iblock_elements WHERE 
+	iblock_id=9 
+AND 
+	active=1 
+AND 
+	NOT section_id  REGEXP "(^|;)43($|;)"
+ORDER BY 
+	timestamp
+)
+LIMIT 0,9
+
+------
+-- Объединить два запроса к одной таблице
+-- верхний уровень списка книг
+SELECT * FROM menu_links WHERE menu_links.module='book' AND menu_links.depth=1
+UNION
+SELECT * FROM menu_links WHERE menu_links.plid IN -- ВЛОЖЕННЫЙ ЗАПРОС
+(SELECT menu_links.mlid FROM menu_links WHERE menu_links.module='book' AND menu_links.depth=1);
+
+				</pre></code>
+			</div>
+			<div class="bg-azure p10">
+				<h3>import, export</h3>
+				<code><pre>
+LOAD DATA INFILE './traffic.table1.txt' 
+INTO TABLE 
+	traffic.table2 fields terminated by ',';
+	
+LOAD DATA INFILE './traffic.table1.txt' fields terminated by ',' 
+INTO TABLE traffic.table1;
+
+//double records in import process
+LOAD DATA INFILE './traffic.table1.txt' IGNORE INTO TABLE traffic.table2;
+or
+LOAD DATA INFILE './traffic.table1.txt' REPLACE INTO TABLE traffic.table2;
+
+//skip fields name line
+LOAD DATA INFILE './traffic.table1.txt' REPLACE INTO TABLE traffic.table2 IGNORE 1 LINES;
+
+LOAD DATA INFILE './traffic.table1.txt' REPLACE INTO TABLE traffic.table2 LINES TERMINATED BY '\r\n';
+LOAD DATA INFILE './traffic.table1.txt' REPLACE INTO TABLE traffic.table2 FIELDS TERMINATED BY ',';
+LOAD DATA INFILE './traffic.table1.txt' REPLACE INTO TABLE traffic.table2 FIELDS TERMINATED BY ',' ENCLOSED BY '"'; //????
+
+analog - mysqlimport utility
+-----------
+SELECT * INTO OUTFILE '/tmp/traffic.table1.txt' FIELDS TERMINATED BY ',' FROM traffic.table1;
+SELECT * INTO [xxx#TXT] FROM phones
+
+//Export result request to the SQL dump
+SELECT * INTO OUTFILE 'text.sql'
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES STARTING BY 'INSERT INTO table1 VALUES(' TERMINATED BY ');\r\n'
+FROM table1;
+				</pre></code>
+			</div>
+			
+			<div class="bg-yellow-pre p10">
+				<h3>SQL оператор CASE</h3>
+				<code><pre>
+https://msdn.microsoft.com/ru-ru/library/ms181765%28v=sql.120%29.aspx
+http://www.sql-tutorial.ru/ru/book_case_statement.html
+------------------------
+SELECT
+students.fio,
+	CASE marks.date
+		WHEN '2015-05-01'	THEN 'A'
+		WHEN '2015-06-20'	THEN 'B'
+		ELSE marks.date
+	END,
+marks.mark
+FROM marks
+LEFT JOIN students ON students.id = marks.student_id
+WHERE students.fio IN ( 'Vasia', 'Galia', 'Petia', 'Sonia')
+AND MONTH( marks.date ) IN (4, 5, 6, 7)
+				</pre></code>
+			</div>
+			<div class="bg-lightblue-grey p10">
+				<h3>SQL: хранимые процедуры и функции</h3>
+				<code><pre>
+http://ruseller.com/lessons.php?rub=28&amp;id=1189
+-------------
+DELIMITER //
+CREATE PROCEDURE my_version()
+BEGIN
+	SELECT version();
+END
+
+-------------
+вызов процедуры
+CALL my_version();
+
+--------------------
+список всех процедур сервера
+SELECT name FROM mysql.proc
+
+--------------------
+DROP PROCEDURE IF EXISTS my_version;
+				</pre></code>
+			</div>
+			<div class="bg-powderblue-light p10">
+				<h3>FUNCTION</h3>
+				<code><pre>
+--------------------
+DELIMITER //
+CREATE FUNCTION say_hello (name CHAR(20)) RETURNS CHAR(50)
+BEGIN
+	RETURN CONCAT ('Hello ',name,'!');
+END
+
+------------
+SELECT say_hello('mysql');
+
+------------
+SELECT name FROM mysql.proc WHERE type LIKE 'FUNCTION'
+				</pre></code>
+			</div>
+			<div class="bg-green-d8 p10">
+				<h3>SQL: ALTER, добавить поля в БД</h3>
+				<code><pre>
+
+ALTER TABLE table1 ADD COLUMN summa INT FIRST;
+ALTER TABLE table1 ADD COLUMN summa INT AFTER id;
+ALTER TABLE table1 DROP COLUMN summa;
+
+ALTER TABLE table1 MODIFY summa TEXT;
+ALTER TABLE table1 CHANGE summa description TEXT;
+
+UPDATE table1 SET description='test' WHERE id=2;
+
+ALTER TABLE table1 ADD PRIMARY KEY (id);
+ALTER TABLE table1 ADD INDEX index_name (name);
+ALTER TABLE table1 ADD FULLTEXT index_desc (description);????
+
+ALTER TABLE table1 RENAME TO table10;
+RENAME TABLE table2 TO table20, table3 TO table30;
+
++ALTER TABLE table10 AUTO_INCREMENT;
+INSERT INTO table10(name,description) VALUES('G','test desc');
+
+ALTER TABLE table10 CHARACTER SET cp1251;
+ALTER TABLE table10 CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+				</pre></code>
+			</div>
+			<div class="bg-lavenderblush p10">
+				<h3>DUPLICATE SEARCH</h3>
+				<code><pre>
+https://snipp.ru/mysql/sql-duplicate-search
+
+-- сгруппировать ноды по времени создания
+SELECT nid, title, created FROM	node GROUP BY created;
+
+-- сгруппировать ноды по времени создания и
+-- вывести кол-во записей с одинаковым временем создания
+SELECT nid, title, created, COUNT( created ) AS count FROM	node
+GROUP BY created
+HAVING COUNT( created ) > 1;
+				</pre></code>
+			</div>
+			<div class="bg-green-cfd p10">
+				<h3>SQLite code</h3>
+				<code><pre>
+===== узнать autoincrement ID  вставленной записи
+select * FROM sqlite_sequence;
+name									seq
+content								12 (last id)
+taxonomy_groups			2 (last id)
+taxonomy_term_data	30 (last id)
+
+......
+
+				try{
+					$result  = $connection-&gt;exec( $sql_query );
+					
+//https://www.php.net/manual/ru/pdo.lastinsertid.php					
+$lastInsertID = $connection-&gt;lastInsertId();					
+
+				} catch( PDOException $e ) {
+					//echo "Exception:". _logWrap($e);
+					$msg =  "error info: ". $e-&gt;getMessage();
+					$_vars["log"][] = array("message" =&gt; $msg, "type" =&gt; "error");
+				}
+
+
+=========================
+SQLite: аналог функции concat (как в MySQL) для склейки строк
+
+=========================
+select 'qwe' || 'asd'
+http://www.sql.ru/forum/703254/analog-funkcii-concat
+
+==================UNION ALL
+SELECT 
+	book.nid as content_id
+FROM book WHERE book.nid IN (739, 809)
+
+UNION ALL
+
+SELECT 
+	book.nid as parent_id
+FROM book WHERE book.mlid IN (1585, 2413)
+
+
+content_id
+739
+809
+437
+739
+				</pre></code>
+			</div>
+			<div class="bg-green-de3 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-bs-gray-100 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-yellow-050 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-antiquewhite p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-brown-c3 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-brown-c2 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-almond p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-vanilla p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-whitesmoke2 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-rosy-af p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-greentea p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+		</div>
+	</section>
+	
 </div>
 <!-- end #panel-DB -->
 
