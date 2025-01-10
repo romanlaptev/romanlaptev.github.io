@@ -38,8 +38,9 @@ pre{font-size:1rem}
 			<li><a href="#panel-bookmarks">Bookmarks</a></li>
 			<li><a href="#panel-php">PHP info</a></li>
 			<li><a href="#panel-js">JS info</a></li>
-			<li><a href="#panel-css">CSS</a></li>
+			<li><a href="#panel-css">CSS info</a></li>
 			<li><a href="#panel-CMS">CMS</a></li>
+			<li><a href="#panel-DB">Database info, SQL</a></li>
 		</ul>
 	</div>
 </div><!-- end container -->
@@ -207,7 +208,7 @@ https://materializecss.com/carousel.html
 </section>			
 
 <a id="panel-js"></a>
-<div class="lr-container w80 mt20 bg-grey-green _bg-antiquewhite lr-border-round">
+<div class="lr-container mt20 bg-grey-green _bg-antiquewhite lr-border-round">
 	<div class="lr-flex lr-flex-between lr-flex-top">
 		<a class="d-none d-block-sm" href="#top">top</a>
 		<h3 class="m0 p0">JS code</h3>
@@ -2216,7 +2217,7 @@ http://localhost/projects/sources.git/test_code/js/test_date.html
 </div><!-- end container -->
 
 <a id="panel-php"></a>
-<div class="lr-container w80 mt20 bg-grey-green lr-border-round">
+<div class="lr-container mt20 bg-grey-green lr-border-round">
 	<div class="lr-flex lr-flex-between lr-flex-top">
 		<a class="d-none d-block-sm" href="#top">top</a>
 		<h3 class="m0 p0">PHP info</h3>
@@ -5300,7 +5301,7 @@ echo "&lt;/pre&gt;";
 <!-- end #panel-php -->
 
 <a id="panel-CMS"></a>
-<div class="lr-container w80 mt20 bg-grey-green lr-border-round">
+<div class="lr-container mt20 bg-grey-green lr-border-round">
 	<div class="lr-flex lr-flex-between lr-flex-top">
 		<a class="d-none d-block-sm" href="#top">top</a>
 		<h3 class="m0 p0">CMS info</h3>
@@ -6357,8 +6358,14 @@ function theme_name_scripts()
 <!-- end #section-CMS-Wp -->
 
 <a id="section-CMS-Joomla"></a>
-	<section class="">
+	<section>
 		<h2>Joomla</h2>
+		<div class="lr-border-box p10 bg-orange color-black bookmark-cms">
+			<pre>
+https://api.joomla.org/cms-3/classes/Joomla.Input.Input.html
+https://api.joomla.org/cms-3/classes/Joomla.CMS.Document.Document.html
+			</pre>
+		</div>	
 		<div class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap d-block-sm">
 			<div class="bg-yellow-pre p10">
 				<h3>Joomla: connect DB</h3>
@@ -6379,34 +6386,61 @@ echo "</pre>";
 }
 				</pre></code>
 			</div>
-			
-			<div class="bg-ivory p10">
-				<code><pre>
-				</pre></code>
-			</div>
-
 			<div class="bg-beige p10">
+				<h3>db query</h3>
 				<code><pre>
+$item_jcfields = array();
+$itemID = $this-&gt;item-&gt;id;
+$customFieldName = "page-header-product";
+
+$query = "SELECT #__fields_values.value as value 
+FROM #__fields_values
+WHERE #__fields_values.field_id IN (
+	SELECT #__fields.id as fid FROM #__fields WHERE #__fields.name='".$customFieldName."'
+) AND #__fields_values.item_id = ".$itemID.";";
+//echo $query;
+
+$db = JFactory::getDbo();
+$db-&gt;setQuery($query);
+$res = $db-&gt;loadObjectList();
+//echo "&lt;pre&gt;";
+//print_r($this-&gt;item);
+//print_r($res);
+//echo "&lt;/pre&gt;";
 				</pre></code>
 			</div>
-			
 			<div class="bg-lavender p10">
+				<h3>Set page url</h3>
 				<code><pre>
+$doc = JFactory::getDocument();
+echo "TEST3:&lt;pre&gt;";
+print_r($doc-&gt;getBase() );
+//print_r($this-&gt;item-&gt;jcfields);
+echo "&lt;/pre&gt;";
+
+$doc-&gt;setTitle("99999999900000000");
 				</pre></code>
 			</div>
 			<div class="bg-seashell p10">
+				<h3>get page id</h3>
 				<code><pre>
+$jinput = JFactory::getApplication()-&gt;input;
+$foo = $jinput-&gt;get('id');
+echo $foo;
 				</pre></code>
 			</div>
 			<div class="bg-light-orange4 p10">
+				<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg--bronze-lighter p10">
+				<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-bs-gray-200 p10">
+				<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
@@ -6500,127 +6534,264 @@ echo "</pre>";
 <!-- end #section-CMS-Joomla -->
 
 <a id="section-CMS-Bitrix"></a>
-	<section class="">
+	<section>
 		<h2>Bitrix</h2>
 		<div class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap d-block-sm">
-
-			<div class="bg-yellow-pre p10">
-				<code><pre>
-				</pre></code>
-			</div>
-			
-			<div class="bg-ivory p10">
-				<code><pre>
-				</pre></code>
-			</div>
-
-			<div class="bg-beige p10">
-				<code><pre>
-				</pre></code>
-			</div>
-			
 			<div class="bg-lavender p10">
+				<h3>Config</h3>
 				<code><pre>
+----- ключ лицензии
+Ключ битрикса хранится исполняемом PHP файле по адресу /bitrix/license_key.php. Содержание этого файла приблизительно следующее:
+
+&lt;? $LICENSE_KEY = "S18-NA-XXXXXXXXXXXXXXXXXX"; ?&gt;
+
+----- DB connect info
+/home/bitrix/ext_www/aa04.ru/bitrix/php_interface/dbconn.php
 				</pre></code>
 			</div>
 			<div class="bg-seashell p10">
+				<h3>Bitrix API</h3>
 				<code><pre>
+// Load kernel
+&lt;?php
+require_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/bx_root.php");
+?&gt;
+
+-------------
+https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=43&LESSON_ID=3531
+Примеры работы с навигационной цепочкой 
+
+$APPLICATION-&gt;AddChainItem("Форум &quot;Отзывы&quot;", "/ru/forum/list.php?FID=3");
+				</pre></code>
+			</div>			
+			<div class="bg-bs-gray-200 p10">
+				<h3>Test DB query</h3>
+				<code><pre>
+require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
+
+global $DB;
+
+//echo $_SERVER["DOCUMENT_ROOT"];
+//exit;
+
+$strSql = "SELECT LOGIN FROM b_user WHERE ID=1";
+$res = $DB-&gt;Query($strSql, true, $err_mess.__LINE__);
+echo "&gt;pre&gt;";
+var_dump($res);
+echo "&gt;/pre&gt;";
+
+if( $res !== false ){
+  echo "Query ok!";
+}
 				</pre></code>
 			</div>
-			<div class="bg-light-orange4 p10">
+			<div class="bg-yellow-pre p10">
+				<h3>искать инфоблок по ID</h3>
 				<code><pre>
+Рабочий стол/Контент/Инфоблоки/Инструменты/Перейти к инфоблоку / разделу / элементу
+
+ID сущности:31
+
+https://dev.1c-bitrix.ru/api_help/iblock/classes/ciblockelement/getbyid.php
+получить инфоблок по id, CIBlockElement::GetByID
+
+$res = CIBlockElement::GetByID(804);
+if( $ar_res = $res-&gt;GetNext() ){
+	echo "&lt;pre&gt;";
+	var_dump($ar_res);
+	echo "&lt;/pre&gt;";
+}
 				</pre></code>
 			</div>
 			<div class="bg--bronze-lighter p10">
+				<h3>Bitrix API</h3>
 				<code><pre>
+// Рабочий столНастройкиИнструментыКомандная PHP-строка
+$rsUsers = \Bitrix\Main\UserTable::getList(array(
+    'filter' =&gt; ['ACTIVE'=&gt;'Y', 'UF_DIRECTION' =&gt; 86],
+    'select' =&gt; ['ID', 'NAME', 'LAST_NAME', 'SECOND_NAME']
+));
+while($user = $rsUsers-&gt;Fetch()) {
+	echo "&lt;pre&gt;"; print_r($user); echo "&lt;/pre&gt;";
+}
+
+$arUsers = [];
+$rsUsers = \Bitrix\Main\UserTable::getList([
+	'select' =&gt; ['ID', 'LOGIN', 'NAME'],
+	'filter' =&gt; [
+		'!UF_MORE_PHOTO' =&gt; false
+	]
+]);
+while($user = $rsUsers-&gt;Fetch()) {
+	echo "&lt;pre&gt;";print_r($user);echo "&lt;/pre&gt;";
+}					
 				</pre></code>
 			</div>
-			<div class="bg-bs-gray-200 p10">
+			<div class="bg-ivory p10">
+				<h3>TEMPLATES</h3>
 				<code><pre>
+--- расположение кастомизированных шаблонов компонентов/инфоблоков
+/site/bitrix/templates/название шаблона темы/components/bitrix/*
+ 
+--- шаблон для списка категорий, инфоблок "Услуги"
+/site/bitrix/templates/beauty_modern_adaptive/components/bitrix/catalog/services/bitrix/catalog.section/otdel/template.php
+
+--- замена шаблона инфоблока, шаблоном из темы beauty_modern_adaptive_copy
+/site/bitrix/templates/beauty_modern_adaptive_copy/components/bitrix/catalog/services/bitrix/catalog.section/otdel/template.php
+
+----------- добавить условие использования шаблона
+Рабочий стол / Настройки / Настройки продукта / Сайты / Список сайтов
+
+s1(Многопрофильный медицинский центр «Наедине») / Изменить
+
+если "Параметер в URL " test=true, то использовать шаблон beauty_modern_adaptive_copy
+				</pre></code>
+			</div>
+			<div class="bg-beige p10">
+				<h3>узнать пароль резервной копии</h3>
+				<code><pre>
+https://pai-bx.com/wiki/1c-bitrix/86-if-you-do-not-remember-the-password-from-the-backup/
+Для этого, в административном разделе в функионал Командной строки прописываем:
+
+require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/classes/general/backup.php");
+var_dump(CPasswordStorage::Get('dump_temporary_cache'));
+				</pre></code>
+			</div>
+			<div class="bg-light-orange4 p10">
+				<h3>MAIL</h3>
+				<code><pre>
+https://reddock.ru/blog/khosting/rabota-s-elektronnoy-pochtoy-na-1s-bitriks/
+Работа с электронной почтой на 1С-Битрикс
+
+https://timeweb.com/ru/help/pages/viewpage.action?pageId=11337949
+Настройка SPF-записи
+
+https://timeweb.com/ru/help/pages/viewpage.action?pageId=11993435
+Настройка DKIM для писем, отправляемых с сервера
+
+Настройки -&gt; Инструменты -&gt; SQL-запрос. Ввести следующий sql код: 
+select * from b_event
+where event_name like 'SALE_NEW_ORDER'
+order by date_insert desc
+
+Рабочий стол НастройкиПроизводительностьТаблицы
+Монитор производительности: b_event 
+
+
+use Bitrix\Main\Mail\Event;
+Event::send(array(
+    "EVENT_NAME" =&gt; "NEW_USER",
+    "LID" =&gt; "s1",
+    "C_FIELDS" =&gt; array(
+        "EMAIL" =&gt; "prog2@8-point.ru",
+        "USER_ID" =&gt; 2
+    ),
+));
 				</pre></code>
 			</div>
 			<div class="bg-CERULEAN p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-BROWN p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-almond p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-azure p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			
 			<div class="bg-yellow-pre p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-lightblue-grey p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-powderblue-light p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-green-d8 p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-lavenderblush p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-green-cfd p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-green-de3 p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-bs-gray-100 p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-yellow-050 p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-antiquewhite p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-brown-c3 p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-brown-c2 p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-almond p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-vanilla p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-whitesmoke2 p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-rosy-af p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-greentea p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
@@ -6629,127 +6800,317 @@ echo "</pre>";
 <!-- end #section-CMS-Bitrix -->
 
 <a id="section-CMS-Drupal"></a>
-	<section class="">
+	<section>
 		<h2>Drupal</h2>
 		<div class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap d-block-sm">
-
 			<div class="bg-yellow-pre p10">
+				<h3>Load kernel</h3>
 				<code><pre>
+require_once './includes/bootstrap.inc';
+drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
 				</pre></code>
 			</div>
 			
 			<div class="bg-ivory p10">
+				<h3>Drupal API, book, получить ссылку на родительскую и соседнии страницы</h3>
 				<code><pre>
-				</pre></code>
-			</div>
+$node = node_load( arg(1) );
+$parent = node_load( $node-&gt;book["bid"] );
+global $base_url;
+$prev = book_prev( $node-&gt;book );
+$next = book_next( $node-&gt;book );
 
-			<div class="bg-beige p10">
-				<code><pre>
+echo "&lt;p&gt;
+&lt;a href='".$base_url."'&gt;Главная&lt;/a&gt; » &lt;a href='".$base_url."/masters'&gt;$parent-&gt;title&lt;/a&gt; » $node-&gt;title
+&lt;/p&gt;";
+
+echo $node-&gt;body;
+echo "
+&lt;p&gt;
+ ‹ &lt;a href='" .$base_url. "/" .$prev["link_path"]. "'&gt;" .$prev["link_title"]. "&lt;/a&gt; ||
+&lt;a href='" .$base_url. "/" .$next["link_path"]. "'&gt;" .$next["link_title"]. "&lt;/a&gt; › 
+&lt;/p&gt;";
 				</pre></code>
 			</div>
-			
-			<div class="bg-lavender p10">
+			<div class="bg-beige p10">
+				<h3>Массовое удаление нод определённого типа</h3>
 				<code><pre>
+- из CMS:
+http://www.drupal.ru/node/46488
+вставить в ноду "Clear catalog" код:
+------------------------------------------
+	echo "Remove product nodes";
+	echo "&lt;br&gt;";
+	$type ="product";
+	$query = db_query("SELECT nid FROM {node} AS n WHERE type = '%s'",$type);
+	while ($row = db_fetch_object($query)) 
+	  {  
+		print_r($row);  
+		node_delete($row-&gt;nid);
+	  }
+
+	echo "Clear uc_product_stock"; // Очистить таблицу складских остатков
+	echo "&lt;br&gt;";
+	$query = db_query("TRUNCATE TABLE {uc_product_stock}");
+
+------------------------------------------
+/*
+set_time_limit(0);
+$nids = db_select('node', 'n')
+  -&gt;fields('n', array('nid'))
+  -&gt;condition('n.type', 'product')
+  -&gt;execute()
+  -&gt;fetchCol();
+foreach ($nids as $nid) {
+  node_delete($nid);
+}
+*/
+					
+				</pre></code>
+			</div>
+			<div class="bg-lavender p10">
+				<h3>clear_nodes.php</h3>
+				<code><pre>
+require_once './includes/bootstrap.inc';
+drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
+if (!empty($_REQUEST['node_type']))
+{
+	$node_type =$_REQUEST['node_type'];
+	echo "Remove ".$node_type;
+	echo "&lt;br&gt;";
+	$query = db_query("SELECT nid FROM {node} AS n WHERE type = '%s'",$node_type);
+	while ($row = db_fetch_object($query)) 
+	  {  
+echo "&lt;br&gt;";
+print_r($row);  
+echo "&lt;/br&gt;";
+		node_delete($row-&gt;nid);
+	  }
+}
 				</pre></code>
 			</div>
 			<div class="bg-seashell p10">
+				<h3>переопределить шаблон для ноды типа story</h3>
 				<code><pre>
+--- drupal6, template.php
+function phptemplate_preprocess_page(&$vars) {
+//echo "function TOP_light_phptemplate_preprocess_page";
+     if (isset($vars['node'])) {
+     if($vars['node']-&gt;type == 'story')
+     {
+         $vars['template_files'][] = 'page-'.$vars['node']-&gt;type;
+     }
+     }
+//echo "&lt;pre&gt;";
+//print_r($vars['template_files']);
+//echo "&lt;/pre&gt;";
+}
+
+Array
+(
+     [0] =&gt; page-node
+     [1] =&gt; page-node-170
+     [2] =&gt; page-story
+)
+page-story.tpl.php
+
 				</pre></code>
 			</div>
 			<div class="bg-light-orange4 p10">
+				<h3>DRUPAL: Массовое включение комментариев для нод</h3>
 				<code><pre>
+UPDATE node SET comment = 2 WHERE type="page";
 				</pre></code>
 			</div>
 			<div class="bg--bronze-lighter p10">
+				<h3>DRUPAL, сниппеты</h3>
+				<h4>VIEWS, передать в блок аргумент</h4>
 				<code><pre>
+//echo "request_uri =". request_uri();
+//echo "&lt;br&gt;";
+
+$url = explode("/", request_uri());
+//echo "&lt;pre&gt;";
+//print_r ($url);
+//echo "&lt;/pre&gt;";
+
+$n1 = count($url);
+//echo $n1;
+//echo "&lt;br&gt;";
+
+$termID = $url[$n1-1];
+//echo "termID =". $termID;
+//echo "&lt;br&gt;";
+
+$views_name = $url[$n1-2];
+//echo "views_name =". $views_name;
+//echo "&lt;br&gt;";
+
+if ($views_name == 'consultant') {
+	//print views_embed_view($views_name, 'block', $termID);
+	$myvid = views_get_view($views_name);
+	$ar[0]=$termID;
+	$myvid-&gt;set_arguments($ar); //устанавливаем аргументы
+	print $myvid-&gt;render('default'); //выводим
+  }
 				</pre></code>
 			</div>
 			<div class="bg-bs-gray-200 p10">
+				<h3>DRUPAL, сниппеты</h3>
+				<h5>VIEWS, присвоить значение аргументу перед выводом</h5>
 				<code><pre>
+&lt;div class="myvid"&gt;
+  &lt;?php
+    $myvid = views_get_view('myvid');
+    $ar[0]='28'; //массив заполняем как хотим. что заполним, то и получим.
+    $myvid-&gt;set_arguments($ar); //устанавливаем аргументы
+    print $myvid-&gt;render('default'); //выводим
+//$myvid-&gt;set_items_per_page(5); //вывод 5 элементов представления	
+  ?&gt;
+&lt;/div&gt;
 				</pre></code>
 			</div>
 			<div class="bg-CERULEAN p10">
+				<h3>DRUPAL, сниппеты</h3>
+				<h5>Список пользователей с определенной ролью</h5>
 				<code><pre>
+//ID пользовательской роли. Узнать можно на странице SITE.ru/admin/user/roles
+$rid = 1; 
+$result = db_query(
+"SELECT u.uid, u.name, u.status 
+	FROM {users} u 
+	INNER JOIN {users_roles} ur 
+	ON u.uid=ur.uid 
+	WHERE ur.rid = %d 
+	AND u.status = 1 
+	ORDER BY u.name ASC", 
+$rid); 
+while ($u = db_fetch_object($result)) {
+	  $items[] = l($u-&gt;name, "user/" . $u-&gt;uid);
+}
+return theme('item_list', $items);
 				</pre></code>
 			</div>
 			<div class="bg-BROWN p10">
+				<h3>DRUPAL, сниппеты</h3>
+				<h5>Вывести в блоке заголовок страницы</h5>
 				<code><pre>
+$nid = 122;
+$node = node_load($nid);
+echo $node-&gt;title;
 				</pre></code>
 			</div>
 			<div class="bg-almond p10">
+				<h3>при загрузке главной странице назначить свой класс элементу страницы container</h3>
 				<code><pre>
+edit /themes/interacadem/page.tpl.php
+if ($is_front) 
+{
+	//echo "&lt;h1&gt; its first page &lt;/h1&gt;";
+	echo "&lt;div id=\"container-firstpage\" class=\"clear-block\"&gt;";
+} 
+else
+	echo "&lt;div id=\"container\" class=\"clear-block\"&gt;";
+
+edit /themes/interacadem/styles.css
+#header-region-firstpage
+{
+	background: url('images/opacity_layer_top.png') no-repeat;
+	margin:auto;
+	width:1070px;
+	position:relative;
+}
 				</pre></code>
 			</div>
 			<div class="bg-azure p10">
+				<h3>вывод всех переменных страницы</h3>
 				<code><pre>
+var_dump(get_defined_vars());
 				</pre></code>
 			</div>
 			
 			<div class="bg-yellow-pre p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-lightblue-grey p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-powderblue-light p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-green-d8 p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-lavenderblush p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-green-cfd p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-green-de3 p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-bs-gray-100 p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-yellow-050 p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-antiquewhite p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-brown-c3 p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-brown-c2 p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-almond p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-vanilla p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-whitesmoke2 p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-rosy-af p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
 			<div class="bg-greentea p10">
+<h3></h3>
 				<code><pre>
 				</pre></code>
 			</div>
@@ -6760,849 +7121,16 @@ echo "</pre>";
 </div>
 <!-- end #panel-CMS -->
 
-
 <a id="panel-css"></a>
-<div class="clamp-container mt20 p20 bg-grey-green lr-border-round">
+<div class="lr-container mt20 p20 bg-grey-green lr-border-round">
 	<div class="lr-flex lr-flex-between lr-flex-top">
 		<a class="d-none d-block-sm" href="#top">top</a>
-		<h3 class="m0 p0">CSS code</h3>
+		<h3 class="m0 p0">CSS info</h3>
 	</div>	
-	<section class="m-d25rem p-d25rem">
-		<div class="lr-border-box bg-whitesmoke2">
-			<div class="p10 bg-blue-b6 color-white">
-				<h4>CSS demo, tests</h4>
-			</div>
-			<ul class="lr-list-group lr-nav m0 p5 lr-border-cyan3 lr-flex lr-flex-wrap">
-<li><a href="demo_css/demo-lr_colors.html" target="_blank">demo-lr_colors.html</a></li>
-<li><a href="demo_css/demo-lr_position.html" target="_blank">demo-lr_position.html</a></li>
-			</ul>
-			<ul class="lr-list-group lr-nav m0 p5 m5-children lr-border-cyan3 lr-flex lr-flex-wrap">
-<li><a href="demo/demo_fonts.html" target="_blank">demo_fonts.html</a></li>
-<li><a href="demo_css/test-CSS_filters.html" target="_blank">test-CSS_filters.html</a></li>
-<li><a href="demo_css/test-CSS_container_queries.html" target="_blank"> test-CSS_container_queries.html</a></li>
-<li><a href="demo_css/test-CSS_calc_fixed_header.html" target="_blank">test-CSS_calc_fixed_header.html</a></li>
-
-<li><a href="demo_css/test-CSS_functions.html" target="_blank">test-CSS_functions.html</a></li>
-<li><a href="demo_css/test-CSS_animation.html" target="_blank">test-CSS_animation.html</a></li>
-<li><a href="demo_css/test-CSS_transform.html" target="_blank">test-CSS_transform.html</a></li>
-<li><a href="demo_css/test-CSS_flex_float.html" target="_blank">test-CSS_flex_float.html</a></li>
-<li><a href="demo_css/test-CSS_flex.html" target="_blank">test-CSS_flex.html</a></li>
-<li><a href="demo_css/test-CSS_grid.html" target="_blank">test-CSS_grid.html</a></li>
-<li><a href="demo_css/giselle/header_footer.html" target="_blank" class="color-gold gradient-gold-teal">giselle/header_footer.html</a></li>
-<li><a href="demo_css/test-CSS_GRID_systems.html" target="_blank">
-test-CSS_GRID_systems.html</a></li>
-<li><a href="demo_css/test-CSS_custom_elements.html" target="_blank">
-test-CSS_custom_elements.html</a></li>
-<li><a href="demo_css/test-CSS_page.html" target="_blank">
-test-CSS_page.html</a></li>
-<li><a href="demo_css/test-CSS_transition.html" target="_blank">
-test-CSS_transition.html</a></li>
-<li><a href="demo_css/404-error-template/index.html" target="_blank">404-error-template</a></li>
-<li><a href="demo_css/honey_page.html" target="_blank">honey_page.html</a></li>
-			</ul>
-		</div>
-			
-		<div class="lr-border-box bg-yellow-050 mt20">
-<section>
-	<div class="p10 bg-blue-b6 color-white">
-		<h3>lr.css, Flex classes</h3>
-	</div>
-	
-	<div><pre class="fz-12">
-.lr-flex, .df{
-	display:flex;
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;	
-}
-.lr-flex-wrap {flex-wrap: wrap;}
-</pre>
-	</div>
-
-	<div class="_mt20 lr-border-box lr-border-silver lr-border-medium p5">
-		<div>.lr-flex-center {-ms-flex-pack: center !important;justify-content: center;}</div>
-		<div>.lr-flex-row-reverse {flex-direction: row-reverse;}</div>
-		<div class="lr-flex lr-flex-center lr-flex-wrap lr-flex-row-reverse color-black">
-			<div class="p30 lr-border-box lr-border-white bg-orange">1</div>
-			<div class="p30 lr-border-box lr-border-white bg-orange">2</div>
-			<div class="p30 lr-border-box lr-border-white bg-orange">3</div>
-			<div class="p30 lr-border-box lr-border-white bg-orange">4</div>
-			<div class="p30 lr-border-box lr-border-white bg-orange">5</div>
-		</div>
-	</div>
-	
-	<div class="mt20 lr-border-box lr-border-silver lr-border-medium p5">
-		<div>.lr-flex-content-end,.justify-content-end{justify-content:end;}</div>
-		<div>.lr-flex-middle,.align-items-center{ align-items: center}</div>
-		<div class="lr-flex lr-flex-wrap lr-flex-content-end lr-flex-middle color-black bg-aqua vh30">
-			<div class="w100px h100px lr-border-box lr-border-white bg-orange">1</div>
-			<div class="w100px h100px lr-border-box lr-border-white bg-orange">2</div>
-			<div class="w100px h100px lr-border-box lr-border-white bg-orange">3</div>
-			<div class="w100px h100px lr-border-box lr-border-white bg-orange">4</div>
-			<div class="w100px h100px lr-border-box lr-border-white bg-orange">5</div>
-		</div>
-	</div>
-	
-	<div class="mt20 lr-border-box lr-border-silver lr-border-medium p5">
-		<div>.lr-flex-right{justify-content:flex-end;}</div>
-		<div class="lr-flex lr-flex-wrap lr-flex-right color-black">
-			<div class="p30 lr-border-box lr-border-white bg-orange">1</div>
-			<div class="p30 lr-border-box lr-border-white bg-orange">2</div>
-			<div class="p30 lr-border-box lr-border-white bg-orange">3</div>
-			<div class="p30 lr-border-box lr-border-white bg-orange">4</div>
-			<div class="p30 lr-border-box lr-border-white bg-orange">5</div>
-		</div>
-	</div>
-	
-	<div class="mt20 lr-border-box lr-border-silver lr-border-medium p5">
-		<div>.lr-flex-between{justify-content:space-between;}</div>
-		<div class="lr-flex lr-flex-wrap lr-flex-between color-black">
-			<div class="p30 lr-border-box lr-border-white bg-orange">1</div>
-			<div class="p30 lr-border-box lr-border-white bg-orange">2</div>
-			<div class="p30 lr-border-box lr-border-white bg-orange">3</div>
-			<div class="p30 lr-border-box lr-border-white bg-orange">4</div>
-			<div class="p30 lr-border-box lr-border-white bg-orange">5</div>
-		</div>
-	</div>
-	
-	<div class="mt20 lr-border-box lr-border-silver lr-border-medium p5">
-		<div>.lr-flex-around{justify-content:space-around;}</div>
-		<div class="lr-flex lr-flex-wrap lr-flex-around color-black">
-			<div class="p30 lr-border-box lr-border-white bg-orange">1</div>
-			<div class="p30 lr-border-box lr-border-white bg-orange">2</div>
-			<div class="p30 lr-border-box lr-border-white bg-orange">3</div>
-			<div class="p30 lr-border-box lr-border-white bg-orange">4</div>
-			<div class="p30 lr-border-box lr-border-white bg-orange">5</div>
-		</div>
-	</div>
-	
-	<div class="mt20 lr-border-box lr-border-silver lr-border-medium p5">
-		<div>.lr-flex--2col {display: flex;flex-wrap: wrap;}</div>
-		<div>.lr-flex--2col > * {flex-grow: 1;flex-shrink: 1;flex-basis: 50%;}</div>
-		<div class="lr-flex--2col color-black">
-			<div class="p30 lr-border-box lr-border-white bg-orange">1</div>
-			<div class="p30 lr-border-box lr-border-white bg-orange">2</div>
-			<div class="p30 lr-border-box lr-border-white bg-orange">3</div>
-			<div class="p30 lr-border-box lr-border-white bg-orange">4</div>
-			<div class="p30 lr-border-box lr-border-white bg-orange">5</div>
-		</div>
-	</div>
-
-	<div class="mt20 lr-border-box lr-border-silver lr-border-medium p5">
-		<div>.lr-flex--3col {display: flex;flex-wrap: wrap;}</div>
-		<div>.lr-flex--3col > * {flex-grow: 1;flex-shrink: 1;flex-basis: 30%;}</div>
-		<div class="lr-flex--3col color-black">
-			<div class="p30 lr-border-box lr-border-white bg-orange">1</div>
-			<div class="p30 lr-border-box lr-border-white bg-orange">2</div>
-			<div class="p30 lr-border-box lr-border-white bg-orange">3</div>
-			<div class="p30 lr-border-box lr-border-white bg-orange">4</div>
-			<div class="p30 lr-border-box lr-border-white bg-orange">5</div>
-		</div>
-	</div>
-
-	<div class="mt20 lr-border-box lr-border-silver lr-border-medium p5">
-		<div>.lr-flex--4col {display: flex;flex-wrap: wrap;}</div>
-		<div>.lr-flex--4col > * {flex-grow: inherit;flex-shrink: 1;flex-basis: 25%;}</div>
-		<div class="lr-flex--4col color-black">
-			<div class="p30 lr-border-box lr-border-white bg-orange">1</div>
-			<div class="p30 lr-border-box lr-border-white bg-orange">2</div>
-			<div class="p30 lr-border-box lr-border-white bg-orange">3</div>
-			<div class="p30 lr-border-box lr-border-white bg-orange">4</div>
-			<div class="p30 lr-border-box lr-border-white bg-orange">5</div>
-		</div>
-	</div>
-</section>
-<section>
-	<div class="p10 bg-blue-b6 color-white">
-		<h3>lr.css, Grid classes</h3>
-	</div>
-
-	<div class="mt20 lr-border-box lr-border-silver p5">
-		<div>.lr-grid,.d-grid{display:grid;}</div>
-		<div>.lr-grid-2col,.lr-grid--2col,.lr-grid-columns2{grid-template-columns:repeat(2, 1fr);}</div>
-		<div class="lr-grid lr-grid-columns2">
-			<div class="p40 lr-border-box color-white bg-maroon">1</div>
-			<div class="p40 lr-border-box color-white bg-maroon">2</div>
-			<div class="p40 lr-border-box color-white bg-maroon">3</div>
-			<div class="p40 lr-border-box color-white bg-maroon">4</div>
-			<div class="p40 lr-border-box color-white bg-maroon">5</div>
-		</div>
-	</div>
-	
-	<div class="mt20 lr-border-box lr-border-silver p5">
-		<div>.lr-grid,.d-grid{display:grid;}</div>
-		<div>.lr-grid-columns2-12{grid-template-columns:1fr 2fr;}</div>
-		<div class="lr-grid lr-grid-columns2-12">
-			<div class="p40 lr-border-box color-white bg-maroon">1</div>
-			<div class="p40 lr-border-box color-white bg-maroon">2</div>
-			<div class="p40 lr-border-box color-white bg-maroon">3</div>
-			<div class="p40 lr-border-box color-white bg-maroon">4</div>
-			<div class="p40 lr-border-box color-white bg-maroon">5</div>
-		</div>
-	</div>
-	<div class="mt20 lr-border-box lr-border-grey lr-border-medium p5">
-		<div>.lr-grid,.d-grid{display:grid;}</div>
-		<div>.lr-grid-columns2-21{grid-template-columns:2fr 1fr;}</div>
-		<div class="lr-grid lr-grid-columns2-21">
-			<div class="p40 lr-border-box color-white bg-maroon">1</div>
-			<div class="p40 lr-border-box color-white bg-maroon">2</div>
-			<div class="p40 lr-border-box color-white bg-maroon">3</div>
-			<div class="p40 lr-border-box color-white bg-maroon">4</div>
-			<div class="p40 lr-border-box color-white bg-maroon">5</div>
-		</div>
-	</div>
-	<div class="mt20 lr-border-box lr-border-cyan lr-border-medium p5">
-		<div>.lr-grid,.d-grid{display:grid;}</div>
-		<div>.lr-grid-columns2-13{grid-template-columns:1fr 3fr;}</div>
-		<div class="lr-grid lr-grid-columns2-13">
-			<div class="p40 lr-border-box color-white bg-maroon">1</div>
-			<div class="p40 lr-border-box color-white bg-maroon">2</div>
-			<div class="p40 lr-border-box color-white bg-maroon">3</div>
-			<div class="p40 lr-border-box color-white bg-maroon">4</div>
-			<div class="p40 lr-border-box color-white bg-maroon">5</div>
-		</div>
-	</div>
-	<div class="mt20 lr-border-box lr-border-cyan3 lr-border-medium p5">
-		<div>.lr-grid,.d-grid{display:grid;}</div>
-		<div>.lr-grid-columns2-31{grid-template-columns:3fr 1fr;}</div>
-		<div class="lr-grid lr-grid-columns2-31">
-			<div class="p40 lr-border-box color-white bg-maroon">1</div>
-			<div class="p40 lr-border-box color-white bg-maroon">2</div>
-			<div class="p40 lr-border-box color-white bg-maroon">3</div>
-			<div class="p40 lr-border-box color-white bg-maroon">4</div>
-			<div class="p40 lr-border-box color-white bg-maroon">5</div>
-		</div>
-	</div>
-
-	<div class="mt20 lr-border-box lr-border-silver lr-border-medium p5">
-		<div>.lr-grid,.d-grid{display:grid;}</div>
-		<div>.lr-grid-columns3,.lr-grid-3col{grid-template-columns:repeat(3,1fr);}</div>
-		<div class="lr-grid lr-grid-columns3">
-			<div class="p40 lr-border-box color-white bg-maroon">1</div>
-			<div class="p40 lr-border-box color-white bg-maroon">2</div>
-			<div class="p40 lr-border-box color-white bg-maroon">3</div>
-			<div class="p40 lr-border-box color-white bg-maroon">4</div>
-			<div class="p40 lr-border-box color-white bg-maroon">5</div>
-			<div class="p40 lr-border-box color-white bg-maroon">6</div>
-			<div class="p40 lr-border-box color-white bg-maroon">7</div>
-			<div class="p40 lr-border-box color-white bg-maroon">8</div>
-			<div class="p40 lr-border-box color-white bg-maroon">9</div>
-		</div>
-	</div>
-
-	<div class="mt20 lr-border-box lr-border-silver lr-border-medium p5">
-		<div>.lr-grid,.d-grid{display:grid;}</div>
-		<div>.lr-grid-columns4,.lr-grid-4col{grid-template-columns:repeat(4,1fr);}</div>
-		<div class="lr-grid lr-grid-columns4">
-			<div class="p40 lr-border-box color-white bg-maroon">1</div>
-			<div class="p40 lr-border-box color-white bg-maroon">2</div>
-			<div class="p40 lr-border-box color-white bg-maroon">3</div>
-			<div class="p40 lr-border-box color-white bg-maroon">4</div>
-			<div class="p40 lr-border-box color-white bg-maroon">5</div>
-			<div class="p40 lr-border-box color-white bg-maroon">6</div>
-			<div class="p40 lr-border-box color-white bg-maroon">7</div>
-			<div class="p40 lr-border-box color-white bg-maroon">8</div>
-			<div class="p40 lr-border-box color-white bg-maroon">9</div>
-		</div>
-	</div>
-	
-	<div class="mt20 lr-border-box lr-border-silver lr-border-medium p5">
-		<div>.lr-grid,.d-grid{display:grid;}</div>
-		<div>.lr-grid-columns5,.lr-grid-5col{grid-template-columns:repeat(5,1fr);}</div>
-		<div class="lr-grid lr-grid-columns5">
-			<div class="p40 lr-border-box color-white bg-maroon">1</div>
-			<div class="p40 lr-border-box color-white bg-maroon">2</div>
-			<div class="p40 lr-border-box color-white bg-maroon">3</div>
-			<div class="p40 lr-border-box color-white bg-maroon">4</div>
-			<div class="p40 lr-border-box color-white bg-maroon">5</div>
-			<div class="p40 lr-border-box color-white bg-maroon">6</div>
-			<div class="p40 lr-border-box color-white bg-maroon">7</div>
-			<div class="p40 lr-border-box color-white bg-maroon">8</div>
-			<div class="p40 lr-border-box color-white bg-maroon">9</div>
-		</div>
-	</div>
-
-	<div class="mt20 lr-border-box lr-border-silver lr-border-medium p5">
-		<div>.lr-grid,.d-grid{display:grid;}</div>
-		<div>.lr-grid-columns6,.lr-grid-6col{grid-template-columns:repeat(6,1fr);}</div>
-		<div class="lr-grid lr-grid-columns6">
-			<div class="p30 lr-border-box color-white bg-maroon">1</div>
-			<div class="p30 lr-border-box color-white bg-maroon">2</div>
-			<div class="p30 lr-border-box color-white bg-maroon">3</div>
-			<div class="p30 lr-border-box color-white bg-maroon">4</div>
-			<div class="p30 lr-border-box color-white bg-maroon">5</div>
-			<div class="p30 lr-border-box color-white bg-maroon">6</div>
-			<div class="p30 lr-border-box color-white bg-maroon">7</div>
-			<div class="p30 lr-border-box color-white bg-maroon">8</div>
-			<div class="p30 lr-border-box color-white bg-maroon">9</div>
-		</div>
-	</div>
-
-	<div class="mt20 lr-border-box lr-border-silver lr-border-medium p5">
-		<div>.lr-grid,.d-grid{display:grid;}</div>
-		<div>.lr-grid-columns12,.lr-grid-12col{grid-template-columns:repeat(12,1fr);}</div>
-		<div class="lr-grid lr-grid-columns6">
-			<div class="p20 lr-border-box color-white bg-maroon">1</div>
-			<div class="p20 lr-border-box color-white bg-maroon">2</div>
-			<div class="p20 lr-border-box color-white bg-maroon">3</div>
-			<div class="p20 lr-border-box color-white bg-maroon">4</div>
-			<div class="p20 lr-border-box color-white bg-maroon">5</div>
-			<div class="p20 lr-border-box color-white bg-maroon">6</div>
-			<div class="p20 lr-border-box color-white bg-maroon">7</div>
-			<div class="p20 lr-border-box color-white bg-maroon">8</div>
-			<div class="p20 lr-border-box color-white bg-maroon">9</div>
-			<div class="p20 lr-border-box color-white bg-maroon">10</div>
-			<div class="p20 lr-border-box color-white bg-maroon">11</div>
-			<div class="p20 lr-border-box color-white bg-maroon">12</div>
-			<div class="p20 lr-border-box color-white bg-maroon">13</div>
-			<div class="p20 lr-border-box color-white bg-maroon">14</div>
-			<div class="p20 lr-border-box color-white bg-maroon">15</div>
-		</div>
-	</div>
-	
-</section>
-		</div><!-- end panel -->
-	
-		<div class="lr-border-box bg-white mt20">
-			<div class="lr-flex d-block-md mt40">
-				<div class="demo-lr p10 bg-white">
-					<div class="p10 text-center">.lr-list-unstyled, .lr-list-striped</div>
-					<ul class="lr-list-unstyled lr-list-striped lr-list-border">
-						<li><a href="#">one</a></li>
-						<li><a href="#">two</a></li>
-						<li><a href="#">three</a></li>
-						<li><a href="#">one</a></li>
-						<li><a href="#">two</a></li>
-						<li><a href="#">three</a></li>
-					</ul>		
-				</div>
-				<div class="demo-lr p10 bg-white">
-					<div class="fz-2rem text-center">.mark-list .mark-list-blue</div>
-					<ul class="mark-list mark-list-blue">
-						<li><a href="#">one</a></li>
-						<li><a href="#">two</a></li>
-						<li><a href="#">three</a></li>
-						<li><a href="#">one</a></li>
-						<li><a href="#">two</a></li>
-						<li><a href="#">three</a></li>
-					</ul>		
-				</div>
-				<div class="demo-lr p10 bg-white">
-					<div class="fz-2rem text-center">.lr-popup</div>
-					<ul class="lr-list-group lr-nav lr-nav-lightblue m0 p5 lr-border-cyan3">
-						<li class="lr-popup"><a href="#">one</a></li>
-						<li class="lr-popup"><a href="#">two</a></li>
-						<li class="lr-popup"><a href="#">three</a></li>
-						<li class="lr-popup"><a href="#">one</a></li>
-						<li class="lr-popup"><a href="#">two</a></li>
-						<li class="lr-popup"><a href="#">three</a></li>
-					</ul>		
-				</div>
-			</div>
-			
-			<div class="lr-flex d-block-md">
-				<div class="p10 text-center">.lr-nav-amber</div>
-				<div class="demo-lr-1 m10 p10 bg-black color-white">
-					<div>Dark background, classlist: .lr-nav, .lr-nav-amber, .darkBg, .lr-list-border, .lr-border-white</div>
-					<ul class="lr-list-inline lr-nav lr-nav-amber darkBg lr-list-border lr-border-white">
-						<li><a href="#">one</a></li>
-						<li><a href="#">two</a></li>
-						<li><a href="#">three</a></li>
-					</ul>
-				</div>
-				<div class="demo-lr-1a m10 p10 bg-white color-balck">
-					<div>Light background, classlist: .lr-nav, .lr-nav-amber, .lr-list-border</div>
-					<ul class="lr-list-inline lr-nav lr-nav-amber lr-list-border">
-						<li><a href="#">one</a></li>
-						<li><a href="#">two</a></li>
-						<li><a href="#">three</a></li>
-					</ul>
-				</div>
-			</div>
-			
-			<div class="lr-flex d-block-md">
-				<div class="p10 text-center">.lr-nav-red</div>
-				<div class="demo-lr-2 m10 p10 bg-black-100 color-black">
-					<div>Dark background, classlist: .lr-nav, .lr-nav-red, .darkBg .lr-list-border, .lr-border-white</div>
-					<ul class="lr-list-unstyled lr-nav lr-nav-red darkBg lr-list-border lr-border-white bg-black-900">
-						<li><a href="#">one</a></li>
-						<li><a href="#">two</a></li>
-						<li><a href="#">three</a></li>
-					</ul>
-				</div>
-				<div class="demo-lr-2a m10 p10 _bg-black-100 color-black">
-					<div>Light background, classlist: .lr-nav, .lr-nav-red, .lr-list-border</div>
-						<ul class="lr-list-inline lr-nav lr-nav-red lr-list-border">
-							<li><a href="#">one</a></li>
-							<li><a href="#">two</a></li>
-							<li><a href="#">three</a></li>
-						</ul>
-					</div>
-			</div>
-
-			<div class="lr-flex d-block-md">
-				<div class="p10 text-center">.lr-nav-lightblue</div>
-				<div class="demo-lr-3 m10 p10 bg-black-200 color-black">
-					<div>Dark background, classlist: .lr-nav, .lr-nav-lightblue, .darkBg, .lr-list-border, .lr-border-white</div>
-					<ul class="lr-list-unstyled lr-nav lr-nav-lightblue darkBg lr-list-border lr-border-white bg-black-900">
-						<li><a href="#">one</a></li>
-						<li><a href="#">two</a></li>
-						<li><a href="#">three</a></li>
-					</ul>
-				</div>
-				<div class="demo-lr-3a m10 p10 _bg-black-200 color-black">
-					<div>Light background, classlist: .lr-nav, lr-nav-lightblue, .lr-list-border</div>
-					<ul class="lr-list-inline lr-nav lr-nav-lightblue lr-list-border">
-						<li><a href="#">one</a></li>
-						<li><a href="#">two</a></li>
-						<li><a href="#">three</a></li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="lr-flex d-block-md">
-				<div class="text-center p10">.lr-nav-teal</div>
-				<div class="demo-lr-4 m10 p10 bg-black-200 color-black">
-					<div>Dark background, classlist: .lr-nav, .lr-nav-teal, .darkBg, .lr-list-border, .lr-border-white</div>
-					<ul class="lr-list-inline lr-nav lr-nav-teal darkBg lr-list-border lr-border-white bg-black-800">
-						<li><a href="#">one</a></li>
-						<li><a href="#">two</a></li>
-						<li><a href="#">three</a></li>
-					</ul>
-				</div>
-				<div class="demo-lr-4a m10 p10 _bg-black-200 color-black">
-					<div>Light background, classlist: .lr-nav, lr-nav-teal, .lr-list-border</div>
-					<ul class="lr-list-inline lr-nav lr-nav-teal lr-list-border">
-						<li><a href="#">one</a></li>
-						<li><a href="#">two</a></li>
-						<li><a href="#">three</a></li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="lr-flex d-block-md">
-				<div class="text-center p10">.lr-nav-yellowgreen</div>
-				<div class="demo-lr-5 m10 p10 bg-black-200 color-black">
-					<div>Dark background, classlist: .lr-nav, .lr-nav-yellowgeen, .darkBg, .lr-list-border, .lr-border-white</div>
-					<ul class="lr-list-inline lr-nav lr-nav-yellowgreen darkBg lr-list-border lr-border-white bg-black-800">
-						<li><a href="#">one</a></li>
-						<li><a href="#">two</a></li>
-						<li><a href="#">three</a></li>
-					</ul>
-				</div>
-				<div class="demo-lr-5a m10 p10 _bg-black-200 color-black">
-					<div>Light background, classlist: .lr-nav, lr-nav-yellowgreen, .lr-list-border</div>
-					<ul class="lr-list-inline lr-nav lr-nav-yellowgreen lr-list-border">
-						<li><a href="#">one</a></li>
-						<li><a href="#">two</a></li>
-						<li><a href="#">three</a></li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="lr-flex lr-flex-wrap d-block-md">
-				<div class="text-center">.lr-nav-black</div>
-				<div class="demo-lr-6 m10 p10 color-black">
-					<div>Light background, classlist: .lr-nav, lr-nav-black, .lr-list-border</div>
-					<ul class="lr-list-inline lr-nav lr-nav-black lr-list-border">
-						<li><a href="#">one</a></li>
-						<li><a href="#">two</a></li>
-						<li><a href="#">three</a></li>
-					</ul>
-				</div>
-			</div>			
-		</div><!-- end panel -->
-	
-		<div class="panel mt10 lr-border-box bg-white">
-			<div class="lr-flex lr-flex--3col d-block-md">
-				<div class="demo-lr m10 p10">
-					<div class="w200px h200px bg-lavender lr-card anim-blink">.lr-card, .anim-blink</div>
-				</div>
-				<div class="demo-lr m10 p10">
-					<div class="w200px h200px bg-indigo color-white lr-tile lr-shadow-box">.lr-tile (.lr-popup)</div>
-				</div>
-				<div class="demo-lr m10 p10">
-					<div class="">.lr-hover-scale, .lr-hover-scale-1d5, .lr-hover-scale-2</div>
-					<ul class="lr-list-inline lr-nav lr-list-border">
-						<li class="lr-hover-scale"><a href="#">one</a></li>
-						<li class="lr-hover-scale-1d5"><a href="#">two</a></li>
-						<li class="lr-hover-scale-2"><a href="#">three</a></li>
-						<li class="lr-hover-scale-1d5"><a href="#">two</a></li>
-						<li class="lr-hover-scale"><a href="#">one</a></li>
-					</ul>
-				</div>
-			</div>
-		</div><!-- end panel -->
-		
-		<div class="panel mt10 lr-border-box bg-white">
-			<div class="lr-flex lr-flex--3col d-block-md">
-				<div class="demo-lr m10 p10">
-					<div class="fz-1d5rem text-center">.spinner-border</div>
-					<div class="w200px h200px bg-red color-blue spinner-border">spinner-border, color-blue</div>
-					<div class="w200px h200px bg-green color-orange spinner-border">spinner-border, color-orange</div>
-				</div>
-				<div class="demo-lr m10 p10">
-					<div class="fz-1d5rem text-center">.spinner-grow</div>
-					<div class="w200px h200px spinner-grow"></div>
-					<div class="w200px h200px bg-red spinner-grow"></div>
-				</div>
-			</div>
-		</div><!-- end panel -->
-
-		<div class="panel mt10 lr-border-box bg-white">
-			<div class="lr-flex lr-flex-wrap d-block-md">
-				<div class="demo-lr m5 p10">
-<a href="#" class="lr-btn lr-btn-default">lr-btn-default</a>
-				</div>
-				<div class="demo-lr m5 p10">
-<a href="#" class="lr-btn lr-btn-primary">lr-btn-primary</a>
-				</div>
-				<div class="demo-lr m5 p10">
-					<div class="fz12">lr-btn lr-btn-flat lr-hover-scale-1d5</div>
-<a href="#" class="lr-btn lr-btn-flat lr-hover-scale-1d5 lr-transition-05">lr-btn-flat</a>
-				</div>
-				<div class="demo-lr m5 p10">
-<a href="#" class="lr-btn lr-btn-blue _lr-transition">lr-btn-blue</a>
-				</div>
-				<div class="demo-lr m5 p10">
-<a href="#" class="lr-btn lr-btn-small lr-btn-darkblue lr-transition">lr-btn-darkblue</a>
-				</div>
-				<div class="demo-lr m5 p10">
-<a href="#" class="lr-btn lr-btn-violet-fb lr-transition">lr-btn-violet-fb</a>
-				</div>
-				<div class="demo-lr m5 p10">
-<a href="#" class="lr-btn lr-btn-orange lr-transition">lr-btn-orange</a>
-				</div>
-				<div class="demo-lr m5 p10">
-<a href="#" class="lr-btn lr-btn-orange-m lr-transition">lr-btn-orange-m</a>
-				</div>
-				<div class="demo-lr m5 p10">
-<a href="#" class="lr-btn lr-btn-red lr-transition">lr-btn-red</a>
-				</div>
-				<div class="demo-lr m5 p10">
-<a href="#" class="lr-btn lr-btn-red2 lr-transition">lr-btn-red2</a>
-				</div>
-
-				<div class="demo-lr m5 p10">
-<a href="#" class="lr-btn lr-btn-green lr-transition">lr-btn-green</a>
-				</div>
-				<div class="demo-lr m5 p10">
-<a href="#" class="lr-btn lr-btn-green2 lr-transition color-white">lr-btn-green2</a>
-				</div>
-				<div class="demo-lr m5 p10">
-<a href="#" class="lr-btn lr-btn-green-shadow lr-transition color-white">lr-btn-green-shadow</a>
-				</div>
-				<div class="demo-lr m5 p10">
-<a href="#" class="lr-btn lr-btn-teal lr-transition">lr-btn-teal</a>
-				</div>
-				<div class="demo-lr m5 p10">
-<a href="#" class="lr-btn lr-btn-blue-green lr-transition">lr-btn-blue-green</a>
-				</div>
-				<div class="demo-lr m5 p10">
-<a href="#" class="lr-btn lr-btn-greygreen lr-transition">lr-btn-greygreen</a>
-				</div>
-				<div class="demo-lr m5 p10">
-<a href="#" class="lr-btn lr-btn-greygreen2 lr-transition">lr-btn-greygreen2</a>
-				</div>
-				
-			</div>
-		</div><!-- end panel -->
-
-		<div class="panel mt10 p20 lr-border-box bg-white">
-			<div class="lr-flex lr-flex-wrap d-block-md m20">
-				
-				<div class="w100px h100px bg-green lr-rotate-3">lr-rotate-3</div>
-				<div class="w100px h100px bg-orange"></div>
-				<div class="w100px h100px bg-red lr-rotate3 mr40 mb40">lr-rotate3</div>
-
-				<div class="w100px h100px bg-green lr-rotate-5">lr-rotate-5</div>
-				<div class="w100px h100px bg-orange"></div>
-				<div class="w100px h100px bg-red lr-rotate5 mr40 mb40">lr-rotate5</div>
-
-				<div class="w100px h100px bg-greentea lr-rotate-10">lr-rotate-10</div>
-				<div class="w100px h100px bg-orange"></div>
-				<div class="w100px h100px bg-red lr-rotate10 mr40 mb40">lr-rotate10</div>
-				
-				<div class="w100px h100px bg-green-100 lr-rotate-15">lr-rotate-15</div>
-				<div class="w100px h100px bg-orange"></div>
-				<div class="w100px h100px bg-red lr-rotate15 mr40 mb40">lr-rotate15</div>
-
-				<div class="w100px h100px bg-teal-ms lr-rotate-20">lr-rotate-20</div>
-				<div class="w100px h100px bg-orange"></div>
-				<div class="w100px h100px bg-red lr-rotate20 mr40 mb40">lr-rotate20</div>
-				
-				<div class="w100px h100px bg-teal lr-rotate-25">lr-rotate-25</div>
-				<div class="w100px h100px bg-orange"></div>
-				<div class="w100px h100px bg-red lr-rotate25 mr40 mb40">lr-rotate25</div>
-
-				<div class="w100px h100px bg-greencyan lr-rotate-45">lr-rotate-45</div>
-				<div class="w100px h100px bg-orange"></div>
-				<div class="w100px h100px bg-red lr-rotate45 mr40 mb40">lr-rotate45</div>
-				
-				<div class="w50px h100px bg-green-300 lr-rotate-90">lr-rotate-90</div>
-				<div class="w50px h100px bg-orange"></div>
-				<div class="w50px h100px bg-red lr-rotate90 mr40 mb40">lr-rotate90</div>
-
-				<div class="w100px h100px bg-green-slack lr-rotate-180">lr-rotate-180</div>
-				<div class="w100px h100px bg-orange"></div>
-				<div class="w100px h100px bg-red lr-rotate180 mr40 mb40">lr-rotate180</div>
-				
-				<div class="w50px h100px bg-green-light lr-rotate-270">lr-rotate-270</div>
-				<div class="w50px h100px bg-orange"></div>
-				<div class="w50px h100px bg-red lr-rotate270 mr20 mb20">lr-rotate270</div>
-			</div>
-		</div>
-
-		<div class="panel mt10 p20 lr-border-box bg-white">
-			<div class="lr-flex lr-flex-wrap d-block-md m20">
-				<div class="w200px h200px bg-green-6d lr-slide-right">lr-slide-right</div>
-				<div class="w200px h200px bg-luminous-vivid-amber lr-slide-down">lr-slide-down</div>
-				<div class="w200px h200px bg-pale-cyan-blue lr-slide-down2">lr-slide-down2</div>
-			</div>
-		</div>
-
-		<div class="panel mt10 p20 lr-border-box bg-white">
-			<div class="lr-flex lr-flex-wrap d-block-md m10">
-				<div class="w100px h100px bg-green-400 lr-shadow-box p10 m10">lr-shadow-box</div>
-				<div class="w100px h100px bg-luminous-vivid-amber lr-shadow-1 p10 m10">lr-shadow-1</div>
-				<div class="w100px h100px bg-pale-cyan-blue lr-shadow-2 p10 m10">lr-shadow-2</div>
-				<div class="w100px h100px bg-green-500 lr-shadow-3 p10 m10">lr-shadow-3</div>
-				<div class="w100px h100px bg-blue-magenta10 color-white lr-shadow-bamb p10 m10">lr-shadow-bamb</div>
-				<div class="w100px h100px bg-green-600 lr-shadow-4 p10 m10">lr-shadow-4</div>
-				<div class="w100px h100px bg-green-700 color-white lr-shadow-5 p10 m10">lr-shadow-5</div>
-
-				<div class="p10 bg-whitesmoke lr-flex lr-flex-wrap">
-					<div class="w100px h100px bg-cyan10 color-white lr-shadow-1-flip p10 m10">lr-shadow-1-flip</div>
-
-					<div class="w100px h100px bg-cyan20 color-white lr-shadow-1-inset p10 m10">lr-shadow-1-inset</div>
-
-					<div class="w100px h100px bg-cyan10 color-white lr-shadow-5-inset p10 m10">lr-shadow-5-inset</div>
-
-					<div class="w100px h100px bg-green-300 z-depth-1 p10 m10">z-depth-1</div>
-					
-					<div class="w100px h100px bg-green-300 z-depth-1-half p10 m10">z-depth-1-half</div>
-					<div class="w100px h100px bg-ghostwhite z-depth-2 p10 m10">z-depth-2</div>
-					<div class="w100px h100px bg-floralwhite z-depth-3 p10 m10">z-depth-3</div>
-					<div class="w100px h100px bg-floralwhite z-depth-4 p10 m10">z-depth-4</div>
-					<div class="w100px h100px bg-floralwhite z-depth-5 p10 m10">z-depth-5</div>
-					
-<div class="w100px h100px bg-lavender lr-card p10 m10">lr-card</div>
-<div class="w100px h100px bg-lavender lr-shadow-inset color-blue p10 m10 fz12">.lr-shadow-inset, .color-blue</div>
-<div class="w100px h100px bg-azure lr-shadow-inset-black p10 m10">lr-shadow-inset-black</div>
-<div class="w100px h100px bg-pearl lr-drop-shadow p10 m10">lr-drop-shadow</div>
-<div class="w100px h100px bg-pearl lr-drop-shadow color-green p10 m10 fz12">.lr-drop-shadow, .color-green</div>
-				</div>
-<div>
-/* bootstrap441.css  */
-				<div class="p10 bg-whitesmoke lr-flex lr-flex-wrap">
-					<div class="w100px h100px bg-red-100 b--shadow-sm p10 m10">b--shadow-sm</div>
-					<div class="w100px h100px bg-red-200 b--shadow p10 m10">b--shadow</div>
-					<div class="w100px h100px bg-red-300 b--shadow-lg p10 m10">b--shadow-lg</div>
-				</div>
-b--shadow-none				
-</div>
-
-<div>
-/*
- Box-shadow, UIKit
- https://3uikit.ru/utility
- */
-				<div class="p10 bg-whitesmoke lr-flex lr-flex-wrap">
-					<div class="w100px h100px bg-red-400 uk-box-shadow-small p10 m10">uk-box-shadow-small</div>
-					<div class="w100px h100px bg-red-500 uk-box-shadow-medium p10 m10">uk-box-shadow-medium</div>
-					<div class="w100px h100px bg-red-600 uk-box-shadow-large p10 m10">uk-box-shadow-large</div>
-					<div class="w100px h100px bg-red-600 uk-box-shadow-xlarge p10 m10">uk-box-shadow-xlarge</div>
-					<div class="w100px h100px bg-red-100 uk-box-shadow-bottom p10 m10">uk-box-shadow-bottom</div>
-				</div>
-</div>
-				<div class="w100px h100px bg-cyan lr-text-shadow p10 m10">lr-text-shadow</div>
-
-<div>
-				<div class="p10 lr-flex lr-flex-wrap">
-					<div class="w100px h100px bg-lilac lr-shadow--natural p10 m10">lr-shadow--natural</div>
-					<div class="w100px h100px bg-thistle lr-shadow--deep p10 m10">lr-shadow--deep</div>
-					<div class="w100px h100px bg-pink lr-shadow--sharp p10 m10">lr-shadow--sharp</div>
-					<div class="w100px h100px bg-lavender-h lr-shadow--outlined p10 m10">lr-shadow--outlined</div>
-					<div class="w100px h100px bg-lavender lr-shadow--crisp p10 m10">lr-shadow--crisp</div>
-				</div>
-</div>
-				
-			</div>
-			
-				<div class="p10 bg-light-grey-blue lr-flex lr-flex-wrap fz14">
-<div class="w150px h200px gradient--midnight color-white p10 m10">gradient--midnight</div>
-
-<div class="w150px h200px gradient--vivid-cyan-blue-to-vivid-purple color-white p10 m10">
-gradient--vivid-cyan-blue-to-vivid-purple</div>
-
-<div class="w150px h200px gradient--light-green-cyan-to-vivid-green-cyan p10 m10">
-gradient--light-green-cyan-to-vivid-green-cyan</div>
-
-<div class="w150px h200px gradient--luminous-vivid-amber-to-luminous-vivid-orange p10 m10">
-gradient--luminous-vivid-amber-to-luminous-vivid-orange</div>
-
-<div class="w150px h200px gradient--luminous-vivid-orange-to-vivid-red p10 m10">
-gradient--luminous-vivid-orange-to-vivid-red</div>
-
-<div class="w150px h200px gradient--very-light-gray-to-cyan-bluish-gray p10 m10">gradient--very-light-gray-to-cyan-bluish-gray</div>
-
-<div class="w150px h200px gradient--cool-to-warm-spectrum p10 m10">
-gradient--cool-to-warm-spectrum</div>
-
-<div class="w150px h200px gradient--blush-light-purple p10 m10">
-gradient--blush-light-purple</div>
-
-<div class="w150px h200px gradient--blush-bordeaux p10 m10">gradient--blush-bordeaux</div>
-
-<div class="w150px h200px gradient--luminous-dusk p10 m10">
-gradient--luminous-dusk</div>
-
-<div class="w150px h200px gradient--pale-ocean p10 m10">
-gradient--pale-ocean</div>
-
-<div class="w150px h200px gradient--electric-grass p10 m10">
-gradient--electric-grass</div>
-				</div>
-
-		</div>
-
-		<div class="panel mt10 p20 lr-border-box bg-mintcream">
-<h2>test margin negative</h2>
-<pre>
-https://webformyself.com/otricatelnye-polya-v-css/	
-https://webformyself.com/category/verstka-2/css3-verstka-2/
-https://learn.javascript.ru/margin
-</pre>
-<div class="lr-flex lr-flex-center fz-0d8rem">
-			<div class="lr-border-box p20">
-<div class="w100px h50px bg-green-100 p10"></div>
-<div class="w100px h50px bg-green-200 p10 ml20-negative">.ml20-negative</div>
-<div class="w100px h50px bg-green-200 p10 ml30-negative">.ml30-negative</div>
-<div class="w100px h50px bg-green-300 p10 ml40-negative">.ml40-negative</div>
-<div class="w100px h50px bg-green-400 p10 ml50-negative">.ml50-negative</div>
-<div class="w100px h50px bg-green-500 p10 ml60-negative">.ml60-negative</div>
-<div class="w100px h50px bg-green-600 p10 ml80-negative">.ml80-negative</div>
-<div class="w100px h50px bg-green-700 color-white p10 ml100-negative">.ml100-negative</div>
-			</div>
-			<div class="lr-border-box p20">
-<div class="w100px h50px bg-turquoise4 p10 ml40 mt40-negative">.mt40-negative</div>
-<div class="w100px h50px bg-magenta20 color-white p10 ml30 mt30-negative">.mt30-negative</div>
-<div class="w100px h50px bg-magenta10 p10 ml20 mt20-negative">.mt20-negative</div>
-<div class="w100px h50px bg-turquoise p10"></div>
-			</div>
-		</div>
-</div>
-
-		<div class="mt10 p20 lr-border-box bg-white">
-	<h3>CSS rounded classes</h3>			
-	<div class="m-auto p10 bg-white w80 lr-flex lr-flex-wrap lr-gap-10">
-		<div class="m-auto p30 bg-white rounded lr-border-box">.rounded</div>
-		<div class="rounded-sm p30 bg-gray220 color-white">.rounded-sm</div>
-		<div class="rounded-md p30 bg-gray100 color-white">.rounded-md</div>
-		<div class="rounded-lg p30 bg-gray110 color-white">.rounded-lg</div>
-		<div class="rounded-top p30 bg-gray120 color-white">.rounded-top</div>
-		<div class="rounded-bottom p30 bg-gray130 color-white">.rounded-bottom</div>
-		<div class="rounded-right p30 bg-gray140 color-white">.rounded-right</div>
-		<div class="rounded-left p30 bg-gray150 color-white">.rounded-left</div>
-	</div>
-
-	<div class="m-auto p10 bg-ghostwhite w80 lr-flex lr-flex--2col">
-		<div class="rounded-lt p20 bg-gray110 color-white">.rounded-left-top,.rounded-top-left,.rounded-lt</div>
-		<div class="rounded-rt p20 bg-gray100 color-white">.rounded-right-top,.rounded-top-right,.rounded-rt</div>
-		<div class="rounded-lb p20 bg-gray120 color-white">.rounded-left-bottom,.rounded-bottom-left,.rounded-lb</div>
-		<div class="rounded-rb p20 bg-gray130 color-white">.rounded-right-bottom,.rounded-bottom-right,.rounded-rb</div>
-	</div>
-
-	<div class="p10 bg-ghostwhite lr-flex lr-flex-wrap">
-		<div class="rounded-circle w100px h100px bg-gray160 color-white text-center ">
-			<div class="pos-rel-center">.rounded-circle</div>
-		</div>
-		<div class="rounded-pill w100px h100px bg-gray160 color-white text-center ">
-			<div class="pos-rel-center">.rounded-pill</div>
-		</div>
-		<div class="rounded-small w200px h100px bg-gray150 color-white text-center ml20">
-			<div class="pos-rel-center">.rounded-small,.lr-rad5,.lr-radius5,.lr-border-radius5</div>
-		</div>
-		<div class="lr-radius-top-small w200px h100px bg-gray140 color-white text-center ml20">
-			<div class="pos-rel-center">.lr-radius-top-small</div>
-		</div>
-				
-	</div>
-
-	<div class="container m20 bg-white">
-<pre>		
-		.rounded{border-radius:.5rem!important}
-		.rounded-sm{border-radius:1rem!important}
-		.rounded-md{border-radius:2rem!important}
-		.rounded-lg{border-radius:3rem!important}
-		
-		.rounded-top{border-top-left-radius:1rem;border-top-right-radius:1rem}
-		.rounded-bottom {border-bottom-right-radius:1rem;border-bottom-left-radius:.1rem}
-		.rounded-right{border-top-right-radius:1rem;border-bottom-right-radius:1rem}
-		.rounded-left{border-top-left-radius:1rem;border-bottom-left-radius:1rem}
-		
-		.rounded-right-top,.rounded-top-right,.rounded-rt{border-top-right-radius:1rem;}
-		.rounded-right-bottom,.rounded-bottom-right,.rounded-rb{border-bottom-right-radius:1rem}
-		
-		.rounded-left-top,.rounded-top-left,.rounded-lt{border-top-left-radius:1rem;}
-		.rounded-left-bottom,.rounded-bottom-left,.rounded-lb{border-bottom-left-radius:1rem}
-		
-		.rounded-circle{border-radius:50%}
-		.rounded-pill{border-radius:50rem}
-		
-		.rounded-0,.lr-rad0,.lr-radius0{border-radius:0;}
-		.lr-rad4,.lr-radius4{border-radius:4px;}
-		.rounded-small,.lr-rad5,.lr-radius5,.lr-border-radius5{border-radius:5px;}
-		.lr-radius-top-small{ 
-			border-top-left-radius:10px!important;
-			border-top-right-radius:10px!important
-		}
-		.lr-radius-6{border-radius:6px;}
-		.lr-radius-8{border-radius:8px;}
-		.lr-radius-10,.lr-border-round{border-radius:10px;}
-		.lr-radius-15{border-radius:15px;}
-		.lr-radius-20{border-radius:20px;}
-		.lr-radius-30{border-radius:30px;}
-</pre>
-
-	</div>
-</div>
-		
-		<div class="mt10 p20 lr-border-box bg-white d-none-sm">
-<table border=1 bordercolor="#555555" bgcolor="#E4FEE0">
-<tr>
-<td align=center style=CURSOR:crosshair; >cursor:crosshair</td>
-<td align=center>cursor:pointer</td>
-<td align=center style=CURSOR:move;>cursor:move</td>
-<td align=center style=CURSOR:e-resize;>cursor:e-resize</td>
-</tr>
-<tr>
-<td align=center style=CURSOR:ne-resize;>cursor:ne-resize</td>
-<td align=center style=CURSOR:nw-resize;>cursor:nw-resize</td>
-<td align=center style=CURSOR:n-resize;>cursor:n-resize</td>
-<td align=center style=CURSOR:sw-resize;>cursor:sw-resize</td>
-</tr>
-<tr>
-<td align=center style=CURSOR:se-resize;>cursor:se-resize</td>
-<td align=center style=CURSOR:s-resize;>cursor:s-resize</td>
-<td align=center style=CURSOR:w-resize;>cursor:w-resize</td>
-<td align=center style=CURSOR:text;>cursor:text</td>
-</tr>
-<tr>
-<td align=center style=CURSOR:wait;>cursor:wait</td>
-<td align=center style=CURSOR:help;>cursor:help</td>
-<td align=center style=CURSOR:auto;>cursor:auto</td>
-<td align=center style=CURSOR:auto;>&nbsp;</td>
-</tr>
-</table>			
-		</div>	
-	</section>			
-</div><!-- end container -->
-
-
 <!--
-	<a id="section-php-curl"></a>
-	<h2>Curl</h2>
+	<a id="#"></a>
+	<h2></h2>
+-->
 	<section>
 		<div class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap d-block-sm">
 
@@ -7757,6 +7285,376 @@ https://learn.javascript.ru/margin
 			</div>
 		</div>
 	</section>
+</div>
+<!-- end #panel-css -->
+
+<a id="panel-DB"></a>
+<div class="lr-container mt20 p20 bg-grey-green lr-border-round">
+	<div class="lr-flex lr-flex-between lr-flex-top">
+		<a class="d-none d-block-sm" href="#top">top</a>
+		<h3 class="m0 p0">Database info, SQL</h3>
+	</div>
+	<div class="lr-flex lr-flex-wrap m10-children bg-white">
+		<a href="#section-DB-commands">DB commands</a>
+	</div>	
+	
+	<a id="section-DB-commands"></a>
+	<h2>DB commands</h2>
+	<section>
+		<div class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap d-block-sm">
+			<div class="bg-yellow-pre p10">
+<h3>postgreSQL</h3>
+				<code><pre>
+psql --dbname=notes --username=postgres --password
+				</pre></code>
+			</div>
+			
+			<div class="bg-ivory p10">
+				<h3>MySQL: экспорт базы данных</h3>
+				<code><pre>
+MySQLdump --user=root --password=master --databases drupal622 > db_drupal622.sql
+zip sql_drupal622.zip db_drupal622.sql
+rm db_drupal622.sql
+				</pre></code>
+			</div>
+			<div class="bg-seashell p10">
+				<h3>MySQL: импорт</h3>
+				<code><pre>
+MySQL -u qdecout_test -psdkjfh -Dqdecout_test &lt; qdec.sql
+
+-------------------
+If you get the error MySQLdump: Got error: 1146: Table 'table' doesn't
+exist when using LOCK TABLES , while taking the backup of the MySQL
+database , then you can use the following command to backup the database .
+
+MySQLdump.exe -uusername -ppassword dbname --skip-lock-tables 
+				</pre></code>
+			</div>
+			<div class="bg-beige p10">
+				<h3>MySQL: список процессов</h3>
+				<code><pre>
+SHOW PROCESSLIST;
++-----+------+-----------+------+---------+------+-------+------------------+
+| Id  | User | Host      | db   | Command | Time | State | Info             |
++-----+------+-----------+------+---------+------+-------+------------------+
+| 679 | root | localhost | NULL | Query   |    0 | NULL  | show processlist |
++-----+------+-----------+------+---------+------+-------+------------------+
+				</pre></code>
+			</div>
+			
+			<div class="bg-lavender p10">
+				<h3>MySQL: получить структуру таблицы</h3>
+				<code><pre>
+MySQL&gt; describe db2.users;
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| id       | int(11)     | NO   | PRI | NULL    | auto_increment |
+| login    | varchar(64) | NO   |     | NULL    |                |
+| password | varchar(64) | NO   |     | NULL    |                |
+| email    | varchar(64) | NO   |     | NULL    |                |
+| username | varchar(64) | NO   |     | NULL    |                |
++----------+-------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+				</pre></code>
+			</div>
+			<div class="bg-light-orange4 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg--bronze-lighter p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-bs-gray-200 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-CERULEAN p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-BROWN p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-almond p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-azure p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			
+			<div class="bg-yellow-pre p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-lightblue-grey p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-powderblue-light p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-green-d8 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-lavenderblush p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-green-cfd p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-green-de3 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-bs-gray-100 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-yellow-050 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-antiquewhite p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-brown-c3 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-brown-c2 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-almond p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-vanilla p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-whitesmoke2 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-rosy-af p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-greentea p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+		</div>
+	</section>
+</div>
+<!-- end #panel-DB -->
+
+
+<!--
+<a id="panel-..."></a>
+<div class="lr-container mt20 p20 bg-grey-green lr-border-round">
+	<div class="lr-flex lr-flex-between lr-flex-top">
+		<a class="d-none d-block-sm" href="#top">top</a>
+		<h3 class="m0 p0">CSS info</h3>
+	</div>	
+	<div class="lr-flex lr-flex-wrap m10-children bg-white">
+		<a href="#section-DB-commands">DB commands</a>
+	</div>	
+	
+	<a id="section-DB-commands"></a>
+	<h2>section-DB-commands</h2>
+	<section>
+		<div class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap d-block-sm">
+
+			<div class="bg-yellow-pre p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			
+			<div class="bg-ivory p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+
+			<div class="bg-beige p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			
+			<div class="bg-lavender p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-seashell p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-light-orange4 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg--bronze-lighter p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-bs-gray-200 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-CERULEAN p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-BROWN p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-almond p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-azure p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			
+			<div class="bg-yellow-pre p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-lightblue-grey p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-powderblue-light p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-green-d8 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-lavenderblush p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-green-cfd p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-green-de3 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-bs-gray-100 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-yellow-050 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-antiquewhite p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-brown-c3 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-brown-c2 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-almond p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-vanilla p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-whitesmoke2 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-rosy-af p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-greentea p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+		</div>
+	</section>
+</div>
+!-- end #panel-css --
+
 	
 	<div class="lr-border-box p10 bg-darkslateblue color-white bookmark-php">
 <a class="color-gold" href="#" target="_blank">Как я могу перебирать атрибуты в моделях Laravel</a>
