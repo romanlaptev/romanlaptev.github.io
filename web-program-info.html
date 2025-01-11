@@ -2214,6 +2214,7 @@ http://localhost/projects/sources.git/test_code/js/test_date.html
 		<a href="#section-php-oop">OOP</a>
 		<a href="#section-php-db">Databases</a>
 		<a href="#section-php-curl">Curl</a>
+		<a href="#section-php-mail">Mail</a>
 		<a href="#section-php-service">Service functions</a>
 		<a href="#section-php-Laravel">Laravel</a>
 	</div>	
@@ -4810,6 +4811,184 @@ function sendPost( $url, $post_data ) {
 			</pre></code>
 		</div>
 	</section>			
+
+	<a id="section-php-mail"></a>
+	<h2>section-php-mail</h2>
+	<section>
+		<div class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap d-block-sm">
+			<div class="bg-yellow-pre p10">
+				<h3></h3>
+				<code><pre>
+//https://www.php.net/manual/ru/function.mail.php
+error_reporting(E_ALL);
+ini_set("display_errors", 1); 
+
+$from = "roman@vbox1.local";
+$recipient_addr = "siteadmin@vbox1.local";
+
+$subject = "test send mail, ".date("d.m.Y H:i");
+
+$headers = "MIME-Version: 1.0\r\n";
+$headers .= 'Content-Type: text/html; charset=utf-8' . "\r\n";
+$headers .= 'From: ' . $from . "\r\n";
+$message = "test message from ".$from;
+
+if ( mail($recipient_addr, $subject, $message, $headers) ) {
+	echo 'send letter\r\n';
+} else {
+  echo 'error send letter\r\n';
+}
+echo "<pre>";  
+var_dump( error_get_last() );
+echo "</pre>";  					
+				</pre></code>
+			</div>
+			
+			<div class="bg-ivory p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+
+			<div class="bg-beige p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			
+			<div class="bg-lavender p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-seashell p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-light-orange4 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg--bronze-lighter p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-bs-gray-200 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-CERULEAN p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-BROWN p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-almond p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-azure p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			
+			<div class="bg-yellow-pre p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-lightblue-grey p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-powderblue-light p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-green-d8 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-lavenderblush p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-green-cfd p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-green-de3 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-bs-gray-100 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-yellow-050 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-antiquewhite p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-brown-c3 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-brown-c2 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-almond p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-vanilla p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-whitesmoke2 p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-rosy-af p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+			<div class="bg-greentea p10">
+<h3></h3>
+				<code><pre>
+				</pre></code>
+			</div>
+		</div>
+	</section>
 
 	<a id="section-php-service"></a>
 	<h2>Service functions</h2>
