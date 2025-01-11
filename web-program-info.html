@@ -3,6 +3,10 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<base href="https://glacier-lightning-catshark.glitch.me/" />
+	<base target="_blank" />
+	
 	<link rel="icon" href="favicon.ico" />
 	<title>Web programming info</title>
 	<link rel="stylesheet" href="https://romanlaptev.github.io/css/lr.css" />
@@ -24,7 +28,8 @@ code > pre {
   /*background-color: var(--bs-gray-100);*/
 }
 pre{font-size:1rem}
-	</style>	
+	</style>
+	
 </head>
 
 <body class="_bg-prussian-blue bg-darkblue-sea _bg-darkgrey-term t1">
@@ -82,8 +87,7 @@ window.addEventListener("scroll", function() {
 <li><a href="https://disk.yandex.ru/notes" class="lr-btn lr-btn-teal" target="_blank">disk.yandex.ru/notes</a></li>
 
 <li class="m5 p10">
-	<a href="https://github.com/romanlaptev/" class="lr-btn lr-btn-default" title="GitHub repository" target="_blank">
-<img src="img/icons/github.png" onerror="this.onerror=null; this.src='img/icons/github.png'" alt="GitHub">
+	<a href="https://github.com/romanlaptev/" class="lr-btn lr-btn-default" title="GitHub repository" target="_blank">GitHub"
 	</a>
 </li>
 <li class="lr-border-box lr-border-round-small lr-border-silver m5 p10 z-depth-1">
@@ -7101,22 +7105,63 @@ var_dump(get_defined_vars());
 		<a class="d-none d-block-sm" href="#top">top</a>
 		<h3 class="m0 p0">CSS info</h3>
 	</div>	
+	<div class="lr-flex lr-flex-wrap m10-children bg-white">
+		<a href="#section-CSS-foundation">Foundation</a>
+		<a href="#section-CSS-bootstrap">Bootstrap</a>
+	</div>	
 <!--
 	<a id="#"></a>
 	<h2></h2>
 -->
 	<section>
 		<div class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap d-block-sm">
-
 			<div class="bg-yellow-pre p10">
-<h3></h3>
+				<h3>@font-face</h3>
 				<code><pre>
+@font-face {
+    font-family: 'ticker-tape-regular';
+    src: url('Ticker_Tape/ticker_tape-webfont.eot');
+    src: url('Ticker_Tape/ticker_tape-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Ticker_Tape/ticker_tape-webfont.woff2') format('woff2'),
+         url('Ticker_Tape/ticker_tape-webfont.woff') format('woff'),
+		url("Ticker_Tape/Ticker_Tape.ttf")  format('truetype'),
+         url('Ticker_Tape/ticker_tape-webfont.svg#ticker_taperegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+	font-display: swap;
+}
+.lr-font-ticker {font-family: ticker-tape-regular;}
+
+.fontbox {padding:20px; display:inline-block}
+.fontbox::after {
+	content: attr(class);
+	font-size: 12px;
+	display: none;
+}
 				</pre></code>
 			</div>
-			
-			<div class="bg-ivory p10">
-<h3></h3>
+			<div class="bg-red-brown-6d color-white p10">
+				<h3>MEDIA queries</h3>
 				<code><pre>
+https://developer.mozilla.org/ru/docs/Web/CSS/Media_Queries/Using_media_queries
+Использование медиавыражений
+
+https://docs.w3cub.com/css/@media/hover
+
+https://habr.com/ru/post/348502/
+Ищем поддержку hover на css
+
+					
+@media screen and (max-width:1600px){
+	.lr-container {
+		width: 70%;
+	}
+}
+@media screen and (max-width:320px){
+	.lr-container {
+		width: 100%;
+	}
+}
 				</pre></code>
 			</div>
 
@@ -7259,6 +7304,43 @@ var_dump(get_defined_vars());
 			</div>
 		</div>
 	</section>
+
+	<a id="section-CSS-foundation"></a>
+	<h2>section-CSS-foundation</h2>
+	<section>
+		<div class="m-d5rem p-d5rem">
+<iframe src="demo_css/test_foundation.html"
+width="100%" height="600"
+loading="lazy"></iframe>			
+		</div>
+	</section>
+
+	<a id="section-CSS-bootstrap"></a>
+	<h2>Bootstrap 4</h2>
+	<section>
+		<div class="m-d5rem p-d5rem">
+<iframe src="demo_css/test_bootstrap4.html"
+width="100%" height="600"
+loading="lazy"></iframe>			
+		</div>
+	</section>
+	<h2>Bootstrap 3</h2>
+	<section>
+		<div class="m-d5rem p-d5rem">
+<iframe src="demo_css/test_bootstrap3.html"
+width="100%" height="600"
+loading="lazy"></iframe>			
+		</div>
+	</section>
+	<h2>Bootstrap 2</h2>
+	<section>
+		<div class="m-d5rem p-d5rem">
+<iframe src="demo_css/test_bootstrap2.html"
+width="100%" height="600"
+loading="lazy"></iframe>			
+		</div>
+	</section>
+
 </div>
 <!-- end #panel-css -->
 
