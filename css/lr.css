@@ -148,6 +148,15 @@ a:hover {
 a:active, a:focus{outline: none; }
 pre{overflow: auto;}
 
+/*https://covax.me/node/123*/
+pre, .lr-word-wrap{
+	white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+}
+
 /* helper classes - WIDTH */
 .w1{width:1%;}
 .w5{width:5%;}
