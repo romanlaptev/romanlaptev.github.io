@@ -1,16 +1,23 @@
-/* last editing:21-01-20205 */
+/* last editing:24-01-2025 */
 
 @import url('lr-colors.css');
 @import url('lr-buttons.css');
 
-/* calc padding within div -*/
-html {	box-sizing:border-box;}
+html {
+	/* calc padding within div -*/
+	box-sizing:border-box;
+	
+	/* https://sky.pro/media/kak-sdelat-plavnyj-skroll-k-yakoryu/ */
+	scroll-behavior:smooth;
+}
+
 *, *::before, *::after {box-sizing:inherit;}
 
 html, body{
 	height:100%;
 	margin:0;
 }
+
 :root {
 	--color-link:#007bff;
 	--color-link-hover:#ff5151;
@@ -39,9 +46,7 @@ body {
 	--shadow--crisp:6px 6px 0px rgba(0, 0, 0, 1);
 }
 
-body.hiddenbody {
-  overflow:hidden !important
-}
+body.hiddenbody {overflow:hidden !important}
 body.blur {
   -webkit-filter:blur(7px);
   filter:blur(7px);
@@ -861,27 +866,18 @@ border-top: 16px solid #1c5a83;
 
 
 /* LIST */
-.lr-list > li {
-	padding-left:5px;
-	margin-left:15px;
-}
+.lr-list > li {padding-left:5px;margin-left:15px;}
 .lr-list-unstyled > li{	list-style: none !important;}
-.lr-list-inline {
-	padding: 0;
-	list-style: none;
-}
+.lr-list-inline {padding: 0;list-style: none;}
 .lr-list-inline > li {	display: inline-block;}
-.lr-list-group {
-padding-left: 5px;
-margin-left: 15px;
-}
+.lr-list-group {padding-left: 5px;margin-left: 15px;}
 .lr-list-group > li {
 	/*position: relative;*/
 	display: block;
 	/*padding: 10px 15px;*/
-	margin-bottom: -1px;
+	/*margin-bottom: -1px;*/
 	/*background-color: #fff;*/
-	border: 1px solid #ddd;
+	border-width:1px;border-style:solid;
 	word-wrap: break-word;
 	/*word-break: break-all;*/
 }
@@ -889,6 +885,7 @@ margin-left: 15px;
 .lr-list-border > li {border: 1px solid;}
 .lr-list-striped > li:nth-of-type(2n+1){background-color: #dee4ef;}
 .lr-list-striped > li{padding: 10px 10px;}
+
 .mark-list {padding-left:0;}
 .mark-list li {
  list-style-type:none;
@@ -909,7 +906,6 @@ margin-left: 15px;
 	background-position: left center;
 */	
 }
-
 ul.mark-first-element li:nth-of-type(1) {
 	color: red;
 }
@@ -1557,7 +1553,7 @@ body.page-green {
 .pos-bottom-auto{bottom: auto;}
 
 .pos-abs,.pos-absolute{position:absolute;}
-.pos-abs-left-top{position: absolute;left: 0;top: 0;}
+.pos-abs-left-top{position:absolute;left:0;top:0;}
 .pos-abs-center-top{
 	position: absolute;
 	left: 50%;
@@ -1566,7 +1562,7 @@ body.page-green {
 	transform: translateX(-50%);
 }
 .pos-abs-right-top{position:absolute;right:0;top:0;}
-.pos-abs-left-center{position:absolute;left:0;top:50%;}
+.pos-abs-left-middle,.pos-abs-left-center{position:absolute;left:0;top:50%;}
 .pos-abs-center {
 	position: absolute;
 	left: 50%;
@@ -1590,8 +1586,8 @@ body.page-green {
 	-webkit-transform: translateY(-50%);
 	transform: translateY(-50%);
 }
-.pos-abs-right-center{position: absolute;right: 0;top: 50%;}
-.pos-abs-left-bottom{position: absolute;left: 0;bottom: 0;}
+.pos-abs-right-middle,.pos-abs-right-center{position:absolute;right:0;top:50%;}
+.pos-abs-left-bottom{position: absolute;left:0;bottom:0;}
 .pos-abs-center-bottom {
 	position: absolute;
 	left: 50%;
@@ -1599,7 +1595,7 @@ body.page-green {
 	-webkit-transform: translateX(-50%);
 	transform: translateX(-50%);
 }
-.pos-abs-right-bottom{position:absolute;right:0;bottom: 0;}
+.pos-abs-right-bottom{position:absolute;right:0;bottom:0;}
 
 .pos-fixed{position:fixed;}
 .pos-fixed-left-top{position:fixed;left: 0;top: 0;}
