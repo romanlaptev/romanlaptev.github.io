@@ -128,12 +128,25 @@ https://koltan.dev/blog/sozdaem-beskonechnuyu-beguschuyu-stroku-bez-lagov-i-java
 https://sky.pro/wiki/html/zamena-i-analogi-ustarevshego-tega-marquee-v-html/
 Замена и аналоги устаревшего тега marquee в HTML
 
+https://sky.pro/media/kak-sdelat-plavnyj-skroll-k-yakoryu/
+Как сделать плавный скролл к якорю
+
 https://fonts.google.com/?subset=cyrillic
 https://everythingfonts.com/
 https://www.fontsquirrel.com/tools/webfont-generator
 https://www.font2web.com/
 
 https://htmlbook.ru/blog/svoi-shrift-na-stranitse
+
+
+https://webref.ru/css/mix-blend-mode
+https://doka.guide/css/mix-blend-mode/
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/background-blend-mode
+
+https://habr.com/ru/companies/poiskvps/articles/423115/
+Улучшенные эффекты с режимом смешивания фоновых слоев в CSS
+
 
 --------
 		</pre>
@@ -184,6 +197,19 @@ https://htmlbook.ru/blog/svoi-shrift-na-stranitse
 */
 			
 		</pre></code>
+		
+		<code><pre class="bg-white">
+document.querySelectorAll('a[href^="#"]').forEach(anchor =&gt; {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+ 
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});			
+		</pre></code>
+		
 	</div>
 </div>
 <!-- end container -->

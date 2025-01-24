@@ -1,5 +1,6 @@
 :root{
 	--color-grey-31:#313131;
+	--color-grey-53:#595653;
 	--color-orange:#F54932;	
 	--color-darkblue-A2:#3057A2;
 	--color-black-1F:#1F1F1F;
@@ -85,8 +86,6 @@ a:active, a:focus{outline: none; }
 .d-grid-columns2{grid-template-columns:repeat(2, 1fr);}
 .d-grid-columns3-112{grid-template-columns:1fr 1fr 2fr;}
 
-/*7CBE9A*/
-
 .container {
 	width:90%;
 	margin:auto;
@@ -96,47 +95,6 @@ a:active, a:focus{outline: none; }
 	padding-left:40px;
 	padding-right:40px;
 }
-
-.bg-white{background-color:#FFFFFF}
-.color-white{color:#FFFFFF}
-
-.bg-rose{background-color:#E9DED4}
-
-.bg-orange{background-color:var(--color-orange,#F54932)}
-.color-orange{color:var(--color-orange,#F54932)}
-
-.bg-black-1F{background-color:var(--color-black-1F,#1F1F1F)}
-.color-black-1F{color:var(--color-black-1F,#1F1F1F)}
-
-.color-darkblue-A2{color:var(--color-darkblue-A2,#3057A2);}
-.color-grey-31{color:var(--color-grey-31,#313131)}
-.color-grey-53{color:#595653}
-
-
-.btn{cursor: pointer;}
-.bth-label{
-	font-family: "Golos Text", serif;
-	font-optical-sizing: auto;
-	font-weight: 500;
-	font-style: normal;
-	font-size:16px;
-}
-.btn.border-black{
-	border:2px solid var(--color-black-1F,#1F1F1F);
-}
-.btn.hover-yellow:hover{
-	color: var(--color-black-1F,#1F1F1F);
-	background-color:var(--color-yellow-51,#FBCE51);
-}
-.btn.hover-black:hover{
-	color: #fff;
-	background-color:var(--color-black-1F,#1F1F1F);
-}
-.btn.hover-darkblue:hover{
-	color: #fff;
-	background-color:var(--color-darkblue-A2);
-}
-
 
 .fz16{font-size:16px;}
 .fz20{font-size:20px;}.lh20{line-height:20px;}
@@ -335,11 +293,84 @@ a:active, a:focus{outline: none; }
 .h700px{height:700px;}		
 
 
-header .header-picture {
-	background-image: url("../images/header-picture.png");
+
+.bg-white{background-color:#FFFFFF}
+.color-white{color:#FFFFFF}
+
+.bg-rose{background-color:#E9DED4}
+
+.bg-orange{background-color:var(--color-orange,#F54932)}
+.color-orange{color:var(--color-orange,#F54932)}
+
+.bg-black-1F{background-color:var(--color-black-1F,#1F1F1F)}
+.color-black-1F{color:var(--color-black-1F,#1F1F1F)}
+
+.color-darkblue-A2{color:var(--color-darkblue-A2,#3057A2);}
+.color-grey-31{color:var(--color-grey-31,#313131)}
+.color-grey-53{color:var(--color-grey-53,#595653)}
+
+.btn{cursor: pointer;}
+.bth-label{
+	font-family: "Golos Text", serif;
+	font-optical-sizing: auto;
+	font-weight: 500;
+	font-style: normal;
+	font-size:16px;
+}
+.btn.border-black{
+	border:2px solid var(--color-black-1F,#1F1F1F);
+}
+.btn.hover-yellow:hover{
+	color: var(--color-black-1F,#1F1F1F);
+	background-color:var(--color-yellow-51,#FBCE51);
+}
+.btn.hover-black:hover{
+	color: #fff;
+	background-color:var(--color-black-1F,#1F1F1F);
+}
+.btn.hover-darkblue:hover{
+	color: #fff;
+	background-color:var(--color-darkblue-A2);
+}
+
+.header-texture {
+	background-image: url("../images/header-texture.png");
 	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: -265px bottom;	
+	background-size: contain;
+	background-position:center bottom;	
+	background-blend-mode: color-burn;
+}
+.header-picture {
+	background-image: url("../images/header-picture2.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position:center bottom;	
+	/*background-blend-mode: color-burn;*/
+}
+@media (max-width:1366px){
+	.header-picture {
+		background-size:cover;
+	}
+}
+
+header .logo-text{
+	line-height: 108%;
+	font-family: "Golos Text", serif;
+	font-optical-sizing: auto;
+	font-weight: 700;
+	font-style: normal;
+	font-size:16px;
+	text-transform: uppercase;
+	color:var(--color-grey-53,#595653);
+} 
+
+header .slogan {
+	font-family: "Merriweather", serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size:60px;
+	text-transform: uppercase;
+	color:var(--color-grey-31);
 }
 
 header .btn {
@@ -459,6 +490,7 @@ header .btn {
 }
 .marquee {
   white-space: nowrap;
+  text-align: center;
   /*display: inline-block;*/
   /*animation: scroll-text 10s linear infinite;*/
   /*animation: marquee-ltr 20s linear infinite;*/
