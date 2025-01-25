@@ -1,4 +1,4 @@
-/* last editing:24-01-2025 */
+/* last editing:25-01-2025 */
 
 @import url('lr-colors.css');
 @import url('lr-buttons.css');
@@ -2324,11 +2324,11 @@ https://getuikit.com/v2/docs/core.html
 	.mr30-sm{margin-right:30px;}
 	.ml30-sm{margin-left:30px;}
 	
-	.m40-sm{margin:40px;}
-	.mt40-sm{margin-top:40px;}.mt40-negative-sm{margin-top:-40px;}
-	.mb40-sm{margin-bottom:40px;}
-	.mr40-sm{margin-right:40px;}
-	.ml40-sm{margin-left:40px;}
+	.m40-sm,.m40-768{margin:40px;}
+	.mt40-sm,.m40-768{margin-top:40px;}.mt40-negative-sm{margin-top:-40px;}
+	.mb40-sm,.m40-768{margin-bottom:40px;}
+	.mr40-sm,.m40-768{margin-right:40px;}
+	.ml40-sm,.m40-768{margin-left:40px;}
 	
 	.mt50-sm{margin-top:50px;}.mt50-negative-sm{margin-top:-50px;}
 	.mt60-sm{margin-top:60px;}.mt60-negative-sm{margin-top:-60px;}
@@ -2508,6 +2508,17 @@ https://getuikit.com/v2/docs/core.html
 }
 
 @media (max-width:375px){
+	.m0-375{margin:0px;}.mt0-375{margin-top:0px;}.mb0-375{margin-bottom:0px;}.mr0-375{margin-right:0px;}.ml0-375{margin-left:0px;}
+	
+	.m5-375{margin:5px;}.mt5-375{margin-top:5px;}.mb5-375{margin-bottom:5px;}.mr5-375{margin-right:5px;}.ml5-375{margin-left:5px;}
+
+	.m10-375{margin:10px;}.mt10-375{margin-top:10px;}.mb10-375{margin-bottom:10px;}.mr10-375{margin-right:10px;}.ml10-375{margin-left:10px;}
+	
+	.m20-375{margin:20px;}.mt20-375{margin-top:20px;}.mb20-375{margin-bottom:20px;}.mr20-375{margin-right:20px;}.ml20-375{margin-left:20px;}
+	
+	.m30-375{margin:30px;}.mt30-375{margin-top:30px;}.mb30-375{margin-bottom:30px;}.mr30-375{margin-right:30px;}.ml30-375{margin-left:30px;}
+
+	.m40-375{margin:40px;}.mt40-375{margin-top:40px;}.mb40-375{margin-bottom:40px;}.mr40-375{margin-right:40px;}.ml40-375{margin-left:40px;}
 }
 
 @media (max-width:360px){

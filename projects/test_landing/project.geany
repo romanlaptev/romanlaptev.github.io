@@ -23,9 +23,9 @@ long_line_column=72
 
 [files]
 current_page=2
-FILE_NAME_0=7406;HTML;0;EUTF-8;1;1;1;%2Fmnt%2Fd2%2Fwww%2Fprojects%2Ftest_landing%2Finfo.html;0;4
-FILE_NAME_1=1172;HTML;0;EUTF-8;1;1;1;%2Fmnt%2Fd2%2Fwww%2Fprojects%2Ftest_landing%2Fpage%2Ftest_landing.html;0;4
-FILE_NAME_2=292;CSS;0;EUTF-8;1;1;1;%2Fmnt%2Fd2%2Fwww%2Fprojects%2Ftest_landing%2Fpage%2Fcss%2Fstyle.css;0;4
+FILE_NAME_0=6658;HTML;0;EUTF-8;1;1;1;%2Fmnt%2Fd2%2Fwww%2Fprojects%2Ftest_landing%2Finfo.html;0;4
+FILE_NAME_1=7984;HTML;0;EUTF-8;1;1;1;%2Fmnt%2Fd2%2Fwww%2Fprojects%2Ftest_landing%2Fpage%2Ftest_landing.html;0;4
+FILE_NAME_2=12840;CSS;0;EUTF-8;1;1;1;%2Fmnt%2Fd2%2Fwww%2Fprojects%2Ftest_landing%2Fpage%2Fcss%2Fstyle.css;0;4
 FILE_NAME_3=325;Javascript;0;EUTF-8;1;1;1;%2Fmnt%2Fd2%2Fwww%2Fprojects%2Ftest_landing%2Fpage%2Fjs%2Fmain.js;0;4
 
 [VTE]
