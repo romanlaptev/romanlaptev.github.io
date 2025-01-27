@@ -18,7 +18,8 @@ console.log(e.type);
 	});
 	
 	//----------
-	if(window.screen.width === 375){
+//alert(window.screen.width);
+	if(window.screen.width <= 375){
 		landingObj["carousel2"] = initCarousel2();
 	}
 	
