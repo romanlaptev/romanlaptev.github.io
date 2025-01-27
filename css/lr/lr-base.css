@@ -1,4 +1,4 @@
-/* last editing:25-01-2025 */
+/* last editing:27-01-2025 */
 
 @import url('lr-colors.css');
 @import url('lr-buttons.css');
@@ -404,16 +404,17 @@ https://bootstrap-4.ru/docs/4.0/utilities/spacing/
 .mr90{margin-right:90px;}
 .mr100{margin-right:100px;}
 
-.mb5{margin-bottom:5px;}
-.mb10{margin-bottom:10px;}
-.mb20{margin-bottom:20px;}
-.mb30{margin-bottom:30px;}
-.mb40{margin-bottom:40px;}
-.mb50{margin-bottom:50px;}
-.mb60{margin-bottom:60px;}
-.mb80{margin-bottom:80px;}
-.mb90{margin-bottom:90px;}
-.mb100{margin-bottom:100px;}
+.mb5{margin-bottom:5px;}.mb5-negative{margin-bottom:-5px;}
+.mb10{margin-bottom:10px;}.mb10-negative{margin-bottom:-10px;}
+.mb20{margin-bottom:20px;}.mb20-negative{margin-bottom:-20px;}
+.mb30{margin-bottom:30px;}.mb30-negative{margin-bottom:-30px;}
+.mb40{margin-bottom:40px;}.mb40-negative{margin-bottom:-40px;}
+.mb50{margin-bottom:50px;}.mb50-negative{margin-bottom:-50px;}
+.mb60{margin-bottom:60px;}.mb60-negative{margin-bottom:-60px;}
+.mb70{margin-bottom:70px;}.mb70-negative{margin-bottom:-70px;}
+.mb80{margin-bottom:80px;}.mb80-negative{margin-bottom:-80px;}
+.mb90{margin-bottom:90px;}.mb90-negative{margin-bottom:-90px;}
+.mb100{margin-bottom:100px;}.mb100-negative{margin-bottom:-100px;}
 
 .ml5{margin-left:5px;}.ml5-negative{margin-left:-5px;}
 .ml10{margin-left:10px;}.ml10-negative{margin-left:-10px;}
@@ -1081,25 +1082,25 @@ padding: 10px;
 @supports (display : flex) {
    .support-flex-true {display : block;}
    .support-flex-false {display : none;}
-	.lr-flex, .df{
+	.lr-flex,.df,.d-flex{
 		display:flex;
 		display: -webkit-box;
 		display: -webkit-flex;
 		display: -ms-flexbox;	
 	}
-	.lr-flex-wrap {flex-wrap: wrap;}
+	.lr-flex-wrap,.d-flex-wrap{flex-wrap:wrap;}
 
 	.lr-flex-left{justify-content: flex-start;}
-	.lr-flex-center { 
+	.lr-flex-center,.d-flex-center { 
 		-ms-flex-pack: center !important;
 		justify-content: center;
 	}
 	.lr-flex-content-end,.justify-content-end{justify-content:end;}
 	.lr-flex-right{justify-content:flex-end;}
-	.lr-flex-between{justify-content:space-between;}
-	.lr-flex-around{justify-content:space-around;}
+	.lr-flex-between,.d-flex-between{justify-content:space-between;}
+	.lr-flex-around,.d-flex-around{justify-content:space-around;}
 	
-	.lr-flex-middle,.align-items-center{ 
+	.lr-flex-middle,.d-flex-middle,.align-items-center{ 
 		-ms-flex-align: center !important;
 		align-items: center !important;
 	}
@@ -1108,7 +1109,7 @@ padding: 10px;
 		-webkit-align-content: flex-start;
 		align-content: flex-start;
 	}
-	
+
 	.lr-flex-top,.align-items-top,.align-items-start{align-items:start;}
 	.lr-flex-end,.align-items-bottom,.align-items-end{align-items:end;}
 	
@@ -1116,28 +1117,30 @@ padding: 10px;
 	.lr-flex-1{flex:1;}
 	.lr-flex-auto{flex: auto;}
 
-	.lr-flex-basis100 {flex-basis: 100%; }
-	
-	/*=== flex Direction === */
-	.lr-flex-row{flex-direction: row;}
-	.lr-flex-row-reverse {flex-direction: row-reverse;}
-	.lr-flex-column{flex-direction: column;}
-	.lr-flex-column-reverse{flex-direction: column-reverse;}
-	
 	.lr-flex-fill{
 		flex:1 1;
 		/*flex-grow: 1;*/
 		/*flex-shrink: 1;*/
 	}
-
-	.lr-flex--2col {display: flex;flex-wrap: wrap;}
-	.lr-flex--2col > * {flex-grow: 1;flex-shrink: 1;flex-basis: 50%;}
 	
-	.lr-flex--3col {display: flex;flex-wrap: wrap;}
-	.lr-flex--3col > * {flex-grow: 1;flex-shrink: 1;flex-basis: 30%;}
+	/*=== flex Direction === */
+	.lr-flex-row,.d-flex-row{flex-direction: row;}
+	.lr-flex-row-reverse {flex-direction: row-reverse;}
+	.lr-flex-column,.d-flex-column{flex-direction: column;}
+	.lr-flex-column-reverse{flex-direction: column-reverse;}
 	
-	.lr-flex--4col {display: flex;flex-wrap: wrap;}
-	.lr-flex--4col > * {flex-grow: inherit;flex-shrink: 1;flex-basis: 25%;}
+	.lr-flex-fb100,.d-flex-fb100{flex-basis: 100%;}
+	.lr-flex-fb50,.d-flex-fb50{flex-basis: 50%;}
+	.lr-flex-fb25,.d-flex-fb25{flex-basis: 25%;}
+	
+	.lr-flex-2col,.d-flex-2col {display: flex;flex-wrap: wrap;}
+	.lr-flex-2col > *,.d-flex-2col > * {flex-grow: 1;flex-shrink: 1;flex-basis: 50%;}
+	
+	.lr-flex-3col,.d-flex-3col {display: flex;flex-wrap: wrap;}
+	.lr-flex-3col > *,.d-flex-3col > * {flex-grow: 1;flex-shrink: 1;flex-basis: 30%;}
+	
+	.lr-flex-4col,.d-flex-4col {display: flex;flex-wrap: wrap;}
+	.lr-flex-4col > *,.d-flex-4col > * {flex-grow: inherit;flex-shrink: 1;flex-basis: 25%;}
 }
 
 
