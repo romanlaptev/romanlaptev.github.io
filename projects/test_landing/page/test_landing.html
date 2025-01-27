@@ -57,22 +57,27 @@
 </header>
 
 <div class="_container p0">
-<!--
-<marquee>
--->
-		<div class="running-line">
-<div class="marquee">
-			<div class="merriweather-regular fz22 fw400 color-white text-uppercase">Дело помощи утопающим — дело рук самих утопающих!</div>
+<!-- <marquee> -->
+	<div class="running-line marquee-test df">
+		<div class="div1">
+			<div class="text">Дело помощи утопающим — дело рук самих утопающих!</div>
 			<div class="ellipse"></div>
-			<div class="merriweather-regular fz22 fw400 color-white text-uppercase">Шахматы двигают вперёд не только культуру, но и экономику!</div>
+			<div class="text">Шахматы двигают вперёд не только культуру, но и экономику!</div>
 			<div class="ellipse"></div>
-			<div class="merriweather-regular fz22 fw400 color-white text-uppercase">Лёд тронулся, господа присяжные заседатели!</div>
+			<div class="text">Лёд тронулся, господа присяжные заседатели!</div>
 			<div class="ellipse"></div>
-</div>
 		</div>
-<!--
-</marquee>			
--->
+		
+		<div class="div2 pl20">
+			<div class="text">Дело помощи утопающим — дело рук самих утопающих!</div>
+			<div class="ellipse"></div>
+			<div class="text">Шахматы двигают вперёд не только культуру, но и экономику!</div>
+			<div class="ellipse"></div>
+			<div class="text">Лёд тронулся, господа присяжные заседатели!</div>
+			<div class="ellipse"></div>
+		</div>
+	</div>
+<!-- </marquee>	-->
 </div>
 <!-- end container -->
 
@@ -157,7 +162,7 @@
 
 <section id="section3">	
 	<div class="container s3 mt100">
-		<div class="title mb60">
+		<div class="title mb60 mb0-375">
 <div class="cell-1">Этапы преображения</div>
 <div class="cell-2">Васюков</div>
 <div class="cell-3 subtitle">
@@ -165,12 +170,12 @@
   <div></div>
 </div>
 		</div>
-		<div class="card-list">
-			<div class="card">
+		<div id="carousel2" class="card-list">
+			<div class="card cell-1">
 				<div class="card-number">1</div>
 				<div class="card-text">Строительство железнодорожной магистрали Москва-Васюки</div>
 			</div>
-			<div class="card">
+			<div class="card cell-2">
 				<div class="card-number">2</div>
 				<div class="card-text">Открытие фешенебельной гостиницы «Проходная пешка» и других небоскрёбов</div>
 			</div>
@@ -178,15 +183,15 @@
 				<div class="card-number">3</div>
 				<div class="card-text">Поднятие сельского хозяйства в радиусе на тысячу километров: производство овощей, фруктов, икры, шоколадных конфет</div>
 			</div>
-			<div class="card">
+			<div class="card cell-4">
 				<div class="card-number">4</div>
 				<div class="card-text">Строительство дворца для турнира</div>
 			</div>
-			<div class="card">
+			<div class="card cell-5">
 				<div class="card-number">5</div>
 				<div class="card-text">Размещение гаражей для гостевого автотранспорта</div>
 			</div>
-			<div class="card">
+			<div class="card cell-6">
 				<div class="card-number">6</div>
 				<div class="card-text">Постройка сверхмощной радиостанции для передачи всему миру сенсационных результатов</div>
 			</div>
@@ -199,17 +204,17 @@
 			</div>
 		</div>
 	
-		<div class="d-none _d-block-375 mt40">
+		<div class="d-none d-block-375 mt40">
 			<div class="carousel-nav">
-				<div class="carousel-button-left">
+				<div id="carousel2-btn-prev" class="carousel-button-left">
 	<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-	<circle cx="18" cy="18" r="18" transform="rotate(-180 18 18)" fill="#313131" fill-opacity="0.2"/>
+	<circle cx="18" cy="18" r="18" transform="rotate(-180 18 18)" fill="#313131" _fill-opacity="0.2"/>
 	<path d="M20.0766 24.923L13.1536 17.9999L20.0766 11.0768" stroke="white" stroke-width="1.63636" stroke-linecap="square"/>
 	</svg>
 				</div>
-				<div class="carousel-control-nav control-dots">
+				<div id="carousel2-control-dots" class="carousel-control-nav control-dots">
 	<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-	<circle cx="5" cy="5" r="5" fill="#313131"/>
+	<circle cx="5" cy="5" r="5" fill="#D9D9D9"/>
 	</svg>
 	<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
 	<circle cx="5" cy="5" r="5" fill="#D9D9D9"/>
@@ -224,7 +229,7 @@
 	<circle cx="5" cy="5" r="5" fill="#D9D9D9"/>
 	</svg>
 				</div>
-				<div class="carousel-button-right">
+				<div id="carousel2-btn-next" class="carousel-button-right">
 	<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
 	<circle cx="18" cy="18" r="18" fill="#313131"/>
 	<path d="M15.9234 11.0769L22.8464 18L15.9234 24.9231" stroke="white" stroke-width="1.63636" stroke-linecap="square"/>
@@ -312,7 +317,7 @@
 		
 <div class="card d-none">
 	<div class="image">
-		<img class="f-invert100" src="images/carousel-card-image.png" alt=""/>		
+		<img class="_f-invert100" src="images/carousel-card-image.png" alt=""/>		
 	</div>
 	<div class="card-name">Арон Нимцович</div>
 	<div class="card-caption">Чемпион мира по шахматам</div>
@@ -336,7 +341,7 @@
 		
 <div class="card d-none">
 	<div class="image">
-		<img class="f-saturate300" src="images/carousel-card-image.png" alt=""/>		
+		<img class="_f-saturate300" src="images/carousel-card-image.png" alt=""/>		
 	</div>
 	<div class="card-name">Остап Бендер</div>
 	<div class="card-caption">Чемпион мира по шахматам</div>
@@ -353,19 +358,25 @@
 </section>	
 
 <footer class="mt100 bg-rose">
-	<div class="_container bg-orange p0">
-		<div class="running-line">
-<div class="marquee">
-			<div class="merriweather-regular fz22 fw400 color-white text-uppercase">Дело помощи утопающим — дело рук самих утопающих!</div>
+	<div class="running-line marquee-test df">
+		<div class="div1">
+			<div class="text">Дело помощи утопающим — дело рук самих утопающих!</div>
 			<div class="ellipse"></div>
-			<div class="merriweather-regular fz22 fw400 color-white text-uppercase">Шахматы двигают вперёд не только культуру, но и экономику!</div>
+			<div class="text">Шахматы двигают вперёд не только культуру, но и экономику!</div>
 			<div class="ellipse"></div>
-			<div class="merriweather-regular fz22 fw400 color-white text-uppercase">Лёд тронулся, господа присяжные заседатели!</div>
+			<div class="text">Лёд тронулся, господа присяжные заседатели!</div>
 			<div class="ellipse"></div>
-</div>
+		</div>
+		
+		<div class="div2 pl20">
+			<div class="text">Дело помощи утопающим — дело рук самих утопающих!</div>
+			<div class="ellipse"></div>
+			<div class="text">Шахматы двигают вперёд не только культуру, но и экономику!</div>
+			<div class="ellipse"></div>
+			<div class="text">Лёд тронулся, господа присяжные заседатели!</div>
+			<div class="ellipse"></div>
 		</div>
 	</div>
-	<!-- end container -->
 
 	<div class="container p0">
 		<div class="golos-text-400 fz16 fw400 color-grey-31 opacity-d6 p40">
@@ -373,6 +384,8 @@
 		</div>
 	</div>
 	<!-- end container -->
+	
+	
 </footer>
 
 </body>
