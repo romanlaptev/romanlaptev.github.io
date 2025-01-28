@@ -601,7 +601,11 @@ header .btn {
 .carousel-button-left svg circle:hover {fill: #FBCE51;}
 .carousel-button-right svg circle:hover {fill: #FBCE51;}
 #carousel2-control-dots svg.active circle {
-	fill: #313131;
+	fill:#313131;
+}
+#carousel2-btn-prev.disabled svg circle,
+#carousel2-btn-next.disabled svg circle{
+	fill:#D6D6D6;
 }
 
 .strike {

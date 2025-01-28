@@ -18,7 +18,7 @@ console.log(e.type);
 	});
 	
 	//----------
-//alert(window.screen.width);
+//console.log(window.screen.width);
 	if(window.screen.width <= 375){
 		landingObj["carousel2"] = initCarousel2();
 	}
@@ -89,20 +89,26 @@ console.error("error, not found #carousel2");
 	return carouselObj;
 
 	function _nextSlide(){
+		carouselObj["btnNext"].classList.remove("disabled");
+		carouselObj["btnPrev"].classList.remove("disabled");
 		carouselObj["counter"]++;
 		if(carouselObj["counter"] > carouselObj["numClick"]){
 console.log("end of slides...", carouselObj["counter"]);
 			carouselObj["counter"]=carouselObj["numClick"];
+			carouselObj["btnNext"].classList.add("disabled");
 			return false;
 		}
 		_drawSlides();
 	}//		
 	
 	function _prevSlide(){
+		carouselObj["btnNext"].classList.remove("disabled");
+		carouselObj["btnPrev"].classList.remove("disabled");
 		carouselObj["counter"]--;
 		if(carouselObj["counter"] < 1){
 console.log("end of slides...", carouselObj["counter"]);
 			carouselObj["counter"]=1;
+			carouselObj["btnPrev"].classList.add("disabled");
 			return false;
 		}
 		_drawSlides();
