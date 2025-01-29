@@ -1,4 +1,4 @@
-/* last editing:27-01-2025 */
+/* last editing:29-01-2025 */
 
 @import url('lr-colors.css');
 @import url('lr-buttons.css');
@@ -1090,30 +1090,27 @@ padding: 10px;
 	}
 	.lr-flex-wrap,.d-flex-wrap{flex-wrap:wrap;}
 
-	.lr-flex-left{justify-content: flex-start;}
+	.lr-flex-left,.d-flex-left{justify-content: left;}
 	.lr-flex-center,.d-flex-center { 
-		-ms-flex-pack: center !important;
+		/*-ms-flex-pack: center !important;*/
 		justify-content: center;
 	}
-	.lr-flex-content-end,.justify-content-end{justify-content:end;}
-	.lr-flex-right{justify-content:flex-end;}
-	.lr-flex-between,.d-flex-between{justify-content:space-between;}
-	.lr-flex-around,.d-flex-around{justify-content:space-around;}
+	.lr-flex-right,.d-flex-right{justify-content:right;}
+	.lr-flex-spb,.d-flex-spb,.lr-flex-between,.d-flex-between{justify-content:space-between;}
+	.lr-flex-spa,.d-flex-spa,.lr-flex-around,.d-flex-around{justify-content:space-around;}
 	
-	.lr-flex-middle,.d-flex-middle,.align-items-center{ 
-		-ms-flex-align: center !important;
-		align-items: center !important;
-	}
-	.lr-flex-wrap-top,.align-content-start {
-		-ms-flex-line-pack: start;
-		-webkit-align-content: flex-start;
+	/*.lr-flex-top,.d-flex-top {
 		align-content: flex-start;
-	}
+	}*/
 
-	.lr-flex-top,.align-items-top,.align-items-start{align-items:start;}
-	.lr-flex-end,.align-items-bottom,.align-items-end{align-items:end;}
+	.lr-flex-cells-middle,.lr-flex-middle,.d-flex-middle{ 
+		/*-ms-flex-align: center !important;*/
+		align-items: center;
+	}
+	.lr-flex-cells-top,.lr-flex-top{align-items:start;}
+	.lr-flex-cells-bottom,.lr-flex-bottom{align-items:end;}
+	.lr-flex-cells-expand{align-items: stretch;}
 	
-	.lr-flex-stretch {align-items: stretch;}
 	.lr-flex-1{flex:1;}
 	.lr-flex-auto{flex: auto;}
 
@@ -1143,11 +1140,12 @@ padding: 10px;
 	.lr-flex-4col > *,.d-flex-4col > * {flex-grow: inherit;flex-shrink: 1;flex-basis: 25%;}
 }
 
-
 /* ====== GRID =======
 https://developer.mozilla.org/ru/docs/Learn/CSS/CSS_layout/Grids
 https://developer.mozilla.org/ru/docs/Web/CSS/grid-template-columns
 https://developer.mozilla.org/ru/docs/Web/CSS/grid-column
+https://doka.guide/css/grid-guide/
+https://tpverstak.ru/grid/
 */
 @supports not (display: grid) {}
 @supports (display: grid) {
@@ -1196,36 +1194,32 @@ https://developer.mozilla.org/ru/docs/Web/CSS/grid-column
 
 	.lr-grid-flow-col{grid-auto-flow: column;}
 	
-	.lr-grid-left{justify-content:start;}
-	.lr-grid-center{justify-content:center;}
-	.lr-grid-right{justify-content:end;}
-	.lr-grid-spb{justify-content:space-between;}
-	.lr-grid-spa{justify-content:space-around;}
-	
-	.lr-grid-align-top{align-content:start;}
-	.lr-grid-align-middle{align-content:center;}
-	.lr-grid-align-bottom{align-content:end;}
-	.lr-grid-align-spb{align-content:space-between;}
-	.lr-grid-align-spa{align-content:space-around;}
-	.lr-grid-align-evently{align-content:space-evently;}
+	.lr-grid-left,.lr-grid-content-left{justify-content:left;}
+	.lr-grid-center,.lr-grid-content-center{justify-content:center;}
+	.lr-grid-right,.lr-grid-content-right{justify-content:right;}
+	.lr-grid-spb,.lr-grid-content-spb{justify-content:space-between;}
+	.lr-grid-spa,.lr-grid-content-spa{justify-content:space-around;}
 
-	.lr-grid-items-top,.lr-grid-items-start{align-items:start;}
-	.lr-grid-items-middle,.lr-grid-items-center{align-items:center;}
-	.lr-grid-items-bottom,.lr-grid-items-end{align-items:end;}
-	.lr-grid-items-stretch{align-items:stretch;}
+	.lr-grid-cells-left,.lr-grid-i-left{justify-items:left;}
+	.lr-grid-cells-center,.lr-grid-i-center{justify-items: center;}
+	.lr-grid-cells-right,.lr-grid-i-right{justify-items:right;}
 	
-	.lr-grid-self-left{justify-self:start;}
-	.lr-grid-self-center{justify-self:center;}
-	.lr-grid-self-right{justify-self:end;}
-	.lr-grid-self-expand{justify-self:stretch;}
+	.lr-grid-cells-top,.lr-grid-i-top,.lr-grid-i-start{align-items:start;}
+	.lr-grid-cells-middle,.lr-grid-i-middle{align-items:center;}
+	.lr-grid-cells-bottom,.lr-grid-i-bottom,.lr-grid-i-end{align-items:end;}
+	/*.lr-grid-i-expand{align-items:stretch;}*/
+	
+	.lr-grid-cell-left,.lr-grid-self-left{justify-self:left;}
+	.lr-grid-cell-center,.lr-grid-self-center{justify-self:center;}
+	.lr-grid-cell-right,.lr-grid-self-right{justify-self:right;}
+	/*.lr-grid-self-expand{justify-self:stretch;}*/
 
-	.lr-grid-self-top{align-self:start;}
-	.lr-grid-self-middle{align-self:center;}
-	.lr-grid-self-bottom{align-self:end;}
-	.lr-grid-self-stretch{align-self:stretch;}
+	.lr-grid-cell-top,.lr-grid-self-top{align-self:start;}
+	.lr-grid-cell-middle,.lr-grid-self-middle{align-self:center;}
+	.lr-grid-cell-bottom,.lr-grid-self-bottom{align-self:end;}
+	/*.lr-grid-self-expand{align-self:stretch;}*/
 	
 /*
-grid-template-rows
 grid-template
 grid-template-areas
 grid-area
@@ -1235,7 +1229,6 @@ grid-column-end
 grid-row
 grid-row-start
 grid-row-end
-justify-items: center;
 */
 }
 
