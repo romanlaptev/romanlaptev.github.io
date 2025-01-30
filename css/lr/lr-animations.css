@@ -1,0 +1,321 @@
+/*------- SPINNER animations (Bootsrap 4) -------*/
+.spinner-border {
+	display: inline-block;
+	width: 4rem;
+	height: 4rem;
+	vertical-align: -.125em;
+	/*vertical-align: text-bottom;*/
+	border: .25em solid currentColor;
+	border-right-color: transparent;
+	border-radius: 50%;
+	-webkit-animation: .75s linear infinite spinner-border;
+	animation: .75s linear infinite spinner-border;
+}
+.spinner-border-sm {
+  width: 1rem;
+  height: 1rem;
+  border-width: 0.2em;
+}
+@-webkit-keyframes spinner-border {
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes spinner-border {
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.spinner-grow {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  vertical-align: text-bottom;
+  background-color: currentColor;
+  border-radius: 50%;
+  opacity: 0;
+  -webkit-animation: spinner-grow .75s linear infinite;
+  animation: spinner-grow .75s linear infinite;
+}
+.spinner-grow-sm {
+  width: 1rem;
+  height: 1rem;
+}
+@-webkit-keyframes spinner-grow {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes spinner-grow {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.anim-blink::after {
+	content: "";
+	display: block;
+	height: 200%;
+	width: 20px;
+	background-color: rgba(255, 255, 255, .6);
+	box-shadow: 0 0 15px #fff;
+	position: absolute;
+	top: -50%;
+	left: 0;
+	transform: rotate(-45deg) translate(-500px, -500px);
+	-webkit-animation: animBlink 3s linear infinite;
+	animation: animBlink 3s linear infinite;
+}
+.anim-blink {
+	position: relative;
+	overflow: hidden;
+}
+
+@-webkit-keyframes animBlink {
+  50% {transform: rotate(-45deg) translate(320px, 320px)}
+  100% {transform: rotate(-45deg) translate(500px, 500px)}
+}
+
+@keyframes animBlink {
+  50% {transform: rotate(-45deg) translate(320px, 320px)}
+  100% {transform: rotate(-45deg) translate(500px, 500px)}
+}
+
+
+/*--------------------- LOAD --------------*/
+/* http://dbmast.ru/adaptivnoe-modalnoe-okno-strogo-po-centru */
+#modal-wait-window.dm-overlay {
+position: fixed;
+top: 0;
+left: 0;
+background: rgba(0, 0, 0, 0.65);
+display: none;
+overflow: auto;
+width: 100%;
+height: 100%;
+z-index: 1000;
+}
+
+#modal-wait-window  .dm-table {
+display: table;
+width: 100%;
+height: 100%;
+}
+
+#modal-wait-window  .dm-cell {
+display: table-cell;
+padding: 0 1em;
+vertical-align: middle;
+text-align: center;
+}
+
+#modal-wait-window  .dm-modal {
+display: inline-block;
+max-width: 50em;
+width: 15em;
+background-color: #b0c4de;
+color: #000;
+border-radius: 10px;
+padding: 10px 20px;
+z-index: 1042;
+-webkit-box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
+-moz-box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
+box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
+text-align: center;
+}
+#modal-wait-window .progress {
+	position: relative;
+	height: 20px;
+	display: block;
+	width: 100%;
+	background-color: #fff;
+	border-radius: 3px;
+	margin: .5rem 0 1rem 0;
+	overflow: hidden;
+}
+#modal-wait-window .progress .determinate {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	background-color: #2196F3;	
+	-webkit-transition: width .3s linear;
+	transition: width .3s linear;
+}
+
+#modal-wait-window .loader {
+border: 1px solid #f3f3f3;
+border-top: 16px solid #3498db;
+border-radius: 50%;
+width: 80px;
+height: 80px;
+margin: auto;
+animation: spin 2s linear infinite;
+/*animation: spin 3s alternate infinite;*/
+}
+#modal-wait-window .loader2 {
+border-bottom: 16px solid #1c5a83;
+border-top: 16px solid #1c5a83;
+}
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
+
+/* UNSORT
+@-webkit-keyframes spinner {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes spinner {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@-webkit-keyframes spinner-center {
+    0% {
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+    100% {
+        -webkit-transform: translate(-50%, -50%) rotate(360deg);
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+@keyframes spinner-center {
+    0% {
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+    100% {
+        -webkit-transform: translate(-50%, -50%) rotate(360deg);
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+@-webkit-keyframes care {
+    50% {
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+@keyframes care {
+    50% {
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+.animate-care {
+    -webkit-animation: care 1s 1;
+    animation: care 1s 1;
+}
+
+		.trs {
+			-webkit-transition: all 0.3s;
+			transition: all 0.3s;
+		}
+		.trs-1 {
+			-webkit-transition: all 1s;
+			transition: all 1s;
+		}
+		.trs-07 {
+			-webkit-transition: all 0.7s;
+			transition: all 0.7s;
+		}
+		.trs-05 {
+			-webkit-transition: all 0.5s;
+			transition: all 0.5s;
+		}
+
+.loading {
+    min-height: 100px;
+    position: relative;
+    z-index: 2;
+    color: inherit;
+}
+.loading:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 5;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: inherit;
+}
+.loading:after {
+    content: "";
+    z-index: 10;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    color: var(--primary);
+    border: 2px solid currentColor;
+    -webkit-animation: spinner-center 1s infinite linear;
+    animation: spinner-center 1s infinite linear;
+    border-top-color: transparent;
+    border-radius: 100%;
+}
+.loading--top:after {
+    top: 80px;
+    -webkit-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+}
+.loader {
+    width: 40px;
+    height: 40px;
+    color: var(--primary);
+    -webkit-animation: spinner 1s infinite linear;
+    animation: spinner 1s infinite linear;
+    border: 2px solid currentColor;
+    border-top-color: transparent;
+    border-radius: 100%;
+}
+.loader--sm {
+    width: 20px;
+    height: 20px;
+}
+.loader--md {
+    width: 24px;
+    height: 24px;
+}
+
+
+------- w3.css
+.w3-spin{animation:w3-spin 2s infinite linear}@keyframes w3-spin{0%{transform:rotate(0deg)}100%{transform:rotate(359deg)}}
+.w3-animate-fading{animation:fading 10s infinite}@keyframes fading{0%{opacity:0}50%{opacity:1}100%{opacity:0}}
+.w3-animate-opacity{animation:opac 0.8s}@keyframes opac{from{opacity:0} to{opacity:1}}
+.w3-animate-top{position:relative;animation:animatetop 0.4s}@keyframes animatetop{from{top:-300px;opacity:0} to{top:0;opacity:1}}
+.w3-animate-left{position:relative;animation:animateleft 0.4s}@keyframes animateleft{from{left:-300px;opacity:0} to{left:0;opacity:1}}
+.w3-animate-right{position:relative;animation:animateright 0.4s}@keyframes animateright{from{right:-300px;opacity:0} to{right:0;opacity:1}}
+.w3-animate-bottom{position:relative;animation:animatebottom 0.4s}@keyframes animatebottom{from{bottom:-300px;opacity:0} to{bottom:0;opacity:1}}
+.w3-animate-zoom {animation:animatezoom 0.6s}@keyframes animatezoom{from{transform:scale(0)} to{transform:scale(1)}}
+.w3-animate-input{transition:width 0.4s ease-in-out}.w3-animate-input:focus{width:100%!important}
+
+*/

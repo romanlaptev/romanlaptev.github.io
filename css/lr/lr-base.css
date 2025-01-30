@@ -1,8 +1,9 @@
-/* last editing:29-01-2025 */
+/* last editing:30-01-2025 */
 
 @import url('lr-colors.css');
 @import url('lr-buttons.css');
 @import url('lr-media.css');
+@import url('lr-animations.css');
 
 html {
 	/* calc padding within div -*/
@@ -692,180 +693,6 @@ https://webref.ru/css/value/drop-shadow
 	padding: 5px 5px;
 }
 
-/*--------------------- LOAD --------------*/
-/* http://dbmast.ru/adaptivnoe-modalnoe-okno-strogo-po-centru */
-#modal-wait-window.dm-overlay {
-position: fixed;
-top: 0;
-left: 0;
-background: rgba(0, 0, 0, 0.65);
-display: none;
-overflow: auto;
-width: 100%;
-height: 100%;
-z-index: 1000;
-}
-
-#modal-wait-window  .dm-table {
-display: table;
-width: 100%;
-height: 100%;
-}
-
-#modal-wait-window  .dm-cell {
-display: table-cell;
-padding: 0 1em;
-vertical-align: middle;
-text-align: center;
-}
-
-#modal-wait-window  .dm-modal {
-display: inline-block;
-max-width: 50em;
-width: 15em;
-background-color: #b0c4de;
-color: #000;
-border-radius: 10px;
-padding: 10px 20px;
-z-index: 1042;
--webkit-box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
--moz-box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
-box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
-text-align: center;
-}
-#modal-wait-window .progress {
-	position: relative;
-	height: 20px;
-	display: block;
-	width: 100%;
-	background-color: #fff;
-	border-radius: 3px;
-	margin: .5rem 0 1rem 0;
-	overflow: hidden;
-}
-#modal-wait-window .progress .determinate {
-	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	background-color: #2196F3;	
-	-webkit-transition: width .3s linear;
-	transition: width .3s linear;
-}
-
-#modal-wait-window .loader {
-border: 1px solid #f3f3f3;
-border-top: 16px solid #3498db;
-border-radius: 50%;
-width: 80px;
-height: 80px;
-margin: auto;
-animation: spin 2s linear infinite;
-/*animation: spin 3s alternate infinite;*/
-}
-#modal-wait-window .loader2 {
-border-bottom: 16px solid #1c5a83;
-border-top: 16px solid #1c5a83;
-}
-@keyframes spin {
-0% { transform: rotate(0deg); }
-100% { transform: rotate(360deg); }
-}
-
-/*------- SPINNER animations (Bootsrap 4) -------*/
-.spinner-border {
-	display: inline-block;
-	width: 4rem;
-	height: 4rem;
-	vertical-align: -.125em;
-	/*vertical-align: text-bottom;*/
-	border: .25em solid currentColor;
-	border-right-color: transparent;
-	border-radius: 50%;
-	-webkit-animation: .75s linear infinite spinner-border;
-	animation: .75s linear infinite spinner-border;
-}
-.spinner-border-sm {
-  width: 1rem;
-  height: 1rem;
-  border-width: 0.2em;
-}
-@-webkit-keyframes spinner-border {
-  to {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-@keyframes spinner-border {
-  to {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-
-.spinner-grow {
-  display: inline-block;
-  width: 2rem;
-  height: 2rem;
-  vertical-align: text-bottom;
-  background-color: currentColor;
-  border-radius: 50%;
-  opacity: 0;
-  -webkit-animation: spinner-grow .75s linear infinite;
-  animation: spinner-grow .75s linear infinite;
-}
-.spinner-grow-sm {
-  width: 1rem;
-  height: 1rem;
-}
-@-webkit-keyframes spinner-grow {
-  0% {
-    -webkit-transform: scale(0);
-    transform: scale(0);
-  }
-  50% {
-    opacity: 1;
-  }
-}
-@keyframes spinner-grow {
-  0% {
-    -webkit-transform: scale(0);
-    transform: scale(0);
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-.anim-blink::after {
-	content: "";
-	display: block;
-	height: 200%;
-	width: 20px;
-	background-color: rgba(255, 255, 255, .6);
-	box-shadow: 0 0 15px #fff;
-	position: absolute;
-	top: -50%;
-	left: 0;
-	transform: rotate(-45deg) translate(-500px, -500px);
-	-webkit-animation: animBlink 3s linear infinite;
-	animation: animBlink 3s linear infinite;
-}
-.anim-blink {
-	position: relative;
-	overflow: hidden;
-}
-
-@-webkit-keyframes animBlink {
-  50% {transform: rotate(-45deg) translate(320px, 320px)}
-  100% {transform: rotate(-45deg) translate(500px, 500px)}
-}
-
-@keyframes animBlink {
-  50% {transform: rotate(-45deg) translate(320px, 320px)}
-  100% {transform: rotate(-45deg) translate(500px, 500px)}
-}
-
 
 /* LIST */
 .lr-list > li {padding-left:5px;margin-left:15px;}
@@ -1107,9 +934,13 @@ padding: 10px;
 		/*-ms-flex-align: center !important;*/
 		align-items: center;
 	}
-	.lr-flex-cells-top,.lr-flex-top{align-items:start;}
-	.lr-flex-cells-bottom,.lr-flex-bottom{align-items:end;}
+	.lr-flex-cells-top,.lr-flex-top,.d-flex-top{align-items:start;}
+	.lr-flex-cells-bottom,.lr-flex-bottom,.d-flex-bottom{align-items:end;}
 	.lr-flex-cells-expand{align-items: stretch;}
+	
+	.lr-flex-cell-top,.lr-flex-self-top{align-self:start;}
+	.lr-flex-cell-middle,.lr-flex-self-middle{align-self:center;}
+	.lr-flex-cell-bottom,.lr-flex-self-bottom{align-self:end;}
 	
 	.lr-flex-1{flex:1;}
 	.lr-flex-auto{flex: auto;}
@@ -1129,7 +960,9 @@ padding: 10px;
 	.lr-flex-fb100,.d-flex-fb100{flex-basis: 100%;}
 	.lr-flex-fb50,.d-flex-fb50{flex-basis: 50%;}
 	.lr-flex-fb25,.d-flex-fb25{flex-basis: 25%;}
-	
+
+	.lr-flex-grow > *,.d-flex-grow > * {flex-grow: 1;}
+
 	.lr-flex-2col,.d-flex-2col {display: flex;flex-wrap: wrap;}
 	.lr-flex-2col > *,.d-flex-2col > * {flex-grow: 1;flex-shrink: 1;flex-basis: 50%;}
 	
@@ -1491,6 +1324,18 @@ body.page-green {
 	background-color: #ff8c00;
 }
 
+/*==== TRANSFORM ===*/
+/*https://doka.guide/css/transform-function/*/
+.lr-translate-left{transform:translateX(0);}
+.lr-translate-center-x{transform:translateX(50%);}
+.lr-translate-right{transform:translateX(100%);}
+
+.lr-translate-top{transform:translateY(0);}
+.lr-translate-middle{transform:translateY(50%);}
+.lr-translate-bottom{transform:translateY(100%);}
+
+.lr-translate-center{transform:translate(50%,50%);}
+
 /*==== LAYERS ===*/
 .pos-rel, .pos-relative{position: relative;}
 .pos-rel-center {
@@ -1564,13 +1409,14 @@ body.page-green {
 	position: absolute;
 	left: 50%;
 	top: 50%;
-/*	
 	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
-*/
+/*	
 	-webkit-transform: translateX(-50%);
 	transform: translateX(-50%);
+*/
 }
+
 .pos-abs-center-x {
 	position: absolute;
 	left: 50%;
@@ -1776,43 +1622,62 @@ body.page-green {
 .lr-opacity-1{	opacity:1;}
 
 /* FONTS */
-.fz9{font-size:9px;}.lh9{line-height:9px;}
+.lh9px{line-height:9px;}
+.lh16px{line-height:16px;}
+.lh20px{line-height:20px;}
+.lh24px{line-height:24px;}
+.lh26px{line-height:26px;}
+.lh28px{line-height:28px;}
+.lh30px{line-height:30px;}
+.lh32px{line-height:32px;}
+.lh36px{line-height:36px;}
+.lh40px{line-height:40px;}
+.lh48px{line-height:38px;}
+.lh64px{line-height:64px;}
+.lh96px{line-height:96px;}
+.lh100px{line-height:100px;}
+
+.lh100{line-height:100%;}
+.lh120{line-height:120%;}
+.lh150{line-height:150%;}
+
+.fz9{font-size:9px;}
 .fz10{font-size:10px;}
 .fz11{font-size:11px;}
 .fz12{font-size:12px;}
 .fz14{font-size:14px;}
-.fz16{font-size:16px;}.lh16{line-height:16px;}
+.fz16{font-size:16px;}
 .fz17{font-size:17px;}
 .fz18{font-size:18px;}
 .fz19{font-size:19px;}
-.fz20{font-size:20px;}.lh20{line-height:20px;}
+.fz20{font-size:20px;}
 .fz21{font-size:21px;}
 .fz22{font-size:22px;}
-.fz24{font-size:24px;}.lh24{line-height:24px;}
-.fz26{font-size:26px;}.lh26{line-height:26px;}
-.fz28{font-size:28px;}.lh28{line-height:28px;}
-.fz30{font-size:30px;}.lh30{line-height:30px;}
-.fz32{font-size:32px;}.lh32{line-height:32px;}
-.fz36{font-size:36px;}.lh36{line-height:36px;}
+.fz24{font-size:24px;}
+.fz26{font-size:26px;}
+.fz28{font-size:28px;}
+.fz30{font-size:30px;}
+.fz32{font-size:32px;}
+.fz36{font-size:36px;}
 
 .fz36-adaptive{font-size: calc(24px + 1 * (100vw / 1920));}
 
-.fz40{font-size: 40px;line-height:40px;}
-.fz42{font-size: 42px;line-height:42px;}
-.fz45{font-size: 45px;line-height:45px;}
+.fz40{font-size: 40px;}
+.fz42{font-size: 42px;}
+.fz45{font-size: 45px;}
 
-.fz48 {font-size: 48px;line-height:48px;}
+.fz48 {font-size: 48px;}
 .fz48-adaptive {font-size: calc(24px + 16 * (100vw / 1920));}
 
-.fz52 {font-size:52px;line-height:52px;}
+.fz52 {font-size:52px;}
 
 .fz64 {font-size: 64px;line-height:64px;}
 .fz64-adaptive {font-size: calc(24px + 25 * (100vw / 1920));}
 
-.fz96{font-size:96px;line-height:96px;}
-.fz128{font-size:128px;line-height:128px;}
-.fz160{font-size:160px;line-height:160px;}
-.fz190{font-size:190px;line-height:190px;}
+.fz96{font-size:96px;}
+.fz128{font-size:128px;}
+.fz160{font-size:160px;}
+.fz190{font-size:190px;}
 
 
 .fz-0d8em{font-size:0.8em}
