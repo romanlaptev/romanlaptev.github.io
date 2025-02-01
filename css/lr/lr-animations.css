@@ -1,3 +1,5 @@
+/* last editing:31-01-2025 */
+
 /*------- SPINNER animations (Bootsrap 4) -------*/
 .spinner-border {
 	display: inline-block;
@@ -93,6 +95,134 @@
 }
 
 
+
+/* TRANSFORM */
+/*https://doka.guide/css/transform-function/*/
+.lr-translate-left{transform:translateX(0);}
+.lr-translate-center-x{transform:translateX(50%);}
+.lr-translate-right{transform:translateX(100%);}
+
+.lr-translate-top{transform:translateY(0);}
+.lr-translate-middle{transform:translateY(50%);}
+.lr-translate-bottom{transform:translateY(100%);}
+
+.lr-translate-center{transform:translate(50%,50%);}
+
+.lr-rotate-3,.rotate-3{transform:rotate(-3deg);}
+.lr-rotate3,.rotate3{transform:rotate(3deg);}
+.lr-rotate-5,.rotate-5{transform:rotate(-5deg);}
+.lr-rotate5,.rotate5{transform:rotate(5deg);}
+.lr-rotate-10,.rotate-10{transform:rotate(-10deg);}
+.lr-rotate10,.rotate10{transform:rotate(10deg);}
+.lr-rotate-15,.rotate-15{transform:rotate(-15deg);}
+.lr-rotate15,.rotate15{transform:rotate(15deg);}
+.lr-rotate-20,.rotate-20{transform:rotate(-20deg);}
+.lr-rotate20,.rotate20{transform:rotate(20deg);}
+.lr-rotate-25,.rotate-25{transform:rotate(-25deg);}
+.lr-rotate25,.rotate25{transform:rotate(25deg);}
+.lr-rotate-30,.rotate-30{transform:rotate(-30deg);}
+.lr-rotate30,.rotate30{transform:rotate(30deg);}
+.lr-rotate-35,.rotate-35{transform:rotate(-35deg);}
+.lr-rotate35,.rotate35{transform:rotate(35deg);}
+.lr-rotate-40,.rotate-40{transform:rotate(-40deg);}
+.lr-rotate40,.rotate40{transform:rotate(40deg);}
+.lr-rotate45,.rotate45 {
+    -moz-transform:rotate(45deg);
+    -ms-transform:rotate(45deg); 
+    -webkit-transform:rotate(45deg);
+    -o-transform:rotate(45deg); 
+    transform:rotate(45deg);
+}
+.lr-rotate-45,.rotate-45 {
+    -moz-transform:rotate(-45deg);
+    -ms-transform:rotate(-45deg); 
+    -webkit-transform:rotate(-45deg);
+    -o-transform:rotate(-45deg); 
+    transform:rotate(-45deg);
+}
+.lr-rotate90,.rotate90 {
+    -moz-transform:rotate(90deg);
+    -ms-transform:rotate(90deg); 
+    -webkit-transform:rotate(90deg);
+    -o-transform:rotate(90deg); 
+    transform:rotate(90deg);
+}
+.lr-rotate-90,.rotate-90 {
+    -moz-transform:rotate(-90deg);
+    -ms-transform:rotate(-90deg); 
+    -webkit-transform:rotate(-90deg);
+    -o-transform:rotate(-90deg); 
+    transform:rotate(-90deg);
+}
+.lr-rotate180,.rotate180 {transform:rotate(180deg);}
+.lr-rotate-180,.rotate-180 {transform:rotate(-180deg);}
+.lr-rotate270,.rotate270 {transform:rotate(270deg);}
+.lr-rotate-270,.rotate-270 {transform:rotate(-270deg);}
+
+
+.lr-slide-right{
+  transform: translateX(-150%);
+  animation: an-slide-right 3s forwards;
+}
+@keyframes an-slide-right {
+  0% {transform: translateX(-150%);}
+  100% {transform: translateY(0);}
+}
+
+.lr-slide-down {
+  transform: translateY(-100%);
+  animation: an-slide-down 2s forwards;
+}
+@keyframes an-slide-down {
+  0% {transform: translateY(-100%);}
+  100% {transform: translateY(0);}
+}
+
+.lr-slide-down2 {
+	/*transform: translateY(-5%);*/
+	animation: an-slide-down2 5s forwards;
+}
+@keyframes an-slide-down2 {
+  0% {transform: translateY(-15%);}
+  15% {transform: translateY(0);}
+}
+
+/* POPUP TILE */
+.lr-tile, .lr-popup {
+/*	margin: 5px;*/
+/*	padding: 5px;*/
+	/*border: 1px solid #EDEDEC;*/
+	/*background-color: inherit;*/
+	/*background-position: center;*/
+	transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-ms-transition: all 0.5s ease;
+	-webkit-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+}
+.lr-tile:hover,.lr-popup:hover,.lr-hover-scale:hover{
+  transform: scale(1.1);
+	-moz-transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	-o-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=1.5, M12=0, M21=0, M22=1.5, SizingMethod='auto expand')";
+	filter: progid:DXImageTransform.Microsoft.Matrix(M11=1.5, M12=0, M21=0, M22=1.5, SizingMethod='auto expand');
+}
+.lr-hover-scale-1d5:hover{
+	transform: scale(1.5);-moz-transform: scale(1.5);-webkit-transform: scale(1.5);-o-transform: scale(1.5);-ms-transform: scale(1.5);
+}
+.lr-hover-scale-2:hover{
+	transform: scale(2);-moz-transform: scale(2);-webkit-transform: scale(2);-o-transform: scale(2);-ms-transform: scale(2);
+}
+
+.lr-transition{-webkit-transition: all 0.3s;transition: all 0.3s;}
+.lr-transition-1{-webkit-transition: all 1s;transition: all 1s;}
+.lr-transition-07{-webkit-transition: all 0.7s;transition: all 0.7s;}
+.lr-transition-05{-webkit-transition: all 0.5s;transition: all 0.5s;}
+
+
+
 /*--------------------- LOAD --------------*/
 /* http://dbmast.ru/adaptivnoe-modalnoe-okno-strogo-po-centru */
 #modal-wait-window.dm-overlay {
@@ -169,9 +299,21 @@ border-bottom: 16px solid #1c5a83;
 border-top: 16px solid #1c5a83;
 }
 @keyframes spin {
-0% { transform: rotate(0deg); }
-100% { transform: rotate(360deg); }
+	0%{transform:rotate(0deg);}
+	100%{transform:rotate(360deg);}
 }
+
+/* w3.css */
+.w3-spin{animation:w3-spin 2s infinite linear}@keyframes w3-spin{0%{transform:rotate(0deg)}100%{transform:rotate(359deg)}}
+.w3-animate-fading{animation:fading 10s infinite}@keyframes fading{0%{opacity:0}50%{opacity:1}100%{opacity:0}}
+.w3-animate-opacity{animation:opac 10s}@keyframes opac{from{opacity:0} to{opacity:1}}
+.w3-animate-top{position:relative;animation:animatetop 3s}@keyframes animatetop{from{top:-300px;opacity:0} to{top:0;opacity:1}}
+.w3-animate-left{position:relative;animation:animateleft 3s}@keyframes animateleft{from{left:-300px;opacity:0} to{left:0;opacity:1}}
+.w3-animate-right{position:relative;animation:animateright 3s}@keyframes animateright{from{right:-300px;opacity:0} to{right:0;opacity:1}}
+.w3-animate-bottom{position:relative;animation:animatebottom 3s}@keyframes animatebottom{from{bottom:-300px;opacity:0} to{bottom:0;opacity:1}}
+.w3-animate-zoom {animation:animatezoom 3s}@keyframes animatezoom{from{transform:scale(0)} to{transform:scale(1)}}
+.w3-animate-input{transition:width 3s ease-in-out}.w3-animate-input:focus{width:100%!important}
+
 
 /* UNSORT
 @-webkit-keyframes spinner {
@@ -305,17 +447,137 @@ border-top: 16px solid #1c5a83;
     width: 24px;
     height: 24px;
 }
+*/
+
+/*
+	progressive-image.js 
+	v1.5.0,
+ 6 June 2020
+	https://github.com/craigbuckler/progressive-image.js
+.progressive{
+display:block;
+overflow:hidden;
+outline:none}
+.progressive img{
+display:block;
+width:100%;
+max-width:none;
+height:auto;
+border:0}
+.progressive img.preview{
+filter:blur(5px);
+}
+.progressive img.reveal{
+position:absolute;
+left:0;
+top:0;
+animation:progressiveReveal 1s ease-out}
+@keyframes progressiveReveal{
+0%{
+opacity:0}
+to{
+opacity:1}
+}
+*/
 
 
-------- w3.css
-.w3-spin{animation:w3-spin 2s infinite linear}@keyframes w3-spin{0%{transform:rotate(0deg)}100%{transform:rotate(359deg)}}
-.w3-animate-fading{animation:fading 10s infinite}@keyframes fading{0%{opacity:0}50%{opacity:1}100%{opacity:0}}
-.w3-animate-opacity{animation:opac 0.8s}@keyframes opac{from{opacity:0} to{opacity:1}}
-.w3-animate-top{position:relative;animation:animatetop 0.4s}@keyframes animatetop{from{top:-300px;opacity:0} to{top:0;opacity:1}}
-.w3-animate-left{position:relative;animation:animateleft 0.4s}@keyframes animateleft{from{left:-300px;opacity:0} to{left:0;opacity:1}}
-.w3-animate-right{position:relative;animation:animateright 0.4s}@keyframes animateright{from{right:-300px;opacity:0} to{right:0;opacity:1}}
-.w3-animate-bottom{position:relative;animation:animatebottom 0.4s}@keyframes animatebottom{from{bottom:-300px;opacity:0} to{bottom:0;opacity:1}}
-.w3-animate-zoom {animation:animatezoom 0.6s}@keyframes animatezoom{from{transform:scale(0)} to{transform:scale(1)}}
-.w3-animate-input{transition:width 0.4s ease-in-out}.w3-animate-input:focus{width:100%!important}
+/*
+	Анимация с кругами при наведении
+	====================
+[anim="ripple"]{
+	position:relative;
+	overflow:hidden
+}
+
+[anim="ripple"]:before{
+	content:'';
+	position:absolute;
+	display:block;
+	background:var(--ripple-background, white);
+	border-radius:50%;
+	pointer-events:none;
+	top:calc(var(--y) * 1px);
+	left:calc(var(--x) * 1px);
+	width:calc(var(--d) * 1px);
+	height:calc(var(--d) * 1px);
+	opacity:calc( var(--o,1) * var(--ripple-opacity,0.3) );
+	-webkit-transition:calc( var(--t,0) * var(--ripple-duration, 600ms) ) var(--ripple-easing, linear);
+	transition:calc(var(--t, 0) * var(--ripple-duration, 600ms)) var(--ripple-easing,linear);
+	-webkit-transform: translate(-50%,-50%) scale(var(--s,1) );
+	transform:translate(-50%,-50%) scale(var(--s,1) );
+	-webkit-transform-origin:center;
+	transform-origin:center
+	
+}
+*/
+
+/*
+	magnify (эффект линзы)
+	https://thdoan.github.io/magnify/
+	====================
+html.magnifying > body{
+overflow-x:hidden!important}
+.magnify,
+.magnify > .magnify-lens,
+.magnify-mobile,
+.lens-mobile{
+min-width:0;
+min-height:0;
+animation:none;
+border:none;
+float:none;
+margin:0;
+opacity:1;
+outline:none;
+overflow:visible;
+padding:0;
+text-indent:0;
+transform:none;
+transition:none}
+.magnify{
+position:relative;
+width:auto;
+height:auto;
+box-shadow:none;
+display:inline-block;
+z-index:inherit}
+.magnify > .magnify-lens{
+position:absolute;
+width:300px;
+height:300px;
+border-radius:100%;
+box-shadow:0 0 0 7px rgba(255,
+255,
+255,
+0.85),
+0 0 30px rgba(0,
+0,
+0,
+0.25),
+inset 0 0 20px -10px rgba(0,
+0,
+0,
+0.15);
+cursor:none;
+display:none;
+z-index:99}
+.magnify > .magnify-lens.loading{
+background:#333!important;
+opacity:.8}
+
+.magnify > .magnify-lens.loading:after{
+position:absolute;
+top:50%;
+left:0;
+width:100%;
+color:#fff;
+content:'Loading...';
+font:italic normal 16px/1 Calibri,sans-serif;
+letter-spacing:1px;
+margin-top:-8px;
+text-align:center;
+text-shadow:0 0 2px rgba(51,51,51,0.8);
+text-transform:none
+}
 
 */

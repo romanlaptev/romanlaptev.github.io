@@ -1,0 +1,187 @@
+/* last editing:01-02-2025 */
+/* FONTS */
+.lr-text-underline,.text-underline,.ut{text-decoration:underline;}
+.lr-underline-none,.text-underline-none,.ut-none,.ut-0{text-decoration:none;}
+.lr-text-bold,.text-bold{font-weight:bold;}
+
+.text-lower, .text-lowercase, .lr-text-lowercase{text-transform: lowercase;}
+.text-upper, .text-uppercase, .lr-text-uppercase{text-transform: uppercase;}
+.lr-text-capitalize{text-transform: capitalize;}
+
+.lh9px{line-height:9px;}
+.lh16px{line-height:16px;}
+.lh20px{line-height:20px;}
+.lh24px{line-height:24px;}
+.lh26px{line-height:26px;}
+.lh28px{line-height:28px;}
+.lh30px{line-height:30px;}
+.lh32px{line-height:32px;}
+.lh36px{line-height:36px;}
+.lh40px{line-height:40px;}
+.lh48px{line-height:38px;}
+.lh64px{line-height:64px;}
+.lh96px{line-height:96px;}
+.lh100px{line-height:100px;}
+
+.lh100{line-height:100%;}
+.lh120{line-height:120%;}
+.lh150{line-height:150%;}
+
+.fz9{font-size:9px;}
+.fz10{font-size:10px;}
+.fz11{font-size:11px;}
+.fz12{font-size:12px;}
+.fz14{font-size:14px;}
+.fz16{font-size:16px;}
+.fz17{font-size:17px;}
+.fz18{font-size:18px;}
+.fz19{font-size:19px;}
+.fz20{font-size:20px;}
+.fz21{font-size:21px;}
+.fz22{font-size:22px;}
+.fz24{font-size:24px;}
+.fz26{font-size:26px;}
+.fz28{font-size:28px;}
+.fz30{font-size:30px;}
+.fz32{font-size:32px;}
+.fz36{font-size:36px;}
+
+.fz36-adaptive{font-size: calc(24px + 1 * (100vw / 1920));}
+
+.fz40{font-size: 40px;}
+.fz42{font-size: 42px;}
+.fz45{font-size: 45px;}
+
+.fz48 {font-size: 48px;}
+.fz48-adaptive {font-size: calc(24px + 16 * (100vw / 1920));}
+
+.fz52 {font-size:52px;}
+
+.fz64 {font-size: 64px;line-height:64px;}
+.fz64-adaptive {font-size: calc(24px + 25 * (100vw / 1920));}
+
+.fz96{font-size:96px;}
+.fz128{font-size:128px;}
+.fz160{font-size:160px;}
+.fz190{font-size:190px;}
+
+
+.fz-0d8em{font-size:0.8em}
+.fz-1d5em{font-size:1.5em}
+.fz-1d8em{font-size:1.8em}
+.fz-2em{font-size:2em}
+
+.fz-0d5rem{font-size:0.5rem}
+.fz-0d8rem{font-size:0.8rem}
+.fz-1d125rem{font-size:1.125rem}
+.fz-1d25rem{font-size:1.25rem}
+.fz-1d4rem{font-size:1.4rem}
+.fz-1d5rem{font-size:1.5rem}
+.fz-1d8rem{font-size:1.8rem}
+.fz-2rem{font-size:2rem}
+
+.fz-2vw,.fz2vw{font-size:2vw}
+.fz-2vh,.fz2vh{font-size:2vh}
+
+/* Weight modifier
+=================== */
+.lr-fw-300{font-weight:300;}
+.lr-fw-400{font-weight:400;}
+.lr-fw-500{font-weight:500;}
+.lr-fw-600{font-weight:600;}
+.lr-fw-700{font-weight:700;}
+.lr-fw-800{font-weight:800;}
+.lr-fw-900{font-weight:900;}
+.lr-font-bold{font-weight:bold;}
+.lr-font-italic{font-style:italic;}
+.lr-text-small{font-size:80%;}
+
+/* ====== custom font families ======== */
+.lr-font-arial{font-family:'Arial';}
+.lr-font-amatic{font-family:'Amatic SC';}
+.lr-font-anton{font-family:'Anton';}
+.lr-font-barlow{font-family:'Barlow';}
+.lr-font-basic{font-family:'Basic';}
+.lr-font-bebas{font-family:'Bebas Neue';}
+.lr-font-bitstream{font-family:'Bitstream Charter';}
+.lr-font-caudex{font-family:'Caudex';}
+.lr-font-chelsea{font-family:'Chelsea Market';}
+.lr-font-cinzel{font-family:'Cinzel';}
+.lr-font-cookie{font-family:'Cookie';}
+.lr-font-corben{font-family:'Corben';}
+.lr-font-garamond-c{font-family:'Cormorant Garamond';}
+.lr-font-cormorant-sc{font-family:'Cormorant SC';}
+.lr-font-comfortaa{font-family:'Comfortaa';}
+
+.lr-font-damion{font-family:'Damion';}
+.lr-font-dancing{font-family:'Dancing Script';}
+.lr-font-garamond-e{font-family:'EB Garamond'}
+.lr-font-enriqueta{font-family:'Enriqueta'}
+.lr-font-forum{font-family:'Forum'}
+.lr-font-fredericka{font-family:'Fredericka the Great';}
+.lr-font-hind{font-family:'Hind';}
+
+.lr-font-georgia{font-family:'Georgia';}
+
+.lr-font-helvetica{font-family:"Helvetica Neue", Helvetica;}
+.lr-font-jockey{font-family:'Jockey One'}
+.lr-font-josefin{font-family:'Josefin Slab'}
+.lr-font-jura{font-family:'Jura'}
+.lr-font-kelly{font-family:'Kelly Slab'}
+
+.lr-font-inter{font-family:'Inter'}
+
+.lr-font-lato{font-family:'Lato'}
+
+.lr-font-libre-b{font-family:'Libre Baskerville'}
+.lr-font-libre-f{font-family:'Libre Franklin'}
+
+.lr-font-lobster{font-family:'Lobster'}
+.lr-font-marck{font-family:'Marck Script'}
+.lr-font-monoton{font-family:'Monoton'}
+.lr-font-montserrat{font-family:'Montserrat';}
+.lr-font-mfcandy{font-family:'Mf Candy';}
+.lr-font-haviland{font-family:'Mr De Haviland'}
+.lr-font-niconne{font-family:'Niconne'}
+.lr-font-noticia{font-family:'Noticia Text';}
+
+.lr-font-nimbus{font-family:'Nimbus Sans L';}
+
+.lr-font-opensans-cond{font-family:'Open Sans Condensed';}
+.lr-font-opensans{font-family:'Open Sans';}
+
+.lr-font-oswald{font-family:'Oswald';}
+.lr-font-overlock{font-family:'Overlock';}
+
+.lr-font-pacifico{font-family:'Pacifico';}
+
+.lr-font-patrick{font-family:'Patrick Hand';}
+.lr-font-play{font-family:'Play';}
+.lr-font-playfair{font-family:'Playfair Display';}
+.lr-font-poppins{font-family:'Poppins';}
+.lr-font-play{font-family:'Play';}
+.lr-font-pt-sans{font-family:'PT Sans';}
+
+.lr-font-questrial{font-family:'Questrial';}
+.lr-font-raleway{font-family:'Raleway';}
+.lr-font-rochester{font-family:'Rochester';}
+.lr-font-roboto{font-family:'Roboto';}
+.lr-font-rozha{font-family:'Rozha One';}
+.lr-font-sacramento{font-family:'Sacramento';}
+.lr-font-sail{font-family:'Sail';}
+.lr-font-sarina{font-family:'Sarina';}
+.lr-font-sans-serif{font-family:sans-serif;}
+.lr-font-signika{font-family:'Signika';}
+.lr-font-spinnaker{font-family:'Spinnaker';}
+.lr-font-suez{font-family:'Suez One';}
+
+.lr-font-tahoma{font-family:Tahoma;}
+
+.lr-font-unica{font-family:'Unica One';}
+.lr-font-work-sans{font-family:'Work Sans';}
+.lr-font-google-sans{font-family:'Google Sans Text';}
+.lr-font-ubuntu{font-family:'Ubuntu';}
+.lr-font-yeseva{font-family:'Yeseva One';}
+.lr-font-kurale{font-family:'Kurale';}
+
+.font-dashicons,.lr-font-dashicons{font-family:dashicons;}

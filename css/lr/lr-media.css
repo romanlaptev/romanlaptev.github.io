@@ -1,25 +1,10 @@
-/* last editing:26-01-2025 */
+/* last editing:01-02-2025 */
 
 /*====== MEDIA styles =======
 https://bootstrap-5.ru/docs/5.2/layout/breakpoints/#core-concepts
 https://getuikit.com/v2/docs/core.html
 */
 
-/* bootstrap3 */
-/*
-@media (max-width: 767px) {
-  .hidden-xs {    display: none !important;  }
-}
-@media (min-width: 768px) and (max-width: 991px) {
- .hidden-sm {    display: none !important;  }
-}
-@media (min-width: 992px) and (max-width: 1199px) {
-  .hidden-md {    display: none !important;  }
-}
-@media (min-width: 1200px) {
-  .hidden-lg {    display: none !important;  }
-}
-*/
 @media (min-width: 1400px){
 	.lr-hide-xxl{display: none !important;}
 	.d-none-xxl{display:none}
@@ -513,3 +498,47 @@ https://getuikit.com/v2/docs/core.html
 	
 	.m60-360{margin:60px;}.mt60-360{margin-top:60px;}.mb60-360{margin-bottom:60px;}.mr60-360{margin-right:60px;}.ml60-360{margin-left:60px;}
 }
+
+/*
+Ширины экрана
+-- xs	320-499		Смартфоны
+-- sm	500-767		Фаблеты
+-- md	768-1023	Планшеты
+-- ml	1024-1152	Нетбуки
+-- lg	1153-1399	Ноутбуки
+-- xl	1400		Декстопы
+
+@media (min-width:1400px) {}
+
+@media (min-width:1153px) and (max-width:1399px) {}
+@media (min-width: 1153px) {}
+
+@media (min-width:1024px) and (max-width:1152px) {}
+@media (min-width: 1024px) {}
+
+@media (min-width:769px) and (max-width:1023px) {}
+@media (min-width: 769px) {}
+
+@media (min-width:500px) and (max-width:768px) {}
+@media (min-width: 500px) {}
+
+@media (max-width:499px) {}
+
+@media (min-width: 320px) {}
+*/
+
+/* bootstrap3 */
+/*
+@media (max-width: 767px) {
+  .hidden-xs {    display: none !important;  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+ .hidden-sm {    display: none !important;  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .hidden-md {    display: none !important;  }
+}
+@media (min-width: 1200px) {
+  .hidden-lg {    display: none !important;  }
+}
+*/
