@@ -1,4 +1,4 @@
-/* last editing:01-02-2025 */
+/* last editing:02-02-2025 */
 /* FONTS */
 .lr-text-underline,.text-underline,.ut{text-decoration:underline;}
 .lr-underline-none,.text-underline-none,.ut-none,.ut-0{text-decoration:none;}
@@ -185,3 +185,53 @@
 .lr-font-kurale{font-family:'Kurale';}
 
 .font-dashicons,.lr-font-dashicons{font-family:dashicons;}
+
+
+
+.golos-text-400 {/* Regular 400 */
+  font-family: "Golos Text", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.golos-text-500 {/*  Medium 500  */
+  font-family: "Golos Text", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+.golos-text-600 {/* SemiBold 600 */
+  font-family: "Golos Text", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+.golos-text-700 {/* Bold 700 */
+  font-family: "Golos Text", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+.golos-text-800 {/* ExtraBold 800 */
+  font-family: "Golos Text", serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
+.golos-text-900 {/* Black 900 */
+  font-family: "Golos Text", serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.merriweather-regular {
+  font-family: "Merriweather", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.merriweather-bold {
+  font-family: "Merriweather", serif;
+  font-weight: 700;
+  font-style: normal;
+}
