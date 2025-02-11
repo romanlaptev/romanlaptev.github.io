@@ -2648,3 +2648,36 @@ console.log(e.type, e);
 			}//end _clickHandler()
 		}//end _defineEvents()
 */			
+
+/*
+var timeStart, timerEnd;
+timeStart = new Date();
+
+.....
+
+document.addEventListener("readystatechange", function(e){
+//console.log("document.onreadystatechange:", e.type);
+console.log("document.readyState:", document.readyState);
+
+
+  	if (document.readyState === "complete") {
+		var timeEnd = new Date();
+		var runtime = (timeEnd.getTime() - timeStart.getTime());
+		var logMsg = "DOMContentLoaded, page loaded,  runtime: " + runtime + " ms, "+ (runtime / 1000)+" sec";
+func.logAlert( logMsg, "info");
+console.log(logMsg);
+
+		//---------- add log on page mobile device
+		if ('ontouchstart' in window) {
+			supportTouch = true;
+			if( window.location.hash === "#runtime" ){
+				var newDiv = document.createElement("div");
+				newDiv.innerHTML = logMsg;
+				document.body.append(newDiv);
+			}
+		}
+
+  	}//end document.readyState === "complete"
+},false);//end readystatechange callback
+
+*/

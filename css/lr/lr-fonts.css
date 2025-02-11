@@ -1,4 +1,4 @@
-/* last editing:02-02-2025 */
+/* last editing:11-02-2025 */
 /* FONTS */
 .lr-text-underline,.text-underline,.ut{text-decoration:underline;}
 .lr-underline-none,.text-underline-none,.ut-none,.ut-0{text-decoration:none;}
@@ -73,6 +73,7 @@
 
 .fz-0d5rem{font-size:0.5rem}
 .fz-0d8rem{font-size:0.8rem}
+.fz-1d05rem{font-size:1.05rem}.fz-1d1rem{font-size:1.1rem}.fz-1d115rem{font-size:1.115rem}
 .fz-1d125rem{font-size:1.125rem}
 .fz-1d25rem{font-size:1.25rem}
 .fz-1d4rem{font-size:1.4rem}
@@ -182,7 +183,7 @@
 .lr-font-google-sans{font-family:'Google Sans Text';}
 .lr-font-ubuntu{font-family:'Ubuntu';}
 .lr-font-yeseva{font-family:'Yeseva One';}
-.lr-font-kurale{font-family:'Kurale';}
+.lr-font-kurale{font-family:'Kurale',sans-serif;}
 
 .font-dashicons,.lr-font-dashicons{font-family:dashicons;}
 
