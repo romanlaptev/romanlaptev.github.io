@@ -1,4 +1,4 @@
-/* last editing:09-02-20205 */
+/* last editing: 16-02-20205 */
 :root {
 	--color-grey-31:#313131;
 	--color-grey-53:#595653;
@@ -520,9 +520,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-pale-rose-c5{background-color:#d3c5be;}
 .bg-pale-rose1{background-color:#D3C5BE;}/*comp-books.css*/
 .bg-grey-d5{background-color:#D5D5D5;}
-.bg-grey-6D{background-color:#6D6D6D;}
-.color-grey-6D{color:#6D6D6D;}
-.lr-border-grey-6D{border-color:#6D6D6D;}
+.bg-grey-6D{background-color:#6D6D6D;}.color-grey-6D{color:#6D6D6D;}.lr-border-grey-6D,.lr-border-grey-6D > li{border-color:#6D6D6D;}
 .bg-grey1{background-color:#404050;}/*comp-books.css*/
 .bg-grey2{background-color:#5E789C;}/*comp-books.css*/
 .bg-grey3{background-color:#2C3F66;}
@@ -652,7 +650,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-blue-700{background-color:#0064bd;}
 .bg-blue-800{background-color:#0054a3;}
 .bg-blue-900{background-color:#004487;}
-.bg-color-blue{background-color:#0000ff;}.lr-border-blue{border-color:#0000ff;}.lr-border-blueli{border-color:#0000ff;}
+.bg-color-blue{background-color:#0000ff;}.lr-border-blue{border-color:#0000ff;}.lr-border-blue li{border-color:#0000ff;}
 .bg-blue089{background-color:#003089;}
 .bg-prussian-blue{background-color:#003153;}.color-prussian-blue{color:#003153;}.lr-border-prussian-blue{border-color:#003153;}
 .bg-prussian-blue2{background-color:#003B70;}.color-prussian-blue2{color:#003B70;}

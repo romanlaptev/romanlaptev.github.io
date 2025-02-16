@@ -1,4 +1,4 @@
-/* last editing:05-02-2025 */
+/* last editing: 16-02-2025 */
 
 @import url('lr-colors.css');
 @import url('lr-buttons.css');
@@ -649,7 +649,10 @@ https://webref.ru/css/value/drop-shadow
 	/*word-break: break-all;*/
 }
 .lr-list-disclosure > li{list-style: disclosure-closed;}
-.lr-list-border > li {border: 1px solid;}
+.lr-list-border > li {
+	border-width:1px;
+	border-style:solid;
+}
 .lr-list-striped > li:nth-of-type(2n+1){background-color: #dee4ef;}
 .lr-list-striped > li{padding: 10px 10px;}
 
@@ -809,24 +812,11 @@ outline: none;
 }
 
 #log{
-	height: 200px;
+	/*height: 200px;*/
 	overflow-y: auto;	
 }
-
-/*	
-#btn-clear-log {
-	position: fixed;
-	top: 0;
-	right: 0;
-	z-index: 1000;
-}
-*/	
-#log .alert {
-margin-bottom: 0;
-padding: 10px;
-}
+#log .alert {margin-bottom: 0;padding: 10px;}
 #log p{margin: 0;}
-
 
 /* ====== TEST SUPPORT ===== */
 .test-support, .test-support-flex, .test-support-grid {
