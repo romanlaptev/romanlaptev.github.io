@@ -8,7 +8,6 @@
 	<base href="https://glacier-lightning-catshark.glitch.me/" />
 	<base target="_blank" />
 -->
-	
 	<link rel="icon" href="favicon.ico" />
 	<title>Web programming info</title>
 	<link rel="stylesheet" href="https://romanlaptev.github.io/css/lr/lr-base.css" />
@@ -27,7 +26,7 @@ code {
   /*color: var(--bs-code-color);*/
 }
 code > pre {
-  margin:5px;padding:5px;
+  margin:5px;padding:5px;border:1px solid #000;
   /*background-color: var(--bs-gray-100);*/
 }
 pre{font-size:1rem}
@@ -61,9 +60,9 @@ window.addEventListener("scroll", function() {
 
 <a id="top"></a>        
 <div class="lr-container">
-	<div class="pt5 pr20 pb5 pl20 mt5 mr5 pos-fixed-right-top pos-static-sm bg-brown-c2">
-		<a class="" href="#top">top</a>
-		<ul class="p0 m5-children lr-list-unstyled lr-list-inline-sm lr-nav lr-nav-blue _darkBg lr-list-border lr-border-black lr-text-center">
+	<div class="pt5 pr20 pb5 pl20 mt5 mr5 pos-fixed-right-top pos-static-sm bg-slategray-af">
+		<a class="color-gold" href="#top">top</a>
+		<ul class="p5 m5-children lr-list-unstyled lr-list-inline-sm lr-nav lr-nav-blue _darkBg lr-list-border lr-border-black lr-text-center bg-white">
 			<li><a href="#panel-bookmarks">Bookmarks</a></li>
 			<li><a href="#panel-html">HTML</a></li>
 			<li><a href="#panel-php">PHP info</a></li>
@@ -80,6 +79,7 @@ window.addEventListener("scroll", function() {
 	<div class="lr-flex lr-flex-between">
 		<h3 class="m0 fz-2rem color-white">Web programming info</h3>
 	</div>
+<!--
 <style>
 	#toggle:checked + div {display:none;}	
 </style>
@@ -106,27 +106,24 @@ jsfiddle.net</a>
 		<a class="" target="_blank" href="https://glacier-lightning-catshark.glitch.me/">glacier-lightning-catshark.glitch.me</a>
 	</li></ul>
 </li>
-<!--
-<li class="lr-border-box lr-border-round-small lr-border-silver m5 p10 z-depth-3">
-	<a target="_blank" href="https://dashboard.heroku.com/apps/">heroku.com</a>
-</li>
--->
+
 <li class="lr-border-box lr-border-round-small lr-border-grey m5 p10 z-depth-3">
 	<a target="_blank" href="https://plnkr.co/users/romanlaptev/plunks">romanlaptev/plunks</a>
 </li>
 			</ul>
 		</div>
 		</div>
-</div><!-- end container -->
-<a id="panel-bookmarks"></a>
-<section>			
-	<div class="lr-container w80 mt20 bg-grey-green lr-border-round">
+</div>
+-->
+<!-- end container -->
+<section id="panel-bookmarks">
+	<div class="p20 mt20 bg-grey-green lr-border-round">
 		<div class="lr-flex lr-flex-between lr-flex-top">
 			<h3 class="m0 p0">Bookmarks</h3>
 		</div>	
 
 <div class="lr-flex lr-flex-wrap">
-	<div class="lr-border-box p10 bg-lightgreen-bcd color-white bookmarks">
+	<div class="lr-border-box p10 bg-lightgreen-bcd color-black bookmarks">
 		<pre>
 https://developer.mozilla.org/ru/docs/Web/Performance/Lazy_loading
 		</pre>
@@ -160,6 +157,7 @@ LoftBlog
 
 https://rutube.ru/channel/31044970/videos/
 Loftschool
+		</pre>
 	</div>	
 
 	<div class="lr-border-box p10 bg-darkslateblue color-white bookmarks-php">
@@ -193,9 +191,10 @@ https://misha.agency/blog
 	</div>
 	<!-- end #panel-bookmarks -->
 </section>			
+</section>
 
 <a id="panel-js"></a>
-<div class="lr-container mt20 bg-light-purple lr-border-round">
+<div class="p20 mt20 bg-light-purple lr-border-round">
 	<div class="lr-flex lr-flex-between lr-flex-top">
 		<a class="d-none d-block-sm" href="#top">top</a>
 		<h3 class="m0 p0">JS code</h3>
@@ -2202,8 +2201,7 @@ http://localhost/projects/sources.git/test_code/js/test_date.html
 	</section>			
 </div><!-- end container -->
 
-<a id="panel-php"></a>
-<div class="lr-container mt20 bg-lavender-ccf lr-border-round">
+<div id="panel-php" class="p10 mt20 bg-lavender-ccf lr-border-round">
 	<div class="lr-flex lr-flex-between lr-flex-top">
 		<a class="d-none d-block-sm" href="#top">top</a>
 		<h3 class="m0 p0">PHP info</h3>
@@ -5491,8 +5489,7 @@ echo "&lt;/pre&gt;";
 </div>
 <!-- end #panel-php -->
 
-<a id="panel-CMS"></a>
-<div class="lr-container mt20 bg-grey-green lr-border-round">
+<div id="panel-CMS" class="p10 mt20 bg-grey-green lr-border-round">
 	<div class="lr-flex lr-flex-between lr-flex-top">
 		<a class="d-none d-block-sm" href="#top">top</a>
 		<h3 class="m0 p0">CMS info</h3>
@@ -5506,12 +5503,53 @@ echo "&lt;/pre&gt;";
 <pre>		
 </pre>		
 <a id="section-CMS-Wp"></a>
-	<section>
-		<h2>Wordpress</h2>
-		<div class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap d-block-sm">
+	<section><h2>Wordpress</h2>
+		<div class="m-d5rem p-d5rem bg-magnolia _lr-flex _lr-flex-wrap d-block-sm">
+
+			<div class="_bg-vanilla p10">
+<details open><summary class="p20 bg-lightsteelblue">Bookmarks</summary>
+<!--
+<ul class="bg-white lr-nav lr-list-inline p20 m0 m5-children lr-list-border">
+	<li class="w30 p10 bg-blizzard">
+		<a href="#" target="_blank">....</a>
+	</li>
+</ul>
+-->
+<pre class="bg-pre p10 fz-1d1rem">
+
+https://wp-kama.ru/id_71/fayl-shablona-functionsphp-v-wordpress.html
+
+https://wp-kama.ru/hook/after_setup_theme
+
+https://developer.wordpress.org/themes/basics/theme-functions/
+
+https://wp-kama.ru/hook/template_include
+
+https://wp-kama.ru/handbook/codex/shortcodes
+https://misha.agency/wordpress/shortcodes.html
+
+https://wp-kama.ru/function/wp_login_form
+
+========================== CATEGORY API
+https://wp-kama.ru/function/wp_list_categories
+
+========================== Menu
+	https://wp-kama.ru/id_140/polzovatelskoe-menyu-v-wp-30-wp_nav_menu.html
+	https://wp-kama.ru/function/register_nav_menus
+	https://wp-kama.ru/function/wp_nav_menu
+	https://misha.blog/wordpress/wp_nav_menu.html
+	https://wp-kama.ru/function/wp_page_menu
+	https://codex.wordpress.org/Navigation_Menus
+
+//==================== ACF
+https://wp-kama.ru/plugin/acf/hook
+	
+</pre>
+</details>
+			</div>
 
 			<div class="bg-lavender p10 wp-config">
-				<h3>WP, config</h3>
+<details><summary class="p20 bg-lightblue">WP, config</summary>
 				<code><pre>
 //wp-config.php, rewrite DB site path variables
 
@@ -5528,6 +5566,7 @@ define( 'WP_DEBUG', true );
 define( 'WP_DEBUG_DISPLAY', false );
 define( 'WP_DEBUG_LOG', true );
 				</pre></code>
+</details>
 			</div>
 			<div class="bg-yellow-pre p10">
 				<h3>WP templates</h3>
@@ -6528,10 +6567,6 @@ function theme_name_scripts()
 }
 				</pre></code>
 			</div>
-			<div class="bg-vanilla p10">
-				<code><pre>
-				</pre></code>
-			</div>
 			<div class="bg-whitesmoke2 p10">
 				<code><pre>
 				</pre></code>
@@ -6548,9 +6583,7 @@ function theme_name_scripts()
 	</section>			
 <!-- end #section-CMS-Wp -->
 
-<a id="section-CMS-Joomla"></a>
-	<section>
-		<h2>Joomla</h2>
+	<section id="section-CMS-Joomla"><h2>Joomla</h2>
 		<div class="lr-border-box p10 bg-orange color-black bookmark-cms">
 			<pre>
 https://api.joomla.org/cms-3/classes/Joomla.Input.Input.html
@@ -6559,7 +6592,7 @@ https://api.joomla.org/cms-3/classes/Joomla.CMS.Document.Document.html
 		</div>	
 		<div class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap d-block-sm">
 			<div class="bg-yellow-pre p10">
-				<h3>Joomla: connect DB</h3>
+<details><summary class="p20 lr-btn-orange-m">Joomla API: connect DB</summary>
 				<code><pre>
 define( '_VALID_MOS', 1 );
 
@@ -6569,16 +6602,14 @@ require_once( '../../includes/joomla.php' );
 $query = "SELECT * FROM #__menu";
 $database->setQuery( $query );
 $rows = $database->loadObjectList();
-foreach ( $rows as $row ) 
-{
-echo "<pre>";
-print_r($row);
-echo "</pre>";
+foreach ( $rows as $row ){
+	print_r($row);
 }
 				</pre></code>
+</details>
 			</div>
 			<div class="bg-beige p10">
-				<h3>db query</h3>
+<details><summary class="p20 bg-gradient-brown rounded">Joomla API: db query</summary>
 				<code><pre>
 $item_jcfields = array();
 $itemID = $this-&gt;item-&gt;id;
@@ -6599,9 +6630,10 @@ $res = $db-&gt;loadObjectList();
 //print_r($res);
 //echo "&lt;/pre&gt;";
 				</pre></code>
+</details>
 			</div>
 			<div class="bg-lavender p10">
-				<h3>Set page url</h3>
+<details><summary class="p20 bg-gradient-info rounded">Joomla API: Document setTitle</summary>
 				<code><pre>
 $doc = JFactory::getDocument();
 echo "TEST3:&lt;pre&gt;";
@@ -6611,122 +6643,387 @@ echo "&lt;/pre&gt;";
 
 $doc-&gt;setTitle("99999999900000000");
 				</pre></code>
+</details>
 			</div>
 			<div class="bg-seashell p10">
-				<h3>get page id</h3>
+<details><summary class="p20 bg-gradient-green3 rounded">get page id</summary>
 				<code><pre>
 $jinput = JFactory::getApplication()-&gt;input;
 $foo = $jinput-&gt;get('id');
 echo $foo;
 				</pre></code>
+</details>
 			</div>
-			<div class="bg-light-orange4 p10">
-				<h3></h3>
-				<code><pre>
-				</pre></code>
+			<div class="bg-white p10">
+<details><summary class="p20 bg-gradient-primary rounded">name</summary>
+	<code><pre>
+	</pre></code>
+</details>
 			</div>
-			<div class="bg--bronze-lighter p10">
-				<h3></h3>
-				<code><pre>
-				</pre></code>
+			<div class="bg-white p10">
+<details><summary class="p20 bg-gradient-primary rounded">name</summary>
+	<code><pre>
+	</pre></code>
+</details>
 			</div>
 			<div class="bg-bs-gray-200 p10">
-				<h3></h3>
-				<code><pre>
-				</pre></code>
+<details><summary class="p20 lr-btn-orange-m rounded">name</summary>
+	<code><pre>
+	</pre></code>
+</details>
 			</div>
 			<div class="bg-CERULEAN p10">
-				<code><pre>
-				</pre></code>
+<details><summary class="p20 color-white bg-gradient-cyan rounded">name</summary>
+	<code><pre>
+	</pre></code>
+</details>
 			</div>
 			<div class="bg-BROWN p10">
-				<code><pre>
-				</pre></code>
+<details><summary class="p20 bg-gradient-cyan2 rounded">name</summary>
+	<code><pre>
+	</pre></code>
+</details>
 			</div>
 			<div class="bg-almond p10">
-				<code><pre>
-				</pre></code>
+<details><summary class="p20 lr-btn-orange-m">name</summary>
+	<code><pre>
+	</pre></code>
+</details>
 			</div>
 			<div class="bg-azure p10">
-				<code><pre>
-				</pre></code>
+<details><summary class="p20 lr-btn-orange-m">name</summary>
+	<code><pre>
+	</pre></code>
+</details>
 			</div>
 			
 			<div class="bg-yellow-pre p10">
-				<code><pre>
-				</pre></code>
+<details><summary class="p20 lr-btn-orange-m">name</summary>
+	<code><pre>
+	</pre></code>
+</details>
 			</div>
 			<div class="bg-lightblue-grey p10">
-				<code><pre>
-				</pre></code>
+<details><summary class="p20 lr-btn-orange-m">name</summary>
+	<code><pre>
+	</pre></code>
+</details>
 			</div>
 			<div class="bg-powderblue-light p10">
-				<code><pre>
-				</pre></code>
+<details><summary class="p20 lr-btn-orange-m">name</summary>
+	<code><pre>
+	</pre></code>
+</details>
 			</div>
 			<div class="bg-green-d8 p10">
-				<code><pre>
-				</pre></code>
+<details><summary class="p20 lr-btn-orange-m">name</summary>
+	<code><pre>
+	</pre></code>
+</details>
 			</div>
 			<div class="bg-lavenderblush p10">
-				<code><pre>
-				</pre></code>
+<details><summary class="p20 lr-btn-orange-m">name</summary>
+	<code><pre>
+	</pre></code>
+</details>
 			</div>
 			<div class="bg-green-cfd p10">
-				<code><pre>
-				</pre></code>
+<details><summary class="p20 lr-btn-orange-m">name</summary>
+	<code><pre>
+	</pre></code>
+</details>
 			</div>
 			<div class="bg-green-de3 p10">
-				<code><pre>
-				</pre></code>
+<details><summary class="p20 lr-btn-orange-m">name</summary>
+	<code><pre>
+	</pre></code>
+</details>
 			</div>
 			<div class="bg-bs-gray-100 p10">
-				<code><pre>
-				</pre></code>
+<details><summary class="p20 lr-btn-orange-m">name</summary>
+	<code><pre>
+	</pre></code>
+</details>
 			</div>
 			<div class="bg-yellow-050 p10">
-				<code><pre>
-				</pre></code>
+<details><summary class="p20 lr-btn-orange-m">name</summary>
+	<code><pre>
+	</pre></code>
+</details>
 			</div>
 			<div class="bg-antiquewhite p10">
-				<code><pre>
-				</pre></code>
+<details><summary class="p20 lr-btn-orange-m">name</summary>
+	<code><pre>
+	</pre></code>
+</details>
 			</div>
 			<div class="bg-brown-c3 p10">
-				<code><pre>
-				</pre></code>
+<details><summary class="p20 lr-btn-orange-m">name</summary>
+	<code><pre>
+	</pre></code>
+</details>
 			</div>
 			<div class="bg-brown-c2 p10">
-				<code><pre>
-				</pre></code>
+<details><summary class="p20 lr-btn-orange-m">name</summary>
+	<code><pre>
+	</pre></code>
+</details>
 			</div>
 			<div class="bg-almond p10">
-				<code><pre>
-				</pre></code>
+<details><summary class="p20 lr-btn-orange-m">name</summary>
+	<code><pre>
+	</pre></code>
+</details>
 			</div>
 			<div class="bg-vanilla p10">
-				<code><pre>
-				</pre></code>
+<details><summary class="p20 lr-btn-orange-m">name</summary>
+	<code><pre>
+	</pre></code>
+</details>
 			</div>
 			<div class="bg-whitesmoke2 p10">
-				<code><pre>
-				</pre></code>
+<details><summary class="p20 lr-btn-orange-m">name</summary>
+	<code><pre>
+	</pre></code>
+</details>
 			</div>
 			<div class="bg-rosy-af p10">
-				<code><pre>
-				</pre></code>
+<details><summary class="p20 lr-btn-orange-m">name</summary>
+	<code><pre>
+	</pre></code>
+</details>
 			</div>
 			<div class="bg-greentea p10">
-				<code><pre>
-				</pre></code>
+<details><summary class="p20 lr-btn-orange-m">name</summary>
+	<code><pre>
+	</pre></code>
+</details>
 			</div>
 		</div>
 	</section>			
 <!-- end #section-CMS-Joomla -->
 
 <a id="section-CMS-Bitrix"></a>
-	<section>
-		<h2>Bitrix</h2>
+	<section><h2>Bitrix</h2>
+	
+		<div class="panel m5">
+			<div class="panel-body color-black _pt10">
+<details><summary class="p20 bg-gradient-lightgrey2">PROGRAM, API</summary>
+<ul class="bg-white lr-nav lr-list-inline p20 m0 m5-children lr-list-border">
+	<li class="w30 p10 bg-blizzard">
+		<a href="https://dev.1c-bitrix.ru/" target="_blank">1С-Битрикс Разработчикам</a>
+	</li>
+	<li class="w30 p10 bg-cyan2">
+		<a href="https://dev.1c-bitrix.ru/api_help/" target="_blank">API_HELP, Bitrix Framework - Основные сведения</a>
+	</li>
+	<li class="w30 p10 bg-cyan2">
+		<a href="https://bxapi.ru/" target="_blank">Поиск по исходникам Битрикс</a>
+	</li>
+	<li class="w30 p10 bg-lavender-ccf">
+		<a href="https://www.dev.1c-bitrix.ru/api_help/main/general/magic_vars.php" target="_blank">Специальные переменные</a>
+	</li>
+	<li class="w30 p10 bg-paleblue">
+		<a href="https://dev.1c-bitrix.ru/api_help/main/general/constants.php" target="_blank">Специальные константы</a>
+	</li>
+</ul>
+<pre class="bg-pre p10 fz-1d1rem">
+https://dev.1c-bitrix.ru/api_help/iblock/classes/ciblock/getlist.php
+список информационных блоков по фильтру
+
+https://dev.1c-bitrix.ru/api_help/main/reference/cdbresult/index.php
+Класс CDBResult
+
+https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=43&LESSON_ID=2305
+Простой пример создания компонента
+
+https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=101&LESSON_ID=2902&LESSON_PATH=8781.4793.2902
+Пример создания модуля 
+
+https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=101&CHAPTER_ID=1014
+Создание собственных модулей
+
+https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=101&CHAPTER_ID=04793
+Создание собственных модулей
+
+https://dev.1c-bitrix.ru/community/webdev/user/124877/blog/10969/
+Написание модуля на D7+ORM
+
+https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=43&LESSON_ID=2823
+Структура файлов
+
+http://dev.1c-bitrix.ru/support/forum/forum6/topic22252/
+1С-Битрикс Разработчикам - Вывод имени пользователя по ID
+</pre>
+</details>
+			</div>
+		</div>
+		<!-- end panel -->
+
+		<div class="panel m5">
+			<div class="panel-body color-black _pt10">
+<details open><summary class="p20 bg-gradient-lightgrey2">main</summary>
+<pre class="bg-pre p10 fz-1d1rem">----------------INSTALL
+http://www.1c-bitrix.ru/download/
+1С-Битрикс - Скачать
+
+---------------- UI, JS
+https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=101&LESSON_ID=2456&LESSON_PATH=8781.4793.2456
+Подсказки пользователям
+
+-------------- VIDEO LESSONS
+https://rutube.ru/channel/23487950/
+Документация 1С-Битрикс на RUTUBE
+</pre>
+</details>
+			</div>
+		</div>
+		<!-- end panel -->
+
+		<div class="panel m5">
+			<div class="panel-body color-black _pt10">
+<details><summary class="p10 bg-blue-200 color-black">CONFIG</summary>
+<pre class="bg-pre p10 fz-1d1rem">
+https://hmarketing.ru/blog/bitrix/fayly-dbconn-i-settings/
+Файлы dbconn.php и .settings.php в Bitrix
+
+https://dzen.ru/video/watch/673d9931abc4395f7ba17560
+Bitrix: сброс и смена пароля администратора | Beget | Дзен
+
+https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=35&amp;LESSON_ID=2161
+Как восстановить доступ администратора на сайт
+
+https://dev.1c-bitrix.ru/learning/course/?COURSE_ID=35&amp;LESSON_ID=2164
+Очистка файлов кеша
+
+https://training.bitrix24.com/support/training/course/?COURSE_ID=68&amp;LESSON_ID=5962
+Core Parameter Setup
+
+https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=43&amp;LESSON_ID=2795
+Настройка параметров ядра
+</pre>
+</details>
+
+<details><summary class="p10 bg-blue-200 color-black">VM</summary>
+<pre class="bg-pre p10 fz-1d1rem">
+https://www.1c-bitrix.ru/download/vmbitrix.php
+1C-Битрикс: Виртуальная машина (VMBitrix)
+
+https://repos.1c-bitrix.ru/vm/
+repos.1c-bitrix.ru/vm
+
+http://dev.1c-bitrix.ru/support/forum/forum32/topic63320/
+VirtualBox виртуальная машина с Bitrix24, где найти логин и пароль
+
+https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=32&amp;CHAPTER_ID=029228&amp;LESSON_PATH=3903.4862.29228
+Виртуальная машина BitrixVM v9.x
+
+https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=37&amp;CHAPTER_ID=06488
+Виртуальная машина BitrixVM v5.x (архив)
+</pre>
+</details>
+
+<details><summary class="p10 bg-blue-200 color-black">CONTENT</summary>
+<pre class="bg-pre p10 fz-1d1rem">
+https://dev.1c-bitrix.ru/learning/course/?COURSE_ID=34&amp;LESSON_ID=1911
+Создание новых страниц и разделов
+
+<!--https://dev.1c-bitrix.ru/net_user_help/content/iblock/components/catalog/catalogue_section_tree.php
+Каталог::Структура разделов-->
+
+https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=42&amp;LESSON_ID=5210&amp;LESSON_PATH=3912.5201.5208.5210
+Создание типов инфоблоков
+
+https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=34&amp;CHAPTER_ID=02011&amp;LESSON_PATH=3905.4477.2011
+Создание и настройка информационного блока
+Урок 154 из 380
+
+https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=43&amp;LESSON_ID=2831&amp;LESSON_PATH=3913.2704.3494.2831
+Работа с инфоблоками штатными средствами 
+
+https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=43&amp;LESSON_ID=2723&amp;LESSON_PATH=3913.3516.4797.2723
+Инфоблоки 2.0 
+
+https://ut11-web.ru/learning-eshop-on-1c-bitrix/lesson-5-infoblock-bitrix/
+Урок 5. Инфоблоки битрикс (структура и создание)
+
+
+http://dev.1c-bitrix.ru/user_help/content/iblock/components_2/news/news_list.php
+Список новостей
+
+https://dev.1c-bitrix.ru/support/forum/forum6/topic36151/
+Организация отзывов на сайте
+
+https://skosta.ru/bitrix/reviews/
+Создание отзывов на Битрикс
+
+https://naedine.net/vopros/
+
+https://dev.1c-bitrix.ru/community/forums/forum6/topic114775/
+
+https://dev.1c-bitrix.ru/support/forum/forum23/topic25252/
+1С-Битрикс Разработчикам - Ошибка в типе содержимого
+</pre>
+</details>
+
+<details><summary class="p10 bg-blue-200 color-black">Templates</summary>
+<pre class="bg-pre p10 fz-1d1rem">
+https://dev.1c-bitrix.ru/api_help/main/general/template.php
+Сайт и шаблон сайта
+
+https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=43&amp;LESSON_ID=2820
+Что такое Шаблон сайта
+
+https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=34&amp;LESSON_ID=1994
+Как работать с шаблонами сайта
+
+https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=35&amp;LESSON_ID=1979
+Шаблоны дизайна
+
+https://dev.1c-bitrix.ru/user_help/settings/settings/sites/template_admin.php
+Шаблоны сайта
+
+https://dev.1c-bitrix.ru/learning/course/?COURSE_ID=35&amp;LESSON_ID=1905
+Редактирование шаблона сайта
+
+https://dev.1c-bitrix.ru/learning/course/?COURSE_ID=43&amp;LESSON_ID=3473
+Шаблоны меню
+
+http://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=43&amp;CHAPTER_ID=999
+Кастомизация шаблона
+
+https://alexvaleev.ru/sozdaem-shablon-bitrix/
+Создаем шаблон битрикс — быстрый старт
+</pre>
+</details>
+
+<details><summary class="p10 bg-blue-200 color-black">MAIL</summary>
+<pre class="bg-pre p10 fz-1d1rem">
+https://bedrosova.blogspot.com/2020/05/bizmailru.html
+Настройка почты через biz.mail.ru в БитриксВМ
+
+https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=37&amp;LESSON_ID=9325
+Дополнительные настройки и отладка msmtp
+
+https://www.opennet.ru/tips/2568_msmtp_smtp_mua_mail_sendmail.shtml
+The OpenNET Project: Настройка msmtp для отправки уведомлений администратору по E-Mail
+
+https://dev.1c-bitrix.ru/learning/course/?COURSE_ID=37&amp;LESSON_ID=6537
+Настройка почтового сервера (Change e-mail settings on site)
+
+https://forwww.com/bitrix-mail-after-element-add/
+1С-Битрикс — уведомление на почту после добавления элемента в инфоблок
+
+https://dw24.su/lib/base/internet_magazin_deluxe/otpravka_pisem/
+esli_ne_rabotaet_otpravka_pisem/
+
+https://thisis-blog.ru/problema-s-otpravkoj-pisem-v-bitriks/
+</pre>
+</details>
+
+			</div>
+		</div>
+		<!-- end panel -->
+	
 		<div class="m-d5rem p-d5rem bg-magnolia lr-flex lr-flex-wrap d-block-sm">
 			<div class="bg-lavender p10">
 				<h3>Config</h3>
@@ -7312,8 +7609,7 @@ var_dump(get_defined_vars());
 </div>
 <!-- end #panel-CMS -->
 
-<a id="panel-css"></a>
-<div class="lr-container mt20 p20 bg-grey-green lr-border-round">
+<div id="panel-css" class="p10 mt20 p20 bg-grey-green lr-border-round">
 	<div class="lr-flex lr-flex-between lr-flex-top">
 		<a class="d-none d-block-sm" href="#top">top</a>
 		<h3 class="m0 p0">CSS info</h3>
@@ -7557,7 +7853,7 @@ loading="lazy"></iframe>
 </div>
 <!-- end #panel-css -->
 
-<div id="panel-DB" class="lr-container mt20 p20 bg-grey-green lr-border-round">
+<div id="panel-DB" class="p10 mt20 p20 bg-grey-green lr-border-round">
 	<div class="lr-flex lr-flex-between lr-flex-top">
 		<a class="d-none d-block-sm" href="#top">top</a>
 		<h3 class="m0 p0">Database info</h3>
@@ -8680,8 +8976,7 @@ content_id
 </div>
 <!-- end #panel-DB -->
 
-<a id="panel-CDN-list"></a>
-<div class="lr-container mt20 p20 bg-grey-green lr-border-round">
+<div id="panel-CDN-list" class="p10 mt20 p20 bg-grey-green lr-border-round">
 	<div class="lr-flex lr-flex-between lr-flex-top">
 		<a class="d-none d-block-sm" href="#top">top</a>
 		<h3 class="m0 p0">Content Delivery Network list</h3>
@@ -9114,8 +9409,7 @@ https://getuikit.com/v2/docs/components.html
 </div>
 <!-- end #panel-CDN-list -->
 
-<a id="panel-html"></a>
-<div class="lr-container mt20 p20 bg-grey-green lr-border-round">
+<div id="panel-html" class="p10 mt20 p20 bg-grey-green lr-border-round">
 	<div class="lr-flex lr-flex-between lr-flex-top">
 		<a class="d-none d-block-sm" href="#top">top</a>
 		<h3 class="m0 p0">HTML info</h3>

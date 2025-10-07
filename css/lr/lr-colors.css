@@ -1,4 +1,4 @@
-/* last editing: 16-02-20205 */
+/* last editing: 22-04-20205 */
 :root {
 	--color-grey-31:#313131;
 	--color-grey-53:#595653;
@@ -170,8 +170,12 @@
 .color-fuchsia{color:#ff00ff;}
 .color-gainsboro{color:#dcdcdc;}
 .color-ghostwhite{color:#f8f8ff;}
+
 .color-gold{color:#ffd700;}
-.color-gold-hover:hover{color:#ffd700 !important;}
+.color-gold-hover:hover,.color-gold-hover a:hover{color:#ffd700;}
+.link-color-gold,.link-color-gold a{color:#ffd700;}
+.link-color-gold-g,.link-color-gold-g a{color:var(--giselle-gold);}
+
 .color-goldenrod,.text-goldenrod{color:#daa520;}
 .color-gray,.text-gray{color:#808080;}
 .color-green,.text-green{color:#008000;}
@@ -256,7 +260,10 @@
 .color-tomato{color:#ff6347;}
 .color-turquoise{color:#40e0d0;}
 .color-wheat{color:#f5deb3;}
-.color-white{color:#ffffff;}.color-white-hover:hover{color:#ffffff!important;}
+
+.color-white{color:#ffffff;}
+.color-white-hover:hover,.color-white-hover a:hover{color:#ffffff;}
+
 .color-whitesmoke{color:#f5f5f5;}
 .color-yellow,.text-yellow{color:#ffff00;}
 .color-yellowgreen,.text-yellowgreen{color:#9acd32;}
@@ -304,7 +311,6 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-green-f50{background-color:#4CAF50}
 .bg-light-green-4a{background-color:#8bc34a}
 .bg-indigo-b5{background-color:#3f51b5}
-.bg-lime39{background-color:#cddc39}
 .bg-orange-ff9{background-color:#ff9800}
 .bg-deep-orange-ff5{background-color:#ff5722}
 .bg-pink-e63{background-color:#e91e63}
@@ -548,9 +554,8 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .color-gunmetal{color:#2a3439;}
 .bg-grey-c8{background-color:#333340;}
 .bg-grey-c9{background-color:#70708c;}
-.bg-purple1{background-color:#9999CC;}
-.bg-purple2{background-color:#6f42c1;}
-
+.bg-purple1,.bg-purple-cc{background-color:#9999CC;}
+.bg-purple2,.bg-purple-c1{background-color:#6f42c1;}
 .bg-dark-shade-blue{background-color:#021859;}
 .bg-aliceblue{background-color:#f0f8ff;}
 .bg-antiquewhite{background-color:#faebd7;}
@@ -699,7 +704,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-darkblue-sea{background-color:#004262;}
 .bg-medium-blue{background-color:#5f99cf;}
 .bg-facebook-blue{background-color:#3C5A99;}
-.bg-dark-blue-lib{background-color:#45557a;}
+.bg-darkblue-7a,.bg-darkblue-purple,.bg-twilight-sky{background-color:#45557a;}
 .bg-dark-blue-a{background-color:#003aaa;}
 .bg-dark-blue-v{background-color:#040053;}/*vodmir*/
 .bg-lightblue1{background-color:#0084d1;}/*Диаграмма12*/
@@ -707,7 +712,8 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-lightblue3{background-color:#6aa6c0;}/*bootstrap2primary???*/
 .bg-lightblue4{background-color:#C9E0ED;}/*video.css*/
 .bg-lightblue5{background-color:#BBD8E9;}/*video.css*/
-.bg-lightblue-v{background-color:#d2e1f9;}/*vodmir*/
+.bg-lightblue-f9,.bg-lightblue-v{background-color:#d2e1f9;}
+.bg-lightblue-e3,.bg-lavender-blue{background-color:#c4cde3;}
 .bg-steelblue{background-color:#4682b4;}
 .bg-lightsteelblue{background-color:#b0c4de;}
 .bg-steelblue1{background-color:#4682b4;}
@@ -722,7 +728,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-blue-grey-900{background-color:#315570;}/*c1*/
 .bg-blue-grey-200{background-color:#8CAAB5}
 .bg-blue-grey-100{background-color:#cfdfe6;}
-.bg-lightblue-grey{background-color:#e6e6ff;}
+.bg-lightblue-grey,.bg-lavender-6ff{background-color:#e6e6ff;}
 .bg-pale-dull-azure{background:#99CCFF;}
 .bg-hover-blue:hover{
 	color:  #99CCFF !important;
@@ -741,8 +747,10 @@ https://www.omiod.com/colors/?rgb=d0ccd5
     color: #0000ff;
 }
 .lr-nav-lightblue.darkBg > li > a:not(a:hover){color:#ffc000 !important;}
-
-.bg-lightskyblue1{background-color:#87cefa;}
+.bg-lightblue-cefa{background-color:#87cefa;}
+.bg-blue-sky2{background-color:#3465a4;}
+.bg-lightblue-f6,.bg-lightblue-sky{background-color:#d4e7f6;}
+.bg-deepskyblue{background-color:#00bfff;}
 .bg-sky-blue5{background-color:#006699;}
 .bg-sky-blue66{background-color:#003366;}
 .bg-sky-blue-a{background-color:#007dfd;}
@@ -762,9 +770,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-blue5{background-color:#000099;}
 .bg-blue8{background-color:#669999;}
 .bg-blue9{background-color:#99cccc;}
-.bg-blue-c3{background-color:#269abc;}/*c4*/
-.bg-blue-sky2{background-color:#3465a4;}
-.bg-deepskyblue{background-color:#00bfff;}
+.bg-blue-c3{background-color:#269abc;}
 .bg-dodgerblue{background-color:#1e90ff;}
 .lr-border-dodgerblue{border-color:#1e90ff;}
 .lr-border-dodgerblue li {border-color:#1e90ff;}
@@ -790,7 +796,6 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-coral{background-color:#ff7f50;}
 .bg-cornsilk{background-color:var(--color-cornsilk,#fff8dc);}
 .bg-crimson{background-color:#dc143c;}
-
 .lr-border-cyan,.lr-border-cyan li{border-color:#00ffff;}
 .bg-greencyan{background-color:#17a2b8;}
 .bg-cyan3{background-color:#159fd2;}
@@ -803,14 +808,11 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-darkmagenta{background-color:#8b008b;}
 .bg-darkolivegreen{background-color:#556b2f;}
 .bg-darkorchid{background-color:#9932cc;}
-
-.bg-darksalmon {background-color: #e9967a;}
-
-.bg-darkslateblue {background-color: #483d8b;}
-.bg-darkslateblue2 {background-color: #3d5396;}
-
-.bg-darkslategray, .bg-darkslategrey {background-color: #2f4f4f;}
-.bg-darkturquoise {background-color: #00ced1;}
+.bg-darksalmon{background-color: #e9967a;}
+.bg-darkslateblue{background-color:#483d8b;}
+.bg-darkslateblue2{background-color:#3d5396;}
+.bg-darkslategray,.bg-darkslategrey{background-color:#2f4f4f;}
+.bg-darkturquoise{background-color:#00ced1;}
 
 /* Raspberry (color) https://en.wikipedia.org/wiki/Raspberry_(color) */
 .bg-raspberry {background-color: #E30B5C;}
@@ -909,7 +911,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-greentea{background-color:#CADABA;}  /*Серо-зелёный чай, #CADABA */
 .bg-grey5050{background-color:#505050;}  /*:Мокрый асфальт,#505050 */
 .bg-grey-carbon46{background-color:#464646;}  /*:Угольный,#464646 */
-.bg-greyD53{background-color:#4D5D53;}  /*:Фельдграу,#4D5D53 */
+.bg-feldgrau,.bg-grayfield{background-color:#4D5D53;}  /*:Фельдграу, #4D5D53 */
 
 /* GREEN */
 .bg-green {background-color: #008000;}
@@ -919,46 +921,41 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 	color: #ffd700 !important;
     background-color: #008000 !important;
 }
-.lr-scrollbar-green{	scrollbar-color:  #94C356 rgba(87, 92, 85, 0.15);}
-
-.bg-greenyellow {background-color: #adff2f;}
-.bg-green-025 { background-color: #eef8f1;}
-.bg-green-050 { background-color: #dcf0e2;}
-.bg-green-100 { background-color: #cae8d4;}
-.bg-green-200 { background-color: #a6d9b7;}
-.bg-green-300 { background-color: #82ca9a;}
-.bg-green-400 { background-color: #5eba7d;}
-.bg-green-450 { background-color: #28a745;}
-.bg-green-500 { background-color: #48a868;}
-.bg-green-600 { background-color: #3d8f58;}
-.bg-green-700 { background-color: #2f6f44;}
-.bg-green-800 { background-color: #29603b;}
-.bg-green-900 { background-color: #1e472c;}
-
- .bg--green { background-color: hsl(140,40%,55%);}
- .bg--green-025 { background-color: hsl(140,42%,95%);}
- .bg--green-050 { background-color: hsl(140,40%,90%);}
- .bg--green-100 { background-color: hsl(140,40%,85%);}
- .bg--green-200 { background-color: hsl(140,40%,75%);}
- .bg--green-300 { background-color: hsl(140,40%,65%);}
- .bg--green-400 { background-color: hsl(140,40%,55%);}
- .bg--green-500 { background-color: hsl(140,40%,47%);}
- .bg--green-600 { background-color: hsl(140,40%,40%);}
- .bg--green-700 { background-color: hsl(140,41%,31%);}
- .bg--green-800 { background-color: hsl(140,40%,27%);}
- .bg--green-900 { background-color: hsl(140,40%,20%);}
- 
+.lr-scrollbar-green{scrollbar-color: #94C356 rgba(87, 92, 85, 0.15);}
+.bg-greenyellow{background-color:#adff2f;}
+.bg-green-025{background-color:#eef8f1;}
+.bg-green-050{background-color:#dcf0e2;}
+.bg-green-100{background-color:#cae8d4;}
+.bg-green-200{background-color:#a6d9b7;}
+.bg-green-300{background-color:#82ca9a;}
+.bg-green-400{background-color:#5eba7d;}
+.bg-green-450{background-color:#28a745;}
+.bg-green-500{background-color:#48a868;}
+.bg-green-600{background-color:#3d8f58;}
+.bg-green-700{background-color:#2f6f44;}
+.bg-green-800{background-color:#29603b;}
+.bg-green-900{background-color:#1e472c;}
+.bg--green{background-color:hsl(140,40%,55%);}
+.bg--green-025{background-color:hsl(140,42%,95%);}
+.bg--green-050{background-color:hsl(140,40%,90%);}
+.bg--green-100{background-color:hsl(140,40%,85%);}
+.bg--green-200{background-color:hsl(140,40%,75%);}
+.bg--green-300{background-color:hsl(140,40%,65%);}
+.bg--green-400{background-color:hsl(140,40%,55%);}
+.bg--green-500{background-color:hsl(140,40%,47%);}
+.bg--green-600{background-color:hsl(140,40%,40%);}
+.bg--green-700{background-color:hsl(140,41%,31%);}
+.bg--green-800{background-color:hsl(140,40%,27%);}
+.bg--green-900{background-color:hsl(140,40%,20%);}
 
 .bg-green1c { background-color:#ccffff;}
 .bg-blackgreen5033 { background-color:#225033;}
 .bg-blackgreen { background:#21301f;}
-
 .color-darkgreen, .text-darkgreen {color: #006400;}
 .bg-darkgreen {background-color: #006400;}
 .bg-darkgreen-1d {background-color: #0A2B1D;}
 .bg-green-goblin {background-color: #316140;}
 .bg-darkseagreen {background-color: #8fbc8f;}
-
 .bg-darkgreen-524{background-color: #0d4524;}/* gitlab header */
 .bg-darkgreen546{background-color: #094546;}/* windows7 desktop */
 .bg-darkgreen200{background-color:#003200;}/* windowsXP desktop */
@@ -991,102 +988,78 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .color-gamboge{color:#e5ad00 !important;}
 .lr-border-gamboge{border-color:#e5ad00;}
 
-.bg-green-54 { background-color:#0C9E54;}
-.bg-green-F00 { background-color:#66FF00;}  /* Ярко-зелёный, #66FF00 */
-.bg-chartreuse {background-color: #7fff00;}  /*Шартрёз, #7FFF00 */
-.bg-yellowchartreuse { background:#DFFF00;}  /*Жёлтый шартрез, #DFFF00 */
-.bg-greenyellow2 { background:#ADFF2F;}  /*Жёлто-зелёный, #ADFF2F */
-.bg-greenyellow3 { background:#BFFF00;}  /*Лайм, #BFFF00 */
-.bg-green-17 { background-color:#7BA05B;}  /* Спаржа, #7BA05B */
-.bg-green-66 { background-color:#78866B;}  /* Защитный, #78866B */
-.bg-green-ACE { background-color:#ACE1AF;}  /*Серо-зелёный, #ACE1AF */
-.bg-green-emerald { background-color:#50C878;}  /*Изумрудный, #50C878 */
-.bg-green-fern { background-color:#4F7930;}  /*:Папоротник, #4F7930 */
-.bg-green-45 { background-color:#465945;}  /*:Серая спаржа, #465945 */
-.bg-green-86 { background-color:#00A86B;}  /*Жадеитовый цвет,Желтовато-зелёный, #00A86B */
-.bg-green-40 { background-color:#40826D;}  /*:Виридиан, #40826D */
-.bg-moss-FAD { background-color:#ADDFAD;}  /*Мох, #ADDFAD */
-.bg-blackgreen214 { background-color:#21421E;}  /*:Мирт, #21421E */
-.bg-green-pear { background-color:#D1E231;}  /*Груша, #D1E231 */
-.bg-greenpine { background-color:#01796F;}  /*:Сосна,#01796F */
-.bg-green-57 { background-color:#2E8B57;}  /*:Морская зелень, #2E8B57 */
-.bg-green-spring { background-color:#00FF7F;}  /*Весенняя зелень, #00FF7F */
-.bg-green-swamp { background-color:#ACB78E;}  /*Болотная зелень, #ACB78E */
-.bg-green-tea { background-color:#D0F0C0;}  /*Зелёный чай,#D0F0C0 */
-.bg-green-tea2 { background-color:#ecfbcf;}
-.bg-forestgrren-22 { background-color:#228B22;}  /*:Лесная зелень, #228B22 */
-.bg-green-3F { background-color:#3FFF00;}  /*Harlequin, #3FFF00 */
-.bg-green-008 { background-color:#008000;}  /*:Office green, #008000 */
-.bg-green-89 { background-color:#D1E189;}  /*Lime pulp,#D1E189 */
-.bg-green-hunter { background-color:#355E3B;}  /*:Охотничий,Hunter_green, #355E3B */
-.bg-green-500 { background-color:#00A500;}  /*:Ярко-зелёный с желтоватым отливом, #00A500 */
-.bg-green-shamrock { background-color:#009E60;}  /*:Трилистник, #009E60 */
-.bg-green-islamic { background-color:#009900;}  /*:Мусульманский,Islamic_green, #009900 */
-.bg-persian-green { background:#00A693;}  /*:Персидский зелёный, #00A693 */
-/*https://cpalettes.com/color/03aea6*/
-.bg-persian-green2 { background:#03AEA6;}
-
-.bg-color-test14D5D53 { background:#4D5D53;}  /*:Фельдграу, #4D5D53 */
-
-.bg-lawngreen {background-color: #7cfc00;}
-.bg-lightseagreen {background-color: #20b2aa;}
-.bg-mediumspringgreen {background-color: #00fa9a;}
-.bg-mediumseagreen {background-color: #3cb371;}
-.bg-lime {background-color: #00ff00;}
-.bg-limegreen {background-color: #32cd32;}  /*Лаймовый, Lime_Green, #32CD32 */
-
-.bg-light-weak-yellow { background:#cccc99;}
-
-.bg-bluegreen{  background-color: #006666;}
-.bg-bluegreen2{  background-color: #336666 !important;}
-
-.bg-green-lime{/* video.css */
-  background-color: #98FB98 !important;
-}
-
-.bg-lightgreen{  background-color: #d9ead3 !important;}
-.bg-lightgreen2 {background-color: #bee4ce;}
-.bg-lightgreen3 {background-color: #90ee90;}
-.bg-light-green4 {background-color: #99e657;}
-
-.bg-palegreen2{  background-color: #99cc99 !important;}
-
-.bg-palegreen3{/*www.neberitrubku.ru/nomer-telefona/*/
-  background-color: #cfd9db !important;
-}
-.bg-palegreen-b{  background-color: #d3ead5;}
-.bg-green-grass1{  background-color: #9c9 !important;}
-.bg-green-grass2{/* gitlab button, bg */
-  background-color: #1aaa55 !important;
-}
-.bg-green-grass3{/* gitlab button, border */
-  background-color: #18a050 !important;
-}
-.bg-grey-green{  background-color: #c6d6de !important;}
-.bg-grey-green2{  background-color: #607d8b !important;}
-.bg-grey-green3{  background-color: #dae9ea !important;}
-.bg-grey-green-abba{/* book_Rods */
-  background-color: #abbabb !important;
-}
-.bg-grey-green4{
-  background-color: #e6eaec !important;
-}
-.bg-dark-greygreen { background:#324f5a; }
-.bg-grey-green5{  background-color: #BEDFE4 !important;}
-
-.bg-palegrey-green{  background-color: #f0f3f6 !important;}
-
-
-.bg-teal {background-color: #008080;}
-.lr-border-teal{border-color: #008080;}
-.lr-border-teal li {border-color: #008080;}
-.bg-hover-teal:hover,
-.lr-nav-teal > li > a:hover  {
+.bg-green-54{background-color:#0C9E54;}
+.bg-green-F00{background-color:#66FF00;}/*Ярко-зелёный,#66FF00*/
+.bg-chartreuse{background-color:#7fff00;}/*Шартрёз,#7FFF00*/
+.bg-yellowchartreuse{background-color:#DFFF00;}/*Жёлтыйшартрез,#DFFF00*/
+.bg-greenyellow2{background-color:#ADFF2F;}/*Жёлто-зелёный,#ADFF2F*/
+.bg-greenyellow3{background-color:#BFFF00;}/*Лайм,#BFFF00*/
+.bg-green-17{background-color:#7BA05B;}/*Спаржа,#7BA05B*/
+.bg-green-66{background-color:#78866B;}/*Защитный,#78866B*/
+.bg-green-ACE{background-color:#ACE1AF;}/*Серо-зелёный,#ACE1AF*/
+.bg-green-emerald{background-color:#50C878;}/*Изумрудный,#50C878*/
+.bg-green-fern{background-color:#4F7930;}/*:Папоротник,#4F7930*/
+.bg-green-45{background-color:#465945;}/*:Сераяспаржа,#465945*/
+.bg-green-86{background-color:#00A86B;}/*Жадеитовыйцвет,Желтовато-зелёный,#00A86B*/
+.bg-green-40{background-color:#40826D;}/*:Виридиан,#40826D*/
+.bg-moss-FAD{background-color:#ADDFAD;}/*Мох,#ADDFAD*/
+.bg-blackgreen214{background-color:#21421E;}/*:Мирт,#21421E*/
+.bg-green-pear{background-color:#D1E231;}/*Груша,#D1E231*/
+.bg-greenpine{background-color:#01796F;}/*:Сосна,#01796F*/
+.bg-green-57{background-color:#2E8B57;}/*:Морскаязелень,#2E8B57*/
+.bg-green-spring{background-color:#00FF7F;}/*Весенняязелень,#00FF7F*/
+.bg-green-swamp{background-color:#ACB78E;}/*Болотнаязелень,#ACB78E*/
+.bg-green-tea{background-color:#D0F0C0;}/*Зелёныйчай,#D0F0C0*/
+.bg-green-tea2{background-color:#ecfbcf;}
+.bg-green-3F{background-color:#3FFF00;}/*Harlequin,#3FFF00*/
+.bg-green-008{background-color:#008000;}/*:Officegreen,#008000*/
+.bg-green-89{background-color:#D1E189;}/*Limepulp,#D1E189*/
+.bg-green-hunter{background-color:#355E3B;}/*:Охотничий,Hunter_green,#355E3B*/
+.bg-green-500{background-color:#00A500;}/*:Ярко-зелёныйсжелтоватымотливом,#00A500*/
+.bg-green-shamrock{background-color:#009E60;}/*:Трилистник,#009E60*/
+.bg-green-islamic{background-color:#009900;}/*:Мусульманский,Islamic_green,#009900*/
+.bg-persian-green{background-color:#00A693;}/*:Персидскийзелёный,#00A693*/
+.bg-persian-green2{background-color:#03AEA6;}
+.bg-LimeGreen{background-color:#32cd32;}
+.bg-PaleGreen{background-color:#98fb98;}
+.bg-LightGreen{background-color:#90ee90;}
+.bg-MediumSpringGreen{background-color:#00fa9a;}
+.bg-MediumSeaGreen{background-color:#3cb371;}
+.bg-ForestGreen{background-color:#228b22;}
+.bg-lawngreen{background-color:#7cfc00;}
+.bg-lightseagreen{background-color:#20b2aa;}
+.bg-lime{background-color:#00ff00;}
+.bg-lime39{background-color:#cddc39}
+.bg-limegreen{background-color:#32cd32;}/*Лаймовый,Lime_Green,#32CD32*/
+.bg-light-weak-yellow{background-color:#cccc99;}
+.bg-bluegreen{background-color:#006666;}
+.bg-bluegreen2{background-color:#336666;}
+.bg-green-lime{background-color:#98FB98}
+.bg-lightgreen{background-color:#d9ead3;}
+.bg-lightgreen2{background-color:#bee4ce;}
+.bg-lightgreen3{background-color:#90ee90;}
+.bg-light-green4{background-color:#99e657;}
+.bg-palegreen2{background-color:#99cc99;}
+.bg-palegreen3{background-color:#cfd9db;}
+.bg-palegreen-b{background-color:#d3ead5;}
+.bg-green-grass1{background-color:#9c9;}
+.bg-green-grass2{background-color:#1aaa55;}
+.bg-green-grass3{background-color:#18a050;}
+.bg-grey-green{background-color:#c6d6de;}
+.bg-grey-green2{background-color:#607d8b;}
+.bg-grey-green3{background-color:#dae9ea;}
+.bg-green-abba{background-color:#abbabb;}
+.bg-grey-green4{background-color:#e6eaec;}
+.bg-dark-greygreen{background-color:#324f5a;}
+.bg-grey-green5{background-color:#BEDFE4;}
+.bg-palegrey{background-color:#f0f3f6;}
+.bg-teal{background-color:#008080;}
+.lr-border-teal{border-color:#008080;}.lr-border-teal li{border-color:#008080;}
+.bg-hover-teal:hover,.lr-nav-teal > li > a:hover  {
     background-color: #008080 !important;
     color: #fff;
 }
 .lr-nav-teal.darkBg > li > a:not(a:hover){color:#ffc000 !important;}
-
 .bg-teal2{background-color:#20c997;}
 .bg-vivid-teal{background:#00B8D9;}
 .bg-dark-teal{background-color:#003438;}
@@ -1112,7 +1085,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 	border: 1px solid transparent;
 }
 .text-hover-violet:hover,.text-hover-violet:hover a{color:  #A777B2;}
-.bg-violetred {background-color: #d02090;}
+.bg-violetred{background-color:#d02090;}
 .bg-violet-fa{background-color:#cecefa;}
 .bg-light-violet2{background-color:#e6e6ff;}
 .bg-violet-99c{background-color:#99c;}
@@ -1153,91 +1126,73 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-mediumvioletred{background-color:#c71585;}
 .bg-palevioletred{background-color:#d87093;}
 .bg-blueviolet{background-color:#8a2be2;}
-.bg-darkviolet {background-color: #9400d3;}
-.bg-deeppink {background-color: #ff1493;}
-
+.bg-darkviolet{background-color:#9400d3;}
+.bg-deeppink{background-color:#ff1493;}
 .bg-lemonchiffon{background-color:#fffacd;}
 .bg-lightblue{background-color:#add8e6;}
 .bg-lightcoral{background-color:#f08080;}
 .bg-lightcyan{background-color:#e0ffff;}
 .bg-lightgoldenrodyellow{background-color:#fafad2;}
-
-.bg-lightpink {background-color: #ffb6c1;}
-.bg-lightsalmon {background-color: #ffa07a;}
-
-.bg-lightskyblue {background-color: #87cefa;}
-.bg-lightslateblue {background-color: #8470ff;}
-.bg-lightslategray {background-color: #778899;}
-
-
+.bg-lightpink{background-color:#ffb6c1;}
+.bg-lightsalmon{background-color:#ffa07a;}
+.bg-lightslateblue{background-color:#8470ff;}
+.bg-lightslategray{background-color:#778899;}
 .bg-lightyellow{background-color:#ffffe0;}
 .bg-linen{background-color:#faf0e6;}
 .bg-magenta{background-color:#ff00ff;}
-
-.bg-mediumaquamarine {background-color: #66cdaa;}
-.bg-mediumblue {background-color: #0000cd;}
-.bg-mediumorchid {background-color: #ba55d3;}
-.bg-mediumpurple {background-color: #9370d8;}
-.bg-mediumslateblue {background-color: #7b68ee;}
-
+.bg-mediumaquamarine{background-color:#66cdaa;}
+.bg-mediumblue{background-color:#0000cd;}
+.bg-mediumorchid{background-color:#ba55d3;}
+.bg-mediumpurple{background-color:#9370d8;}
+.bg-mediumslateblue{background-color:#7b68ee;}
 .bg-mediumturquoise{background-color:#48d1cc;}
 .bg-midnightblue{background-color:#191970;}
-
-.bg-mintcream {background-color:#f5fffa;}
-.bg-honeydew {background-color:#f0fff0;}
-
+.bg-mintcream{background-color:#f5fffa;}
+.bg-honeydew{background-color:#f0fff0;}
 .bg-mistyrose{background-color:#ffe4e1;}
 .bg-moccasin{background-color:#ffe4b5;}
 .bg-navajowhite{background-color:#ffdead;}
 .bg-navy{background-color:#000080;}
 .bg-oldlace,.bg-sand-e6{background-color:#fdf5e6;}
-
-.bg-olive{background-color: #808000;}
-.bg-olivedrab,.bg-olivegray{background-color:#6b8e23;}/*:Оливково-серый, #6B8E23 */
-
+.bg-olive{background-color:#808000;}
+.bg-olivedrab,.bg-olivegray{background-color:#6b8e23;}/*:Оливково-серый,#6B8E23*/
 .bg-orchid{background-color:#da70d6;}
 .bg-palegoldenrod{background-color:#eee8aa;}
 .bg-palegreen{background-color:#98fb98;}
-
-.bg-paleturquoise{background-color:#afeeee;}
+.bg-blue-afe,.bg-paleturquoise{background-color:#afeeee;}
 .bg-papayawhip{background-color:#ffefd5;}
 .bg-peachpuff{background-color:#ffdab9;}
 .bg-peru{background-color:#cd853f;}
-
-.bg-pink {background-color: #ffc0cb;}
-.bg-pink2 {background-color: #e83e8c;}
-.bg-pink-icq {background-color: rgb(232,133,146);} /*#eb8592 */
-.bg-sweet-pink {background-color: rgb(232,146,133);} /*#EB9285 */
-
-.bg-plum {background-color: #dda0dd;}
-.bg-powderblue {background-color: #b0e0e6;}
-.bg-powderblue-light {background-color:#d1ecf1;}
-.bg-purple {background-color: #800080;}
-.bg-rebeccapurple{background-color: #639;}
-
-
-.bg-powder-050 { background-color: #f4f8fb;}
-.bg-powder-100 { background-color: #e1ecf4;}
-.bg-powder-200 { background-color: #d1e5f1;}
-.bg-powder-300 { background-color: #b3d3ea;}
-.bg-powder-400 { background-color: #a0c7e4;}
-.bg-powder-500 { background-color: #7aa7c7;}
-.bg-powder-600 { background-color: #5b8db1;}
-.bg-powder-700 { background-color: #39739d;}
-.bg-powder-800 { background-color: #2c5777;}
-.bg-powder-900 { background-color: #1e3c52;}
-.bg--powder { background-color: hsl(205,46%,92%);}
-.bg--powder-050 { background-color: hsl(205,47%,97%);}
-.bg--powder-100 { background-color: hsl(205,46%,92%);}
-.bg--powder-200 { background-color: hsl(205,53%,88%);}
-.bg--powder-300 { background-color: hsl(205,57%,81%);}
-.bg--powder-400 { background-color: hsl(205,56%,76%);}
-.bg--powder-500 { background-color: hsl(205,41%,63%);}
-.bg--powder-600 { background-color: hsl(205,36%,53%);}
-.bg--powder-700 { background-color: hsl(205,47%,42%);}
-.bg--powder-800 { background-color: hsl(205,46%,32%);}
-.bg--powder-900 { background-color: hsl(205,46%,22%);}
-
+.bg-pink{background-color:#ffc0cb;}
+.bg-pink2{background-color:#e83e8c;}
+.bg-pink-icq{background-color:rgb(232,133,146);}/*#eb8592*/
+.bg-sweet-pink{background-color:rgb(232,146,133);}/*#EB9285*/
+.bg-plum{background-color:#dda0dd;}
+.bg-powderblue{background-color:#b0e0e6;}
+.bg-powderblue-light{background-color:#d1ecf1;}
+.bg-purple{background-color:#800080;}
+.bg-rebeccapurple,.bg-purple639{background-color:#639;}
+.bg-powder-050{background-color:#f4f8fb;}
+.bg-powder-100{background-color:#e1ecf4;}
+.bg-powder-200{background-color:#d1e5f1;}
+.bg-powder-300{background-color:#b3d3ea;}
+.bg-powder-400{background-color:#a0c7e4;}
+.bg-powder-500{background-color:#7aa7c7;}
+.bg-powder-600{background-color:#5b8db1;}
+.bg-powder-700{background-color:#39739d;}
+.bg-powder-800{background-color:#2c5777;}
+.bg-powder-900{background-color:#1e3c52;}
+.bg--powder{background-color:hsl(205,46%,92%);}
+.bg--powder-050{background-color:hsl(205,47%,97%);}
+.bg--powder-100{background-color:hsl(205,46%,92%);}
+.bg--powder-200{background-color:hsl(205,53%,88%);}
+.bg--powder-300{background-color:hsl(205,57%,81%);}
+.bg--powder-400{background-color:hsl(205,56%,76%);}
+.bg--powder-500{background-color:hsl(205,41%,63%);}
+.bg--powder-600{background-color:hsl(205,36%,53%);}
+.bg--powder-700{background-color:hsl(205,47%,42%);}
+.bg--powder-800{background-color:hsl(205,46%,32%);}
+.bg--powder-900{background-color:hsl(205,46%,22%);}
 
 /* ORANGE */
 .bg-orange {background-color: #ffa500;}
@@ -1255,46 +1210,49 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-amber { background-color: #FFC000;}
 .color-amber { color: #FFC000;}
 .bg-amber2 { background-color: #FFC600;}
-.lr-border-amber, .border-amber{border-color: #FFC000;}
-.lr-border-amber li {border-color: #FFC000;}
-.lr-nav-amber  li a:hover, .bg-hover-amber:hover {
+.lr-border-amber,.border-amber,
+.lr-border-orange,.border-orange
+{border-color: #FFC000;}
+.lr-border-amber li,.lr-border-orange li{border-color: #FFC000;}
+.lr-nav-amber li a:hover,.bg-hover-amber:hover,
+.lr-nav-orange li a:hover
+{
     background-color: #FFC000;
     color: #000000;
     background-image: none;
 }
-.lr-nav-amber.darkBg > li > a:not(a:hover){color:#ffc000 !important;}
+.lr-nav-amber.darkBg > li > a:not(a:hover),
+.lr-nav-orange.darkBg > li > a:not(a:hover){
+	color:#ffc000 !important;
+}
 
- .bg--orange { background-color:hsl(27,90%,55%);}
- .bg--orange-050 { background-color: hsl(27,100%,97%);}
- .bg--orange-100 { background-color: hsl(27,95%,90%);}
- .bg--orange-200 { background-color:hsl(27,90%,83%);}
- .bg--orange-300 { background-color:hsl(27,90%,70%);}
- .bg--orange-400 { background-color:hsl(27,90%,55%);}
- .bg--orange-500 { background-color:hsl(27,90%,50%);}
- .bg--orange-600 { background-color:hsl(27,90%,45%);}
- .bg--orange-700 { background-color:hsl(27,90%,39%);}
- .bg--orange-800 { background-color:hsl(27,87%,35%);}
- .bg--orange-900 { background-color:hsl(27,80%,30%);}
-
-
-.bg-orange-050 { background-color: #fff7f2;}
-.bg-orange-100 { background-color: #fee3cf;}
-.bg-orange-200 { background-color: #fcd0ad;}
-.bg-orange-300 { background-color: #f7aa6d;}
-.bg-orange-400 { background-color: #f48024;}
-.bg-orange-450 { background-color: #fd7e14;}
-.bg-orange-500 { background-color: #f2720c;}
-.bg-orange-600 { background-color: #da670b;}
-.bg-orange-700 { background-color: #bd5c00;}
-.bg-orange-800 { background-color: #a35200;}
-.bg-orange-900 { background-color: #874600;}
-
-.bg-light-orange {background-color: #EDD4A0;}
-.bg-light-orange2 {background-color: #EAE2D3;}
-.bg-light-orange3 {background-color: #cac2b1;}/* Thor bg */
-.bg-light-orange4 {background-color: #f2eadb;}
-.bg-light-orange-ee{ background-color: #eee5d5;}
-
+.bg--orange{background-color:hsl(27,90%,55%);}
+.bg--orange-050{background-color:hsl(27,100%,97%);}
+.bg--orange-100{background-color:hsl(27,95%,90%);}
+.bg--orange-200{background-color:hsl(27,90%,83%);}
+.bg--orange-300{background-color:hsl(27,90%,70%);}
+.bg--orange-400{background-color:hsl(27,90%,55%);}
+.bg--orange-500{background-color:hsl(27,90%,50%);}
+.bg--orange-600{background-color:hsl(27,90%,45%);}
+.bg--orange-700{background-color:hsl(27,90%,39%);}
+.bg--orange-800{background-color:hsl(27,87%,35%);}
+.bg--orange-900{background-color:hsl(27,80%,30%);}
+.bg-orange-050{background-color:#fff7f2;}
+.bg-orange-100{background-color:#fee3cf;}
+.bg-orange-200{background-color:#fcd0ad;}
+.bg-orange-300{background-color:#f7aa6d;}
+.bg-orange-400{background-color:#f48024;}
+.bg-orange-450{background-color:#fd7e14;}
+.bg-orange-500{background-color:#f2720c;}
+.bg-orange-600{background-color:#da670b;}
+.bg-orange-700{background-color:#bd5c00;}
+.bg-orange-800{background-color:#a35200;}
+.bg-orange-900{background-color:#874600;}
+.bg-light-orange{background-color:#EDD4A0;}
+.bg-light-orange2{background-color:#EAE2D3;}
+.bg-light-orange3{background-color:#cac2b1;}
+.bg-light-orange4{background-color:#f2eadb;}
+.bg-light-orange-ee{background-color:#eee5d5;}
 .bg-vivid-orange{background-color:#ffaa00;}
 .bg-vivid-orange2{background-color:#FFB515;}
 .bg-vivid-orange3{background-color:var(--color-vivid-orange3,#FFAC19);}
@@ -1427,32 +1385,27 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg--silver-darker{background-color:hsl(210,3%,61%);}
   
 .bg-skyblue{background-color:#87ceeb;}
-.bg-slateblue {background-color: #6a5acd;}
-.bg-slateblue2 {background-color: #5843C2;}
-.color-slateblue2 {color: #5843C2 !important;}
-.lr-border-slateblue2 {border-color: #5843C2;}
-
+.bg-slateblue{background-color:#6a5acd;}
+.bg-slateblue2{background-color:#5843C2;}
+.color-slateblue2{color:#5843C2;}
+.lr-border-slateblue2{border-color:#5843C2;}
 .bg-slategray{background-color:#708090;}
 .bg-slategray-af{background-color:#7195AF;}
-
-.bg-snow {background-color: #fffafa;}
-.bg-springgreen {background-color: #00ff7f;}
-.bg-tan {background-color: #d2b48c;}
-.bg-thistle {background-color: #d8bfd8;}
-.bg-turquoise {background-color: #40e0d0;}
-
-
-.bg-wheat {background-color: #f5deb3;}
-
-.bg-white {background-color: #ffffff !important;}
-.lr-border-white, .border-white{border-color: #fff !important;}
-.lr-border-white li {	border-color: #fff;}
+.bg-snow{background-color:#fffafa;}
+.bg-springgreen{background-color:#00ff7f;}
+.bg-tan{background-color:#d2b48c;}
+.bg-thistle{background-color:#d8bfd8;}
+.bg-turquoise{background-color:#40e0d0;}
+.bg-wheat{background-color:#f5deb3;}
+.bg-white{background-color:#ffffff;}
+.lr-border-white,.border-white{border-color:#fff;}
+.lr-border-white > li{border-color: #fff;}
 .bg-hover-white:hover{
 	color:  #000000;
     background-color: #fff;
     background-image: none;
 }
-.bg-white-children * { background-color: #fff; }
+.bg-white-children * {background-color:#fff;}
 
 .bg-whitesmoke {background-color: #f5f5f5;}
 .bg-whitesmoke2 {background-color: #f4f6f2;}
@@ -1541,7 +1494,6 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-orange-ff99{background-color:#ff9900;}
 .bg-darkmandarin{background-color:#ffa812;}
 .bg-brown-7722{background-color:#cc7722;}
-
 .bg-orange-0f{background-color:#e49b0f;}
 .bg-orange-ba00{background-color:#ffba00;}
 .bg-orange-430{background-color:#f4c430;}
@@ -1550,31 +1502,24 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-corn{background-color:#fbec5d;}
 .bg-lemon{background-color:#fde910;}
 .bg-yellow-d800{background-color:#ffd800;}
-
 .bg-wine{background-color:#722f37;}
 .bg-brown964{background-color:#964b00;}/*Коричневый*/
-.bg-brown3324{background-color:#8a3324;}/*Коричневый, умбра жжёная*/
+.bg-brown3324{background-color:#8a3324;}/*Коричневый,умбра жжёная*/
 .bg-brownf00{background-color:#7b3f00;}/*Коричный*/
 .bg-brown755{background-color:#755a57;}/*Красновато-коричневый*/
-
-.bg-deeporange { background:#CCA96E; }
-
-.bg-brown-c3 { background-color:#e0e0c3;}
-.bg-brown-c2 { background-color:#ead9c2;}
-.bg-brown-e2 { background-color:#f1ebe2;}
-.bg-color-test1707070 { background:#707070;}
-.bg-color-test13f3f3f { background:#3f3f3f;}
-.bg-color-test1666 { background:#666;}
-
-.bg-brown-49b { background-color:#beb49b;}
-
+.bg-deeporange{background:#CCA96E;}
+.bg-brown-c3{background-color:#e0e0c3;}
+.bg-brown-c2{background-color:#ead9c2;}
+.bg-brown-e2{background-color:#f1ebe2;}
+.bg-color-test1707070{background:#707070;}
+.bg-color-test13f3f3f{background:#3f3f3f;}
+.bg-color-test1666{background:#666;}
+.bg-brown-49b{background-color:#beb49b;}
 .bg-nugget{background-color:#BE8F1C;}
-.color-nugget{color:#BE8F1C !important;}
+.color-nugget{color:#BE8F1C;}
 .lr-border-nugget{border-color:#BE8F1C;}
-
-.bg-brown-b3 { background-color:#d8c8b3;}
-.bg-concrete { background-color:#f3f3f3;}
-
+.bg-brown-b3{background-color:#d8c8b3;}
+.bg-concrete{background-color:#f3f3f3;}
 .bg-color-ddf{background-color:#dedddf;}
 .bg-color-test1c6c3c6{background-color:#c6c3c6;}
 .bg-color-test1c6c3c6{background-color:#c6c3c6;}
@@ -1585,7 +1530,6 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-color-test1D5DBE1{background-color:#D5DBE1;}
 .bg-color-test1a7adbc{background-color:#a7adbc;}
 .bg-grey14{background-color:#45557a;}
-
 .bg-light-purple{background:#D0CCD5}/*.film_description*/
 .bg-yellowgreen{background:#D0CCA5;}/*.film_roles*/
 .bg-purple-41{background:#2E1441;}

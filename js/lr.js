@@ -1,3 +1,5 @@
+/* last editing: 03-04-2025 */
+
 /*
 use module:
 //console.log("module sharedFunc:", typeof sharedFunc, sharedFunc);
@@ -2112,10 +2114,11 @@ ONLY second LEVEL !!!!!!!!!!!!
 				"loading": 'loading' in HTMLImageElement.prototype, // IMG: image attribute loading
 				"srcset": 'srcset' in HTMLImageElement.prototype, //IMG: 'srcset'  attribute support
 				"picture" : typeof window.HTMLPictureElement === "function", //IMG: tag 'picture' support
-//https://developer.mozilla.org/ru/docs/Web/HTML/Element/template				
-				"template": 'content' in document.createElement('template')//,
-				//CanvasSupported
-				//WebGL support
+//https://developer.mozilla.org/ru/docs/Web/HTML/Element/template
+				"template": 'content' in document.createElement('template'),
+				"canvas": 'getContext' in document.createElement('canvas'),
+//https://developer.mozilla.org/ru/docs/Web/API/WebGL_API				
+				"webGL": 'WebGL2RenderingContext' in window//,
 				//SVG support
 				//classList support
 				//test media support
@@ -2667,7 +2670,7 @@ console.log("document.readyState:", document.readyState);
 func.logAlert( logMsg, "info");
 console.log(logMsg);
 
-		//---------- add log on page mobile device
+		//--- add log to the bottom of page on mobile device
 		if ('ontouchstart' in window) {
 			supportTouch = true;
 			if( window.location.hash === "#runtime" ){

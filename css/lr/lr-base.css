@@ -1,25 +1,31 @@
-/* last editing: 16-02-2025 */
+/* last editing: 23-04-2025 */
 
 @import url('lr-colors.css');
 @import url('lr-buttons.css');
-@import url('lr-media.css');
+/*@import url('lr-media.css');
+use this syntax:
+<link rel="stylesheet" type="text/css" href="css/lr/lr-base.css">
+<link rel="stylesheet" type="text/css" href="css/lr/lr-media.css"> 
+ */
 @import url('lr-animations.css');
 @import url('lr-fonts.css');
 
-html {
-	/* calc padding within div -*/
-	box-sizing:border-box;
-	
-	/* https://sky.pro/media/kak-sdelat-plavnyj-skroll-k-yakoryu/ */
-	scroll-behavior:smooth;
+*,*::before,*::after {
+	box-sizing: inherit;
+	-webkit-font-smoothing: antialiased;
+	/*-moz-osx-font-smoothing: grayscale;*/
+	word-break: break-word;
+	word-wrap: break-word;
 }
 
-*, *::before, *::after {box-sizing:inherit;}
+/* CSS Reset */
+html,body{border:none;margin:0;padding:0;}
 
-html, body{
-	height:100%;
-	margin:0;
-}
+html,body{height:100%;}
+html{box-sizing:border-box;}/* calc padding within div -*/
+
+/* https://sky.pro/media/kak-sdelat-plavnyj-skroll-k-yakoryu/ */
+html{scroll-behavior:smooth;}
 
 :root {
 	--color-link:#007bff;
@@ -57,10 +63,7 @@ body.blur {
   box-shadow:-7px 10px 0 0px #222
 }
 
-a {
-	color: var(--color-link);
-	text-decoration:none;
-}
+a{color:var(--color-link);text-decoration:none;}
 a:hover {
 	color: var(--color-link-hover);
 	text-decoration: underline;
@@ -68,7 +71,6 @@ a:hover {
 a:active, a:focus{outline: none; }
 
 .lr-link {cursor: pointer;}
-
 
 pre{overflow: auto;}
 
@@ -80,6 +82,28 @@ pre, .lr-word-wrap{
     white-space: -o-pre-wrap;
     word-wrap: break-word;
 }
+
+article,aside,details,figcaption,figure,footer,header,main,hgroup,nav,section,summary{
+  display: block;
+}
+figure{margin:0;}
+iframe{display:block;max-width:100%;}
+video{display:block;}
+svg,img,embed,object{display:block;height:auto;max-width:100%;}
+
+/*
+audio,
+canvas,
+video {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+}
+audio:not([controls]) {
+	display: none;
+}
+*/
+
 
 /* helper classes - WIDTH */
 .w1{width:1%;}
@@ -187,11 +211,10 @@ pre, .lr-word-wrap{
 .vh80{height:80vh;}.vh90{height:90vh;}.vh100{height:100vh;}
 
 .lr-container{margin:auto;width:80%;padding:1rem;}
-@media(max-width:980px){.lr-container{width: 90%;}}
-@media(max-width:600px){.lr-container{width: 99%;}}
-@media screen and (max-width:360px){
-	.lr-container{width:100%;}
-}
+@media(max-width:1280px){.lr-container{width:95%;}}
+@media(max-width:600px){.lr-container{width:99%;}}
+@media screen and (max-width:360px){.lr-container{width:100%;}}
+
 .f-container {
 	width:90%;
 	margin:auto;
@@ -744,17 +767,11 @@ table {
 	border-radius: 4px 4px 0 0;
 }
 */
-.lr-nav  li  a {
-	display: block;
-	padding: 10px 15px;
-}
+.lr-nav li a {display: block;padding: 10px 15px;border-left: 1px solid transparent;}
 /*.lr-nav  li  a:focus, .lr-nav  li  a:hover {text-decoration:none;background-color:#000}*/
-.lr-nav-visited  li  a:visited {color: #337ab7;}
-.lr-nav  li a:hover {
-    background-color: #004586;
-    color: #fff;
-}
-.lr-nav  li  a:focus  {
+.lr-nav-visited li a:visited {color:#337ab7;}
+.lr-nav li a:hover{background-color:#004586;color:#fff;}
+.lr-nav li a:focus{
     background-color: transparent;
 	/*color: #fff;*/
 	color: #337ab7;
@@ -762,6 +779,7 @@ table {
 /*outline: none;*/
 /*text-decoration:underline;*/
 }
+
 
 .lr-alert, .alert {
 	padding: 15px;
@@ -884,9 +902,22 @@ outline: none;
 	.lr-flex-column,.d-flex-column{flex-direction: column;}
 	.lr-flex-column-reverse{flex-direction: column-reverse;}
 	
-	.lr-flex-fb100,.d-flex-fb100{flex-basis: 100%;}
-	.lr-flex-fb50,.d-flex-fb50{flex-basis: 50%;}
-	.lr-flex-fb25,.d-flex-fb25{flex-basis: 25%;}
+	.lr-flex-fb100,.d-flex-fb100{flex-basis:100%;}
+	.lr-flex-fb95,.d-flex-fb95{flex-basis:95%;}
+	.lr-flex-fb90,.d-flex-fb90{flex-basis:90%;}
+	.lr-flex-fb85,.d-flex-fb75{flex-basis:85%;}
+	.lr-flex-fb80,.d-flex-fb80{flex-basis:80%;}
+	.lr-flex-fb75,.d-flex-fb75{flex-basis:75%;}
+	.lr-flex-fb70,.d-flex-fb70{flex-basis:70%;}
+	.lr-flex-fb60,.d-flex-fb60{flex-basis:60%;}
+	.lr-flex-fb50,.d-flex-fb50{flex-basis:50%;}
+	.lr-flex-fb40,.d-flex-fb40{flex-basis:40%;}
+	.lr-flex-fb30,.d-flex-fb30{flex-basis:30%;}
+	.lr-flex-fb25,.d-flex-fb25{flex-basis:25%;}
+	.lr-flex-fb20,.d-flex-fb20{flex-basis:20%;}
+	.lr-flex-fb15,.d-flex-fb15{flex-basis:15%;}
+	.lr-flex-fb10,.d-flex-fb10{flex-basis:10%;}
+	.lr-flex-fb5,.d-flex-fb5{flex-basis:5%;}
 
 	.lr-flex-grow > *,.d-flex-grow > * {flex-grow: 1;}
 
@@ -1247,7 +1278,7 @@ body.page-green {
 	background-color: #ff8c00;
 }
 
-/*==== LAYERS ===*/
+/*==== POSITIONS ===*/
 .pos-rel, .pos-relative{position: relative;}
 .pos-rel-center {
 	position: relative;
@@ -1351,34 +1382,34 @@ body.page-green {
 }
 .pos-abs-right-bottom{position:absolute;right:0;bottom:0;}
 
-.pos-fixed{position:fixed;}
-.pos-fixed-left-top{position:fixed;left: 0;top: 0;}
+.pos-fixed{position:fixed;z-index: 1000;}
+.pos-fixed-left-top{position:fixed;left: 0;top: 0;z-index: 1000;}
 .pos-fixed-center-top {
-	position: fixed;
+	position: fixed;z-index: 1000;
 	left: 50%;
 	top: 0;
 	-webkit-transform: translateX(-50%);
 	transform: translateX(-50%);
 }
-.pos-fixed-right-top{position:fixed;right:0;top:0;}
-.pos-fixed-left-center{position:fixed;left:0;top:50%;}
+.pos-fixed-right-top{position:fixed;right:0;top:0;z-index: 1000;}
+.pos-fixed-left-center{position:fixed;left:0;top:50%;z-index: 1000;}
 .pos-fixed-center{
-	position:fixed;
+	position:fixed;z-index: 1000;
 	left:50%;
 	top:50%;
 	-webkit-transform:translateX(-50%);
 	transform:translateX(-50%);
 }
-.pos-fixed-right-center{position:fixed;right:0;top:50%;}
-.pos-fixed-left-bottom{position:fixed;left:0;bottom:0;}
+.pos-fixed-right-center{position:fixed;right:0;top:50%;z-index: 1000;}
+.pos-fixed-left-bottom{position:fixed;left:0;bottom:0;z-index: 1000;}
 .pos-fixed-center-bottom{
-	position:fixed;
+	position:fixed;z-index: 1000;
 	left:50%;
 	bottom:0;
 	-webkit-transform:translateX(-50%);
 	transform:translateX(-50%);
 }
-.pos-fixed-right-bottom{position:fixed;right:0;bottom:0;}
+.pos-fixed-right-bottom{position:fixed;right:0;bottom:0;z-index: 1000;}
 
 .d-inline{display:inline}
 .d-inline-block{display:inline-block}
@@ -1394,14 +1425,15 @@ body.page-green {
 .lr-visible,.visible{visibility:visible !important;}
 .lr-invisible,.invisible{visibility:hidden;}
 
-.lr-overflow-auto{overflow:auto;}
+.lr-scroll{overflow:scroll;}
+.lr-scroll-y{overflow-y:scroll;}
+.lr-scroll-x{overflow-x:scroll;}
 .lr-overflow-hidden{overflow:hidden;}
-.lr-overflow-scroll{overflow:scroll;}
-.lr-overflow-scroll-y{overflow-y:scroll;}
 .lr-overflow-visible{overflow:visible !important;}
-
+.lr-overflow-auto{overflow:auto;}
 
 .lr-opacity-0{opacity:0;}
+.lr-opacity-1{opacity:1;}
 .lr-opacity-d1{opacity:0.1;}
 .lr-opacity-d2{opacity:0.2;}
 .lr-opacity-d3{opacity:0.3;}
@@ -1416,7 +1448,6 @@ body.page-green {
 .lr-opacity-d7{opacity:0.7;}
 .lr-opacity-d8{opacity:0.8;}
 .lr-opacity-d9{opacity:0.9;}
-.lr-opacity-1{	opacity:1;}
 
 
 /* BORDERS */
@@ -1495,22 +1526,14 @@ body.page-green {
 	border-top-left-radius:10px!important;
 	border-top-right-radius:10px!important
 }
-.lr-radius-6{border-radius:6px;}
-.lr-radius-8{border-radius:8px;}
-.lr-radius-10,.lr-border-round{border-radius:10px;}
-.lr-radius-15{border-radius:15px;}
-.lr-radius-20{border-radius:20px;}
-.lr-radius-30{border-radius:30px;}
+.lr-rad6,.lr-radius6{border-radius:6px;}
+.lr-rad8,.lr-radius8{border-radius:8px;}
+.lr-rad10,.lr-radius10,.lr-border-round{border-radius:10px;}
+.lr-rad15,.lr-radius15{border-radius:15px;}
+.lr-rad20,.lr-radius20{border-radius:20px;}
+.lr-rad30,.lr-radius30{border-radius:30px;}
 
-/*------unsort---------*/
-/*
-input, textarea {outline:none;}
-input:active, textarea:active {outline:none;}
-:focus {outline:none;}
-textarea {resize:none;}
-textarea {resize:vertical;}
-textarea {resize:horizontal;}
-*/
+
 .offcanvas-menu{
 	position:fixed;
 	top: 75px;
@@ -1553,4 +1576,31 @@ https://getuikit.com/docs/column
  padding: 5px;
  break-inside: avoid;
 }
+*/
+
+/*------unsort---------*/
+/*
+input, textarea {outline:none;}
+input:active, textarea:active {outline:none;}
+:focus {outline:none;}
+textarea {resize:none;}
+textarea {resize:vertical;}
+textarea {resize:horizontal;}
+
+//https://doka.guide/css/mix-blend-mode/
+.uk-blend-multiply{mix-blend-mode:multiply;}
+.uk-blend-screen{mix-blend-mode:screen;}
+.uk-blend-overlay{mix-blend-mode:overlay;}
+.uk-blend-darken{mix-blend-mode:darken;}
+.uk-blend-lighten{mix-blend-mode:lighten;}
+.uk-blend-color-dodge{mix-blend-mode:color-dodge;}
+.uk-blend-color-burn{mix-blend-mode:color-burn;}
+.uk-blend-hard-light{mix-blend-mode:hard-light;}
+.uk-blend-soft-light{mix-blend-mode:soft-light;}
+.uk-blend-difference{mix-blend-mode:difference;}
+.uk-blend-exclusion{mix-blend-mode:exclusion;}
+.uk-blend-hue{mix-blend-mode:hue;}
+.uk-blend-saturation{mix-blend-mode:saturation;}
+.uk-blend-color{mix-blend-mode:color;}
+.uk-blend-luminosity{mix-blend-mode:luminosity;}
 */

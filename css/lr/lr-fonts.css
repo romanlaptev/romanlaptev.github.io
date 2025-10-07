@@ -1,5 +1,13 @@
-/* last editing:11-02-2025 */
+/* last editing:02-04-2025 */
+
 /* FONTS */
+.h1{font-size: 3.6rem;font-weight: 800;line-height: 1.138888889;}
+.h2{font-size: 3.2rem;}
+.h3{font-size: 2.8rem;}
+.h4{font-size: 2.4rem;}
+.h5{font-size: 2.1rem;}
+.h6{font-size: 1.6rem;letter-spacing: 0.03125em;text-transform: uppercase;}
+
 .lr-text-underline,.text-underline,.ut{text-decoration:underline;}
 .lr-underline-none,.text-underline-none,.ut-none,.ut-0{text-decoration:none;}
 .lr-text-bold,.text-bold{font-weight:bold;}
