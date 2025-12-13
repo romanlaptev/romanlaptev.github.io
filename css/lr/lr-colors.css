@@ -350,10 +350,6 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-blue-b6{background-color:#6082B6;}
 .border-blue-b6 {border-color: #6082B6;}
 
-.color-white-fb{color:#FBFBFB;}
-.bg-white-fb{background-color:#FBFBFB;}
-.border-white-fb{border-color:#FBFBFB}
-
 .color-grey-7b{	color:#7D7D7B;}
 .bg-grey-7b{background-color:#7D7D7B;}
 .border-grey-7b{border-color:#7D7D7B}
@@ -565,7 +561,6 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-purple2,.bg-purple-c1{background-color:#6f42c1;}
 .bg-dark-shade-blue{background-color:#021859;}
 .bg-aliceblue{background-color:#f0f8ff;}
-.bg-antiquewhite{background-color:#faebd7;}
 .bg-aqua,.bg-cyan{background-color:#00ffff;}
 .bg-aquamarine{background-color:#7fffd4;}
 .bg-azure{background-color:#f0ffff;}
@@ -827,10 +822,9 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-dimgray{background-color:#696969;}
 .bg-feldspar{background-color:#d19275;}
 .bg-firebrick{background-color:#b22222;}
-.bg-floralwhite{background-color:#fffaf0;}
+
 .bg-fuchsia{background-color:#ff00ff;}
 .bg-gainsboro{background-color:#dcdcdc;}
-.bg-ghostwhite{background-color:#f8f8ff;}
 
 .bg-gold{background-color:#ffd700;}
 .bg-goldenrod{background-color:#daa520;}
@@ -1159,7 +1153,6 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-honeydew{background-color:#f0fff0;}
 .bg-mistyrose{background-color:#ffe4e1;}
 .bg-moccasin{background-color:#ffe4b5;}
-.bg-navajowhite{background-color:#ffdead;}
 .bg-navy{background-color:#000080;}
 .bg-oldlace,.bg-sand-e6{background-color:#fdf5e6;}
 .bg-olive{background-color:#808000;}
@@ -1404,6 +1397,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-thistle{background-color:#d8bfd8;}
 .bg-turquoise{background-color:#40e0d0;}
 .bg-wheat{background-color:#f5deb3;}
+
 .bg-white{background-color:#ffffff;}
 .lr-border-white,.border-white{border-color:#fff;}
 .lr-border-white > li{border-color: #fff;}
@@ -1413,9 +1407,17 @@ https://www.omiod.com/colors/?rgb=d0ccd5
     background-image: none;
 }
 .bg-white-children * {background-color:#fff;}
-
 .bg-whitesmoke {background-color: #f5f5f5;}
 .bg-whitesmoke2 {background-color: #f4f6f2;}
+.bg-antiquewhite{background-color:#faebd7;}
+.bg-cloud-dancer,.bg-grey-eee9{background-color:#f0eee9;}
+.bg-navajowhite{background-color:#ffdead;}
+.color-white-fb{color:#FBFBFB;}.bg-white-fb{background-color:#FBFBFB;}.border-white-fb{border-color:#FBFBFB}
+.bg-matte-white{background-color:#f2f3f4;}
+.bg-cream{background-color:#fffdd0;}
+.bg-white-blond{background-color:#faf0be;}
+.bg-floralwhite{background-color:#fffaf0;}
+.bg-ghostwhite{background-color:#f8f8ff;}
 
 /* YELLOW  */
 .bg-yellow-050{background-color:#fdf7e3;}
@@ -1477,10 +1479,6 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-light-beige { background:#efc8b1; }
 .bg-middlebrown { background:#bf794e; }
 .bg-peach2 { background:#efd0b1; }
-
-.bg-matte-white{background-color:#f2f3f4;}
-.bg-cream{background-color:#fffdd0;}
-.bg-white-blond{background-color:#faf0be;}
 
 .bg-vanilla{background-color:#f3e5ab;}
 .bg-rosy-af{background-color:#ebc2af;}
